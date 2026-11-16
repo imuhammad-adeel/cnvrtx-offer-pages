@@ -5,7 +5,7 @@
  * The full, point-by-point detail opens on click.
  * Prices and checkout links: src/config/offerV9.ts. Words: plans9 / offer9.
  */
-import { offer9 as f, plans9 as c } from '../../content/automotiveCopyV9';
+import { copyFor, type CopySet } from '../../content/copySets';
 import { offerV9 as cfg, featuredPlan as plan, checkoutHref } from '../../config/offerV9';
 import Gears from '../automotive-doors/Gears.astro';
 
@@ -15,7 +15,10 @@ interface Props {
   /** A door page can lead into the same offer with its own headline. */
   title?: [string, string];
   sub?: string;
+  /** Which wording to use: the auto pages' (default) or the general one. See content/copySets.ts. */
+  copy?: CopySet;
 }
+const { offer9: f, plans9: c } = copyFor(Astro.props.copy);
 const { gears = false, title = f.title as [string, string], sub = f.sub } = Astro.props;
 
 const fmt = (n: number) => '$' + n.toLocaleString('en-US');
@@ -55,7 +58,7 @@ const cta = (interval: 'annual' | 'monthly') => ({
       <p class="sub">{sub}</p>
     </header>
 
-    {gears && <Gears />}
+    {gears && <Gears copy={Astro.props.copy} />}
 
     <!-- one plan, two ways to pay -->
     <div class="plans">

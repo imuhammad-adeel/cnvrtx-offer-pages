@@ -6,12 +6,15 @@
  * again on click. The thread is fictional and labelled as an example.
  */
 import type { Door } from '../../content/automotiveDoors';
-import { doorCommon as c } from '../../content/automotiveDoors';
+import { copyFor, type CopySet } from '../../content/copySets';
 import DoorViz from './DoorViz.astro';
 
 interface Props {
   door: Door;
+  /** Which wording to use: the auto pages' (default) or the general one. See content/copySets.ts. */
+  copy?: CopySet;
 }
+const { doorCommon: c } = copyFor(Astro.props.copy);
 const { door } = Astro.props;
 const p = door.problem;
 const f = door.fix;

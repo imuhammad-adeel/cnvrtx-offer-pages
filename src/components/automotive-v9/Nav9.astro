@@ -7,14 +7,25 @@ interface Props {
   outcomes?: { label: string; href: string; sub: string; icon: string; slug: string }[];
   /** Optional endpoint with real click counts; see offerV9.outcomes. */
   countsUrl?: string;
+  /** Where the logo goes. Left out: back to the top when the page has a menu, the home page otherwise. */
+  home?: string;
+  /** Wording of the menu. The defaults are the auto page's "What it fixes". */
+  menu?: { label: string; title: string; sub: string; all: string };
 }
-const { outcomes, countsUrl = '' } = Astro.props;
+const { outcomes, countsUrl = '', home } = Astro.props;
+const menu = Astro.props.menu || {
+  label: 'What it fixes',
+  title: 'What do you want fixed first?',
+  sub: 'Each one has its own page. All of them are in one plan.',
+  all: 'One plan covers all of these. See the price',
+};
+const logoHref = home || (outcomes ? '#top' : '/');
 ---
 
 <div class="progress" aria-hidden="true"><i data-prog8></i></div>
 
 <header class="nav" data-nav9>
-  <a href={outcomes ? '#top' : '/'} class="logo" aria-label={outcomes ? 'CNVRT X, back to top' : 'CNVRT X home page'}>CNVRT<span>✕</span></a>
+  <a href={logoHref} class="logo" aria-label={logoHref === '#top' ? 'CNVRT X, back to top' : 'CNVRT X home page'}>CNVRT<span>✕</span></a>
   <nav aria-label="Primary">
     {nav9.links.map((l) => <a href={l.href}>{l.label}</a>)}
   </nav>
@@ -22,13 +33,13 @@ const { outcomes, countsUrl = '' } = Astro.props;
     outcomes && outcomes.length > 0 && (
       <details class="out" data-outcomes data-counts-url={countsUrl || undefined}>
         <summary>
-          What it fixes
+          {menu.label}
           <i aria-hidden="true" />
         </summary>
         <div class="menu">
           <p class="m-h">
-            <b>What do you want fixed first?</b>
-            <span>Each one has its own page. All of them are in one plan.</span>
+            <b>{menu.title}</b>
+            <span>{menu.sub}</span>
           </p>
           <ul role="list">
             {outcomes.map((o) => (
@@ -47,7 +58,7 @@ const { outcomes, countsUrl = '' } = Astro.props;
             ))}
           </ul>
           <a href="#pricing" class="m-all" data-outcomes-close>
-            One plan covers all of these. See the price <span aria-hidden="true">→</span>
+            {menu.all} <span aria-hidden="true">→</span>
           </a>
         </div>
       </details>

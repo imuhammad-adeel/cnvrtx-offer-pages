@@ -8,13 +8,15 @@
  * System names and lines come from plans9 (the v9 offer), so they stay in step with pricing.
  */
 import type { Door } from '../../content/automotiveDoors';
-import { doorCommon as c } from '../../content/automotiveDoors';
-import { plans9 } from '../../content/automotiveCopyV9';
+import { copyFor, type CopySet } from '../../content/copySets';
 
 interface Props {
   door: Door;
   lead?: string;
+  /** Which wording to use: the auto pages' (default) or the general one. See content/copySets.ts. */
+  copy?: CopySet;
 }
+const { doorCommon: c, plans9 } = copyFor(Astro.props.copy);
 const { door, lead = c.systemsLead } = Astro.props;
 const roles = plans9.roles;
 const all = roles.flatMap((r) => r.systems.map((s) => ({ ...s, role: r.role })));

@@ -1,7 +1,12 @@
 ---
-import { work9 as w, hire9 as h } from '../../content/automotiveCopyV9';
-import { math9 } from '../../content/automotiveCopyV9';
+import { copyFor, type CopySet } from '../../content/copySets';
 import { featuredPlan } from '../../config/offerV9';
+
+interface Props {
+  /** Which wording to use: the auto pages' (default) or the general one. See content/copySets.ts. */
+  copy?: CopySet;
+}
+const { work9: w, hire9: h, math9 } = copyFor(Astro.props.copy);
 const price = featuredPlan.monthly;
 const money = (n: number) => '$' + Math.round(n).toLocaleString('en-US');
 // starting figures; the script keeps them in step with the calculator and the visitor's choices

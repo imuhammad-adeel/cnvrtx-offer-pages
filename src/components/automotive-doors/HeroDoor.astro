@@ -3,12 +3,15 @@
  * Door-page hero: the v9 hero (same markup, styles and polish effect) with its
  * headline and sub passed in. Generated from Hero9.astro; do not edit Hero9 for door pages.
  */
-import { hero9 as h } from '../../content/automotiveCopyV9';
+import { copyFor, type CopySet } from '../../content/copySets';
 
 interface Props {
   headline: [string, string];
   sub: string;
+  /** Which wording to use: the auto pages' (default) or the general one. See content/copySets.ts. */
+  copy?: CopySet;
 }
+const { hero9: h } = copyFor(Astro.props.copy);
 const { headline, sub } = Astro.props;
 ---
 

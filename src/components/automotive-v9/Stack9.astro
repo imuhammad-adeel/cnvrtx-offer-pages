@@ -1,12 +1,20 @@
 ---
-import { stack9 as s } from '../../content/automotiveCopyV9';
+import { copyFor, type CopySet } from '../../content/copySets';
 const finishes = ['pearl', 'cobalt', 'signal', 'obsidian'];
 /** The coats can be shown in two runs, with another section between them. */
 interface Props {
   from?: number;
   to?: number;
   head?: boolean;
+  /** Which wording to use: the auto pages' (default) or the general one. See content/copySets.ts. */
+  copy?: CopySet;
 }
+const { stack9: s } = copyFor(Astro.props.copy);
+// the few words inside the example screens that name a trade
+const general = Astro.props.copy === 'local';
+const ex = general
+  ? { card: 'A card for every booking', sheet: 'Tomorrow’s schedule', from: 'Your Business', after: 'Review request sent after the visit' }
+  : { card: 'Job card for every booking', sheet: 'Tomorrow’s run sheet', from: 'Your Shop', after: 'Review request sent after the job' };
 const { from = 0, to = s.cards.length, head = true } = Astro.props;
 // i = position in the full set (finish colour), k = position in this run (stacking offset)
 const cards = s.cards.slice(from, to).map((c, k) => ({ c, i: from + k, k }));
@@ -117,14 +125,14 @@ const cards = s.cards.slice(from, to).map((c, k) => ({ c, i: from + k, k }));
               {c.viz === 'run' && (
                 <ol class="v-follow">
                   <li class="seq" style="--k:0"><i />Today’s brief<span>7:30 AM</span></li>
-                  <li class="seq" style="--k:1"><i />Job card for every booking<span>All day</span></li>
-                  <li class="seq" style="--k:2"><i />Tomorrow’s run sheet<span>6 PM</span></li>
+                  <li class="seq" style="--k:1"><i />{ex.card}<span>All day</span></li>
+                  <li class="seq" style="--k:2"><i />{ex.sheet}<span>6 PM</span></li>
                   <li class="seq win" style="--k:3"><i />Leads, booked, won, reviews<span>Monday</span></li>
                 </ol>
               )}
               {c.viz === 'cal' && (
                 <div class="v-sms">
-                  <p class="sms-h"><b>Messages</b><span>Your Shop</span></p>
+                  <p class="sms-h"><b>Messages</b><span>{ex.from}</span></p>
                   <p class="bub out seq" style="--k:0">You are booked for Sat 9:00 AM. See you then!</p>
                   <p class="bub out seq" style="--k:1.3">Reminder: your appointment is tomorrow at 9:00 AM. Reply C to confirm or R to reschedule.</p>
                   <p class="bub in seq" style="--k:2.7">C</p>
@@ -134,7 +142,7 @@ const cards = s.cards.slice(from, to).map((c, k) => ({ c, i: from + k, k }));
               {c.viz === 'stars' && (
                 <div class="v-stars">
                   <p class="seq note ask" style="--k:0.4">How did we do today? Tap to leave a review.</p>
-                  <p class="seq note" style="--k:1.8">Review request sent after the job</p>
+                  <p class="seq note" style="--k:1.8">{ex.after}</p>
                   <p class="seq note n2" style="--k:3.2">Gentle reminder sent 3 days later</p>
                 </div>
               )}

@@ -7,8 +7,13 @@
  * then carries on; a click selects a gear. (Offer9 marks the part that holds with data-gear-stage.)
  * Same plan and same roles as everywhere else: this is only a different way to show them.
  */
-import { gears as g } from '../../content/automotiveDoors';
-import { plans9 } from '../../content/automotiveCopyV9';
+import { copyFor, type CopySet } from '../../content/copySets';
+
+interface Props {
+  /** Which wording to use: the auto pages' (default) or the general one. See content/copySets.ts. */
+  copy?: CopySet;
+}
+const { gears: g, plans9 } = copyFor(Astro.props.copy);
 
 const roles = plans9.roles;
 // tick marks around the half-circle dial (centre 110,115, radius 90)

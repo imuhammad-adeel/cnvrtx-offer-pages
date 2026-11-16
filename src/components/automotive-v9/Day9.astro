@@ -4,7 +4,13 @@
  * Every "after" line is something a system in the plans actually does (see the note for which plan).
  * The phone shows fictional data only and is labelled as an example.
  */
-import { day9 as d, sheet9 as s } from '../../content/automotiveCopyV9';
+import { copyFor, type CopySet } from '../../content/copySets';
+
+interface Props {
+  /** Which wording to use: the auto pages' (default) or the general one. See content/copySets.ts. */
+  copy?: CopySet;
+}
+const { day9: d, sheet9: s } = copyFor(Astro.props.copy);
 ---
 
 <section class="scene day" aria-labelledby="day-title">

@@ -1,6 +1,12 @@
 ---
 import { bigIdea } from '../../content/automotiveCopy';
-import { pipe9 as p, math9 } from '../../content/automotiveCopyV9';
+import { copyFor, type CopySet } from '../../content/copySets';
+
+interface Props {
+  /** Which wording to use: the auto pages' (default) or the general one. See content/copySets.ts. */
+  copy?: CopySet;
+}
+const { pipe9: p, math9 } = copyFor(Astro.props.copy);
 const d = math9.defaults;
 const per = Math.round(d.value / d.oneIn);
 ---
@@ -38,7 +44,7 @@ const per = Math.round(d.value / d.oneIn);
         </p>
       </div>
       <p class="ex">
-        <span>Example: a job is worth</span>
+        <span>{Astro.props.copy === 'local' ? 'Example: a customer is worth' : 'Example: a job is worth'}</span>
         <span class="mini">
           <button type="button" data-ms="value" data-d="-1" aria-label="Lower job value">−</button>
           <b data-exv>${d.value}</b>

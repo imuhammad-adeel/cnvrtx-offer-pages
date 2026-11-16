@@ -6,14 +6,17 @@
  * - otherwise: the "try saying" lines become a static conversation labelled "Example conversation".
  * Every exchange here is written for an example shop. No real booking is made.
  */
-import { voice9 as v } from '../../content/automotiveCopyV9';
+import { copyFor, type CopySet } from '../../content/copySets';
 import { offerV9 as cfg } from '../../config/offerV9';
 
 /** A door page can give the demo its own headline and lead-in. The main page passes nothing. */
 interface Props {
   title?: [string, string];
   body?: string;
+  /** Which wording to use: the auto pages' (default) or the general one. See content/copySets.ts. */
+  copy?: CopySet;
 }
+const { voice9: v } = copyFor(Astro.props.copy);
 const { title = v.title as [string, string], body = v.body } = Astro.props;
 
 const live = Boolean(cfg.voiceDemo.enabled && cfg.voiceDemo.embed);

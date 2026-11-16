@@ -2,13 +2,19 @@
 /** Slim bar fixed to the very top. One line, one link. The counter shows only a real number from config. */
 import { offerV9 as cfg } from '../../config/offerV9';
 const left = cfg.foundingSpotsLeft;
+
+interface Props {
+  /** Who the founding program is for, in the plural. */
+  who?: string;
+}
+const { who = 'shops' } = Astro.props;
 ---
 
 <div class="bar" role="region" aria-label="Founding program">
   <p>
     <span class="tag">Founding program</span>
-    <span class="t full">Launch Kit waived and your price locked for the first {cfg.foundingSpotsTotal} shops.</span>
-    <span class="t short">First {cfg.foundingSpotsTotal} shops: Launch Kit waived</span>
+    <span class="t full">Launch Kit waived and your price locked for the first {cfg.foundingSpotsTotal} {who}.</span>
+    <span class="t short">First {cfg.foundingSpotsTotal} {who}: Launch Kit waived</span>
     {left !== null && <b class="left">{left} left</b>}
     <a href="#pricing" data-track="cta_click" data-track-location="top_bar">Claim a spot <span aria-hidden="true">→</span></a>
   </p>

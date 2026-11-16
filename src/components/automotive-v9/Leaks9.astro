@@ -1,5 +1,11 @@
 ---
-import { leaks9 as l } from '../../content/automotiveCopyV9';
+import { copyFor, type CopySet } from '../../content/copySets';
+
+interface Props {
+  /** Which wording to use: the auto pages' (default) or the general one. See content/copySets.ts. */
+  copy?: CopySet;
+}
+const { leaks9: l } = copyFor(Astro.props.copy);
 const n = l.items.length;
 ---
 

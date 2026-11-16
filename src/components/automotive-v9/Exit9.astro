@@ -1,6 +1,12 @@
 ---
 /** Exit popup. No price anchor: it shows the visitor's own calculator loss and the founding program. */
-import { exit9 as x, math9 } from '../../content/automotiveCopyV9';
+import { copyFor, type CopySet } from '../../content/copySets';
+
+interface Props {
+  /** Which wording to use: the auto pages' (default) or the general one. See content/copySets.ts. */
+  copy?: CopySet;
+}
+const { exit9: x, math9 } = copyFor(Astro.props.copy);
 
 const fmt = (n: number) => '$' + Math.round(n).toLocaleString('en-US');
 const d = math9.defaults;

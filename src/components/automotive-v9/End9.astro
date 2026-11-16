@@ -1,6 +1,6 @@
 ---
 import { audit } from '../../content/automotiveCopy';
-import { faq9 as q, start9 as e, nav9, offer9, math9, footer9 as ft } from '../../content/automotiveCopyV9';
+import { copyFor, type CopySet } from '../../content/copySets';
 import { automotiveOffer as o, ATTRIBUTION_PARAMS } from '../../config/automotiveOffer';
 import { offerV9 as cfg, checkoutHref } from '../../config/offerV9';
 
@@ -9,7 +9,10 @@ interface Props {
   faq?: { q: string; a: string }[];
   startLead?: string;
   footerLine?: string;
+  /** Which wording to use: the auto pages' (default) or the general one. See content/copySets.ts. */
+  copy?: CopySet;
 }
+const { faq9: q, start9: e, nav9, offer9, math9, footer9: ft } = copyFor(Astro.props.copy);
 const { faq = [], startLead = e.lead, footerLine = e.footer } = Astro.props;
 // page questions first, then the ones every buyer asks
 const keep = ['Do I have to talk to a salesperson?', 'Can you guarantee bookings?', 'Can I cancel?', 'Is the AI a real person?'];

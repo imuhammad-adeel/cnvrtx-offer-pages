@@ -3,11 +3,15 @@
  * Door-page calculator: the v9 calculator with its wording and starting numbers passed in.
  * Generated from Math9.astro; do not edit Math9 for door pages.
  */
-import { math9 } from '../../content/automotiveCopyV9';
+import { copyFor, type CopySet } from '../../content/copySets';
 
 interface Props {
-  copy?: Partial<typeof math9>;
+  /** This page's own calculator wording, on top of the base wording. */
+  copy?: Partial<ReturnType<typeof copyFor>['math9']>;
+  /** Base wording: the auto pages' (default) or the general one. */
+  set?: CopySet;
 }
+const { math9 } = copyFor(Astro.props.set);
 const m = { ...math9, ...(Astro.props.copy || {}) };
 import { featuredPlan } from '../../config/offerV9';
 // the calculator prices against the most popular plan
