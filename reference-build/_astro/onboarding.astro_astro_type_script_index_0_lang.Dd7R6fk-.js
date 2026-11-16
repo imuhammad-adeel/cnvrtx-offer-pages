@@ -1,0 +1,1 @@
+import{n as e}from"./analytics.DS0YapuR.js";var t=document.querySelector(`[data-onb]`);t?.addEventListener(`submit`,n=>{let r=t.querySelector(`#o-biz`);r.value.trim()?(n.preventDefault(),e(`onboarding_submit`,{preview:!0}),location.href=t.action):(n.preventDefault(),r.setAttribute(`aria-invalid`,`true`),r.focus())});
