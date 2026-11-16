@@ -218,7 +218,7 @@ const cta = (interval: 'annual' | 'monthly') => ({
 
 <style>
   .offer {
-    overflow: hidden;
+    overflow: clip; /* clip, not hidden: hidden would stop the gears box from sticking */
     isolation: isolate;
     background: linear-gradient(180deg, #05080b, var(--night-2));
   }

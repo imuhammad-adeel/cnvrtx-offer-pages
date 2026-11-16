@@ -86,8 +86,26 @@ const n = l.items.length;
     };
 
     let io: IntersectionObserver | null = null;
+    // Pin only when every card can show all of its text with room to spare:
+    // try the normal sizes, then a tighter set, and if neither fits, stack the cards instead.
+    const fits = () => panels.every((p) => p.scrollHeight <= p.clientHeight + 1);
+    const canPin = () => {
+      if (!wide.matches || reduce) return false;
+      root.setAttribute('data-pin', '');
+      root.removeAttribute('data-tight');
+      let ok = fits();
+      if (!ok) {
+        root.setAttribute('data-tight', '');
+        ok = fits();
+      }
+      if (!ok) {
+        root.removeAttribute('data-tight');
+        root.removeAttribute('data-pin');
+      }
+      return ok;
+    };
     const setup = () => {
-      const want = wide.matches && !reduce;
+      const want = canPin();
       if (want === pinned && (want || io)) return;
       pinned = want;
       root.toggleAttribute('data-pin', want);
@@ -118,6 +136,13 @@ const n = l.items.length;
     };
     setup();
     wide.addEventListener('change', setup);
+    // the answer can change with the window size and once the fonts have loaded
+    let rs = 0;
+    window.addEventListener('resize', () => {
+      window.clearTimeout(rs);
+      rs = window.setTimeout(setup, 150);
+    });
+    document.fonts?.ready.then(setup);
   }
 </script>
 
@@ -375,6 +400,34 @@ const n = l.items.length;
   }
   .leaks[data-pin] .scroll-on {
     display: block;
+  }
+  /* short windows: the same cards, sized to the height that is left (JS sets data-tight) */
+  .leaks[data-tight] .pin {
+    padding-block: calc(var(--nav-h) + 4px) 16px;
+    gap: 12px;
+  }
+  .leaks[data-tight] .title {
+    margin-top: 6px;
+    max-width: none;
+    font-size: clamp(1.5rem, 5.6vh, 2.8rem);
+  }
+  .leaks[data-tight] .count b {
+    font-size: clamp(1.6rem, 5.6vh, 2.8rem);
+  }
+  .leaks[data-tight] .panel {
+    padding-block: clamp(1rem, 3.6vh, 2rem);
+    gap: 8px;
+  }
+  .leaks[data-tight] .swap {
+    font-size: min(clamp(2rem, 1rem + 4vw, 4.4rem), 7.4vh);
+  }
+  .leaks[data-tight] .line {
+    margin-top: 0;
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+  .leaks[data-tight] .scroll-on {
+    display: none;
   }
 
   /* not pinned: a vertical list */

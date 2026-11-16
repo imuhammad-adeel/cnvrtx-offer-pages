@@ -3,7 +3,7 @@
  * The three roles shown as three gears, above the price cards (trial on one door page).
  * A rev gauge climbs as each gear engages: First Gear = The Receptionist,
  * Overdrive = The Service Advisor, Full Throttle = The Shop Manager.
- * It shifts through the gears once when scrolled into view; a click selects a gear.
+ * The box holds in place while you scroll through the three gears, then lets go; a click selects a gear.
  * Same plan and same roles as everywhere else: this is only a different way to show them.
  */
 import { gears as g } from '../../content/automotiveDoors';
@@ -25,6 +25,7 @@ const ticks = Array.from({ length: 9 }, (_, i) => {
 });
 ---
 
+<div class="g-run" data-gear-run>
 <div class="gears" data-gears data-gear="0" style="--p:0.06">
   <div class="dial">
     <svg viewBox="0 0 220 132" fill="none" aria-hidden="true">
@@ -59,6 +60,7 @@ const ticks = Array.from({ length: 9 }, (_, i) => {
         ))
       }
     </div>
+    <div class="gps">
     {
       g.items.map((it, i) => (
         <div class="gp" role="tabpanel" id={`gear-p${i}`} aria-labelledby={`gear-t${i}`} data-gear-panel={i + 1} hidden={i !== 0}>
@@ -74,7 +76,10 @@ const ticks = Array.from({ length: 9 }, (_, i) => {
         </div>
       ))
     }
+    </div>
   </div>
+</div>
+<div class="g-space" aria-hidden="true"></div>
 </div>
 
 <script>
@@ -88,6 +93,7 @@ const ticks = Array.from({ length: 9 }, (_, i) => {
     const num = root.querySelector<HTMLElement>('[data-gear-n]')!;
     const name = root.querySelector<HTMLElement>('[data-gear-name]')!;
     const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const neutral = name.textContent || '';
     let timers: number[] = [];
 
     const set = (gear: number, blip: boolean) => {
@@ -104,7 +110,7 @@ const ticks = Array.from({ length: 9 }, (_, i) => {
       });
       panels.forEach((p) => (p.hidden = Number(p.dataset.gearPanel) !== Math.max(1, gear)));
       num.textContent = gear ? String(gear) : 'N';
-      name.textContent = gear ? btns[gear - 1].querySelector('b')?.textContent || '' : name.textContent;
+      name.textContent = gear ? btns[gear - 1].querySelector('b')?.textContent || '' : neutral;
     };
 
     btns.forEach((b) =>
@@ -117,38 +123,73 @@ const ticks = Array.from({ length: 9 }, (_, i) => {
       }),
     );
 
-    if (still || !('IntersectionObserver' in window)) {
+    const run = root.closest<HTMLElement>('[data-gear-run]');
+    if (still || !run) {
       set(3, false);
     } else {
-      // shift up through the gears once, the moment the panel comes into view
-      let started = false;
-      const start = () => {
-        if (started) return;
-        started = true;
-        io.disconnect();
-        window.removeEventListener('scroll', check);
-        [1, 2, 3].forEach((gear, i) => timers.push(window.setTimeout(() => set(gear, true), 250 + i * 1200)));
+      // The box sticks while you scroll through a set distance; that distance is split
+      // between the three gears. Scrolling back up shifts back down.
+      run.setAttribute('data-pin', '');
+      let top = 0;
+      let len = 1;
+      let scrollGear = -1;
+      const measure = () => {
+        const vh = window.innerHeight;
+        const h = root.offsetHeight;
+        const head = (parseFloat(getComputedStyle(root).getPropertyValue('--nav-h')) || 116) + 12;
+        const room = vh - head - 16;
+        // fits under the header: centre it in the space. Taller than that: keep its lower part,
+        // where the gears and their systems are, on screen.
+        top = Math.round(h <= room ? head + (room - h) / 2 : vh - h - 16);
+        len = Math.round(vh * (window.innerWidth < 700 ? 0.8 : 0.95));
+        run.style.setProperty('--gtop', top + 'px');
+        run.style.setProperty('--glen', len + 'px');
       };
-      const check = () => {
-        const r = root.getBoundingClientRect();
-        if (r.top < window.innerHeight * 0.8 && r.bottom > 0) start();
+      const onScroll = () => {
+        const r = run.getBoundingClientRect();
+        const p = (top - r.top) / len; // 0 when the box sticks, 1 when it lets go
+        const gear = r.top > window.innerHeight * 0.62 ? 0 : p < 0.28 ? 1 : p < 0.6 ? 2 : 3;
+        if (gear === scrollGear) return;
+        const up = gear > scrollGear;
+        scrollGear = gear;
+        timers.forEach((t) => window.clearTimeout(t));
+        timers = [];
+        set(gear, up);
       };
-      const io = new IntersectionObserver(([e]) => e.isIntersecting && start(), { threshold: 0, rootMargin: '0px 0px -20% 0px' });
-      io.observe(root);
-      window.addEventListener('scroll', check, { passive: true });
-      check();
+      measure();
+      onScroll();
+      window.addEventListener('scroll', onScroll, { passive: true });
+      let rs = 0;
+      window.addEventListener('resize', () => {
+        window.clearTimeout(rs);
+        rs = window.setTimeout(() => {
+          measure();
+          onScroll();
+        }, 150);
+      });
+      if ('ResizeObserver' in window) new ResizeObserver(measure).observe(root);
     }
   }
 </script>
 
 <style>
+  .g-run {
+    margin-bottom: var(--s-5);
+  }
+  /* JS sets data-pin, the sticking point and the scroll distance */
+  .g-run[data-pin] .gears {
+    position: sticky;
+    top: var(--gtop, 130px);
+  }
+  .g-run[data-pin] .g-space {
+    height: var(--glen, 90vh);
+  }
   .gears {
     --p: 0.06;
     display: grid;
     grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr);
     gap: clamp(1.25rem, 1rem + 2vw, 3rem);
     align-items: center;
-    margin-bottom: var(--s-5);
     padding: clamp(1.25rem, 1rem + 1.6vw, 2.5rem);
     border-radius: 28px;
     border: 1px solid rgba(255, 255, 255, 0.14);
@@ -348,8 +389,15 @@ const ticks = Array.from({ length: 9 }, (_, i) => {
     border: 1px solid rgba(255, 255, 255, 0.14);
     background: rgba(255, 255, 255, 0.04);
   }
+  .gps {
+    display: grid;
+  }
+  .gps > .gp {
+    grid-area: 1 / 1;
+  }
   .gp[hidden] {
-    display: none;
+    display: grid;
+    visibility: hidden;
   }
   .p-l {
     font-family: var(--f-head);
@@ -389,10 +437,72 @@ const ticks = Array.from({ length: 9 }, (_, i) => {
       width: min(100%, 260px);
     }
   }
+  /* phones: a compact box, so the gauge, the three gears and their systems fit on one screen while it holds */
   @media (max-width: 620px) {
-    .shift,
+    .gears {
+      gap: 12px;
+      padding: 16px;
+      border-radius: 22px;
+    }
+    .dial {
+      display: grid;
+      grid-template-columns: 124px minmax(0, 1fr);
+      align-items: center;
+      gap: 16px;
+      width: 100%;
+      justify-self: stretch;
+      margin-bottom: 0;
+    }
+    .read {
+      position: static;
+      transform: none;
+      justify-items: start;
+    }
+    .read b {
+      font-size: 2.6rem;
+    }
+    .box {
+      gap: 12px;
+    }
+    .g-h span {
+      display: none;
+    }
+    .shift {
+      gap: 6px;
+    }
+    .shift button {
+      grid-template-columns: 1fr;
+      justify-items: center;
+      align-content: start;
+      gap: 6px;
+      padding: 10px 4px;
+      border-radius: 14px;
+      text-align: center;
+    }
+    .n {
+      width: 32px;
+      height: 32px;
+      font-size: 1rem;
+    }
+    .t b {
+      font-size: 0.75rem;
+    }
+    .t small {
+      font-size: 0.6875rem;
+      line-height: 1.25;
+    }
+    .gp {
+      gap: 10px;
+      padding: 14px;
+      border-radius: 16px;
+    }
+    .p-l {
+      font-size: 1rem;
+      line-height: 1.25;
+    }
     .gp ul {
       grid-template-columns: 1fr;
+      gap: 8px;
     }
   }
   @media (prefers-reduced-motion: reduce) {
