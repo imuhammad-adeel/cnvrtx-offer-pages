@@ -1,36 +1,36 @@
 ---
 /**
- * Front-door landing pages: /automotive/for/<slug>.
- * One problem and one hook per page; every page sells the SAME offer as /automotive/v9.
+ * Front-door landing pages: /auto/<slug>.
+ * One problem and one hook per page; every page sells the SAME offer as the main page.
  * Words: src/content/automotiveDoors.ts. Offer, prices and links: src/config/offerV9.ts.
  * The v9 page and its components are reused as they are; only the hero, the problem
  * section, the calculator wording and the "one of nine" section are specific to a door.
  */
-import BaseLayout from '../../../layouts/BaseLayout.astro';
-import Bar9 from '../../../components/automotive-v9/Bar9.astro';
-import Nav9 from '../../../components/automotive-v9/Nav9.astro';
-import Hook9 from '../../../components/automotive-v9/Hook9.astro';
-import Day9 from '../../../components/automotive-v9/Day9.astro';
-import Work9 from '../../../components/automotive-v9/Work9.astro';
-import Voice9 from '../../../components/automotive-v9/Voice9.astro';
-import Offer9 from '../../../components/automotive-v9/Offer9.astro';
-import End9 from '../../../components/automotive-v9/End9.astro';
-import Car9 from '../../../components/automotive-v9/Car9.astro';
-import Exit9 from '../../../components/automotive-v9/Exit9.astro';
-import Checkout9 from '../../../components/automotive-v9/Checkout9.astro';
-import HeroDoor from '../../../components/automotive-doors/HeroDoor.astro';
-import MathDoor from '../../../components/automotive-doors/MathDoor.astro';
-import DoorProblem from '../../../components/automotive-doors/DoorProblem.astro';
-import DoorSystems from '../../../components/automotive-doors/DoorSystems.astro';
-import DoorPortfolio from '../../../components/automotive-doors/DoorPortfolio.astro';
-import DoorSiteOffer from '../../../components/automotive-doors/DoorSiteOffer.astro';
-import DoorTicker from '../../../components/automotive-doors/DoorTicker.astro';
-import DoorChanges from '../../../components/automotive-doors/DoorChanges.astro';
-import DoorCount from '../../../components/automotive-doors/DoorCount.astro';
-import { doorPages, doorPageCommon } from '../../../content/automotiveDoorPages';
-import { doors, type Door } from '../../../content/automotiveDoors';
-import { featuredPlan } from '../../../config/offerV9';
-import '../../../styles/v9.css';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Bar9 from '../../components/automotive-v9/Bar9.astro';
+import Nav9 from '../../components/automotive-v9/Nav9.astro';
+import Hook9 from '../../components/automotive-v9/Hook9.astro';
+import Day9 from '../../components/automotive-v9/Day9.astro';
+import Work9 from '../../components/automotive-v9/Work9.astro';
+import Voice9 from '../../components/automotive-v9/Voice9.astro';
+import Offer9 from '../../components/automotive-v9/Offer9.astro';
+import End9 from '../../components/automotive-v9/End9.astro';
+import Car9 from '../../components/automotive-v9/Car9.astro';
+import Exit9 from '../../components/automotive-v9/Exit9.astro';
+import Checkout9 from '../../components/automotive-v9/Checkout9.astro';
+import HeroDoor from '../../components/automotive-doors/HeroDoor.astro';
+import MathDoor from '../../components/automotive-doors/MathDoor.astro';
+import DoorProblem from '../../components/automotive-doors/DoorProblem.astro';
+import DoorSystems from '../../components/automotive-doors/DoorSystems.astro';
+import DoorPortfolio from '../../components/automotive-doors/DoorPortfolio.astro';
+import DoorSiteOffer from '../../components/automotive-doors/DoorSiteOffer.astro';
+import DoorTicker from '../../components/automotive-doors/DoorTicker.astro';
+import DoorChanges from '../../components/automotive-doors/DoorChanges.astro';
+import DoorCount from '../../components/automotive-doors/DoorCount.astro';
+import { doorPages, doorPageCommon } from '../../content/automotiveDoorPages';
+import { doors, type Door } from '../../content/automotiveDoors';
+import { featuredPlan } from '../../config/offerV9';
+import '../../styles/v9.css';
 // the two text fonts are preloaded so the first layout already has them
 import soraFont from '@fontsource-variable/sora/files/sora-latin-wght-normal.woff2?url';
 import manropeFont from '@fontsource-variable/manrope/files/manrope-latin-wght-normal.woff2?url';
@@ -57,6 +57,7 @@ const lay = door.layout;
 <BaseLayout
   title={`${door.seoTitle} | CNVRT X Front Office`}
   description={door.description}
+  canonical={new URL(`/auto/${door.slug}`, Astro.site).href}
   noindex={true}
   bodyClass="v9"
   themeColor="#070B10"
@@ -93,7 +94,7 @@ const lay = door.layout;
 </BaseLayout>
 
 <script>
-  import { track } from '../../../scripts/analytics';
+  import { track } from '../../scripts/analytics';
 
   // Which door brought this visitor: sent with every event, the reserve form and checkout links.
   const door = document.querySelector<HTMLElement>('[data-door]')?.dataset.door || '';

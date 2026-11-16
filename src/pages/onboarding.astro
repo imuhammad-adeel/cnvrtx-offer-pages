@@ -3,17 +3,17 @@
  * Step after checkout. GHL should redirect here once payment succeeds.
  * The customer can fill the shop form now, or skip and do it later.
  */
-import BaseLayout from '../../../layouts/BaseLayout.astro';
-import { flow9 } from '../../../content/automotiveCopyV9';
-import { audit } from '../../../content/automotiveCopy';
-import '../../../styles/v9.css';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { flow9 } from '../content/automotiveCopyV9';
+import { audit } from '../content/automotiveCopy';
+import '../styles/v9.css';
 const f = flow9.onboarding;
 const services = audit.services;
 ---
 
 <BaseLayout title="Welcome to CNVRT X: one short form" description="Tell us how your shop works and we start building." noindex={true} bodyClass="v9" themeColor="#070B10">
   <header class="top">
-    <a href="/automotive/v9" class="logo" aria-label="CNVRT X home">CNVRT<span>✕</span></a>
+    <a href="/" class="logo" aria-label="CNVRT X home">CNVRT<span>✕</span></a>
     <span class="paid">✓ {f.kicker}</span>
   </header>
 
@@ -79,7 +79,7 @@ const services = audit.services;
 </BaseLayout>
 
 <script>
-  import { track } from '../../../scripts/analytics';
+  import { track } from '../scripts/analytics';
   const form = document.querySelector<HTMLFormElement>('[data-onb]');
   form?.addEventListener('submit', (e) => {
     const shop = form.querySelector<HTMLInputElement>('#o-biz')!;

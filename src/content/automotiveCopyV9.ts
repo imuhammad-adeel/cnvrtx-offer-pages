@@ -381,8 +381,8 @@ export const hooks9 = {
 export const flow9 = {
   /** GHL onboarding form URL. '' shows the built-in preview form. */
   onboardingFormUrl: '',
-  onboardingPath: '/automotive/v9/onboarding',
-  thanksPath: '/automotive/v9/thank-you',
+  onboardingPath: '/onboarding',
+  thanksPath: '/thank-you',
   onboarding: {
     kicker: 'Payment received',
     title: ['You are in.', 'One short form and we build.'],

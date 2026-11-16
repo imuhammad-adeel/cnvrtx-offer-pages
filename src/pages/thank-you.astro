@@ -1,14 +1,14 @@
 ---
 /** Last step of the flow. Shows "build started" or, with ?later=1, "one step left". */
-import BaseLayout from '../../../layouts/BaseLayout.astro';
-import { flow9 } from '../../../content/automotiveCopyV9';
-import '../../../styles/v9.css';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { flow9 } from '../content/automotiveCopyV9';
+import '../styles/v9.css';
 const t = flow9.thanks;
 ---
 
 <BaseLayout title="Thank you. Your CNVRT X build is booked in" description="What happens next with your CNVRT X system." noindex={true} bodyClass="v9" themeColor="#070B10">
   <header class="top">
-    <a href="/automotive/v9" class="logo" aria-label="CNVRT X home">CNVRT<span>✕</span></a>
+    <a href="/" class="logo" aria-label="CNVRT X home">CNVRT<span>✕</span></a>
   </header>
 
   <main id="main" class="wrap" data-ty>
@@ -42,13 +42,13 @@ const t = flow9.thanks;
         <h2>{t.referTitle}</h2>
         <p>{t.referLine}</p>
       </div>
-      <button type="button" class="copy" data-copy data-url="/automotive/v9">{t.referCta}</button>
+      <button type="button" class="copy" data-copy data-url="/">{t.referCta}</button>
     </aside>
   </main>
 </BaseLayout>
 
 <script>
-  import { track } from '../../../scripts/analytics';
+  import { track } from '../scripts/analytics';
   const later = new URLSearchParams(location.search).get('later') === '1';
   document.querySelectorAll<HTMLElement>('[data-when]').forEach((el) => (el.hidden = (el.dataset.when === 'later') !== later));
   track('thank_you_view', { later });

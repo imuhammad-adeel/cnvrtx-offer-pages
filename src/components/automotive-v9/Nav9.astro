@@ -14,7 +14,7 @@ const { outcomes, countsUrl = '' } = Astro.props;
 <div class="progress" aria-hidden="true"><i data-prog8></i></div>
 
 <header class="nav" data-nav9>
-  <a href={outcomes ? '#top' : '/automotive/v9'} class="logo" aria-label={outcomes ? 'CNVRT X, back to top' : 'CNVRT X home page'}>CNVRT<span>✕</span></a>
+  <a href={outcomes ? '#top' : '/'} class="logo" aria-label={outcomes ? 'CNVRT X, back to top' : 'CNVRT X home page'}>CNVRT<span>✕</span></a>
   <nav aria-label="Primary">
     {nav9.links.map((l) => <a href={l.href}>{l.label}</a>)}
   </nav>

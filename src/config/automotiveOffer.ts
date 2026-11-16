@@ -72,7 +72,7 @@ export const automotiveOffer = {
   // ---------------------------------------------------------------------------
   /** The indexable automotive SEO hub. This sales page is noindex,follow so it never competes with it. */
   seoHubUrl: 'https://cnvrtx.com/automotive/',
-  salesPageUrl: 'https://get.cnvrtx.com/automotive',
+  salesPageUrl: 'https://get.cnvrtx.com/',
   noindex: true,
 
   // ---------------------------------------------------------------------------

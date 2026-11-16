@@ -1,6 +1,6 @@
 /**
- * "Front door" landing pages for /automotive/for/<slug>.
- * One problem, one hook, one page. Every door leads to the SAME offer as /automotive/v9
+ * "Front door" landing pages for /<slug>.
+ * One problem, one hook, one page. Every door leads to the SAME offer as the main page
  * (one plan, monthly or annual). Design, pricing and guarantees come from the v9 components.
  *
  * WRITING RULES (same as v9)

@@ -12,7 +12,7 @@ import '../../../styles/v9.css';
     <p class="lede">One problem and one hook per page. Every page sells the same offer as the main page.</p>
     <ol role="list">
       <li class="main">
-        <a href="/automotive/v9">
+        <a href="/">
           <b>Main page</b>
           <span>You Got the Inquiry. Did You Get the Booking?</span>
         </a>
@@ -20,7 +20,7 @@ import '../../../styles/v9.css';
       {
         doors.map((d, i) => (
           <li>
-            <a href={`/automotive/for/${d.slug}`}>
+            <a href={`/auto/${d.slug}`}>
               <span class="n">{String(i + 1).padStart(2, '0')}</span>
               <b>{d.label}</b>
               <span>

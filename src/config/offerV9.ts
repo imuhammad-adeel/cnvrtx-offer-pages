@@ -1,7 +1,7 @@
 /**
  * Version 9 offer: ONE plan that includes three roles the owner no longer has to hire
  * (The Receptionist, The Service Advisor, The Shop Manager). Paid monthly or annually.
- * Every price and link on /automotive/v9 comes from this file.
+ * Every price and link on the site comes from this file.
  *
  * RULES
  * - '' or null means "not set yet". The page hides that element. It never shows
