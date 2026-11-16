@@ -1,0 +1,665 @@
+---
+/**
+ * The offer: ONE plan, shown as Annual and Monthly side by side (no switch).
+ * The plan includes three roles; each opens to show what it covers.
+ * The full, point-by-point detail opens on click.
+ * Prices and checkout links: src/config/offerV9.ts. Words: plans9 / offer9.
+ */
+import { offer9 as f, plans9 as c } from '../../content/automotiveCopyV9';
+import { offerV9 as cfg, featuredPlan as plan, checkoutHref } from '../../config/offerV9';
+import Gears from '../automotive-doors/Gears.astro';
+
+/** `gears` shows the three roles as three gears above the price cards (trial on one door page). */
+interface Props {
+  gears?: boolean;
+  /** A door page can lead into the same offer with its own headline. */
+  title?: [string, string];
+  sub?: string;
+}
+const { gears = false, title = f.title as [string, string], sub = f.sub } = Astro.props;
+
+const fmt = (n: number) => '$' + n.toLocaleString('en-US');
+// '' when checkout is not live or the link is missing: the button then goes to the reserve form
+const href = { annual: checkoutHref(plan.id, 'annual'), monthly: checkoutHref(plan.id, 'monthly') };
+const perMonth = Math.round(plan.annual / 12);
+const bonuses = f.annual.bonuses.filter((b) => b.enabled);
+const left = cfg.foundingSpotsLeft;
+const fill = (t: string) =>
+  t
+    .replace('{annual}', fmt(plan.annual))
+    .replace('{monthly}', fmt(plan.monthly))
+    .replace('{kit}', fmt(plan.launchKit))
+    .replace('{site}', fmt(cfg.website.addOn));
+const arrow =
+  '<svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11M11 5.500 15.500 10 11 14.500" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>';
+const cta = (interval: 'annual' | 'monthly') => ({
+  href: href[interval] || '#start',
+  'data-plan-cta': plan.id,
+  'data-interval': interval,
+  // with a live checkout link the button opens the checkout popup
+  'data-checkout': href[interval] ? plan.id : undefined,
+  'data-track': 'cta_click',
+  'data-track-location': 'pricing',
+  'data-track-plan': `${plan.id}_${interval}`,
+});
+---
+
+<section class="scene offer" id="pricing" aria-labelledby="offer9-title" data-pricing9>
+  <div class="aura" aria-hidden="true"></div>
+  <div class="container">
+    <header class="head" data-reveal>
+      <p class="kicker">{f.kicker}</p>
+      <h2 id="offer9-title" class="t-lg">
+        {title[0]} <span class="hot">{title[1]}</span>
+      </h2>
+      <p class="sub">{sub}</p>
+    </header>
+
+    {gears && <Gears />}
+
+    <!-- one plan, two ways to pay -->
+    <div class="plans">
+      <article class="plan best" aria-labelledby="pl-a">
+        <span class="ribbon">{c.annual.tag}</span>
+        <h3 id="pl-a">{c.annual.name}</h3>
+        <p class="amt"><b>{fmt(plan.annual)}</b><span>/yr</span></p>
+        <p class="eq">About {fmt(perMonth)} a month.</p>
+        <div class="in">
+          <p class="in-h">{c.rolesTitle}</p>
+          {
+            c.roles.map((r) => (
+              <details class="role">
+                <summary>
+                  <span class="r-t">
+                    <b>{r.role}</b>
+                    <small>{r.promise}</small>
+                  </span>
+                  <i aria-hidden="true" />
+                </summary>
+                <ul role="list" class="sys">
+                  {r.systems.map((x) => (
+                    <li>
+                      <b>{x.n}</b>
+                      <span>{x.d}</span>
+                    </li>
+                  ))}
+                </ul>
+              </details>
+            ))
+          }
+        </div>
+        <ul role="list" class="pts">
+          <li><b>Launch Kit waived.</b> Save {fmt(plan.launchKit)}.</li>
+          <li><b>Two months included.</b> Pay 10, get 12.</li>
+          {bonuses.map((b) => (
+            <li>
+              <b>{b.t}.</b> <span class="bn">Free</span>
+            </li>
+          ))}
+        </ul>
+        <a class="go" data-spot {...cta('annual')}>
+          {c.annual.cta}<Fragment set:html={arrow} />
+        </a>
+      </article>
+
+      <article class="plan" aria-labelledby="pl-m">
+        <h3 id="pl-m">{c.monthly.name}</h3>
+        <p class="amt"><b>{fmt(plan.monthly)}</b><span>/mo</span></p>
+        <p class="eq">+ {fmt(plan.launchKit)} one-time Launch Kit.</p>
+        <div class="in">
+          <p class="in-h">{c.rolesTitle}</p>
+          {
+            c.roles.map((r) => (
+              <details class="role">
+                <summary>
+                  <span class="r-t">
+                    <b>{r.role}</b>
+                    <small>{r.promise}</small>
+                  </span>
+                  <i aria-hidden="true" />
+                </summary>
+                <ul role="list" class="sys">
+                  {r.systems.map((x) => (
+                    <li>
+                      <b>{x.n}</b>
+                      <span>{x.d}</span>
+                    </li>
+                  ))}
+                </ul>
+              </details>
+            ))
+          }
+        </div>
+        <ul role="list" class="pts">
+          {c.monthly.points.map((x) => <li set:html={fill(x)} />)}
+        </ul>
+        <a class="alt" {...cta('monthly')}>
+          {c.monthly.cta}<Fragment set:html={arrow} />
+        </a>
+      </article>
+    </div>
+
+    <!-- founding program -->
+    <p class="found">
+      <span class="tag">{c.founding.title}</span>
+      <span>
+        <b>{c.founding.who.replace('{n}', String(cfg.foundingSpotsTotal))}:</b>{' '}
+        {c.founding.items.join(' · ')}
+      </span>
+      {left !== null && <b class="left">{left} left</b>}
+    </p>
+
+    <!-- every point, one by one: opens on click -->
+    <details class="more">
+      <summary>
+        <span>{c.detail.open}</span>
+        <i aria-hidden="true" />
+      </summary>
+      <div class="more-in">
+        <div class="cmp" role="table" aria-label="Annual and Monthly compared">
+          <div class="cr ch" role="row">
+            <span role="columnheader"></span>
+            <span role="columnheader">{c.annual.name}</span>
+            <span role="columnheader">{c.monthly.name}</span>
+          </div>
+          {
+            c.detail.compare.map((row) => (
+              <div class="cr" role="row">
+                <span role="rowheader">{row.k}</span>
+                <span role="cell" class="yes">{fill(row.a)}</span>
+                <span role="cell">{fill(row.m)}</span>
+              </div>
+            ))
+          }
+        </div>
+        <div class="d-grid">
+          {
+            c.roles.map((r) => (
+              <div>
+                <p class="d-h">
+                  {r.role} <span>{r.name}</span>
+                </p>
+                <ul role="list" class="d-l">
+                  {r.detail.map((x) => <li>{x}</li>)}
+                </ul>
+              </div>
+            ))
+          }
+        </div>
+        <p class="pts-note">{c.detail.note}</p>
+      </div>
+    </details>
+
+    <ul role="list" class="promises">
+      {f.promises.map((p) => <li><b>{p.t}</b><span>{p.d}</span></li>)}
+    </ul>
+    <p class="fine">{f.finePrint} {f.honest} {f.usage}</p>
+  </div>
+</section>
+
+<script>
+  import { track } from '../../scripts/analytics';
+
+  document.querySelectorAll<HTMLAnchorElement>('[data-pricing9] [data-plan-cta]').forEach((a) =>
+    a.addEventListener('click', () => {
+      const plan = a.dataset.planCta || '';
+      const interval = a.dataset.interval || 'annual';
+      track('plan_select', { plan, interval });
+      // no live checkout: go to the reserve form with this choice preselected
+      if (!a.dataset.checkout) window.dispatchEvent(new CustomEvent('cx:plan', { detail: { plan, interval } }));
+    }),
+  );
+  document.querySelectorAll<HTMLDetailsElement>('[data-pricing9] details').forEach((d) =>
+    d.addEventListener('toggle', () => {
+      if (d.open) track('offer_detail_open', { which: d.querySelector('b, span')?.textContent || '' });
+    }),
+  );
+</script>
+
+<style>
+  .offer {
+    overflow: hidden;
+    isolation: isolate;
+    background: linear-gradient(180deg, #05080b, var(--night-2));
+  }
+  .aura {
+    position: absolute;
+    left: 50%;
+    top: 16%;
+    width: 1000px;
+    height: 640px;
+    transform: translateX(-50%);
+    background:
+      radial-gradient(40% 40% at 35% 40%, rgba(61, 123, 255, 0.2), transparent 70%),
+      radial-gradient(40% 40% at 65% 55%, rgba(255, 90, 31, 0.22), transparent 70%);
+    filter: blur(20px);
+    z-index: -1;
+  }
+  .head {
+    display: grid;
+    gap: var(--s-4);
+    justify-items: start;
+    margin-bottom: clamp(2rem, 1.5rem + 2.5vw, 4rem);
+  }
+  .sub {
+    max-width: 60ch;
+    font-size: clamp(1rem, 0.95rem + 0.35vw, 1.2rem);
+    color: #dbe4ec;
+  }
+  .tag {
+    flex: none;
+    padding: 4px 12px;
+    border-radius: 999px;
+    background: #d8ff3e;
+    color: #0b1016;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* ---------- annual + monthly ---------- */
+  .plans {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    gap: var(--s-4);
+    align-items: stretch;
+  }
+  .plan {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: clamp(1.5rem, 1rem + 2vw, 2.75rem);
+    border-radius: 28px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+  }
+  .best {
+    border: 2px solid #d8ff3e;
+    background:
+      radial-gradient(80% 60% at 100% 0%, rgba(216, 255, 62, 0.12), transparent 70%),
+      linear-gradient(180deg, #131c25, #0b1118);
+    box-shadow: 0 50px 90px -50px rgba(216, 255, 62, 0.35);
+  }
+  .ribbon {
+    position: absolute;
+    top: -14px;
+    left: clamp(1.5rem, 1rem + 2vw, 2.75rem);
+    padding: 5px 14px;
+    border-radius: 999px;
+    background: #d8ff3e;
+    color: #0b1016;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .plan h3 {
+    font-size: 1.5rem;
+    letter-spacing: -0.03em;
+  }
+  .amt {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+  .amt b {
+    font-family: var(--f-head);
+    font-weight: 800;
+    font-size: clamp(3.6rem, 2.2rem + 5.4vw, 6.6rem);
+    line-height: 0.92;
+    letter-spacing: -0.065em;
+  }
+  .amt span {
+    font-family: var(--f-head);
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: var(--fog);
+  }
+  .eq {
+    font-weight: 700;
+  }
+  .pts {
+    margin: 0;
+    display: grid;
+    gap: 11px;
+    align-content: start;
+  }
+  .plan .pts {
+    flex: 1;
+    margin: var(--s-5) 0;
+  }
+  .pts li {
+    position: relative;
+    padding-left: 28px;
+    line-height: 1.4;
+    color: #cfd9e2;
+  }
+  .pts li::before {
+    content: '';
+    position: absolute;
+    left: 2px;
+    top: 0.35em;
+    width: 13px;
+    height: 7px;
+    border-left: 2.5px solid #d8ff3e;
+    border-bottom: 2.5px solid #d8ff3e;
+    transform: rotate(-45deg);
+  }
+  .pts :global(b) {
+    color: #fff;
+  }
+  .bn {
+    padding: 1px 8px;
+    border-radius: 999px;
+    background: #ff2d55;
+    color: #fff;
+    box-shadow: 0 0 14px -2px rgba(255, 45, 85, 0.9);
+    font-size: 0.6875rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .plan .go,
+  .plan .alt {
+    width: 100%;
+  }
+  .alt {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    min-height: 62px;
+    border-radius: 999px;
+    border: 1.5px solid rgba(255, 255, 255, 0.4);
+    color: #fff;
+    font-family: var(--f-head);
+    font-weight: 700;
+    font-size: 1.0625rem;
+    text-decoration: none;
+    transition:
+      border-color 200ms,
+      background-color 200ms;
+  }
+  .alt:hover {
+    border-color: #fff;
+    background: rgba(255, 255, 255, 0.06);
+  }
+  .alt :global(svg) {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* ---------- the three roles, inside each card ---------- */
+  .in {
+    margin-top: var(--s-4);
+  }
+  .in-h {
+    padding-bottom: 10px;
+    font-size: 0.6875rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #d8ff3e;
+  }
+  .role {
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
+  }
+  .role:last-child {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  }
+  summary {
+    list-style: none;
+    cursor: pointer;
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+  .role summary {
+    display: grid;
+    grid-template-columns: 1fr 28px;
+    gap: 14px;
+    align-items: center;
+    padding: 13px 0;
+  }
+  summary:focus-visible {
+    outline: 3px solid #7cc4ff;
+    outline-offset: 2px;
+  }
+  .r-t {
+    display: grid;
+    gap: 2px;
+  }
+  .r-t b {
+    font-family: var(--f-head);
+    font-weight: 800;
+    font-size: 1.1rem;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    line-height: 1.15;
+  }
+  .r-t small {
+    font-size: 0.875rem;
+    color: var(--fog);
+  }
+  /* plus that turns into a minus */
+  summary i {
+    position: relative;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255, 255, 255, 0.35);
+  }
+  summary i::before,
+  summary i::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 11px;
+    height: 2px;
+    background: #fff;
+    transform: translate(-50%, -50%);
+    transition: transform 200ms;
+  }
+  summary i::after {
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+  details[open] > summary i::after {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  .sys {
+    margin: 0;
+    padding: 0 0 16px;
+    display: grid;
+    gap: 10px;
+  }
+  .sys li {
+    display: grid;
+    gap: 1px;
+    padding-left: 14px;
+    border-left: 2px solid rgba(216, 255, 62, 0.6);
+  }
+  .sys b {
+    font-family: var(--f-head);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: #fff;
+  }
+  .sys span {
+    font-size: 0.875rem;
+    line-height: 1.4;
+    color: var(--fog);
+  }
+
+  /* ---------- founding ---------- */
+  .found {
+    margin-top: var(--s-4);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 14px;
+    padding: 14px 18px;
+    border-radius: 18px;
+    border: 1px solid rgba(216, 255, 62, 0.4);
+    background: rgba(216, 255, 62, 0.06);
+    font-size: 0.9375rem;
+    line-height: 1.45;
+    color: #dbe4ec;
+  }
+  .found b {
+    color: #fff;
+  }
+  .left {
+    padding: 2px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(216, 255, 62, 0.6);
+    color: #d8ff3e !important;
+    font-size: 0.75rem;
+  }
+
+  /* ---------- every detail (closed until asked for) ---------- */
+  .more {
+    margin-top: var(--s-4);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+  }
+  .more > summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 20px;
+    border-radius: 20px;
+    font-family: var(--f-head);
+    font-weight: 700;
+    font-size: 1.05rem;
+  }
+  .more-in {
+    display: grid;
+    gap: var(--s-5);
+    padding: 4px 20px 22px;
+  }
+  .cmp {
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+  .cr {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) minmax(0, 1fr);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9375rem;
+  }
+  .cr > span {
+    padding: 11px 14px;
+    line-height: 1.35;
+    color: #cfd9e2;
+  }
+  .cr > span:first-child {
+    font-weight: 700;
+    color: #fff;
+  }
+  .ch {
+    border-top: 0;
+    background: rgba(255, 255, 255, 0.06);
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .ch > span {
+    color: #fff;
+  }
+  .cr .yes {
+    color: #e6ff8a;
+    font-weight: 700;
+  }
+  .d-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--s-5);
+  }
+  .d-h {
+    margin-bottom: 8px;
+    font-family: var(--f-head);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+  .d-h span {
+    margin-left: 6px;
+    font-family: var(--f-text);
+    font-size: 0.6875rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--fog);
+  }
+  .d-l {
+    margin: 0;
+    display: grid;
+    gap: 8px;
+    font-size: 0.875rem;
+    line-height: 1.45;
+    color: #cfd9e2;
+  }
+  .d-l li {
+    padding-left: 14px;
+    border-left: 2px solid rgba(216, 255, 62, 0.5);
+  }
+  .pts-note {
+    font-size: 0.75rem;
+    line-height: 1.45;
+    color: var(--fog-2);
+  }
+
+  /* ---------- guarantees ---------- */
+  .promises {
+    margin: clamp(2rem, 1.5rem + 2vw, 3.5rem) 0 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: clamp(1rem, 0.5rem + 1.6vw, 2rem);
+  }
+  .promises li {
+    display: grid;
+    gap: 6px;
+    align-content: start;
+  }
+  .promises b {
+    font-family: var(--f-head);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+  }
+  .promises span {
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    color: var(--fog-2);
+  }
+  .fine {
+    margin-top: var(--s-5);
+    max-width: 110ch;
+    font-size: 0.75rem;
+    line-height: 1.5;
+    color: var(--fog-2);
+  }
+
+  @media (max-width: 900px) {
+    .plans,
+    .d-grid {
+      grid-template-columns: 1fr;
+    }
+    .plans {
+      gap: var(--s-6);
+    }
+  }
+  @media (max-width: 560px) {
+    .cr {
+      font-size: 0.8125rem;
+    }
+    .cr > span {
+      padding: 10px;
+    }
+  }
+</style>

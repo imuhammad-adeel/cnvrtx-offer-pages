@@ -1,0 +1,93 @@
+/* CNVRT X — design tokens.
+   No existing CNVRT X brand system was found, so this is the fallback direction
+   from the brief: graphite studio, warm off-white type, one performance accent. */
+
+:root {
+  /* Surface */
+  --c-bg-0: #090a0c;
+  --c-bg-1: #0d0f12;
+  --c-bg-2: #111317;
+  --c-bg-3: #191c21;
+  --c-bg-4: #22262c;
+
+  /* Lines — metallic, low-contrast */
+  --c-line: rgba(232, 236, 242, 0.08);
+  --c-line-2: rgba(232, 236, 242, 0.14);
+  --c-line-3: rgba(232, 236, 242, 0.24);
+
+  /* Type */
+  --c-text: #f5f3ee;
+  --c-text-2: #a6abb3;
+  --c-text-3: #80868f;
+
+  /* Single performance accent */
+  --c-accent: #ff5a2a;
+  --c-accent-hi: #ff7a50;
+  --c-accent-ink: #160803;
+  --c-accent-a08: rgba(255, 90, 42, 0.08);
+  --c-accent-a16: rgba(255, 90, 42, 0.16);
+  --c-accent-a32: rgba(255, 90, 42, 0.32);
+
+  /* Typography */
+  --f-display: 'Space Grotesk Variable', 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --f-body: 'Inter Variable', 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --f-mono: ui-monospace, 'SF Mono', 'Cascadia Mono', 'Roboto Mono', Menlo, Consolas, monospace;
+
+  --fs-hero: clamp(2.6rem, 1.35rem + 4.9vw, 5.6rem);
+  --fs-mega: clamp(2.4rem, 1rem + 5.4vw, 6.4rem);
+  --fs-h2: clamp(2rem, 1.3rem + 2.6vw, 3.6rem);
+  --fs-h3: clamp(1.25rem, 1.08rem + 0.7vw, 1.65rem);
+  --fs-lead: clamp(1.06rem, 0.98rem + 0.35vw, 1.3rem);
+  --fs-body: 1rem;
+  --fs-sm: 0.875rem;
+  --fs-xs: 0.75rem;
+  --fs-meta: 0.6875rem;
+
+  --lh-tight: 1.02;
+  --lh-head: 1.08;
+  --lh-body: 1.6;
+  --tracking-tight: -0.035em;
+  --tracking-head: -0.025em;
+  --tracking-meta: 0.14em;
+
+  /* Spacing scale (4px base) */
+  --s-1: 0.25rem;
+  --s-2: 0.5rem;
+  --s-3: 0.75rem;
+  --s-4: 1rem;
+  --s-5: 1.5rem;
+  --s-6: 2rem;
+  --s-7: 3rem;
+  --s-8: 4rem;
+  --s-9: 6rem;
+  --s-10: 8rem;
+  --section-y: clamp(5rem, 3rem + 7vw, 9.5rem);
+  --gutter: clamp(1rem, 0.5rem + 2.4vw, 2.5rem);
+
+  /* Layout */
+  --w-container: 1320px;
+  --w-narrow: 880px;
+  --w-prose: 62ch;
+  --header-h: 68px;
+
+  /* Shape */
+  --r-xs: 4px;
+  --r-sm: 6px;
+  --r-md: 10px;
+  --r-lg: 16px;
+  --r-pill: 999px;
+
+  /* Elevation — restrained, used for interactive system states only */
+  --shadow-panel: 0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 30px 80px -40px rgba(0, 0, 0, 0.9);
+  --glow-accent: 0 0 0 1px var(--c-accent-a32), 0 0 24px -4px var(--c-accent-a32);
+
+  /* Motion — mechanical, precise */
+  --ease-out: cubic-bezier(0.2, 0.7, 0.1, 1);
+  --ease-inout: cubic-bezier(0.65, 0, 0.35, 1);
+  --t-fast: 160ms;
+  --t-base: 280ms;
+  --t-slow: 600ms;
+
+  --z-header: 50;
+  --z-mobilecta: 40;
+}

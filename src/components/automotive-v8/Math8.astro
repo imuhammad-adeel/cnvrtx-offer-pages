@@ -1,0 +1,653 @@
+---
+import { math8 as m } from '../../content/automotiveCopyV8';
+import { automotiveOffer as o } from '../../config/automotiveOffer';
+const price = o.pricing.monthly.price;
+const d = m.defaults;
+---
+
+<section class="scene math" id="math" aria-labelledby="math8-title" data-math8 data-price={price} data-odds={m.odds.join(',')}>
+  <div class="glow" aria-hidden="true"></div>
+  <div class="container">
+    <header class="head" data-reveal>
+      <p class="kicker">{m.kicker}</p>
+      <h2 id="math8-title" class="t-lg">{m.title}</h2>
+    </header>
+
+    <div class="calc">
+    <div class="in">
+    <p class="scribble" aria-hidden="true" data-scribble>
+      <span>Add your numbers here</span>
+      <svg viewBox="0 0 150 92" fill="none">
+        <path class="sc-line" pathLength="100" d="M6 16C40 2 84 6 90 34c5 24-28 30-30 8-2-22 38-22 60 4 8 10 13 20 18 34" />
+        <path class="sc-head" d="M138 80l-15-6M138 80l3-16" />
+      </svg>
+    </p>
+    <p class="sentence" data-reveal>
+      {m.s1}
+      <span class="pick" data-chip="missed">
+        <button type="button" data-d="-1" aria-label="Fewer missed inquiries per week">−</button>
+        <output data-o="missed">{d.missed}</output>
+        <button type="button" data-d="1" aria-label="More missed inquiries per week">+</button>
+      </span>
+      {m.s2}
+      <span class="pick" data-chip="value">
+        <button type="button" data-d="-1" aria-label="Lower average job value">−</button>
+        <output data-o="value">${d.value}</output>
+        <button type="button" data-d="1" aria-label="Higher average job value">+</button>
+      </span>. {m.s3}
+      <span class="pick" data-chip="odds">
+        <button type="button" data-d="-1" aria-label="More would book">−</button>
+        <output data-o="odds">1 in {d.oneIn}</output>
+        <button type="button" data-d="1" aria-label="Fewer would book">+</button>
+      </span>
+      {m.s4}
+    </p>
+    </div>
+    <div class="out">
+    <div class="result" aria-live="polite">
+      <p class="odo" data-odo aria-hidden="true"></p>
+      <p class="sr-only" data-odo-sr></p>
+      <p class="r-label">{m.resultLabel}</p>
+    </div>
+
+    <div class="versus" aria-hidden="true">
+      <div class="v-row v-lost">
+        <span class="v-k">Slipping away each month</span>
+        <span class="v-bar"><i data-bar="lost"></i></span>
+        <b data-v="lost"></b>
+      </div>
+      <div class="v-row v-cost">
+        <span class="v-k">What CNVRT X costs</span>
+        <span class="v-bar"><i data-bar="cost"></i></span>
+        <b>${price}</b>
+      </div>
+    </div>
+    <p class="ratio" data-ratio></p>
+    </div>
+    </div>
+
+    <ul role="list" class="tiles">
+      <li>
+        <span class="k">{m.tiles.cost}</span>
+        <span class="v">${price}<small>/month</small></span>
+      </li>
+      <li class="t-even">
+        <span class="k">{m.tiles.even}</span>
+        <span class="v"><b data-r="even">2</b><small>{m.tiles.evenUnit}</small></span>
+        <span class="n" data-r="even-n"></span>
+      </li>
+      <li class="t-half">
+        <span class="k">{m.tiles.half}</span>
+        <span class="v"><b data-r="half">+$1,320</b><small>{m.tiles.halfUnit}</small></span>
+      </li>
+    </ul>
+
+    <div class="foot">
+      <p class="disc">{m.disclaimer}</p>
+      <a href="#pricing" class="go" data-magnet data-track="cta_click" data-track-location="math">
+        {m.cta}
+        <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11M11 5.500 15.500 10 11 14.500" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { track } from '../../scripts/analytics';
+  import { math8 } from '../../content/automotiveCopyV8';
+
+  const root = document.querySelector<HTMLElement>('[data-math8]');
+  if (root) {
+    const price = Number(root.dataset.price);
+    const odds = root.dataset.odds!.split(',').map(Number);
+    const W = 52 / 12;
+    const state = { missed: math8.defaults.missed, value: math8.defaults.value, oi: odds.indexOf(math8.defaults.oneIn) };
+    const $ = (n: number) => '$' + Math.round(n).toLocaleString('en-US');
+    const q = <T extends HTMLElement>(s: string) => root.querySelector<T>(s)!;
+    const odo = q('[data-odo]');
+    let used = false;
+
+    // rolling odometer
+    let shape = '';
+    const roll = (text: string) => {
+      const next = text.replace(/\d/g, '0');
+      if (next !== shape) {
+        shape = next;
+        odo.innerHTML = [...text]
+          .map((c) =>
+            /\d/.test(c)
+              ? `<span class="d"><span class="col">${'0123456789'.split('').map((x) => `<i>${x}</i>`).join('')}</span></span>`
+              : `<span class="s">${c}</span>`,
+          )
+          .join('');
+        // let the browser paint the zero position first so the digits roll in
+        void odo.offsetWidth;
+      }
+      const cols = odo.querySelectorAll<HTMLElement>('.col');
+      [...text.replace(/\D/g, '')].forEach((c, i) => {
+        if (cols[i]) cols[i].style.transform = `translateY(-${Number(c) * 10}%)`;
+      });
+    };
+
+    const update = () => {
+      const oneIn = odds[state.oi];
+      const perMonth = state.missed * W;
+      const lost = (perMonth * state.value) / oneIn;
+      const even = Math.ceil(price / (state.value / oneIn));
+      const monthCount = Math.round(perMonth);
+      const net = lost / 2 - price;
+
+      q('[data-o="missed"]').textContent = String(state.missed);
+      q('[data-o="value"]').textContent = $(state.value);
+      q('[data-o="odds"]').textContent = `1 in ${oneIn}`;
+      roll($(lost));
+      q('[data-odo-sr]').textContent = `${$(lost)} ${math8.resultLabel}`;
+
+      const max = Math.max(lost, price);
+      q('[data-v="lost"]').textContent = $(lost);
+      const ratio = lost / price;
+      q('[data-ratio]').innerHTML =
+        ratio >= 1.5
+          ? `<b>${ratio >= 10 ? Math.round(ratio) : ratio.toFixed(1)}×</b> more is leaking out than the system costs.`
+          : '';
+      window.dispatchEvent(new CustomEvent('cx:math', { detail: { value: state.value, oneIn } }));
+      q('[data-bar="lost"]').style.transform = `scaleX(${lost / max})`;
+      q('[data-bar="cost"]').style.transform = `scaleX(${Math.max(price / max, 0.012)})`;
+
+      q('[data-r="even"]').textContent = String(even);
+      q('[data-r="even-n"]').textContent =
+        even <= monthCount ? `You miss about ${monthCount} a month.` : math8.flat;
+      root.toggleAttribute('data-flat', even > monthCount);
+      q('[data-r="half"]').textContent = net > 0 ? `+${$(net)}` : $(lost / 2);
+      root.toggleAttribute('data-neg', net <= 0);
+    };
+
+    // the example under the leak visual can step the same numbers
+    window.addEventListener('cx:math-step', (e) => {
+      const { kind, d } = (e as CustomEvent<{ kind: string; d: number }>).detail;
+      if (kind === 'value') state.value = Math.max(50, Math.min(5000, state.value + d * 25));
+      if (kind === 'odds') state.oi = Math.max(0, Math.min(odds.length - 1, state.oi + d));
+      update();
+    });
+
+    // keep the handwritten arrow's tip on the first number, wherever the line wraps
+    const scribble = root.querySelector<HTMLElement>('[data-scribble]');
+    const firstOut = root.querySelector<HTMLElement>('[data-o="missed"]');
+    const place = () => {
+      if (!scribble || !firstOut) return;
+      scribble.style.marginLeft = '0px';
+      const svg = scribble.querySelector('svg')!.getBoundingClientRect();
+      const o = firstOut.getBoundingClientRect();
+      const tip = svg.left + svg.width * (138 / 150);
+      const shift = o.left + o.width / 2 - tip;
+      scribble.style.marginLeft = `${Math.max(0, shift)}px`;
+    };
+    place();
+    window.addEventListener('resize', place);
+    document.fonts?.ready.then(place);
+
+    root.querySelectorAll<HTMLElement>('[data-chip]').forEach((chip) => {
+      const kind = chip.dataset.chip!;
+      chip.querySelectorAll<HTMLButtonElement>('button').forEach((b) =>
+        b.addEventListener('click', () => {
+          const d = Number(b.dataset.d);
+          if (kind === 'missed') state.missed = Math.max(1, Math.min(40, state.missed + d));
+          if (kind === 'value') state.value = Math.max(50, Math.min(5000, state.value + d * 25));
+          if (kind === 'odds') state.oi = Math.max(0, Math.min(odds.length - 1, state.oi + d));
+          chip.classList.remove('bump');
+          void chip.offsetWidth;
+          chip.classList.add('bump');
+          update();
+          if (!used) {
+            used = true;
+            root.setAttribute('data-used', '');
+            track('calculator_used', { version: 'v8' });
+          }
+        }),
+      );
+    });
+
+    // roll the number in the first time it scrolls into view
+    roll('$0,000');
+    const io = new IntersectionObserver(
+      ([e]) => {
+        if (e.isIntersecting) {
+          io.disconnect();
+          update();
+        }
+      },
+      { threshold: 0.35 },
+    );
+    io.observe(q('.result'));
+  }
+</script>
+
+<style>
+  .math {
+    overflow: hidden;
+    isolation: isolate;
+    background: var(--night);
+  }
+  .glow {
+    position: absolute;
+    left: 50%;
+    top: 46%;
+    width: min(1100px, 120vw);
+    aspect-ratio: 1.6;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(50% 50% at 50% 50%, rgba(255, 90, 31, 0.22), transparent 70%);
+    z-index: -1;
+  }
+  .head {
+    display: grid;
+    gap: var(--s-4);
+    justify-items: start;
+    margin-bottom: clamp(1.5rem, 1rem + 2vw, 3rem);
+  }
+  /* inputs on the left, the answer on the right: both stay in view together */
+  .calc {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: clamp(1.5rem, 1rem + 3vw, 4.5rem);
+    align-items: center;
+  }
+  .out {
+    display: grid;
+    gap: var(--s-4);
+    padding: clamp(1.25rem, 1rem + 1.4vw, 2.25rem);
+    border-radius: 28px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.015));
+  }
+
+  .sentence {
+    font-family: var(--f-head);
+    font-weight: 600;
+    font-size: clamp(1.2rem, 0.95rem + 1vw, 1.75rem);
+    line-height: 2.1;
+    letter-spacing: -0.03em;
+    color: #c9d4de;
+  }
+  .pick {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    margin-inline: 4px;
+    padding: 3px;
+    border-radius: 999px;
+    background: #fff;
+    color: var(--ink);
+    vertical-align: middle;
+    line-height: 1;
+  }
+  .pick output {
+    min-width: 2.6em;
+    padding-inline: 6px;
+    text-align: center;
+    font-weight: 800;
+    font-size: 0.95em;
+    font-variant-numeric: tabular-nums;
+  }
+  .pick button {
+    width: 1.75em;
+    height: 1.75em;
+    min-width: 36px;
+    min-height: 36px;
+    border: 0;
+    border-radius: 50%;
+    background: var(--ink);
+    color: #fff;
+    font: inherit;
+    font-size: 0.8em;
+    font-weight: 700;
+    line-height: 1;
+    cursor: pointer;
+    transition:
+      background-color 160ms,
+      transform 160ms;
+  }
+  .pick button:hover {
+    background: var(--hot);
+  }
+  .pick button:active {
+    transform: scale(0.9);
+  }
+  .pick:global(.bump) {
+    animation: bump 260ms var(--ease);
+  }
+  @keyframes bump {
+    40% {
+      transform: scale(1.08);
+    }
+  }
+
+  .result {
+    display: grid;
+    justify-items: start;
+    gap: 4px;
+  }
+  .odo {
+    display: flex;
+    align-items: flex-end;
+    font-family: var(--f-head);
+    font-weight: 800;
+    font-size: clamp(3.6rem, 1.6rem + 6.6vw, 7.6rem);
+    line-height: 1;
+    letter-spacing: -0.06em;
+    font-variant-numeric: tabular-nums;
+    color: #fff;
+    min-height: 1em;
+  }
+  .odo :global(.d) {
+    display: inline-block;
+    height: 1em;
+    overflow: hidden;
+  }
+  .odo :global(.col) {
+    display: block;
+    transition: transform 1100ms cubic-bezier(0.2, 0.9, 0.1, 1);
+  }
+  .odo :global(.col i) {
+    display: block;
+    height: 1em;
+    font-style: normal;
+  }
+  .odo :global(.s) {
+    display: inline-block;
+  }
+  .odo :global(.s:first-child) {
+    color: var(--hot);
+    margin-right: 0.04em;
+  }
+  .r-label {
+    font-size: 0.875rem;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--fog);
+  }
+
+  .tip {
+    margin: 14px auto 0;
+    width: fit-content;
+    padding: 7px 14px;
+    border-radius: 999px;
+    background: rgba(216, 255, 62, 0.12);
+    border: 1px solid rgba(216, 255, 62, 0.5);
+    color: #e9ffa0;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-align: center;
+  }
+  .tip b {
+    display: inline-grid;
+    place-items: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #fff;
+    color: var(--ink);
+    font-size: 0.8125rem;
+  }
+  .tip span {
+    display: inline-block;
+    animation: tipUp 1.2s ease-in-out infinite;
+  }
+  @keyframes tipUp {
+    50% {
+      transform: translateY(-4px);
+    }
+  }
+  /* handwritten nudge: a looping arrow that keeps redrawing itself */
+  .scribble {
+    display: flex;
+    align-items: flex-start;
+    gap: 2px;
+    margin: 0 0 2px;
+    color: #d8ff3e;
+    font-family: 'Caveat Variable', 'Caveat', 'Segoe Script', cursive;
+    font-weight: 600;
+    font-size: clamp(1.6rem, 1.3rem + 1vw, 2.2rem);
+    line-height: 1;
+    white-space: nowrap;
+    width: max-content;
+  }
+  .scribble span {
+    display: inline-block;
+    transform: rotate(-4deg) translateY(4px);
+  }
+  .scribble svg {
+    flex: none;
+    width: clamp(92px, 8.5vw, 132px);
+    overflow: visible;
+  }
+  .scribble path {
+    stroke: currentColor;
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .sc-line {
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+    animation: scDraw 3.6s ease-in-out infinite;
+  }
+  .sc-head {
+    opacity: 0;
+    animation: scHead 3.6s ease-in-out infinite;
+  }
+  @keyframes scDraw {
+    0% {
+      stroke-dashoffset: 100;
+    }
+    45%,
+    85% {
+      stroke-dashoffset: 0;
+    }
+    100% {
+      stroke-dashoffset: 0;
+      opacity: 0;
+    }
+  }
+  @keyframes scHead {
+    0%,
+    42% {
+      opacity: 0;
+    }
+    50%,
+    85% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  .math[data-used] .scribble {
+    opacity: 0.5;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .sc-line {
+      animation: none;
+      stroke-dashoffset: 0;
+    }
+    .sc-head {
+      animation: none;
+      opacity: 1;
+    }
+  }
+  .math[data-used] .tip {
+    opacity: 0.55;
+  }
+  .math[data-used] .tip span {
+    animation: none;
+  }
+
+  .versus {
+    display: grid;
+    gap: 12px;
+    padding-top: var(--s-4);
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+  }
+  .v-row {
+    display: grid;
+    grid-template-columns: 150px 1fr 96px;
+    gap: 16px;
+    align-items: center;
+  }
+  .v-k {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--fog);
+  }
+  .v-bar {
+    height: 34px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.06);
+    overflow: hidden;
+  }
+  .v-bar i {
+    display: block;
+    height: 100%;
+    border-radius: 10px;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 900ms var(--ease);
+  }
+  .v-lost .v-bar i {
+    background: linear-gradient(90deg, #ffc2b5 0%, #ff5a48 50%, #b00d0d 100%);
+  }
+  .v-cost .v-bar i {
+    background: #d8ff3e;
+  }
+  .v-row b {
+    font-family: var(--f-head);
+    font-size: clamp(1.4rem, 1.1rem + 1vw, 2rem);
+    letter-spacing: -0.04em;
+    text-align: right;
+  }
+  .v-lost b {
+    color: #ff7a6a;
+  }
+  .v-cost b {
+    color: #d8ff3e;
+  }
+  .ratio {
+    font-family: var(--f-head);
+    font-weight: 600;
+    font-size: clamp(1.05rem, 0.95rem + 0.6vw, 1.4rem);
+    letter-spacing: -0.03em;
+    min-height: 1.3em;
+  }
+  .ratio :global(b) {
+    color: #d8ff3e;
+    font-size: 1.5em;
+    font-weight: 800;
+  }
+  @media (max-width: 640px) {
+    .v-row {
+      grid-template-columns: 1fr 96px;
+    }
+    .v-k {
+      grid-column: 1 / -1;
+    }
+  }
+
+  .tiles {
+    margin: clamp(2rem, 1.5rem + 2vw, 3.5rem) 0 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .tiles li {
+    display: grid;
+    align-content: start;
+    gap: 8px;
+    padding: clamp(1.1rem, 0.9rem + 1vw, 1.75rem);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02));
+  }
+  .k {
+    font-size: 0.8125rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--fog);
+  }
+  .v {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-family: var(--f-head);
+    font-weight: 800;
+    font-size: clamp(2rem, 1.5rem + 1.8vw, 3.2rem);
+    letter-spacing: -0.05em;
+    line-height: 1;
+  }
+  .v b {
+    font-weight: 800;
+  }
+  .v small {
+    font-family: var(--f-text);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    letter-spacing: 0;
+    color: var(--fog);
+  }
+  .t-half {
+    border-color: rgba(216, 255, 62, 0.6) !important;
+    background: linear-gradient(180deg, rgba(216, 255, 62, 0.1), rgba(216, 255, 62, 0.02)) !important;
+  }
+  .t-even .v b {
+    color: #fff;
+  }
+  .t-half .v b {
+    color: #d8ff3e;
+  }
+  .n {
+    font-size: 0.9375rem;
+    color: #d5dee6;
+  }
+  .math[data-neg] .t-half {
+    border-color: rgba(255, 255, 255, 0.12) !important;
+    background: none !important;
+  }
+  .math[data-flat] .t-even .v b,
+  .math[data-neg] .t-half .v b {
+    color: #fff;
+  }
+
+  .foot {
+    margin-top: var(--s-6);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--s-5);
+    flex-wrap: wrap;
+  }
+  .disc {
+    max-width: 52ch;
+    font-size: 0.8125rem;
+    color: var(--fog-2);
+  }
+
+  @media (max-width: 900px) {
+    .calc {
+      grid-template-columns: 1fr;
+    }
+    .tiles {
+      grid-template-columns: 1fr;
+    }
+  }
+  @media (max-width: 560px) {
+    .foot .go {
+      width: 100%;
+      padding-inline: 16px;
+      font-size: 1rem;
+    }
+    .sentence {
+      line-height: 2;
+    }
+  }
+</style>

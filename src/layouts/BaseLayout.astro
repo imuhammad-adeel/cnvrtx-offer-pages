@@ -1,0 +1,62 @@
+---
+import '@fontsource-variable/space-grotesk/wght.css';
+import '@fontsource-variable/inter/wght.css';
+import '../styles/global.css';
+import { automotiveOffer, missingConfig } from '../config/automotiveOffer';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  noindex?: boolean;
+  bodyClass?: string;
+  themeColor?: string;
+}
+
+const { title, description, canonical, noindex = false, bodyClass, themeColor = '#090A0C' } = Astro.props;
+const gtm = automotiveOffer.analytics.gtmContainerId;
+
+const missing = missingConfig();
+if (missing.length) {
+  console.warn(`\n[automotiveOffer] Not configured yet: ${missing.join(', ')} — CTAs fall back to on-page anchors.\n`);
+}
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
+    {canonical && <link rel="canonical" href={canonical} />}
+    <meta name="theme-color" content={themeColor} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    {canonical && <meta property="og:url" content={canonical} />}
+    <meta name="twitter:card" content="summary" />
+
+    <script is:inline>document.documentElement.classList.add('js');</script>
+
+    {
+      gtm && (
+        <script is:inline define:vars={{ gtm }}>
+          (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer',gtm);
+        </script>
+      )
+    }
+    <!-- optional per-page head tags (font preloads etc.) -->
+    <slot name="head" />
+  </head>
+  <body class={bodyClass}>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <slot />
+    <script>
+      import '../scripts/page';
+    </script>
+  </body>
+</html>

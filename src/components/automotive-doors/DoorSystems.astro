@@ -1,0 +1,372 @@
+---
+/**
+ * "This is one of nine systems. You get all nine." Three layouts, so door pages do not
+ * look alike here:
+ *   a  three role cards, each listing its systems (light)
+ *   b  spotlight: this page's system large on the left, the other eight as short lists (dark)
+ *   c  nine numbered tiles in a 3 x 3 grid (light)
+ * System names and lines come from plans9 (the v9 offer), so they stay in step with pricing.
+ */
+import type { Door } from '../../content/automotiveDoors';
+import { doorCommon as c } from '../../content/automotiveDoors';
+import { plans9 } from '../../content/automotiveCopyV9';
+
+interface Props {
+  door: Door;
+  lead?: string;
+}
+const { door, lead = c.systemsLead } = Astro.props;
+const roles = plans9.roles;
+const all = roles.flatMap((r) => r.systems.map((s) => ({ ...s, role: r.role })));
+const mine = all.find((s) => door.highlight.includes(s.n));
+// the spotlight needs a system to put in it; pages about the whole plan fall back to the tiles
+const variant = door.layout.systems === 'b' && !mine ? 'c' : door.layout.systems;
+---
+
+<section class:list={['scene', 'sys', `v-${variant}`, variant !== 'b' && 'pearl']} id="how-it-works" aria-labelledby="sys-title">
+  <div class="container">
+    <header class="head">
+      <p class="kicker" data-reveal>{c.systemsKicker}</p>
+      <h2 id="sys-title" class="t-lg" data-reveal>
+        {door.systemsTitle[0]} <span class="hot">{door.systemsTitle[1]}</span>
+      </h2>
+      <p class="lede">{lead}</p>
+    </header>
+
+    {
+      variant === 'a' && (
+        <div class="roles">
+          {roles.map((r) => (
+            <div class="role">
+              <p class="r-h">
+                <b>{r.role}</b>
+                <span>{r.promise}</span>
+              </p>
+              <ul role="list">
+                {r.systems.map((s) => {
+                  const on = door.highlight.includes(s.n);
+                  return (
+                    <li class:list={[on && 'on']}>
+                      <b>
+                        {s.n}
+                        {on && <em>{c.thisOne}</em>}
+                      </b>
+                      <span>{s.d}</span>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          ))}
+        </div>
+      )
+    }
+
+    {
+      variant === 'b' && mine && (
+        <div class="spot-grid">
+          <div class="spot">
+            <em>{c.thisOne}</em>
+            <b>{mine.n}</b>
+            <p>{mine.d}</p>
+            <p class="plus">{c.plusEight}</p>
+          </div>
+          <div class="mini">
+            {roles.map((r) => (
+              <div>
+                <p class="m-h">{r.role}</p>
+                <ul role="list">
+                  {r.systems.map((s) => (
+                    <li class:list={[s.n === mine.n && 'on']}>{s.n}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      )
+    }
+
+    {
+      variant === 'c' && (
+        <ol role="list" class="nine">
+          {all.map((s, i) => {
+            const on = door.highlight.includes(s.n);
+            return (
+              <li class:list={[on && 'on']}>
+                <span class="n">{i + 1}</span>
+                <b>
+                  {s.n}
+                  {on && <em>{c.thisOne}</em>}
+                </b>
+                <span class="d">{s.d}</span>
+                <small>{s.role}</small>
+              </li>
+            );
+          })}
+        </ol>
+      )
+    }
+
+    <a href="#pricing" class="go" data-track="cta_click" data-track-location="door_systems">
+      {c.systemsCta}
+      <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11M11 5.500 15.500 10 11 14.500" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+    </a>
+  </div>
+</section>
+
+<style>
+  .sys {
+    background: var(--pearl);
+  }
+  .head {
+    display: grid;
+    gap: var(--s-4);
+    justify-items: start;
+    margin-bottom: clamp(2rem, 1.5rem + 2vw, 3.5rem);
+  }
+  em {
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: #d8ff3e;
+    color: #0b1016;
+    font-family: var(--f-text);
+    font-style: normal;
+    font-size: 0.625rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* ---------- a: three role cards ---------- */
+  .roles {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--s-4);
+    align-items: start;
+    margin-bottom: var(--s-6);
+  }
+  .role {
+    display: grid;
+    gap: var(--s-4);
+    padding: clamp(1.25rem, 1rem + 1.2vw, 2rem);
+    border-radius: 24px;
+    background: #fff;
+    border: 1px solid rgba(11, 16, 22, 0.08);
+    color: var(--ink);
+  }
+  .r-h {
+    display: grid;
+    gap: 2px;
+    padding-bottom: var(--s-4);
+    border-bottom: 1px solid rgba(11, 16, 22, 0.1);
+  }
+  .r-h b {
+    font-family: var(--f-head);
+    font-weight: 800;
+    font-size: 1.15rem;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+  }
+  .r-h span {
+    font-size: 0.875rem;
+    color: var(--ink-2);
+  }
+  .role ul {
+    margin: 0;
+    display: grid;
+    gap: 8px;
+  }
+  .role li {
+    display: grid;
+    gap: 2px;
+    padding: 12px 14px;
+    border-radius: 14px;
+  }
+  .role li b {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px 8px;
+    font-family: var(--f-head);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .role li span {
+    font-size: 0.875rem;
+    line-height: 1.4;
+    color: var(--ink-2);
+  }
+  .role li.on {
+    background: var(--ink);
+    color: #fff;
+  }
+  .role li.on span {
+    color: var(--fog);
+  }
+
+  /* ---------- b: spotlight on this page's system (dark) ---------- */
+  .v-b {
+    overflow: hidden;
+    background:
+      radial-gradient(50% 60% at 12% 60%, rgba(216, 255, 62, 0.1), transparent 70%),
+      var(--night);
+  }
+  .spot-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(1.5rem, 1rem + 3vw, 4rem);
+    align-items: stretch;
+    margin-bottom: var(--s-6);
+  }
+  .spot {
+    display: grid;
+    gap: var(--s-3);
+    align-content: center;
+    justify-items: start;
+    padding: clamp(1.5rem, 1rem + 2.2vw, 3rem);
+    border-radius: 28px;
+    border: 2px solid #d8ff3e;
+    background:
+      radial-gradient(80% 60% at 100% 0%, rgba(216, 255, 62, 0.14), transparent 70%),
+      linear-gradient(180deg, #131c25, #0b1118);
+    color: #fff;
+    box-shadow: 0 50px 90px -50px rgba(216, 255, 62, 0.35);
+  }
+  .spot > b {
+    color: #d8ff3e;
+  }
+  .spot b {
+    font-family: var(--f-head);
+    font-weight: 800;
+    font-size: clamp(2rem, 1.4rem + 2.6vw, 3.6rem);
+    letter-spacing: -0.05em;
+    line-height: 1;
+  }
+  .spot p {
+    font-size: clamp(1.05rem, 1rem + 0.4vw, 1.3rem);
+    font-weight: 600;
+    line-height: 1.4;
+  }
+  .spot .plus {
+    margin-top: var(--s-3);
+    padding-top: var(--s-4);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    width: 100%;
+    font-family: var(--f-head);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+  .mini {
+    display: grid;
+    gap: var(--s-4);
+    align-content: center;
+  }
+  .m-h {
+    margin-bottom: 8px;
+    font-size: 0.6875rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #d8ff3e;
+  }
+  .mini ul {
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .mini li {
+    padding: 9px 14px;
+    border-radius: 999px;
+    border: 1.5px solid rgba(255, 255, 255, 0.2);
+    font-family: var(--f-head);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: #fff;
+  }
+  .mini li.on {
+    border-color: #d8ff3e;
+    background: rgba(216, 255, 62, 0.14);
+    color: #e6ff8a;
+  }
+
+  /* ---------- c: nine numbered tiles ---------- */
+  .nine {
+    margin: 0 0 var(--s-6);
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0;
+    border-top: 2px solid var(--ink);
+    border-left: 1px solid rgba(11, 16, 22, 0.14);
+  }
+  .nine li {
+    position: relative;
+    display: grid;
+    gap: 4px;
+    align-content: start;
+    padding: clamp(1.1rem, 0.9rem + 1vw, 1.75rem);
+    border-right: 1px solid rgba(11, 16, 22, 0.14);
+    border-bottom: 1px solid rgba(11, 16, 22, 0.14);
+    color: var(--ink);
+  }
+  .nine .n {
+    font-family: var(--f-head);
+    font-weight: 800;
+    font-size: clamp(1.8rem, 1.4rem + 1.4vw, 2.6rem);
+    letter-spacing: -0.05em;
+    line-height: 1;
+    color: var(--hot);
+  }
+  .nine b {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px 8px;
+    margin-top: 6px;
+    font-family: var(--f-head);
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+  .nine .d {
+    font-size: 0.875rem;
+    line-height: 1.45;
+    color: var(--ink-2);
+  }
+  .nine small {
+    margin-top: 6px;
+    font-size: 0.625rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+  }
+  .nine li.on {
+    background: var(--ink);
+    color: #fff;
+  }
+  .nine li.on .n {
+    color: #d8ff3e;
+  }
+  .nine li.on .d,
+  .nine li.on small {
+    color: var(--fog);
+  }
+
+  @media (max-width: 900px) {
+    .roles,
+    .spot-grid {
+      grid-template-columns: 1fr;
+    }
+    .nine {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (max-width: 560px) {
+    .nine {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

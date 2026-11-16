@@ -1,0 +1,517 @@
+---
+/**
+ * The second section of every door page: the hero's problem, played out.
+ * Left: what happens today, then the same moment with the system. Right: an example
+ * thread that types itself out in step. It plays once when scrolled into view and
+ * again on click. The thread is fictional and labelled as an example.
+ */
+import type { Door } from '../../content/automotiveDoors';
+import { doorCommon as c } from '../../content/automotiveDoors';
+import DoorViz from './DoorViz.astro';
+
+interface Props {
+  door: Door;
+}
+const { door } = Astro.props;
+const p = door.problem;
+const f = door.fix;
+---
+
+<section class:list={['scene', 'prob', `lay-${door.layout.problem}`]} id="leaks" aria-labelledby="prob-title" data-sim>
+  <div class="container">
+    <header class="head">
+      <p class="kicker" data-reveal>{p.kicker}</p>
+      <h2 id="prob-title" class="t-lg" data-reveal>
+        <span class="rise"><span>{p.title[0]}</span></span>
+        <span class="rise" style="--d:100ms"><span class="hot">{p.title[1]}</span></span>
+      </h2>
+    </header>
+
+    <div class="pgrid">
+      <div class="lanes">
+        <!-- today -->
+        <div class="lane today">
+          <p class="lab">{c.today}</p>
+          <ol role="list" class="track">
+            {
+              p.moments.map((m, i) => (
+                <li data-step={`t${i}`}>
+                  <i class="dot" aria-hidden="true" />
+                  <span class="tm">{m.t}</span>
+                  <p>{m.d}</p>
+                </li>
+              ))
+            }
+          </ol>
+          <p class="end bad" data-step="tEnd">
+            <span aria-hidden="true">✕</span>
+            {c.lost}
+          </p>
+        </div>
+
+        <!-- with the system -->
+        <div class="lane with">
+          <p class="lab lab-fix">{f.title}</p>
+          <ol role="list" class="track">
+            {
+              f.steps.map((s, i) => (
+                <li data-step={`w${i}`}>
+                  <i class="dot" aria-hidden="true" />
+                  <span class="tm">{i + 1}</span>
+                  <p>
+                    {s.t}
+                    <small>{s.d}</small>
+                  </p>
+                </li>
+              ))
+            }
+          </ol>
+          <p class="end good" data-step="wEnd">
+            <span aria-hidden="true">✓</span>
+            {c.kept}
+          </p>
+        </div>
+      </div>
+
+      <!-- the fix, playing as an example -->
+      <figure class="ex">
+        <figcaption>{f.exampleLabel}</figcaption>
+        <DoorViz door={door} />
+        <button type="button" class="play" data-play>
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M6 4.500v11l9-5.500z" fill="currentColor"></path></svg>
+          <span data-play-label data-first={c.play} data-again={c.playAgain}>{c.play}</span>
+        </button>
+      </figure>
+    </div>
+    <p class="note">{c.consent}</p>
+  </div>
+</section>
+
+<script>
+  import { track } from '../../scripts/analytics';
+
+  // Plays the story: "today" lights up step by step and ends in a lost job; then the same
+  // moment runs with the system while the example thread types itself out.
+  const sim = document.querySelector<HTMLElement>('[data-sim]');
+  if (sim) {
+    const step = (k: string) => sim.querySelector<HTMLElement>(`[data-step="${k}"]`);
+    const today = ['t0', 't1', 't2', 'tEnd'];
+    const withUs = ['w0', 'w1', 'w2', 'wEnd'];
+    // revealed in the order of their data-msg number, wherever they sit in the markup
+    const msgs = [...sim.querySelectorAll<HTMLElement>('[data-msg]')].sort((a, b) => Number(a.dataset.msg) - Number(b.dataset.msg));
+    // numbers count up when their element appears
+    const count = (host: HTMLElement, instant: boolean) =>
+      [host, ...host.querySelectorAll<HTMLElement>('[data-count]')]
+        .filter((el) => el.dataset.count)
+        .forEach((el) => {
+          const to = Number(el.dataset.count);
+          if (instant) return void (el.textContent = String(to));
+          // timers, not animation frames, so the number still lands if the tab is in the background
+          const steps = 16;
+          for (let i = 1; i <= steps; i++) window.setTimeout(() => (el.textContent = String(Math.round((to * i) / steps))), i * 50);
+        });
+    const reveal = (m: HTMLElement, instant: boolean) => {
+      m.classList.add('show');
+      // a bar's number sits in the label line just above it
+      const label = m.matches('.fill') ? (m.parentElement?.previousElementSibling as HTMLElement | null) : null;
+      count(label || m, instant);
+    };
+    const label = sim.querySelector<HTMLElement>('[data-play-label]');
+    const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let timers: number[] = [];
+
+    const showAll = () => {
+      [...today, ...withUs].forEach((k) => step(k)?.classList.add('on'));
+      msgs.forEach((m) => reveal(m, true));
+    };
+    const play = (manual: boolean) => {
+      timers.forEach((t) => window.clearTimeout(t));
+      timers = [];
+      [...today, ...withUs].forEach((k) => step(k)?.classList.remove('on'));
+      msgs.forEach((m) => m.classList.remove('show'));
+      sim.querySelectorAll<HTMLElement>('[data-count]').forEach((el) => (el.textContent = '0'));
+      const at = (ms: number, fn: () => void) => timers.push(window.setTimeout(fn, ms));
+      // nothing waits: the 'today' track runs quickly while the fix and the example start alongside it
+      today.forEach((k, i) => at(i * 320, () => step(k)?.classList.add('on')));
+      const base = 250;
+      withUs.forEach((k, i) => at(base + i * 850, () => step(k)?.classList.add('on')));
+      const span = (withUs.length - 1) * 850;
+      msgs.forEach((m, i) => at(base + (msgs.length > 1 ? (i * span) / (msgs.length - 1) : 0), () => reveal(m, false)));
+      at(base + span + 600, () => {
+        if (label) label.textContent = label.dataset.again || '';
+      });
+      if (manual) track('door_demo_play');
+    };
+
+    if (still || !('IntersectionObserver' in window)) {
+      showAll();
+    } else {
+      sim.classList.add('sim-ready');
+      // Start the moment the content comes into view. Two triggers, whichever fires first:
+      // an observer, and a plain scroll check as a safety net.
+      const grid = sim.querySelector<HTMLElement>('.pgrid')!;
+      let started = false;
+      const start = () => {
+        if (started) return;
+        started = true;
+        io.disconnect();
+        window.removeEventListener('scroll', check);
+        play(false);
+      };
+      const check = () => {
+        const r = grid.getBoundingClientRect();
+        if (r.top < window.innerHeight * 0.82 && r.bottom > 0) start();
+      };
+      const io = new IntersectionObserver(([e]) => e.isIntersecting && start(), { threshold: 0, rootMargin: '0px 0px -18% 0px' });
+      io.observe(grid);
+      window.addEventListener('scroll', check, { passive: true });
+      check();
+    }
+    sim.querySelector('[data-play]')?.addEventListener('click', () => (still ? showAll() : play(true)));
+  }
+</script>
+
+<style>
+  .prob {
+    overflow: hidden;
+    background:
+      radial-gradient(60% 40% at 0% 45%, rgba(47, 107, 255, 0.12), transparent 70%),
+      var(--night-2);
+  }
+  .head {
+    display: grid;
+    gap: var(--s-4);
+    justify-items: start;
+    margin-bottom: clamp(2rem, 1.5rem + 2vw, 3.5rem);
+  }
+  .pgrid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    gap: clamp(2rem, 1rem + 4vw, 5rem);
+    align-items: center;
+  }
+  .lanes {
+    display: grid;
+    gap: var(--s-6);
+  }
+  .lab {
+    margin-bottom: var(--s-4);
+    font-size: 0.6875rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #ff8f7a;
+  }
+  .lab-fix {
+    color: #d8ff3e;
+  }
+
+  /* ---------- the two tracks ---------- */
+  .track {
+    margin: 0;
+    display: grid;
+  }
+  .track li {
+    position: relative;
+    display: grid;
+    grid-template-columns: 14px 5.5rem minmax(0, 1fr);
+    gap: 0 var(--s-4);
+    align-items: start;
+    padding-bottom: var(--s-4);
+    transition: opacity 400ms var(--ease);
+  }
+  /* the rail between dots */
+  .track li::before {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 14px;
+    bottom: -4px;
+    width: 2px;
+    background: rgba(255, 255, 255, 0.14);
+  }
+  .dot {
+    position: relative;
+    z-index: 1;
+    width: 14px;
+    height: 14px;
+    margin-top: 5px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.35);
+    background: var(--night-2);
+    transition:
+      background-color 300ms,
+      border-color 300ms,
+      box-shadow 300ms;
+  }
+  .tm {
+    font-family: var(--f-head);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: #ff8f7a;
+  }
+  .with .tm {
+    color: #d8ff3e;
+  }
+  .track p {
+    font-family: var(--f-head);
+    font-weight: 700;
+    font-size: clamp(1.05rem, 0.95rem + 0.45vw, 1.3rem);
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+  }
+  .track small {
+    display: block;
+    margin-top: 2px;
+    font-family: var(--f-text);
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 1.4;
+    color: var(--fog);
+  }
+  .today li.on .dot {
+    border-color: #ff8f7a;
+    background: #ff8f7a;
+    box-shadow: 0 0 0 5px rgba(255, 143, 122, 0.16);
+  }
+  .with li.on .dot {
+    border-color: #d8ff3e;
+    background: #d8ff3e;
+    box-shadow: 0 0 0 5px rgba(216, 255, 62, 0.16);
+  }
+  .end {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 14px 8px 8px;
+    border-radius: 999px;
+    font-family: var(--f-head);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    transition:
+      opacity 400ms var(--ease),
+      transform 400ms var(--ease);
+  }
+  .end span {
+    display: grid;
+    place-items: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    font-size: 0.75rem;
+    font-weight: 800;
+  }
+  .bad {
+    background: rgba(255, 90, 60, 0.14);
+    border: 1px solid rgba(255, 143, 122, 0.5);
+    color: #ffb3a4;
+  }
+  .bad span {
+    background: #ff8f7a;
+    color: #2a0a05;
+  }
+  .good {
+    background: rgba(216, 255, 62, 0.1);
+    border: 1px solid rgba(216, 255, 62, 0.5);
+    color: #e6ff8a;
+  }
+  .good span {
+    background: #d8ff3e;
+    color: #0b1016;
+  }
+  /* before a step has played it is dimmed (only when the script is running the story) */
+  .sim-ready .track li:not(.on) {
+    opacity: 0.3;
+  }
+  .sim-ready .end:not(.on) {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  /* ---------- example thread ---------- */
+  .ex {
+    position: relative;
+    margin: 0;
+    display: grid;
+    gap: var(--s-4);
+    padding: clamp(1.25rem, 1rem + 1.4vw, 2rem);
+    padding-top: clamp(1.75rem, 1.5rem + 1.4vw, 2.5rem);
+    border-radius: 28px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.015));
+  }
+  figcaption {
+    position: absolute;
+    top: -13px;
+    left: clamp(1.25rem, 1rem + 1.4vw, 2rem);
+    padding: 5px 14px;
+    border-radius: 999px;
+    background: #d8ff3e;
+    color: #0b1016;
+    font-size: 0.6875rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .thread {
+    display: grid;
+    gap: 8px;
+    align-content: start;
+    min-height: 13rem;
+  }
+  .bub {
+    max-width: 88%;
+    padding: 11px 15px;
+    border-radius: 18px;
+    font-size: 0.9375rem;
+    line-height: 1.4;
+    transition:
+      opacity 350ms var(--ease),
+      transform 350ms var(--ease);
+  }
+  .sim-ready .bub:not(.show) {
+    opacity: 0;
+    transform: translateY(10px) scale(0.97);
+  }
+  .bub.them {
+    justify-self: end;
+    background: #1f5fd6;
+    color: #fff;
+    border-bottom-right-radius: 5px;
+    font-weight: 600;
+  }
+  .bub.us {
+    justify-self: start;
+    background: #26323e;
+    color: #eef3f7;
+    border-bottom-left-radius: 5px;
+  }
+  .bub.sys {
+    justify-self: center;
+    max-width: 100%;
+    padding: 5px 12px;
+    border-radius: 999px;
+    background: rgba(61, 220, 151, 0.14);
+    border: 1px solid rgba(61, 220, 151, 0.45);
+    color: #b7f1d8;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-align: center;
+  }
+  .play {
+    justify-self: start;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 44px;
+    padding: 0 18px 0 14px;
+    border-radius: 999px;
+    border: 1.5px solid rgba(255, 255, 255, 0.4);
+    background: transparent;
+    color: #fff;
+    font-family: var(--f-head);
+    font-weight: 700;
+    cursor: pointer;
+    transition:
+      border-color 200ms,
+      background-color 200ms;
+  }
+  .play:hover {
+    border-color: #fff;
+    background: rgba(255, 255, 255, 0.06);
+  }
+  .play:focus-visible {
+    outline: 3px solid #7cc4ff;
+    outline-offset: 2px;
+  }
+  .play svg {
+    width: 18px;
+    height: 18px;
+    color: #d8ff3e;
+  }
+  .note {
+    margin-top: var(--s-5);
+    font-size: 0.75rem;
+    line-height: 1.5;
+    color: var(--fog-2);
+  }
+  /* ---------- layout b: the example on the left, the story on the right ---------- */
+  .lay-b .pgrid {
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  }
+  .lay-b .ex {
+    order: -1;
+  }
+  /* ---------- layout c: the example centre stage, the two tracks side by side under it ---------- */
+  .lay-c .head {
+    justify-items: center;
+    text-align: center;
+  }
+  .lay-c .pgrid {
+    grid-template-columns: 1fr;
+    gap: clamp(2rem, 1.5rem + 2.5vw, 4rem);
+  }
+  .lay-c .ex {
+    order: -1;
+    width: min(100%, 760px);
+    justify-self: center;
+  }
+  .lay-c .lanes {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(2rem, 1rem + 4vw, 5rem);
+    align-items: start;
+    width: min(100%, 1120px);
+    justify-self: center;
+  }
+  /* no boxes: one thin rule between the two tracks */
+  .lay-c .lane.with {
+    position: relative;
+  }
+  .lay-c .lane.with::before {
+    content: '';
+    position: absolute;
+    left: calc(clamp(2rem, 1rem + 4vw, 5rem) / -2);
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: rgba(255, 255, 255, 0.14);
+  }
+  /* the time sits on its own line above the sentence, so a long label can never run into it */
+  .lay-c .track li {
+    grid-template-columns: 14px minmax(0, 1fr);
+  }
+  .lay-c .tm,
+  .lay-c .track p {
+    grid-column: 2;
+  }
+  .lay-c .tm {
+    font-size: 0.875rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+  .lay-c .note {
+    text-align: center;
+  }
+  @media (max-width: 900px) {
+    .pgrid,
+    .lay-b .pgrid,
+    .lay-c .lanes {
+      grid-template-columns: 1fr;
+    }
+    .lay-c .lane.with::before {
+      display: none;
+    }
+  }
+  @media (max-width: 480px) {
+    .track li {
+      grid-template-columns: 14px minmax(0, 1fr);
+    }
+    .tm {
+      grid-column: 2;
+    }
+    .track p {
+      grid-column: 2;
+    }
+  }
+</style>

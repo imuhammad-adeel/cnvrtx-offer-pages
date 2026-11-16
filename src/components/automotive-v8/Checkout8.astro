@@ -1,0 +1,355 @@
+---
+/**
+ * Checkout popup. Every plan button on the page opens it.
+ * The right side holds the GHL order form for the chosen plan (an iframe of the
+ * checkout URL from src/config/automotiveOffer.ts). Until those URLs are set it
+ * shows a clear "not connected" panel with a way to reserve a build.
+ * After payment, GHL should redirect to flow8.onboardingPath.
+ */
+import { offer8, flow8 } from '../../content/automotiveCopyV8';
+import { automotiveOffer as o } from '../../config/automotiveOffer';
+
+const fmt = (n: number) => '$' + n.toLocaleString('en-US');
+const reg = offer8.regularMonthly;
+const setup = o.pricing.monthly.setup;
+const plans = {
+  Annual: {
+    name: 'Annual',
+    price: fmt(o.pricing.annual.price),
+    per: '/yr',
+    was: fmt(reg * 12),
+    note: 'Setup included. Two months included.',
+    save: `You save ${fmt(reg * 12 + setup - o.pricing.annual.price)} in year one`,
+    url: o.annualCheckoutUrl,
+  },
+  Monthly: {
+    name: 'Monthly',
+    price: fmt(o.pricing.monthly.price),
+    per: '/mo',
+    was: fmt(reg),
+    note: `+ ${fmt(setup)} one-time setup. Cancel anytime.`,
+    save: `You save ${fmt((reg - o.pricing.monthly.price) * 12)} a year`,
+    url: o.monthlyCheckoutUrl,
+  },
+  'Founding (setup waived)': {
+    name: 'Founding',
+    price: fmt(o.pricing.monthly.price),
+    per: '/mo',
+    was: fmt(reg),
+    note: 'Setup fee waived. First 10 qualifying shops.',
+    save: `You save ${fmt((reg - o.pricing.monthly.price) * 12 + setup)} in year one`,
+    url: o.foundingCheckoutUrl,
+  },
+};
+---
+
+<dialog class="co" data-co8 data-plans={JSON.stringify(plans)} aria-labelledby="co-title">
+  <form method="dialog" class="co-x">
+    <button aria-label="Close checkout" value="close">×</button>
+  </form>
+
+  <div class="co-grid">
+    <aside class="sum">
+      <p class="co-k">Secure checkout</p>
+      <h2 id="co-title"><span data-co="name">Annual</span> plan</h2>
+      <p class="co-was"><s data-co="was"></s> at the upcoming price</p>
+      <p class="co-amt"><b data-co="price"></b><span data-co="per"></span></p>
+      <p class="co-note" data-co="note"></p>
+      <p class="co-save" data-co="save"></p>
+
+      <div class="co-switch" role="radiogroup" aria-label="Plan">
+        <button type="button" role="radio" aria-checked="true" data-co-plan="Annual">Annual</button>
+        <button type="button" role="radio" aria-checked="false" data-co-plan="Monthly">Monthly</button>
+      </div>
+
+      <ul role="list" class="co-list">
+        <li>Price locked for life</li>
+        <li>Live in 14 days, or your first month is free</li>
+        <li>Your domain, content and customer list stay yours</li>
+      </ul>
+      <p class="co-next"><b>Next:</b> one short form about your shop. Then we build.</p>
+    </aside>
+
+    <div class="pay">
+      <iframe title="Checkout form" data-co-frame hidden loading="lazy"></iframe>
+      <div class="empty" data-co-empty>
+        <p class="e-t">The order form loads here.</p>
+        <p class="e-d">
+          This plan's checkout link is not connected yet. Add it in <code>src/config/automotiveOffer.ts</code> and the
+          form appears in this panel.
+        </p>
+        <a href="#start" class="go" data-co-reserve>Reserve my build</a>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<script>
+  import { track } from '../../scripts/analytics';
+  import { withAttribution } from '../../scripts/attribution';
+
+  type Plan = { name: string; price: string; per: string; was: string; note: string; save: string; url: string };
+  const dlg = document.querySelector<HTMLDialogElement>('[data-co8]');
+  if (dlg && typeof dlg.showModal === 'function') {
+    const plans = JSON.parse(dlg.dataset.plans || '{}') as Record<string, Plan>;
+    const frame = dlg.querySelector<HTMLIFrameElement>('[data-co-frame]')!;
+    const empty = dlg.querySelector<HTMLElement>('[data-co-empty]')!;
+    const btns = [...dlg.querySelectorAll<HTMLButtonElement>('[data-co-plan]')];
+    let current = 'Annual';
+
+    const show = (key: string) => {
+      const p = plans[key] || plans.Annual;
+      current = plans[key] ? key : 'Annual';
+      (['name', 'price', 'per', 'was', 'note', 'save'] as const).forEach((k) => {
+        const el = dlg.querySelector<HTMLElement>(`[data-co="${k}"]`);
+        if (el) el.textContent = p[k];
+      });
+      btns.forEach((b) => b.setAttribute('aria-checked', String(b.dataset.coPlan === current)));
+      if (p.url) {
+        frame.src = withAttribution(p.url);
+        frame.hidden = false;
+        empty.hidden = true;
+      } else {
+        frame.removeAttribute('src');
+        frame.hidden = true;
+        empty.hidden = false;
+      }
+    };
+
+    // any plan button on the page opens the popup
+    document.addEventListener('click', (e) => {
+      const a = (e.target as HTMLElement)?.closest<HTMLElement>('[data-checkout]');
+      if (!a) return;
+      e.preventDefault();
+      const exit = document.querySelector<HTMLDialogElement>('[data-exit8]');
+      if (exit?.open) exit.close();
+      show(a.dataset.checkout || 'Annual');
+      if (!dlg.open) dlg.showModal();
+      track('checkout_open', { plan: current });
+    });
+
+    btns.forEach((b) =>
+      b.addEventListener('click', () => {
+        show(b.dataset.coPlan!);
+        track('checkout_plan_switch', { plan: current });
+      }),
+    );
+    dlg.querySelector('[data-co-reserve]')?.addEventListener('click', () => {
+      window.dispatchEvent(new CustomEvent('cx:plan', { detail: current }));
+      dlg.close();
+    });
+    dlg.addEventListener('click', (e) => {
+      if (e.target === dlg) dlg.close();
+    });
+  }
+</script>
+
+<style>
+  .co {
+    width: min(980px, calc(100vw - 24px));
+    max-height: calc(100dvh - 24px);
+    padding: 0;
+    border: 1.5px solid rgba(255, 255, 255, 0.22);
+    border-radius: 28px;
+    background: #0b1016;
+    color: #eef3f7;
+    box-shadow: 0 60px 120px -40px rgba(0, 0, 0, 0.9);
+    overflow: auto;
+  }
+  .co[open] {
+    animation: coIn 380ms cubic-bezier(0.2, 0.9, 0.2, 1);
+  }
+  .co::backdrop {
+    background: rgba(5, 8, 11, 0.78);
+    backdrop-filter: blur(6px);
+  }
+  @keyframes coIn {
+    from {
+      opacity: 0;
+      transform: translateY(18px) scale(0.98);
+    }
+  }
+  .co-x {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 2;
+  }
+  .co-x button {
+    width: 44px;
+    height: 44px;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(11, 16, 22, 0.08);
+    color: #0b1016;
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+  }
+  .co-x button:hover {
+    background: rgba(11, 16, 22, 0.18);
+  }
+  .co-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    min-height: 560px;
+  }
+  .sum {
+    display: grid;
+    align-content: start;
+    gap: 10px;
+    padding: clamp(1.5rem, 1rem + 2vw, 2.5rem);
+    background:
+      radial-gradient(90% 50% at 0% 0%, rgba(216, 255, 62, 0.14), transparent 70%),
+      linear-gradient(180deg, #131c25, #0b1016);
+  }
+  .co-k {
+    font-size: 0.6875rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #d8ff3e;
+  }
+  .sum h2 {
+    font-size: 1.6rem;
+    letter-spacing: -0.03em;
+  }
+  .co-was {
+    font-size: 0.875rem;
+    color: var(--fog);
+  }
+  .co-was s {
+    color: #ff8f7a;
+    font-weight: 700;
+  }
+  .co-amt {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+  }
+  .co-amt b {
+    font-family: var(--f-head);
+    font-weight: 800;
+    font-size: clamp(3rem, 2rem + 3.6vw, 4.6rem);
+    letter-spacing: -0.06em;
+    line-height: 0.95;
+  }
+  .co-amt span {
+    font-family: var(--f-head);
+    font-weight: 700;
+    color: var(--fog);
+  }
+  .co-note {
+    font-weight: 700;
+  }
+  .co-save {
+    justify-self: start;
+    padding: 4px 12px;
+    border-radius: 999px;
+    background: #d8ff3e;
+    color: #0b1016;
+    font-size: 0.875rem;
+    font-weight: 800;
+  }
+  .co-switch {
+    justify-self: start;
+    display: inline-flex;
+    margin-top: 8px;
+    padding: 4px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+  }
+  .co-switch button {
+    min-height: 40px;
+    padding: 0 16px;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--fog);
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .co-switch button[aria-checked='true'] {
+    background: #fff;
+    color: #0b1016;
+  }
+  .co-list {
+    margin: 10px 0 0;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
+    display: grid;
+    gap: 8px;
+    font-size: 0.9375rem;
+    color: #cfd9e2;
+  }
+  .co-list li::before {
+    content: '✓ ';
+    color: #d8ff3e;
+    font-weight: 800;
+  }
+  .co-next {
+    font-size: 0.875rem;
+    color: var(--fog);
+  }
+  .pay {
+    background: #f3f1ec;
+    color: #0b1016;
+    display: grid;
+  }
+  iframe {
+    width: 100%;
+    height: 100%;
+    min-height: 560px;
+    border: 0;
+  }
+  iframe[hidden],
+  .empty[hidden] {
+    display: none;
+  }
+  .empty {
+    display: grid;
+    align-content: center;
+    justify-items: start;
+    gap: 12px;
+    padding: clamp(1.5rem, 1rem + 2vw, 3rem);
+  }
+  .e-t {
+    font-family: var(--f-head);
+    font-weight: 800;
+    font-size: 1.6rem;
+    letter-spacing: -0.03em;
+  }
+  .e-d {
+    color: #45505b;
+    line-height: 1.5;
+    max-width: 44ch;
+  }
+  code {
+    font-size: 0.85em;
+    padding: 1px 6px;
+    border-radius: 6px;
+    background: rgba(11, 16, 22, 0.08);
+  }
+  @media (max-width: 760px) {
+    .co-grid {
+      grid-template-columns: 1fr;
+      min-height: 0;
+    }
+    .co-x button {
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+    }
+    .co-list {
+      display: none;
+    }
+    iframe {
+      min-height: 520px;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .co[open] {
+      animation: none;
+    }
+  }
+</style>

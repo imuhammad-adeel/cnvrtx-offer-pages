@@ -1,0 +1,325 @@
+---
+/**
+ * Step after checkout. GHL should redirect here once payment succeeds.
+ * The customer can fill the shop form now, or skip and do it later.
+ */
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { flow9 } from '../../../content/automotiveCopyV9';
+import { audit } from '../../../content/automotiveCopy';
+import '../../../styles/v9.css';
+const f = flow9.onboarding;
+const services = audit.services;
+---
+
+<BaseLayout title="Welcome to CNVRT X: one short form" description="Tell us how your shop works and we start building." noindex={true} bodyClass="v9" themeColor="#070B10">
+  <header class="top">
+    <a href="/automotive/v9" class="logo" aria-label="CNVRT X home">CNVRT<span>✕</span></a>
+    <span class="paid">✓ {f.kicker}</span>
+  </header>
+
+  <main id="main" class="wrap">
+    <ol role="list" class="steps" aria-label="Progress">
+      {f.steps.map((s, i) => <li class:list={[i === 0 && 'done', i === 1 && 'now']}><span>{i === 0 ? '✓' : i + 1}</span>{s}</li>)}
+    </ol>
+
+    <div class="grid">
+      <div class="copy">
+        <h1>
+          {f.title[0]}<br /><span class="hot">{f.title[1]}</span>
+        </h1>
+        <p class="lede">{f.lead}</p>
+        <p class="clock"><span aria-hidden="true">⏱</span>{f.clock}</p>
+        <a href={`${flow9.thanksPath}?later=1`} class="later" data-track="onboarding_later">{f.later} →</a>
+        <p class="later-n">{f.laterNote}</p>
+      </div>
+
+      <div class="shell">
+        {
+          flow9.onboardingFormUrl ? (
+            <iframe src={flow9.onboardingFormUrl} title="Shop details form" loading="lazy" />
+          ) : (
+            <form data-onb action={flow9.thanksPath} method="get" novalidate>
+              <p class="preview">Preview form. Connect your GHL form in <code>automotiveCopyV9.ts</code> (flow9.onboardingFormUrl).</p>
+              <div class="fld">
+                <label for="o-biz">Shop name</label>
+                <input id="o-biz" name="shop" autocomplete="organization" required />
+              </div>
+              <fieldset class="fld">
+                <legend>Services you offer</legend>
+                <div class="chips">
+                  {services.filter((s) => s !== 'Other').map((s) => (
+                    <label>
+                      <input type="checkbox" name="svc" value={s} />
+                      <span>{s}</span>
+                    </label>
+                  ))}
+                </div>
+              </fieldset>
+              <div class="two">
+                <div class="fld">
+                  <label for="o-hours">Opening hours</label>
+                  <input id="o-hours" name="hours" placeholder="Mon to Sat, 8 to 6" />
+                </div>
+                <div class="fld">
+                  <label for="o-phone">Shop phone</label>
+                  <input id="o-phone" name="phone" type="tel" autocomplete="tel" />
+                </div>
+              </div>
+              <div class="fld">
+                <label for="o-notes">Prices, packages or anything we should know</label>
+                <textarea id="o-notes" name="notes" rows="3"></textarea>
+              </div>
+              <button type="submit" class="go">{f.submit}</button>
+            </form>
+          )
+        }
+      </div>
+    </div>
+  </main>
+</BaseLayout>
+
+<script>
+  import { track } from '../../../scripts/analytics';
+  const form = document.querySelector<HTMLFormElement>('[data-onb]');
+  form?.addEventListener('submit', (e) => {
+    const shop = form.querySelector<HTMLInputElement>('#o-biz')!;
+    if (!shop.value.trim()) {
+      e.preventDefault();
+      shop.setAttribute('aria-invalid', 'true');
+      shop.focus();
+      return;
+    }
+    // preview only: nothing is sent anywhere, we just move to the thank-you page
+    e.preventDefault();
+    track('onboarding_submit', { preview: true });
+    location.href = form.action;
+  });
+</script>
+
+<style>
+  .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px var(--gutter);
+    max-width: calc(var(--w-container) + var(--gutter) * 2);
+    margin-inline: auto;
+  }
+  .logo {
+    font-family: var(--f-head);
+    font-weight: 800;
+    font-size: 1.25rem;
+    color: #fff;
+    text-decoration: none;
+  }
+  .logo span {
+    color: var(--hot);
+    margin-left: 3px;
+  }
+  .paid {
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: rgba(61, 220, 151, 0.14);
+    border: 1px solid rgba(61, 220, 151, 0.5);
+    color: #9fe8c8;
+    font-size: 0.8125rem;
+    font-weight: 800;
+  }
+  .wrap {
+    max-width: calc(var(--w-container) + var(--gutter) * 2);
+    margin-inline: auto;
+    padding: clamp(1rem, 0.5rem + 2vw, 2.5rem) var(--gutter) clamp(4rem, 3rem + 4vw, 7rem);
+  }
+  .steps {
+    margin: 0 0 clamp(2rem, 1.5rem + 2vw, 3.5rem);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 28px;
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--fog-2);
+  }
+  .steps li {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .steps span {
+    display: grid;
+    place-items: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 1.5px solid currentColor;
+    font-size: 0.75rem;
+  }
+  .steps .done {
+    color: var(--mint);
+  }
+  .steps .done span {
+    background: var(--mint);
+    border-color: var(--mint);
+    color: #04140c;
+  }
+  .steps .now {
+    color: #fff;
+  }
+  .steps .now span {
+    background: #d8ff3e;
+    border-color: #d8ff3e;
+    color: #0b1016;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: clamp(2rem, 1rem + 4vw, 5rem);
+    align-items: start;
+  }
+  .copy {
+    display: grid;
+    gap: var(--s-5);
+    justify-items: start;
+  }
+  h1 {
+    font-size: clamp(2.2rem, 1.2rem + 4vw, 4.6rem);
+    letter-spacing: -0.05em;
+  }
+  .clock {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 12px 16px;
+    border-radius: 16px;
+    background: rgba(216, 255, 62, 0.1);
+    border: 1px solid rgba(216, 255, 62, 0.5);
+    color: #e6ff8a;
+    font-weight: 700;
+  }
+  .later {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    font-weight: 700;
+    color: #fff;
+    text-underline-offset: 5px;
+  }
+  .later-n {
+    margin-top: calc(var(--s-4) * -1);
+    font-size: 0.875rem;
+    color: var(--fog-2);
+  }
+  .shell {
+    padding: clamp(1.25rem, 1rem + 2vw, 2.5rem);
+    border-radius: 28px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: linear-gradient(180deg, #131c25, #0b1016);
+  }
+  iframe {
+    width: 100%;
+    min-height: 720px;
+    border: 0;
+    border-radius: 16px;
+    background: #fff;
+  }
+  form {
+    display: grid;
+    gap: 16px;
+  }
+  .preview {
+    padding: 10px 14px;
+    border-radius: 12px;
+    background: rgba(255, 196, 76, 0.14);
+    color: #ffd98a;
+    font-size: 0.8125rem;
+  }
+  code {
+    font-size: 0.9em;
+  }
+  .fld {
+    display: grid;
+    gap: 6px;
+    border: 0;
+    padding: 0;
+    margin: 0;
+  }
+  label,
+  legend {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: #c5d0da;
+    padding: 0;
+  }
+  .two {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  input:not([type='checkbox']),
+  textarea {
+    width: 100%;
+    min-height: 50px;
+    padding: 12px 16px;
+    border-radius: 14px;
+    border: 1.5px solid rgba(255, 255, 255, 0.16);
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    font: inherit;
+  }
+  input:focus,
+  textarea:focus {
+    outline: none;
+    border-color: var(--hot);
+    box-shadow: 0 0 0 4px rgba(255, 90, 31, 0.25);
+  }
+  [aria-invalid='true'] {
+    border-color: #ff7a7a !important;
+  }
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 6px;
+  }
+  .chips label {
+    position: relative;
+    cursor: pointer;
+  }
+  .chips input {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+  }
+  .chips span {
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
+    padding: 0 14px;
+    border-radius: 999px;
+    border: 1.5px solid rgba(255, 255, 255, 0.2);
+    font-size: 0.875rem;
+    color: #dbe4ec;
+  }
+  .chips input:checked + span {
+    background: #d8ff3e;
+    border-color: #d8ff3e;
+    color: #0b1016;
+  }
+  .chips input:focus-visible + span {
+    outline: 3px solid #7cc4ff;
+    outline-offset: 2px;
+  }
+  .go {
+    width: 100%;
+  }
+  @media (max-width: 900px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  @media (max-width: 480px) {
+    .two {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

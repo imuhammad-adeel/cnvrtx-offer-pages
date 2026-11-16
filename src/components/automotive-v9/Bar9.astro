@@ -1,0 +1,89 @@
+---
+/** Slim bar fixed to the very top. One line, one link. The counter shows only a real number from config. */
+import { offerV9 as cfg } from '../../config/offerV9';
+const left = cfg.foundingSpotsLeft;
+---
+
+<div class="bar" role="region" aria-label="Founding program">
+  <p>
+    <span class="tag">Founding program</span>
+    <span class="t full">Launch Kit waived and your price locked for the first {cfg.foundingSpotsTotal} shops.</span>
+    <span class="t short">First {cfg.foundingSpotsTotal} shops: Launch Kit waived</span>
+    {left !== null && <b class="left">{left} left</b>}
+    <a href="#pricing" data-track="cta_click" data-track-location="top_bar">Claim a spot <span aria-hidden="true">→</span></a>
+  </p>
+</div>
+
+<style>
+  .bar {
+    position: fixed;
+    inset: 0 0 auto 0;
+    z-index: 65;
+    height: var(--bar-h, 40px);
+    display: grid;
+    place-items: center;
+    padding-inline: 12px;
+    background: #0b1016;
+    border-bottom: 1px solid rgba(216, 255, 62, 0.45);
+    color: #eef3f7;
+    font-size: 0.875rem;
+  }
+  p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    white-space: nowrap;
+    min-width: 0;
+  }
+  .tag,
+  .left {
+    padding: 2px 9px;
+    border-radius: 999px;
+    background: #d8ff3e;
+    color: #0b1016;
+    font-size: 0.6875rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .left {
+    background: transparent;
+    border: 1px solid rgba(216, 255, 62, 0.6);
+    color: #d8ff3e;
+  }
+  .short {
+    display: none;
+  }
+  /* a 44px tap area without changing how the control looks */
+  a {
+    position: relative;
+  }
+  a::after {
+    content: '';
+    position: absolute;
+    inset: -6px -4px;
+  }
+  a {
+    font-weight: 800;
+    color: #d8ff3e;
+    text-decoration: none;
+    padding: 6px 2px;
+  }
+  a:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+  @media (max-width: 820px) {
+    .full,
+    .tag {
+      display: none;
+    }
+    .short {
+      display: inline;
+    }
+    .bar {
+      font-size: 0.8125rem;
+    }
+  }
+</style>

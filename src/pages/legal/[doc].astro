@@ -1,0 +1,243 @@
+---
+/**
+ * Legal pages: /legal/privacy, /legal/terms, /legal/sms-terms, /legal/cancellation, /legal/disclaimer.
+ * Words: src/content/legal.ts. Company details, prices and the review flag: src/config.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { legalDocs, type LegalDoc } from '../../content/legal';
+import { automotiveOffer as o } from '../../config/automotiveOffer';
+import { offerV9 as cfg, featuredPlan as plan } from '../../config/offerV9';
+import '../../styles/v9.css';
+
+export function getStaticPaths() {
+  return legalDocs.map((doc) => ({ params: { doc: doc.slug }, props: { doc } }));
+}
+
+interface Props {
+  doc: LegalDoc;
+}
+const { doc } = Astro.props;
+const info = cfg.legalInfo;
+const money = (n: number) => '$' + n.toLocaleString('en-US');
+const date = new Date(info.effectiveDate + 'T12:00:00').toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+// contact line: an email if one is set, otherwise the contact link on the site
+const contact = info.supportEmail
+  ? `Contact ${o.brand.legalName} at ${info.supportEmail}${info.address ? `, or by mail at ${info.address}` : ''}.`
+  : `Contact ${o.brand.legalName} through the contact link in the footer of this website.`;
+const governing = info.governingState
+  ? `These terms are governed by the laws of the State of ${info.governingState}, without regard to its conflict of law rules. Disputes will be heard in the courts located there.`
+  : 'These terms are governed by the laws of the state where our company is registered, without regard to its conflict of law rules.';
+const fill = (t: string) =>
+  t
+    .replaceAll('{company}', o.brand.legalName)
+    .replaceAll('{brand}', 'CNVRT X')
+    .replaceAll('{contact}', contact)
+    .replaceAll('{governing}', governing)
+    .replaceAll('{monthly}', money(plan.monthly))
+    .replaceAll('{annual}', money(plan.annual))
+    .replaceAll('{kit}', money(plan.launchKit))
+    .replaceAll('{website}', money(cfg.website.addOn));
+---
+
+<BaseLayout title={`${doc.title} | CNVRT X`} description={fill(doc.intro).slice(0, 150)} noindex={true} bodyClass="v9" themeColor="#070B10">
+  <header class="top">
+    <a href="/automotive/v9" class="logo" aria-label="CNVRT X home">CNVRT<span>✕</span></a>
+    <a href="/automotive/v9" class="back">Back to the site</a>
+  </header>
+
+  <main id="main" class="wrap">
+    <nav class="docs" aria-label="Legal pages">
+      {legalDocs.map((d) => <a href={`/legal/${d.slug}`} aria-current={d.slug === doc.slug ? 'page' : undefined}>{d.nav}</a>)}
+    </nav>
+
+    <article>
+      <h1>{doc.title}</h1>
+      <p class="meta">Effective {date}</p>
+      {!info.reviewed && <p class="draft">This is a draft. It has not been reviewed by a lawyer yet.</p>}
+      <p class="intro">{fill(doc.intro)}</p>
+
+      {
+        doc.sections.map((s) => (
+          <section>
+            <h2>
+              <span class="num">{s.h.split('. ')[0]}</span>
+              {s.h.split('. ').slice(1).join('. ')}
+            </h2>
+            {s.body.map((b) =>
+              Array.isArray(b) ? (
+                <ul>
+                  {b.map((li) => (
+                    <li>{fill(li)}</li>
+                  ))}
+                </ul>
+              ) : (
+                <p>{fill(b)}</p>
+              ),
+            )}
+          </section>
+        ))
+      }
+    </article>
+
+    <p class="copy">© {new Date().getFullYear()} {o.brand.legalName}. All rights reserved.</p>
+  </main>
+</BaseLayout>
+
+<style>
+  .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: calc(880px + var(--gutter) * 2);
+    margin-inline: auto;
+    padding: 22px var(--gutter);
+  }
+  .logo {
+    font-family: var(--f-head);
+    font-weight: 800;
+    font-size: 1.25rem;
+    color: #fff;
+    text-decoration: none;
+  }
+  .logo span {
+    color: var(--hot);
+    margin-left: 3px;
+  }
+  .back {
+    min-height: 40px;
+    display: inline-flex;
+    align-items: center;
+    padding: 0 16px;
+    border-radius: 999px;
+    border: 1.5px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .back:hover {
+    border-color: #fff;
+  }
+  .wrap {
+    max-width: calc(880px + var(--gutter) * 2);
+    margin-inline: auto;
+    padding: clamp(1rem, 0.5rem + 2vw, 2.5rem) var(--gutter) clamp(4rem, 3rem + 4vw, 7rem);
+  }
+  .docs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: clamp(2rem, 1.5rem + 2vw, 3.5rem);
+  }
+  .docs a {
+    min-height: 40px;
+    display: inline-flex;
+    align-items: center;
+    padding: 0 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    color: var(--fog);
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .docs a:hover {
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+  .docs a[aria-current='page'] {
+    background: #d8ff3e;
+    border-color: #d8ff3e;
+    color: #0b1016;
+  }
+  /* the document itself: a white sheet on the dark page */
+  article {
+    padding: clamp(1.5rem, 1rem + 4vw, 4.5rem);
+    border-radius: 6px 6px 28px 28px;
+    border-top: 6px solid var(--hot);
+    background: #fff;
+    color: var(--ink);
+    color-scheme: light;
+    box-shadow: 0 60px 120px -50px rgba(0, 0, 0, 0.9);
+  }
+  article :global(.kicker) {
+    color: var(--ink-2);
+  }
+  h1 {
+    font-size: clamp(2.2rem, 1.4rem + 3.4vw, 4rem);
+    letter-spacing: -0.05em;
+    color: var(--ink);
+  }
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px 12px;
+    margin-top: var(--s-4);
+    padding-bottom: var(--s-5);
+    border-bottom: 2px solid var(--ink);
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--ink-2);
+  }
+  /* a plain sentence in the margin colour, not a badge */
+  .draft {
+    margin-top: var(--s-4);
+    padding-left: var(--s-4);
+    border-left: 4px solid #e0a100;
+    font-weight: 700;
+    color: #6b4a00;
+  }
+  .intro {
+    margin-top: var(--s-5);
+    padding-left: var(--s-4);
+    border-left: 4px solid #d8ff3e;
+    font-size: clamp(1.05rem, 1rem + 0.4vw, 1.25rem);
+    line-height: 1.6;
+    color: var(--ink);
+  }
+  section {
+    margin-top: clamp(1.75rem, 1.25rem + 1.5vw, 2.75rem);
+    padding-top: clamp(1.25rem, 1rem + 1vw, 2rem);
+    border-top: 1px solid rgba(11, 16, 22, 0.12);
+  }
+  h2 {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    font-size: clamp(1.2rem, 1.05rem + 0.7vw, 1.6rem);
+    letter-spacing: -0.03em;
+    color: var(--ink);
+  }
+  .num {
+    flex: none;
+    min-width: 1.6em;
+    color: var(--hot);
+    font-variant-numeric: tabular-nums;
+  }
+  section p,
+  section li {
+    line-height: 1.7;
+    color: #2b343d;
+  }
+  section p {
+    margin-top: var(--s-3);
+    max-width: 72ch;
+  }
+  ul {
+    margin: var(--s-3) 0 0;
+    padding-left: 1.2rem;
+    display: grid;
+    gap: 6px;
+    max-width: 72ch;
+    list-style: disc;
+  }
+  li::marker {
+    color: var(--hot);
+  }
+  .copy {
+    margin-top: var(--s-5);
+    font-size: 0.8125rem;
+    color: var(--fog-2);
+  }
+</style>

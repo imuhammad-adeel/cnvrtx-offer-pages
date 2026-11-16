@@ -1,0 +1,783 @@
+---
+import { bigIdea } from '../../content/automotiveCopy';
+import { pipe9 as p, math9 } from '../../content/automotiveCopyV9';
+const d = math9.defaults;
+const per = Math.round(d.value / d.oneIn);
+---
+
+<section class="scene pipe" aria-labelledby="pipe-title">
+  <div class="container">
+    <header class="head">
+      <p class="kicker" data-reveal>{p.kicker}</p>
+      <h2 id="pipe-title" class="t-lg" data-reveal>
+        <span class="rise"><span>{bigIdea.lines[0]}</span></span>
+        <span class="rise" style="--d:90ms"><span class="hot">{bigIdea.lines[1]}</span></span>
+        <span class="rise" style="--d:180ms"><span class="hot">{bigIdea.lines[2]}</span></span>
+      </h2>
+      <div class="pos" data-reveal>
+        <ul role="list" class="nots">
+          {p.not.map((n) => <li><span aria-hidden="true">✕</span>{n}</li>)}
+        </ul>
+        <p class="is"><span aria-hidden="true">✓</span>{p.is}</p>
+      </div>
+    </header>
+
+    <div class="rig" data-pipe9 data-mode="leak" data-value={d.value} data-onein={d.oneIn}>
+      <div class="money">
+        <p class="m m-in">
+          <span>Worth coming in</span>
+          <b data-s="in">$0</b>
+        </p>
+        <p class="m m-lost">
+          <span>Leaking out</span>
+          <b data-s="lost">$0</b>
+        </p>
+        <p class="m m-book">
+          <span>Reaching your calendar</span>
+          <b data-s="booked">$0</b>
+        </p>
+      </div>
+      <p class="ex">
+        <span>Example: a job is worth</span>
+        <span class="mini">
+          <button type="button" data-ms="value" data-d="-1" aria-label="Lower job value">−</button>
+          <b data-exv>${d.value}</b>
+          <button type="button" data-ms="value" data-d="1" aria-label="Higher job value">+</button>
+        </span>
+        <span>and 1 in</span>
+        <span class="mini">
+          <button type="button" data-ms="odds" data-d="-1" aria-label="More inquiries book">−</button>
+          <b data-exo>{d.oneIn}</b>
+          <button type="button" data-ms="odds" data-d="1" aria-label="Fewer inquiries book">+</button>
+        </span>
+        <span>inquiries books, so each one is worth about <b class="per" data-per>${per}</b>.</span>
+      </p>
+
+      <div class="stage">
+        <canvas data-cv aria-hidden="true"></canvas>
+        <ol role="list" class="labels" aria-label="The five leaks">
+          {
+            p.labels.map((l, i) => (
+              <li style={`--i:${i}`}>
+                <span>{l}</span>
+                <em data-h={i}>$0</em>
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+
+      <div class="ctrl">
+        <p class="msg" role="status" data-msg data-leak={p.msgLeak} data-more={p.msgMore} data-fixed={p.msgFixed}>
+          {p.msgLeak}
+        </p>
+        <div class="btns">
+          <button type="button" class="b b-more" data-act="more">{p.btnMore}</button>
+          <button type="button" class="b b-fix" data-act="fix" data-spot>{p.btnFix}</button>
+          <button type="button" class="b b-reset" data-act="reset">{p.btnReset}</button>
+        </div>
+      </div>
+      <p class="note">{p.note}</p>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { track } from '../../scripts/analytics';
+
+  const root = document.querySelector<HTMLElement>('[data-pipe9]');
+  const cv = root?.querySelector<HTMLCanvasElement>('[data-cv]');
+  const ctx = cv?.getContext('2d');
+  if (root && cv && ctx) {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const msg = root.querySelector<HTMLElement>('[data-msg]')!;
+    const el = (s: string) => root.querySelector<HTMLElement>(s)!;
+    const $ = (n: number) => '$' + Math.round(n).toLocaleString('en-US');
+    const DPR = Math.min(window.devicePixelRatio || 1, 2);
+    const HOLES = 5;
+    const LEAK_P = 0.16; // per hole, before the fix
+    const FIXED_P = 0.035; // per hole, after: a system closes most of the gap, never all of it
+    // Example starting state, in the same proportions the odds above produce, so all five
+    // leaks show a figure from the first frame. Counts are inquiries, not dollars.
+    const SEED = { leak: { in: 25, holes: [4, 3, 3, 2, 2] }, fixed: { in: 30, holes: [1, 1, 1, 1, 1] } };
+
+    let value = Number(root.dataset.value);
+    let oneIn = Number(root.dataset.onein);
+    let per = value / oneIn;
+
+    type Coin = { x: number; y: number; vx: number; vy: number; s: 0 | 1 | 2; a: number; j: number };
+    type Float = { x: number; y: number; t: number; text: string; good: boolean };
+    let coins: Coin[] = [];
+    let floats: Float[] = [];
+    let w = 0;
+    let h = 0;
+    let x0 = 0;
+    let x1 = 0;
+    let py = 0;
+    let th = 46;
+    let cr = 7;
+    let holes: number[] = [];
+    let mode: 'leak' | 'fixed' = 'leak';
+    let boost = 0;
+    let n = { in: 0, lost: 0, booked: 0 };
+    let perHole = new Array(HOLES).fill(0);
+    let acc = 0;
+    let lastT = 0;
+    let raf = 0;
+    let visible = false;
+    let wob = 0;
+    let dLost = 0; // displayed shares ease toward the real ones so the levels rise and fall smoothly
+    let dBook = 0;
+
+    const size = () => {
+      w = cv.clientWidth;
+      h = cv.clientHeight;
+      cv.width = Math.round(w * DPR);
+      cv.height = Math.round(h * DPR);
+      const small = w < 600;
+      th = small ? 30 : 46;
+      cr = small ? 5 : 7.5;
+      x0 = small ? 10 : 30;
+      x1 = w - (small ? 58 : 130);
+      py = Math.round(h * 0.26);
+      holes = Array.from({ length: HOLES }, (_, i) => x0 + ((x1 - x0) * (i + 1)) / (HOLES + 1));
+      root.style.setProperty('--x0', `${x0}px`);
+      root.style.setProperty('--span', `${x1 - x0}px`);
+    };
+
+    const paintNumbers = () => {
+      el('[data-s="in"]').textContent = $(n.in * per);
+      el('[data-s="lost"]').textContent = (n.lost ? '−' : '') + $(n.lost * per);
+      // always: reaching your calendar = worth coming in - total leaking
+      const reach = n.in - n.lost;
+      el('[data-s="booked"]').textContent = (reach ? '+' : '') + $(reach * per);
+      perHole.forEach((c, i) => (el(`[data-h="${i}"]`).textContent = (c ? '−' : '') + $(c * per)));
+      el('[data-per]').textContent = $(per);
+      el('[data-exv]').textContent = $(value);
+      el('[data-exo]').textContent = String(oneIn);
+    };
+
+    const coin = (x: number, y: number, r: number, fill: string, edge: string, a: number) => {
+      ctx.globalAlpha = a;
+      ctx.fillStyle = fill;
+      ctx.beginPath();
+      ctx.arc(x, y, r, 0, 6.2832);
+      ctx.fill();
+      ctx.strokeStyle = edge;
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+      if (r >= 6) {
+        ctx.fillStyle = edge;
+        ctx.font = `800 ${Math.round(r * 1.25)}px system-ui, sans-serif`;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText('$', x, y + 0.5);
+      }
+      ctx.globalAlpha = 1;
+    };
+
+    const draw = () => {
+      ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+      ctx.clearRect(0, 0, w, h);
+      const floor = h - 12;
+
+      // One scale for both: of everything that came in, how much leaked and how much booked.
+      const lostShare = dLost;
+      const bookedShare = dBook;
+      const H = floor - (py + th / 2) - 34; // usable height under the pipe
+      const ready = dLost + dBook > 0.97; // show the two shares only once they add up
+
+      const poolH = lostShare * H;
+      if (poolH > 1) {
+        const g = ctx.createLinearGradient(0, floor - poolH, 0, floor);
+        g.addColorStop(0, 'rgba(255,58,58,0.97)');
+        g.addColorStop(1, 'rgba(190,20,20,0.97)');
+        ctx.fillStyle = g;
+        ctx.beginPath();
+        ctx.moveTo(x0, floor);
+        for (let x = x0; x <= x1; x += 12) ctx.lineTo(x, floor - poolH + Math.sin(x / 26 + wob) * 2.5);
+        ctx.lineTo(x1, floor - poolH);
+        ctx.lineTo(x1, floor);
+        ctx.closePath();
+        ctx.fill();
+        if (ready && poolH > 34) {
+          ctx.fillStyle = '#fff';
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.font = `800 ${w < 600 ? 15 : 24}px system-ui, sans-serif`;
+          ctx.fillText(`${Math.round(lostShare * 100)}% leaks out`, (x0 + x1) / 2, floor - poolH / 2);
+        }
+      }
+      ctx.strokeStyle = 'rgba(255,255,255,0.14)';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(x0, floor);
+      ctx.lineTo(x1, floor);
+      ctx.stroke();
+
+      // pipe body
+      const g2 = ctx.createLinearGradient(0, py - th / 2, 0, py + th / 2);
+      g2.addColorStop(0, '#8292a1');
+      g2.addColorStop(0.3, '#3b4957');
+      g2.addColorStop(1, '#141c24');
+      ctx.fillStyle = g2;
+      ctx.beginPath();
+      ctx.roundRect(x0, py - th / 2, x1 - x0, th, th / 2);
+      ctx.fill();
+      ctx.fillStyle = 'rgba(255,255,255,0.2)';
+      ctx.beginPath();
+      ctx.roundRect(x0 + 12, py - th / 2 + 5, x1 - x0 - 24, 4, 2);
+      ctx.fill();
+
+      // holes with drips, or seals
+      holes.forEach((hx, i) => {
+        const by = py + th / 2;
+        if (mode === 'leak') {
+          const drip = ctx.createLinearGradient(0, by, 0, floor);
+          drip.addColorStop(0, 'rgba(255,80,80,0.55)');
+          drip.addColorStop(1, 'rgba(255,80,80,0)');
+          ctx.strokeStyle = drip;
+          ctx.lineWidth = 3 + Math.sin(wob * 2 + i) * 1.2;
+          ctx.setLineDash([10, 9]);
+          ctx.lineDashOffset = -wob * 60;
+          ctx.beginPath();
+          ctx.moveTo(hx, by);
+          ctx.lineTo(hx, floor);
+          ctx.stroke();
+          ctx.setLineDash([]);
+          ctx.fillStyle = '#05080b';
+          ctx.beginPath();
+          ctx.ellipse(hx, by - 3, th * 0.26, 7, 0, 0, 6.2832);
+          ctx.fill();
+          ctx.strokeStyle = '#ff5a5a';
+          ctx.lineWidth = 2;
+          ctx.stroke();
+        } else {
+          ctx.fillStyle = 'rgba(61,220,151,0.2)';
+          ctx.beginPath();
+          ctx.arc(hx, by - 2, th * 0.42, 0, 6.2832);
+          ctx.fill();
+          ctx.fillStyle = '#3ddc97';
+          ctx.beginPath();
+          ctx.roundRect(hx - th * 0.3, by - 8, th * 0.6, 10, 5);
+          ctx.fill();
+          ctx.fillStyle = '#05080b';
+          ctx.fillRect(hx - 1.5, by - 8, 3, 10);
+        }
+      });
+
+      // booked tank on the right, drawn on the same scale as the red pool
+      const bx = x1 + (w < 600 ? 8 : 22);
+      const bw = w - bx - (w < 600 ? 4 : 14);
+      const bt = floor - H;
+      const lvl = bookedShare * H;
+      ctx.save();
+      ctx.beginPath();
+      ctx.roundRect(bx, bt, bw, H, 12);
+      ctx.clip();
+      ctx.fillStyle = 'rgba(255,255,255,0.04)';
+      ctx.fillRect(bx, bt, bw, H);
+      const g3 = ctx.createLinearGradient(0, floor - lvl, 0, floor);
+      g3.addColorStop(0, 'rgba(61,220,151,0.95)');
+      g3.addColorStop(1, 'rgba(18,140,90,0.95)');
+      ctx.fillStyle = g3;
+      ctx.globalAlpha = 1;
+      ctx.fillRect(bx, floor - lvl, bw, lvl);
+      ctx.globalAlpha = 1;
+      ctx.restore();
+      ctx.strokeStyle = mode === 'leak' ? 'rgba(255,255,255,0.22)' : 'rgba(61,220,151,0.85)';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.roundRect(bx, bt, bw, H, 12);
+      ctx.stroke();
+      if (ready) {
+        ctx.fillStyle = '#fff';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.font = `800 ${w < 600 ? 11 : 15}px system-ui, sans-serif`;
+        ctx.fillText(`${Math.round(bookedShare * 100)}%`, bx + bw / 2, Math.min(floor - 12, Math.max(bt + 14, floor - lvl - 12)));
+        ctx.font = `700 ${w < 600 ? 8 : 10}px system-ui, sans-serif`;
+        ctx.fillStyle = 'rgba(255,255,255,0.6)';
+        ctx.fillText('BOOKED', bx + bw / 2, bt - 9);
+      }
+
+      // coins
+      for (const q of coins) {
+        if (q.s === 1) coin(q.x, q.y, cr, '#ff5a5a', '#5a0c0c', q.a);
+        else if (q.s === 2) coin(q.x, q.y, cr, '#3ddc97', '#06402a', q.a);
+        else coin(q.x, q.y, cr, '#ffd35a', '#6b4a00', q.a);
+      }
+
+      // floating money labels
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.font = `800 ${w < 600 ? 12 : 16}px system-ui, sans-serif`;
+      for (const f of floats) {
+        ctx.globalAlpha = Math.max(0, 1 - f.t);
+        ctx.fillStyle = f.good ? '#7ff0bf' : '#ff8a8a';
+        ctx.fillText(f.text, f.x, f.y - f.t * 34);
+      }
+      ctx.globalAlpha = 1;
+    };
+
+    const step = (t: number) => {
+      const dt = Math.min(0.05, (t - lastT) / 1000 || 0);
+      lastT = t;
+      wob += dt;
+      const tot = n.lost + n.booked;
+      if (tot >= 3) {
+        const k = Math.min(1, dt * 0.75);
+        dLost += (n.lost / tot - dLost) * k;
+        dBook += (n.booked / tot - dBook) * k;
+      }
+      const rate = (w < 600 ? 5 : 8) * (boost > 0 ? 2.2 : 1);
+      if (boost > 0) {
+        boost -= dt;
+        if (boost <= 0 && mode === 'leak') msg.textContent = msg.dataset.leak || '';
+      }
+      acc += dt * rate;
+      while (acc >= 1) {
+        acc -= 1;
+        coins.push({ x: x0 + cr + 4, y: py + (Math.random() - 0.5) * (th - cr * 2 - 8), vx: 0, vy: 0, s: 0, a: 1, j: 0 });
+      }
+      const speed = (x1 - x0) / 2.2;
+      const floor = h - 12;
+      for (const q of coins) {
+        if (q.s === 0) {
+          q.x += speed * dt;
+          while (q.j < HOLES && q.x >= holes[q.j]) {
+            if (Math.random() < (mode === 'leak' ? LEAK_P : FIXED_P)) {
+              q.s = 1;
+              q.x = holes[q.j];
+              q.y = py + th / 2 + cr;
+              q.vx = (Math.random() - 0.5) * 40;
+              n.in++; // an inquiry is counted once, when it either leaks or books
+              n.lost++;
+              perHole[q.j]++;
+              floats.push({ x: holes[q.j] + 26, y: py + th / 2 + 34, t: 0, text: `−${$(per)}`, good: false });
+              break;
+            }
+            q.j++;
+          }
+          if (q.s === 0 && q.x >= x1 - 2) {
+            q.s = 2;
+            q.vy = 0;
+            n.in++;
+            n.booked++;
+            if (mode === 'fixed' && n.booked % 2 === 0)
+              floats.push({ x: x1 + (w - x1) / 2, y: py - th, t: 0, text: `+${$(per)}`, good: true });
+          }
+        } else if (q.s === 1) {
+          q.vy += 620 * dt;
+          q.y += q.vy * dt;
+          q.x += q.vx * dt;
+          if (q.y > floor - 6) q.a = 0;
+        } else {
+          q.x += speed * 0.5 * dt;
+          q.vy += 520 * dt;
+          q.y += q.vy * dt;
+          if (q.y > floor - 10) q.a = 0;
+        }
+      }
+      coins = coins.filter((q) => q.a > 0.02);
+      floats.forEach((f) => (f.t += dt * 0.9));
+      floats = floats.filter((f) => f.t < 1);
+      paintNumbers();
+      draw();
+      if (visible) raf = requestAnimationFrame(step);
+    };
+
+    const reset = (m: 'leak' | 'fixed') => {
+      mode = m;
+      root.dataset.mode = m;
+      const seed = SEED[m];
+      perHole = [...seed.holes];
+      const lost = perHole.reduce((a, b) => a + b, 0);
+      n = { in: seed.in, lost, booked: seed.in - lost };
+      if (reduce) {
+        dLost = lost / seed.in;
+        dBook = 1 - dLost;
+      }
+      boost = 0;
+      floats = [];
+      paintNumbers();
+    };
+
+    root.querySelectorAll<HTMLButtonElement>('[data-act]').forEach((b) =>
+      b.addEventListener('click', () => {
+        const a = b.dataset.act;
+        if (a === 'more') {
+          boost = 6;
+          msg.textContent = mode === 'leak' ? msg.dataset.more || '' : msg.dataset.fixed || '';
+        } else if (a === 'fix') {
+          reset('fixed');
+          msg.textContent = msg.dataset.fixed || '';
+        } else {
+          reset('leak');
+          coins = [];
+          msg.textContent = msg.dataset.leak || '';
+        }
+        track('pipe_action', { action: a });
+        if (reduce) draw();
+      }),
+    );
+
+    // the example can be changed right here; the calculator below stays in step
+    root.querySelectorAll<HTMLButtonElement>('[data-ms]').forEach((b) =>
+      b.addEventListener('click', () =>
+        window.dispatchEvent(new CustomEvent('cx:math-step', { detail: { kind: b.dataset.ms, d: Number(b.dataset.d) } })),
+      ),
+    );
+
+    // stay in step with the calculator
+    window.addEventListener('cx:math', (e) => {
+      const d = (e as CustomEvent<{ value: number; oneIn: number }>).detail;
+      value = d.value;
+      oneIn = d.oneIn;
+      per = value / oneIn;
+      paintNumbers();
+    });
+
+    size();
+    reset('leak');
+    draw();
+    window.addEventListener('resize', () => {
+      size();
+      draw();
+    });
+    if (!reduce) {
+      new IntersectionObserver(
+        ([e]) => {
+          visible = e.isIntersecting;
+          cancelAnimationFrame(raf);
+          if (visible) {
+            lastT = performance.now();
+            raf = requestAnimationFrame(step);
+          }
+        },
+        { threshold: 0.15 },
+      ).observe(root);
+    }
+  }
+</script>
+
+<style>
+  .pipe {
+    background:
+      radial-gradient(60% 40% at 0% 55%, rgba(47, 107, 255, 0.12), transparent 70%),
+      var(--night-2);
+    overflow: hidden;
+  }
+  .head {
+    display: grid;
+    gap: var(--s-5);
+    margin-bottom: clamp(2rem, 1.5rem + 2.5vw, 4rem);
+  }
+  .pos {
+    display: grid;
+    gap: 12px;
+  }
+  .nots {
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .nots li {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--fog);
+    text-decoration: line-through;
+    text-decoration-color: rgba(255, 90, 90, 0.7);
+  }
+  .nots span {
+    color: #ff6b6b;
+    display: inline-block;
+  }
+  .is {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--f-head);
+    font-weight: 700;
+    font-size: clamp(1.2rem, 1rem + 1vw, 1.9rem);
+    letter-spacing: -0.035em;
+    line-height: 1.2;
+  }
+  .is span {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: var(--mint);
+    color: #04140c;
+    font-size: 1rem;
+  }
+
+  .rig {
+    padding: clamp(1rem, 0.7rem + 1.6vw, 2.25rem);
+    border-radius: 28px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.015));
+    display: grid;
+    gap: var(--s-4);
+  }
+  .money {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr) minmax(0, 1fr);
+    gap: 10px;
+  }
+  .m {
+    display: grid;
+    gap: 2px;
+    padding: 14px 18px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid transparent;
+  }
+  .m span {
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--fog);
+  }
+  .m b {
+    font-family: var(--f-head);
+    font-size: clamp(1.6rem, 1.1rem + 2.2vw, 3.2rem);
+    letter-spacing: -0.05em;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+  .m-lost {
+    background: rgba(255, 70, 70, 0.12);
+    border-color: rgba(255, 90, 90, 0.5);
+  }
+  .m-lost b {
+    color: #ff4040;
+  }
+  .m-book b {
+    color: var(--mint);
+  }
+  .rig[data-mode='leak'] .m-lost {
+    box-shadow: 0 0 40px -10px rgba(255, 70, 70, 0.8);
+  }
+  .rig[data-mode='leak'] .m-lost b {
+    font-size: clamp(2rem, 1.2rem + 3vw, 4rem);
+  }
+  .rig[data-mode='fixed'] .m-lost {
+    opacity: 0.4;
+  }
+  .rig[data-mode='fixed'] .m-book {
+    background: rgba(61, 220, 151, 0.12);
+    border-color: rgba(61, 220, 151, 0.55);
+  }
+  .ex {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px 8px;
+    font-size: 0.9375rem;
+    color: var(--fog);
+  }
+  .ex .per {
+    color: #ffd35a;
+    font-family: var(--f-head);
+    font-size: 1.15em;
+  }
+  .mini {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    padding: 2px;
+    border-radius: 999px;
+    background: #fff;
+    color: var(--ink);
+  }
+  .mini b {
+    min-width: 2.4em;
+    padding-inline: 4px;
+    text-align: center;
+    font-weight: 800;
+    font-variant-numeric: tabular-nums;
+  }
+  /* a 44px tap area without changing how the control looks */
+  .mini button {
+    position: relative;
+  }
+  .mini button::after {
+    content: '';
+    position: absolute;
+    inset: -7px;
+  }
+  .mini button {
+    width: 30px;
+    height: 30px;
+    border: 0;
+    border-radius: 50%;
+    background: var(--ink);
+    color: #fff;
+    font: inherit;
+    font-weight: 700;
+    line-height: 1;
+    cursor: pointer;
+  }
+  .mini button:hover {
+    background: var(--hot);
+  }
+
+  .stage {
+    position: relative;
+    padding-bottom: 46px;
+  }
+  canvas {
+    display: block;
+    width: 100%;
+    height: clamp(240px, 28vw, 340px);
+  }
+  .labels {
+    position: absolute;
+    left: var(--x0, 30px);
+    width: var(--span, 80%);
+    bottom: 0;
+    margin: 0;
+    height: 40px;
+  }
+  .labels li {
+    position: absolute;
+    left: calc((var(--i) + 1) / 6 * 100%);
+    top: 0;
+    transform: translateX(-50%);
+    display: grid;
+    justify-items: center;
+    gap: 1px;
+    white-space: nowrap;
+  }
+  .labels span {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--fog);
+  }
+  .labels em {
+    font-style: normal;
+    font-family: var(--f-head);
+    font-weight: 800;
+    font-size: 1rem;
+    letter-spacing: -0.03em;
+    color: #ff4040;
+    font-variant-numeric: tabular-nums;
+  }
+  .rig[data-mode='fixed'] .labels em {
+    color: #ffb3b3;
+    opacity: 0.8;
+  }
+
+  .ctrl {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--s-4);
+    flex-wrap: wrap;
+  }
+  .msg {
+    flex: 1 1 320px;
+    font-family: var(--f-head);
+    font-weight: 600;
+    font-size: clamp(1.05rem, 0.95rem + 0.6vw, 1.45rem);
+    letter-spacing: -0.03em;
+    line-height: 1.3;
+  }
+  .rig[data-mode='fixed'] .msg {
+    color: #9fe8c8;
+  }
+  .btns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .b {
+    min-height: 50px;
+    padding: 0 22px;
+    border-radius: 999px;
+    border: 1.5px solid rgba(255, 255, 255, 0.24);
+    background: transparent;
+    color: #fff;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    transition:
+      background-color 160ms,
+      border-color 160ms,
+      transform 160ms;
+  }
+  .b:hover {
+    border-color: #fff;
+  }
+  .b:active {
+    transform: scale(0.97);
+  }
+  .b-fix {
+    background: var(--mint);
+    border-color: var(--mint);
+    color: #04140c;
+    animation: fixPulse 1.8s ease-out infinite;
+  }
+  @keyframes fixPulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba(61, 220, 151, 0.7);
+    }
+    70%,
+    100% {
+      box-shadow: 0 0 0 16px rgba(61, 220, 151, 0);
+    }
+  }
+  .rig[data-mode='fixed'] .b-fix {
+    display: none;
+  }
+  .rig[data-mode='leak'] .b-reset {
+    display: none;
+  }
+  .note {
+    font-size: 0.75rem;
+    color: var(--fog-2);
+  }
+
+  @media (max-width: 700px) {
+    .money {
+      grid-template-columns: 1fr;
+    }
+    .m {
+      grid-template-columns: 1fr auto;
+      align-items: center;
+    }
+    .labels span {
+      display: none;
+    }
+    .labels em {
+      font-size: 0.6875rem;
+    }
+    .stage {
+      padding-bottom: 24px;
+    }
+    .labels {
+      height: 20px;
+    }
+    .btns,
+    .b {
+      width: 100%;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .b-fix {
+      animation: none;
+    }
+  }
+</style>

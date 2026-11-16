@@ -1,0 +1,920 @@
+---
+/**
+ * The animated example inside each door page's second section. Every page gets its own
+ * visual, matched to its offer (door.viz). All content is fictional and the frame is
+ * labelled as an example by DoorProblem.
+ *
+ * How it animates: every element with data-msg="<n>" is revealed in number order by the
+ * script in DoorProblem (it adds .show). Elements with .keep stay visible and only change
+ * state when shown. [data-count] numbers count up when their element is shown.
+ */
+import type { Door } from '../../content/automotiveDoors';
+import { featuredPlan, offerV9 as cfg } from '../../config/offerV9';
+
+interface Props {
+  door: Door;
+}
+const { door } = Astro.props;
+const v = door.viz;
+const t = door.fix.thread;
+const price = featuredPlan.monthly;
+// seconds to the first reply, as measured on a live system; null until there is a real number
+const measured = cfg.measured.leadReplySeconds;
+---
+
+<div class:list={['viz', `v-${v}`]}>
+  {/* 1. missed calls: the phone rings, the text goes out, a job card lands */}
+  {
+    v === 'call' && (
+      <>
+        <div class="phone-ring keep" data-msg="0">
+          <span class="ring-ic" aria-hidden="true">
+            <i />
+            <i />
+            <b />
+          </span>
+          <p>
+            <b>Incoming call</b>
+            <small>10:15 AM · you are mid-polish</small>
+          </p>
+        </div>
+        <p class="bub sys warn" data-msg="1">Missed call</p>
+        <p class="bub us" data-msg="2">Sorry we missed you. This is Example Shop. What can we help with?</p>
+        <p class="bub them" data-msg="3">Looking for a ceramic coating quote on my truck.</p>
+        <div class="jcard" data-msg="4">
+          <b>New job card</b>
+          <span>Example Customer · truck</span>
+          <span>Asked for: ceramic coating quote</span>
+        </div>
+      </>
+    )
+  }
+
+  {/* 2. slow reply: the wait today against the reply with the system, on one scale */}
+  {
+    v === 'timer' && (
+      <>
+        <div class="race">
+          <p class="r-l">
+            <span>Today, you reply after</span>
+            <b>8 h 35 min</b>
+          </p>
+          <div class="bar"><i class="fill red keep" style="--w:100%" data-msg="0" /></div>
+          <p class="r-l">
+            <span>With the system, a reply goes out in</span>
+            {/* a measured number is shown only once one is set in config; until then, the system's own promise */}
+            {measured ? (
+              <b>
+                <span data-count={measured}>0</span> sec
+              </b>
+            ) : (
+              <b>under 60 sec</b>
+            )}
+          </p>
+          <div class="bar"><i class="fill lime keep" style="--w:0.200%" data-msg="1" /></div>
+        </div>
+        <p class="bub sys" data-msg="2">New Facebook lead · 12:05 PM</p>
+        <p class="bub us" data-msg="3">Thanks for reaching out to Example Shop. What vehicle is the tint for?</p>
+        <p class="bub sys" data-msg="4">Call now: this lead is waiting.</p>
+      </>
+    )
+  }
+
+  {/* 3. AI receptionist: it is 11 PM and the front desk is talking */}
+  {
+    v === 'night' && (
+      <>
+        <div class="night keep" data-msg="0">
+          <p class="clock">11:02 PM</p>
+          <span class="wave" aria-hidden="true">
+            <i />
+            <i />
+            <i />
+            <i />
+            <i />
+            <i />
+            <i />
+          </span>
+          <p class="n-l">AI front desk · answering</p>
+        </div>
+        {t.map((m, i) => <p class:list={['bub', m.from]} data-msg={i + 1}>{m.t}</p>)}
+      </>
+    )
+  }
+
+  {/* 4. AI employee: a shift board that fills in on its own */}
+  {
+    v === 'board' && (
+      <ul role="list" class="board">
+        <li data-msg="0">
+          <span>The Receptionist</span>
+          <em>Missed calls texted back</em>
+          <b data-count="3">0</b>
+        </li>
+        <li data-msg="1">
+          <span>The Service Advisor</span>
+          <em>Quotes followed up</em>
+          <b data-count="4">0</b>
+        </li>
+        <li data-msg="2">
+          <span>The Service Advisor</span>
+          <em>Bookings confirmed</em>
+          <b data-count="5">0</b>
+        </li>
+        <li data-msg="3">
+          <span>The Shop Manager</span>
+          <em>Tomorrow’s run sheet sent</em>
+          <b>6 PM</b>
+        </li>
+        <li class="tot" data-msg="4">
+          <em>Hours you spent on it</em>
+          <b>0</b>
+        </li>
+      </ul>
+    )
+  }
+
+  {/* 5. quote follow-up: check-ins until the customer answers */}
+  {
+    v === 'followup' && (
+      <ol role="list" class="steps">
+        <li data-msg="0">
+          <i />
+          Quote sent<span>Day 0</span>
+        </li>
+        <li data-msg="1">
+          <i />
+          Friendly check-in<span>Day 2</span>
+        </li>
+        <li data-msg="2">
+          <i />
+          Second check-in<span>Day 4</span>
+        </li>
+        <li class="win" data-msg="3">
+          <i />
+          “Can I come in Friday?”<span>Replied</span>
+        </li>
+        <li class="win" data-msg="4">
+          <i />
+          Follow-up stopped. Job booked.<span>Friday</span>
+        </li>
+      </ol>
+    )
+  }
+
+  {/* 6. no-shows: the slot goes from booked to confirmed */}
+  {
+    v === 'calendar' && (
+      <>
+        <div class="week" aria-hidden="true">
+          <span>
+            Mon
+            <i class="slot keep" data-msg="3">
+              <b>8:00</b> Full detail
+            </i>
+          </span>
+          <span>Tue</span>
+          <span>Wed</span>
+          <span>Thu</span>
+          <span>Fri</span>
+        </div>
+        <p class="bub us" data-msg="0">You are booked for Monday 8:00 AM at Example Shop.</p>
+        <p class="bub us" data-msg="1">See you tomorrow at 8:00. Reply YES to confirm or MOVE to change.</p>
+        <p class="bub them" data-msg="2">YES</p>
+        <p class="bub sys" data-msg="4">Confirmed. The bay is not empty on Monday.</p>
+      </>
+    )
+  }
+
+  {/* 7. reviews: every customer is asked, not just the ones you remember */}
+  {
+    v === 'reviews' && (
+      <>
+        <div class="race">
+          <p class="r-l">
+            <span>Customers asked for a review this week</span>
+            <b>
+              <span data-count="5">0</span> of 5
+            </b>
+          </p>
+          <div class="bar"><i class="fill lime keep" style="--w:100%" data-msg="0" /></div>
+        </div>
+        <p class="bub us" data-msg="1">Thanks for coming in today. How did we do? Tap to leave a review.</p>
+        <p class="bub sys" data-msg="2">Gentle reminder sent · Day 3</p>
+        <p class="bub them" data-msg="3">Done. Left you a review.</p>
+      </>
+    )
+  }
+
+  {/* 8. zero-hire front office: the hours a hire covers against the hours the front desk covers */}
+  {
+    v === 'shift' && (
+      <>
+        <div class="race">
+          <p class="r-l">
+            <span>A hire covers</span>
+            <b>9 to 5</b>
+          </p>
+          <div class="bar day">
+            <i class="fill red keep" style="--w:33.300%;--x:37.500%" data-msg="0" />
+          </div>
+          <p class="r-l">
+            <span>Your front desk covers</span>
+            <b>
+              <span data-count="24">0</span> hours
+            </b>
+          </p>
+          <div class="bar day">
+            <i class="fill lime keep" style="--w:100%" data-msg="1" />
+          </div>
+          <p class="hours" aria-hidden="true">
+            <span>12 AM</span>
+            <span>6 AM</span>
+            <span>12 PM</span>
+            <span>6 PM</span>
+            <span>12 AM</span>
+          </p>
+        </div>
+        <ol role="list" class="feed">
+          <li data-msg="2">
+            <span>7:40 AM</span>Missed call texted back
+          </li>
+          <li data-msg="3">
+            <span>1:05 PM</span>Facebook lead answered
+          </li>
+          <li data-msg="4">
+            <span>6:00 PM</span>Tomorrow’s bookings confirmed
+          </li>
+          <li class="late" data-msg="5">
+            <span>11:02 PM</span>DM answered while you sleep
+          </li>
+        </ol>
+      </>
+    )
+  }
+
+  {/* 9. ad results: from leads to paid jobs */}
+  {
+    v === 'funnel' && (
+      <div class="race">
+        <p class="r-l">
+          <span>Ad leads</span>
+          <b data-count="18">0</b>
+        </p>
+        <div class="bar"><i class="fill ink keep" style="--w:100%" data-msg="0" /></div>
+        <p class="r-l">
+          <span>Booked</span>
+          <b data-count="7">0</b>
+        </p>
+        <div class="bar"><i class="fill ink keep" style="--w:38.900%" data-msg="1" /></div>
+        <p class="r-l">
+          <span>Paid jobs</span>
+          <b data-count="5">0</b>
+        </p>
+        <div class="bar"><i class="fill lime keep" style="--w:27.800%" data-msg="2" /></div>
+        <p class="bub sys" data-msg="3">Results sent back to Meta</p>
+        <p class="tiny" data-msg="4">Example numbers, to show the report. Not results.</p>
+      </div>
+    )
+  }
+
+  {/* 10. repeat customers: six months later, the invitation goes out */}
+  {
+    v === 'months' && (
+      <>
+        <div class="months" aria-hidden="true">
+          <div class="m-track">
+            <i class="m-fill keep" data-msg="0" />
+          </div>
+          <p class="m-l">
+            <span>April · full detail</span>
+            <span>October · 6 months later</span>
+          </p>
+        </div>
+        <p class="bub us" data-msg="1">Hi, it has been 6 months since your detail at Example Shop. Ready for a refresh?</p>
+        <p class="bub them" data-msg="2">Yes. What do you have next week?</p>
+        <p class="bub sys" data-msg="3">Booked from a win-back message</p>
+      </>
+    )
+  }
+
+  {/* 11. run sheet: tomorrow's jobs arrive on their own */}
+  {
+    v === 'sheet' && (
+      <>
+        <p class="sheet-h keep" data-msg="0">
+          <b>Tomorrow’s run sheet</b>
+          <span>6:00 PM · sent on its own</span>
+        </p>
+        <ol role="list" class="jobs">
+          <li data-msg="1">
+            <span>8 AM</span>
+            <p>
+              <em class="ty-work">Work on</em>Example Customer A<small>PPF front end</small>
+            </p>
+          </li>
+          <li data-msg="2">
+            <span>9 AM</span>
+            <p>
+              <em class="ty-redo">Redo</em>Example Customer B<small>Rear windows</small>
+            </p>
+          </li>
+          <li data-msg="3">
+            <span>12 PM</span>
+            <p>
+              <em class="ty-pick">Pickup</em>Example Customer C<small>5-year coating</small>
+            </p>
+          </li>
+        </ol>
+        <p class="bub sys" data-msg="4">7:30 AM · your brief for the day is ready</p>
+      </>
+    )
+  }
+
+  {/* 12. talking website: a page that answers out loud */}
+  {
+    v === 'site' && (
+      <>
+        <div class="browser keep" data-msg="0">
+          <p class="b-bar" aria-hidden="true">
+            <i />
+            <i />
+            <i />
+            <span>yourshop.com</span>
+          </p>
+          <div class="b-body">
+            <span class="orb" aria-hidden="true" />
+            <span class="wave" aria-hidden="true">
+              <i />
+              <i />
+              <i />
+              <i />
+              <i />
+              <i />
+              <i />
+            </span>
+            <p class="n-l">Your website · talking</p>
+          </div>
+        </div>
+        {t.map((m, i) => <p class:list={['bub', m.from]} data-msg={i + 1}>{m.t}</p>)}
+      </>
+    )
+  }
+</div>
+
+<style>
+  .viz {
+    display: grid;
+    gap: 8px;
+    align-content: start;
+    min-height: 15rem;
+  }
+  /* reveal: hidden until its turn, unless it is a .keep element */
+  .viz [data-msg] {
+    transition:
+      opacity 350ms var(--ease),
+      transform 350ms var(--ease);
+  }
+  :global(.sim-ready) .viz [data-msg]:not(.show):not(.keep) {
+    opacity: 0;
+    transform: translateY(10px) scale(0.97);
+  }
+
+  /* ---------- bubbles ---------- */
+  .bub {
+    max-width: 88%;
+    padding: 11px 15px;
+    border-radius: 18px;
+    font-size: 0.9375rem;
+    line-height: 1.4;
+  }
+  .bub.them {
+    justify-self: end;
+    background: #1f5fd6;
+    color: #fff;
+    border-bottom-right-radius: 5px;
+    font-weight: 600;
+  }
+  .bub.us {
+    justify-self: start;
+    background: #26323e;
+    color: #eef3f7;
+    border-bottom-left-radius: 5px;
+  }
+  .bub.sys {
+    justify-self: center;
+    max-width: 100%;
+    padding: 5px 12px;
+    border-radius: 999px;
+    background: rgba(61, 220, 151, 0.14);
+    border: 1px solid rgba(61, 220, 151, 0.45);
+    color: #b7f1d8;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-align: center;
+  }
+  .bub.sys.warn {
+    background: rgba(255, 90, 60, 0.14);
+    border-color: rgba(255, 143, 122, 0.5);
+    color: #ffb3a4;
+  }
+  .tiny {
+    font-size: 0.6875rem;
+    color: var(--fog-2);
+  }
+
+  /* ---------- 1. ringing phone + job card ---------- */
+  .phone-ring {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 14px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.05);
+  }
+  .phone-ring p {
+    display: grid;
+    gap: 1px;
+  }
+  .phone-ring small {
+    font-size: 0.75rem;
+    color: var(--fog);
+  }
+  .ring-ic {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    flex: none;
+    display: grid;
+    place-items: center;
+  }
+  .ring-ic b {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #ff8f7a;
+  }
+  .ring-ic i {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 143, 122, 0.7);
+    opacity: 0;
+  }
+  .phone-ring.show .ring-ic i {
+    animation: ringOut 1.3s ease-out 3;
+  }
+  .phone-ring.show .ring-ic i + i {
+    animation-delay: 0.45s;
+  }
+  @keyframes ringOut {
+    from {
+      transform: scale(0.5);
+      opacity: 0.9;
+    }
+    to {
+      transform: scale(1.5);
+      opacity: 0;
+    }
+  }
+  .jcard {
+    display: grid;
+    gap: 2px;
+    padding: 12px 14px;
+    border-radius: 16px;
+    background: #d8ff3e;
+    color: #0b1016;
+    font-size: 0.875rem;
+  }
+  .jcard b {
+    font-family: var(--f-head);
+    font-size: 1rem;
+  }
+
+  /* ---------- 2, 7, 8, 9. bars on one scale ---------- */
+  .race {
+    display: grid;
+    gap: 6px;
+    margin-bottom: 6px;
+  }
+  .r-l {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 10px;
+    font-size: 0.8125rem;
+    color: var(--fog);
+  }
+  .r-l b {
+    font-family: var(--f-head);
+    font-size: 1.05rem;
+    color: #fff;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+  .bar {
+    height: 14px;
+    margin-bottom: 6px;
+    border-radius: 999px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.08);
+  }
+  .fill {
+    display: block;
+    height: 100%;
+    width: var(--w);
+    border-radius: 999px;
+    transition: width 900ms var(--ease) !important;
+  }
+  :global(.sim-ready) .fill:not(.show) {
+    width: 0;
+  }
+  /* a bar that starts part-way through the day */
+  .bar.day .fill {
+    margin-left: var(--x, 0%);
+  }
+  .hours {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.625rem;
+    font-weight: 700;
+    color: var(--fog-2);
+  }
+  .feed {
+    margin: 0;
+    display: grid;
+    gap: 6px;
+  }
+  .feed li {
+    display: grid;
+    grid-template-columns: 4.6rem 1fr;
+    gap: 10px;
+    align-items: center;
+    padding: 9px 12px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.06);
+    font-weight: 700;
+  }
+  .feed span {
+    font-family: var(--f-head);
+    font-size: 0.8125rem;
+    color: #d8ff3e;
+  }
+  .feed .late {
+    background: rgba(216, 255, 62, 0.1);
+    border: 1px solid rgba(216, 255, 62, 0.5);
+  }
+  .fill.red {
+    background: linear-gradient(90deg, #f0705f, #c93a2c);
+  }
+  .fill.lime {
+    min-width: 8px;
+    background: #d8ff3e;
+  }
+  .fill.ink {
+    background: #7fb0ff;
+  }
+  .ticks {
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .ticks li {
+    padding: 6px 12px 6px 10px;
+    border-radius: 999px;
+    background: rgba(216, 255, 62, 0.1);
+    border: 1px solid rgba(216, 255, 62, 0.5);
+    color: #e6ff8a;
+    font-size: 0.8125rem;
+    font-weight: 700;
+  }
+  .ticks li::before {
+    content: '✓ ';
+  }
+
+  /* ---------- 3, 12. voice wave ---------- */
+  .night,
+  .b-body {
+    display: grid;
+    justify-items: center;
+    gap: 6px;
+    padding: 14px;
+    border-radius: 18px;
+    background: radial-gradient(80% 100% at 50% 0%, rgba(47, 107, 255, 0.25), rgba(255, 255, 255, 0.04));
+  }
+  .clock {
+    font-family: var(--f-head);
+    font-weight: 800;
+    font-size: 1.8rem;
+    letter-spacing: -0.04em;
+  }
+  .n-l {
+    font-size: 0.6875rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--fog);
+  }
+  .wave {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    height: 30px;
+  }
+  .wave i {
+    width: 4px;
+    height: 8px;
+    border-radius: 2px;
+    background: #d8ff3e;
+  }
+  .show .wave i,
+  .show.keep .wave i {
+    animation: wave 0.9s ease-in-out infinite;
+  }
+  .wave i:nth-child(2) {
+    animation-delay: 0.1s;
+  }
+  .wave i:nth-child(3) {
+    animation-delay: 0.25s;
+  }
+  .wave i:nth-child(4) {
+    animation-delay: 0.05s;
+  }
+  .wave i:nth-child(5) {
+    animation-delay: 0.3s;
+  }
+  .wave i:nth-child(6) {
+    animation-delay: 0.15s;
+  }
+  .wave i:nth-child(7) {
+    animation-delay: 0.2s;
+  }
+  @keyframes wave {
+    50% {
+      height: 28px;
+    }
+  }
+  .browser {
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+  }
+  .b-bar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px;
+    background: rgba(255, 255, 255, 0.08);
+    font-size: 0.6875rem;
+    color: var(--fog);
+  }
+  .b-bar i {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+  }
+  .b-bar span {
+    margin-left: 8px;
+  }
+  .b-body {
+    border-radius: 0;
+  }
+  .orb {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 32% 28%, #ffd0b3, var(--hot) 60%, #a82c05);
+    box-shadow: 0 0 26px 2px rgba(255, 90, 31, 0.6);
+  }
+
+  /* ---------- 4. shift board ---------- */
+  .board {
+    margin: 0;
+    display: grid;
+    gap: 6px;
+  }
+  .board li {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0 12px;
+    align-items: center;
+    padding: 10px 14px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.06);
+  }
+  .board span {
+    grid-column: 1;
+    font-size: 0.625rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #d8ff3e;
+  }
+  .board em {
+    grid-column: 1;
+    font-style: normal;
+    font-weight: 700;
+  }
+  .board b {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    font-family: var(--f-head);
+    font-weight: 800;
+    font-size: 1.6rem;
+    letter-spacing: -0.04em;
+    font-variant-numeric: tabular-nums;
+  }
+  .board .tot {
+    background: #d8ff3e;
+    color: #0b1016;
+  }
+  .board .tot b {
+    grid-row: 1;
+  }
+
+  /* ---------- 5. follow-up steps ---------- */
+  .steps {
+    margin: 0;
+    display: grid;
+    gap: 8px;
+  }
+  .steps li {
+    display: grid;
+    grid-template-columns: 14px 1fr auto;
+    gap: 12px;
+    align-items: center;
+    padding: 11px 13px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.06);
+    font-weight: 700;
+  }
+  .steps i {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #7fb0ff;
+  }
+  .steps span {
+    font-size: 0.6875rem;
+    color: #8fa0af;
+  }
+  .steps .win {
+    background: rgba(61, 220, 151, 0.14);
+    border: 1px solid rgba(61, 220, 151, 0.45);
+  }
+  .steps .win i {
+    background: var(--mint);
+  }
+  .steps .win span {
+    color: #9fe8c8;
+  }
+
+  /* ---------- 6. week with one slot ---------- */
+  .week {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 6px;
+    margin-bottom: 6px;
+  }
+  .week > span {
+    display: grid;
+    gap: 6px;
+    align-content: start;
+    min-height: 74px;
+    padding: 8px 6px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    font-size: 0.6875rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--fog);
+  }
+  .slot {
+    display: grid;
+    padding: 6px;
+    border-radius: 8px;
+    border: 1px dashed rgba(255, 255, 255, 0.4);
+    font-style: normal;
+    font-size: 0.625rem;
+    letter-spacing: 0;
+    text-transform: none;
+    color: #fff;
+    transition:
+      background-color 400ms,
+      border-color 400ms,
+      color 400ms !important;
+  }
+  .slot.show {
+    border: 1px solid #d8ff3e;
+    background: #d8ff3e;
+    color: #0b1016;
+  }
+
+  /* ---------- 10. six months ---------- */
+  .months {
+    display: grid;
+    gap: 6px;
+    margin-bottom: 6px;
+  }
+  .m-track {
+    height: 10px;
+    border-radius: 999px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.08);
+  }
+  .m-fill {
+    display: block;
+    height: 100%;
+    width: 100%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #7fb0ff, #d8ff3e);
+    transition: width 1400ms var(--ease) !important;
+  }
+  :global(.sim-ready) .m-fill:not(.show) {
+    width: 4%;
+  }
+  .m-l {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--fog);
+  }
+
+  /* ---------- 11. run sheet ---------- */
+  .sheet-h {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+  .sheet-h b {
+    font-family: var(--f-head);
+  }
+  .sheet-h span {
+    font-size: 0.75rem;
+    color: #8fa0af;
+  }
+  .jobs {
+    margin: 0;
+    display: grid;
+    gap: 6px;
+  }
+  .jobs li {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 14px;
+    background: #17212b;
+  }
+  .jobs li > span {
+    font-family: var(--f-head);
+    font-weight: 800;
+    color: #d8ff3e;
+  }
+  .jobs p {
+    font-size: 0.875rem;
+    font-weight: 700;
+  }
+  .jobs small {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #8fa0af;
+  }
+  .jobs em {
+    margin-right: 8px;
+    padding: 1px 8px;
+    border-radius: 999px;
+    font-style: normal;
+    font-size: 0.625rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .ty-work {
+    background: rgba(61, 220, 151, 0.2);
+    color: #b7f1d8;
+  }
+  .ty-redo {
+    background: rgba(255, 196, 76, 0.2);
+    color: #ffd98a;
+  }
+  .ty-pick {
+    background: rgba(47, 123, 255, 0.25);
+    color: #b9d2ff;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .wave i,
+    .ring-ic i {
+      animation: none !important;
+    }
+  }
+</style>

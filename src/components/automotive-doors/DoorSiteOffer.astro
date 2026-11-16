@@ -1,0 +1,145 @@
+---
+/**
+ * How the website is paid for (talking-website page only).
+ * Same offer as everywhere else: the website is a one-time add-on on Monthly and free on
+ * Annual; the monthly price hosts it and runs the whole front office. All numbers from config.
+ */
+import { siteOffer as s } from '../../content/automotiveDoors';
+import { offerV9 as cfg, featuredPlan as plan } from '../../config/offerV9';
+
+const fmt = (n: number) => '$' + n.toLocaleString('en-US');
+const site = cfg.website.addOn;
+const firstYearMonthly = plan.monthly * 12 + plan.launchKit + site;
+const saved = firstYearMonthly - plan.annual;
+const fill = (t: string) =>
+  t
+    .replace('{site}', fmt(site))
+    .replace('{monthly}', fmt(plan.monthly))
+    .replace('{annual}', fmt(plan.annual))
+    .replace('{kit}', fmt(plan.launchKit))
+    .replace('{saved}', fmt(saved));
+---
+
+<section class="scene so" aria-labelledby="so-title">
+  <div class="container">
+    <header class="head">
+      <p class="kicker" data-reveal>{s.kicker}</p>
+      <h2 id="so-title" class="t-lg" data-reveal>
+        {s.title[0]} <span class="hot">{s.title[1]}</span>
+      </h2>
+    </header>
+
+    <ol role="list" class="tiles">
+      {
+        s.tiles.map((t, i) => (
+          <li class:list={[t.best && 'best']}>
+            <span class="n">{i + 1}</span>
+            <p class="t-k">{t.k}</p>
+            <p class="t-v">
+              <b>{fill(t.v)}</b>
+              <span>{t.per}</span>
+            </p>
+            <p class="t-d">{fill(t.d)}</p>
+          </li>
+        ))
+      }
+    </ol>
+
+    <p class="sum">{fill(s.sum)}</p>
+    <a href="#pricing" class="go" data-track="cta_click" data-track-location="door_site_offer">
+      {s.cta}
+      <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11M11 5.500 15.500 10 11 14.500" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+    </a>
+  </div>
+</section>
+
+<style>
+  .so {
+    overflow: hidden;
+    background:
+      radial-gradient(50% 60% at 85% 30%, rgba(216, 255, 62, 0.08), transparent 70%),
+      var(--night);
+  }
+  .head {
+    display: grid;
+    gap: var(--s-4);
+    justify-items: start;
+    margin-bottom: clamp(2rem, 1.5rem + 2vw, 3.5rem);
+  }
+  .tiles {
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--s-4);
+  }
+  .tiles li {
+    display: grid;
+    gap: 8px;
+    align-content: start;
+    padding: clamp(1.25rem, 1rem + 1.2vw, 2rem);
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+  }
+  .tiles .best {
+    border: 2px solid #d8ff3e;
+    background:
+      radial-gradient(80% 60% at 100% 0%, rgba(216, 255, 62, 0.12), transparent 70%),
+      linear-gradient(180deg, #131c25, #0b1118);
+  }
+  .n {
+    display: grid;
+    place-items: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #d8ff3e;
+    color: #0b1016;
+    font-family: var(--f-head);
+    font-weight: 800;
+    font-size: 0.8125rem;
+  }
+  .t-k {
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--fog);
+  }
+  .t-v {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 4px 8px;
+  }
+  .t-v b {
+    font-family: var(--f-head);
+    font-weight: 800;
+    font-size: clamp(2.2rem, 1.6rem + 2.2vw, 3.6rem);
+    letter-spacing: -0.055em;
+    line-height: 1;
+  }
+  .t-v span {
+    font-family: var(--f-head);
+    font-weight: 700;
+    color: var(--fog);
+  }
+  .t-d {
+    line-height: 1.45;
+    color: #cfd9e2;
+  }
+  .sum {
+    margin: var(--s-5) 0;
+    max-width: 70ch;
+    font-family: var(--f-head);
+    font-weight: 700;
+    font-size: clamp(1.1rem, 1rem + 0.6vw, 1.5rem);
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+  }
+  @media (max-width: 900px) {
+    .tiles {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

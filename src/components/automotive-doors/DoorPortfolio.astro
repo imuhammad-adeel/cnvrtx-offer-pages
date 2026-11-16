@@ -1,0 +1,289 @@
+---
+/**
+ * Website portfolio for the talking-website page.
+ * Until real client sites are added in automotiveDoors.ts (portfolio.items[].image / url),
+ * each tile is a drawn example design and is labelled as an example. No real shop is implied.
+ */
+import { portfolio as p } from '../../content/automotiveDoors';
+---
+
+<section class="scene port pearl" aria-labelledby="port-title">
+  <div class="container">
+    <header class="head">
+      <p class="kicker" data-reveal>{p.kicker}</p>
+      <h2 id="port-title" class="t-lg" data-reveal>
+        {p.title[0]} <span class="hot">{p.title[1]}</span>
+      </h2>
+      <p class="lede">{p.lead}</p>
+    </header>
+
+    <ul role="list" class="grid">
+      {
+        p.items.map((it) => (
+          <li>
+            <figure class:list={['site', `t-${it.theme}`]}>
+              <div class="chrome" aria-hidden="true">
+                <i />
+                <i />
+                <i />
+                <span>{it.domain}</span>
+              </div>
+              {it.image ? (
+                <img src={it.image} alt={`${it.name} website`} loading="lazy" />
+              ) : (
+                <div class="page" aria-hidden="true">
+                  <p class="p-k">{it.kind}</p>
+                  <p class="p-h">{it.line}</p>
+                  <p class="p-b">
+                    <span class="p-cta">Book free inspection</span>
+                    <span class="p-talk">
+                      <b />
+                      Talk to us
+                    </span>
+                  </p>
+                  <div class="p-rows">
+                    <i />
+                    <i />
+                    <i />
+                  </div>
+                </div>
+              )}
+              <figcaption>
+                <b>{it.name}</b>
+                <span>{it.kind}</span>
+                {!it.image && <em>{p.exampleTag}</em>}
+                {it.url && (
+                  <a href={it.url} target="_blank" rel="noopener">
+                    Visit
+                  </a>
+                )}
+              </figcaption>
+            </figure>
+          </li>
+        ))
+      }
+    </ul>
+
+    <ul role="list" class="marks">
+      {p.marks.map((m) => <li>{m}</li>)}
+    </ul>
+    <p class="note">{p.note}</p>
+  </div>
+</section>
+
+<style>
+  .port {
+    background: var(--pearl);
+  }
+  .head {
+    display: grid;
+    gap: var(--s-4);
+    justify-items: start;
+    margin-bottom: clamp(2rem, 1.5rem + 2vw, 3.5rem);
+  }
+  .grid {
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--s-4);
+  }
+  .site {
+    margin: 0;
+    border-radius: 22px;
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid rgba(11, 16, 22, 0.1);
+    box-shadow: 0 40px 80px -45px rgba(11, 16, 22, 0.55);
+    color: var(--ink);
+    transition: transform 300ms var(--ease);
+  }
+  .site:hover {
+    transform: translateY(-6px);
+  }
+  .chrome {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 14px;
+    background: #e9e6df;
+    font-size: 0.6875rem;
+    color: var(--ink-2);
+  }
+  .chrome i {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: rgba(11, 16, 22, 0.22);
+  }
+  .chrome span {
+    margin-left: 8px;
+    padding: 2px 10px;
+    border-radius: 999px;
+    background: #fff;
+  }
+  img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    object-position: top;
+  }
+  /* a drawn example page, in three looks */
+  .page {
+    aspect-ratio: 4 / 3;
+    display: grid;
+    align-content: center;
+    gap: 10px;
+    padding: 8% 9%;
+    background: var(--bg);
+    color: var(--fg);
+  }
+  .t-night {
+    --bg: linear-gradient(150deg, #0b1016, #1b2a3a);
+    --fg: #fff;
+    --ac: #ff5a1f;
+  }
+  .t-pearl {
+    --bg: linear-gradient(150deg, #f6f4ef, #dfd8c9);
+    --fg: #0b1016;
+    --ac: #1f5fd6;
+  }
+  .t-signal {
+    --bg: linear-gradient(150deg, #2a0f08, #8a2a0c);
+    --fg: #fff;
+    --ac: #d8ff3e;
+  }
+  .p-k {
+    font-size: 0.5625rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    opacity: 0.7;
+  }
+  .p-h {
+    font-family: var(--f-head);
+    font-weight: 800;
+    font-size: clamp(1.05rem, 0.8rem + 1vw, 1.6rem);
+    letter-spacing: -0.04em;
+    line-height: 1.05;
+  }
+  .p-b {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.625rem;
+    font-weight: 800;
+  }
+  .p-cta {
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: var(--ac);
+    color: #0b1016;
+  }
+  .t-night .p-cta,
+  .t-pearl .p-cta {
+    color: #fff;
+  }
+  .p-talk {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 10px 5px 6px;
+    border-radius: 999px;
+    border: 1px solid currentColor;
+  }
+  .p-talk b {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 32% 28%, #ffd0b3, #ff5a1f 60%, #a82c05);
+    animation: talk 2.4s ease-in-out infinite;
+  }
+  @keyframes talk {
+    50% {
+      transform: scale(1.3);
+    }
+  }
+  .p-rows {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .p-rows i {
+    height: 26px;
+    border-radius: 8px;
+    background: currentColor;
+    opacity: 0.12;
+  }
+  figcaption {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2px 10px;
+    align-items: center;
+    padding: 14px 16px;
+  }
+  figcaption b {
+    font-family: var(--f-head);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  figcaption span {
+    grid-column: 1;
+    font-size: 0.8125rem;
+    color: var(--ink-2);
+  }
+  figcaption em,
+  figcaption a {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    padding: 3px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(11, 16, 22, 0.25);
+    font-style: normal;
+    font-size: 0.625rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    text-decoration: none;
+  }
+  .marks {
+    margin: var(--s-6) 0 0;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .marks li {
+    padding: 14px 16px;
+    border-radius: 16px;
+    border: 1.5px dashed rgba(11, 16, 22, 0.25);
+    font-family: var(--f-head);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+    color: var(--ink);
+  }
+  .note {
+    margin-top: var(--s-4);
+    font-size: 0.75rem;
+    color: var(--ink-2);
+  }
+  @media (max-width: 900px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+    .marks {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .p-talk b {
+      animation: none;
+    }
+    .site:hover {
+      transform: none;
+    }
+  }
+</style>

@@ -1,0 +1,310 @@
+---
+/**
+ * A small car that drives around the page.
+ * Desktop (fine pointer): it trails the cursor, turns to face where it is
+ * going, puffs exhaust when it moves fast, and its headlights light up any
+ * element marked [data-spot] (offers and primary actions).
+ * Scrolling turns it: nose down when the page moves down, nose up when it
+ * moves up.
+ * Touch screens: it rides a thin track on the right edge and shows how far
+ * down the page you are.
+ * Decorative only. Off when the visitor prefers reduced motion.
+ */
+---
+
+<div class="car" data-car8 aria-hidden="true">
+  <i class="beam"></i>
+  <svg viewBox="0 0 96 46" fill="none">
+    <defs>
+      <linearGradient id="c8b" x1="0" y1="0" x2="0" y2="46" gradientUnits="userSpaceOnUse">
+        <stop offset="0" stop-color="#ff8a4d" />
+        <stop offset=".5" stop-color="#ff5a1f" />
+        <stop offset="1" stop-color="#b73a08" />
+      </linearGradient>
+      <linearGradient id="c8g" x1="0" y1="0" x2="96" y2="0" gradientUnits="userSpaceOnUse">
+        <stop offset="0" stop-color="#0c1218" />
+        <stop offset="1" stop-color="#2a3a48" />
+      </linearGradient>
+    </defs>
+    <!-- wheels -->
+    <rect x="16" y="1" width="16" height="6" rx="2.500" fill="#0b0f13" />
+    <rect x="62" y="1" width="16" height="6" rx="2.500" fill="#0b0f13" />
+    <rect x="16" y="39" width="16" height="6" rx="2.500" fill="#0b0f13" />
+    <rect x="62" y="39" width="16" height="6" rx="2.500" fill="#0b0f13" />
+    <!-- body -->
+    <path d="M10 8c2-3 8-4.500 16-4.500h40c12 0 22 3 25 9 1.500 3 2 6.500 2 10.500s-.500 7.500-2 10.500c-3 6-13 9-25 9H26c-8 0-14-1.500-16-4.500C7 34 6 29 6 23s1-11 4-15z" fill="url(#c8b)" stroke="#0b1016" stroke-width="1.500" />
+    <!-- hood crease and highlight -->
+    <path d="M70 9c7 1 14 3.500 16 8M70 37c7-1 14-3.500 16-8" stroke="#ffb48f" stroke-width="1" opacity=".7" />
+    <path d="M30 6h34" stroke="#ffd0b8" stroke-width="1.500" stroke-linecap="round" opacity=".8" />
+    <!-- windshield, roof, rear glass -->
+    <path d="M56 10c6 1 9 4 10 13-1 9-4 12-10 13-1-4-1.500-8.500-1.500-13S55 14 56 10z" fill="url(#c8g)" />
+    <rect x="34" y="10.500" width="20" height="25" rx="5" fill="#e04a12" stroke="#0b1016" stroke-width=".800" />
+    <path d="M32 11.500c-5 1-7 4-7.500 11.500.500 7.500 2.500 10.500 7.500 11.500.800-4 1-7.500 1-11.500s-.200-7.500-1-11.500z" fill="url(#c8g)" />
+    <!-- mirrors -->
+    <path d="M58 6.500l4-3.500 2 1.500-3 3zM58 39.500l4 3.500 2-1.500-3-3z" fill="#b73a08" stroke="#0b1016" stroke-width=".600" />
+    <!-- lights -->
+    <rect x="89" y="9.500" width="4.500" height="7" rx="2" fill="#fff6c9" />
+    <rect x="89" y="29.500" width="4.500" height="7" rx="2" fill="#fff6c9" />
+    <rect x="6.500" y="10" width="3" height="6.500" rx="1.200" fill="#c2170b" />
+    <rect x="6.500" y="29.500" width="3" height="6.500" rx="1.200" fill="#c2170b" />
+  </svg>
+</div>
+<div class="rail" data-rail8 aria-hidden="true"></div>
+
+<script>
+  const car = document.querySelector<HTMLElement>('[data-car8]');
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (car && !reduce) {
+    const fine = window.matchMedia('(pointer: fine)').matches;
+    const body = document.body;
+
+    if (fine) {
+      // ---------- desktop: trail the cursor ----------
+      let tx = window.innerWidth * 0.5;
+      let ty = window.innerHeight * 0.6;
+      let x = tx;
+      let y = ty;
+      let ang = 0;
+      let lastScroll = window.scrollY;
+      let scrollV = 0;
+      let seen = false;
+      let lastPuff = 0;
+      let spots: HTMLElement[] = [];
+      let lit: HTMLElement | null = null;
+      const refreshSpots = () => (spots = [...document.querySelectorAll<HTMLElement>('[data-spot]')]);
+      refreshSpots();
+      window.setInterval(refreshSpots, 4000);
+
+      window.addEventListener(
+        'pointermove',
+        (e) => {
+          if (e.pointerType !== 'mouse') return;
+          tx = e.clientX;
+          ty = e.clientY;
+          if (!seen) {
+            seen = true;
+            x = tx;
+            y = ty;
+          }
+          car.setAttribute('data-on', '');
+        },
+        { passive: true },
+      );
+      document.addEventListener('pointerleave', () => car.removeAttribute('data-on'));
+      document.addEventListener('pointerenter', () => seen && car.setAttribute('data-on', ''));
+
+      const puff = (px: number, py: number) => {
+        const p = document.createElement('i');
+        p.className = 'puff8';
+        p.style.left = `${px + (Math.random() - 0.5) * 8}px`;
+        p.style.top = `${py + (Math.random() - 0.5) * 8}px`;
+        p.style.setProperty('--dx', `${(Math.random() - 0.5) * 26}px`);
+        p.style.setProperty('--sz', `${12 + Math.random() * 12}px`);
+        body.appendChild(p);
+        window.setTimeout(() => p.remove(), 1100);
+      };
+
+      const lerpAngle = (a: number, b: number, t: number) => {
+        let d = ((b - a + 540) % 360) - 180;
+        return a + d * t;
+      };
+
+      let hf = 0;
+      const frame = (now: number) => {
+        // sit a little behind the cursor so it never covers what you point at
+        const gx = tx - 26;
+        const gy = ty + 30;
+        const dx = gx - x;
+        const dy = gy - y;
+        x += dx * 0.14;
+        y += dy * 0.14;
+        const sc = window.scrollY;
+        scrollV = scrollV * 0.8 + (sc - lastScroll) * 0.2;
+        lastScroll = sc;
+
+        const speed = Math.hypot(dx, dy) * 0.14;
+        let target = ang;
+        if (Math.abs(scrollV) > 1.2 && speed < 2.5) target = scrollV > 0 ? 90 : -90;
+        else if (speed > 0.6) target = (Math.atan2(dy, dx) * 180) / Math.PI;
+        ang = lerpAngle(ang, target, 0.16);
+
+        car.style.transform = `translate3d(${x}px, ${y}px, 0) rotate(${ang}deg)`;
+
+        const fast = speed > 9 || Math.abs(scrollV) > 16;
+        if (fast && now - lastPuff > 38) {
+          lastPuff = now;
+          const r = (ang * Math.PI) / 180;
+          puff(x - Math.cos(r) * 34, y - Math.sin(r) * 34);
+        }
+
+        // headlights: light the nearest offer in front of the car (checked every 6th frame)
+        if (hf++ % 6 === 0) {
+        let best: HTMLElement | null = null;
+        let bestD = 300;
+        for (const s of spots) {
+          const b = s.getBoundingClientRect();
+          if (b.bottom < 0 || b.top > window.innerHeight) continue;
+          const cx = Math.max(b.left, Math.min(x, b.right));
+          const cy = Math.max(b.top, Math.min(y, b.bottom));
+          const d = Math.hypot(cx - x, cy - y);
+          if (d < bestD) {
+            bestD = d;
+            best = s;
+          }
+        }
+        if (best !== lit) {
+          lit?.removeAttribute('data-lit');
+          best?.setAttribute('data-lit', '');
+          lit = best;
+        }
+        car.toggleAttribute('data-beam', !!best);
+        }
+
+        // stay out of the way while the hero is being polished
+        const hero = document.querySelector('[data-hero9]');
+        car.toggleAttribute('data-hide', !!hero && !hero.hasAttribute('data-done') && hero.hasAttribute('data-pad'));
+
+        requestAnimationFrame(frame);
+      };
+      requestAnimationFrame(frame);
+    } else {
+      // ---------- touch: ride the right edge with scroll ----------
+      const rail = document.querySelector<HTMLElement>('[data-rail8]');
+      rail?.setAttribute('data-on', '');
+      car.setAttribute('data-on', '');
+      car.setAttribute('data-rail', '');
+      let last = window.scrollY;
+      let dir = 90;
+      let tick = false;
+      const run = () => {
+        tick = false;
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        const p = max > 0 ? window.scrollY / max : 0;
+        const sc = window.scrollY;
+        if (Math.abs(sc - last) > 2) dir = sc > last ? 90 : -90;
+        last = sc;
+        const yy = 96 + p * (window.innerHeight - 96 - 150);
+        car.style.transform = `translate3d(${window.innerWidth - 13}px, ${yy}px, 0) rotate(${dir}deg) scale(0.62)`;
+      };
+      window.addEventListener(
+        'scroll',
+        () => {
+          if (!tick) {
+            tick = true;
+            requestAnimationFrame(run);
+          }
+        },
+        { passive: true },
+      );
+      run();
+    }
+  }
+</script>
+
+<style>
+  .car {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 80;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 250ms;
+    will-change: transform;
+  }
+  .car[data-on] {
+    opacity: 1;
+  }
+  .car[data-hide] {
+    opacity: 0;
+  }
+  .car svg {
+    position: absolute;
+    left: -34px;
+    top: -16px;
+    width: 68px;
+    max-width: none;
+    height: 33px;
+    filter: drop-shadow(0 5px 4px rgba(0, 0, 0, 0.45));
+  }
+  .car[data-rail] {
+    transition:
+      opacity 250ms,
+      transform 220ms ease-out;
+  }
+  /* headlights */
+  .beam {
+    position: absolute;
+    left: 28px;
+    top: -80px;
+    width: 260px;
+    height: 160px;
+    background: radial-gradient(ellipse at 0% 50%, rgba(255, 244, 190, 0.8), rgba(255, 244, 190, 0.22) 45%, transparent 72%);
+    clip-path: polygon(0 44%, 100% 0, 100% 100%, 0 56%);
+    opacity: 0.22;
+    transition: opacity 250ms;
+  }
+  .car[data-beam] .beam {
+    opacity: 1;
+  }
+  .car[data-rail] .beam {
+    display: none;
+  }
+  .rail {
+    display: none;
+  }
+  .rail[data-on] {
+    display: block;
+    position: fixed;
+    right: 12px;
+    top: 96px;
+    bottom: 150px;
+    width: 2px;
+    z-index: 79;
+    pointer-events: none;
+    background: repeating-linear-gradient(180deg, rgba(128, 138, 148, 0.55) 0 8px, transparent 8px 16px);
+  }
+  /* exhaust puffs are appended to <body> */
+  :global(.puff8) {
+    position: fixed;
+    z-index: 79;
+    width: var(--sz, 14px);
+    height: var(--sz, 14px);
+    margin: calc(var(--sz, 14px) / -2) 0 0 calc(var(--sz, 14px) / -2);
+    border-radius: 50%;
+    background: radial-gradient(circle at 40% 40%, rgba(235, 240, 245, 0.75), rgba(150, 160, 170, 0.45) 55%, rgba(120, 130, 140, 0) 75%);
+    filter: blur(2.5px);
+    pointer-events: none;
+    animation: puff8 1100ms ease-out forwards;
+  }
+  @keyframes puff8 {
+    0% {
+      opacity: 0.9;
+      transform: scale(0.6);
+    }
+    100% {
+      opacity: 0;
+      transform: translate(var(--dx, 0px), -22px) scale(3.6);
+    }
+  }
+  /* what the headlights do to an offer: a soft wash of light, no outline, no size change */
+  :global(.v9 [data-spot]) {
+    transition:
+      box-shadow 320ms ease,
+      filter 320ms ease;
+  }
+  :global(.v9 [data-lit]) {
+    filter: brightness(1.08) saturate(1.06);
+    box-shadow:
+      0 0 34px 2px rgba(255, 238, 170, 0.32),
+      0 18px 50px -18px rgba(255, 238, 170, 0.5) !important;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .car,
+    .rail {
+      display: none !important;
+    }
+  }
+</style>

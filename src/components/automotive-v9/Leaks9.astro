@@ -1,0 +1,401 @@
+---
+import { leaks9 as l } from '../../content/automotiveCopyV9';
+const n = l.items.length;
+---
+
+<section class="leaks pearl" id="leaks" aria-labelledby="leaks-title" data-leaks9 style={`--n:${n + 1}`}>
+  <div class="pin">
+    <header class="head container">
+      <div>
+        <p class="kicker">{l.kicker}</p>
+        <h2 id="leaks-title" class="t-lg title">
+          {l.title[0]} <span class="hot">{l.title[1]}</span>
+        </h2>
+      </div>
+      <p class="count" aria-hidden="true"><b data-count>00</b><span>/ {String(n).padStart(2, '0')} fixed</span></p>
+    </header>
+
+    <div class="viewport">
+      <ol role="list" class="track" data-track>
+        {
+          l.items.map((it, i) => (
+            <li class="panel" data-panel>
+              <span class="wm" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+              <p class="tag">
+                <span class="tag-a">Leak {String(i + 1).padStart(2, '0')}</span>
+                <span class="tag-b">✓ Fixed</span>
+              </p>
+              <div class="swap">
+                <p class="pain"><span class="sr-only">Problem: </span>{it.pain}</p>
+                <p class="fix"><span class="sr-only">Fix: </span>{it.fix}<i>.</i></p>
+              </div>
+              <p class="line">{it.line}</p>
+              <p class="result">{it.result}</p>
+            </li>
+          ))
+        }
+        <li class="panel end" data-panel>
+          <p class="end-t">All five.<br />Fixed by one system.<br /><span class="hot">Done for you.</span></p>
+          <a href="#math" class="go" data-magnet>
+            See what they cost you
+            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11M11 5.500 15.500 10 11 14.500" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          </a>
+        </li>
+      </ol>
+    </div>
+    <p class="scroll-on container" aria-hidden="true">{l.hint} →</p>
+  </div>
+</section>
+
+<script>
+  const root = document.querySelector<HTMLElement>('[data-leaks9]');
+  if (root) {
+    const track = root.querySelector<HTMLElement>('[data-track]')!;
+    const panels = [...root.querySelectorAll<HTMLElement>('[data-panel]')];
+    const count = root.querySelector<HTMLElement>('[data-count]')!;
+    const real = panels.length - 1;
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const wide = window.matchMedia('(min-width: 901px) and (min-height: 620px)');
+
+    const setCount = () => {
+      const on = panels.slice(0, real).filter((p) => p.hasAttribute('data-on')).length;
+      count.textContent = String(on).padStart(2, '0');
+    };
+
+    let pinned = false;
+    let tick = false;
+    const update = () => {
+      tick = false;
+      const vh = window.innerHeight;
+      const vw = window.innerWidth;
+      const r = root.getBoundingClientRect();
+      const p = Math.max(0, Math.min(1, -r.top / (r.height - vh)));
+      const max = track.scrollWidth - track.parentElement!.clientWidth;
+      track.style.transform = `translate3d(${-p * max}px,0,0)`;
+      panels.forEach((el) => {
+        const b = el.getBoundingClientRect();
+        el.toggleAttribute('data-on', b.left + b.width * 0.5 < vw * 0.66);
+      });
+      setCount();
+    };
+    const onScroll = () => {
+      if (!tick) {
+        tick = true;
+        requestAnimationFrame(update);
+      }
+    };
+
+    let io: IntersectionObserver | null = null;
+    const setup = () => {
+      const want = wide.matches && !reduce;
+      if (want === pinned && (want || io)) return;
+      pinned = want;
+      root.toggleAttribute('data-pin', want);
+      if (want) {
+        io?.disconnect();
+        io = null;
+        window.addEventListener('scroll', onScroll, { passive: true });
+        window.addEventListener('resize', onScroll);
+        update();
+      } else {
+        window.removeEventListener('scroll', onScroll);
+        window.removeEventListener('resize', onScroll);
+        track.style.transform = '';
+        if (reduce) {
+          panels.forEach((p) => p.setAttribute('data-on', ''));
+          setCount();
+          return;
+        }
+        io = new IntersectionObserver(
+          (es) => {
+            es.forEach((e) => e.isIntersecting && e.target.setAttribute('data-on', ''));
+            setCount();
+          },
+          { threshold: 0.6 },
+        );
+        panels.forEach((p) => io!.observe(p));
+      }
+    };
+    setup();
+    wide.addEventListener('change', setup);
+  }
+</script>
+
+<style>
+  .leaks {
+    position: relative;
+  }
+  .pin {
+    display: grid;
+    gap: clamp(1.5rem, 1rem + 2vw, 3rem);
+    padding-block: clamp(4rem, 3rem + 4vw, 7rem);
+  }
+  .head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: var(--s-5);
+    flex-wrap: wrap;
+  }
+  .title {
+    margin-top: var(--s-4);
+    max-width: 16ch;
+  }
+  .count {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    font-weight: 700;
+    color: var(--ink-3);
+    white-space: nowrap;
+  }
+  .count b {
+    font-family: var(--f-head);
+    font-size: clamp(2.6rem, 2rem + 2.4vw, 4.4rem);
+    letter-spacing: -0.05em;
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .viewport {
+    overflow: hidden;
+  }
+  .track {
+    margin: 0;
+    display: flex;
+    gap: clamp(1rem, 0.5rem + 1.6vw, 2rem);
+    padding-inline: var(--gutter);
+    will-change: transform;
+  }
+  .panel {
+    position: relative;
+    flex: none;
+    width: min(74vw, 940px);
+    min-height: clamp(400px, 56vh, 540px);
+    display: grid;
+    align-content: space-between;
+    gap: var(--s-4);
+    padding: clamp(1.5rem, 1rem + 2.4vw, 3rem);
+    border-radius: 28px;
+    background: var(--white);
+    border: 1px solid rgba(11, 16, 22, 0.08);
+    box-shadow: 0 30px 60px -40px rgba(11, 16, 22, 0.4);
+    overflow: hidden;
+    transition:
+      background-color 600ms var(--ease),
+      box-shadow 600ms var(--ease);
+  }
+  .wm {
+    position: absolute;
+    right: -0.04em;
+    top: -0.22em;
+    font-family: var(--f-head);
+    font-weight: 800;
+    font-size: clamp(11rem, 8rem + 12vw, 20rem);
+    line-height: 1;
+    letter-spacing: -0.08em;
+    color: transparent;
+    -webkit-text-stroke: 1.5px rgba(11, 16, 22, 0.09);
+    pointer-events: none;
+    transition: -webkit-text-stroke-color 600ms;
+  }
+  .tag {
+    position: relative;
+    display: grid;
+    justify-items: start;
+    font-size: 0.8125rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .tag span {
+    grid-area: 1 / 1;
+    padding: 6px 14px;
+    border-radius: 999px;
+    transition:
+      opacity 400ms,
+      transform 500ms var(--ease);
+  }
+  .tag-a {
+    background: #ffe9e4;
+    color: #c93313;
+  }
+  .tag-b {
+    background: #dff8ec;
+    color: #0a7d4d;
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  .swap {
+    position: relative;
+    display: grid;
+    font-size: clamp(2.2rem, 1rem + 4.6vw, 5rem);
+    min-height: 2.5em;
+    align-content: start;
+  }
+  .pain,
+  .fix {
+    grid-area: 1 / 1;
+    font-family: var(--f-head);
+    font-weight: 800;
+    font-size: 1em;
+    line-height: 1;
+    letter-spacing: -0.055em;
+    max-width: 13ch;
+    transition:
+      transform 700ms var(--ease),
+      opacity 500ms var(--ease),
+      filter 700ms var(--ease);
+    transform-origin: left top;
+  }
+  .pain {
+    color: transparent;
+    -webkit-text-stroke: 1.5px rgba(11, 16, 22, 0.55);
+    filter: blur(1.2px);
+  }
+  .fix {
+    padding-top: 0.5em;
+    opacity: 0;
+    transform: translateY(0.6em);
+  }
+  .fix i {
+    font-style: normal;
+    color: var(--hot);
+  }
+  .line {
+    position: relative;
+    margin-top: 0.75rem;
+    max-width: 46ch;
+    font-size: clamp(1rem, 0.95rem + 0.3vw, 1.2rem);
+    line-height: 1.5;
+    color: var(--ink-2);
+  }
+  .result {
+    position: relative;
+    justify-self: start;
+    padding: 8px 16px;
+    border-radius: 999px;
+    background: var(--ink);
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.9375rem;
+    opacity: 0;
+    transform: translateY(10px);
+    transition:
+      opacity 500ms var(--ease) 250ms,
+      transform 500ms var(--ease) 250ms;
+  }
+  .result::before {
+    content: '→ ';
+    color: var(--hot-2);
+  }
+
+  /* fixed state */
+  .panel[data-on] .pain {
+    transform: scale(0.3);
+    max-width: none;
+    white-space: nowrap;
+    opacity: 0.55;
+    filter: none;
+    text-decoration: line-through;
+    text-decoration-thickness: 0.08em;
+    -webkit-text-stroke: 0;
+    color: #c93313;
+  }
+  .panel[data-on] .fix {
+    opacity: 1;
+    transform: none;
+  }
+  .panel[data-on] .tag-a {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  .panel[data-on] .tag-b,
+  .panel[data-on] .result {
+    opacity: 1;
+    transform: none;
+  }
+  .panel[data-on] .wm {
+    -webkit-text-stroke-color: rgba(255, 90, 31, 0.35);
+  }
+
+  .end {
+    width: min(60vw, 620px);
+    background: var(--ink);
+    color: #fff;
+    align-content: center;
+    justify-items: start;
+    gap: var(--s-6);
+  }
+  .end-t {
+    font-family: var(--f-head);
+    font-weight: 800;
+    font-size: clamp(1.9rem, 1.2rem + 2.6vw, 3.4rem);
+    line-height: 1.05;
+    letter-spacing: -0.045em;
+  }
+  .scroll-on {
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    display: none;
+  }
+
+  /* desktop: pin and scroll sideways (JS sets data-pin) */
+  .leaks[data-pin] {
+    height: calc(100vh + var(--n) * 62vh);
+  }
+  .leaks[data-pin] .pin {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    align-content: center;
+    padding-block: calc(var(--nav-h) + 8px) 24px;
+    overflow: hidden;
+  }
+  .leaks[data-pin] .pin {
+    grid-template-rows: auto minmax(0, 1fr) auto;
+    gap: clamp(1rem, 0.5rem + 1.5vh, 2rem);
+  }
+  .leaks[data-pin] .viewport,
+  .leaks[data-pin] .track {
+    height: 100%;
+  }
+  .leaks[data-pin] .panel {
+    min-height: 0;
+    height: 100%;
+    max-height: 560px;
+    align-self: center;
+  }
+  .leaks[data-pin] .swap {
+    font-size: min(clamp(2.2rem, 1rem + 4.6vw, 5rem), 9.5vh);
+  }
+  .leaks[data-pin] .scroll-on {
+    display: block;
+  }
+
+  /* not pinned: a vertical list */
+  .leaks:not([data-pin]) .track {
+    flex-direction: column;
+  }
+  .leaks:not([data-pin]) .panel {
+    width: 100%;
+    min-height: 340px;
+  }
+  @media (max-width: 560px) {
+    .panel {
+      border-radius: 22px;
+    }
+    .pain,
+    .fix {
+      max-width: none;
+    }
+    .end .go {
+      width: 100%;
+      padding-inline: 16px;
+    }
+  }
+</style>

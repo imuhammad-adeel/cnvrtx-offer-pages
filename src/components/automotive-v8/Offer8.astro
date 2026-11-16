@@ -1,0 +1,438 @@
+---
+import { offer8 as f } from '../../content/automotiveCopyV8';
+import { automotiveOffer as o, resolveHref } from '../../config/automotiveOffer';
+
+const fmt = (n: number) => '$' + n.toLocaleString('en-US');
+const mPrice = o.pricing.monthly.price;
+const aPrice = o.pricing.annual.price;
+const setup = o.pricing.monthly.setup;
+const regular = f.regularMonthly;
+const regularYear = regular * 12;
+const perMonth = Math.round(aPrice / 12);
+const monthlyDest = resolveHref(o.monthlyCheckoutUrl, '#start');
+const annualDest = resolveHref(o.annualCheckoutUrl, '#start');
+const foundingDest = resolveHref(o.foundingCheckoutUrl, '#start');
+// every plan button opens the checkout popup; the href is the no-JS fallback
+const linkAttrs = (d: { href: string; external: boolean }, plan: string) =>
+  d.external
+    ? { href: d.href, 'data-attr-link': '', 'data-checkout': plan }
+    : { href: d.href, 'data-plan-intent': plan, 'data-checkout': plan };
+const bonuses = f.annual.bonuses.filter((b) => b.enabled);
+const ico = [
+  '<rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 8h18M7 12h6M7 15h4"/>',
+  '<path d="M5 4h4l2 5-2.500 1.500a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/>',
+  '<rect x="7" y="2.500" width="10" height="19" rx="2.500"/><path d="M10.500 18h3"/>',
+  '<path d="M4 6h16v9a2 2 0 0 1-2 2h-5l-4 3v-3H6a2 2 0 0 1-2-2z"/><path d="M9 11h6"/>',
+  '<path d="M4 13l2-7h12l2 7v5H4z"/><path d="M4 13h5l1 2h4l1-2h5"/>',
+  '<path d="M4 12a8 8 0 0 1 14-5.300"/><path d="M18 3v4h-4"/><path d="M20 12a8 8 0 0 1-14 5.300"/><path d="M6 21v-4h4"/>',
+  '<rect x="3.500" y="5" width="17" height="15" rx="2"/><path d="M3.500 10h17M8 3v4M16 3v4"/><path d="M9 15l2 2 4-4"/>',
+  '<path d="M12 3.500l2.600 5.300 5.800.800-4.200 4.100 1 5.800L12 16.800l-5.200 2.700 1-5.800-4.200-4.100 5.800-.800z"/>',
+  '<path d="M3 12a9 9 0 1 0 3-6.700"/><path d="M3 4v4h4"/><path d="M12 8v4l3 2"/>',
+  '<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>',
+  '<path d="M14.500 6.500a4 4 0 0 0-5.300 5.300L4 17v3h3l5.200-5.200a4 4 0 0 0 5.300-5.300l-2.500 2.500-2.500-2.500z"/>',
+  '<path d="M12 3l7 3v5.500c0 4.300-2.900 8-7 9.500-4.100-1.500-7-5.200-7-9.500V6z"/><path d="M8.800 12.200l2.300 2.300 4.200-4.600"/>',
+];
+const arrow =
+  '<svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11M11 5.500 15.500 10 11 14.500" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>';
+---
+
+<section class="scene offer" id="pricing" aria-labelledby="offer8-title">
+  <div class="aura" aria-hidden="true"></div>
+  <div class="container">
+    <header class="head" data-reveal>
+      <p class="kicker">{f.kicker}</p>
+      <h2 id="offer8-title" class="t-lg">
+        {f.title[0]} <span class="hot">{f.title[1]}</span>
+      </h2>
+      <p class="rise-note">
+        <span class="tag">Launch price</span>
+        {f.rise.replace('Launch price. ', '').replace('{regular}', fmt(regular))}
+      </p>
+    </header>
+
+    <!-- two plans, side by side -->
+    <div class="plans">
+      <article class="plan best" aria-labelledby="pl-a">
+        <span class="ribbon">{f.annual.tag}</span>
+        <h3 id="pl-a">{f.annual.name}</h3>
+        <p class="was"><s>{fmt(regularYear)}</s> a year at the upcoming price</p>
+        <p class="amt"><b>{fmt(aPrice)}</b><span>{f.annual.per}</span></p>
+        <p class="eq">About {fmt(perMonth)} a month. <mark>{f.lock}.</mark></p>
+        <ul role="list" class="pts">
+          <li><b>Setup included.</b> Save {fmt(setup)}.</li>
+          <li><b>Two months included.</b> Pay 10, get 12.</li>
+          {bonuses.map((b) => (
+            <li>
+              <b>{b.t}.</b> <span class="bn">Free</span>
+            </li>
+          ))}
+          {f.loveIt.enabled && (
+            <li>
+              <b>{f.loveIt.t}.</b> {f.loveIt.d}
+            </li>
+          )}
+        </ul>
+        <a class="go" data-spot {...linkAttrs(annualDest, 'Annual')} data-track="pricing_annual_click">
+          {f.annual.cta}<Fragment set:html={arrow} />
+        </a>
+      </article>
+
+      <article class="plan" aria-labelledby="pl-m">
+        <h3 id="pl-m">{f.monthly.name}</h3>
+        <p class="was"><s>{fmt(regular)}</s> a month at the upcoming price</p>
+        <p class="amt"><b>{fmt(mPrice)}</b><span>{f.monthly.per}</span></p>
+        <p class="eq">+ {fmt(setup)} one-time setup. <mark>{f.lock}.</mark></p>
+        <ul role="list" class="pts">
+          <li><b>{f.loveIt.t}.</b> {f.loveIt.d}</li>
+          <li><b>The complete system.</b> Annual extras not included.</li>
+          {o.foundingOfferActive && (
+            <li>
+              <b>Founding offer.</b> First 10 qualifying shops skip the setup fee.{' '}
+              <a {...linkAttrs(foundingDest, 'Founding (setup waived)')} data-track="pricing_founding_click">Claim it</a>
+            </li>
+          )}
+        </ul>
+        <a class="alt" {...linkAttrs(monthlyDest, 'Monthly')} data-track="pricing_monthly_click">
+          {f.monthly.cta}<Fragment set:html={arrow} />
+        </a>
+      </article>
+    </div>
+
+    <!-- the shared system: one compact checklist -->
+    <div class="inc" data-vstack>
+      <p class="inc-h">The system, in both plans</p>
+      <ol role="list" class="inc-list">
+        {
+          f.stack.map((it, i) => (
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.700" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={ico[i % ico.length]} />
+              <b>{it.t}</b>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+
+    <ul role="list" class="promises">
+      {f.promises.map((p) => <li><b>{p.t}</b><span>{p.d}</span></li>)}
+    </ul>
+    <p class="fine">{f.honest} {f.usage}</p>
+  </div>
+</section>
+
+<script>
+  // plan buttons without a checkout URL go to the start step and pre-pick the plan
+  document.querySelectorAll<HTMLAnchorElement>('[data-plan-intent]').forEach((a) =>
+    a.addEventListener('click', () => {
+      window.dispatchEvent(new CustomEvent('cx:plan', { detail: a.dataset.planIntent }));
+    }),
+  );
+
+  const vs = document.querySelector<HTMLElement>('[data-vstack]');
+  if (vs && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver(
+      ([e]) => {
+        if (!e.isIntersecting) return;
+        io.disconnect();
+        vs.setAttribute('data-on', '');
+      },
+      { threshold: 0.25 },
+    );
+    io.observe(vs);
+  } else vs?.setAttribute('data-on', '');
+</script>
+
+<style>
+  .offer {
+    overflow: hidden;
+    isolation: isolate;
+    background: linear-gradient(180deg, #05080b, var(--night-2));
+  }
+  .aura {
+    position: absolute;
+    left: 50%;
+    top: 16%;
+    width: 1000px;
+    height: 640px;
+    transform: translateX(-50%);
+    background:
+      radial-gradient(40% 40% at 35% 40%, rgba(61, 123, 255, 0.2), transparent 70%),
+      radial-gradient(40% 40% at 65% 55%, rgba(255, 90, 31, 0.22), transparent 70%);
+    filter: blur(20px);
+    z-index: -1;
+  }
+  .head {
+    display: grid;
+    gap: var(--s-4);
+    justify-items: start;
+    margin-bottom: clamp(2rem, 1.5rem + 2.5vw, 4rem);
+  }
+  .rise-note {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 12px;
+    font-size: clamp(1rem, 0.95rem + 0.35vw, 1.2rem);
+    color: #dbe4ec;
+  }
+  .tag {
+    padding: 4px 12px;
+    border-radius: 999px;
+    background: #d8ff3e;
+    color: #0b1016;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* ---------- plans ---------- */
+  .plans {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    gap: var(--s-4);
+    align-items: stretch;
+  }
+  .plan {
+    position: relative;
+    display: grid;
+    grid-template-rows: auto auto auto auto 1fr auto;
+    gap: 8px;
+    padding: clamp(1.5rem, 1rem + 2vw, 2.75rem);
+    border-radius: 28px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+  }
+  .best {
+    border: 2px solid #d8ff3e;
+    background:
+      radial-gradient(80% 60% at 100% 0%, rgba(216, 255, 62, 0.12), transparent 70%),
+      linear-gradient(180deg, #131c25, #0b1118);
+    box-shadow: 0 50px 90px -50px rgba(216, 255, 62, 0.35);
+  }
+  .ribbon {
+    position: absolute;
+    top: -14px;
+    left: clamp(1.5rem, 1rem + 2vw, 2.75rem);
+    padding: 5px 14px;
+    border-radius: 999px;
+    background: #d8ff3e;
+    color: #0b1016;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .plan h3 {
+    font-size: 1.5rem;
+    letter-spacing: -0.03em;
+  }
+  .was {
+    font-size: 0.9375rem;
+    color: var(--fog);
+  }
+  .was s {
+    font-family: var(--f-head);
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: #ff8f7a;
+    text-decoration-thickness: 2px;
+    margin-right: 4px;
+  }
+  .amt {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+  .amt b {
+    font-family: var(--f-head);
+    font-weight: 800;
+    font-size: clamp(3.6rem, 2.2rem + 5.4vw, 6.6rem);
+    line-height: 0.92;
+    letter-spacing: -0.065em;
+  }
+  .amt span {
+    font-family: var(--f-head);
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: var(--fog);
+  }
+  .eq {
+    font-weight: 700;
+  }
+  .eq mark {
+    padding: 2px 8px;
+    border-radius: 6px;
+    background: rgba(216, 255, 62, 0.16);
+    color: #e6ff8a;
+    white-space: nowrap;
+  }
+  .pts {
+    margin: var(--s-4) 0;
+    padding-top: var(--s-4);
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
+    display: grid;
+    gap: 11px;
+    align-content: start;
+  }
+  .pts li {
+    position: relative;
+    padding-left: 28px;
+    line-height: 1.4;
+    color: #cfd9e2;
+  }
+  .pts li::before {
+    content: '';
+    position: absolute;
+    left: 2px;
+    top: 0.35em;
+    width: 13px;
+    height: 7px;
+    border-left: 2.5px solid #d8ff3e;
+    border-bottom: 2.5px solid #d8ff3e;
+    transform: rotate(-45deg);
+  }
+  .pts b {
+    color: #fff;
+  }
+  .bn {
+    padding: 1px 8px;
+    border-radius: 999px;
+    background: #ff2d55;
+    color: #fff;
+    box-shadow: 0 0 14px -2px rgba(255, 45, 85, 0.9);
+    font-size: 0.6875rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .pts a {
+    font-weight: 800;
+    color: #ffb08a;
+    text-underline-offset: 3px;
+  }
+  .plan .go,
+  .plan .alt {
+    width: 100%;
+  }
+  .alt {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    min-height: 62px;
+    border-radius: 999px;
+    border: 1.5px solid rgba(255, 255, 255, 0.4);
+    color: #fff;
+    font-family: var(--f-head);
+    font-weight: 700;
+    font-size: 1.0625rem;
+    text-decoration: none;
+    transition:
+      border-color 200ms,
+      background-color 200ms;
+  }
+  .alt:hover {
+    border-color: #fff;
+    background: rgba(255, 255, 255, 0.06);
+  }
+  .alt :global(svg) {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* ---------- included ---------- */
+  .inc {
+    margin-top: clamp(2rem, 1.5rem + 2vw, 3.5rem);
+  }
+  .inc-h {
+    font-family: var(--f-head);
+    font-weight: 700;
+    font-size: clamp(1.1rem, 1rem + 0.5vw, 1.4rem);
+    letter-spacing: -0.03em;
+  }
+  .inc-list {
+    margin: var(--s-3) 0 0;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    column-gap: clamp(1rem, 0.5rem + 1.6vw, 2rem);
+    border-top: 1px solid rgba(255, 255, 255, 0.16);
+  }
+  .inc-list li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 46px;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+    transition: opacity 500ms var(--ease);
+  }
+  :global(.js) .inc:not([data-on]) .inc-list li {
+    opacity: 0.35;
+  }
+  .inc-list svg {
+    flex: none;
+    width: 20px;
+    height: 20px;
+    color: #d8ff3e;
+  }
+  .inc-list b {
+    font-weight: 600;
+    font-size: 0.9375rem;
+    line-height: 1.25;
+    color: #e3eaf0;
+  }
+
+  /* ---------- promises ---------- */
+  .promises {
+    margin: clamp(2rem, 1.5rem + 2vw, 3.5rem) 0 0;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: clamp(1rem, 0.5rem + 1.6vw, 2rem);
+  }
+  .promises li {
+    display: grid;
+    gap: 6px;
+    align-content: start;
+  }
+  .promises b {
+    font-family: var(--f-head);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+  }
+  .promises span {
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    color: var(--fog-2);
+  }
+  .fine {
+    margin-top: var(--s-5);
+    max-width: 110ch;
+    font-size: 0.75rem;
+    line-height: 1.5;
+    color: var(--fog-2);
+  }
+
+  @media (max-width: 900px) {
+    .plans {
+      grid-template-columns: 1fr;
+      gap: var(--s-6);
+    }
+    .inc-list,
+    .promises {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (max-width: 560px) {
+    .promises {
+      grid-template-columns: 1fr;
+    }
+    .inc-list {
+      column-gap: 14px;
+    }
+    .inc-list b {
+      font-size: 0.8125rem;
+    }
+  }
+</style>

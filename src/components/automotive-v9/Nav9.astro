@@ -1,0 +1,414 @@
+---
+import { nav9 } from '../../content/automotiveCopyV9';
+
+/** `outcomes` adds an "Outcomes" menu that links to the problem-specific pages.
+ *  Only the main page passes it; the problem pages keep the plain menu. */
+interface Props {
+  outcomes?: { label: string; href: string; sub: string; icon: string; slug: string }[];
+  /** Optional endpoint with real click counts; see offerV9.outcomes. */
+  countsUrl?: string;
+}
+const { outcomes, countsUrl = '' } = Astro.props;
+---
+
+<div class="progress" aria-hidden="true"><i data-prog8></i></div>
+
+<header class="nav" data-nav9>
+  <a href="#top" class="logo" aria-label="CNVRT X, back to top">CNVRT<span>✕</span></a>
+  <nav aria-label="Primary">
+    {nav9.links.map((l) => <a href={l.href}>{l.label}</a>)}
+  </nav>
+  {
+    outcomes && outcomes.length > 0 && (
+      <details class="out" data-outcomes data-counts-url={countsUrl || undefined}>
+        <summary>
+          What it fixes
+          <i aria-hidden="true" />
+        </summary>
+        <div class="menu">
+          <p class="m-h">
+            <b>What do you want fixed first?</b>
+            <span>Each one has its own page. All of them are in one plan.</span>
+          </p>
+          <ul role="list">
+            {outcomes.map((o) => (
+              <li data-slug={o.slug}>
+                <a href={o.href} data-track="outcome_menu_click" data-track-outcome={o.slug}>
+                  <span class="ic" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.700" stroke-linecap="round" stroke-linejoin="round" set:html={o.icon} />
+                  </span>
+                  <span class="tx">
+                    <b>{o.label}</b>
+                    <small>{o.sub}</small>
+                  </span>
+                  <i class="ar" aria-hidden="true" />
+                </a>
+              </li>
+            ))}
+          </ul>
+          <a href="#pricing" class="m-all" data-outcomes-close>
+            One plan covers all of these. See the price <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </details>
+    )
+  }
+  <a href="#pricing" class="go go-sm" data-track="cta_click" data-track-location="nav">{nav9.cta}</a>
+</header>
+
+<script>
+  // Outcomes menu: close on Escape, on a click outside, and after a link is chosen
+  const out = document.querySelector<HTMLDetailsElement>('[data-outcomes]');
+  if (out) {
+    document.addEventListener('click', (e) => {
+      if (out.open && (!out.contains(e.target as Node) || (e.target as HTMLElement).closest('[data-outcomes-close]'))) out.open = false;
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && out.open) {
+        out.open = false;
+        out.querySelector('summary')?.focus();
+      }
+    });
+  }
+
+  // Live popularity (only when an endpoint is set in config): re-sort the menu by real clicks,
+  // most clicked first, and report each click. Rows fill left to right, so the top row is the top three.
+  const countsUrl = out?.dataset.countsUrl;
+  if (out && countsUrl) {
+    const list = out.querySelector('ul')!;
+    fetch(countsUrl)
+      .then((r) => (r.ok ? r.json() : null))
+      .then((counts: Record<string, number> | null) => {
+        if (!counts) return;
+        const items = [...list.querySelectorAll<HTMLElement>('li[data-slug]')];
+        items
+          .map((li, i) => ({ li, i, n: Number(counts[li.dataset.slug || ''] || 0) }))
+          .sort((a, b) => b.n - a.n || a.i - b.i)
+          .forEach(({ li, n }, rank) => {
+            list.appendChild(li);
+            li.toggleAttribute('data-top', rank < 3 && n > 0);
+          });
+      })
+      .catch(() => {});
+    list.addEventListener('click', (e) => {
+      const li = (e.target as HTMLElement).closest<HTMLElement>('li[data-slug]');
+      if (!li) return;
+      try {
+        navigator.sendBeacon(countsUrl, JSON.stringify({ slug: li.dataset.slug }));
+      } catch {}
+    });
+  }
+
+  // scroll progress line
+  const bar = document.querySelector<HTMLElement>('[data-prog8]');
+  if (bar) {
+    let tick = false;
+    const run = () => {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.transform = `scaleX(${max > 0 ? window.scrollY / max : 0})`;
+      tick = false;
+    };
+    window.addEventListener(
+      'scroll',
+      () => {
+        if (!tick) {
+          tick = true;
+          requestAnimationFrame(run);
+        }
+      },
+      { passive: true },
+    );
+    run();
+  }
+
+  // magnetic pull on primary buttons (fine pointers only)
+  if (window.matchMedia('(pointer: fine)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll<HTMLElement>('.go[data-magnet]').forEach((b) => {
+      b.addEventListener('pointermove', (e) => {
+        const r = b.getBoundingClientRect();
+        b.style.setProperty('--mx', `${(e.clientX - r.left - r.width / 2) * 0.22}px`);
+        b.style.setProperty('--my', `${(e.clientY - r.top - r.height / 2) * 0.3}px`);
+      });
+      b.addEventListener('pointerleave', () => {
+        b.style.setProperty('--mx', '0px');
+        b.style.setProperty('--my', '0px');
+      });
+    });
+  }
+</script>
+
+<style>
+  .progress {
+    position: fixed;
+    inset: var(--bar-h, 0px) 0 auto 0;
+    height: 3px;
+    z-index: 70;
+    pointer-events: none;
+  }
+  .progress i {
+    display: block;
+    height: 100%;
+    background: linear-gradient(90deg, var(--hot), #ffb48f);
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  .nav {
+    position: fixed;
+    top: calc(var(--bar-h, 0px) + 12px);
+    left: 50%;
+    z-index: 60;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: clamp(14px, 2vw, 30px);
+    padding: 8px 8px 8px 22px;
+    border-radius: 999px;
+    background: rgba(12, 18, 25, 0.72);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    backdrop-filter: blur(16px) saturate(160%);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+    box-shadow: 0 18px 40px -18px rgba(0, 0, 0, 0.7);
+    color: #fff;
+    max-width: calc(100vw - 24px);
+  }
+  .logo {
+    font-family: var(--f-head);
+    font-weight: 800;
+    font-size: 1.05rem;
+    letter-spacing: 0.02em;
+    color: #fff;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .logo span {
+    color: var(--hot);
+    margin-left: 3px;
+  }
+  nav {
+    display: flex;
+    gap: clamp(12px, 1.6vw, 24px);
+  }
+  nav a {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #c5d0da;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  nav a:hover {
+    color: #fff;
+  }
+  /* ---------- Outcomes menu (main page only) ---------- */
+  .out summary {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 40px;
+    padding: 0 12px;
+    border-radius: 999px;
+    border: 1px solid rgba(216, 255, 62, 0.5);
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #e6ff8a;
+    white-space: nowrap;
+    cursor: pointer;
+    list-style: none;
+  }
+  .out summary::-webkit-details-marker {
+    display: none;
+  }
+  .out summary:focus-visible {
+    outline: 3px solid #7cc4ff;
+    outline-offset: 2px;
+  }
+  .out summary i {
+    width: 7px;
+    height: 7px;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: translateY(-2px) rotate(45deg);
+    transition: transform 200ms;
+  }
+  .out[open] summary i {
+    transform: translateY(2px) rotate(-135deg);
+  }
+  .menu {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 50%;
+    width: min(900px, calc(100vw - 24px));
+    transform: translateX(-50%);
+    padding: clamp(14px, 1vw + 8px, 22px);
+    border-radius: 26px;
+    background:
+      radial-gradient(60% 50% at 100% 0%, rgba(255, 90, 31, 0.16), transparent 70%),
+      rgba(10, 15, 21, 0.98);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    box-shadow: 0 40px 80px -24px rgba(0, 0, 0, 0.85);
+    max-height: calc(100dvh - var(--bar-h, 0px) - 110px);
+    overflow: auto;
+    animation: menuIn 220ms var(--ease);
+  }
+  @keyframes menuIn {
+    from {
+      opacity: 0;
+      transform: translateX(-50%) translateY(-8px);
+    }
+  }
+  .m-h {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 2px 14px;
+    padding: 4px 8px 12px;
+  }
+  .m-h b {
+    font-family: var(--f-head);
+    font-weight: 800;
+    font-size: 1.15rem;
+    letter-spacing: -0.03em;
+  }
+  .m-h span {
+    font-size: 0.8125rem;
+    color: var(--fog);
+  }
+  .menu ul {
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
+  }
+  .menu li a {
+    display: grid;
+    grid-template-columns: 44px minmax(0, 1fr) 14px;
+    gap: 12px;
+    align-items: center;
+    min-height: 64px;
+    padding: 9px 12px 9px 9px;
+    border-radius: 16px;
+    border: 1px solid transparent;
+    color: #fff;
+    text-decoration: none;
+    transition:
+      background-color 180ms,
+      border-color 180ms,
+      transform 180ms var(--ease);
+  }
+  .ic {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 13px;
+    border: 1.5px solid rgba(255, 255, 255, 0.2);
+    color: #d8ff3e;
+    transition:
+      background-color 180ms,
+      border-color 180ms,
+      color 180ms;
+  }
+  .ic svg {
+    width: 22px;
+    height: 22px;
+  }
+  .tx {
+    display: grid;
+    gap: 1px;
+    min-width: 0;
+  }
+  .tx b {
+    font-family: var(--f-head);
+    font-weight: 700;
+    font-size: 0.9375rem;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+  .tx small {
+    font-size: 0.75rem;
+    color: var(--fog);
+  }
+  /* a small arrow that slides in on hover */
+  .ar {
+    width: 8px;
+    height: 8px;
+    border-top: 2px solid #d8ff3e;
+    border-right: 2px solid #d8ff3e;
+    transform: translateX(-6px) rotate(45deg);
+    opacity: 0;
+    transition:
+      opacity 180ms,
+      transform 180ms var(--ease);
+  }
+  .menu li a:hover,
+  .menu li a:focus-visible {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(216, 255, 62, 0.45);
+    transform: translateY(-1px);
+    outline: none;
+  }
+  .menu li a:hover .ic,
+  .menu li a:focus-visible .ic {
+    background: #d8ff3e;
+    border-color: #d8ff3e;
+    color: #0b1016;
+  }
+  .menu li a:hover .ar,
+  .menu li a:focus-visible .ar {
+    opacity: 1;
+    transform: translateX(0) rotate(45deg);
+  }
+  /* shown only when real click counts say so */
+  .menu li[data-top] .tx b::after {
+    content: 'Most picked';
+    margin-left: 8px;
+    padding: 1px 7px;
+    border-radius: 999px;
+    background: #d8ff3e;
+    color: #0b1016;
+    font-family: var(--f-text);
+    font-size: 0.5625rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    vertical-align: middle;
+  }
+  .m-all {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    padding: 12px 16px;
+    border-radius: 14px;
+    background: rgba(216, 255, 62, 0.1);
+    border: 1px solid rgba(216, 255, 62, 0.4);
+    color: #e6ff8a;
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+  }
+  .m-all:hover {
+    background: rgba(216, 255, 62, 0.18);
+  }
+  @media (max-width: 900px) {
+    .menu ul {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .menu {
+      animation: none;
+    }
+  }
+  @media (max-width: 720px) {
+    nav {
+      display: none;
+    }
+    .menu ul {
+      grid-template-columns: 1fr;
+    }
+    .nav {
+      width: calc(100vw - 24px);
+      justify-content: space-between;
+    }
+  }
+</style>

@@ -1,0 +1,63 @@
+---
+/**
+ * Version 8. Built on v7 ("Mirror Finish"); v7 itself is untouched.
+ * What changed, from the owner's list:
+ *  - self-serve: no free audit, the visitor picks a plan and joins
+ *  - tilted multi-tone ticker (from v5)
+ *  - the big idea as a working leak-pipe visual
+ *  - five cards, each with one highlighted benefit and a live mini-animation
+ *  - "Who does the work?" table (from v5), rebuilt in this style
+ *  - value stack that ticks item by item before the price; Annual shown first
+ *  - mobile app and included local number called out
+ *  - a small car that follows the cursor and lights up offers
+ *  - exit offer when the visitor is about to leave
+ *  - copy with no em dashes
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav8 from '../../components/automotive-v8/Nav8.astro';
+import Hero8 from '../../components/automotive-v8/Hero8.astro';
+import Ticker8 from '../../components/automotive-v8/Ticker8.astro';
+import Pipe8 from '../../components/automotive-v8/Pipe8.astro';
+import Leaks8 from '../../components/automotive-v8/Leaks8.astro';
+import Math8 from '../../components/automotive-v8/Math8.astro';
+import Stack8 from '../../components/automotive-v8/Stack8.astro';
+import Work8 from '../../components/automotive-v8/Work8.astro';
+import Offer8 from '../../components/automotive-v8/Offer8.astro';
+import End8 from '../../components/automotive-v8/End8.astro';
+import Hook8 from '../../components/automotive-v8/Hook8.astro';
+import { hooks8 } from '../../content/automotiveCopyV8';
+import Bar8 from '../../components/automotive-v8/Bar8.astro';
+import Checkout8 from '../../components/automotive-v8/Checkout8.astro';
+import Car8 from '../../components/automotive-v8/Car8.astro';
+import Exit8 from '../../components/automotive-v8/Exit8.astro';
+import { automotiveOffer } from '../../config/automotiveOffer';
+import '../../styles/v8.css';
+---
+
+<BaseLayout
+  title="CNVRT X Auto Growth OS: You Got the Inquiry. Did You Get the Booking?"
+  description="A done-for-you front desk for automotive service shops. Every call answered, every quote followed up, every job booked and reminded. Built and tested for you."
+  canonical={automotiveOffer.salesPageUrl}
+  noindex={true}
+  bodyClass="v8"
+  themeColor="#070B10"
+>
+  <Bar8 />
+  <Nav8 />
+  <main id="main">
+    <Hero8 />
+    <Ticker8 />
+    <Pipe8 />
+    <Leaks8 />
+    <Hook8 lines={hooks8.afterLeaks} />
+    <Math8 />
+    <Stack8 />
+    <Work8 />
+    <Hook8 lines={hooks8.beforeOffer} bg="#05080b" />
+    <Offer8 />
+    <End8 />
+  </main>
+  <Car8 />
+  <Exit8 />
+  <Checkout8 />
+</BaseLayout>

@@ -1,0 +1,80 @@
+---
+/** Slim offer bar fixed to the very top. Always visible, one line, one link. */
+import { offer8 } from '../../content/automotiveCopyV8';
+import { automotiveOffer as o } from '../../config/automotiveOffer';
+const price = o.pricing.monthly.price;
+const regular = offer8.regularMonthly;
+// a countdown only appears when a real date is set in the copy file
+const rise = offer8.riseDate ? new Date(offer8.riseDate + 'T23:59:59') : null;
+const riseLabel = rise ? rise.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) : '';
+---
+
+<div class="bar" role="region" aria-label="Launch price">
+  <p>
+    <span class="tag">Launch price</span>
+    <span class="t">
+      Join now, keep <b>${price}/mo for life</b><span class="more">. {rise ? `After ${riseLabel}` : 'Wait, and'} the same system costs <s>${regular}</s></span>
+    </span>
+    <a href="#pricing" data-track="cta_click" data-track-location="top_bar">Lock my price <span aria-hidden="true">→</span></a>
+  </p>
+</div>
+
+<style>
+  .bar {
+    position: fixed;
+    inset: 0 0 auto 0;
+    z-index: 65;
+    height: var(--bar-h, 40px);
+    display: grid;
+    place-items: center;
+    padding-inline: 12px;
+    background: #0b1016;
+    border-bottom: 1px solid rgba(216, 255, 62, 0.45);
+    color: #eef3f7;
+    font-size: 0.875rem;
+  }
+  p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    white-space: nowrap;
+    min-width: 0;
+  }
+  .tag {
+    padding: 2px 9px;
+    border-radius: 999px;
+    background: #d8ff3e;
+    color: #0b1016;
+    font-size: 0.6875rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .t b {
+    font-family: var(--f-head);
+    font-weight: 800;
+  }
+  s {
+    color: #ff9c8a;
+  }
+  a {
+    font-weight: 800;
+    color: #d8ff3e;
+    text-decoration: none;
+    padding: 6px 2px;
+  }
+  a:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+  @media (max-width: 700px) {
+    .more,
+    .tag {
+      display: none;
+    }
+    .bar {
+      font-size: 0.8125rem;
+    }
+  }
+</style>

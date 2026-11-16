@@ -1,0 +1,304 @@
+---
+/**
+ * "What changes" for this page's one problem: three outcomes, then exactly what we set up
+ * for it. Copy comes from automotiveDoorPages.ts, so every door page reads differently here.
+ */
+import type { DoorPage } from '../../content/automotiveDoorPages';
+import { doorPageCommon as c } from '../../content/automotiveDoorPages';
+
+interface Props {
+  page: DoorPage;
+  /** a: cards beside a dark panel. b: dark, three columns over a lime band. c: split, with ruled rows. */
+  variant?: 'a' | 'b' | 'c';
+}
+const { page, variant = 'a' } = Astro.props;
+const ch = page.changes;
+---
+
+<section class:list={['scene', 'chg', `v-${variant}`, variant !== 'b' && 'pearl']} aria-labelledby="chg-title">
+  <div class="container">
+    <header class="head">
+      <p class="kicker" data-reveal>{c.changesKicker}</p>
+      <h2 id="chg-title" class="t-lg" data-reveal>
+        {ch.title[0]} <span class="hot">{ch.title[1]}</span>
+      </h2>
+    </header>
+
+    <div class="grid">
+      <ol role="list" class="outs">
+        {
+          ch.items.map((it, i) => (
+            <li data-reveal style={`--d:${i * 90}ms`}>
+              <span class="n">{String(i + 1).padStart(2, '0')}</span>
+              <div>
+                <b>{it.t}</b>
+                <p>{it.d}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+
+      <aside class="build">
+        <p class="b-h">{ch.buildTitle}</p>
+        <ul role="list">
+          {ch.build.map((b) => <li>{b}</li>)}
+        </ul>
+        <p class="part" data-spot>
+          <span>{c.buildNote}</span>
+          <a href="#pricing" data-track="cta_click" data-track-location="door_changes">
+            See the plan
+            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11M11 5.500 15.500 10 11 14.500" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          </a>
+        </p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<style>
+  .chg {
+    background: var(--pearl-2);
+  }
+  .head {
+    display: grid;
+    gap: var(--s-4);
+    justify-items: start;
+    margin-bottom: clamp(2rem, 1.5rem + 2vw, 3.5rem);
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    gap: clamp(1.5rem, 1rem + 3vw, 4rem);
+    align-items: stretch;
+  }
+
+  /* ---------- the three outcomes ---------- */
+  .outs {
+    margin: 0;
+    display: grid;
+    gap: 12px;
+    align-content: start;
+  }
+  .outs li {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 18px;
+    align-items: start;
+    padding: clamp(1.1rem, 0.9rem + 1vw, 1.75rem);
+    border-radius: 22px;
+    background: #fff;
+    border: 1px solid rgba(11, 16, 22, 0.08);
+    color: var(--ink);
+  }
+  .n {
+    font-family: var(--f-head);
+    font-weight: 800;
+    font-size: clamp(1.6rem, 1.2rem + 1.4vw, 2.4rem);
+    letter-spacing: -0.05em;
+    line-height: 1;
+    color: var(--hot);
+  }
+  .outs b {
+    font-family: var(--f-head);
+    font-weight: 700;
+    font-size: clamp(1.15rem, 1rem + 0.6vw, 1.5rem);
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+  }
+  .outs p {
+    margin-top: 4px;
+    line-height: 1.5;
+    color: var(--ink-2);
+  }
+
+  /* ---------- what we set up ---------- */
+  .build {
+    display: grid;
+    gap: var(--s-4);
+    align-content: start;
+    padding: clamp(1.25rem, 1rem + 1.4vw, 2.25rem);
+    border-radius: 26px;
+    background: var(--ink);
+    color: #fff;
+    box-shadow: 0 40px 80px -45px rgba(11, 16, 22, 0.7);
+  }
+  .b-h {
+    font-family: var(--f-head);
+    font-weight: 700;
+    font-size: clamp(1.2rem, 1.05rem + 0.7vw, 1.6rem);
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+  }
+  .build ul {
+    margin: 0;
+    display: grid;
+    gap: 12px;
+  }
+  .build li {
+    position: relative;
+    padding-left: 30px;
+    line-height: 1.4;
+    color: #dbe4ec;
+  }
+  .build li::before {
+    content: '';
+    position: absolute;
+    left: 3px;
+    top: 0.35em;
+    width: 13px;
+    height: 7px;
+    border-left: 2.5px solid #d8ff3e;
+    border-bottom: 2.5px solid #d8ff3e;
+    transform: rotate(-45deg);
+  }
+  .part {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px 16px;
+    margin-top: auto;
+    padding: 14px 16px;
+    border-radius: 16px;
+    background: #d8ff3e;
+    color: #0b1016;
+    transition: box-shadow 300ms;
+  }
+  .part span {
+    font-family: var(--f-head);
+    font-weight: 800;
+    font-size: 1.1rem;
+    letter-spacing: -0.03em;
+  }
+  .part a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 40px;
+    padding: 0 16px;
+    border-radius: 999px;
+    background: #0b1016;
+    color: #fff;
+    font-family: var(--f-head);
+    font-weight: 700;
+    font-size: 0.9375rem;
+    text-decoration: none;
+  }
+  .part svg {
+    width: 18px;
+    height: 18px;
+  }
+  /* ---------- b: dark, three columns, then a lime band ---------- */
+  .v-b {
+    background:
+      radial-gradient(50% 50% at 90% 10%, rgba(255, 90, 31, 0.14), transparent 70%),
+      var(--night-2);
+  }
+  .v-b .grid {
+    grid-template-columns: 1fr;
+    gap: var(--s-4);
+  }
+  .v-b .outs {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .v-b .outs li {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.12);
+    color: #fff;
+  }
+  .v-b .n {
+    color: #d8ff3e;
+  }
+  .v-b .outs p {
+    color: var(--fog);
+  }
+  .v-b .build {
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.6fr) auto;
+    align-items: center;
+    border: 1px solid rgba(216, 255, 62, 0.5);
+    background: rgba(216, 255, 62, 0.07);
+    color: #fff;
+    box-shadow: none;
+  }
+  .v-b .build ul {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px 22px;
+  }
+  .v-b .build li {
+    color: #dbe4ec;
+  }
+  .v-b .part {
+    display: grid;
+    justify-items: start;
+    margin-top: 0;
+  }
+
+  /* ---------- c: split, the outcomes as ruled rows ---------- */
+  .v-c {
+    background: var(--pearl);
+  }
+  .v-c .container {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    grid-template-areas:
+      'head outs'
+      'build outs';
+    gap: var(--s-5) clamp(2rem, 1rem + 4vw, 5rem);
+    align-items: start;
+  }
+  .v-c .head {
+    grid-area: head;
+    margin-bottom: 0;
+  }
+  .v-c .grid {
+    display: contents;
+  }
+  .v-c .outs {
+    grid-area: outs;
+    gap: 0;
+  }
+  .v-c .outs li {
+    padding: clamp(1.25rem, 1rem + 1.2vw, 2rem) 0;
+    border: 0;
+    border-top: 2px solid var(--ink);
+    border-radius: 0;
+    background: none;
+  }
+  .v-c .outs li:last-child {
+    border-bottom: 2px solid var(--ink);
+  }
+  .v-c .n {
+    font-size: clamp(2.4rem, 1.8rem + 2.4vw, 4rem);
+  }
+  .v-c .build {
+    grid-area: build;
+    padding: 0;
+    background: none;
+    color: var(--ink);
+    box-shadow: none;
+  }
+  .v-c .build li {
+    color: var(--ink-2);
+  }
+  .v-c .build li::before {
+    border-color: var(--hot);
+  }
+  @media (max-width: 900px) {
+    .grid,
+    .v-b .outs,
+    .v-b .build,
+    .v-b .build ul {
+      grid-template-columns: 1fr;
+    }
+    .v-c .container {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        'head'
+        'outs'
+        'build';
+    }
+  }
+</style>

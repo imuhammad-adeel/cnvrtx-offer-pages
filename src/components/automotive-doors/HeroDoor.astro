@@ -1,0 +1,678 @@
+---
+/**
+ * Door-page hero: the v9 hero (same markup, styles and polish effect) with its
+ * headline and sub passed in. Generated from Hero9.astro; do not edit Hero9 for door pages.
+ */
+import { hero9 as h } from '../../content/automotiveCopyV9';
+
+interface Props {
+  headline: [string, string];
+  sub: string;
+}
+const { headline, sub } = Astro.props;
+---
+
+<section class="hero" id="top" aria-labelledby="h8-title" data-hero9>
+  <div class="paint" aria-hidden="true">
+    <i class="tube t1"></i>
+    <i class="tube t2"></i>
+    <i class="tube t3"></i>
+    <i class="flake"></i>
+  </div>
+  <canvas class="haze" data-haze aria-hidden="true"></canvas>
+  <i class="sweep" aria-hidden="true"></i>
+  <i class="pad" data-pad aria-hidden="true"><b></b></i>
+
+  <div class="container body">
+    <p class="pill" role="img" aria-label={h.eyebrow}>
+      <span aria-hidden="true">{h.pill}</span>
+      <b class="rot" data-rot={h.pillWords.join('|')} aria-hidden="true">{h.pillWords[0]}</b>
+      <span aria-hidden="true">{h.pillEnd}</span>
+    </p>
+    <h1 id="h8-title" class="title">
+      <span class="rise"><span>{headline[0]}</span></span>
+      <span class="rise" style="--d:120ms"><span class="chrome">{headline[1]}</span></span>
+    </h1>
+    <p class="sub">{sub}</p>
+    <div class="act">
+      <a href="#pricing" class="go" data-magnet data-track="cta_click" data-track-location="hero">
+        {h.cta}
+        <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11M11 5.500 15.500 10 11 14.500" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+      </a>
+      <a href="#math" class="ghost" data-track="hero_how_it_works">{h.link} ↓</a>
+    </div>
+    <p class="trust">{h.trust.join('  ·  ')}</p>
+  </div>
+
+  <div class="hud" aria-hidden="true">
+    <span class="hint" data-hint data-fine={h.hud.hint} data-touch={h.hud.hintTouch}>{h.hud.hint}</span>
+    <span class="meter">
+      <span class="gauge" data-meter style="--p:0">
+        <svg viewBox="0 0 64 38" fill="none">
+          <path class="g-track" d="M6 33a26 26 0 0 1 52 0" />
+          <path class="g-fill" pathLength="100" d="M6 33a26 26 0 0 1 52 0" />
+          <line class="g-needle" x1="32" y1="33" x2="32" y2="11" />
+          <circle class="g-hub" cx="32" cy="33" r="3.500" />
+        </svg>
+      </span>
+      <span class="m-l">{h.hud.label}</span>
+      <span class="m-v" data-pct>0%</span>
+      <span class="m-done">✓ {h.hud.done}</span>
+    </span>
+  </div>
+
+</section>
+
+<script>
+  import { track } from '../../scripts/analytics';
+
+  const hero = document.querySelector<HTMLElement>('[data-hero9]');
+  const cv = hero?.querySelector<HTMLCanvasElement>('[data-haze]');
+  if (hero && cv) {
+    requestAnimationFrame(() => hero.classList.add('is-in'));
+
+    // the pill cycles through shop types, so it stays one short line
+    const rot = hero.querySelector<HTMLElement>('[data-rot]');
+    if (rot && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const words = rot.dataset.rot!.split('|');
+      let wi = 0;
+      window.setInterval(() => {
+        rot.classList.add('out');
+        window.setTimeout(() => {
+          wi = (wi + 1) % words.length;
+          rot.textContent = words[wi];
+          rot.classList.remove('out');
+        }, 260);
+      }, 1700);
+    }
+
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const fine = window.matchMedia('(pointer: fine)').matches;
+    const ctx = cv.getContext('2d');
+    const pad = hero.querySelector<HTMLElement>('[data-pad]')!;
+    const meter = hero.querySelector<HTMLElement>('[data-meter]')!;
+    const pctEl = hero.querySelector<HTMLElement>('[data-pct]')!;
+    const hint = hero.querySelector<HTMLElement>('[data-hint]')!;
+
+    let done = false;
+    const finish = (mode: string) => {
+      if (done) return;
+      done = true;
+      hero.setAttribute('data-done', '');
+      meter.style.setProperty('--p', '1');
+      pctEl.textContent = '100%';
+      track('hero_polished', { mode });
+    };
+
+    if (reduce || !ctx) {
+      finish('static');
+    } else {
+      const DPR = Math.min(window.devicePixelRatio || 1, 1.5);
+      const GOAL = 0.42; // share of the hero that must be buffed before it clears itself
+      const GX = 26;
+      const GY = 15;
+      let grid = new Uint8Array(GX * GY);
+      let marked = 0;
+      let w = 0;
+      let h = 0;
+      let BR = 96;
+
+      // small seeded PRNG so the haze looks the same on every load
+      let seed = 20261111;
+      const rnd = () => {
+        seed |= 0;
+        seed = (seed + 0x6d2b79f5) | 0;
+        let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+        t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+        return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+      };
+
+      // The haze is drawn in short slices across frames, so it never blocks the page.
+      // `ready` turns true once the last swirl is down; polishing waits for it.
+      let gen = 0;
+      let ready = false;
+      const paint = () => {
+        const my = ++gen;
+        ready = false;
+        seed = 20261111;
+        ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+        ctx.globalCompositeOperation = 'source-over';
+        ctx.clearRect(0, 0, w, h);
+        // milky film
+        ctx.fillStyle = 'rgba(170, 184, 198, 0.3)';
+        ctx.fillRect(0, 0, w, h);
+        const dots = Math.round((w * h) / 9000);
+        const centres = Math.max(8, Math.round(w / 120));
+        let k = -1; // -1: water spots still to draw
+        const slice = () => {
+          if (my !== gen) return; // a newer paint took over (resize)
+          const t0 = performance.now();
+          ctx.globalCompositeOperation = 'source-over';
+          if (k < 0) {
+            // water spots and dust
+            for (let i = 0; i < dots; i++) {
+              ctx.beginPath();
+              ctx.arc(rnd() * w, rnd() * h, 1 + rnd() * 5, 0, 6.2832);
+              ctx.fillStyle = `rgba(255,255,255,${0.04 + rnd() * 0.09})`;
+              ctx.fill();
+            }
+            k = 0;
+          }
+          // swirl marks: partial concentric arcs around random light points
+          while (k < centres && performance.now() - t0 < 6) {
+            const cx = rnd() * w;
+            const cy = rnd() * h;
+            const R = 90 + rnd() * 240;
+            for (let r = 8; r < R; r += 2.5 + rnd() * 3) {
+              const a0 = rnd() * 6.2832;
+              ctx.beginPath();
+              ctx.arc(cx, cy, r, a0, a0 + 0.5 + rnd() * 1.9);
+              ctx.strokeStyle = `rgba(255,255,255,${0.04 + rnd() * 0.13})`;
+              ctx.lineWidth = 0.5 + rnd() * 0.7;
+              ctx.stroke();
+            }
+            k++;
+          }
+          if (k < centres) requestAnimationFrame(slice);
+          else ready = true;
+        };
+        requestAnimationFrame(slice);
+      };
+
+      const size = () => {
+        const nw = hero.clientWidth;
+        const nh = hero.clientHeight;
+        if (nw === w && Math.abs(nh - h) < 120) return; // ignore mobile address-bar jitter
+        w = nw;
+        h = nh;
+        BR = w < 700 ? 64 : 104;
+        cv.width = Math.round(w * DPR);
+        cv.height = Math.round(h * DPR);
+        grid = new Uint8Array(GX * GY);
+        marked = 0;
+        shownStep = -1;
+        paint();
+      };
+
+      const stamp = (x: number, y: number) => {
+        ctx.globalCompositeOperation = 'destination-out';
+        const g = ctx.createRadialGradient(x, y, 0, x, y, BR);
+        g.addColorStop(0, 'rgba(0,0,0,1)');
+        g.addColorStop(0.6, 'rgba(0,0,0,0.85)');
+        g.addColorStop(1, 'rgba(0,0,0,0)');
+        ctx.fillStyle = g;
+        ctx.beginPath();
+        ctx.arc(x, y, BR, 0, 6.2832);
+        ctx.fill();
+        // coverage
+        const cw = w / GX;
+        const ch = h / GY;
+        const reach = BR * 0.78;
+        const x0 = Math.max(0, Math.floor((x - reach) / cw));
+        const x1 = Math.min(GX - 1, Math.floor((x + reach) / cw));
+        const y0 = Math.max(0, Math.floor((y - reach) / ch));
+        const y1 = Math.min(GY - 1, Math.floor((y + reach) / ch));
+        for (let gy = y0; gy <= y1; gy++)
+          for (let gx = x0; gx <= x1; gx++) {
+            const i = gy * GX + gx;
+            if (grid[i]) continue;
+            const dx = (gx + 0.5) * cw - x;
+            const dy = (gy + 0.5) * ch - y;
+            if (dx * dx + dy * dy < reach * reach) {
+              grid[i] = 1;
+              marked++;
+            }
+          }
+      };
+
+      let shownStep = -1;
+      const report = (mode: string) => {
+        const pct = marked / (GX * GY);
+        const step = Math.round(Math.min(1, pct / GOAL) * 20);
+        if (step !== shownStep) {
+          shownStep = step;
+          meter.style.setProperty('--p', (step / 20).toFixed(2));
+          pctEl.textContent = `${step * 5}%`;
+        }
+        if (pct >= GOAL) finish(mode);
+      };
+
+      let last: [number, number] | null = null;
+      const strokeTo = (x: number, y: number) => {
+        if (!last) last = [x, y];
+        const dx = x - last[0];
+        const dy = y - last[1];
+        const n = Math.max(1, Math.ceil(Math.hypot(dx, dy) / 22));
+        for (let i = 1; i <= n; i++) stamp(last[0] + (dx * i) / n, last[1] + (dy * i) / n);
+        last = [x, y];
+      };
+
+      let userTouched = false;
+      let autoRaf = 0;
+      let idleTimer = 0;
+      const onMove = (e: PointerEvent) => {
+        if (done || !ready || e.pointerType !== 'mouse') return;
+        const r = hero.getBoundingClientRect();
+        const x = e.clientX - r.left;
+        const y = e.clientY - r.top;
+        if (!userTouched) {
+          userTouched = true;
+          cancelAnimationFrame(autoRaf);
+          window.clearTimeout(autoTimer);
+          last = null;
+        }
+        pad.style.transform = `translate(${x}px, ${y}px)`;
+        if (!hero.hasAttribute('data-pad')) hero.setAttribute('data-pad', '');
+        strokeTo(x, y);
+        report('cursor');
+        // if they start and then stop, finish the job for them
+        window.clearTimeout(idleTimer);
+        idleTimer = window.setTimeout(() => finish('idle'), 3500);
+      };
+      hero.addEventListener('pointermove', onMove);
+      hero.addEventListener('pointerleave', () => {
+        last = null;
+        hero.removeAttribute('data-pad');
+      });
+
+      // If nobody polishes (or on touch), the page buffs itself.
+      const auto = () => {
+        if (done || userTouched) return;
+        if (!ready) {
+          // the haze is still being drawn: try again shortly
+          autoTimer = window.setTimeout(auto, 150);
+          return;
+        }
+        hint.textContent = hint.dataset.touch || '';
+        const t0 = performance.now();
+        const D = 2600;
+        last = null;
+        const step = (now: number) => {
+          if (done || userTouched) return;
+          const t = Math.min(1, (now - t0) / D);
+          const x = w * (-0.05 + 1.1 * t);
+          const y = h * (0.5 + 0.4 * Math.sin(t * Math.PI * 7));
+          pad.style.transform = `translate(${x}px, ${y}px)`;
+          if (!hero.hasAttribute('data-pad')) hero.setAttribute('data-pad', '');
+          strokeTo(x, y);
+          report('auto');
+          if (t < 1) autoRaf = requestAnimationFrame(step);
+          else finish('auto');
+        };
+        autoRaf = requestAnimationFrame(step);
+      };
+
+      size();
+      window.addEventListener('resize', () => !done && size());
+      let autoTimer = window.setTimeout(auto, fine ? 4200 : 1100);
+    }
+  }
+</script>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    min-height: 100svh;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    overflow: hidden;
+    isolation: isolate;
+    background: var(--night);
+  }
+
+  /* ---------- the paint ---------- */
+  .paint {
+    position: absolute;
+    inset: 0;
+    z-index: -3;
+    background:
+      radial-gradient(70% 50% at 50% -20%, #1a2733 0%, transparent 70%),
+      radial-gradient(70% 50% at 50% 120%, #1a2733 0%, transparent 70%),
+      linear-gradient(180deg, #060a0e 0%, #0b131b 50%, #0e151d 100%);
+  }
+  .tube {
+    position: absolute;
+    left: -30%;
+    width: 160%;
+    border-radius: 50%;
+    filter: blur(38px);
+    transform: rotate(-9deg);
+    opacity: 0.55;
+    animation: drift 16s ease-in-out infinite alternate;
+  }
+  .t1 {
+    top: 6%;
+    height: 90px;
+    background: linear-gradient(90deg, transparent, #e9f3ff 30%, #ffffff 50%, #e9f3ff 70%, transparent);
+    opacity: 0.2;
+  }
+  .t2 {
+    top: 46%;
+    height: 54px;
+    background: linear-gradient(90deg, transparent, #9cc7ff 40%, #dff0ff 55%, transparent);
+    opacity: 0.16;
+    animation-duration: 22s;
+    animation-direction: alternate-reverse;
+  }
+  .t3 {
+    bottom: 4%;
+    height: 150px;
+    background: linear-gradient(90deg, transparent 10%, #ff5a1f 45%, #ffb48f 55%, transparent 90%);
+    opacity: 0.2;
+    animation-duration: 19s;
+  }
+  @keyframes drift {
+    from {
+      transform: rotate(-9deg) translateX(-6%);
+    }
+    to {
+      transform: rotate(-9deg) translateX(6%);
+    }
+  }
+  .flake {
+    position: absolute;
+    inset: 0;
+    opacity: 0.5;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.4' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1.4 -0.55'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)'/%3E%3C/svg%3E");
+  }
+  .horizon {
+    position: absolute;
+    left: -10%;
+    right: -10%;
+    bottom: 96px;
+    height: 46%;
+    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.16);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent 40%);
+    transform: perspective(900px) rotateX(48deg);
+    transform-origin: bottom;
+  }
+
+  /* ---------- haze, polish pad, finishing sweep ---------- */
+  .haze {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+    transition: opacity 1100ms var(--ease);
+  }
+  .hero[data-done] .haze {
+    opacity: 0;
+  }
+  .pad {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 200ms;
+  }
+  .pad b {
+    position: absolute;
+    left: -62px;
+    top: -62px;
+    width: 124px;
+    height: 124px;
+    border-radius: 50%;
+    border: 2px dashed rgba(255, 255, 255, 0.75);
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.12), transparent 70%);
+    animation: spin 1.1s linear infinite;
+  }
+  .hero[data-pad]:not([data-done]) .pad {
+    opacity: 1;
+  }
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  .sweep {
+    position: absolute;
+    top: -20%;
+    bottom: -20%;
+    left: 0;
+    width: 34%;
+    z-index: 3;
+    pointer-events: none;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+    transform: translateX(-160%) skewX(-18deg);
+    opacity: 0;
+  }
+  .hero[data-done] .sweep {
+    animation: gleam 1300ms var(--ease) 150ms 1 both;
+  }
+  @keyframes gleam {
+    0% {
+      transform: translateX(-160%) skewX(-18deg);
+      opacity: 0.9;
+    }
+    100% {
+      transform: translateX(420%) skewX(-18deg);
+      opacity: 0;
+    }
+  }
+
+  /* ---------- content ---------- */
+  .body {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    justify-items: center;
+    align-content: center;
+    gap: clamp(1rem, 0.7rem + 1vw, 1.75rem);
+    text-align: center;
+    padding-top: calc(var(--nav-h) + 24px);
+    padding-bottom: 24px;
+  }
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 7px 16px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.06);
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #d5dee6;
+    white-space: nowrap;
+  }
+  .rot {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 999px;
+    background: #d8ff3e;
+    color: #0b1016;
+    font-weight: 800;
+    transition:
+      opacity 240ms ease,
+      transform 240ms ease;
+  }
+  .rot:global(.out) {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  .title {
+    font-size: clamp(2.1rem, 0.5rem + 4.9vw, 5.4rem);
+    line-height: 1.02;
+    max-width: 100%;
+    letter-spacing: -0.055em;
+    font-weight: 800;
+  }
+  .sub {
+    max-width: 44rem;
+    font-size: clamp(1.05rem, 1rem + 0.45vw, 1.35rem);
+    line-height: 1.5;
+    color: #c2ced9;
+  }
+  .act {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 12px 28px;
+    margin-top: 6px;
+  }
+  .trust {
+    font-size: 0.875rem;
+    color: var(--fog-2);
+    white-space: pre-wrap;
+  }
+
+  /* ---------- HUD ---------- */
+  .hud {
+    position: relative;
+    z-index: 4;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 12px var(--gutter) 58px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--fog);
+  }
+  .hint::before {
+    content: '◎ ';
+    color: var(--hot);
+  }
+  .hero[data-done] .hint {
+    visibility: hidden;
+  }
+  .meter {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+  /* a little rev gauge instead of a progress bar */
+  .gauge {
+    --p: 0;
+    width: 58px;
+    line-height: 0;
+  }
+  .gauge svg {
+    width: 100%;
+    overflow: visible;
+  }
+  .g-track {
+    stroke: rgba(255, 255, 255, 0.2);
+    stroke-width: 5;
+    stroke-linecap: round;
+  }
+  .g-fill {
+    stroke: var(--hot);
+    stroke-width: 5;
+    stroke-linecap: round;
+    stroke-dasharray: 100;
+    stroke-dashoffset: calc(100 - var(--p) * 100);
+    transition: stroke-dashoffset 220ms linear;
+  }
+  .g-needle {
+    stroke: #fff;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    transform-origin: 32px 33px;
+    transform: rotate(calc(-90deg + var(--p) * 180deg));
+    transition: transform 220ms ease-out;
+  }
+  .g-hub {
+    fill: #fff;
+  }
+  .hero[data-done] .g-fill {
+    stroke: var(--mint);
+  }
+  .m-v {
+    display: inline-block;
+    width: 3.2em;
+    height: 1.3em;
+    line-height: 1.3;
+    contain: strict;
+    text-align: right;
+    color: #fff;
+  }
+  .m-done {
+    display: none;
+    color: var(--mint);
+  }
+  .hero[data-done] .m-l,
+  .hero[data-done] .m-v {
+    display: none;
+  }
+  .hero[data-done] .m-done {
+    display: inline;
+  }
+
+  /* ---------- service reel ---------- */
+  .reel {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    padding-block: 14px;
+    background: rgba(255, 255, 255, 0.03);
+  }
+  .reel ul {
+    margin: 0;
+    display: flex;
+    width: max-content;
+    animation: reel 36s linear infinite;
+  }
+  .reel li {
+    padding-inline: 26px;
+    font-family: var(--f-head);
+    font-weight: 800;
+    font-size: clamp(1.3rem, 1rem + 1.4vw, 2.2rem);
+    letter-spacing: -0.03em;
+    white-space: nowrap;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.5);
+    display: flex;
+    align-items: center;
+    gap: 52px;
+  }
+  .reel li::after {
+    content: '✕';
+    font-size: 0.5em;
+    -webkit-text-stroke: 0;
+    color: var(--hot);
+  }
+  @keyframes reel {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .act .go {
+      width: 100%;
+      padding-inline: 16px;
+      font-size: 1rem;
+      white-space: nowrap;
+    }
+    .hud {
+      font-size: 0.625rem;
+    }
+    .hint {
+      max-width: 46%;
+    }
+    .horizon {
+      display: none;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .tube,
+    .reel ul,
+    .pad b {
+      animation: none;
+    }
+  }
+</style>

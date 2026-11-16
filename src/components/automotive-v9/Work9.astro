@@ -1,0 +1,838 @@
+---
+import { work9 as w, hire9 as h } from '../../content/automotiveCopyV9';
+import { math9 } from '../../content/automotiveCopyV9';
+import { featuredPlan } from '../../config/offerV9';
+const price = featuredPlan.monthly;
+const money = (n: number) => '$' + Math.round(n).toLocaleString('en-US');
+// starting figures; the script keeps them in step with the calculator and the visitor's choices
+const md = math9.defaults;
+const lost0 = (md.missed * (52 / 12) * md.value) / md.oneIn;
+const hrs0 = Math.round((h.hours * 52) / 12);
+const time0 = hrs0 * h.hourRate; // the owner's own hours, priced at a receptionist's wage
+const staff0 = h.staff.reduce((a, x) => a + x.cost, 0);
+const total0 = staff0 + time0 + lost0; // the page opens on "I have staff"
+---
+
+<section class="scene work pearl" aria-labelledby="work-title">
+  <div class="container whead">
+    <div>
+      <p class="kicker" data-reveal>{w.kicker}</p>
+      <h2 id="work-title" class="t-lg" data-reveal>
+        {w.title[0]} <span class="hot">{w.title[1]}</span>
+      </h2>
+    </div>
+    <p class="lede"><b>{h.title}</b> {h.body}</p>
+  </div>
+
+  <div class="container grid">
+    <div class="left">
+      <!-- what the front office costs today, as one monthly bill -->
+      <div class="bill" data-bill data-mode="staff" data-price={price} data-lost={Math.round(lost0)} data-rate={h.hourRate}>
+        <p class="b-top">
+          <span>{h.billTitle}</span>
+          <span>{h.billTag}</span>
+        </p>
+
+        <div class="b-mode" role="radiogroup" aria-label={h.modeLabel}>
+          <button type="button" role="radio" aria-checked="false" data-mode-btn="self">{h.modeSelf}</button>
+          <button type="button" role="radio" aria-checked="true" data-mode-btn="staff">{h.modeStaff}</button>
+        </div>
+
+        <div class="b-row" data-when="staff">
+          <p class="b-k">
+            {h.staffLabel}
+            <small>{h.staffHint}</small>
+          </p>
+          <b data-b="labor">{money(staff0)}</b>
+          <div class="b-opts">
+            {
+              h.staff.map((x) => (
+                <button type="button" aria-pressed="true" data-staff={x.cost}>
+                  {x.k} <em>{money(x.cost)}</em>
+                </button>
+              ))
+            }
+          </div>
+        </div>
+
+        <div class="b-row">
+          <p class="b-k">
+            <span data-when="self" hidden>{h.hoursSelf}</span>
+            <span data-when="staff">{h.hoursStaff}</span>
+            <span class="mini">
+              <button type="button" data-hrs="-1" aria-label="Fewer hours a week">−</button>
+              <output data-b="week">{h.hours}</output>
+              <button type="button" data-hrs="1" aria-label="More hours a week">+</button>
+            </span>
+            <small>
+              {h.hoursUnit} <span data-b="hrs">{hrs0}</span> {h.hoursHint}
+            </small>
+          </p>
+          <b data-b="time">{money(time0)}</b>
+        </div>
+
+        <div class="b-row">
+          <p class="b-k">
+            <span data-when="self" hidden>{h.lostSelf}</span>
+            <span data-when="staff">{h.lostStaff}</span>
+            <small>{h.lostHint}</small>
+          </p>
+          <b class="red" data-b="lost">{money(lost0)}</b>
+        </div>
+
+        <div class="b-tot" aria-live="polite">
+          <span>{h.totalLabel}</span>
+          <p>
+            <b data-b="total">{money(total0)}</b>
+            <em>
+              {h.totalIncl} <span data-b="hrs">{hrs0}</span> {h.totalHours}
+            </em>
+          </p>
+        </div>
+
+        <!-- same scale for both bars: the system's price is drawn at its true size -->
+        <div class="b-bars" aria-hidden="true">
+          <p class="bb"><span>{h.barToday}</span></p>
+          <div class="bar"><i class="s-labor" data-seg="labor"></i><i class="s-time" data-seg="time"></i><i class="s-lost" data-seg="lost"></i></div>
+          <p class="bb">
+            <span>{h.barUs}</span>
+            <b>{money(price)}/mo</b>
+          </p>
+          <div class="bar"><i class="s-us" data-seg="us"></i></div>
+        </div>
+        <p class="b-x">
+          <b data-b="x">{Math.round(total0 / price)}×</b>
+          <span>{h.xLabel}</span>
+        </p>
+        <p class="b-note">{h.billNote}</p>
+      </div>
+    </div>
+
+    <div class="right">
+    <div class="table" role="table" aria-label="Who does the work" data-work9>
+      <div class="tr th" role="row">
+        <span role="columnheader">{w.colTask}</span>
+        <span role="columnheader">{w.colYou}</span>
+        <span role="columnheader" class="us-h">{w.colUs}</span>
+      </div>
+      {
+        w.rows.map((r, i) => (
+          <div class="tr" role="row" style={`--i:${i}`}>
+            <span role="cell" class="task">{r.t}</span>
+            <span role="cell" class="you">{r.who}</span>
+            <span role="cell" class="us"><i aria-hidden="true">✓</i>{w.us}</span>
+          </div>
+        ))
+      }
+      <div class="tr tot" role="row">
+        <span role="cell" class="task">{w.totLabel}</span>
+        <span role="cell" class="you"><b>{w.totYou}</b></span>
+        <span role="cell" class="us"><b>{w.totUs}</b></span>
+      </div>
+    </div>
+
+      <div class="part" data-spot>
+        <span class="p-l">{w.yourPart.label}</span>
+        <p class="p-b">{w.yourPart.big}</p>
+        <p class="p-d">{w.yourPart.line}</p>
+      </div>
+    </div>
+  </div>
+  <div class="container after">
+    <p class="h-close">{h.close}</p>
+    <p class="h-foot">{h.foot}</p>
+  </div>
+</section>
+
+<script>
+  // The bill: staff wages (if any) + the owner's own hours + the jobs that still slip away
+  // (from the calculator). Compared with what the system costs, on one scale.
+  const bill = document.querySelector<HTMLElement>('[data-bill]');
+  if (bill) {
+    const price = Number(bill.dataset.price);
+    const rate = Number(bill.dataset.rate);
+    const $ = (n: number) => '$' + Math.round(n).toLocaleString('en-US');
+    const set = (k: string, v: string) => bill.querySelectorAll<HTMLElement>(`[data-b="${k}"]`).forEach((el) => (el.textContent = v));
+    const seg = (k: string, share: number) => {
+      const el = bill.querySelector<HTMLElement>(`[data-seg="${k}"]`);
+      if (el) el.style.width = `${Math.max(share * 100, share > 0 ? 1.2 : 0)}%`;
+    };
+    const modes = [...bill.querySelectorAll<HTMLButtonElement>('[data-mode-btn]')];
+    const staff = [...bill.querySelectorAll<HTMLButtonElement>('[data-staff]')];
+    let mode = bill.dataset.mode || 'staff';
+    let week = Number(bill.querySelector('[data-b="week"]')?.textContent || 10);
+    let lost = Number(bill.dataset.lost);
+
+    const paint = () => {
+      const labor = mode === 'staff' ? staff.filter((b) => b.getAttribute('aria-pressed') === 'true').reduce((a, b) => a + Number(b.dataset.staff), 0) : 0;
+      const hrs = Math.round((week * 52) / 12);
+      const time = hrs * rate;
+      const total = labor + time + lost;
+      bill.dataset.mode = mode;
+      bill.querySelectorAll<HTMLElement>('[data-when]').forEach((el) => (el.hidden = el.dataset.when !== mode));
+      modes.forEach((b) => b.setAttribute('aria-checked', String(b.dataset.modeBtn === mode)));
+      set('labor', $(labor));
+      set('time', $(time));
+      set('lost', $(lost));
+      set('week', String(week));
+      set('hrs', String(hrs));
+      set('total', $(total));
+      set('x', `${total / price >= 10 ? Math.round(total / price) : (total / price).toFixed(1)}×`);
+      seg('labor', total ? labor / total : 0);
+      seg('time', total ? time / total : 0);
+      seg('lost', total ? lost / total : 0);
+      seg('us', total ? Math.min(1, price / total) : 0);
+    };
+
+    modes.forEach((b) =>
+      b.addEventListener('click', () => {
+        mode = b.dataset.modeBtn || 'self';
+        paint();
+      }),
+    );
+    staff.forEach((b) =>
+      b.addEventListener('click', () => {
+        b.setAttribute('aria-pressed', String(b.getAttribute('aria-pressed') !== 'true'));
+        paint();
+      }),
+    );
+    bill.querySelectorAll<HTMLButtonElement>('[data-hrs]').forEach((b) =>
+      b.addEventListener('click', () => {
+        week = Math.max(1, Math.min(60, week + Number(b.dataset.hrs)));
+        paint();
+      }),
+    );
+    // stay in step with the calculator above
+    window.addEventListener('cx:math', () =>
+      window.setTimeout(() => {
+        const live = document.querySelector('[data-math9] [data-v="lost"]')?.textContent?.replace(/[^0-9.]/g, '');
+        if (live) {
+          lost = Number(live);
+          paint();
+        }
+      }, 0),
+    );
+    paint();
+  }
+
+  // Each row ticks as it scrolls into view: "You" is crossed out, "We do it" fills in.
+  const t = document.querySelector<HTMLElement>('[data-work9]');
+  if (t) {
+    const rows = [...t.querySelectorAll<HTMLElement>('.tr:not(.th)')];
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) {
+      rows.forEach((r) => r.setAttribute('data-on', ''));
+    } else {
+      const io = new IntersectionObserver(
+        (es) =>
+          es.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.setAttribute('data-on', '');
+              io.unobserve(e.target);
+            }
+          }),
+        { rootMargin: '0px 0px -32% 0px', threshold: 0.6 },
+      );
+      rows.forEach((r) => io.observe(r));
+    }
+  }
+</script>
+
+<style>
+  .work {
+    background: var(--pearl-2);
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    gap: clamp(2rem, 1rem + 4vw, 5rem);
+    align-items: stretch;
+  }
+  .left {
+    display: grid;
+    gap: var(--s-5);
+    justify-items: start;
+  }
+  .quotes {
+    display: grid;
+    gap: 8px;
+    width: 100%;
+  }
+  .q {
+    display: grid;
+    grid-template-columns: 96px 1fr;
+    gap: 12px;
+    align-items: center;
+    padding: 12px 16px;
+    border-radius: 14px;
+    font-family: var(--f-head);
+    font-weight: 700;
+    font-size: clamp(1.05rem, 0.95rem + 0.6vw, 1.4rem);
+    letter-spacing: -0.03em;
+  }
+  .q span {
+    font-family: var(--f-text);
+    font-size: 0.6875rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .q-sw {
+    border: 1.5px dashed rgba(11, 16, 22, 0.3);
+    color: var(--ink-3);
+  }
+  .q-cx {
+    background: var(--ink);
+    color: #fff;
+  }
+  .q-cx span {
+    color: #d8ff3e;
+  }
+  .part {
+    display: grid;
+    gap: 4px;
+    width: 100%;
+    padding: 18px 20px;
+    border-radius: 18px;
+    background: #d8ff3e;
+    color: var(--ink);
+    transition: box-shadow 300ms;
+  }
+  .p-l {
+    font-size: 0.6875rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .p-b {
+    font-family: var(--f-head);
+    font-weight: 800;
+    font-size: clamp(1.8rem, 1.4rem + 1.6vw, 2.8rem);
+    letter-spacing: -0.05em;
+    line-height: 1;
+  }
+  .p-d {
+    font-weight: 600;
+  }
+
+  .table {
+    border-radius: 24px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 40px 80px -40px rgba(11, 16, 22, 0.5);
+    border: 1px solid rgba(11, 16, 22, 0.08);
+  }
+  .tr {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 0.7fr) minmax(0, 0.9fr);
+    align-items: stretch;
+    border-top: 1px solid rgba(11, 16, 22, 0.08);
+  }
+  .tr > span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 16px 18px;
+  }
+  .th {
+    border-top: 0;
+    background: var(--ink);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .us-h {
+    background: var(--hot);
+  }
+  .task {
+    font-weight: 700;
+  }
+  .you {
+    font-family: var(--f-head);
+    font-weight: 800;
+    color: #9aa3ab;
+    background: #f4f4f1;
+  }
+  .us {
+    font-family: var(--f-head);
+    font-weight: 800;
+    background: #fafaf7;
+    color: var(--ink);
+  }
+  .us i {
+    display: grid;
+    place-items: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #d8ff3e;
+    color: var(--ink);
+    font-style: normal;
+    font-size: 0.75rem;
+    transform: scale(0);
+    transition: transform 420ms cubic-bezier(0.3, 1.6, 0.5, 1);
+  }
+  .tr .us,
+  .tr .you,
+  .tr .task {
+    transition:
+      background-color 400ms,
+      color 400ms,
+      opacity 400ms;
+  }
+  .tr:not(.th):not([data-on]) .us {
+    color: #b9b0aa;
+  }
+  .tr[data-on] .us i {
+    transform: scale(1);
+    animation: beat 2.6s ease-in-out infinite;
+    animation-delay: calc(var(--i, 0) * 220ms + 700ms);
+  }
+  @keyframes beat {
+    0%,
+    70%,
+    100% {
+      transform: scale(1);
+      box-shadow: 0 0 0 0 rgba(216, 255, 62, 0.8);
+    }
+    82% {
+      transform: scale(1.22);
+      box-shadow: 0 0 0 8px rgba(216, 255, 62, 0);
+    }
+  }
+  .tr[data-on] .us {
+    background: #fff;
+    color: var(--ink);
+  }
+  .tr[data-on] .you {
+    text-decoration: line-through;
+    text-decoration-thickness: 2px;
+    opacity: 0.6;
+  }
+  .tot .you,
+  .tot.tr[data-on] .you {
+    text-decoration: none;
+    opacity: 1;
+  }
+  .tot .us b,
+  .tot .you b {
+    transform: scale(0.6);
+    opacity: 0.3;
+    display: inline-block;
+    transition:
+      transform 500ms cubic-bezier(0.3, 1.6, 0.5, 1),
+      opacity 400ms;
+  }
+  .tot[data-on] .us b,
+  .tot[data-on] .you b {
+    transform: scale(1);
+    opacity: 1;
+  }
+  .tot > span {
+    padding-block: 14px;
+    font-size: 0.8125rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .tot b {
+    font-size: clamp(1rem, 0.85rem + 0.6vw, 1.35rem);
+    text-transform: none;
+    letter-spacing: -0.04em;
+  }
+  .tot .you b {
+    color: #d1483a;
+  }
+  .tot .us b {
+    color: #0c8a5f;
+  }
+
+  @media (max-width: 960px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  @media (max-width: 520px) {
+    .tr > span {
+      padding: 12px 10px;
+      font-size: 0.875rem;
+    }
+    .q {
+      grid-template-columns: 1fr;
+      gap: 2px;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .us i {
+      transform: scale(1);
+      transition: none;
+      animation: none !important;
+    }
+  }
+
+  /* ---------- v9: what hiring costs, then the answer ---------- */
+  .lede b {
+    color: var(--ink);
+  }
+  .costs {
+    margin: 0;
+    width: 100%;
+    display: grid;
+    gap: 6px;
+  }
+  .costs li {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    padding: 12px 16px;
+    border-radius: 14px;
+    border: 1.5px dashed rgba(11, 16, 22, 0.3);
+    color: var(--ink-2);
+    font-weight: 600;
+  }
+  .costs b {
+    font-family: var(--f-head);
+    font-weight: 800;
+    font-size: 1.1rem;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+  .costs .us {
+    border: 0;
+    background: var(--ink);
+    color: #d8ff3e;
+  }
+  .costs .us b {
+    color: #fff;
+  }
+  .after {
+    margin-top: clamp(1.5rem, 1rem + 2vw, 3rem);
+    display: grid;
+    gap: var(--s-3);
+  }
+  .h-close {
+    font-family: var(--f-head);
+    font-weight: 700;
+    font-size: clamp(1.2rem, 1rem + 0.9vw, 1.7rem);
+    letter-spacing: -0.03em;
+    color: var(--ink);
+  }
+  .h-foot {
+    max-width: 110ch;
+    font-size: 0.75rem;
+    line-height: 1.5;
+    color: var(--ink-2);
+  }
+
+  /* ---------- v9: the monthly bill ---------- */
+  .right {
+    display: grid;
+    gap: var(--s-4);
+  }
+  .bill {
+    width: 100%;
+    display: grid;
+    padding: clamp(1.1rem, 0.9rem + 1vw, 1.75rem);
+    border-radius: 22px;
+    background: #fff;
+    border: 1px solid rgba(11, 16, 22, 0.08);
+    box-shadow: 0 30px 60px -40px rgba(11, 16, 22, 0.45);
+    color: var(--ink);
+  }
+  .b-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding-bottom: 12px;
+    font-size: 0.6875rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+  }
+  .b-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 6px 14px;
+    align-items: center;
+    padding: 12px 0;
+    border-top: 1.5px dashed rgba(11, 16, 22, 0.18);
+  }
+  .b-k {
+    font-weight: 700;
+    line-height: 1.3;
+  }
+  .b-k small {
+    display: block;
+    margin-top: 2px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--ink-2);
+  }
+  .b-row > b {
+    font-family: var(--f-head);
+    font-weight: 800;
+    font-size: 1.25rem;
+    letter-spacing: -0.03em;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+  .red {
+    color: #c93a2c;
+  }
+  .b-opts {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .b-opts button {
+    min-height: 36px;
+    padding: 0 12px;
+    border-radius: 999px;
+    border: 1.5px solid rgba(11, 16, 22, 0.2);
+    background: transparent;
+    color: var(--ink-2);
+    font: inherit;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .b-opts button[aria-checked='true'] {
+    border-color: var(--ink);
+    background: var(--ink);
+    color: #fff;
+  }
+  .b-opts button:focus-visible,
+  .mini button:focus-visible {
+    outline: 3px solid #2f7bff;
+    outline-offset: 2px;
+  }
+  .mini {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    margin-left: 6px;
+    padding: 2px;
+    border-radius: 999px;
+    background: var(--pearl-2);
+    vertical-align: middle;
+  }
+  .mini output {
+    min-width: 2em;
+    text-align: center;
+    font-weight: 800;
+    font-variant-numeric: tabular-nums;
+  }
+  .mini button {
+    width: 30px;
+    height: 30px;
+    border: 0;
+    border-radius: 50%;
+    background: var(--ink);
+    color: #fff;
+    font: inherit;
+    font-weight: 700;
+    line-height: 1;
+    cursor: pointer;
+  }
+  .mini button:hover {
+    background: var(--hot);
+  }
+  .b-tot {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 4px 14px;
+    padding: 14px 0 4px;
+    border-top: 2px solid var(--ink);
+  }
+  .b-tot > span {
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .b-tot p {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: flex-end;
+    gap: 2px 10px;
+  }
+  .b-tot b {
+    font-family: var(--f-head);
+    font-weight: 800;
+    font-size: clamp(2rem, 1.5rem + 1.8vw, 3rem);
+    letter-spacing: -0.05em;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+  .b-tot em {
+    font-style: normal;
+    font-weight: 800;
+    color: var(--ink-2);
+  }
+  .b-bars {
+    margin-top: 14px;
+    display: grid;
+    gap: 6px;
+  }
+  .bb {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+  }
+  .bb b {
+    color: var(--ink);
+  }
+  .bar {
+    display: flex;
+    height: 18px;
+    border-radius: 999px;
+    overflow: hidden;
+    background: var(--pearl-2);
+  }
+  .bar i {
+    display: block;
+    height: 100%;
+    transition: width 500ms var(--ease);
+  }
+  .s-labor {
+    background: var(--ink);
+  }
+  .s-lost {
+    background: linear-gradient(90deg, #f0705f, #c93a2c);
+  }
+  .s-us {
+    background: #9bd400;
+    border-radius: 999px;
+  }
+  .b-x {
+    margin-top: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 4px 10px;
+    font-weight: 700;
+  }
+  .b-x b {
+    font-family: var(--f-head);
+    font-weight: 800;
+    font-size: clamp(2rem, 1.5rem + 1.8vw, 3rem);
+    letter-spacing: -0.05em;
+    line-height: 1;
+    color: var(--hot);
+  }
+  .b-note {
+    margin-top: 10px;
+    font-size: 0.6875rem;
+    line-height: 1.5;
+    color: var(--ink-2);
+  }
+
+  /* ---------- v9: headline on top, then two equal columns ---------- */
+  .whead {
+    display: grid;
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    gap: var(--s-4) clamp(2rem, 1rem + 4vw, 5rem);
+    align-items: end;
+    margin-bottom: clamp(2rem, 1.5rem + 2vw, 3.5rem);
+  }
+  .whead > div {
+    display: grid;
+    gap: var(--s-4);
+    justify-items: start;
+  }
+  .whead .lede {
+    max-width: 52ch;
+  }
+  .left {
+    display: grid;
+  }
+  .bill {
+    height: 100%;
+    align-content: start;
+  }
+  /* the table stretches so both columns end on the same line */
+  .right {
+    grid-template-rows: 1fr auto;
+  }
+  .table {
+    display: grid;
+    grid-template-rows: auto;
+    grid-auto-rows: 1fr;
+  }
+  .b-mode {
+    display: inline-flex;
+    justify-self: start;
+    margin-bottom: 12px;
+    padding: 4px;
+    border-radius: 999px;
+    background: var(--pearl-2);
+  }
+  .b-mode button {
+    min-height: 40px;
+    padding: 0 16px;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--ink-2);
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .b-mode button[aria-checked='true'] {
+    background: var(--ink);
+    color: #fff;
+  }
+  .b-mode button:focus-visible {
+    outline: 3px solid #2f7bff;
+    outline-offset: 2px;
+  }
+  [data-when][hidden] {
+    display: none;
+  }
+  .b-opts button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .b-opts button em {
+    font-style: normal;
+    font-weight: 800;
+  }
+  .b-opts button::before {
+    content: '';
+    width: 14px;
+    height: 14px;
+    border-radius: 4px;
+    border: 1.5px solid currentColor;
+  }
+  .b-opts button[aria-pressed='true'] {
+    border-color: var(--ink);
+    background: var(--ink);
+    color: #fff;
+  }
+  .b-opts button[aria-pressed='true']::before {
+    border-color: #d8ff3e;
+    background: #d8ff3e;
+  }
+  .s-time {
+    background: #6b7783;
+  }
+  @media (max-width: 960px) {
+    .whead {
+      grid-template-columns: 1fr;
+      align-items: start;
+    }
+  }
+</style>

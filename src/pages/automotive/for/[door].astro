@@ -1,0 +1,143 @@
+---
+/**
+ * Front-door landing pages: /automotive/for/<slug>.
+ * One problem and one hook per page; every page sells the SAME offer as /automotive/v9.
+ * Words: src/content/automotiveDoors.ts. Offer, prices and links: src/config/offerV9.ts.
+ * The v9 page and its components are reused as they are; only the hero, the problem
+ * section, the calculator wording and the "one of nine" section are specific to a door.
+ */
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Bar9 from '../../../components/automotive-v9/Bar9.astro';
+import Nav9 from '../../../components/automotive-v9/Nav9.astro';
+import Hook9 from '../../../components/automotive-v9/Hook9.astro';
+import Day9 from '../../../components/automotive-v9/Day9.astro';
+import Work9 from '../../../components/automotive-v9/Work9.astro';
+import Voice9 from '../../../components/automotive-v9/Voice9.astro';
+import Offer9 from '../../../components/automotive-v9/Offer9.astro';
+import End9 from '../../../components/automotive-v9/End9.astro';
+import Car9 from '../../../components/automotive-v9/Car9.astro';
+import Exit9 from '../../../components/automotive-v9/Exit9.astro';
+import Checkout9 from '../../../components/automotive-v9/Checkout9.astro';
+import HeroDoor from '../../../components/automotive-doors/HeroDoor.astro';
+import MathDoor from '../../../components/automotive-doors/MathDoor.astro';
+import DoorProblem from '../../../components/automotive-doors/DoorProblem.astro';
+import DoorSystems from '../../../components/automotive-doors/DoorSystems.astro';
+import DoorPortfolio from '../../../components/automotive-doors/DoorPortfolio.astro';
+import DoorSiteOffer from '../../../components/automotive-doors/DoorSiteOffer.astro';
+import DoorTicker from '../../../components/automotive-doors/DoorTicker.astro';
+import DoorChanges from '../../../components/automotive-doors/DoorChanges.astro';
+import DoorCount from '../../../components/automotive-doors/DoorCount.astro';
+import { doorPages, doorPageCommon } from '../../../content/automotiveDoorPages';
+import { doors, type Door } from '../../../content/automotiveDoors';
+import { featuredPlan } from '../../../config/offerV9';
+import '../../../styles/v9.css';
+// the two text fonts are preloaded so the first layout already has them
+import soraFont from '@fontsource-variable/sora/files/sora-latin-wght-normal.woff2?url';
+import manropeFont from '@fontsource-variable/manrope/files/manrope-latin-wght-normal.woff2?url';
+
+export function getStaticPaths() {
+  return doors.map((door) => ({ params: { door: door.slug }, props: { door } }));
+}
+
+interface Props {
+  door: Door;
+}
+const { door } = Astro.props;
+const price = '$' + featuredPlan.monthly;
+const sub = door.sub.replace('{price}', price);
+// the rest of the page, written for this one problem
+const page = doorPages[door.slug];
+const fill = (t: string) => t.replace('{price}', price);
+const voiceBody = `${page.voice.body} ${doorPageCommon.voiceNote}`;
+const offerTitle = page.offer.title.map(fill) as [string, string];
+const faq = page.faq.map((x) => ({ q: x.q, a: fill(x.a) }));
+const lay = door.layout;
+---
+
+<BaseLayout
+  title={`${door.seoTitle} | CNVRT X Front Office`}
+  description={door.description}
+  noindex={true}
+  bodyClass="v9"
+  themeColor="#070B10"
+>
+  <Fragment slot="head">
+    <link rel="preload" as="font" type="font/woff2" href={soraFont} crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href={manropeFont} crossorigin />
+  </Fragment>
+  <Bar9 />
+  <Nav9 />
+  <main id="main" data-door={door.slug}>
+    {/* hook -> the one problem -> its cost -> everything else you get -> proof -> the one offer */}
+    <HeroDoor headline={door.headline} sub={sub} />
+    <DoorTicker pairs={page.ticker} />
+    <DoorProblem door={door} />
+    {door.demo === 'top' && <Voice9 title={page.voice.title} body={voiceBody} />}
+    {lay.order === 2 && <DoorChanges page={page} variant={lay.changes} />}
+    <Hook9 lines={door.hook} />
+    {page.count ? <DoorCount count={page.count} /> : <MathDoor copy={page.math} />}
+    {lay.order === 1 && <DoorChanges page={page} variant={lay.changes} />}
+    {door.website && <DoorPortfolio />}
+    {door.website && <DoorSiteOffer />}
+    <DoorSystems door={door} lead={page.systemsLead} />
+    {lay.order === 3 && <DoorChanges page={page} variant={lay.changes} />}
+    {door.day && <Day9 />}
+    {door.work && <Work9 />}
+    {door.demo === 'bottom' && <Voice9 title={page.voice.title} body={voiceBody} />}
+    <Offer9 gears title={offerTitle} sub={fill(page.offer.sub)} />
+    <End9 faq={faq} startLead={page.startLead} footerLine={page.footer} />
+  </main>
+  <Car9 />
+  <Exit9 />
+  <Checkout9 />
+</BaseLayout>
+
+<script>
+  import { track } from '../../../scripts/analytics';
+
+  // Which door brought this visitor: sent with every event, the reserve form and checkout links.
+  const door = document.querySelector<HTMLElement>('[data-door]')?.dataset.door || '';
+  if (door) {
+    track('door_view', { door });
+    const form = document.querySelector<HTMLFormElement>('[data-start9]');
+    if (form) {
+      const f = document.createElement('input');
+      f.type = 'hidden';
+      f.name = 'door';
+      f.value = door;
+      form.appendChild(f);
+    }
+    document.addEventListener('click', (e) => {
+      const a = (e.target as HTMLElement | null)?.closest<HTMLAnchorElement>('a[data-plan-cta], a[data-start-go]');
+      if (!a) return;
+      track('door_cta', { door, interval: a.dataset.interval || '' });
+      // only real checkout links get the parameter; in-page anchors are left alone
+      if (/^https?:/.test(a.getAttribute('href') || '') && !a.href.includes('door=')) {
+        a.href += (a.href.includes('?') ? '&' : '?') + 'door=' + encodeURIComponent(door);
+      }
+    });
+  }
+
+  // Lower sections are rendered lazily, so their height is an estimate until they are seen.
+  // After an in-page jump settles, check the target really is at the top and nudge it if not.
+  document.addEventListener('click', (e) => {
+    const a = (e.target as HTMLElement | null)?.closest<HTMLAnchorElement>('a[href^="#"]');
+    const id = a?.getAttribute('href')?.slice(1);
+    const target = id ? document.getElementById(id) : null;
+    if (!target) return;
+    const t0 = performance.now();
+    let tries = 0;
+    const settle = () => {
+      if (e.defaultPrevented || performance.now() - t0 > 4000) return; // a popup took the click, or the user moved on
+      const pad = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0;
+      const margin = parseFloat(getComputedStyle(target).scrollMarginTop) || 0;
+      const off = target.getBoundingClientRect().top - pad - margin;
+      if (Math.abs(off) > 12 && tries++ < 3) {
+        window.scrollBy({ top: off, behavior: 'instant' });
+        window.setTimeout(settle, 140);
+      }
+    };
+    if ('onscrollend' in window) window.addEventListener('scrollend', settle, { once: true });
+    else window.setTimeout(settle, 900);
+  });
+</script>

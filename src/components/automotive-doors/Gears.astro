@@ -1,0 +1,405 @@
+---
+/**
+ * The three roles shown as three gears, above the price cards (trial on one door page).
+ * A rev gauge climbs as each gear engages: First Gear = The Receptionist,
+ * Overdrive = The Service Advisor, Full Throttle = The Shop Manager.
+ * It shifts through the gears once when scrolled into view; a click selects a gear.
+ * Same plan and same roles as everywhere else: this is only a different way to show them.
+ */
+import { gears as g } from '../../content/automotiveDoors';
+import { plans9 } from '../../content/automotiveCopyV9';
+
+const roles = plans9.roles;
+// tick marks around the half-circle dial (centre 110,115, radius 90)
+const ticks = Array.from({ length: 9 }, (_, i) => {
+  const a = Math.PI - (i / 8) * Math.PI;
+  const r1 = 78;
+  const r2 = i % 2 === 0 ? 62 : 68;
+  return {
+    x1: (110 + Math.cos(a) * r1).toFixed(1),
+    y1: (115 - Math.sin(a) * r1).toFixed(1),
+    x2: (110 + Math.cos(a) * r2).toFixed(1),
+    y2: (115 - Math.sin(a) * r2).toFixed(1),
+    hot: i >= 7,
+  };
+});
+---
+
+<div class="gears" data-gears data-gear="0" style="--p:0.06">
+  <div class="dial">
+    <svg viewBox="0 0 220 132" fill="none" aria-hidden="true">
+      <path class="d-track" d="M20 115A90 90 0 0 1 200 115" />
+      <path class="d-red" pathLength="100" d="M20 115A90 90 0 0 1 200 115" />
+      <path class="d-fill" pathLength="100" d="M20 115A90 90 0 0 1 200 115" />
+      {ticks.map((t) => <line class:list={['d-tick', t.hot && 'hot']} x1={t.x1} y1={t.y1} x2={t.x2} y2={t.y2} />)}
+      <line class="d-needle" x1="110" y1="115" x2="110" y2="40" />
+      <circle class="d-hub" cx="110" cy="115" r="7" />
+    </svg>
+    <p class="read" aria-live="polite">
+      <b data-gear-n>N</b>
+      <span data-gear-name>{g.neutral}</span>
+    </p>
+  </div>
+
+  <div class="box">
+    <p class="g-h">
+      <b>{g.title}</b>
+      <span>{g.sub}</span>
+    </p>
+    <div class="shift" role="tablist" aria-label={g.title}>
+      {
+        g.items.map((it, i) => (
+          <button type="button" role="tab" aria-selected="false" aria-controls={`gear-p${i}`} id={`gear-t${i}`} data-gear-btn={i + 1}>
+            <span class="n">{i + 1}</span>
+            <span class="t">
+              <b>{it.gear}</b>
+              <small>{roles[i].role}</small>
+            </span>
+          </button>
+        ))
+      }
+    </div>
+    {
+      g.items.map((it, i) => (
+        <div class="gp" role="tabpanel" id={`gear-p${i}`} aria-labelledby={`gear-t${i}`} data-gear-panel={i + 1} hidden={i !== 0}>
+          <p class="p-l">{it.line}</p>
+          <ul role="list">
+            {roles[i].systems.map((s) => (
+              <li>
+                <b>{s.n}</b>
+                <span>{s.d}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+  </div>
+</div>
+
+<script>
+  import { track } from '../../scripts/analytics';
+
+  const root = document.querySelector<HTMLElement>('[data-gears]');
+  if (root) {
+    const P = [0.06, 0.38, 0.68, 0.97]; // needle position for neutral, 1, 2, 3
+    const btns = [...root.querySelectorAll<HTMLButtonElement>('[data-gear-btn]')];
+    const panels = [...root.querySelectorAll<HTMLElement>('[data-gear-panel]')];
+    const num = root.querySelector<HTMLElement>('[data-gear-n]')!;
+    const name = root.querySelector<HTMLElement>('[data-gear-name]')!;
+    const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let timers: number[] = [];
+
+    const set = (gear: number, blip: boolean) => {
+      root.dataset.gear = String(gear);
+      // a real shift: the revs jump, then settle in the new gear
+      if (blip && !still) {
+        root.style.setProperty('--p', String(Math.min(1, P[gear] + 0.1)));
+        timers.push(window.setTimeout(() => root.style.setProperty('--p', String(P[gear])), 260));
+      } else root.style.setProperty('--p', String(P[gear]));
+      btns.forEach((b) => {
+        const g = Number(b.dataset.gearBtn);
+        b.setAttribute('aria-selected', String(g === gear));
+        b.toggleAttribute('data-done', g <= gear);
+      });
+      panels.forEach((p) => (p.hidden = Number(p.dataset.gearPanel) !== Math.max(1, gear)));
+      num.textContent = gear ? String(gear) : 'N';
+      name.textContent = gear ? btns[gear - 1].querySelector('b')?.textContent || '' : name.textContent;
+    };
+
+    btns.forEach((b) =>
+      b.addEventListener('click', () => {
+        timers.forEach((t) => window.clearTimeout(t));
+        timers = [];
+        const gear = Number(b.dataset.gearBtn);
+        set(gear, true);
+        track('gear_select', { gear });
+      }),
+    );
+
+    if (still || !('IntersectionObserver' in window)) {
+      set(3, false);
+    } else {
+      // shift up through the gears once, the moment the panel comes into view
+      let started = false;
+      const start = () => {
+        if (started) return;
+        started = true;
+        io.disconnect();
+        window.removeEventListener('scroll', check);
+        [1, 2, 3].forEach((gear, i) => timers.push(window.setTimeout(() => set(gear, true), 250 + i * 1200)));
+      };
+      const check = () => {
+        const r = root.getBoundingClientRect();
+        if (r.top < window.innerHeight * 0.8 && r.bottom > 0) start();
+      };
+      const io = new IntersectionObserver(([e]) => e.isIntersecting && start(), { threshold: 0, rootMargin: '0px 0px -20% 0px' });
+      io.observe(root);
+      window.addEventListener('scroll', check, { passive: true });
+      check();
+    }
+  }
+</script>
+
+<style>
+  .gears {
+    --p: 0.06;
+    display: grid;
+    grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr);
+    gap: clamp(1.25rem, 1rem + 2vw, 3rem);
+    align-items: center;
+    margin-bottom: var(--s-5);
+    padding: clamp(1.25rem, 1rem + 1.6vw, 2.5rem);
+    border-radius: 28px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background:
+      radial-gradient(60% 80% at 0% 100%, rgba(255, 90, 31, 0.18), transparent 70%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+  }
+
+  /* ---------- the rev gauge ---------- */
+  .dial {
+    position: relative;
+    justify-self: center;
+    width: min(100%, 320px);
+  }
+  .dial svg {
+    display: block;
+    width: 100%;
+    overflow: visible;
+  }
+  .d-track {
+    stroke: rgba(255, 255, 255, 0.14);
+    stroke-width: 10;
+    stroke-linecap: round;
+  }
+  /* the red zone at the top of the range */
+  .d-red {
+    stroke: #ff3b3b;
+    stroke-width: 10;
+    stroke-dasharray: 14 100;
+    stroke-dashoffset: -86;
+    opacity: 0.55;
+  }
+  .d-fill {
+    stroke: #d8ff3e;
+    stroke-width: 10;
+    stroke-linecap: round;
+    stroke-dasharray: 100;
+    stroke-dashoffset: calc(100 - var(--p) * 100);
+    transition: stroke-dashoffset 520ms cubic-bezier(0.3, 1.4, 0.5, 1);
+  }
+  .d-tick {
+    stroke: rgba(255, 255, 255, 0.45);
+    stroke-width: 2;
+    stroke-linecap: round;
+  }
+  .d-tick.hot {
+    stroke: #ff6b5c;
+  }
+  .d-needle {
+    stroke: var(--hot);
+    stroke-width: 4;
+    stroke-linecap: round;
+    transform-origin: 110px 115px;
+    transform: rotate(calc(-90deg + var(--p) * 180deg));
+    transition: transform 520ms cubic-bezier(0.3, 1.4, 0.5, 1);
+    filter: drop-shadow(0 0 6px rgba(255, 90, 31, 0.8));
+  }
+  .d-hub {
+    fill: #fff;
+  }
+  .read {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -6px;
+    display: grid;
+    justify-items: center;
+    gap: 0;
+    transform: translateY(100%);
+  }
+  .read b {
+    font-family: var(--f-head);
+    font-weight: 800;
+    font-size: clamp(2.4rem, 1.8rem + 2.4vw, 3.6rem);
+    letter-spacing: -0.05em;
+    line-height: 1;
+    color: #d8ff3e;
+    font-variant-numeric: tabular-nums;
+  }
+  .read span {
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--fog);
+  }
+  .dial {
+    margin-bottom: 4.5rem;
+  }
+
+  /* ---------- the shifter ---------- */
+  .box {
+    display: grid;
+    gap: var(--s-4);
+  }
+  .g-h {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 4px 14px;
+  }
+  .g-h b {
+    font-family: var(--f-head);
+    font-weight: 800;
+    font-size: clamp(1.4rem, 1.1rem + 1.3vw, 2.2rem);
+    letter-spacing: -0.04em;
+  }
+  .g-h span {
+    font-size: 0.9375rem;
+    color: var(--fog);
+  }
+  .shift {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .shift button {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 12px;
+    align-items: center;
+    padding: 14px 16px;
+    border-radius: 18px;
+    border: 1.5px solid rgba(255, 255, 255, 0.16);
+    background: rgba(255, 255, 255, 0.04);
+    color: #fff;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+    transition:
+      border-color 250ms,
+      background-color 250ms,
+      transform 250ms var(--ease);
+  }
+  .shift button:hover {
+    border-color: rgba(255, 255, 255, 0.5);
+  }
+  .shift button:focus-visible {
+    outline: 3px solid #7cc4ff;
+    outline-offset: 2px;
+  }
+  .n {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.35);
+    font-family: var(--f-head);
+    font-weight: 800;
+    font-size: 1.15rem;
+    transition:
+      background-color 250ms,
+      border-color 250ms,
+      color 250ms;
+  }
+  .t {
+    display: grid;
+    gap: 1px;
+    min-width: 0;
+  }
+  .t b {
+    font-family: var(--f-head);
+    font-weight: 800;
+    font-size: 1.05rem;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    line-height: 1.15;
+  }
+  .t small {
+    font-size: 0.8125rem;
+    color: var(--fog);
+  }
+  /* gears already engaged */
+  .shift button[data-done] .n {
+    border-color: #d8ff3e;
+    color: #d8ff3e;
+  }
+  /* the gear you are in */
+  .shift button[aria-selected='true'] {
+    border-color: #d8ff3e;
+    background: rgba(216, 255, 62, 0.08);
+    transform: translateY(-3px);
+  }
+  .shift button[aria-selected='true'] .n {
+    background: #d8ff3e;
+    border-color: #d8ff3e;
+    color: #0b1016;
+  }
+
+  .gp {
+    display: grid;
+    gap: 14px;
+    padding: clamp(1rem, 0.8rem + 0.8vw, 1.5rem);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .gp[hidden] {
+    display: none;
+  }
+  .p-l {
+    font-family: var(--f-head);
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: -0.02em;
+    color: #e6ff8a;
+  }
+  .gp ul {
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .gp li {
+    display: grid;
+    gap: 2px;
+    align-content: start;
+    padding: 2px 0 2px 14px;
+    border-left: 2px solid rgba(216, 255, 62, 0.6);
+  }
+  .gp li b {
+    font-family: var(--f-head);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .gp li span {
+    font-size: 0.8125rem;
+    line-height: 1.4;
+    color: var(--fog);
+  }
+  @media (max-width: 900px) {
+    .gears {
+      grid-template-columns: 1fr;
+    }
+    .dial {
+      width: min(100%, 260px);
+    }
+  }
+  @media (max-width: 620px) {
+    .shift,
+    .gp ul {
+      grid-template-columns: 1fr;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .d-needle,
+    .d-fill,
+    .shift button {
+      transition: none;
+    }
+  }
+</style>

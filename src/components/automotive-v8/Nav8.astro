@@ -1,0 +1,124 @@
+---
+import { nav8 } from '../../content/automotiveCopyV8';
+---
+
+<div class="progress" aria-hidden="true"><i data-prog8></i></div>
+
+<header class="nav" data-nav8>
+  <a href="#top" class="logo" aria-label="CNVRT X, back to top">CNVRT<span>✕</span></a>
+  <nav aria-label="Primary">
+    {nav8.links.map((l) => <a href={l.href}>{l.label}</a>)}
+  </nav>
+  <a href="#pricing" class="go go-sm" data-track="cta_click" data-track-location="nav">{nav8.cta}</a>
+</header>
+
+<script>
+  // scroll progress line
+  const bar = document.querySelector<HTMLElement>('[data-prog8]');
+  if (bar) {
+    let tick = false;
+    const run = () => {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.transform = `scaleX(${max > 0 ? window.scrollY / max : 0})`;
+      tick = false;
+    };
+    window.addEventListener(
+      'scroll',
+      () => {
+        if (!tick) {
+          tick = true;
+          requestAnimationFrame(run);
+        }
+      },
+      { passive: true },
+    );
+    run();
+  }
+
+  // magnetic pull on primary buttons (fine pointers only)
+  if (window.matchMedia('(pointer: fine)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll<HTMLElement>('.go[data-magnet]').forEach((b) => {
+      b.addEventListener('pointermove', (e) => {
+        const r = b.getBoundingClientRect();
+        b.style.setProperty('--mx', `${(e.clientX - r.left - r.width / 2) * 0.22}px`);
+        b.style.setProperty('--my', `${(e.clientY - r.top - r.height / 2) * 0.3}px`);
+      });
+      b.addEventListener('pointerleave', () => {
+        b.style.setProperty('--mx', '0px');
+        b.style.setProperty('--my', '0px');
+      });
+    });
+  }
+</script>
+
+<style>
+  .progress {
+    position: fixed;
+    inset: var(--bar-h, 0px) 0 auto 0;
+    height: 3px;
+    z-index: 70;
+    pointer-events: none;
+  }
+  .progress i {
+    display: block;
+    height: 100%;
+    background: linear-gradient(90deg, var(--hot), #ffb48f);
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  .nav {
+    position: fixed;
+    top: calc(var(--bar-h, 0px) + 12px);
+    left: 50%;
+    z-index: 60;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: clamp(14px, 2vw, 30px);
+    padding: 8px 8px 8px 22px;
+    border-radius: 999px;
+    background: rgba(12, 18, 25, 0.72);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    backdrop-filter: blur(16px) saturate(160%);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+    box-shadow: 0 18px 40px -18px rgba(0, 0, 0, 0.7);
+    color: #fff;
+    max-width: calc(100vw - 24px);
+  }
+  .logo {
+    font-family: var(--f-head);
+    font-weight: 800;
+    font-size: 1.05rem;
+    letter-spacing: 0.02em;
+    color: #fff;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .logo span {
+    color: var(--hot);
+    margin-left: 3px;
+  }
+  nav {
+    display: flex;
+    gap: clamp(12px, 1.6vw, 24px);
+  }
+  nav a {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #c5d0da;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  nav a:hover {
+    color: #fff;
+  }
+  @media (max-width: 720px) {
+    nav {
+      display: none;
+    }
+    .nav {
+      width: calc(100vw - 24px);
+      justify-content: space-between;
+    }
+  }
+</style>

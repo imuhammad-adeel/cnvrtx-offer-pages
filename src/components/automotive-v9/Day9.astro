@@ -1,0 +1,293 @@
+---
+/**
+ * "A day in your shop, before and after": a short timeline beside an example run sheet.
+ * Every "after" line is something a system in the plans actually does (see the note for which plan).
+ * The phone shows fictional data only and is labelled as an example.
+ */
+import { day9 as d, sheet9 as s } from '../../content/automotiveCopyV9';
+---
+
+<section class="scene day" aria-labelledby="day-title">
+  <div class="container dgrid">
+    <div class="copy">
+      <p class="kicker" data-reveal>{d.kicker}</p>
+      <h2 id="day-title" class="t-lg" data-reveal>
+        {d.title[0]} <span class="hot">{d.title[1]}</span>
+      </h2>
+      <p class="lede">{d.lead}</p>
+
+      <ol role="list" class="tl">
+        {
+          d.rows.map((r) => (
+            <li>
+              <span class="tm">{r.time}</span>
+              <div>
+                <p class="was">
+                  <span class="sr-only">{d.colBefore}: </span>
+                  {r.before}
+                </p>
+                <p class="now">
+                  <span class="sr-only">{d.colAfter}: </span>
+                  {r.after}
+                </p>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+      <p class="close">{d.close}</p>
+      <p class="note">{d.note}</p>
+    </div>
+
+    <figure class="phone">
+      <figcaption>{s.label}</figcaption>
+      <div class="scr">
+        <p class="ph-h">
+          <b>{s.sheetTitle}</b>
+          <span>{s.sheetSent}</span>
+        </p>
+        <ol role="list" class="jobs">
+          {
+            s.jobs.map((j) => (
+              <li>
+                <span class="jt">{j.time}</span>
+                <div class="jb">
+                  <p class="j1">
+                    <span class:list={['ty', `ty-${j.kind}`]}>{j.type}</span>
+                    <b>{j.who}</b>
+                  </p>
+                  <p class="j2">{j.what}</p>
+                  <p class="j3">{s.phone}</p>
+                </div>
+              </li>
+            ))
+          }
+        </ol>
+        <p class="ph-f">{s.sheetFoot}</p>
+      </div>
+    </figure>
+  </div>
+</section>
+
+<style>
+  .day {
+    overflow: hidden;
+    background:
+      radial-gradient(50% 50% at 85% 40%, rgba(47, 107, 255, 0.14), transparent 70%),
+      var(--night-2);
+  }
+  .dgrid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+    gap: clamp(2rem, 1rem + 4vw, 5rem);
+    align-items: center;
+  }
+  .copy {
+    display: grid;
+    gap: var(--s-5);
+    justify-items: start;
+  }
+
+  /* ---------- timeline ---------- */
+  .tl {
+    margin: var(--s-3) 0 0;
+    width: 100%;
+    max-width: 38rem;
+    display: grid;
+  }
+  .tl li {
+    position: relative;
+    display: grid;
+    grid-template-columns: 5.5rem minmax(0, 1fr);
+    gap: 0 var(--s-5);
+    padding-bottom: var(--s-5);
+  }
+  .tl li:last-child {
+    padding-bottom: 0;
+  }
+  /* the rail between moments */
+  .tl li::before {
+    content: '';
+    position: absolute;
+    left: calc(5.5rem + var(--s-5) / 2);
+    top: 0.5em;
+    bottom: -0.5em;
+    width: 1px;
+    background: rgba(255, 255, 255, 0.16);
+  }
+  .tl li:last-child::before {
+    display: none;
+  }
+  .tm {
+    font-family: var(--f-head);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: #d8ff3e;
+    white-space: nowrap;
+  }
+  .was {
+    font-size: 0.9375rem;
+    line-height: 1.4;
+    color: var(--fog-2);
+    text-decoration: line-through;
+    text-decoration-color: rgba(255, 255, 255, 0.25);
+  }
+  .now {
+    margin-top: 4px;
+    font-family: var(--f-head);
+    font-weight: 700;
+    font-size: clamp(1.05rem, 1rem + 0.35vw, 1.25rem);
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+    color: #fff;
+  }
+  .close {
+    font-family: var(--f-head);
+    font-weight: 700;
+    font-size: clamp(1.2rem, 1rem + 0.9vw, 1.7rem);
+    letter-spacing: -0.03em;
+    color: #d8ff3e;
+  }
+  .note {
+    max-width: 62ch;
+    font-size: 0.75rem;
+    line-height: 1.5;
+    color: var(--fog-2);
+  }
+
+  /* ---------- phone ---------- */
+  .phone {
+    position: relative;
+    justify-self: center;
+    width: min(100%, 340px);
+    margin: 0;
+    padding: 12px;
+    border-radius: 44px;
+    background: linear-gradient(160deg, #3a4753, #10171e);
+    box-shadow:
+      0 0 0 1px rgba(255, 255, 255, 0.14) inset,
+      0 60px 100px -50px rgba(0, 0, 0, 0.9);
+  }
+  figcaption {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 5px 14px;
+    border-radius: 999px;
+    background: #d8ff3e;
+    color: #0b1016;
+    font-size: 0.6875rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .scr {
+    display: grid;
+    gap: 12px;
+    padding: 26px 16px 18px;
+    border-radius: 34px;
+    background: #0b1016;
+  }
+  .ph-h {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+  .ph-h b {
+    font-family: var(--f-head);
+    font-size: 1rem;
+    letter-spacing: -0.02em;
+  }
+  .ph-h span {
+    font-size: 0.75rem;
+    color: #8fa0af;
+    white-space: nowrap;
+  }
+  .jobs {
+    margin: 0;
+    display: grid;
+    gap: 8px;
+  }
+  .jobs li {
+    display: grid;
+    grid-template-columns: 52px 1fr;
+    gap: 10px;
+    padding: 12px;
+    border-radius: 16px;
+    background: #17212b;
+  }
+  .jt {
+    font-family: var(--f-head);
+    font-weight: 800;
+    font-size: 0.9375rem;
+    color: #d8ff3e;
+  }
+  .jb {
+    display: grid;
+    gap: 3px;
+    min-width: 0;
+  }
+  .j1 {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px 8px;
+    font-size: 0.875rem;
+  }
+  .ty {
+    padding: 1px 8px;
+    border-radius: 999px;
+    font-size: 0.625rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .ty-work {
+    background: rgba(61, 220, 151, 0.2);
+    color: #b7f1d8;
+  }
+  .ty-redo {
+    background: rgba(255, 196, 76, 0.2);
+    color: #ffd98a;
+  }
+  .ty-pickup {
+    background: rgba(47, 123, 255, 0.25);
+    color: #b9d2ff;
+  }
+  .j2 {
+    font-size: 0.8125rem;
+    line-height: 1.35;
+    color: #cfd9e2;
+  }
+  .j3 {
+    font-size: 0.75rem;
+    color: #8fa0af;
+    font-variant-numeric: tabular-nums;
+  }
+  .ph-f {
+    text-align: center;
+    font-size: 0.75rem;
+    color: #8fa0af;
+  }
+  @media (max-width: 900px) {
+    .dgrid {
+      grid-template-columns: 1fr;
+    }
+  }
+  @media (max-width: 480px) {
+    .tl li {
+      grid-template-columns: 1fr;
+      gap: 4px;
+      padding-left: 16px;
+      border-left: 1px solid rgba(255, 255, 255, 0.16);
+    }
+    .tl li::before {
+      display: none;
+    }
+  }
+</style>

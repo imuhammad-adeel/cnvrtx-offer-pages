@@ -1,0 +1,246 @@
+/* CNVRT X — Version 8 theme (built on v7 "Mirror Finish").
+   Concept: the page is a paint job. It arrives hazy and swirled; the visitor
+   polishes it to a mirror finish with their cursor. From there everything is
+   motion: a sideways-scrolling reel of leaks, a rolling odometer, stacking
+   paint-sample cards and a price card that tilts and catches the light.
+   Deep metallic night for the cinematic scenes, warm pearl for the reading
+   scenes, chrome for detail, orange for the action.
+   Built from scratch — only loaded by /automotive/v8. */
+
+@import '@fontsource-variable/sora/wght.css';
+@import '@fontsource-variable/manrope/wght.css';
+@import '@fontsource-variable/caveat/wght.css';
+
+body.v8 {
+  --night: #070b10;
+  --night-2: #0e151d;
+  --night-3: #16212c;
+  --pearl: #f3f1ec;
+  --pearl-2: #e9e6df;
+  --white: #ffffff;
+  --ink: #0b1016;
+  --ink-2: #45505b;
+  --ink-3: #74808c;
+  --fog: #a9b6c2;
+  --fog-2: #71808e;
+  --hot: #ff5a1f;
+  --hot-2: #ff7a45;
+  --mint: #3ddc97;
+  --chrome: linear-gradient(180deg, #ffffff 0%, #c9d3dc 38%, #8997a5 52%, #e6edf3 70%, #aab7c4 100%);
+
+  --f-head: 'Sora Variable', 'Sora', ui-sans-serif, system-ui, sans-serif;
+  --f-text: 'Manrope Variable', 'Manrope', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --ease: cubic-bezier(0.2, 0.8, 0.1, 1);
+  --bar-h: 40px;
+  --nav-h: 116px;
+
+  /* keep shared primitives (global.css) in step */
+  --c-bg-0: var(--night);
+  --c-text: #eef3f7;
+  --c-accent: var(--hot);
+  --c-accent-ink: #fff;
+  --header-h: var(--nav-h);
+  --f-display: var(--f-head);
+  --f-body: var(--f-text);
+  --w-container: 1280px;
+
+  background: var(--night);
+  color: #eef3f7;
+  font-family: var(--f-text);
+  font-size: 1.0625rem;
+  color-scheme: dark;
+}
+
+.v8 h1,
+.v8 h2,
+.v8 h3 {
+  font-family: var(--f-head);
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  line-height: 1;
+}
+.v8 .kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--f-text);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--fog);
+}
+.v8 .kicker::before {
+  content: '';
+  width: 28px;
+  height: 2px;
+  background: var(--hot);
+}
+.v8 .t-xl {
+  font-size: clamp(2.4rem, 1.2rem + 5vw, 6rem);
+}
+.v8 .t-lg {
+  font-size: clamp(2rem, 1.2rem + 3.2vw, 4.2rem);
+}
+.v8 .chrome {
+  background: var(--chrome);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.v8 .hot {
+  color: var(--hot);
+}
+.v8 .lede {
+  font-size: clamp(1.05rem, 1rem + 0.4vw, 1.3rem);
+  line-height: 1.55;
+  color: var(--fog);
+  max-width: 56ch;
+}
+
+/* light "pearl" scenes */
+.v8 .pearl {
+  background: var(--pearl);
+  color: var(--ink);
+  color-scheme: light;
+}
+.v8 .pearl .kicker {
+  color: var(--ink-3);
+}
+.v8 .pearl .lede {
+  color: var(--ink-2);
+}
+.v8 .scene {
+  position: relative;
+  padding-block: clamp(5rem, 3rem + 7vw, 9.5rem);
+}
+
+/* THE button: orange pill with a light sweep; JS adds a magnetic pull */
+.v8 .go {
+  --mx: 0px;
+  --my: 0px;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 62px;
+  padding: 0 34px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--hot);
+  color: #fff;
+  font-family: var(--f-head);
+  font-weight: 700;
+  font-size: 1.0625rem;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+  cursor: pointer;
+  overflow: hidden;
+  isolation: isolate;
+  transform: translate(var(--mx), var(--my));
+  transition:
+    transform 260ms var(--ease),
+    box-shadow 260ms var(--ease);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.18) inset,
+    0 18px 40px -14px rgba(255, 90, 31, 0.85);
+}
+.v8 .go::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.55) 50%, transparent 70%);
+  transform: translateX(-120%);
+  animation: v8sweep 3.6s ease-in-out infinite;
+}
+.v8 .go:hover {
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.3) inset,
+    0 24px 50px -14px rgba(255, 90, 31, 1);
+}
+.v8 .go svg {
+  width: 20px;
+  height: 20px;
+  transition: transform 260ms var(--ease);
+}
+.v8 .go:hover svg {
+  transform: translateX(5px);
+}
+.v8 .go-sm {
+  min-height: 44px;
+  padding: 0 20px;
+  font-size: 0.9375rem;
+}
+.v8 .go-sm::before {
+  animation: none;
+}
+@keyframes v8sweep {
+  0%,
+  55% {
+    transform: translateX(-120%);
+  }
+  85%,
+  100% {
+    transform: translateX(120%);
+  }
+}
+.v8 .ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  font-weight: 700;
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 2px solid currentColor;
+  padding-bottom: 2px;
+  opacity: 0.85;
+}
+.v8 .ghost:hover {
+  opacity: 1;
+}
+
+.v8 :focus-visible {
+  outline: 3px solid #7cc4ff;
+  outline-offset: 4px;
+  border-radius: 8px;
+}
+.v8 ::selection {
+  background: var(--hot);
+  color: #fff;
+}
+
+/* headline lines that rise into place */
+.v8 .rise {
+  display: block;
+  overflow: hidden;
+}
+.v8 .rise > span {
+  display: block;
+  transform: translateY(105%);
+  transition: transform 900ms var(--ease);
+  transition-delay: var(--d, 0ms);
+}
+.v8 .is-in .rise > span,
+.v8 .rise.is-in > span,
+html:not(.js) .v8 .rise > span {
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .v8 .go::before {
+    animation: none;
+  }
+  .v8 .rise > span {
+    transform: none;
+    transition: none;
+  }
+}
+
+/* a hook statement leads straight into the section below it */
+.v8 .hook + .scene {
+  padding-top: clamp(2.5rem, 2rem + 2.5vw, 4.5rem);
+}

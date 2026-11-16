@@ -1,0 +1,101 @@
+---
+/** Door-page ticker: the v9 band with this page's own pain-to-fix pairs. Generated from Ticker9.astro. */
+interface Props {
+  pairs: [string, string][];
+}
+const { pairs: ticker9 } = Astro.props;
+const items = [...ticker9, ...ticker9];
+---
+
+<div class="wrap">
+  <div class="ticker" role="img" aria-label={ticker9.map(([a, b]) => `${a} become ${b}`).join(', ')}>
+    <ul role="list" aria-hidden="true">
+      {
+        items.map(([a, b]) => (
+          <li>
+            <s>{a}</s>
+            <span class="ar">→</span>
+            <b>{b}</b>
+            <span class="x">✕</span>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</div>
+
+<style>
+  /* zero-height holder: the band floats across the seam between two sections */
+  .wrap {
+    position: relative;
+    z-index: 5;
+    height: 0;
+  }
+  .ticker {
+    position: absolute;
+    left: -3%;
+    right: -3%;
+    top: 0;
+    overflow: hidden;
+    background: #0d1218;
+    border-block: 1px solid rgba(255, 255, 255, 0.16);
+    transform: translateY(-50%) rotate(-1.6deg);
+    box-shadow: 0 24px 50px -24px rgba(0, 0, 0, 0.8);
+  }
+  ul {
+    margin: 0;
+    display: flex;
+    width: max-content;
+    animation: tick8 34s linear infinite;
+  }
+  .ticker:hover ul {
+    animation-play-state: paused;
+  }
+  li {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 18px 0 18px 36px;
+    font-family: var(--f-head);
+    font-weight: 800;
+    font-size: clamp(1.3rem, 1rem + 1.5vw, 2.3rem);
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    line-height: 1;
+  }
+  s {
+    color: #6f7c88;
+    text-decoration-thickness: 3px;
+    text-decoration-color: var(--hot);
+  }
+  .ar {
+    color: var(--hot);
+  }
+  b {
+    font-weight: 800;
+    color: #d8ff3e;
+  }
+  li:nth-child(5n + 2) b {
+    color: var(--mint);
+  }
+  li:nth-child(5n + 4) b {
+    color: #fff;
+  }
+  .x {
+    color: #fff;
+    font-size: 0.55em;
+    margin-left: 20px;
+    opacity: 0.8;
+  }
+  @keyframes tick8 {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    ul {
+      animation: none;
+    }
+  }
+</style>

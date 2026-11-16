@@ -1,0 +1,42 @@
+---
+/** A full-width statement between sections. One idea, said big. */
+interface Props {
+  lines: string[];
+  tone?: 'night' | 'pearl';
+  bg?: string;
+}
+const { lines, tone = 'night', bg } = Astro.props;
+---
+
+<section class:list={['hook', tone === 'pearl' && 'pearl']} style={bg ? `background:${bg}` : undefined} aria-label={lines.join(' ')}>
+  <div class="container">
+    <p class="line" data-reveal aria-hidden="true">
+      {
+        lines.map((l, i) => (
+          <span class="rise" style={`--d:${i * 110}ms`}>
+            <span class:list={[i === lines.length - 1 && 'hot']}>{l}</span>
+          </span>
+        ))
+      }
+    </p>
+  </div>
+</section>
+
+<style>
+  .hook {
+    padding-block: clamp(4rem, 3rem + 5vw, 7.5rem) clamp(1rem, 0.5rem + 1.5vw, 2rem);
+    background: var(--night);
+    overflow: hidden;
+  }
+  .hook.pearl {
+    background: var(--pearl);
+  }
+  .line {
+    font-family: var(--f-head);
+    font-weight: 800;
+    font-size: clamp(2.2rem, 1rem + 5.4vw, 6.2rem);
+    line-height: 1;
+    letter-spacing: -0.055em;
+    text-align: center;
+  }
+</style>

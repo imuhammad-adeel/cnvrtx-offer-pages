@@ -1,0 +1,353 @@
+---
+/**
+ * Checkout popup. Opens from any element with data-checkout="<plan id>" and
+ * data-interval="monthly|annual". Plan buttons only carry those attributes when
+ * checkout is live and that plan's link is set in src/config/offerV9.ts, so with
+ * no live checkout this popup never opens and buttons go to the reserve form.
+ * The right side holds the GHL order form (an iframe of the checkout link).
+ * After payment, GHL should redirect to flow9.onboardingPath.
+ */
+import { plans9 as c } from '../../content/automotiveCopyV9';
+import { offerV9 as cfg, checkoutHref } from '../../config/offerV9';
+
+const fmt = (n: number) => '$' + n.toLocaleString('en-US');
+const plans = Object.fromEntries(
+  cfg.plans.map((pl) => [
+    pl.id,
+    {
+      role: pl.role,
+      name: pl.name,
+      monthly: {
+        price: fmt(pl.monthly),
+        per: '/mo',
+        note: `${c.kitMonthly.replace('{kit}', fmt(pl.launchKit))}. Cancel anytime.`,
+        url: checkoutHref(pl.id, 'monthly'),
+      },
+      annual: {
+        price: fmt(pl.annual),
+        per: '/yr',
+        note: `Launch Kit waived. ${c.toggle.annualTag}.`,
+        url: checkoutHref(pl.id, 'annual'),
+      },
+    },
+  ]),
+);
+---
+
+<dialog class="co" data-co8 data-plans={JSON.stringify(plans)} aria-labelledby="co-title">
+  <form method="dialog" class="co-x">
+    <button aria-label="Close checkout" value="close">×</button>
+  </form>
+
+  <div class="co-grid">
+    <aside class="sum">
+      <p class="co-k">Secure checkout</p>
+      <h2 id="co-title" data-co="role"></h2>
+      <p class="co-was" data-co="name"></p>
+      <p class="co-amt"><b data-co="price"></b><span data-co="per"></span></p>
+      <p class="co-note" data-co="note"></p>
+
+      <div class="co-switch" role="radiogroup" aria-label="Billing">
+        <button type="button" role="radio" aria-checked="false" data-co-ivl="monthly">{c.toggle.monthly}</button>
+        <button type="button" role="radio" aria-checked="true" data-co-ivl="annual">{c.toggle.annual}</button>
+      </div>
+
+      <ul role="list" class="co-list">
+        <li>Live in 14 days, or your first month is free</li>
+        <li>Your domain, content and customer list stay yours</li>
+      </ul>
+      <p class="co-next"><b>Next:</b> one short form about your shop. Then we build.</p>
+    </aside>
+
+    <div class="pay">
+      <iframe title="Checkout form" data-co-frame hidden loading="lazy"></iframe>
+      <div class="empty" data-co-empty>
+        <p class="e-t">Checkout for this plan is not open yet.</p>
+        <p class="e-d">Reserve your build and your join link arrives by email.</p>
+        <a href="#start" class="go" data-co-reserve>Reserve my build</a>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<script>
+  import { track } from '../../scripts/analytics';
+  import { withAttribution } from '../../scripts/attribution';
+
+  type Side = { price: string; per: string; note: string; url: string };
+  type Plan = { role: string; name: string; monthly: Side; annual: Side };
+  const dlg = document.querySelector<HTMLDialogElement>('[data-co8]');
+  if (dlg && typeof dlg.showModal === 'function') {
+    const plans = JSON.parse(dlg.dataset.plans || '{}') as Record<string, Plan>;
+    const frame = dlg.querySelector<HTMLIFrameElement>('[data-co-frame]')!;
+    const empty = dlg.querySelector<HTMLElement>('[data-co-empty]')!;
+    const btns = [...dlg.querySelectorAll<HTMLButtonElement>('[data-co-ivl]')];
+    const set = (k: string, v: string) => {
+      const el = dlg.querySelector<HTMLElement>(`[data-co="${k}"]`);
+      if (el) el.textContent = v;
+    };
+    let plan = '';
+    let interval: 'monthly' | 'annual' = 'annual';
+
+    const show = () => {
+      const p = plans[plan];
+      if (!p) return false;
+      const side = p[interval];
+      set('role', p.role);
+      set('name', p.name);
+      set('price', side.price);
+      set('per', side.per);
+      set('note', side.note);
+      btns.forEach((b) => b.setAttribute('aria-checked', String(b.dataset.coIvl === interval)));
+      if (side.url) {
+        frame.src = withAttribution(side.url);
+        frame.hidden = false;
+        empty.hidden = true;
+      } else {
+        frame.removeAttribute('src');
+        frame.hidden = true;
+        empty.hidden = false;
+      }
+      return true;
+    };
+
+    // any button carrying a plan id opens the popup
+    document.addEventListener('click', (e) => {
+      const a = (e.target as HTMLElement)?.closest<HTMLElement>('[data-checkout]');
+      if (!a || !plans[a.dataset.checkout || '']) return;
+      e.preventDefault();
+      const exit = document.querySelector<HTMLDialogElement>('[data-exit9]');
+      if (exit?.open) exit.close();
+      plan = a.dataset.checkout!;
+      interval = a.dataset.interval === 'monthly' ? 'monthly' : 'annual';
+      show();
+      if (!dlg.open) dlg.showModal();
+      track('checkout_open', { plan, interval });
+    });
+
+    btns.forEach((b) =>
+      b.addEventListener('click', () => {
+        interval = b.dataset.coIvl === 'monthly' ? 'monthly' : 'annual';
+        show();
+        track('plan_select', { plan, interval });
+      }),
+    );
+    dlg.querySelector('[data-co-reserve]')?.addEventListener('click', () => {
+      window.dispatchEvent(new CustomEvent('cx:plan', { detail: { plan, interval } }));
+      dlg.close();
+    });
+    dlg.addEventListener('click', (e) => {
+      if (e.target === dlg) dlg.close();
+    });
+  }
+</script>
+
+<style>
+  .co {
+    width: min(980px, calc(100vw - 24px));
+    max-height: calc(100dvh - 24px);
+    padding: 0;
+    border: 1.5px solid rgba(255, 255, 255, 0.22);
+    border-radius: 28px;
+    background: #0b1016;
+    color: #eef3f7;
+    box-shadow: 0 60px 120px -40px rgba(0, 0, 0, 0.9);
+    overflow: auto;
+  }
+  .co[open] {
+    animation: coIn 380ms cubic-bezier(0.2, 0.9, 0.2, 1);
+  }
+  .co::backdrop {
+    background: rgba(5, 8, 11, 0.78);
+    backdrop-filter: blur(6px);
+  }
+  @keyframes coIn {
+    from {
+      opacity: 0;
+      transform: translateY(18px) scale(0.98);
+    }
+  }
+  .co-x {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 2;
+  }
+  .co-x button {
+    width: 44px;
+    height: 44px;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(11, 16, 22, 0.08);
+    color: #0b1016;
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+  }
+  .co-x button:hover {
+    background: rgba(11, 16, 22, 0.18);
+  }
+  .co-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    min-height: 560px;
+  }
+  .sum {
+    display: grid;
+    align-content: start;
+    gap: 10px;
+    padding: clamp(1.5rem, 1rem + 2vw, 2.5rem);
+    background:
+      radial-gradient(90% 50% at 0% 0%, rgba(216, 255, 62, 0.14), transparent 70%),
+      linear-gradient(180deg, #131c25, #0b1016);
+  }
+  .co-k {
+    font-size: 0.6875rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #d8ff3e;
+  }
+  .sum h2 {
+    font-size: 1.6rem;
+    letter-spacing: -0.03em;
+  }
+  .co-was {
+    font-size: 0.875rem;
+    color: var(--fog);
+  }
+  .co-was s {
+    color: #ff8f7a;
+    font-weight: 700;
+  }
+  .co-amt {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+  }
+  .co-amt b {
+    font-family: var(--f-head);
+    font-weight: 800;
+    font-size: clamp(3rem, 2rem + 3.6vw, 4.6rem);
+    letter-spacing: -0.06em;
+    line-height: 0.95;
+  }
+  .co-amt span {
+    font-family: var(--f-head);
+    font-weight: 700;
+    color: var(--fog);
+  }
+  .co-note {
+    font-weight: 700;
+  }
+  .co-save {
+    justify-self: start;
+    padding: 4px 12px;
+    border-radius: 999px;
+    background: #d8ff3e;
+    color: #0b1016;
+    font-size: 0.875rem;
+    font-weight: 800;
+  }
+  .co-switch {
+    justify-self: start;
+    display: inline-flex;
+    margin-top: 8px;
+    padding: 4px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+  }
+  .co-switch button {
+    min-height: 40px;
+    padding: 0 16px;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--fog);
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .co-switch button[aria-checked='true'] {
+    background: #fff;
+    color: #0b1016;
+  }
+  .co-list {
+    margin: 10px 0 0;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
+    display: grid;
+    gap: 8px;
+    font-size: 0.9375rem;
+    color: #cfd9e2;
+  }
+  .co-list li::before {
+    content: '✓ ';
+    color: #d8ff3e;
+    font-weight: 800;
+  }
+  .co-next {
+    font-size: 0.875rem;
+    color: var(--fog);
+  }
+  .pay {
+    background: #f3f1ec;
+    color: #0b1016;
+    display: grid;
+  }
+  iframe {
+    width: 100%;
+    height: 100%;
+    min-height: 560px;
+    border: 0;
+  }
+  iframe[hidden],
+  .empty[hidden] {
+    display: none;
+  }
+  .empty {
+    display: grid;
+    align-content: center;
+    justify-items: start;
+    gap: 12px;
+    padding: clamp(1.5rem, 1rem + 2vw, 3rem);
+  }
+  .e-t {
+    font-family: var(--f-head);
+    font-weight: 800;
+    font-size: 1.6rem;
+    letter-spacing: -0.03em;
+  }
+  .e-d {
+    color: #45505b;
+    line-height: 1.5;
+    max-width: 44ch;
+  }
+  code {
+    font-size: 0.85em;
+    padding: 1px 6px;
+    border-radius: 6px;
+    background: rgba(11, 16, 22, 0.08);
+  }
+  @media (max-width: 760px) {
+    .co-grid {
+      grid-template-columns: 1fr;
+      min-height: 0;
+    }
+    .co-x button {
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+    }
+    .co-list {
+      display: none;
+    }
+    iframe {
+      min-height: 520px;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .co[open] {
+      animation: none;
+    }
+  }
+</style>

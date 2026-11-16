@@ -1,0 +1,218 @@
+---
+/**
+ * A simple count for problems that are not about lost jobs (reviews, ad spend, run sheet).
+ * It takes the calculator's place on those pages (same id, so "The math" still jumps here).
+ * One number the visitor sets; one result, which is plain arithmetic on it.
+ */
+import type { DoorCount } from '../../content/automotiveDoorPages';
+import { doorPageCommon as c } from '../../content/automotiveDoorPages';
+
+interface Props {
+  count: DoorCount;
+}
+const { count: k } = Astro.props;
+const fmt = (n: number) => k.prefix + Math.round(n).toLocaleString('en-US');
+---
+
+<section class="scene cnt" id="math" aria-labelledby="cnt-title" data-count-sec data-factor={k.factor} data-prefix={k.prefix} data-min={k.min} data-max={k.max} data-step={k.step}>
+  <div class="glow" aria-hidden="true"></div>
+  <div class="container">
+    <header class="head" data-reveal>
+      <p class="kicker">Do the math</p>
+      <h2 id="cnt-title" class="t-lg">{k.title}</h2>
+    </header>
+
+    <div class="calc">
+      <p class="sentence">
+        {k.s1}
+        <span class="pick">
+          <button type="button" data-d="-1" aria-label="Less">−</button>
+          <output data-in>{fmt(k.start)}</output>
+          <button type="button" data-d="1" aria-label="More">+</button>
+        </span>
+        {k.s2}
+      </p>
+
+      <div class="out" aria-live="polite">
+        <p class="big">
+          <b data-out>{fmt(k.start * k.factor)}</b>
+          <span>{k.unit}</span>
+        </p>
+        <p class="r-label">{k.resultLabel}</p>
+        <p class="line">{k.line}</p>
+      </div>
+    </div>
+
+    <div class="foot">
+      <p class="disc">{c.countNote}</p>
+      <a href="#pricing" class="go" data-track="cta_click" data-track-location="door_count">
+        Show me how to stop it
+        <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11M11 5.500 15.500 10 11 14.500" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  const root = document.querySelector<HTMLElement>('[data-count-sec]');
+  if (root) {
+    const d = root.dataset;
+    const factor = Number(d.factor);
+    const prefix = d.prefix || '';
+    const fmt = (n: number) => prefix + Math.round(n).toLocaleString('en-US');
+    const input = root.querySelector<HTMLElement>('[data-in]')!;
+    const out = root.querySelector<HTMLElement>('[data-out]')!;
+    let v = Number((input.textContent || '0').replace(/[^0-9.]/g, ''));
+    root.querySelectorAll<HTMLButtonElement>('[data-d]').forEach((b) =>
+      b.addEventListener('click', () => {
+        v = Math.max(Number(d.min), Math.min(Number(d.max), v + Number(b.dataset.d) * Number(d.step)));
+        input.textContent = fmt(v);
+        out.textContent = fmt(v * factor);
+      }),
+    );
+  }
+</script>
+
+<style>
+  .cnt {
+    overflow: hidden;
+    isolation: isolate;
+    background: var(--night);
+  }
+  .glow {
+    position: absolute;
+    left: 50%;
+    top: 46%;
+    width: min(1100px, 120vw);
+    aspect-ratio: 1.6;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(50% 50% at 50% 50%, rgba(255, 90, 31, 0.22), transparent 70%);
+    z-index: -1;
+  }
+  .head {
+    display: grid;
+    gap: var(--s-4);
+    justify-items: start;
+    margin-bottom: clamp(1.5rem, 1rem + 2vw, 3rem);
+  }
+  .calc {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: clamp(1.5rem, 1rem + 3vw, 4.5rem);
+    align-items: center;
+  }
+  .sentence {
+    font-family: var(--f-head);
+    font-weight: 600;
+    font-size: clamp(1.2rem, 0.95rem + 1vw, 1.75rem);
+    line-height: 2.1;
+    letter-spacing: -0.03em;
+    color: #c9d4de;
+  }
+  .pick {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    margin-inline: 4px;
+    padding: 3px;
+    border-radius: 999px;
+    background: #fff;
+    color: var(--ink);
+    vertical-align: middle;
+    line-height: 1;
+  }
+  .pick output {
+    min-width: 2.8em;
+    padding-inline: 6px;
+    text-align: center;
+    font-weight: 800;
+    font-size: 0.95em;
+    font-variant-numeric: tabular-nums;
+  }
+  .pick button {
+    width: 1.75em;
+    height: 1.75em;
+    min-width: 36px;
+    min-height: 36px;
+    border: 0;
+    border-radius: 50%;
+    background: var(--ink);
+    color: #fff;
+    font: inherit;
+    font-size: 0.8em;
+    font-weight: 700;
+    line-height: 1;
+    cursor: pointer;
+  }
+  .pick button:hover {
+    background: var(--hot);
+  }
+  .pick button:focus-visible {
+    outline: 3px solid #7cc4ff;
+    outline-offset: 2px;
+  }
+  .out {
+    display: grid;
+    gap: 8px;
+    padding: clamp(1.25rem, 1rem + 1.4vw, 2.25rem);
+    border-radius: 28px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.015));
+  }
+  .big {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 6px 14px;
+  }
+  .big b {
+    font-family: var(--f-head);
+    font-weight: 800;
+    font-size: clamp(3.4rem, 2rem + 6vw, 7rem);
+    letter-spacing: -0.06em;
+    line-height: 0.95;
+    font-variant-numeric: tabular-nums;
+  }
+  .big span {
+    font-family: var(--f-head);
+    font-weight: 700;
+    font-size: clamp(1.1rem, 1rem + 0.6vw, 1.5rem);
+    color: var(--hot-2);
+  }
+  .r-label {
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--fog);
+  }
+  .line {
+    margin-top: 6px;
+    padding-top: var(--s-4);
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    font-family: var(--f-head);
+    font-weight: 700;
+    font-size: clamp(1.05rem, 1rem + 0.4vw, 1.3rem);
+    letter-spacing: -0.02em;
+    color: #e6ff8a;
+  }
+  .foot {
+    margin-top: clamp(1.5rem, 1rem + 2vw, 3rem);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--s-4);
+  }
+  .disc {
+    max-width: 60ch;
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    color: var(--fog-2);
+  }
+  @media (max-width: 900px) {
+    .calc {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
