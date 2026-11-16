@@ -62,6 +62,7 @@ const n = l.items.length;
       count.textContent = String(on).padStart(2, '0');
     };
 
+    const HOLD = 0.45; // screens of scroll spent on the first card before the row moves (matches the CSS)
     let pinned = false;
     let tick = false;
     const update = () => {
@@ -69,14 +70,18 @@ const n = l.items.length;
       const vh = window.innerHeight;
       const vw = window.innerWidth;
       const r = root.getBoundingClientRect();
-      const p = Math.max(0, Math.min(1, -r.top / (r.height - vh)));
+      // The first stretch of scroll moves nothing: the first card flips to "fixed" while it sits
+      // still. Only after that do the cards start sliding sideways.
+      const scrolled = -r.top;
+      const hold = vh * HOLD;
+      const p = Math.max(0, Math.min(1, (scrolled - hold) / (r.height - vh - hold)));
       const max = track.scrollWidth - track.parentElement!.clientWidth;
       track.style.transform = `translate3d(${-p * max}px,0,0)`;
       panels.forEach((el, i) => {
         const b = el.getBoundingClientRect();
-        // the first card is already in place when the section arrives, so it waits for a little
-        // scroll before it flips, the same way the others flip as they slide in
-        el.toggleAttribute('data-on', i === 0 ? p > 0.07 : b.left + b.width * 0.5 < vw * 0.66);
+        // the first card is already in place when the section arrives, so it flips on the first
+        // bit of scroll; the others flip as they slide in
+        el.toggleAttribute('data-on', i === 0 ? scrolled > vh * 0.06 : b.left + b.width * 0.5 < vw * 0.66);
       });
       setCount();
     };
@@ -375,7 +380,7 @@ const n = l.items.length;
 
   /* desktop: pin and scroll sideways (JS sets data-pin) */
   .leaks[data-pin] {
-    height: calc(100vh + var(--n) * 62vh);
+    height: calc(100vh + var(--n) * 62vh + 45vh); /* 45vh: the still moment for the first card */
   }
   .leaks[data-pin] .pin {
     position: sticky;
