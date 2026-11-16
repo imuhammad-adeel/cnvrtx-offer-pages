@@ -46,7 +46,7 @@ const cta = (interval: 'annual' | 'monthly') => ({
 
 <section class="scene offer" id="pricing" aria-labelledby="offer9-title" data-pricing9>
   <div class="aura" aria-hidden="true"></div>
-  <div class="container">
+  <div class="container" data-gear-stage={gears || undefined}>
     <header class="head" data-reveal>
       <p class="kicker">{f.kicker}</p>
       <h2 id="offer9-title" class="t-lg">
@@ -195,6 +195,8 @@ const cta = (interval: 'annual' | 'monthly') => ({
     </ul>
     <p class="fine">{f.finePrint} {f.honest} {f.usage}</p>
   </div>
+  {/* scroll distance used while the gears shift; Gears.astro sets its height */}
+  {gears && <div data-gear-space aria-hidden="true" />}
 </section>
 
 <script>
@@ -217,6 +219,11 @@ const cta = (interval: 'annual' | 'monthly') => ({
 </script>
 
 <style>
+  /* while the gears shift, the section's content holds where it is (Gears.astro sets data-pin and --gtop) */
+  .container[data-pin] {
+    position: sticky;
+    top: var(--gtop, 0px);
+  }
   .offer {
     overflow: clip; /* clip, not hidden: hidden would stop the gears box from sticking */
     isolation: isolate;

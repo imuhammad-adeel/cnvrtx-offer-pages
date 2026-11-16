@@ -214,7 +214,7 @@ const smsLinks = [
 
     <div class="f-card">
       <div class="f-brand">
-        <span class="logo">CNVRT<b>✕</b></span>
+        <a href="/automotive/v9" class="logo" aria-label="CNVRT X home page">CNVRT<b>✕</b></a>
         <p>{ft.blurb}</p>
         <p class="f-made">{ft.made}</p>
       </div>
@@ -723,6 +723,8 @@ const smsLinks = [
     line-height: 1.5;
   }
   .logo {
+    color: inherit;
+    text-decoration: none;
     font-family: var(--f-head);
     font-weight: 800;
     font-size: 1.5rem;

@@ -3,7 +3,8 @@
  * The three roles shown as three gears, above the price cards (trial on one door page).
  * A rev gauge climbs as each gear engages: First Gear = The Receptionist,
  * Overdrive = The Service Advisor, Full Throttle = The Shop Manager.
- * The box holds in place while you scroll through the three gears, then lets go; a click selects a gear.
+ * The whole pricing section holds still, exactly where it is, while you scroll through the three gears,
+ * then carries on; a click selects a gear. (Offer9 marks the part that holds with data-gear-stage.)
  * Same plan and same roles as everywhere else: this is only a different way to show them.
  */
 import { gears as g } from '../../content/automotiveDoors';
@@ -25,7 +26,6 @@ const ticks = Array.from({ length: 9 }, (_, i) => {
 });
 ---
 
-<div class="g-run" data-gear-run>
 <div class="gears" data-gears data-gear="0" style="--p:0.06">
   <div class="dial">
     <svg viewBox="0 0 220 132" fill="none" aria-hidden="true">
@@ -79,8 +79,6 @@ const ticks = Array.from({ length: 9 }, (_, i) => {
     </div>
   </div>
 </div>
-<div class="g-space" aria-hidden="true"></div>
-</div>
 
 <script>
   import { track } from '../../scripts/analytics';
@@ -123,32 +121,41 @@ const ticks = Array.from({ length: 9 }, (_, i) => {
       }),
     );
 
-    const run = root.closest<HTMLElement>('[data-gear-run]');
-    if (still || !run) {
+    const stage = root.closest<HTMLElement>('[data-gear-stage]');
+    const space = stage?.parentElement?.querySelector<HTMLElement>('[data-gear-space]');
+    if (still || !stage || !space) {
       set(3, false);
     } else {
-      // The box sticks while you scroll through a set distance; that distance is split
-      // between the three gears. Scrolling back up shifts back down.
-      run.setAttribute('data-pin', '');
+      // The section's content (heading, gears, prices) stops moving when the gears box is fully
+      // on screen. The scroll that follows is spent shifting 1, 2, 3; after that the page carries
+      // on as before. Nothing is lifted out of place. Scrolling back up shifts back down.
+      stage.setAttribute('data-pin', '');
       let top = 0;
       let len = 1;
       let scrollGear = -1;
+      const sec = stage.parentElement as HTMLElement;
+      let pad = 0;
       const measure = () => {
+        pad = parseFloat(getComputedStyle(sec).paddingTop) || 0;
         const vh = window.innerHeight;
-        const h = root.offsetHeight;
-        const head = (parseFloat(getComputedStyle(root).getPropertyValue('--nav-h')) || 116) + 12;
-        const room = vh - head - 16;
-        // fits under the header: centre it in the space. Taller than that: keep its lower part,
-        // where the gears and their systems are, on screen.
-        top = Math.round(h <= room ? head + (room - h) / 2 : vh - h - 16);
+        const s = stage.getBoundingClientRect();
+        const b = root.getBoundingClientRect();
+        const h = stage.querySelector<HTMLElement>('.head')?.getBoundingClientRect() || b;
+        const headOff = h.top - s.top; // where the section heading starts
+        const boxEnd = b.bottom - s.top; // where the gears box ends
+        const under = (parseFloat(getComputedStyle(root).getPropertyValue('--nav-h')) || 116) + 12;
+        const room = vh - under - 16;
+        // heading and box fit together: stop with the heading just under the menu.
+        // Otherwise stop when the bottom of the box reaches the bottom of the screen.
+        top = Math.round(boxEnd - headOff <= room ? under - headOff : vh - 16 - boxEnd);
         len = Math.round(vh * (window.innerWidth < 700 ? 0.8 : 0.95));
-        run.style.setProperty('--gtop', top + 'px');
-        run.style.setProperty('--glen', len + 'px');
+        stage.style.setProperty('--gtop', top + 'px');
+        space.style.height = len + 'px';
       };
       const onScroll = () => {
-        const r = run.getBoundingClientRect();
-        const p = (top - r.top) / len; // 0 when the box sticks, 1 when it lets go
-        const gear = r.top > window.innerHeight * 0.62 ? 0 : p < 0.28 ? 1 : p < 0.6 ? 2 : 3;
+        // measured from the section, which keeps scrolling while its content holds
+        const p = (top - (sec.getBoundingClientRect().top + pad)) / len; // 0 when it stops, 1 when it carries on
+        const gear = root.getBoundingClientRect().top > window.innerHeight * 0.5 ? 0 : p < 0.28 ? 1 : p < 0.6 ? 2 : 3;
         if (gear === scrollGear) return;
         const up = gear > scrollGear;
         scrollGear = gear;
@@ -160,36 +167,28 @@ const ticks = Array.from({ length: 9 }, (_, i) => {
       onScroll();
       window.addEventListener('scroll', onScroll, { passive: true });
       let rs = 0;
-      window.addEventListener('resize', () => {
+      const again = () => {
         window.clearTimeout(rs);
         rs = window.setTimeout(() => {
           measure();
           onScroll();
         }, 150);
-      });
-      if ('ResizeObserver' in window) new ResizeObserver(measure).observe(root);
+      };
+      window.addEventListener('resize', again);
+      if ('ResizeObserver' in window) new ResizeObserver(again).observe(root);
+      document.fonts?.ready.then(again);
     }
   }
 </script>
 
 <style>
-  .g-run {
-    margin-bottom: var(--s-5);
-  }
-  /* JS sets data-pin, the sticking point and the scroll distance */
-  .g-run[data-pin] .gears {
-    position: sticky;
-    top: var(--gtop, 130px);
-  }
-  .g-run[data-pin] .g-space {
-    height: var(--glen, 90vh);
-  }
   .gears {
     --p: 0.06;
     display: grid;
     grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr);
     gap: clamp(1.25rem, 1rem + 2vw, 3rem);
     align-items: center;
+    margin-bottom: var(--s-5);
     padding: clamp(1.25rem, 1rem + 1.6vw, 2.5rem);
     border-radius: 28px;
     border: 1px solid rgba(255, 255, 255, 0.14);
