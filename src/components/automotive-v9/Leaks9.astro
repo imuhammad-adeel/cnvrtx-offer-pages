@@ -72,9 +72,11 @@ const n = l.items.length;
       const p = Math.max(0, Math.min(1, -r.top / (r.height - vh)));
       const max = track.scrollWidth - track.parentElement!.clientWidth;
       track.style.transform = `translate3d(${-p * max}px,0,0)`;
-      panels.forEach((el) => {
+      panels.forEach((el, i) => {
         const b = el.getBoundingClientRect();
-        el.toggleAttribute('data-on', b.left + b.width * 0.5 < vw * 0.66);
+        // the first card is already in place when the section arrives, so it waits for a little
+        // scroll before it flips, the same way the others flip as they slide in
+        el.toggleAttribute('data-on', i === 0 ? p > 0.07 : b.left + b.width * 0.5 < vw * 0.66);
       });
       setCount();
     };
@@ -86,23 +88,25 @@ const n = l.items.length;
     };
 
     let io: IntersectionObserver | null = null;
-    // Pin only when every card can show all of its text with room to spare:
-    // try the normal sizes, then a tighter set, and if neither fits, stack the cards instead.
-    const fits = () => panels.every((p) => p.scrollHeight <= p.clientHeight + 1);
+    // Pin only when every card can show all of its text. Three tries, each a little smaller:
+    // the full design, then "snug" (same type sizes, less empty space inside the card),
+    // then "tight" (smaller heading and type). If none fits, the cards stack instead.
+    // cards are as tall as their content; they fit when the row is no taller than the space for it
+    const fits = () => track.offsetHeight <= track.parentElement!.clientHeight + 1;
     const canPin = () => {
+      root.removeAttribute('data-snug');
+      root.removeAttribute('data-tight');
       if (!wide.matches || reduce) return false;
       root.setAttribute('data-pin', '');
+      if (fits()) return true;
+      root.setAttribute('data-snug', '');
+      if (fits()) return true;
+      root.setAttribute('data-tight', '');
+      if (fits()) return true;
+      root.removeAttribute('data-snug');
       root.removeAttribute('data-tight');
-      let ok = fits();
-      if (!ok) {
-        root.setAttribute('data-tight', '');
-        ok = fits();
-      }
-      if (!ok) {
-        root.removeAttribute('data-tight');
-        root.removeAttribute('data-pin');
-      }
-      return ok;
+      root.removeAttribute('data-pin');
+      return false;
     };
     const setup = () => {
       const want = canPin();
@@ -385,15 +389,14 @@ const n = l.items.length;
     grid-template-rows: auto minmax(0, 1fr) auto;
     gap: clamp(1rem, 0.5rem + 1.5vh, 2rem);
   }
-  .leaks[data-pin] .viewport,
-  .leaks[data-pin] .track {
+  /* the row of cards sits in the middle of the space; every card is as tall as the tallest one's content */
+  .leaks[data-pin] .viewport {
     height: 100%;
+    display: grid;
+    align-content: center;
   }
   .leaks[data-pin] .panel {
-    min-height: 0;
-    height: 100%;
-    max-height: 560px;
-    align-self: center;
+    min-height: clamp(400px, 56vh, 540px);
   }
   .leaks[data-pin] .swap {
     font-size: min(clamp(2.2rem, 1rem + 4.6vw, 5rem), 9.5vh);
@@ -401,30 +404,44 @@ const n = l.items.length;
   .leaks[data-pin] .scroll-on {
     display: block;
   }
-  /* short windows: the same cards, sized to the height that is left (JS sets data-tight) */
+  /* less room: the same card and the same type. The heading goes on one line and the card
+     loses its spare height, so nothing is cut (JS sets data-snug) */
+  .leaks[data-snug] .pin {
+    gap: 14px;
+  }
+  .leaks[data-snug] .title {
+    max-width: none;
+    font-size: min(clamp(2rem, 1.2rem + 3.2vw, 4.2rem), 3.5vw);
+  }
+  .leaks[data-snug] .panel {
+    min-height: 0;
+    padding-block: clamp(1.25rem, 4vh, 2.25rem);
+    gap: 14px;
+  }
+  .leaks[data-snug] .swap {
+    min-height: 0;
+  }
+  .leaks[data-snug] .line {
+    margin-top: 0.25rem;
+  }
+  /* short windows: smaller heading and type as well (JS adds data-tight to data-snug) */
   .leaks[data-tight] .pin {
     padding-block: calc(var(--nav-h) + 4px) 16px;
     gap: 12px;
   }
   .leaks[data-tight] .title {
     margin-top: 6px;
-    max-width: none;
-    font-size: clamp(1.5rem, 5.6vh, 2.8rem);
+    font-size: clamp(1.5rem, 6.2vh, 3rem);
   }
   .leaks[data-tight] .count b {
-    font-size: clamp(1.6rem, 5.6vh, 2.8rem);
-  }
-  .leaks[data-tight] .panel {
-    padding-block: clamp(1rem, 3.6vh, 2rem);
-    gap: 8px;
+    font-size: clamp(1.6rem, 6.2vh, 3rem);
   }
   .leaks[data-tight] .swap {
-    font-size: min(clamp(2rem, 1rem + 4vw, 4.4rem), 7.4vh);
+    font-size: min(clamp(2rem, 1rem + 4vw, 4.6rem), 8.2vh);
   }
   .leaks[data-tight] .line {
-    margin-top: 0;
     font-size: 1rem;
-    line-height: 1.4;
+    line-height: 1.45;
   }
   .leaks[data-tight] .scroll-on {
     display: none;
