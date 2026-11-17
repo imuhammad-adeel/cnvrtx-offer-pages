@@ -85,7 +85,14 @@ export const automotiveOffer = {
 } as const;
 
 /** Attribution parameters preserved through the page and appended to outbound CTAs. */
+/**
+ * Carried from the landing address through to forms and the checkout.
+ * `rep` is the sales rep's code, for example ?rep=steve: it credits the sale to that rep.
+ * `landing` and `referrer` are not read from the address: the site fills them in itself with
+ * the first page the visitor opened and the website they came from (see scripts/attribution.ts).
+ */
 export const ATTRIBUTION_PARAMS = [
+  'rep',
   'utm_source',
   'utm_medium',
   'utm_campaign',
@@ -93,6 +100,8 @@ export const ATTRIBUTION_PARAMS = [
   'utm_term',
   'gclid',
   'fbclid',
+  'landing',
+  'referrer',
 ] as const;
 
 export type PlanIntent = 'monthly' | 'annual' | 'founding';

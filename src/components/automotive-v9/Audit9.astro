@@ -13,6 +13,7 @@
  */
 import { copyFor, type CopySet } from '../../content/copySets';
 import { offerV9 as cfg } from '../../config/offerV9';
+import { ATTRIBUTION_PARAMS } from '../../config/automotiveOffer';
 
 interface Props {
   /** Which wording to use: the auto pages' (default) or the general one. See content/copySets.ts. */
@@ -71,6 +72,8 @@ const show = Boolean(url) || import.meta.env.DEV;
             <span>{a.numbers}</span>
           </label>
           <input type="hidden" name="landing_page" value="" data-audit-landing />
+          {/* the rep code and ad details, filled in by src/scripts/attribution.ts */}
+          {ATTRIBUTION_PARAMS.map((x) => <input type="hidden" name={x} value="" data-attr-field />)}
           <input type="hidden" name="opened_from" value="" data-audit-from />
           <input type="hidden" name="calc_estimate" value="" data-audit-calc />
           <button type="submit" class="go">{a.submit}</button>

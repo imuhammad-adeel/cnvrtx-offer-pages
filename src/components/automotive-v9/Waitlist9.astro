@@ -9,6 +9,7 @@
  */
 import { waitlist9 as w } from '../../content/automotiveCopyV9';
 import { offerV9 as cfg } from '../../config/offerV9';
+import { ATTRIBUTION_PARAMS } from '../../config/automotiveOffer';
 
 const url = cfg.forms.waitlist;
 const show = Boolean(url) || import.meta.env.DEV;
@@ -43,6 +44,8 @@ const show = Boolean(url) || import.meta.env.DEV;
             <input id="wl-email" name="email" type="email" autocomplete="email" required />
           </div>
           <input type="hidden" name="landing_page" value="" data-wl-landing />
+          {/* the rep code and ad details, filled in by src/scripts/attribution.ts */}
+          {ATTRIBUTION_PARAMS.map((x) => <input type="hidden" name={x} value="" data-attr-field />)}
           <button type="submit" class="go">{w.submit}</button>
           <p class="w-status" role="status" data-wl-status data-error={w.error} />
           <p class="w-fine">{w.note}</p>

@@ -69,13 +69,11 @@ if (!out('git status --porcelain', studio)) {
   console.log('\nSent. In AI Studio, wait for the new preview and click "Update preview".');
 }
 
-// keep this (Astro) repository on GitHub in step as well
+// Keep this (Astro) repository on GitHub in step as well. It only pushes what is already
+// committed: it never stages files itself, because another chat may have unfinished work here.
 if (!process.argv.includes('--no-push')) {
-  run('git add -A');
-  if (out('git status --porcelain')) {
-    const stamp = new Date().toISOString().slice(0, 16).replace('T', ' ');
-    run(`git commit -q -m "Update site (${stamp})"`);
-  }
   if (out('git status -sb').includes('ahead')) run('git push');
-  console.log('Both repositories are up to date.');
+  const loose = out('git status --porcelain');
+  console.log(loose ? 'AI Studio is up to date. This repository still has uncommitted files:
+' + loose : 'Both repositories are up to date.');
 }

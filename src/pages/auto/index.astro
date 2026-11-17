@@ -152,6 +152,7 @@ const dev = import.meta.env.DEV;
 
 <script>
   import { track } from '../../scripts/analytics';
+  import { captureAttribution, withAttribution } from '../../scripts/attribution';
 
   const root = document.querySelector<HTMLElement>('[data-co]');
   if (root) {
@@ -163,6 +164,8 @@ const dev = import.meta.env.DEV;
     const pay = root.querySelector<HTMLIFrameElement>('[data-pay]')!;
     const closed = root.querySelector<HTMLElement>('[data-closed]')!;
     const radios = [...root.querySelectorAll<HTMLInputElement>('input[name="plan"]')];
+    const attr = captureAttribution();
+    if (attr.rep) root.dataset.rep = attr.rep;
 
     const show = () => {
       radios.forEach((r) => (r.checked = r.value === plan));
@@ -170,7 +173,9 @@ const dev = import.meta.env.DEV;
       const useOffer = offer && plan === 'monthly';
       root.querySelectorAll<HTMLElement>('[data-kit]').forEach((el) => (el.hidden = (el.dataset.kit === 'offer') !== useOffer));
       // the order form for this choice; the leaving offer has its own, because the amount differs
-      const url = (useOffer ? frame.dataset.offer : '') || frame.dataset[plan] || '';
+      // the rep code (?rep=) and ad details travel with it, so GHL can credit the sale
+      const raw = (useOffer ? frame.dataset.offer : '') || frame.dataset[plan] || '';
+      const url = raw ? withAttribution(raw, attr) : '';
       if (url) {
         if (pay.getAttribute('src') !== url) pay.src = url;
         pay.hidden = false;
@@ -189,7 +194,7 @@ const dev = import.meta.env.DEV;
       }),
     );
     show();
-    track('checkout_view', { plan, offer });
+    track('checkout_view', { plan, offer, rep: attr.rep || '' });
   }
 </script>
 
