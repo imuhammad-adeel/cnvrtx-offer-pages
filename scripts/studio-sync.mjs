@@ -74,6 +74,8 @@ if (!out('git status --porcelain', studio)) {
 if (!process.argv.includes('--no-push')) {
   if (out('git status -sb').includes('ahead')) run('git push');
   const loose = out('git status --porcelain');
-  console.log(loose ? 'AI Studio is up to date. This repository still has uncommitted files:
-' + loose : 'Both repositories are up to date.');
+  if (loose) {
+    console.log('AI Studio is up to date. This repository still has uncommitted files:');
+    console.log(loose);
+  } else console.log('Both repositories are up to date.');
 }
