@@ -12,11 +12,9 @@ How to read it:
 ## Site structure
 
 ```
-1. Home page (any local business)
+1. Home page (auto shops)
   /                             Home
-2. Industry page: Auto shops
-  /auto                         Auto shops (industry main page)
-3. Auto shops: problem pages
+2. Problem pages
   /auto/missed-calls            Problem page: Missed calls
   /auto/quote-follow-up         Problem page: Quote follow-up
   /auto/no-shows                Problem page: No-shows
@@ -29,6 +27,8 @@ How to read it:
   /auto/ad-results              Problem page: Ad results
   /auto/repeat-customers        Problem page: Repeat customers
   /auto/run-sheet               Problem page: Run sheet
+3. Checkout
+  /auto                         Checkout: auto shops
 4. After purchase
   /onboarding                   Onboarding
   /thank-you                    Thank you
@@ -38,508 +38,27 @@ How to read it:
   /legal/sms-terms              SMS Terms
   /legal/cancellation           Cancellation Policy
   /legal/disclaimer             Disclaimer
+6. General page for any local business (not published)
+  /local                        General page
 ```
 
 
 ---
 
-# 1. Home page (any local business)
+# 1. Home page (auto shops)
 
-The general page. No trade is named; the industry pages are reached from the "Your industry" menu.
+The site is auto-first: the home page is the auto-shop page. /auto on its own redirects here.
 
 
 ## Home
 
 - **Address:** `/`
-- **Browser tab title:** CNVRT X Front Office: You Got the Inquiry. Did You Get the Booking?
-- **Search description:** A done-for-you front office for local businesses. Every call answered, every quote followed up, every booking confirmed. Built and tested for you.
-
-### Section `skip-link`
-
-- [link] Skip to content  `→ #main`
-
-### Top bar `bar`
-
-- Founding program
-- Launch Kit waived and your price locked for the first 10 businesses.
-- First 10 businesses: Launch Kit waived
-- [link] Claim a spot →  `→ #pricing`
-
-### Top menu `nav`
-
-- [link] CNVRT ✕  `→ #top`
-- [link] Leaks  `→ #leaks`
-- [link] The math  `→ #math`
-- [link] System  `→ #how-it-works`
-- [link] Price  `→ #pricing`
-- [opens] Your industry
-- **Pick your kind of business** Each one has its own page, in your words. The plan and the price are the same.
-- [link] **Auto shops** Detailing, coating, PPF, tint and aftermarket  `→ /auto`
-- [link] One plan for every business. See the price →  `→ #pricing`
-- [link] Get Started  `→ #pricing`
-
-### Section `top`: You Got the Inquiry. Did You Get the Booking?
-
-- _(read aloud as)_ Built for auto, roofing, HVAC, plumbing, landscaping, electrical and cleaning businesses
-- _(rotating words)_ auto, roofing, HVAC, plumbing, landscaping, electrical, cleaning
-- Built for **auto** businesses
-- **[H1]** You Got the Inquiry. Did You Get the Booking?
-- Your work is great. Your follow-up has gaps. We install the front office you never had to hire: every call answered, every quote chased, every booking confirmed. You stay with your customers.
-- [link] Get My System  `→ #pricing`
-- [link] See what it costs you ↓  `→ #math`
-- Done for you · No sales call · Month-to-month
-- Move your cursor to clear the page Clarity 0% ✓ Crystal clear
-
-### Section `ticker`
-
-- _(read aloud as)_ Missed calls become Answered, Slow replies become Answered fast, Cold quotes become Followed up, No-shows become Reminded, One-time customers become Brought back
-- Missed calls → **Answered** ✕
-- Slow replies → **Answered fast** ✕
-- Cold quotes → **Followed up** ✕
-- No-shows → **Reminded** ✕
-- One-time customers → **Brought back** ✕
-
-### Section `pipe`: Before you buy more leads, fix what happens to the ones you already have.
-
-- You already paid for these leads
-- **[H2]** Before you buy more leads, fix what happens to the ones you already have.
-- ✕ Not a website agency
-- ✕ Not another CRM
-- ✕ Not one more app to learn
-- ✓ The front office your business never had to hire.
-- Worth coming in $0
-- Leaking out $0
-- Reaching your calendar $0
-- Example: a customer is worth
-- and 1 in
-- inquiries books, so each one is worth about $117.
-- Missed call $0
-- Slow reply $0
-- Cold quote $0
-- No-show $0
-- No return $0
-- _(shown on interaction)_ Same pipe. Five holes. Money you already paid to attract drips out before it books.
-- _(shown on interaction)_ Leaks patched. Not every inquiry books, but most of that money now reaches your calendar.
-- Same pipe. Five holes. Money you already paid to attract drips out before it books.
-- [button] Buy more leads
-- [button] Fix the leaks
-- [button] Reset
-- Illustration with example numbers. Not real customer data and not a promise of results.
-
-### Section `leaks`: Five places your bookings disappear.
-
-- The leaks in your business
-- **[H2]** Five places your bookings disappear.
-- 00 / 05 fixed
-- Leak 01 ✓ Fixed
-- Problem: Missed calls
-- Fix: Texted back fast.
-- You are with a customer. They call the next business. Now a missed call gets a text back, so the lead stays with you.
-- The lead stays yours
-- Leak 02 ✓ Fixed
-- Problem: Slow replies
-- Fix: Answered right away.
-- You reply tonight. They booked at noon. Now forms, chat and DMs get a first reply right away.
-- You are first
-- Leak 03 ✓ Fixed
-- Problem: Cold quotes
-- Fix: Chased until they decide.
-- The quote goes out and nobody follows up. Now friendly check-ins run until it is a yes or a no.
-- No quote forgotten
-- Leak 04 ✓ Fixed
-- Problem: No-shows
-- Fix: Confirmed and reminded.
-- The slot is blocked and nobody comes. Now reminders go out with a one-tap reschedule.
-- Your time protected
-- Leak 05 ✓ Fixed
-- Problem: One-time customers
-- Fix: Asked back, on time.
-- Great work, no review, no return. Now a review request goes out, then an invite when it is time to come back.
-- They come back
-- All five. / Fixed by one system. / Done for you.
-- [link] See what they cost you  `→ #math`
-- Keep scrolling →
-
-### Section `hook`
-
-- The best business in town still loses to the one that answers first.
-
-### Section `math`: What are missed inquiries costing you?
-
-- _(shown on interaction)_ That is about {n} new customers a month, by your own numbers.
-- _(shown on interaction)_ slipping away every month
-- _(shown on interaction)_ At these numbers it would not pay for itself on missed inquiries alone.
-- Do the math
-- **[H2]** What are missed inquiries costing you?
-- Add your numbers here
-- My business misses about
-- calls and messages a week. An average customer is worth
-- . If we answered fast, about
-- 1 in 3
-- would book.
-- slipping away every month
-- Slipping away each month
-- CNVRT X Front Office costs **$197/mo**
-- CNVRT X Front Office costs $197 /mo
-- Pays for itself at 2 saved inquiries a month
-- Save only half of them +$1,320 a month, after the cost
-- This is arithmetic on your own inputs. It is not a promise of results. Example numbers show until you change them.
-- [link] Show me how to stop it  `→ #pricing`
-
-### Section `how-it-works`: Four layers. One front office.
-
-- The system · 9 systems, 4 layers
-- **[H2]** Four layers. One front office.
-- Every leak above gets its own layer. Nine systems, built, written and tested for you. You do not learn software. You do not write messages.
-- Layer 01 · Pearl The Receptionist
-- **[H3]** Catch
-- Systems 1 to 3 Never miss a lead.
-- The phone rings while your hands are full. Now every call, form and DM gets an answer, even after closing.
-- Missed-Call Rescue
-- 60-Second Lead Response
-- 24/7 AI Front Desk
-- Example
-- Call
-- Text
-- Web chat
-- Instagram
-- Facebook
-- One inbox
-- New inquiry New Replied
-- Also on your phone
-- Layer 02 · Cobalt The Booking Coordinator
-- **[H3]** Book
-- Systems 4 and 5 Turn it into a booking on the calendar.
-- The quote goes out, then goes quiet. Now it is followed up until it is a yes or a no, and every booking is confirmed.
-- Follow-Up Until They Book
-- No-Show Shield
-- **Messages** Your Business
-- You are booked for Sat 9:00 AM. See you then!
-- Reminder: your appointment is tomorrow at 9:00 AM. Reply C to confirm or R to reschedule.
-- Confirmed. Thanks!
-- Layer 03 · Signal The Booking Coordinator
-- **[H3]** Keep
-- Systems 6 and 7 Make every customer count twice.
-- Great work, no review, no return. Now every customer is asked for a review and invited back.
-- 5-Star Review Machine
-- Repeat & Referral Engine
-- How did we do today? Tap to leave a review.
-- Review request sent after the visit
-- Gentle reminder sent 3 days later
-- Layer 04 · Obsidian The Office Manager
-- **[H3]** Run
-- Systems 8 and 9 Run the business from your phone.
-- You piece your day together from texts. Now it arrives at 7:30 AM, with tomorrow’s schedule at 6 PM.
-- Owner Command Center
-- Ad Results Tracker
-- Today’s brief 7:30 AM
-- A card for every booking All day
-- Tomorrow’s schedule 6 PM
-- Leads, booked, won, reviews Monday
-
-### Section `day`: A day in your business, before and after.
-
-- Your day
-- **[H2]** A day in your business, before and after.
-- The front office your business never had to hire. You just do the work.
-- 7:30 AM
-- Today: You scroll texts and DMs to work out your day.
-- With CNVRT X: One email with today’s bookings and who’s waiting.
-- 10:15 AM
-- Today: The phone rings while you’re with a customer.
-- With CNVRT X: They get a text back. A lead card lands on your phone.
-- 4:00 PM
-- Today: Yesterday’s quote went quiet, and you forgot.
-- With CNVRT X: Polite follow-ups go out until they book or say no.
-- 6:00 PM
-- Today: Tomorrow’s customer hasn’t confirmed.
-- With CNVRT X: They get “Reply YES or MOVE”. Tomorrow’s schedule is on your phone.
-- 11:00 PM
-- Today: An Instagram DM waits until morning.
-- With CNVRT X: Your AI front desk answers and books the appointment.
-- Same business. Same customers. A different evening.
-- An example day. Texts go only to people who agreed to them, after carrier approval.
-- Example schedule
-- **Tomorrow’s schedule** Sent 6:00 PM
-- 8 AM
-- Booked **Example Customer A**
-- New customer · Full service
-- (555) 010-xxxx
-- 9 AM
-- Return **Example Customer B**
-- Follow-up visit
-- 12 PM
-- Pickup **Example Customer C**
-- Order ready
-- 3 stops tomorrow
-
-### Section `work`: Who does the work?
-
-- Hire someone? Buy software?
-- **[H2]** Who does the work?
-- **A receptionist costs about $3,170 a month. Two offshore assistants cost $1,600 to $4,800.** They still sleep, and calls still get missed. Doing it yourself costs your evenings. Add it up.
-- Your front office today Every month
-- [button] I do it myself
-- [button] I have staff
-- Staff wages Untick what you don’t have
-- [button] A receptionist $3,170
-- [button] Two offshore assistants $1,600
-- Your hours a week on admin
-- Your hours a week chasing them
-- About 43 hours a month, priced at a receptionist’s wage ($18.27/hr)
-- Customers that slip away while your hands are full Customers that still slip away, even with a team From your calculator numbers above
-- Total, every month
-- $8,589 includes 43 hours of your time
-- Today: wages + your time + lost customers
-- CNVRT X **$197/mo**
-- 44× more than the system costs.
-- An estimate: published wage rates plus your own numbers, with example values until you change them. Two offshore assistants are counted at the low end ($1,600). Not a promise of results. A system closes most of the gap, never all of it.
-- What it takes Today With CNVRT X
-- Answer every call and message You ✓ Done for you
-- Follow up on every quote Your team ✓ Done for you
-- Confirm tomorrow’s bookings Your team ✓ Done for you
-- Type tomorrow’s schedule Your team ✓ Done for you
-- Ask every customer for a review You ✓ Done for you
-- Set it all up and keep it running You ✓ Done for you
-- Left on your plate **All of it** **The real work**
-- Your part
-- One short form.
-- Tell us your services, hours and prices. Then go back to your customers.
-- Let your people do the work only people can do.
-- Receptionist: US median $18.27/hour (BLS, May 2025) × 2,080 hours, wages only. Offshore assistants: published full-time rates for Philippines-based virtual assistants, $5 to $15/hour. Your local costs may differ. The AI hands anything complex to you.
-
-### Section `front-desk`: Meet your new front desk. Talk to it right now.
-
-- Try it now
-- **[H2]** Meet your new front desk. Talk to it right now.
-- It’s 11 PM. A customer messages your business. This is who answers. Ask it what your customers ask. Demo for an example business. No real booking is made.
-- Try saying
-- [button] How much is your full service?
-- [button] Can I come in Saturday morning?
-- [button] It’s after hours, is anyone there?
-- [button] I want to talk to the owner.
-- The AI answers in English and Spanish.
-- Example conversation
-- How much is your full service?
-- I can’t quote prices, but I can get you an exact quote from the team. Can you come in for a free consultation this week?
-- Can I come in Saturday morning?
-- Yes. I can hold 9:00 or 10:30 on Saturday morning. Which works better?
-- It’s after hours, is anyone there?
-- I’m the AI assistant for this business, here day and night. I can answer questions, take your details and book a visit.
-- I want to talk to the owner.
-- Of course. I’ll pass your name and number to the owner so they can call you back. What’s the best number?
-- [link] See plans  `→ #pricing`
-- Example for an illustration business. Not a real conversation and no real booking.
-
-### Section `pricing`: One plan. Three roles you never hire.
-
-- The offer
-- **[H2]** One plan. Three roles you never hire.
-- A receptionist, a booking coordinator and an office manager for your front office. Built, written and tested for you.
-- N Neutral
-- **Three gears. One plan.** You get all three. Tap a gear to see what it does.
-- [button] 1 **First Gear** The Receptionist
-- [button] 2 **Overdrive** The Booking Coordinator
-- [button] 3 **Full Throttle** The Office Manager
-- Get moving: every call, form and DM answered.
-- **Missed-Call Rescue** A text back and a lead card for every missed call.
-- **60-Second Lead Response** Web, Facebook and Instagram leads answered right away.
-- **24/7 AI Front Desk** Answers calls, chat and DMs, day and night.
-- Pick up speed: leads followed up, booked and confirmed.
-- **Follow-Up Until They Book** Polite reminders on every quote. Stops when they reply.
-- **No-Show Shield** Confirmations, “Reply YES or MOVE” and reminders.
-- **5-Star Review Machine** Every customer asked, with two gentle reminders.
-- Flat out: the business runs from your phone.
-- **Repeat & Referral Engine** Check-ins, referral asks and win-back campaigns.
-- **Owner Command Center** 7:30 AM brief, lead cards and tomorrow’s schedule at 6 PM.
-- **Ad Results Tracker** Shows which ads turned into booked, paying customers.
-- Best value
-- **[H3]** Annual
-- $1,970 /yr
-- About $164 a month.
-- Your front office: 3 roles, 9 systems
-- [opens] **The Receptionist** Never miss a lead
-- [opens] **The Booking Coordinator** Turn leads into bookings
-- [opens] **The Office Manager** Run the business from your phone
-- **Launch Kit waived.** Save $497.
-- **Two months included.** Pay 10, get 12.
-- **Full website built to book calls.** Free
-- **Past-customer win-back at launch.** Free
-- **Old-lead reactivation at launch.** Free
-- **Four seasonal campaigns.** Free
-- [link] Start Annual  `→ #start`
-- **[H3]** Monthly
-- $197 /mo
-- + $497 one-time Launch Kit.
-- **Love it or leave it.** Month-to-month. Cancel anytime.
-- **Full website:** $997 one-time add-on.
-- [link] Start Monthly  `→ #start`
-- Founding program **First 10 qualifying businesses:** Launch Kit waived · Price locked while you stay subscribed · Dead-Lead Revival on your last 90 days of quotes · 30 days of hands-on launch support
-- [opens] See every detail
-- Annual Monthly
-- Price $1,970 a year $197 a month
-- Launch Kit (one-time setup) Waived $497
-- Two months included Yes No
-- All three roles Yes Yes
-- Full website built to book calls Free $997 add-on
-- Past-customer win-back at launch Free Not included
-- Old-lead reactivation at launch Free Not included
-- Four seasonal campaigns Free Not included
-- Commitment Paid once a year Month-to-month. Cancel anytime.
-- The Receptionist Lead Lock
-- Missed-call text back, only to callers who agreed to texts, after carrier approval
-- Every missed call becomes a lead card on your phone
-- AI phone backup: answers when you can’t, day or night
-- Website, Facebook and Instagram lead forms answered right away
-- “Call now” alert when a new lead hasn’t replied
-- One inbox for calls, texts, chat and DMs, plus the mobile app
-- 24/7 AI front desk on your website chat, Facebook and Instagram, plus a website voice line
-- Your own local number (US) and a booking page
-- The Booking Coordinator Booked Solid
-- Follow-up until they book: polite text, email and call reminders that stop the moment they reply
-- Quote and estimate follow-up for every service you sell
-- No-Show Shield: confirmation, “Reply YES or MOVE” the day before, reminders and no-show rescue
-- 5-Star Review Machine: every customer asked, two gentle reminders, a video-testimonial link
-- The Office Manager Business on Autopilot
-- Owner Command Center: 7:30 AM brief, a card for every booking, tomorrow’s schedule at 6 PM, one-tap updates, Monday report
-- AI quote helper: drafts quotes from your own price list for you to approve and send
-- Repeat & Referral Engine: customer history, check-ins, referral ask, win-back campaigns
-- Ad Results Tracker: Facebook and Instagram leads followed to booked and paid work, sent back to Meta so it finds more customers like them
-- Win-back, reactivation and Dead-Lead Revival go by email, and by text only to customers who agreed to texts.
-- **Live in 14 days, or month one is free** From the day we have your business details and access.
-- **Every-Lead-Answered Promise** Miss one in your first 30 days and your next month is free.
-- **Love it or leave it** Month-to-month on monthly plans. Cancel anytime.
-- **Your business stays yours** Your domain, content and customer list, exportable.
-- **Keeps your current software** It sits alongside the tools that run your work.
-- Live in 14 days: the clock starts when we have your business details and access. Carrier (A2P), domain and third-party approvals are outside the 14 days. Every-Lead-Answered Promise: every missed call, web form and ad lead gets the response we set up; if the system misses one in your first 30 days, we fix it and your next month is free. Texts go only to people who agreed to them, after carrier approval. Phone-carrier and Meta outages are not included. We do not guarantee bookings or revenue. We guarantee the work we control. Fair-use calls, messages and AI for a single-location business. Texting carrier fees are passed on at cost and shown to you before activation.
-
-### Section `faq`: Before you ask.
-
-- Straight answers
-- **[H2]** Before you ask.
-- [opens] 01 Is this another CRM or website agency?
-- No. A CRM is a tool you have to build and run. An agency gives you a website and leaves. This is a working front desk: the booking page, the number, the inbox, the follow-up, the reminders and the review requests. All of it is built, written and tested for you.
-- [opens] 02 How much of my time does it take?
-- One short form about your services, hours and prices. We do the rest. After launch you reply to customers from the app when a human answer is needed.
-- [opens] 03 Do I have to talk to a salesperson?
-- No. Pick a plan, fill the form and the build starts. If you want to ask something first, use the contact link.
-- [opens] 04 Do I replace my current software?
-- Usually not. Keep the tools that run your work and invoices. This handles what happens before and after: the inquiry, the follow-up, the booking and the return visit.
-- [opens] 05 Does AI talk to every customer?
-- No. Routine steps like confirmations and reminders are fixed automation. AI answers the questions you approve and collects details. It never quotes prices and it says it is an AI if asked. Pricing talks, complaints and big requests go to you.
-- [opens] 06 Is the phone number really included?
-- Yes for US businesses. For other countries, ask us first so we can confirm availability. US texting also needs carrier registration (A2P). We prepare it with you and texting goes live once the carrier approves.
-- [opens] 07 Can you guarantee bookings?
-- No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control: a tested system, live in 14 days or your first month is free, and every lead answered in your first 30 days or your next month is free.
-- [opens] 08 Can I cancel?
-- Yes. Monthly plans are month-to-month. Your domain, content and customer list stay yours and you can export them.
-- [opens] 09 Is the AI a real person?
-- No. It answers from information you approve, never quotes prices, says it’s an AI if asked, and hands anything complex to you.
-
-### Section `start`: Join in minutes. No sales call.
-
-- Start today
-- **[H2]** Join in minutes. No sales call.
-- Your front office can be live in 14 days. No demo, no sales call. Pick annual or monthly and the build starts.
-- **Pick annual or monthly** Checkout takes a couple of minutes.
-- **Fill one short form** Your services, hours, prices and logo. That is your whole part.
-- **Your front desk goes live** Booking page, number, app, follow-up and reminders, built and tested for you.
-- **[H3]** Reserve your build
-- No sales call
-- [label] Monthly
-- [label] Annual Pay 10, get 12
-- $1,970 a year. Launch Kit waived.
-- $197 a month + $497 one-time Launch Kit.
-- Founding (Launch Kit waived): first 10 qualifying businesses.
-- On the table in your first year
-- Leaks you can go after $36,400
-- From your calculator numbers. An estimate, not a promise.
-- Online checkout is being switched on. Leave your details and your join link arrives by email.
-- [label] First name
-- Please add your first name.
-- [label] Business name
-- Please add your business name.
-- [label] Email
-- Please enter a valid email address.
-- [label] Phone
-- Please add a phone number.
-- Text messages (optional)
-- [label] Text me about my account and setup. Msg & data rates may apply. Reply STOP to opt out.
-- [label] Send me tips and offers by text. Msg & data rates may apply. Reply STOP to opt out.
-- Checking a box is not required to reserve your build.
-- [link] Privacy Policy  `→ /legal/privacy`
-- [link] SMS Terms  `→ /legal/sms-terms`
-- [button] Reserve My Build
-- **[H3]** You are on the list.
-- Watch your inbox for your join link.
-
-### Footer `foot`
-
-- Stop losing customers you already earned.
-- [link] Get My System  `→ #pricing`
-- [link] CNVRT ✕  `→ /`
-- A done-for-you front desk for local service businesses.
-- Built, written and tested for you.
-- On this page
-- [link] Leaks  `→ #leaks`
-- [link] The math  `→ #math`
-- [link] System  `→ #how-it-works`
-- [link] Price  `→ #pricing`
-- [link] FAQ  `→ #faq`
-- [link] Get started  `→ #start`
-- Legal
-- [link] Privacy Policy  `→ /legal/privacy`
-- [link] Terms of Service  `→ /legal/terms`
-- [link] SMS Terms  `→ /legal/sms-terms`
-- [link] Cancellation Policy  `→ /legal/cancellation`
-- [link] Disclaimer  `→ /legal/disclaimer`
-- Contact
-- Contact us
-- CNVRT X LLC
-- Results disclaimer: CNVRT X does not guarantee bookings, revenue or any specific result. Figures in the calculator and the illustrations are examples based on the numbers you enter. Your results depend on your services, prices, market and how you run your business.
-- Texting: business texting in the US needs carrier registration (A2P 10DLC). Texting features go live after carrier approval. Message and data rates may apply. Reply STOP to opt out.
-- Google, Facebook and Instagram are trademarks of their owners. This site is not part of, or endorsed by, any of them.
-- © 2026 CNVRT X LLC. All rights reserved.
-- [link] Back to top ↑  `→ #top`
-
-### Popup `exit`: The leak keeps running while you wait.
-
-- Before you go
-- **[H2]** The leak keeps running while you wait.
-- About $3,033 a month keeps slipping away. From your calculator numbers. An estimate, not a promise.
-- Founding program: Launch Kit waived and your price locked while you stay subscribed, for the first 10 qualifying businesses.
-- [link] See the plans  `→ #pricing`
-- [button] No thanks
-
-### Popup `co`
-
-- Secure checkout
-- [button] Monthly
-- [button] Annual
-- Live in 14 days, or your first month is free
-- Your domain, content and customer list stay yours
-- **Next:** one short form about your business. Then we build.
-- Checkout for this plan is not open yet.
-- Reserve your build and your join link arrives by email.
-- [link] Reserve my build  `→ #start`
-
-
----
-
-# 2. Industry page: Auto shops
-
-The same offer, written for detailing, coating, PPF, tint and aftermarket shops.
-
-
-## Auto shops (industry main page)
-
-- **Address:** `/auto`
 - **Browser tab title:** CNVRT X Front Office for Auto Shops: You Got the Inquiry. Did You Get the Booking?
 - **Search description:** A done-for-you front desk for detailing, coating, PPF, tint and aftermarket shops. Every call answered, every quote followed up, every booking confirmed. Built and tested for you.
 
 ### Section `skip-link`
 
-_Same wording as_ **Home → Section `skip-link`**.
+- [link] Skip to content  `→ #main`
 
 ### Top bar `bar`
 
@@ -586,7 +105,12 @@ _Same wording as_ **Home → Section `skip-link`**.
 
 ### Section `ticker`
 
-_Same wording as_ **Home → Section `ticker`**.
+- _(read aloud as)_ Missed calls become Answered, Slow replies become Answered fast, Cold quotes become Followed up, No-shows become Reminded, One-time customers become Brought back
+- Missed calls → **Answered** ✕
+- Slow replies → **Answered fast** ✕
+- Cold quotes → **Followed up** ✕
+- No-shows → **Reminded** ✕
+- One-time customers → **Brought back** ✕
 
 ### Section `pipe`: Before you buy more leads, fix what happens to the ones you already have.
 
@@ -622,13 +146,13 @@ _Same wording as_ **Home → Section `ticker`**.
 - 00 / 05 fixed
 - Leak 01 ✓ Fixed
 - Problem: Missed calls
-- Fix: Texted back fast.
-- You are under a car. They call the next shop. Now a missed call gets a text back, so the lead stays with you.
+- Fix: Caught every time.
+- You are under a car. They call the next shop. Now every missed call lands on your phone as a job card, and callers who agreed to texts get a text back.
 - The lead stays yours
 - Leak 02 ✓ Fixed
 - Problem: Slow replies
 - Fix: Answered right away.
-- You reply tonight. They booked at noon. Now forms, chat and DMs get a first reply right away.
+- You reply tonight. They booked at noon. Now every new lead gets an instant email at any hour, and a text within a minute during texting hours.
 - You are first
 - Leak 03 ✓ Fixed
 - Problem: Cold quotes
@@ -638,7 +162,7 @@ _Same wording as_ **Home → Section `ticker`**.
 - Leak 04 ✓ Fixed
 - Problem: No-shows
 - Fix: Confirmed and reminded.
-- The bay is blocked and nobody comes. Now reminders go out with a one-tap reschedule.
+- The bay is blocked and nobody comes. Now reminders go out, and the customer can reply MOVE to reschedule.
 - Bay time protected
 - Leak 05 ✓ Fixed
 - Problem: One-time customers
@@ -677,7 +201,7 @@ _Same wording as_ **Home → Section `ticker`**.
 - The system · 9 systems, 4 coats
 - **[H2]** Four coats. One finish.
 - Every leak above gets its own coat. Nine systems, built, written and tested for you. You do not learn software. You do not write messages.
-- Coat 01 · Pearl The Receptionist
+- Coat 01 The Receptionist
 - **[H3]** Catch
 - Systems 1 to 3 Never miss a lead.
 - The phone rings while your hands are full. Now every call, form and DM gets an answer, even after closing.
@@ -693,7 +217,7 @@ _Same wording as_ **Home → Section `ticker`**.
 - One inbox
 - New inquiry New Replied
 - Also on your phone
-- Coat 02 · Cobalt The Service Advisor
+- Coat 02 The Service Advisor
 - **[H3]** Book
 - Systems 4 and 5 Turn it into a job on the calendar.
 - The quote goes out, then goes quiet. Now it is followed up until it is a yes or a no, and every booking is confirmed.
@@ -701,9 +225,10 @@ _Same wording as_ **Home → Section `ticker`**.
 - No-Show Shield
 - **Messages** Your Shop
 - You are booked for Sat 9:00 AM. See you then!
-- Reminder: your appointment is tomorrow at 9:00 AM. Reply C to confirm or R to reschedule.
+- Reminder: your appointment is tomorrow at 9:00 AM. Reply YES to confirm or MOVE to change.
+- YES
 - Confirmed. Thanks!
-- Coat 03 · Signal The Service Advisor
+- Coat 03 The Service Advisor + The Shop Manager
 - **[H3]** Keep
 - Systems 6 and 7 Make every job pay twice.
 - Great job, no review, no return. Now every customer is asked for a review and invited back.
@@ -712,7 +237,7 @@ _Same wording as_ **Home → Section `ticker`**.
 - How did we do today? Tap to leave a review.
 - Review request sent after the job
 - Gentle reminder sent 3 days later
-- Coat 04 · Obsidian The Shop Manager
+- Coat 04 The Shop Manager
 - **[H3]** Run
 - Systems 8 and 9 Run the shop from your phone.
 - You piece your day together from texts. Now it arrives at 7:30 AM, with tomorrow’s run sheet at 6 PM.
@@ -733,7 +258,7 @@ _Same wording as_ **Home → Section `ticker`**.
 - With CNVRT X: One email with today’s jobs and who’s waiting.
 - 10:15 AM
 - Today: The phone rings while you’re under a car.
-- With CNVRT X: They get a text back. A job card lands on your phone.
+- With CNVRT X: The call is caught. A job card lands on your phone.
 - 4:00 PM
 - Today: Yesterday’s quote went quiet, and you forgot.
 - With CNVRT X: Polite follow-ups go out until they book or say no.
@@ -789,8 +314,8 @@ _Same wording as_ **Home → Section `ticker`**.
 - Set it all up and keep it running You ✓ Done for you
 - Left on your plate **All of it** **The cars**
 - Your part
-- One short form.
-- Tell us your services, hours and prices. Then go back to the cars.
+- One form. One checklist.
+- A short form about your services, hours and prices, plus a 15-minute access checklist. Then go back to the cars.
 - Let your people do the work only people can do.
 - Receptionist: US median $18.27/hour (BLS, May 2025) × 2,080 hours, wages only. Offshore assistants: published full-time rates for Philippines-based virtual assistants, $5 to $15/hour. Your local costs may differ. The AI hands anything complex to you.
 
@@ -828,8 +353,8 @@ _Same wording as_ **Home → Section `ticker`**.
 - [button] 2 **Overdrive** The Service Advisor
 - [button] 3 **Full Throttle** The Shop Manager
 - Get moving: every call, form and DM answered.
-- **Missed-Call Rescue** A text back and a job card for every missed call.
-- **60-Second Lead Response** Web, Facebook and Instagram leads answered right away.
+- **Missed-Call Rescue** Every missed call becomes a job card. Callers who agreed to texts get a text back.
+- **60-Second Lead Response** An instant email at any hour. A text within a minute during texting hours.
 - **24/7 AI Front Desk** Answers calls, chat and DMs, day and night.
 - Pick up speed: leads followed up, booked and confirmed.
 - **Follow-Up Until They Book** Polite reminders on every quote. Stops when they reply.
@@ -852,14 +377,13 @@ _Same wording as_ **Home → Section `ticker`**.
 - **Full website built to book calls.** Free
 - **Past-customer win-back at launch.** Free
 - **Old-lead reactivation at launch.** Free
-- **Four seasonal campaigns.** Free
-- [link] Start Annual  `→ #start`
+- [link] Start Annual  `→ /auto?plan=annual`
 - **[H3]** Monthly
 - $197 /mo
 - + $497 one-time Launch Kit.
 - **Love it or leave it.** Month-to-month. Cancel anytime.
 - **Full website:** $997 one-time add-on.
-- [link] Start Monthly  `→ #start`
+- [link] Start Monthly  `→ /auto?plan=monthly`
 - Founding program **First 10 qualifying shops:** Launch Kit waived · Price locked while you stay subscribed · Dead-Lead Revival on your last 90 days of quotes · 30 days of hands-on launch support
 - [opens] See every detail
 - Annual Monthly
@@ -870,34 +394,33 @@ _Same wording as_ **Home → Section `ticker`**.
 - Full website built to book calls Free $997 add-on
 - Past-customer win-back at launch Free Not included
 - Old-lead reactivation at launch Free Not included
-- Four seasonal campaigns Free Not included
 - Commitment Paid once a year Month-to-month. Cancel anytime.
-- The Receptionist Lead Lock
-- Missed-call text back, only to callers who agreed to texts, after carrier approval
+- The Receptionist
 - Every missed call becomes a job card on your phone
+- Missed-call text back, only to callers who agreed to texts, after carrier approval
+- Callers who have not agreed to texts: you get a call-back task, and the AI phone backup can answer where it is set up
 - AI phone backup: answers when you can’t, day or night
-- Website, Facebook and Instagram lead forms answered right away
-- “Call now” alert when a new lead hasn’t replied
+- Website, Facebook and Instagram leads get an instant email at any hour and a text within a minute during texting hours
+- “Call now” alert to you when a new lead hasn’t replied after 5 minutes
 - One inbox for calls, texts, chat and DMs, plus the mobile app
 - 24/7 AI front desk on your website chat, Facebook and Instagram, plus a website voice line
 - Your own local number (US) and a free-inspection booking page
-- The Service Advisor Booked Solid
+- The Service Advisor
 - Follow-up until they book: polite text, email and call reminders that stop the moment they reply
 - Quote follow-up for ceramic, PPF, tint, wraps and details
 - No-Show Shield: confirmation, “Reply YES or MOVE” the day before, reminders, no-show rescue, drop-off and pickup texts
 - 5-Star Review Machine: every customer asked, two gentle reminders, a video-testimonial link
-- The Shop Manager Shop on Autopilot
+- The Shop Manager
 - Owner Command Center: 7:30 AM brief, a job card for every booking, a 6 PM run sheet for tomorrow, one-tap job updates, Monday report
 - AI quote helper: drafts quotes from your own price list for you to approve and send
 - Repeat & Referral Engine: service history, check-ins, referral ask, win-back campaigns
 - Ad Results Tracker: Facebook and Instagram leads followed to booked and paid jobs, sent back to Meta so it finds more customers like them
 - Win-back, reactivation and Dead-Lead Revival go by email, and by text only to customers who agreed to texts.
-- **Live in 14 days, or month one is free** From the day we have your shop details and access.
-- **Every-Lead-Answered Promise** Miss one in your first 30 days and your next month is free.
+- **Live in 14 days, or month one is free** The clock starts when your form and access are in.
 - **Love it or leave it** Month-to-month on monthly plans. Cancel anytime.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
-- Live in 14 days: the clock starts when we have your shop details and access. Carrier (A2P), domain and third-party approvals are outside the 14 days. Every-Lead-Answered Promise: every missed call, web form and ad lead gets the response we set up; if the system misses one in your first 30 days, we fix it and your next month is free. Texts go only to people who agreed to them, after carrier approval. Phone-carrier and Meta outages are not included. We do not guarantee bookings or revenue. We guarantee the work we control. Fair-use calls, messages and AI for a single-location shop. Texting carrier fees are passed on at cost and shown to you before activation.
+- Live in 14 days: the clock starts when your form and access are in (Google, Facebook and call forwarding). Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
 
 ### Section `faq`: Before you ask.
 
@@ -906,7 +429,7 @@ _Same wording as_ **Home → Section `ticker`**.
 - [opens] 01 Is this another CRM or website agency?
 - No. A CRM is a tool you have to build and run. An agency gives you a website and leaves. This is a working front desk: the booking page, the number, the inbox, the follow-up, the reminders and the review requests. All of it is built, written and tested for you.
 - [opens] 02 How much of my time does it take?
-- One short form about your services, hours and prices. We do the rest. After launch you reply to customers from the app when a human answer is needed.
+- One short form about your services, hours and prices, plus a 15-minute access checklist: Google, Facebook, call forwarding, your domain and the business details the phone carrier asks for. We do the rest. After launch you reply to customers from the app when a human answer is needed.
 - [opens] 03 Do I have to talk to a salesperson?
 - No. Pick a plan, fill the form and the build starts. If you want to ask something first, use the contact link.
 - [opens] 04 Do I replace my current shop software?
@@ -916,10 +439,12 @@ _Same wording as_ **Home → Section `ticker`**.
 - [opens] 06 Is the phone number really included?
 - Yes for US shops. For other countries, ask us first so we can confirm availability. US texting also needs carrier registration (A2P). We prepare it with you and texting goes live once the carrier approves.
 - [opens] 07 Can you guarantee bookings?
-- No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control: a tested system, live in 14 days or your first month is free, and every lead answered in your first 30 days or your next month is free.
-- [opens] 08 Can I cancel?
+- No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control: a tested system, live in 14 days or your first month is free.
+- [opens] 08 What is included each month?
+- Each month includes 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. That covers a typical single-location shop. If you are close to a limit we tell you before anything extra is charged.
+- [opens] 09 Can I cancel?
 - Yes. Monthly plans are month-to-month. Your domain, content and customer list stay yours and you can export them.
-- [opens] 09 Is the AI a real person?
+- [opens] 10 Is the AI a real person?
 - No. It answers from information you approve, never quotes prices, says it’s an AI if asked, and hands anything complex to you.
 
 ### Section `start`: Join in minutes. No sales call.
@@ -928,7 +453,7 @@ _Same wording as_ **Home → Section `ticker`**.
 - **[H2]** Join in minutes. No sales call.
 - Your front office can be live in 14 days. No demo, no sales call. Pick annual or monthly and the build starts.
 - **Pick annual or monthly** Checkout takes a couple of minutes.
-- **Fill one short form** Your services, hours, prices and logo. That is your whole part.
+- **Fill one short form and the access checklist** Your services, hours, prices and logo. Then about 15 minutes of access: Google, Facebook, call forwarding and your texting registration details.
 - **Your front desk goes live** Booking page, number, app, follow-up and reminders, built and tested for you.
 - **[H3]** Reserve your build
 - No sales call
@@ -988,40 +513,29 @@ _Same wording as_ **Home → Section `ticker`**.
 - © 2026 CNVRT X LLC. All rights reserved.
 - [link] Back to top ↑  `→ #top`
 
-### Popup `exit`: The leak keeps running while you wait.
+### Popup `exit`: Take $200 off your Launch Kit.
 
 - Before you go
-- **[H2]** The leak keeps running while you wait.
+- **[H2]** Take $200 off your Launch Kit.
+- $297 $497 one-time Launch Kit, instead of $497
+- Start monthly today and your one-time Launch Kit is $297, not $497. The plan itself stays $197 a month, cancel anytime.
 - About $3,033 a month keeps slipping away. From your calculator numbers. An estimate, not a promise.
-- Founding program: Launch Kit waived and your price locked while you stay subscribed, for the first 10 qualifying shops.
-- [link] See the plans  `→ #pricing`
+- [link] Start Monthly with the $297 Launch Kit  `→ /auto?plan=monthly&offer=kit`
 - [button] No thanks
-
-### Popup `co`
-
-- Secure checkout
-- [button] Monthly
-- [button] Annual
-- Live in 14 days, or your first month is free
-- Your domain, content and customer list stay yours
-- **Next:** one short form about your shop. Then we build.
-- Checkout for this plan is not open yet.
-- Reserve your build and your join link arrives by email.
-- [link] Reserve my build  `→ #start`
 
 
 ---
 
-# 3. Auto shops: problem pages
+# 2. Problem pages
 
-One page per problem. Each leads to the same plan. Listed in the order of the "What it fixes" menu on the auto page.
+One page per problem. Each leads to the same plan. Listed in the order of the "What it fixes" menu on the home page.
 
 
 ## Problem page: Missed calls
 
 - **Address:** `/auto/missed-calls`
 - **Browser tab title:** Missed-Call Text Back for Auto Shops | CNVRT X Front Office
-- **Search description:** You can’t pick up with a polisher in your hand. Missed-Call Rescue texts the caller back for you and puts a job card on your phone.
+- **Search description:** You can’t pick up with a polisher in your hand. Missed-Call Rescue catches every missed call, puts a job card on your phone and texts back the callers who agreed to texts.
 
 ### Section `skip-link`
 
@@ -1029,11 +543,11 @@ _Same wording as_ **Home → Section `skip-link`**.
 
 ### Top bar `bar`
 
-_Same wording as_ **Auto shops (industry main page) → Top bar `bar`**.
+_Same wording as_ **Home → Top bar `bar`**.
 
 ### Top menu `nav`
 
-- [link] CNVRT ✕  `→ /auto`
+- [link] CNVRT ✕  `→ /`
 - [link] Leaks  `→ #leaks`
 - [link] The math  `→ #math`
 - [link] System  `→ #how-it-works`
@@ -1046,7 +560,7 @@ _Same wording as_ **Auto shops (industry main page) → Top bar `bar`**.
 - _(rotating words)_ detailing, coating, PPF, tint, aftermarket
 - Built for **detailing** shops
 - **[H1]** Under a Car When It Rings? That Job Is Still Yours.
-- You can’t pick up with a polisher in your hand. The caller tries the next shop. Missed-Call Rescue texts them back for you and puts a job card on your phone.
+- You can’t pick up with a polisher in your hand. The caller tries the next shop. Missed-Call Rescue catches every missed call, puts a job card on your phone and texts back the callers who agreed to texts.
 - [link] Get My System  `→ #pricing`
 - [link] See what it costs you ↓  `→ #math`
 - Done for you · No sales call · Month-to-month
@@ -1054,8 +568,8 @@ _Same wording as_ **Auto shops (industry main page) → Top bar `bar`**.
 
 ### Section `ticker`
 
-- _(read aloud as)_ Phone rings become Text goes out, No voicemail become Job card on your phone, Called the next shop become Stayed with you, Seen at 6:30 PM become Caught at 10:15 AM, Missed call become Rescued
-- Phone rings → **Text goes out** ✕
+- _(read aloud as)_ Phone rings become Call caught, No voicemail become Job card on your phone, Called the next shop become Stayed with you, Seen at 6:30 PM become Caught at 10:15 AM, Missed call become Rescued
+- Phone rings → **Call caught** ✕
 - No voicemail → **Job card on your phone** ✕
 - Called the next shop → **Stayed with you** ✕
 - Seen at 6:30 PM → **Caught at 10:15 AM** ✕
@@ -1074,8 +588,8 @@ _Same wording as_ **Auto shops (industry main page) → Top bar `bar`**.
 - You see the missed call. They already booked elsewhere.
 - ✕ The job goes to another shop
 - How Missed-Call Rescue works
-- They get a text back A friendly message goes out, so the lead stays with you.
-- A job card lands on your phone Who called, when, and what they asked for.
+- The call is caught A job card lands on your phone: who called, when, and what they asked for.
+- Callers who agreed to texts get a text back A friendly message goes out, so the lead stays with you.
 - You call back when your hands are free Or your AI front desk picks up the conversation.
 - ✓ The job stays with you
 - Example text back
@@ -1101,7 +615,7 @@ _Same wording as_ **Auto shops (industry main page) → Top bar `bar`**.
 - Add your numbers here
 - My shop misses about
 - calls a week while hands are full. An average job is worth
-- . If each one got a text back, about
+- . If each one got a reply, about
 - 1 in 3
 - would book.
 - slipping away every month
@@ -1117,8 +631,8 @@ _Same wording as_ **Auto shops (industry main page) → Top bar `bar`**.
 
 - What changes
 - **[H2]** What changes when no call is lost.
-- Every caller hears back
-- A text goes out for you, so the caller is still talking to your shop, not the next one.
+- Every missed call is caught
+- It lands on your phone as a job card. Callers who agreed to texts get a text back, and you get a call-back task for the rest.
 - You know who called
 - A job card shows who it was, when, and what they asked for.
 - You finish the car first
@@ -1128,7 +642,7 @@ _Same wording as_ **Auto shops (industry main page) → Top bar `bar`**.
 - A job card for every missed call, on your phone
 - Your local number (US) and the inbox it lands in
 - The AI front desk as backup when you can’t answer
-- Your part: one short form.
+- Your part: one form and a 15-minute checklist.
 - [link] See the plan  `→ #pricing`
 
 ### Section `how-it-works`: Missed-Call Rescue is one of nine. You get all nine.
@@ -1137,8 +651,8 @@ _Same wording as_ **Auto shops (industry main page) → Top bar `bar`**.
 - **[H2]** Missed-Call Rescue is one of nine. You get all nine.
 - Missed calls are one leak. The same plan closes the other eight.
 - **The Receptionist** Never miss a lead
-- **Missed-Call Rescue This page** A text back and a job card for every missed call.
-- **60-Second Lead Response** Web, Facebook and Instagram leads answered right away.
+- **Missed-Call Rescue This page** Every missed call becomes a job card. Callers who agreed to texts get a text back.
+- **60-Second Lead Response** An instant email at any hour. A text within a minute during texting hours.
 - **24/7 AI Front Desk** Answers calls, chat and DMs, day and night.
 - **The Service Advisor** Turn leads into booked jobs
 - **Follow-Up Until They Book** Polite reminders on every quote. Stops when they reply.
@@ -1184,8 +698,8 @@ _Same wording as_ **Auto shops (industry main page) → Top bar `bar`**.
 - [button] 2 **Overdrive** The Service Advisor
 - [button] 3 **Full Throttle** The Shop Manager
 - Get moving: every call, form and DM answered.
-- **Missed-Call Rescue** A text back and a job card for every missed call.
-- **60-Second Lead Response** Web, Facebook and Instagram leads answered right away.
+- **Missed-Call Rescue** Every missed call becomes a job card. Callers who agreed to texts get a text back.
+- **60-Second Lead Response** An instant email at any hour. A text within a minute during texting hours.
 - **24/7 AI Front Desk** Answers calls, chat and DMs, day and night.
 - Pick up speed: leads followed up, booked and confirmed.
 - **Follow-Up Until They Book** Polite reminders on every quote. Stops when they reply.
@@ -1208,14 +722,13 @@ _Same wording as_ **Auto shops (industry main page) → Top bar `bar`**.
 - **Full website built to book calls.** Free
 - **Past-customer win-back at launch.** Free
 - **Old-lead reactivation at launch.** Free
-- **Four seasonal campaigns.** Free
-- [link] Start Annual  `→ #start`
+- [link] Start Annual  `→ /auto?plan=annual`
 - **[H3]** Monthly
 - $197 /mo
 - + $497 one-time Launch Kit.
 - **Love it or leave it.** Month-to-month. Cancel anytime.
 - **Full website:** $997 one-time add-on.
-- [link] Start Monthly  `→ #start`
+- [link] Start Monthly  `→ /auto?plan=monthly`
 - Founding program **First 10 qualifying shops:** Launch Kit waived · Price locked while you stay subscribed · Dead-Lead Revival on your last 90 days of quotes · 30 days of hands-on launch support
 - [opens] See every detail
 - Annual Monthly
@@ -1226,34 +739,33 @@ _Same wording as_ **Auto shops (industry main page) → Top bar `bar`**.
 - Full website built to book calls Free $997 add-on
 - Past-customer win-back at launch Free Not included
 - Old-lead reactivation at launch Free Not included
-- Four seasonal campaigns Free Not included
 - Commitment Paid once a year Month-to-month. Cancel anytime.
-- The Receptionist Lead Lock
-- Missed-call text back, only to callers who agreed to texts, after carrier approval
+- The Receptionist
 - Every missed call becomes a job card on your phone
+- Missed-call text back, only to callers who agreed to texts, after carrier approval
+- Callers who have not agreed to texts: you get a call-back task, and the AI phone backup can answer where it is set up
 - AI phone backup: answers when you can’t, day or night
-- Website, Facebook and Instagram lead forms answered right away
-- “Call now” alert when a new lead hasn’t replied
+- Website, Facebook and Instagram leads get an instant email at any hour and a text within a minute during texting hours
+- “Call now” alert to you when a new lead hasn’t replied after 5 minutes
 - One inbox for calls, texts, chat and DMs, plus the mobile app
 - 24/7 AI front desk on your website chat, Facebook and Instagram, plus a website voice line
 - Your own local number (US) and a free-inspection booking page
-- The Service Advisor Booked Solid
+- The Service Advisor
 - Follow-up until they book: polite text, email and call reminders that stop the moment they reply
 - Quote follow-up for ceramic, PPF, tint, wraps and details
 - No-Show Shield: confirmation, “Reply YES or MOVE” the day before, reminders, no-show rescue, drop-off and pickup texts
 - 5-Star Review Machine: every customer asked, two gentle reminders, a video-testimonial link
-- The Shop Manager Shop on Autopilot
+- The Shop Manager
 - Owner Command Center: 7:30 AM brief, a job card for every booking, a 6 PM run sheet for tomorrow, one-tap job updates, Monday report
 - AI quote helper: drafts quotes from your own price list for you to approve and send
 - Repeat & Referral Engine: service history, check-ins, referral ask, win-back campaigns
 - Ad Results Tracker: Facebook and Instagram leads followed to booked and paid jobs, sent back to Meta so it finds more customers like them
 - Win-back, reactivation and Dead-Lead Revival go by email, and by text only to customers who agreed to texts.
-- **Live in 14 days, or month one is free** From the day we have your shop details and access.
-- **Every-Lead-Answered Promise** Miss one in your first 30 days and your next month is free.
+- **Live in 14 days, or month one is free** The clock starts when your form and access are in.
 - **Love it or leave it** Month-to-month on monthly plans. Cancel anytime.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
-- Live in 14 days: the clock starts when we have your shop details and access. Carrier (A2P), domain and third-party approvals are outside the 14 days. Every-Lead-Answered Promise: every missed call, web form and ad lead gets the response we set up; if the system misses one in your first 30 days, we fix it and your next month is free. Texts go only to people who agreed to them, after carrier approval. Phone-carrier and Meta outages are not included. We do not guarantee bookings or revenue. We guarantee the work we control. Fair-use calls, messages and AI for a single-location shop. Texting carrier fees are passed on at cost and shown to you before activation.
+- Live in 14 days: the clock starts when your form and access are in (Google, Facebook and call forwarding). Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
 
 ### Section `faq`: Before you ask.
 
@@ -1268,10 +780,12 @@ _Same wording as_ **Auto shops (industry main page) → Top bar `bar`**.
 - [opens] 04 Do I have to talk to a salesperson?
 - No. Pick a plan, fill the form and the build starts. If you want to ask something first, use the contact link.
 - [opens] 05 Can you guarantee bookings?
-- No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control: a tested system, live in 14 days or your first month is free, and every lead answered in your first 30 days or your next month is free.
-- [opens] 06 Can I cancel?
+- No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control: a tested system, live in 14 days or your first month is free.
+- [opens] 06 What is included each month?
+- Each month includes 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. That covers a typical single-location shop. If you are close to a limit we tell you before anything extra is charged.
+- [opens] 07 Can I cancel?
 - Yes. Monthly plans are month-to-month. Your domain, content and customer list stay yours and you can export them.
-- [opens] 07 Is the AI a real person?
+- [opens] 08 Is the AI a real person?
 - No. It answers from information you approve, never quotes prices, says it’s an AI if asked, and hands anything complex to you.
 
 ### Section `start`: Join in minutes. No sales call.
@@ -1280,7 +794,7 @@ _Same wording as_ **Auto shops (industry main page) → Top bar `bar`**.
 - **[H2]** Join in minutes. No sales call.
 - Stop losing the calls you can’t pick up. Your front office can be live in 14 days. No demo, no sales call.
 - **Pick annual or monthly** Checkout takes a couple of minutes.
-- **Fill one short form** Your services, hours, prices and logo. That is your whole part.
+- **Fill one short form and the access checklist** Your services, hours, prices and logo. Then about 15 minutes of access: Google, Facebook, call forwarding and your texting registration details.
 - **Your front desk goes live** Booking page, number, app, follow-up and reminders, built and tested for you.
 - **[H3]** Reserve your build
 - No sales call
@@ -1340,13 +854,9 @@ _Same wording as_ **Auto shops (industry main page) → Top bar `bar`**.
 - © 2026 CNVRT X LLC. All rights reserved.
 - [link] Back to top ↑  `→ #top`
 
-### Popup `exit`: The leak keeps running while you wait.
+### Popup `exit`: Take $200 off your Launch Kit.
 
-_Same wording as_ **Auto shops (industry main page) → Popup `exit`: The leak keeps running while you wait.**.
-
-### Popup `co`
-
-_Same wording as_ **Auto shops (industry main page) → Popup `co`**.
+_Same wording as_ **Home → Popup `exit`: Take $200 off your Launch Kit.**.
 
 
 ## Problem page: Quote follow-up
@@ -1361,7 +871,7 @@ _Same wording as_ **Home → Section `skip-link`**.
 
 ### Top bar `bar`
 
-_Same wording as_ **Auto shops (industry main page) → Top bar `bar`**.
+_Same wording as_ **Home → Top bar `bar`**.
 
 ### Top menu `nav`
 
@@ -1446,8 +956,8 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - **[H2]** Follow-Up Until They Book is one of nine. You get all nine.
 - Follow-up turns a quote into a booking. The rest of the plan catches the lead before it and confirms the job after it.
 - **The Receptionist** Never miss a lead
-- **Missed-Call Rescue** A text back and a job card for every missed call.
-- **60-Second Lead Response** Web, Facebook and Instagram leads answered right away.
+- **Missed-Call Rescue** Every missed call becomes a job card. Callers who agreed to texts get a text back.
+- **60-Second Lead Response** An instant email at any hour. A text within a minute during texting hours.
 - **24/7 AI Front Desk** Answers calls, chat and DMs, day and night.
 - **The Service Advisor** Turn leads into booked jobs
 - **Follow-Up Until They Book This page** Polite reminders on every quote. Stops when they reply.
@@ -1474,7 +984,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - Text, email and call reminders, written for you
 - The rule that stops everything when they reply
 - One-tap updates: Quote sent, Accepted, Done
-- Your part: one short form.
+- Your part: one form and a 15-minute checklist.
 - [link] See the plan  `→ #pricing`
 
 ### Section `front-desk`: It can take the quote request, too.
@@ -1511,8 +1021,8 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - [button] 2 **Overdrive** The Service Advisor
 - [button] 3 **Full Throttle** The Shop Manager
 - Get moving: every call, form and DM answered.
-- **Missed-Call Rescue** A text back and a job card for every missed call.
-- **60-Second Lead Response** Web, Facebook and Instagram leads answered right away.
+- **Missed-Call Rescue** Every missed call becomes a job card. Callers who agreed to texts get a text back.
+- **60-Second Lead Response** An instant email at any hour. A text within a minute during texting hours.
 - **24/7 AI Front Desk** Answers calls, chat and DMs, day and night.
 - Pick up speed: leads followed up, booked and confirmed.
 - **Follow-Up Until They Book** Polite reminders on every quote. Stops when they reply.
@@ -1535,14 +1045,13 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - **Full website built to book calls.** Free
 - **Past-customer win-back at launch.** Free
 - **Old-lead reactivation at launch.** Free
-- **Four seasonal campaigns.** Free
-- [link] Start Annual  `→ #start`
+- [link] Start Annual  `→ /auto?plan=annual`
 - **[H3]** Monthly
 - $197 /mo
 - + $497 one-time Launch Kit.
 - **Love it or leave it.** Month-to-month. Cancel anytime.
 - **Full website:** $997 one-time add-on.
-- [link] Start Monthly  `→ #start`
+- [link] Start Monthly  `→ /auto?plan=monthly`
 - Founding program **First 10 qualifying shops:** Launch Kit waived · Price locked while you stay subscribed · Dead-Lead Revival on your last 90 days of quotes · 30 days of hands-on launch support
 - [opens] See every detail
 - Annual Monthly
@@ -1553,34 +1062,33 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - Full website built to book calls Free $997 add-on
 - Past-customer win-back at launch Free Not included
 - Old-lead reactivation at launch Free Not included
-- Four seasonal campaigns Free Not included
 - Commitment Paid once a year Month-to-month. Cancel anytime.
-- The Receptionist Lead Lock
-- Missed-call text back, only to callers who agreed to texts, after carrier approval
+- The Receptionist
 - Every missed call becomes a job card on your phone
+- Missed-call text back, only to callers who agreed to texts, after carrier approval
+- Callers who have not agreed to texts: you get a call-back task, and the AI phone backup can answer where it is set up
 - AI phone backup: answers when you can’t, day or night
-- Website, Facebook and Instagram lead forms answered right away
-- “Call now” alert when a new lead hasn’t replied
+- Website, Facebook and Instagram leads get an instant email at any hour and a text within a minute during texting hours
+- “Call now” alert to you when a new lead hasn’t replied after 5 minutes
 - One inbox for calls, texts, chat and DMs, plus the mobile app
 - 24/7 AI front desk on your website chat, Facebook and Instagram, plus a website voice line
 - Your own local number (US) and a free-inspection booking page
-- The Service Advisor Booked Solid
+- The Service Advisor
 - Follow-up until they book: polite text, email and call reminders that stop the moment they reply
 - Quote follow-up for ceramic, PPF, tint, wraps and details
 - No-Show Shield: confirmation, “Reply YES or MOVE” the day before, reminders, no-show rescue, drop-off and pickup texts
 - 5-Star Review Machine: every customer asked, two gentle reminders, a video-testimonial link
-- The Shop Manager Shop on Autopilot
+- The Shop Manager
 - Owner Command Center: 7:30 AM brief, a job card for every booking, a 6 PM run sheet for tomorrow, one-tap job updates, Monday report
 - AI quote helper: drafts quotes from your own price list for you to approve and send
 - Repeat & Referral Engine: service history, check-ins, referral ask, win-back campaigns
 - Ad Results Tracker: Facebook and Instagram leads followed to booked and paid jobs, sent back to Meta so it finds more customers like them
 - Win-back, reactivation and Dead-Lead Revival go by email, and by text only to customers who agreed to texts.
-- **Live in 14 days, or month one is free** From the day we have your shop details and access.
-- **Every-Lead-Answered Promise** Miss one in your first 30 days and your next month is free.
+- **Live in 14 days, or month one is free** The clock starts when your form and access are in.
 - **Love it or leave it** Month-to-month on monthly plans. Cancel anytime.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
-- Live in 14 days: the clock starts when we have your shop details and access. Carrier (A2P), domain and third-party approvals are outside the 14 days. Every-Lead-Answered Promise: every missed call, web form and ad lead gets the response we set up; if the system misses one in your first 30 days, we fix it and your next month is free. Texts go only to people who agreed to them, after carrier approval. Phone-carrier and Meta outages are not included. We do not guarantee bookings or revenue. We guarantee the work we control. Fair-use calls, messages and AI for a single-location shop. Texting carrier fees are passed on at cost and shown to you before activation.
+- Live in 14 days: the clock starts when your form and access are in (Google, Facebook and call forwarding). Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
 
 ### Section `faq`: Before you ask.
 
@@ -1595,10 +1103,12 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - [opens] 04 Do I have to talk to a salesperson?
 - No. Pick a plan, fill the form and the build starts. If you want to ask something first, use the contact link.
 - [opens] 05 Can you guarantee bookings?
-- No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control: a tested system, live in 14 days or your first month is free, and every lead answered in your first 30 days or your next month is free.
-- [opens] 06 Can I cancel?
+- No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control: a tested system, live in 14 days or your first month is free.
+- [opens] 06 What is included each month?
+- Each month includes 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. That covers a typical single-location shop. If you are close to a limit we tell you before anything extra is charged.
+- [opens] 07 Can I cancel?
 - Yes. Monthly plans are month-to-month. Your domain, content and customer list stay yours and you can export them.
-- [opens] 07 Is the AI a real person?
+- [opens] 08 Is the AI a real person?
 - No. It answers from information you approve, never quotes prices, says it’s an AI if asked, and hands anything complex to you.
 
 ### Section `start`: Join in minutes. No sales call.
@@ -1607,7 +1117,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - **[H2]** Join in minutes. No sales call.
 - Stop letting quotes go quiet. Your front office can be live in 14 days. No demo, no sales call.
 - **Pick annual or monthly** Checkout takes a couple of minutes.
-- **Fill one short form** Your services, hours, prices and logo. That is your whole part.
+- **Fill one short form and the access checklist** Your services, hours, prices and logo. Then about 15 minutes of access: Google, Facebook, call forwarding and your texting registration details.
 - **Your front desk goes live** Booking page, number, app, follow-up and reminders, built and tested for you.
 - **[H3]** Reserve your build
 - No sales call
@@ -1667,13 +1177,9 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - © 2026 CNVRT X LLC. All rights reserved.
 - [link] Back to top ↑  `→ #top`
 
-### Popup `exit`: The leak keeps running while you wait.
+### Popup `exit`: Take $200 off your Launch Kit.
 
-_Same wording as_ **Auto shops (industry main page) → Popup `exit`: The leak keeps running while you wait.**.
-
-### Popup `co`
-
-_Same wording as_ **Auto shops (industry main page) → Popup `co`**.
+_Same wording as_ **Home → Popup `exit`: Take $200 off your Launch Kit.**.
 
 
 ## Problem page: No-shows
@@ -1688,7 +1194,7 @@ _Same wording as_ **Home → Section `skip-link`**.
 
 ### Top bar `bar`
 
-_Same wording as_ **Auto shops (industry main page) → Top bar `bar`**.
+_Same wording as_ **Home → Top bar `bar`**.
 
 ### Top menu `nav`
 
@@ -1756,7 +1262,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - “Reply YES or MOVE” the day before
 - Reminders, and no-show rescue
 - Drop-off and pickup texts
-- Your part: one short form.
+- Your part: one form and a 15-minute checklist.
 - [link] See the plan  `→ #pricing`
 
 ### Section `hook`
@@ -1841,8 +1347,8 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - [button] 2 **Overdrive** The Service Advisor
 - [button] 3 **Full Throttle** The Shop Manager
 - Get moving: every call, form and DM answered.
-- **Missed-Call Rescue** A text back and a job card for every missed call.
-- **60-Second Lead Response** Web, Facebook and Instagram leads answered right away.
+- **Missed-Call Rescue** Every missed call becomes a job card. Callers who agreed to texts get a text back.
+- **60-Second Lead Response** An instant email at any hour. A text within a minute during texting hours.
 - **24/7 AI Front Desk** Answers calls, chat and DMs, day and night.
 - Pick up speed: leads followed up, booked and confirmed.
 - **Follow-Up Until They Book** Polite reminders on every quote. Stops when they reply.
@@ -1865,14 +1371,13 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - **Full website built to book calls.** Free
 - **Past-customer win-back at launch.** Free
 - **Old-lead reactivation at launch.** Free
-- **Four seasonal campaigns.** Free
-- [link] Start Annual  `→ #start`
+- [link] Start Annual  `→ /auto?plan=annual`
 - **[H3]** Monthly
 - $197 /mo
 - + $497 one-time Launch Kit.
 - **Love it or leave it.** Month-to-month. Cancel anytime.
 - **Full website:** $997 one-time add-on.
-- [link] Start Monthly  `→ #start`
+- [link] Start Monthly  `→ /auto?plan=monthly`
 - Founding program **First 10 qualifying shops:** Launch Kit waived · Price locked while you stay subscribed · Dead-Lead Revival on your last 90 days of quotes · 30 days of hands-on launch support
 - [opens] See every detail
 - Annual Monthly
@@ -1883,34 +1388,33 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - Full website built to book calls Free $997 add-on
 - Past-customer win-back at launch Free Not included
 - Old-lead reactivation at launch Free Not included
-- Four seasonal campaigns Free Not included
 - Commitment Paid once a year Month-to-month. Cancel anytime.
-- The Receptionist Lead Lock
-- Missed-call text back, only to callers who agreed to texts, after carrier approval
+- The Receptionist
 - Every missed call becomes a job card on your phone
+- Missed-call text back, only to callers who agreed to texts, after carrier approval
+- Callers who have not agreed to texts: you get a call-back task, and the AI phone backup can answer where it is set up
 - AI phone backup: answers when you can’t, day or night
-- Website, Facebook and Instagram lead forms answered right away
-- “Call now” alert when a new lead hasn’t replied
+- Website, Facebook and Instagram leads get an instant email at any hour and a text within a minute during texting hours
+- “Call now” alert to you when a new lead hasn’t replied after 5 minutes
 - One inbox for calls, texts, chat and DMs, plus the mobile app
 - 24/7 AI front desk on your website chat, Facebook and Instagram, plus a website voice line
 - Your own local number (US) and a free-inspection booking page
-- The Service Advisor Booked Solid
+- The Service Advisor
 - Follow-up until they book: polite text, email and call reminders that stop the moment they reply
 - Quote follow-up for ceramic, PPF, tint, wraps and details
 - No-Show Shield: confirmation, “Reply YES or MOVE” the day before, reminders, no-show rescue, drop-off and pickup texts
 - 5-Star Review Machine: every customer asked, two gentle reminders, a video-testimonial link
-- The Shop Manager Shop on Autopilot
+- The Shop Manager
 - Owner Command Center: 7:30 AM brief, a job card for every booking, a 6 PM run sheet for tomorrow, one-tap job updates, Monday report
 - AI quote helper: drafts quotes from your own price list for you to approve and send
 - Repeat & Referral Engine: service history, check-ins, referral ask, win-back campaigns
 - Ad Results Tracker: Facebook and Instagram leads followed to booked and paid jobs, sent back to Meta so it finds more customers like them
 - Win-back, reactivation and Dead-Lead Revival go by email, and by text only to customers who agreed to texts.
-- **Live in 14 days, or month one is free** From the day we have your shop details and access.
-- **Every-Lead-Answered Promise** Miss one in your first 30 days and your next month is free.
+- **Live in 14 days, or month one is free** The clock starts when your form and access are in.
 - **Love it or leave it** Month-to-month on monthly plans. Cancel anytime.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
-- Live in 14 days: the clock starts when we have your shop details and access. Carrier (A2P), domain and third-party approvals are outside the 14 days. Every-Lead-Answered Promise: every missed call, web form and ad lead gets the response we set up; if the system misses one in your first 30 days, we fix it and your next month is free. Texts go only to people who agreed to them, after carrier approval. Phone-carrier and Meta outages are not included. We do not guarantee bookings or revenue. We guarantee the work we control. Fair-use calls, messages and AI for a single-location shop. Texting carrier fees are passed on at cost and shown to you before activation.
+- Live in 14 days: the clock starts when your form and access are in (Google, Facebook and call forwarding). Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
 
 ### Section `faq`: Before you ask.
 
@@ -1925,10 +1429,12 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - [opens] 04 Do I have to talk to a salesperson?
 - No. Pick a plan, fill the form and the build starts. If you want to ask something first, use the contact link.
 - [opens] 05 Can you guarantee bookings?
-- No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control: a tested system, live in 14 days or your first month is free, and every lead answered in your first 30 days or your next month is free.
-- [opens] 06 Can I cancel?
+- No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control: a tested system, live in 14 days or your first month is free.
+- [opens] 06 What is included each month?
+- Each month includes 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. That covers a typical single-location shop. If you are close to a limit we tell you before anything extra is charged.
+- [opens] 07 Can I cancel?
 - Yes. Monthly plans are month-to-month. Your domain, content and customer list stay yours and you can export them.
-- [opens] 07 Is the AI a real person?
+- [opens] 08 Is the AI a real person?
 - No. It answers from information you approve, never quotes prices, says it’s an AI if asked, and hands anything complex to you.
 
 ### Section `start`: Join in minutes. No sales call.
@@ -1937,7 +1443,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - **[H2]** Join in minutes. No sales call.
 - Stop preparing the bay for nobody. Your front office can be live in 14 days. No demo, no sales call.
 - **Pick annual or monthly** Checkout takes a couple of minutes.
-- **Fill one short form** Your services, hours, prices and logo. That is your whole part.
+- **Fill one short form and the access checklist** Your services, hours, prices and logo. Then about 15 minutes of access: Google, Facebook, call forwarding and your texting registration details.
 - **Your front desk goes live** Booking page, number, app, follow-up and reminders, built and tested for you.
 - **[H3]** Reserve your build
 - No sales call
@@ -1997,13 +1503,9 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - © 2026 CNVRT X LLC. All rights reserved.
 - [link] Back to top ↑  `→ #top`
 
-### Popup `exit`: The leak keeps running while you wait.
+### Popup `exit`: Take $200 off your Launch Kit.
 
-_Same wording as_ **Auto shops (industry main page) → Popup `exit`: The leak keeps running while you wait.**.
-
-### Popup `co`
-
-_Same wording as_ **Auto shops (industry main page) → Popup `co`**.
+_Same wording as_ **Home → Popup `exit`: Take $200 off your Launch Kit.**.
 
 
 ## Problem page: AI receptionist
@@ -2018,7 +1520,7 @@ _Same wording as_ **Home → Section `skip-link`**.
 
 ### Top bar `bar`
 
-_Same wording as_ **Auto shops (industry main page) → Top bar `bar`**.
+_Same wording as_ **Home → Top bar `bar`**.
 
 ### Top menu `nav`
 
@@ -2135,7 +1637,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - Website chat and a website voice line
 - Facebook and Instagram messages connected
 - Hand-off rules: what it answers and what comes to you
-- Your part: one short form.
+- Your part: one form and a 15-minute checklist.
 - [link] See the plan  `→ #pricing`
 
 ### Section `how-it-works`: The AI front desk is one of nine. You get all nine.
@@ -2171,8 +1673,8 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - [button] 2 **Overdrive** The Service Advisor
 - [button] 3 **Full Throttle** The Shop Manager
 - Get moving: every call, form and DM answered.
-- **Missed-Call Rescue** A text back and a job card for every missed call.
-- **60-Second Lead Response** Web, Facebook and Instagram leads answered right away.
+- **Missed-Call Rescue** Every missed call becomes a job card. Callers who agreed to texts get a text back.
+- **60-Second Lead Response** An instant email at any hour. A text within a minute during texting hours.
 - **24/7 AI Front Desk** Answers calls, chat and DMs, day and night.
 - Pick up speed: leads followed up, booked and confirmed.
 - **Follow-Up Until They Book** Polite reminders on every quote. Stops when they reply.
@@ -2195,14 +1697,13 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - **Full website built to book calls.** Free
 - **Past-customer win-back at launch.** Free
 - **Old-lead reactivation at launch.** Free
-- **Four seasonal campaigns.** Free
-- [link] Start Annual  `→ #start`
+- [link] Start Annual  `→ /auto?plan=annual`
 - **[H3]** Monthly
 - $197 /mo
 - + $497 one-time Launch Kit.
 - **Love it or leave it.** Month-to-month. Cancel anytime.
 - **Full website:** $997 one-time add-on.
-- [link] Start Monthly  `→ #start`
+- [link] Start Monthly  `→ /auto?plan=monthly`
 - Founding program **First 10 qualifying shops:** Launch Kit waived · Price locked while you stay subscribed · Dead-Lead Revival on your last 90 days of quotes · 30 days of hands-on launch support
 - [opens] See every detail
 - Annual Monthly
@@ -2213,34 +1714,33 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - Full website built to book calls Free $997 add-on
 - Past-customer win-back at launch Free Not included
 - Old-lead reactivation at launch Free Not included
-- Four seasonal campaigns Free Not included
 - Commitment Paid once a year Month-to-month. Cancel anytime.
-- The Receptionist Lead Lock
-- Missed-call text back, only to callers who agreed to texts, after carrier approval
+- The Receptionist
 - Every missed call becomes a job card on your phone
+- Missed-call text back, only to callers who agreed to texts, after carrier approval
+- Callers who have not agreed to texts: you get a call-back task, and the AI phone backup can answer where it is set up
 - AI phone backup: answers when you can’t, day or night
-- Website, Facebook and Instagram lead forms answered right away
-- “Call now” alert when a new lead hasn’t replied
+- Website, Facebook and Instagram leads get an instant email at any hour and a text within a minute during texting hours
+- “Call now” alert to you when a new lead hasn’t replied after 5 minutes
 - One inbox for calls, texts, chat and DMs, plus the mobile app
 - 24/7 AI front desk on your website chat, Facebook and Instagram, plus a website voice line
 - Your own local number (US) and a free-inspection booking page
-- The Service Advisor Booked Solid
+- The Service Advisor
 - Follow-up until they book: polite text, email and call reminders that stop the moment they reply
 - Quote follow-up for ceramic, PPF, tint, wraps and details
 - No-Show Shield: confirmation, “Reply YES or MOVE” the day before, reminders, no-show rescue, drop-off and pickup texts
 - 5-Star Review Machine: every customer asked, two gentle reminders, a video-testimonial link
-- The Shop Manager Shop on Autopilot
+- The Shop Manager
 - Owner Command Center: 7:30 AM brief, a job card for every booking, a 6 PM run sheet for tomorrow, one-tap job updates, Monday report
 - AI quote helper: drafts quotes from your own price list for you to approve and send
 - Repeat & Referral Engine: service history, check-ins, referral ask, win-back campaigns
 - Ad Results Tracker: Facebook and Instagram leads followed to booked and paid jobs, sent back to Meta so it finds more customers like them
 - Win-back, reactivation and Dead-Lead Revival go by email, and by text only to customers who agreed to texts.
-- **Live in 14 days, or month one is free** From the day we have your shop details and access.
-- **Every-Lead-Answered Promise** Miss one in your first 30 days and your next month is free.
+- **Live in 14 days, or month one is free** The clock starts when your form and access are in.
 - **Love it or leave it** Month-to-month on monthly plans. Cancel anytime.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
-- Live in 14 days: the clock starts when we have your shop details and access. Carrier (A2P), domain and third-party approvals are outside the 14 days. Every-Lead-Answered Promise: every missed call, web form and ad lead gets the response we set up; if the system misses one in your first 30 days, we fix it and your next month is free. Texts go only to people who agreed to them, after carrier approval. Phone-carrier and Meta outages are not included. We do not guarantee bookings or revenue. We guarantee the work we control. Fair-use calls, messages and AI for a single-location shop. Texting carrier fees are passed on at cost and shown to you before activation.
+- Live in 14 days: the clock starts when your form and access are in (Google, Facebook and call forwarding). Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
 
 ### Section `faq`: Before you ask.
 
@@ -2255,10 +1755,12 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - [opens] 04 Do I have to talk to a salesperson?
 - No. Pick a plan, fill the form and the build starts. If you want to ask something first, use the contact link.
 - [opens] 05 Can you guarantee bookings?
-- No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control: a tested system, live in 14 days or your first month is free, and every lead answered in your first 30 days or your next month is free.
-- [opens] 06 Can I cancel?
+- No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control: a tested system, live in 14 days or your first month is free.
+- [opens] 06 What is included each month?
+- Each month includes 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. That covers a typical single-location shop. If you are close to a limit we tell you before anything extra is charged.
+- [opens] 07 Can I cancel?
 - Yes. Monthly plans are month-to-month. Your domain, content and customer list stay yours and you can export them.
-- [opens] 07 Is the AI a real person?
+- [opens] 08 Is the AI a real person?
 - No. It answers from information you approve, never quotes prices, says it’s an AI if asked, and hands anything complex to you.
 
 ### Section `start`: Join in minutes. No sales call.
@@ -2267,7 +1769,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - **[H2]** Join in minutes. No sales call.
 - Put someone on the front desk tonight. Your front office can be live in 14 days. No demo, no sales call.
 - **Pick annual or monthly** Checkout takes a couple of minutes.
-- **Fill one short form** Your services, hours, prices and logo. That is your whole part.
+- **Fill one short form and the access checklist** Your services, hours, prices and logo. Then about 15 minutes of access: Google, Facebook, call forwarding and your texting registration details.
 - **Your front desk goes live** Booking page, number, app, follow-up and reminders, built and tested for you.
 - **[H3]** Reserve your build
 - No sales call
@@ -2327,13 +1829,9 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - © 2026 CNVRT X LLC. All rights reserved.
 - [link] Back to top ↑  `→ #top`
 
-### Popup `exit`: The leak keeps running while you wait.
+### Popup `exit`: Take $200 off your Launch Kit.
 
-_Same wording as_ **Auto shops (industry main page) → Popup `exit`: The leak keeps running while you wait.**.
-
-### Popup `co`
-
-_Same wording as_ **Auto shops (industry main page) → Popup `co`**.
+_Same wording as_ **Home → Popup `exit`: Take $200 off your Launch Kit.**.
 
 
 ## Problem page: Zero-hire front office
@@ -2348,7 +1846,7 @@ _Same wording as_ **Home → Section `skip-link`**.
 
 ### Top bar `bar`
 
-_Same wording as_ **Auto shops (industry main page) → Top bar `bar`**.
+_Same wording as_ **Home → Top bar `bar`**.
 
 ### Top menu `nav`
 
@@ -2418,7 +1916,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - Follow-up, confirmations and review requests
 - Your daily brief and tomorrow’s run sheet
 - Everything written in your shop’s voice
-- Your part: one short form.
+- Your part: one form and a 15-minute checklist.
 - [link] See the plan  `→ #pricing`
 
 ### Section `hook`
@@ -2452,8 +1950,8 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - What you get
 - **[H2]** One front office. Three roles. Nine systems.
 - A front office is three roles and nine systems. Here is all of it.
-- 1 **Missed-Call Rescue** A text back and a job card for every missed call. The Receptionist
-- 2 **60-Second Lead Response** Web, Facebook and Instagram leads answered right away. The Receptionist
+- 1 **Missed-Call Rescue** Every missed call becomes a job card. Callers who agreed to texts get a text back. The Receptionist
+- 2 **60-Second Lead Response** An instant email at any hour. A text within a minute during texting hours. The Receptionist
 - 3 **24/7 AI Front Desk** Answers calls, chat and DMs, day and night. The Receptionist
 - 4 **Follow-Up Until They Book** Polite reminders on every quote. Stops when they reply. The Service Advisor
 - 5 **No-Show Shield** Confirmations, “Reply YES or MOVE” and reminders. The Service Advisor
@@ -2465,11 +1963,11 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 
 ### Section `day`: A day in your shop, before and after.
 
-_Same wording as_ **Auto shops (industry main page) → Section `day`: A day in your shop, before and after.**.
+_Same wording as_ **Home → Section `day`: A day in your shop, before and after.**.
 
 ### Section `work`: Who does the work?
 
-_Same wording as_ **Auto shops (industry main page) → Section `work`: Who does the work?**.
+_Same wording as_ **Home → Section `work`: Who does the work?**.
 
 ### Section `front-desk`: Meet your new front desk. Talk to it right now.
 
@@ -2505,8 +2003,8 @@ _Same wording as_ **Auto shops (industry main page) → Section `work`: Who does
 - [button] 2 **Overdrive** The Service Advisor
 - [button] 3 **Full Throttle** The Shop Manager
 - Get moving: every call, form and DM answered.
-- **Missed-Call Rescue** A text back and a job card for every missed call.
-- **60-Second Lead Response** Web, Facebook and Instagram leads answered right away.
+- **Missed-Call Rescue** Every missed call becomes a job card. Callers who agreed to texts get a text back.
+- **60-Second Lead Response** An instant email at any hour. A text within a minute during texting hours.
 - **24/7 AI Front Desk** Answers calls, chat and DMs, day and night.
 - Pick up speed: leads followed up, booked and confirmed.
 - **Follow-Up Until They Book** Polite reminders on every quote. Stops when they reply.
@@ -2529,14 +2027,13 @@ _Same wording as_ **Auto shops (industry main page) → Section `work`: Who does
 - **Full website built to book calls.** Free
 - **Past-customer win-back at launch.** Free
 - **Old-lead reactivation at launch.** Free
-- **Four seasonal campaigns.** Free
-- [link] Start Annual  `→ #start`
+- [link] Start Annual  `→ /auto?plan=annual`
 - **[H3]** Monthly
 - $197 /mo
 - + $497 one-time Launch Kit.
 - **Love it or leave it.** Month-to-month. Cancel anytime.
 - **Full website:** $997 one-time add-on.
-- [link] Start Monthly  `→ #start`
+- [link] Start Monthly  `→ /auto?plan=monthly`
 - Founding program **First 10 qualifying shops:** Launch Kit waived · Price locked while you stay subscribed · Dead-Lead Revival on your last 90 days of quotes · 30 days of hands-on launch support
 - [opens] See every detail
 - Annual Monthly
@@ -2547,34 +2044,33 @@ _Same wording as_ **Auto shops (industry main page) → Section `work`: Who does
 - Full website built to book calls Free $997 add-on
 - Past-customer win-back at launch Free Not included
 - Old-lead reactivation at launch Free Not included
-- Four seasonal campaigns Free Not included
 - Commitment Paid once a year Month-to-month. Cancel anytime.
-- The Receptionist Lead Lock
-- Missed-call text back, only to callers who agreed to texts, after carrier approval
+- The Receptionist
 - Every missed call becomes a job card on your phone
+- Missed-call text back, only to callers who agreed to texts, after carrier approval
+- Callers who have not agreed to texts: you get a call-back task, and the AI phone backup can answer where it is set up
 - AI phone backup: answers when you can’t, day or night
-- Website, Facebook and Instagram lead forms answered right away
-- “Call now” alert when a new lead hasn’t replied
+- Website, Facebook and Instagram leads get an instant email at any hour and a text within a minute during texting hours
+- “Call now” alert to you when a new lead hasn’t replied after 5 minutes
 - One inbox for calls, texts, chat and DMs, plus the mobile app
 - 24/7 AI front desk on your website chat, Facebook and Instagram, plus a website voice line
 - Your own local number (US) and a free-inspection booking page
-- The Service Advisor Booked Solid
+- The Service Advisor
 - Follow-up until they book: polite text, email and call reminders that stop the moment they reply
 - Quote follow-up for ceramic, PPF, tint, wraps and details
 - No-Show Shield: confirmation, “Reply YES or MOVE” the day before, reminders, no-show rescue, drop-off and pickup texts
 - 5-Star Review Machine: every customer asked, two gentle reminders, a video-testimonial link
-- The Shop Manager Shop on Autopilot
+- The Shop Manager
 - Owner Command Center: 7:30 AM brief, a job card for every booking, a 6 PM run sheet for tomorrow, one-tap job updates, Monday report
 - AI quote helper: drafts quotes from your own price list for you to approve and send
 - Repeat & Referral Engine: service history, check-ins, referral ask, win-back campaigns
 - Ad Results Tracker: Facebook and Instagram leads followed to booked and paid jobs, sent back to Meta so it finds more customers like them
 - Win-back, reactivation and Dead-Lead Revival go by email, and by text only to customers who agreed to texts.
-- **Live in 14 days, or month one is free** From the day we have your shop details and access.
-- **Every-Lead-Answered Promise** Miss one in your first 30 days and your next month is free.
+- **Live in 14 days, or month one is free** The clock starts when your form and access are in.
 - **Love it or leave it** Month-to-month on monthly plans. Cancel anytime.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
-- Live in 14 days: the clock starts when we have your shop details and access. Carrier (A2P), domain and third-party approvals are outside the 14 days. Every-Lead-Answered Promise: every missed call, web form and ad lead gets the response we set up; if the system misses one in your first 30 days, we fix it and your next month is free. Texts go only to people who agreed to them, after carrier approval. Phone-carrier and Meta outages are not included. We do not guarantee bookings or revenue. We guarantee the work we control. Fair-use calls, messages and AI for a single-location shop. Texting carrier fees are passed on at cost and shown to you before activation.
+- Live in 14 days: the clock starts when your form and access are in (Google, Facebook and call forwarding). Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
 
 ### Section `faq`: Before you ask.
 
@@ -2585,14 +2081,16 @@ _Same wording as_ **Auto shops (industry main page) → Section `work`: Who does
 - [opens] 02 Is it cheaper than hiring?
 - A US receptionist costs about $3,170 a month in wages, before payroll taxes. This is $197 a month. It does not replace a person for everything, and it does not need to.
 - [opens] 03 How much of my time does it take to run?
-- One short form to start. After that you reply to customers from the app when a human answer is needed.
+- One short form and a 15-minute access checklist to start. After that you reply to customers from the app when a human answer is needed.
 - [opens] 04 Do I have to talk to a salesperson?
 - No. Pick a plan, fill the form and the build starts. If you want to ask something first, use the contact link.
 - [opens] 05 Can you guarantee bookings?
-- No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control: a tested system, live in 14 days or your first month is free, and every lead answered in your first 30 days or your next month is free.
-- [opens] 06 Can I cancel?
+- No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control: a tested system, live in 14 days or your first month is free.
+- [opens] 06 What is included each month?
+- Each month includes 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. That covers a typical single-location shop. If you are close to a limit we tell you before anything extra is charged.
+- [opens] 07 Can I cancel?
 - Yes. Monthly plans are month-to-month. Your domain, content and customer list stay yours and you can export them.
-- [opens] 07 Is the AI a real person?
+- [opens] 08 Is the AI a real person?
 - No. It answers from information you approve, never quotes prices, says it’s an AI if asked, and hands anything complex to you.
 
 ### Section `start`: Join in minutes. No sales call.
@@ -2601,7 +2099,7 @@ _Same wording as_ **Auto shops (industry main page) → Section `work`: Who does
 - **[H2]** Join in minutes. No sales call.
 - Fill the front desk without a hire. Your front office can be live in 14 days. No demo, no sales call.
 - **Pick annual or monthly** Checkout takes a couple of minutes.
-- **Fill one short form** Your services, hours, prices and logo. That is your whole part.
+- **Fill one short form and the access checklist** Your services, hours, prices and logo. Then about 15 minutes of access: Google, Facebook, call forwarding and your texting registration details.
 - **Your front desk goes live** Booking page, number, app, follow-up and reminders, built and tested for you.
 - **[H3]** Reserve your build
 - No sales call
@@ -2661,13 +2159,9 @@ _Same wording as_ **Auto shops (industry main page) → Section `work`: Who does
 - © 2026 CNVRT X LLC. All rights reserved.
 - [link] Back to top ↑  `→ #top`
 
-### Popup `exit`: The leak keeps running while you wait.
+### Popup `exit`: Take $200 off your Launch Kit.
 
-_Same wording as_ **Auto shops (industry main page) → Popup `exit`: The leak keeps running while you wait.**.
-
-### Popup `co`
-
-_Same wording as_ **Auto shops (industry main page) → Popup `co`**.
+_Same wording as_ **Home → Popup `exit`: Take $200 off your Launch Kit.**.
 
 
 ## Problem page: Talking website
@@ -2682,7 +2176,7 @@ _Same wording as_ **Home → Section `skip-link`**.
 
 ### Top bar `bar`
 
-_Same wording as_ **Auto shops (industry main page) → Top bar `bar`**.
+_Same wording as_ **Home → Top bar `bar`**.
 
 ### Top menu `nav`
 
@@ -2800,7 +2294,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - The voice line and chat that talk to visitors
 - A free-inspection booking page
 - Hosting, included in your monthly plan
-- Your part: one short form.
+- Your part: one form and a 15-minute checklist.
 - [link] See the plan  `→ #pricing`
 
 ### Section `port`: Built to book. Not to sit there.
@@ -2876,8 +2370,8 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - [button] 2 **Overdrive** The Service Advisor
 - [button] 3 **Full Throttle** The Shop Manager
 - Get moving: every call, form and DM answered.
-- **Missed-Call Rescue** A text back and a job card for every missed call.
-- **60-Second Lead Response** Web, Facebook and Instagram leads answered right away.
+- **Missed-Call Rescue** Every missed call becomes a job card. Callers who agreed to texts get a text back.
+- **60-Second Lead Response** An instant email at any hour. A text within a minute during texting hours.
 - **24/7 AI Front Desk** Answers calls, chat and DMs, day and night.
 - Pick up speed: leads followed up, booked and confirmed.
 - **Follow-Up Until They Book** Polite reminders on every quote. Stops when they reply.
@@ -2900,14 +2394,13 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - **Full website built to book calls.** Free
 - **Past-customer win-back at launch.** Free
 - **Old-lead reactivation at launch.** Free
-- **Four seasonal campaigns.** Free
-- [link] Start Annual  `→ #start`
+- [link] Start Annual  `→ /auto?plan=annual`
 - **[H3]** Monthly
 - $197 /mo
 - + $497 one-time Launch Kit.
 - **Love it or leave it.** Month-to-month. Cancel anytime.
 - **Full website:** $997 one-time add-on.
-- [link] Start Monthly  `→ #start`
+- [link] Start Monthly  `→ /auto?plan=monthly`
 - Founding program **First 10 qualifying shops:** Launch Kit waived · Price locked while you stay subscribed · Dead-Lead Revival on your last 90 days of quotes · 30 days of hands-on launch support
 - [opens] See every detail
 - Annual Monthly
@@ -2918,34 +2411,33 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - Full website built to book calls Free $997 add-on
 - Past-customer win-back at launch Free Not included
 - Old-lead reactivation at launch Free Not included
-- Four seasonal campaigns Free Not included
 - Commitment Paid once a year Month-to-month. Cancel anytime.
-- The Receptionist Lead Lock
-- Missed-call text back, only to callers who agreed to texts, after carrier approval
+- The Receptionist
 - Every missed call becomes a job card on your phone
+- Missed-call text back, only to callers who agreed to texts, after carrier approval
+- Callers who have not agreed to texts: you get a call-back task, and the AI phone backup can answer where it is set up
 - AI phone backup: answers when you can’t, day or night
-- Website, Facebook and Instagram lead forms answered right away
-- “Call now” alert when a new lead hasn’t replied
+- Website, Facebook and Instagram leads get an instant email at any hour and a text within a minute during texting hours
+- “Call now” alert to you when a new lead hasn’t replied after 5 minutes
 - One inbox for calls, texts, chat and DMs, plus the mobile app
 - 24/7 AI front desk on your website chat, Facebook and Instagram, plus a website voice line
 - Your own local number (US) and a free-inspection booking page
-- The Service Advisor Booked Solid
+- The Service Advisor
 - Follow-up until they book: polite text, email and call reminders that stop the moment they reply
 - Quote follow-up for ceramic, PPF, tint, wraps and details
 - No-Show Shield: confirmation, “Reply YES or MOVE” the day before, reminders, no-show rescue, drop-off and pickup texts
 - 5-Star Review Machine: every customer asked, two gentle reminders, a video-testimonial link
-- The Shop Manager Shop on Autopilot
+- The Shop Manager
 - Owner Command Center: 7:30 AM brief, a job card for every booking, a 6 PM run sheet for tomorrow, one-tap job updates, Monday report
 - AI quote helper: drafts quotes from your own price list for you to approve and send
 - Repeat & Referral Engine: service history, check-ins, referral ask, win-back campaigns
 - Ad Results Tracker: Facebook and Instagram leads followed to booked and paid jobs, sent back to Meta so it finds more customers like them
 - Win-back, reactivation and Dead-Lead Revival go by email, and by text only to customers who agreed to texts.
-- **Live in 14 days, or month one is free** From the day we have your shop details and access.
-- **Every-Lead-Answered Promise** Miss one in your first 30 days and your next month is free.
+- **Live in 14 days, or month one is free** The clock starts when your form and access are in.
 - **Love it or leave it** Month-to-month on monthly plans. Cancel anytime.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
-- Live in 14 days: the clock starts when we have your shop details and access. Carrier (A2P), domain and third-party approvals are outside the 14 days. Every-Lead-Answered Promise: every missed call, web form and ad lead gets the response we set up; if the system misses one in your first 30 days, we fix it and your next month is free. Texts go only to people who agreed to them, after carrier approval. Phone-carrier and Meta outages are not included. We do not guarantee bookings or revenue. We guarantee the work we control. Fair-use calls, messages and AI for a single-location shop. Texting carrier fees are passed on at cost and shown to you before activation.
+- Live in 14 days: the clock starts when your form and access are in (Google, Facebook and call forwarding). Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
 
 ### Section `faq`: Before you ask.
 
@@ -2960,10 +2452,12 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - [opens] 04 Do I have to talk to a salesperson?
 - No. Pick a plan, fill the form and the build starts. If you want to ask something first, use the contact link.
 - [opens] 05 Can you guarantee bookings?
-- No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control: a tested system, live in 14 days or your first month is free, and every lead answered in your first 30 days or your next month is free.
-- [opens] 06 Can I cancel?
+- No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control: a tested system, live in 14 days or your first month is free.
+- [opens] 06 What is included each month?
+- Each month includes 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. That covers a typical single-location shop. If you are close to a limit we tell you before anything extra is charged.
+- [opens] 07 Can I cancel?
 - Yes. Monthly plans are month-to-month. Your domain, content and customer list stay yours and you can export them.
-- [opens] 07 Is the AI a real person?
+- [opens] 08 Is the AI a real person?
 - No. It answers from information you approve, never quotes prices, says it’s an AI if asked, and hands anything complex to you.
 
 ### Section `start`: Join in minutes. No sales call.
@@ -2972,7 +2466,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - **[H2]** Join in minutes. No sales call.
 - Give your visitors someone to talk to. Your front office can be live in 14 days. No demo, no sales call.
 - **Pick annual or monthly** Checkout takes a couple of minutes.
-- **Fill one short form** Your services, hours, prices and logo. That is your whole part.
+- **Fill one short form and the access checklist** Your services, hours, prices and logo. Then about 15 minutes of access: Google, Facebook, call forwarding and your texting registration details.
 - **Your front desk goes live** Booking page, number, app, follow-up and reminders, built and tested for you.
 - **[H3]** Reserve your build
 - No sales call
@@ -3032,13 +2526,9 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - © 2026 CNVRT X LLC. All rights reserved.
 - [link] Back to top ↑  `→ #top`
 
-### Popup `exit`: The leak keeps running while you wait.
+### Popup `exit`: Take $200 off your Launch Kit.
 
-_Same wording as_ **Auto shops (industry main page) → Popup `exit`: The leak keeps running while you wait.**.
-
-### Popup `co`
-
-_Same wording as_ **Auto shops (industry main page) → Popup `co`**.
+_Same wording as_ **Home → Popup `exit`: Take $200 off your Launch Kit.**.
 
 
 ## Problem page: Slow lead reply
@@ -3053,7 +2543,7 @@ _Same wording as_ **Home → Section `skip-link`**.
 
 ### Top bar `bar`
 
-_Same wording as_ **Auto shops (industry main page) → Top bar `bar`**.
+_Same wording as_ **Home → Top bar `bar`**.
 
 ### Top menu `nav`
 
@@ -3093,13 +2583,14 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - You reply. They booked the shop that answered first.
 - ✕ The job goes to another shop
 - How 60-Second Lead Response works
-- A reply goes out right away Website, Facebook and Instagram leads get a first answer.
+- A reply goes out right away An instant email at any hour, and a text within a minute during texting hours.
 - You get a “call now” alert If a new lead has not replied, your phone tells you.
 - It all lands in one inbox Calls, texts, chat and DMs in one place, on your phone.
 - ✓ The job stays with you
 - Example first reply
 - Today, you reply after **8 h 35 min**
 - With the system, a reply goes out in **under 60 sec**
+- An instant email at any hour. A text within a minute during texting hours (8 AM to 8 PM).
 - New Facebook lead · 12:05 PM
 - Thanks for reaching out to Example Shop. What vehicle is the tint for?
 - Call now: this lead is waiting.
@@ -3121,12 +2612,12 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - Your website, Facebook and Instagram forms connected
 - “Call now” alerts on your phone
 - One inbox and the mobile app
-- Your part: one short form.
+- Your part: one form and a 15-minute checklist.
 - [link] See the plan  `→ #pricing`
 
 ### Section `hook`
 
-_Same wording as_ **Auto shops (industry main page) → Section `hook`**.
+_Same wording as_ **Home → Section `hook`**.
 
 ### Section `math`: What are slow replies costing you?
 
@@ -3155,8 +2646,8 @@ _Same wording as_ **Auto shops (industry main page) → Section `hook`**.
 - What you get
 - **[H2]** 60-Second Lead Response is one of nine. You get all nine.
 - A fast first reply is one system. The same plan follows the lead all the way to a booked, confirmed job.
-- 1 **Missed-Call Rescue** A text back and a job card for every missed call. The Receptionist
-- 2 **60-Second Lead Response This page** Web, Facebook and Instagram leads answered right away. The Receptionist
+- 1 **Missed-Call Rescue** Every missed call becomes a job card. Callers who agreed to texts get a text back. The Receptionist
+- 2 **60-Second Lead Response This page** An instant email at any hour. A text within a minute during texting hours. The Receptionist
 - 3 **24/7 AI Front Desk** Answers calls, chat and DMs, day and night. The Receptionist
 - 4 **Follow-Up Until They Book** Polite reminders on every quote. Stops when they reply. The Service Advisor
 - 5 **No-Show Shield** Confirmations, “Reply YES or MOVE” and reminders. The Service Advisor
@@ -3200,8 +2691,8 @@ _Same wording as_ **Auto shops (industry main page) → Section `hook`**.
 - [button] 2 **Overdrive** The Service Advisor
 - [button] 3 **Full Throttle** The Shop Manager
 - Get moving: every call, form and DM answered.
-- **Missed-Call Rescue** A text back and a job card for every missed call.
-- **60-Second Lead Response** Web, Facebook and Instagram leads answered right away.
+- **Missed-Call Rescue** Every missed call becomes a job card. Callers who agreed to texts get a text back.
+- **60-Second Lead Response** An instant email at any hour. A text within a minute during texting hours.
 - **24/7 AI Front Desk** Answers calls, chat and DMs, day and night.
 - Pick up speed: leads followed up, booked and confirmed.
 - **Follow-Up Until They Book** Polite reminders on every quote. Stops when they reply.
@@ -3224,14 +2715,13 @@ _Same wording as_ **Auto shops (industry main page) → Section `hook`**.
 - **Full website built to book calls.** Free
 - **Past-customer win-back at launch.** Free
 - **Old-lead reactivation at launch.** Free
-- **Four seasonal campaigns.** Free
-- [link] Start Annual  `→ #start`
+- [link] Start Annual  `→ /auto?plan=annual`
 - **[H3]** Monthly
 - $197 /mo
 - + $497 one-time Launch Kit.
 - **Love it or leave it.** Month-to-month. Cancel anytime.
 - **Full website:** $997 one-time add-on.
-- [link] Start Monthly  `→ #start`
+- [link] Start Monthly  `→ /auto?plan=monthly`
 - Founding program **First 10 qualifying shops:** Launch Kit waived · Price locked while you stay subscribed · Dead-Lead Revival on your last 90 days of quotes · 30 days of hands-on launch support
 - [opens] See every detail
 - Annual Monthly
@@ -3242,34 +2732,33 @@ _Same wording as_ **Auto shops (industry main page) → Section `hook`**.
 - Full website built to book calls Free $997 add-on
 - Past-customer win-back at launch Free Not included
 - Old-lead reactivation at launch Free Not included
-- Four seasonal campaigns Free Not included
 - Commitment Paid once a year Month-to-month. Cancel anytime.
-- The Receptionist Lead Lock
-- Missed-call text back, only to callers who agreed to texts, after carrier approval
+- The Receptionist
 - Every missed call becomes a job card on your phone
+- Missed-call text back, only to callers who agreed to texts, after carrier approval
+- Callers who have not agreed to texts: you get a call-back task, and the AI phone backup can answer where it is set up
 - AI phone backup: answers when you can’t, day or night
-- Website, Facebook and Instagram lead forms answered right away
-- “Call now” alert when a new lead hasn’t replied
+- Website, Facebook and Instagram leads get an instant email at any hour and a text within a minute during texting hours
+- “Call now” alert to you when a new lead hasn’t replied after 5 minutes
 - One inbox for calls, texts, chat and DMs, plus the mobile app
 - 24/7 AI front desk on your website chat, Facebook and Instagram, plus a website voice line
 - Your own local number (US) and a free-inspection booking page
-- The Service Advisor Booked Solid
+- The Service Advisor
 - Follow-up until they book: polite text, email and call reminders that stop the moment they reply
 - Quote follow-up for ceramic, PPF, tint, wraps and details
 - No-Show Shield: confirmation, “Reply YES or MOVE” the day before, reminders, no-show rescue, drop-off and pickup texts
 - 5-Star Review Machine: every customer asked, two gentle reminders, a video-testimonial link
-- The Shop Manager Shop on Autopilot
+- The Shop Manager
 - Owner Command Center: 7:30 AM brief, a job card for every booking, a 6 PM run sheet for tomorrow, one-tap job updates, Monday report
 - AI quote helper: drafts quotes from your own price list for you to approve and send
 - Repeat & Referral Engine: service history, check-ins, referral ask, win-back campaigns
 - Ad Results Tracker: Facebook and Instagram leads followed to booked and paid jobs, sent back to Meta so it finds more customers like them
 - Win-back, reactivation and Dead-Lead Revival go by email, and by text only to customers who agreed to texts.
-- **Live in 14 days, or month one is free** From the day we have your shop details and access.
-- **Every-Lead-Answered Promise** Miss one in your first 30 days and your next month is free.
+- **Live in 14 days, or month one is free** The clock starts when your form and access are in.
 - **Love it or leave it** Month-to-month on monthly plans. Cancel anytime.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
-- Live in 14 days: the clock starts when we have your shop details and access. Carrier (A2P), domain and third-party approvals are outside the 14 days. Every-Lead-Answered Promise: every missed call, web form and ad lead gets the response we set up; if the system misses one in your first 30 days, we fix it and your next month is free. Texts go only to people who agreed to them, after carrier approval. Phone-carrier and Meta outages are not included. We do not guarantee bookings or revenue. We guarantee the work we control. Fair-use calls, messages and AI for a single-location shop. Texting carrier fees are passed on at cost and shown to you before activation.
+- Live in 14 days: the clock starts when your form and access are in (Google, Facebook and call forwarding). Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
 
 ### Section `faq`: Before you ask.
 
@@ -3284,10 +2773,12 @@ _Same wording as_ **Auto shops (industry main page) → Section `hook`**.
 - [opens] 04 Do I have to talk to a salesperson?
 - No. Pick a plan, fill the form and the build starts. If you want to ask something first, use the contact link.
 - [opens] 05 Can you guarantee bookings?
-- No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control: a tested system, live in 14 days or your first month is free, and every lead answered in your first 30 days or your next month is free.
-- [opens] 06 Can I cancel?
+- No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control: a tested system, live in 14 days or your first month is free.
+- [opens] 06 What is included each month?
+- Each month includes 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. That covers a typical single-location shop. If you are close to a limit we tell you before anything extra is charged.
+- [opens] 07 Can I cancel?
 - Yes. Monthly plans are month-to-month. Your domain, content and customer list stay yours and you can export them.
-- [opens] 07 Is the AI a real person?
+- [opens] 08 Is the AI a real person?
 - No. It answers from information you approve, never quotes prices, says it’s an AI if asked, and hands anything complex to you.
 
 ### Section `start`: Join in minutes. No sales call.
@@ -3296,7 +2787,7 @@ _Same wording as_ **Auto shops (industry main page) → Section `hook`**.
 - **[H2]** Join in minutes. No sales call.
 - Be the shop that answers first. Your front office can be live in 14 days. No demo, no sales call.
 - **Pick annual or monthly** Checkout takes a couple of minutes.
-- **Fill one short form** Your services, hours, prices and logo. That is your whole part.
+- **Fill one short form and the access checklist** Your services, hours, prices and logo. Then about 15 minutes of access: Google, Facebook, call forwarding and your texting registration details.
 - **Your front desk goes live** Booking page, number, app, follow-up and reminders, built and tested for you.
 - **[H3]** Reserve your build
 - No sales call
@@ -3356,13 +2847,9 @@ _Same wording as_ **Auto shops (industry main page) → Section `hook`**.
 - © 2026 CNVRT X LLC. All rights reserved.
 - [link] Back to top ↑  `→ #top`
 
-### Popup `exit`: The leak keeps running while you wait.
+### Popup `exit`: Take $200 off your Launch Kit.
 
-_Same wording as_ **Auto shops (industry main page) → Popup `exit`: The leak keeps running while you wait.**.
-
-### Popup `co`
-
-_Same wording as_ **Auto shops (industry main page) → Popup `co`**.
+_Same wording as_ **Home → Popup `exit`: Take $200 off your Launch Kit.**.
 
 
 ## Problem page: AI employee
@@ -3377,7 +2864,7 @@ _Same wording as_ **Home → Section `skip-link`**.
 
 ### Top bar `bar`
 
-_Same wording as_ **Auto shops (industry main page) → Top bar `bar`**.
+_Same wording as_ **Home → Top bar `bar`**.
 
 ### Top menu `nav`
 
@@ -3484,8 +2971,8 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - What you get
 - **[H2]** One AI employee. Three roles. Nine systems.
 - One AI employee, three roles, nine systems. Here is everything it does.
-- 1 **Missed-Call Rescue** A text back and a job card for every missed call. The Receptionist
-- 2 **60-Second Lead Response** Web, Facebook and Instagram leads answered right away. The Receptionist
+- 1 **Missed-Call Rescue** Every missed call becomes a job card. Callers who agreed to texts get a text back. The Receptionist
+- 2 **60-Second Lead Response** An instant email at any hour. A text within a minute during texting hours. The Receptionist
 - 3 **24/7 AI Front Desk** Answers calls, chat and DMs, day and night. The Receptionist
 - 4 **Follow-Up Until They Book** Polite reminders on every quote. Stops when they reply. The Service Advisor
 - 5 **No-Show Shield** Confirmations, “Reply YES or MOVE” and reminders. The Service Advisor
@@ -3510,12 +2997,12 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - The Service Advisor: follow-up, confirmations and review requests
 - The Shop Manager: daily brief, run sheet and reports
 - Every message written in your shop’s voice
-- Your part: one short form.
+- Your part: one form and a 15-minute checklist.
 - [link] See the plan  `→ #pricing`
 
 ### Section `work`: Who does the work?
 
-_Same wording as_ **Auto shops (industry main page) → Section `work`: Who does the work?**.
+_Same wording as_ **Home → Section `work`: Who does the work?**.
 
 ### Section `pricing`: Hire it for $197 a month. No salary. No sick days.
 
@@ -3528,8 +3015,8 @@ _Same wording as_ **Auto shops (industry main page) → Section `work`: Who does
 - [button] 2 **Overdrive** The Service Advisor
 - [button] 3 **Full Throttle** The Shop Manager
 - Get moving: every call, form and DM answered.
-- **Missed-Call Rescue** A text back and a job card for every missed call.
-- **60-Second Lead Response** Web, Facebook and Instagram leads answered right away.
+- **Missed-Call Rescue** Every missed call becomes a job card. Callers who agreed to texts get a text back.
+- **60-Second Lead Response** An instant email at any hour. A text within a minute during texting hours.
 - **24/7 AI Front Desk** Answers calls, chat and DMs, day and night.
 - Pick up speed: leads followed up, booked and confirmed.
 - **Follow-Up Until They Book** Polite reminders on every quote. Stops when they reply.
@@ -3552,14 +3039,13 @@ _Same wording as_ **Auto shops (industry main page) → Section `work`: Who does
 - **Full website built to book calls.** Free
 - **Past-customer win-back at launch.** Free
 - **Old-lead reactivation at launch.** Free
-- **Four seasonal campaigns.** Free
-- [link] Start Annual  `→ #start`
+- [link] Start Annual  `→ /auto?plan=annual`
 - **[H3]** Monthly
 - $197 /mo
 - + $497 one-time Launch Kit.
 - **Love it or leave it.** Month-to-month. Cancel anytime.
 - **Full website:** $997 one-time add-on.
-- [link] Start Monthly  `→ #start`
+- [link] Start Monthly  `→ /auto?plan=monthly`
 - Founding program **First 10 qualifying shops:** Launch Kit waived · Price locked while you stay subscribed · Dead-Lead Revival on your last 90 days of quotes · 30 days of hands-on launch support
 - [opens] See every detail
 - Annual Monthly
@@ -3570,34 +3056,33 @@ _Same wording as_ **Auto shops (industry main page) → Section `work`: Who does
 - Full website built to book calls Free $997 add-on
 - Past-customer win-back at launch Free Not included
 - Old-lead reactivation at launch Free Not included
-- Four seasonal campaigns Free Not included
 - Commitment Paid once a year Month-to-month. Cancel anytime.
-- The Receptionist Lead Lock
-- Missed-call text back, only to callers who agreed to texts, after carrier approval
+- The Receptionist
 - Every missed call becomes a job card on your phone
+- Missed-call text back, only to callers who agreed to texts, after carrier approval
+- Callers who have not agreed to texts: you get a call-back task, and the AI phone backup can answer where it is set up
 - AI phone backup: answers when you can’t, day or night
-- Website, Facebook and Instagram lead forms answered right away
-- “Call now” alert when a new lead hasn’t replied
+- Website, Facebook and Instagram leads get an instant email at any hour and a text within a minute during texting hours
+- “Call now” alert to you when a new lead hasn’t replied after 5 minutes
 - One inbox for calls, texts, chat and DMs, plus the mobile app
 - 24/7 AI front desk on your website chat, Facebook and Instagram, plus a website voice line
 - Your own local number (US) and a free-inspection booking page
-- The Service Advisor Booked Solid
+- The Service Advisor
 - Follow-up until they book: polite text, email and call reminders that stop the moment they reply
 - Quote follow-up for ceramic, PPF, tint, wraps and details
 - No-Show Shield: confirmation, “Reply YES or MOVE” the day before, reminders, no-show rescue, drop-off and pickup texts
 - 5-Star Review Machine: every customer asked, two gentle reminders, a video-testimonial link
-- The Shop Manager Shop on Autopilot
+- The Shop Manager
 - Owner Command Center: 7:30 AM brief, a job card for every booking, a 6 PM run sheet for tomorrow, one-tap job updates, Monday report
 - AI quote helper: drafts quotes from your own price list for you to approve and send
 - Repeat & Referral Engine: service history, check-ins, referral ask, win-back campaigns
 - Ad Results Tracker: Facebook and Instagram leads followed to booked and paid jobs, sent back to Meta so it finds more customers like them
 - Win-back, reactivation and Dead-Lead Revival go by email, and by text only to customers who agreed to texts.
-- **Live in 14 days, or month one is free** From the day we have your shop details and access.
-- **Every-Lead-Answered Promise** Miss one in your first 30 days and your next month is free.
+- **Live in 14 days, or month one is free** The clock starts when your form and access are in.
 - **Love it or leave it** Month-to-month on monthly plans. Cancel anytime.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
-- Live in 14 days: the clock starts when we have your shop details and access. Carrier (A2P), domain and third-party approvals are outside the 14 days. Every-Lead-Answered Promise: every missed call, web form and ad lead gets the response we set up; if the system misses one in your first 30 days, we fix it and your next month is free. Texts go only to people who agreed to them, after carrier approval. Phone-carrier and Meta outages are not included. We do not guarantee bookings or revenue. We guarantee the work we control. Fair-use calls, messages and AI for a single-location shop. Texting carrier fees are passed on at cost and shown to you before activation.
+- Live in 14 days: the clock starts when your form and access are in (Google, Facebook and call forwarding). Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
 
 ### Section `faq`: Before you ask.
 
@@ -3612,10 +3097,12 @@ _Same wording as_ **Auto shops (industry main page) → Section `work`: Who does
 - [opens] 04 Do I have to talk to a salesperson?
 - No. Pick a plan, fill the form and the build starts. If you want to ask something first, use the contact link.
 - [opens] 05 Can you guarantee bookings?
-- No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control: a tested system, live in 14 days or your first month is free, and every lead answered in your first 30 days or your next month is free.
-- [opens] 06 Can I cancel?
+- No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control: a tested system, live in 14 days or your first month is free.
+- [opens] 06 What is included each month?
+- Each month includes 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. That covers a typical single-location shop. If you are close to a limit we tell you before anything extra is charged.
+- [opens] 07 Can I cancel?
 - Yes. Monthly plans are month-to-month. Your domain, content and customer list stay yours and you can export them.
-- [opens] 07 Is the AI a real person?
+- [opens] 08 Is the AI a real person?
 - No. It answers from information you approve, never quotes prices, says it’s an AI if asked, and hands anything complex to you.
 
 ### Section `start`: Join in minutes. No sales call.
@@ -3624,7 +3111,7 @@ _Same wording as_ **Auto shops (industry main page) → Section `work`: Who does
 - **[H2]** Join in minutes. No sales call.
 - Put it to work this month. Your front office can be live in 14 days. No demo, no sales call.
 - **Pick annual or monthly** Checkout takes a couple of minutes.
-- **Fill one short form** Your services, hours, prices and logo. That is your whole part.
+- **Fill one short form and the access checklist** Your services, hours, prices and logo. Then about 15 minutes of access: Google, Facebook, call forwarding and your texting registration details.
 - **Your front desk goes live** Booking page, number, app, follow-up and reminders, built and tested for you.
 - **[H3]** Reserve your build
 - No sales call
@@ -3684,13 +3171,9 @@ _Same wording as_ **Auto shops (industry main page) → Section `work`: Who does
 - © 2026 CNVRT X LLC. All rights reserved.
 - [link] Back to top ↑  `→ #top`
 
-### Popup `exit`: The leak keeps running while you wait.
+### Popup `exit`: Take $200 off your Launch Kit.
 
-_Same wording as_ **Auto shops (industry main page) → Popup `exit`: The leak keeps running while you wait.**.
-
-### Popup `co`
-
-_Same wording as_ **Auto shops (industry main page) → Popup `co`**.
+_Same wording as_ **Home → Popup `exit`: Take $200 off your Launch Kit.**.
 
 
 ## Problem page: Reviews
@@ -3705,7 +3188,7 @@ _Same wording as_ **Home → Section `skip-link`**.
 
 ### Top bar `bar`
 
-_Same wording as_ **Auto shops (industry main page) → Top bar `bar`**.
+_Same wording as_ **Home → Top bar `bar`**.
 
 ### Top menu `nav`
 
@@ -3788,7 +3271,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - Two reminders, written to be polite
 - A video-testimonial link
 - A Monday count of requests sent
-- Your part: one short form.
+- Your part: one form and a 15-minute checklist.
 - [link] See the plan  `→ #pricing`
 
 ### Section `how-it-works`: The 5-Star Review Machine is one of nine. You get all nine.
@@ -3797,8 +3280,8 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - **[H2]** The 5-Star Review Machine is one of nine. You get all nine.
 - Reviews bring the next customer in. The rest of the plan answers, books and confirms them.
 - **The Receptionist** Never miss a lead
-- **Missed-Call Rescue** A text back and a job card for every missed call.
-- **60-Second Lead Response** Web, Facebook and Instagram leads answered right away.
+- **Missed-Call Rescue** Every missed call becomes a job card. Callers who agreed to texts get a text back.
+- **60-Second Lead Response** An instant email at any hour. A text within a minute during texting hours.
 - **24/7 AI Front Desk** Answers calls, chat and DMs, day and night.
 - **The Service Advisor** Turn leads into booked jobs
 - **Follow-Up Until They Book** Polite reminders on every quote. Stops when they reply.
@@ -3844,8 +3327,8 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - [button] 2 **Overdrive** The Service Advisor
 - [button] 3 **Full Throttle** The Shop Manager
 - Get moving: every call, form and DM answered.
-- **Missed-Call Rescue** A text back and a job card for every missed call.
-- **60-Second Lead Response** Web, Facebook and Instagram leads answered right away.
+- **Missed-Call Rescue** Every missed call becomes a job card. Callers who agreed to texts get a text back.
+- **60-Second Lead Response** An instant email at any hour. A text within a minute during texting hours.
 - **24/7 AI Front Desk** Answers calls, chat and DMs, day and night.
 - Pick up speed: leads followed up, booked and confirmed.
 - **Follow-Up Until They Book** Polite reminders on every quote. Stops when they reply.
@@ -3868,14 +3351,13 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - **Full website built to book calls.** Free
 - **Past-customer win-back at launch.** Free
 - **Old-lead reactivation at launch.** Free
-- **Four seasonal campaigns.** Free
-- [link] Start Annual  `→ #start`
+- [link] Start Annual  `→ /auto?plan=annual`
 - **[H3]** Monthly
 - $197 /mo
 - + $497 one-time Launch Kit.
 - **Love it or leave it.** Month-to-month. Cancel anytime.
 - **Full website:** $997 one-time add-on.
-- [link] Start Monthly  `→ #start`
+- [link] Start Monthly  `→ /auto?plan=monthly`
 - Founding program **First 10 qualifying shops:** Launch Kit waived · Price locked while you stay subscribed · Dead-Lead Revival on your last 90 days of quotes · 30 days of hands-on launch support
 - [opens] See every detail
 - Annual Monthly
@@ -3886,34 +3368,33 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - Full website built to book calls Free $997 add-on
 - Past-customer win-back at launch Free Not included
 - Old-lead reactivation at launch Free Not included
-- Four seasonal campaigns Free Not included
 - Commitment Paid once a year Month-to-month. Cancel anytime.
-- The Receptionist Lead Lock
-- Missed-call text back, only to callers who agreed to texts, after carrier approval
+- The Receptionist
 - Every missed call becomes a job card on your phone
+- Missed-call text back, only to callers who agreed to texts, after carrier approval
+- Callers who have not agreed to texts: you get a call-back task, and the AI phone backup can answer where it is set up
 - AI phone backup: answers when you can’t, day or night
-- Website, Facebook and Instagram lead forms answered right away
-- “Call now” alert when a new lead hasn’t replied
+- Website, Facebook and Instagram leads get an instant email at any hour and a text within a minute during texting hours
+- “Call now” alert to you when a new lead hasn’t replied after 5 minutes
 - One inbox for calls, texts, chat and DMs, plus the mobile app
 - 24/7 AI front desk on your website chat, Facebook and Instagram, plus a website voice line
 - Your own local number (US) and a free-inspection booking page
-- The Service Advisor Booked Solid
+- The Service Advisor
 - Follow-up until they book: polite text, email and call reminders that stop the moment they reply
 - Quote follow-up for ceramic, PPF, tint, wraps and details
 - No-Show Shield: confirmation, “Reply YES or MOVE” the day before, reminders, no-show rescue, drop-off and pickup texts
 - 5-Star Review Machine: every customer asked, two gentle reminders, a video-testimonial link
-- The Shop Manager Shop on Autopilot
+- The Shop Manager
 - Owner Command Center: 7:30 AM brief, a job card for every booking, a 6 PM run sheet for tomorrow, one-tap job updates, Monday report
 - AI quote helper: drafts quotes from your own price list for you to approve and send
 - Repeat & Referral Engine: service history, check-ins, referral ask, win-back campaigns
 - Ad Results Tracker: Facebook and Instagram leads followed to booked and paid jobs, sent back to Meta so it finds more customers like them
 - Win-back, reactivation and Dead-Lead Revival go by email, and by text only to customers who agreed to texts.
-- **Live in 14 days, or month one is free** From the day we have your shop details and access.
-- **Every-Lead-Answered Promise** Miss one in your first 30 days and your next month is free.
+- **Live in 14 days, or month one is free** The clock starts when your form and access are in.
 - **Love it or leave it** Month-to-month on monthly plans. Cancel anytime.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
-- Live in 14 days: the clock starts when we have your shop details and access. Carrier (A2P), domain and third-party approvals are outside the 14 days. Every-Lead-Answered Promise: every missed call, web form and ad lead gets the response we set up; if the system misses one in your first 30 days, we fix it and your next month is free. Texts go only to people who agreed to them, after carrier approval. Phone-carrier and Meta outages are not included. We do not guarantee bookings or revenue. We guarantee the work we control. Fair-use calls, messages and AI for a single-location shop. Texting carrier fees are passed on at cost and shown to you before activation.
+- Live in 14 days: the clock starts when your form and access are in (Google, Facebook and call forwarding). Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
 
 ### Section `faq`: Before you ask.
 
@@ -3928,10 +3409,12 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - [opens] 04 Do I have to talk to a salesperson?
 - No. Pick a plan, fill the form and the build starts. If you want to ask something first, use the contact link.
 - [opens] 05 Can you guarantee bookings?
-- No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control: a tested system, live in 14 days or your first month is free, and every lead answered in your first 30 days or your next month is free.
-- [opens] 06 Can I cancel?
+- No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control: a tested system, live in 14 days or your first month is free.
+- [opens] 06 What is included each month?
+- Each month includes 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. That covers a typical single-location shop. If you are close to a limit we tell you before anything extra is charged.
+- [opens] 07 Can I cancel?
 - Yes. Monthly plans are month-to-month. Your domain, content and customer list stay yours and you can export them.
-- [opens] 07 Is the AI a real person?
+- [opens] 08 Is the AI a real person?
 - No. It answers from information you approve, never quotes prices, says it’s an AI if asked, and hands anything complex to you.
 
 ### Section `start`: Join in minutes. No sales call.
@@ -3940,7 +3423,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - **[H2]** Join in minutes. No sales call.
 - Stop losing reviews you already earned. Your front office can be live in 14 days. No demo, no sales call.
 - **Pick annual or monthly** Checkout takes a couple of minutes.
-- **Fill one short form** Your services, hours, prices and logo. That is your whole part.
+- **Fill one short form and the access checklist** Your services, hours, prices and logo. Then about 15 minutes of access: Google, Facebook, call forwarding and your texting registration details.
 - **Your front desk goes live** Booking page, number, app, follow-up and reminders, built and tested for you.
 - **[H3]** Reserve your build
 - No sales call
@@ -4000,13 +3483,9 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - © 2026 CNVRT X LLC. All rights reserved.
 - [link] Back to top ↑  `→ #top`
 
-### Popup `exit`: The leak keeps running while you wait.
+### Popup `exit`: Take $200 off your Launch Kit.
 
-_Same wording as_ **Auto shops (industry main page) → Popup `exit`: The leak keeps running while you wait.**.
-
-### Popup `co`
-
-_Same wording as_ **Auto shops (industry main page) → Popup `co`**.
+_Same wording as_ **Home → Popup `exit`: Take $200 off your Launch Kit.**.
 
 
 ## Problem page: Ad results
@@ -4021,7 +3500,7 @@ _Same wording as_ **Home → Section `skip-link`**.
 
 ### Top bar `bar`
 
-_Same wording as_ **Auto shops (industry main page) → Top bar `bar`**.
+_Same wording as_ **Home → Top bar `bar`**.
 
 ### Top menu `nav`
 
@@ -4127,7 +3606,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - Each lead followed to booked and paid
 - Results sent back to Meta
 - A Monday report: leads, booked, won
-- Your part: one short form.
+- Your part: one form and a 15-minute checklist.
 - [link] See the plan  `→ #pricing`
 
 ### Section `front-desk`: Ad leads still need an answer. This gives one.
@@ -4164,8 +3643,8 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - [button] 2 **Overdrive** The Service Advisor
 - [button] 3 **Full Throttle** The Shop Manager
 - Get moving: every call, form and DM answered.
-- **Missed-Call Rescue** A text back and a job card for every missed call.
-- **60-Second Lead Response** Web, Facebook and Instagram leads answered right away.
+- **Missed-Call Rescue** Every missed call becomes a job card. Callers who agreed to texts get a text back.
+- **60-Second Lead Response** An instant email at any hour. A text within a minute during texting hours.
 - **24/7 AI Front Desk** Answers calls, chat and DMs, day and night.
 - Pick up speed: leads followed up, booked and confirmed.
 - **Follow-Up Until They Book** Polite reminders on every quote. Stops when they reply.
@@ -4188,14 +3667,13 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - **Full website built to book calls.** Free
 - **Past-customer win-back at launch.** Free
 - **Old-lead reactivation at launch.** Free
-- **Four seasonal campaigns.** Free
-- [link] Start Annual  `→ #start`
+- [link] Start Annual  `→ /auto?plan=annual`
 - **[H3]** Monthly
 - $197 /mo
 - + $497 one-time Launch Kit.
 - **Love it or leave it.** Month-to-month. Cancel anytime.
 - **Full website:** $997 one-time add-on.
-- [link] Start Monthly  `→ #start`
+- [link] Start Monthly  `→ /auto?plan=monthly`
 - Founding program **First 10 qualifying shops:** Launch Kit waived · Price locked while you stay subscribed · Dead-Lead Revival on your last 90 days of quotes · 30 days of hands-on launch support
 - [opens] See every detail
 - Annual Monthly
@@ -4206,34 +3684,33 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - Full website built to book calls Free $997 add-on
 - Past-customer win-back at launch Free Not included
 - Old-lead reactivation at launch Free Not included
-- Four seasonal campaigns Free Not included
 - Commitment Paid once a year Month-to-month. Cancel anytime.
-- The Receptionist Lead Lock
-- Missed-call text back, only to callers who agreed to texts, after carrier approval
+- The Receptionist
 - Every missed call becomes a job card on your phone
+- Missed-call text back, only to callers who agreed to texts, after carrier approval
+- Callers who have not agreed to texts: you get a call-back task, and the AI phone backup can answer where it is set up
 - AI phone backup: answers when you can’t, day or night
-- Website, Facebook and Instagram lead forms answered right away
-- “Call now” alert when a new lead hasn’t replied
+- Website, Facebook and Instagram leads get an instant email at any hour and a text within a minute during texting hours
+- “Call now” alert to you when a new lead hasn’t replied after 5 minutes
 - One inbox for calls, texts, chat and DMs, plus the mobile app
 - 24/7 AI front desk on your website chat, Facebook and Instagram, plus a website voice line
 - Your own local number (US) and a free-inspection booking page
-- The Service Advisor Booked Solid
+- The Service Advisor
 - Follow-up until they book: polite text, email and call reminders that stop the moment they reply
 - Quote follow-up for ceramic, PPF, tint, wraps and details
 - No-Show Shield: confirmation, “Reply YES or MOVE” the day before, reminders, no-show rescue, drop-off and pickup texts
 - 5-Star Review Machine: every customer asked, two gentle reminders, a video-testimonial link
-- The Shop Manager Shop on Autopilot
+- The Shop Manager
 - Owner Command Center: 7:30 AM brief, a job card for every booking, a 6 PM run sheet for tomorrow, one-tap job updates, Monday report
 - AI quote helper: drafts quotes from your own price list for you to approve and send
 - Repeat & Referral Engine: service history, check-ins, referral ask, win-back campaigns
 - Ad Results Tracker: Facebook and Instagram leads followed to booked and paid jobs, sent back to Meta so it finds more customers like them
 - Win-back, reactivation and Dead-Lead Revival go by email, and by text only to customers who agreed to texts.
-- **Live in 14 days, or month one is free** From the day we have your shop details and access.
-- **Every-Lead-Answered Promise** Miss one in your first 30 days and your next month is free.
+- **Live in 14 days, or month one is free** The clock starts when your form and access are in.
 - **Love it or leave it** Month-to-month on monthly plans. Cancel anytime.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
-- Live in 14 days: the clock starts when we have your shop details and access. Carrier (A2P), domain and third-party approvals are outside the 14 days. Every-Lead-Answered Promise: every missed call, web form and ad lead gets the response we set up; if the system misses one in your first 30 days, we fix it and your next month is free. Texts go only to people who agreed to them, after carrier approval. Phone-carrier and Meta outages are not included. We do not guarantee bookings or revenue. We guarantee the work we control. Fair-use calls, messages and AI for a single-location shop. Texting carrier fees are passed on at cost and shown to you before activation.
+- Live in 14 days: the clock starts when your form and access are in (Google, Facebook and call forwarding). Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
 
 ### Section `faq`: Before you ask.
 
@@ -4248,10 +3725,12 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - [opens] 04 Do I have to talk to a salesperson?
 - No. Pick a plan, fill the form and the build starts. If you want to ask something first, use the contact link.
 - [opens] 05 Can you guarantee bookings?
-- No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control: a tested system, live in 14 days or your first month is free, and every lead answered in your first 30 days or your next month is free.
-- [opens] 06 Can I cancel?
+- No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control: a tested system, live in 14 days or your first month is free.
+- [opens] 06 What is included each month?
+- Each month includes 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. That covers a typical single-location shop. If you are close to a limit we tell you before anything extra is charged.
+- [opens] 07 Can I cancel?
 - Yes. Monthly plans are month-to-month. Your domain, content and customer list stay yours and you can export them.
-- [opens] 07 Is the AI a real person?
+- [opens] 08 Is the AI a real person?
 - No. It answers from information you approve, never quotes prices, says it’s an AI if asked, and hands anything complex to you.
 
 ### Section `start`: Join in minutes. No sales call.
@@ -4260,7 +3739,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - **[H2]** Join in minutes. No sales call.
 - Stop guessing which ads pay. Your front office can be live in 14 days. No demo, no sales call.
 - **Pick annual or monthly** Checkout takes a couple of minutes.
-- **Fill one short form** Your services, hours, prices and logo. That is your whole part.
+- **Fill one short form and the access checklist** Your services, hours, prices and logo. Then about 15 minutes of access: Google, Facebook, call forwarding and your texting registration details.
 - **Your front desk goes live** Booking page, number, app, follow-up and reminders, built and tested for you.
 - **[H3]** Reserve your build
 - No sales call
@@ -4320,13 +3799,9 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - © 2026 CNVRT X LLC. All rights reserved.
 - [link] Back to top ↑  `→ #top`
 
-### Popup `exit`: The leak keeps running while you wait.
+### Popup `exit`: Take $200 off your Launch Kit.
 
-_Same wording as_ **Auto shops (industry main page) → Popup `exit`: The leak keeps running while you wait.**.
-
-### Popup `co`
-
-_Same wording as_ **Auto shops (industry main page) → Popup `co`**.
+_Same wording as_ **Home → Popup `exit`: Take $200 off your Launch Kit.**.
 
 
 ## Problem page: Repeat customers
@@ -4341,7 +3816,7 @@ _Same wording as_ **Home → Section `skip-link`**.
 
 ### Top bar `bar`
 
-_Same wording as_ **Auto shops (industry main page) → Top bar `bar`**.
+_Same wording as_ **Home → Top bar `bar`**.
 
 ### Top menu `nav`
 
@@ -4434,7 +3909,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - Check-ins after the job
 - A referral ask, written for you
 - Win-back campaigns by email, and by text where customers agreed
-- Your part: one short form.
+- Your part: one form and a 15-minute checklist.
 - [link] See the plan  `→ #pricing`
 
 ### Section `how-it-works`: The Repeat & Referral Engine is one of nine. You get all nine.
@@ -4493,8 +3968,8 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - [button] 2 **Overdrive** The Service Advisor
 - [button] 3 **Full Throttle** The Shop Manager
 - Get moving: every call, form and DM answered.
-- **Missed-Call Rescue** A text back and a job card for every missed call.
-- **60-Second Lead Response** Web, Facebook and Instagram leads answered right away.
+- **Missed-Call Rescue** Every missed call becomes a job card. Callers who agreed to texts get a text back.
+- **60-Second Lead Response** An instant email at any hour. A text within a minute during texting hours.
 - **24/7 AI Front Desk** Answers calls, chat and DMs, day and night.
 - Pick up speed: leads followed up, booked and confirmed.
 - **Follow-Up Until They Book** Polite reminders on every quote. Stops when they reply.
@@ -4517,14 +3992,13 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - **Full website built to book calls.** Free
 - **Past-customer win-back at launch.** Free
 - **Old-lead reactivation at launch.** Free
-- **Four seasonal campaigns.** Free
-- [link] Start Annual  `→ #start`
+- [link] Start Annual  `→ /auto?plan=annual`
 - **[H3]** Monthly
 - $197 /mo
 - + $497 one-time Launch Kit.
 - **Love it or leave it.** Month-to-month. Cancel anytime.
 - **Full website:** $997 one-time add-on.
-- [link] Start Monthly  `→ #start`
+- [link] Start Monthly  `→ /auto?plan=monthly`
 - Founding program **First 10 qualifying shops:** Launch Kit waived · Price locked while you stay subscribed · Dead-Lead Revival on your last 90 days of quotes · 30 days of hands-on launch support
 - [opens] See every detail
 - Annual Monthly
@@ -4535,34 +4009,33 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - Full website built to book calls Free $997 add-on
 - Past-customer win-back at launch Free Not included
 - Old-lead reactivation at launch Free Not included
-- Four seasonal campaigns Free Not included
 - Commitment Paid once a year Month-to-month. Cancel anytime.
-- The Receptionist Lead Lock
-- Missed-call text back, only to callers who agreed to texts, after carrier approval
+- The Receptionist
 - Every missed call becomes a job card on your phone
+- Missed-call text back, only to callers who agreed to texts, after carrier approval
+- Callers who have not agreed to texts: you get a call-back task, and the AI phone backup can answer where it is set up
 - AI phone backup: answers when you can’t, day or night
-- Website, Facebook and Instagram lead forms answered right away
-- “Call now” alert when a new lead hasn’t replied
+- Website, Facebook and Instagram leads get an instant email at any hour and a text within a minute during texting hours
+- “Call now” alert to you when a new lead hasn’t replied after 5 minutes
 - One inbox for calls, texts, chat and DMs, plus the mobile app
 - 24/7 AI front desk on your website chat, Facebook and Instagram, plus a website voice line
 - Your own local number (US) and a free-inspection booking page
-- The Service Advisor Booked Solid
+- The Service Advisor
 - Follow-up until they book: polite text, email and call reminders that stop the moment they reply
 - Quote follow-up for ceramic, PPF, tint, wraps and details
 - No-Show Shield: confirmation, “Reply YES or MOVE” the day before, reminders, no-show rescue, drop-off and pickup texts
 - 5-Star Review Machine: every customer asked, two gentle reminders, a video-testimonial link
-- The Shop Manager Shop on Autopilot
+- The Shop Manager
 - Owner Command Center: 7:30 AM brief, a job card for every booking, a 6 PM run sheet for tomorrow, one-tap job updates, Monday report
 - AI quote helper: drafts quotes from your own price list for you to approve and send
 - Repeat & Referral Engine: service history, check-ins, referral ask, win-back campaigns
 - Ad Results Tracker: Facebook and Instagram leads followed to booked and paid jobs, sent back to Meta so it finds more customers like them
 - Win-back, reactivation and Dead-Lead Revival go by email, and by text only to customers who agreed to texts.
-- **Live in 14 days, or month one is free** From the day we have your shop details and access.
-- **Every-Lead-Answered Promise** Miss one in your first 30 days and your next month is free.
+- **Live in 14 days, or month one is free** The clock starts when your form and access are in.
 - **Love it or leave it** Month-to-month on monthly plans. Cancel anytime.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
-- Live in 14 days: the clock starts when we have your shop details and access. Carrier (A2P), domain and third-party approvals are outside the 14 days. Every-Lead-Answered Promise: every missed call, web form and ad lead gets the response we set up; if the system misses one in your first 30 days, we fix it and your next month is free. Texts go only to people who agreed to them, after carrier approval. Phone-carrier and Meta outages are not included. We do not guarantee bookings or revenue. We guarantee the work we control. Fair-use calls, messages and AI for a single-location shop. Texting carrier fees are passed on at cost and shown to you before activation.
+- Live in 14 days: the clock starts when your form and access are in (Google, Facebook and call forwarding). Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
 
 ### Section `faq`: Before you ask.
 
@@ -4577,10 +4050,12 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - [opens] 04 Do I have to talk to a salesperson?
 - No. Pick a plan, fill the form and the build starts. If you want to ask something first, use the contact link.
 - [opens] 05 Can you guarantee bookings?
-- No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control: a tested system, live in 14 days or your first month is free, and every lead answered in your first 30 days or your next month is free.
-- [opens] 06 Can I cancel?
+- No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control: a tested system, live in 14 days or your first month is free.
+- [opens] 06 What is included each month?
+- Each month includes 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. That covers a typical single-location shop. If you are close to a limit we tell you before anything extra is charged.
+- [opens] 07 Can I cancel?
 - Yes. Monthly plans are month-to-month. Your domain, content and customer list stay yours and you can export them.
-- [opens] 07 Is the AI a real person?
+- [opens] 08 Is the AI a real person?
 - No. It answers from information you approve, never quotes prices, says it’s an AI if asked, and hands anything complex to you.
 
 ### Section `start`: Join in minutes. No sales call.
@@ -4589,7 +4064,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - **[H2]** Join in minutes. No sales call.
 - Stop paying to win the same customer twice. Your front office can be live in 14 days. No demo, no sales call.
 - **Pick annual or monthly** Checkout takes a couple of minutes.
-- **Fill one short form** Your services, hours, prices and logo. That is your whole part.
+- **Fill one short form and the access checklist** Your services, hours, prices and logo. Then about 15 minutes of access: Google, Facebook, call forwarding and your texting registration details.
 - **Your front desk goes live** Booking page, number, app, follow-up and reminders, built and tested for you.
 - **[H3]** Reserve your build
 - No sales call
@@ -4649,13 +4124,9 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - © 2026 CNVRT X LLC. All rights reserved.
 - [link] Back to top ↑  `→ #top`
 
-### Popup `exit`: The leak keeps running while you wait.
+### Popup `exit`: Take $200 off your Launch Kit.
 
-_Same wording as_ **Auto shops (industry main page) → Popup `exit`: The leak keeps running while you wait.**.
-
-### Popup `co`
-
-_Same wording as_ **Auto shops (industry main page) → Popup `co`**.
+_Same wording as_ **Home → Popup `exit`: Take $200 off your Launch Kit.**.
 
 
 ## Problem page: Run sheet
@@ -4670,7 +4141,7 @@ _Same wording as_ **Home → Section `skip-link`**.
 
 ### Top bar `bar`
 
-_Same wording as_ **Auto shops (industry main page) → Top bar `bar`**.
+_Same wording as_ **Home → Top bar `bar`**.
 
 ### Top menu `nav`
 
@@ -4747,8 +4218,8 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - What you get
 - **[H2]** Owner Command Center is one of nine. You get all nine.
 - The run sheet is only as good as the bookings on it. The rest of the plan fills it.
-- 1 **Missed-Call Rescue** A text back and a job card for every missed call. The Receptionist
-- 2 **60-Second Lead Response** Web, Facebook and Instagram leads answered right away. The Receptionist
+- 1 **Missed-Call Rescue** Every missed call becomes a job card. Callers who agreed to texts get a text back. The Receptionist
+- 2 **60-Second Lead Response** An instant email at any hour. A text within a minute during texting hours. The Receptionist
 - 3 **24/7 AI Front Desk** Answers calls, chat and DMs, day and night. The Receptionist
 - 4 **Follow-Up Until They Book** Polite reminders on every quote. Stops when they reply. The Service Advisor
 - 5 **No-Show Shield** Confirmations, “Reply YES or MOVE” and reminders. The Service Advisor
@@ -4773,12 +4244,12 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - The 6 PM run sheet for tomorrow
 - The 7:30 AM brief for today
 - One-tap job updates and a Monday report
-- Your part: one short form.
+- Your part: one form and a 15-minute checklist.
 - [link] See the plan  `→ #pricing`
 
 ### Section `day`: A day in your shop, before and after.
 
-_Same wording as_ **Auto shops (industry main page) → Section `day`: A day in your shop, before and after.**.
+_Same wording as_ **Home → Section `day`: A day in your shop, before and after.**.
 
 ### Section `front-desk`: The bookings on the sheet start here.
 
@@ -4814,8 +4285,8 @@ _Same wording as_ **Auto shops (industry main page) → Section `day`: A day in 
 - [button] 2 **Overdrive** The Service Advisor
 - [button] 3 **Full Throttle** The Shop Manager
 - Get moving: every call, form and DM answered.
-- **Missed-Call Rescue** A text back and a job card for every missed call.
-- **60-Second Lead Response** Web, Facebook and Instagram leads answered right away.
+- **Missed-Call Rescue** Every missed call becomes a job card. Callers who agreed to texts get a text back.
+- **60-Second Lead Response** An instant email at any hour. A text within a minute during texting hours.
 - **24/7 AI Front Desk** Answers calls, chat and DMs, day and night.
 - Pick up speed: leads followed up, booked and confirmed.
 - **Follow-Up Until They Book** Polite reminders on every quote. Stops when they reply.
@@ -4838,14 +4309,13 @@ _Same wording as_ **Auto shops (industry main page) → Section `day`: A day in 
 - **Full website built to book calls.** Free
 - **Past-customer win-back at launch.** Free
 - **Old-lead reactivation at launch.** Free
-- **Four seasonal campaigns.** Free
-- [link] Start Annual  `→ #start`
+- [link] Start Annual  `→ /auto?plan=annual`
 - **[H3]** Monthly
 - $197 /mo
 - + $497 one-time Launch Kit.
 - **Love it or leave it.** Month-to-month. Cancel anytime.
 - **Full website:** $997 one-time add-on.
-- [link] Start Monthly  `→ #start`
+- [link] Start Monthly  `→ /auto?plan=monthly`
 - Founding program **First 10 qualifying shops:** Launch Kit waived · Price locked while you stay subscribed · Dead-Lead Revival on your last 90 days of quotes · 30 days of hands-on launch support
 - [opens] See every detail
 - Annual Monthly
@@ -4856,34 +4326,33 @@ _Same wording as_ **Auto shops (industry main page) → Section `day`: A day in 
 - Full website built to book calls Free $997 add-on
 - Past-customer win-back at launch Free Not included
 - Old-lead reactivation at launch Free Not included
-- Four seasonal campaigns Free Not included
 - Commitment Paid once a year Month-to-month. Cancel anytime.
-- The Receptionist Lead Lock
-- Missed-call text back, only to callers who agreed to texts, after carrier approval
+- The Receptionist
 - Every missed call becomes a job card on your phone
+- Missed-call text back, only to callers who agreed to texts, after carrier approval
+- Callers who have not agreed to texts: you get a call-back task, and the AI phone backup can answer where it is set up
 - AI phone backup: answers when you can’t, day or night
-- Website, Facebook and Instagram lead forms answered right away
-- “Call now” alert when a new lead hasn’t replied
+- Website, Facebook and Instagram leads get an instant email at any hour and a text within a minute during texting hours
+- “Call now” alert to you when a new lead hasn’t replied after 5 minutes
 - One inbox for calls, texts, chat and DMs, plus the mobile app
 - 24/7 AI front desk on your website chat, Facebook and Instagram, plus a website voice line
 - Your own local number (US) and a free-inspection booking page
-- The Service Advisor Booked Solid
+- The Service Advisor
 - Follow-up until they book: polite text, email and call reminders that stop the moment they reply
 - Quote follow-up for ceramic, PPF, tint, wraps and details
 - No-Show Shield: confirmation, “Reply YES or MOVE” the day before, reminders, no-show rescue, drop-off and pickup texts
 - 5-Star Review Machine: every customer asked, two gentle reminders, a video-testimonial link
-- The Shop Manager Shop on Autopilot
+- The Shop Manager
 - Owner Command Center: 7:30 AM brief, a job card for every booking, a 6 PM run sheet for tomorrow, one-tap job updates, Monday report
 - AI quote helper: drafts quotes from your own price list for you to approve and send
 - Repeat & Referral Engine: service history, check-ins, referral ask, win-back campaigns
 - Ad Results Tracker: Facebook and Instagram leads followed to booked and paid jobs, sent back to Meta so it finds more customers like them
 - Win-back, reactivation and Dead-Lead Revival go by email, and by text only to customers who agreed to texts.
-- **Live in 14 days, or month one is free** From the day we have your shop details and access.
-- **Every-Lead-Answered Promise** Miss one in your first 30 days and your next month is free.
+- **Live in 14 days, or month one is free** The clock starts when your form and access are in.
 - **Love it or leave it** Month-to-month on monthly plans. Cancel anytime.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
-- Live in 14 days: the clock starts when we have your shop details and access. Carrier (A2P), domain and third-party approvals are outside the 14 days. Every-Lead-Answered Promise: every missed call, web form and ad lead gets the response we set up; if the system misses one in your first 30 days, we fix it and your next month is free. Texts go only to people who agreed to them, after carrier approval. Phone-carrier and Meta outages are not included. We do not guarantee bookings or revenue. We guarantee the work we control. Fair-use calls, messages and AI for a single-location shop. Texting carrier fees are passed on at cost and shown to you before activation.
+- Live in 14 days: the clock starts when your form and access are in (Google, Facebook and call forwarding). Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
 
 ### Section `faq`: Before you ask.
 
@@ -4898,10 +4367,12 @@ _Same wording as_ **Auto shops (industry main page) → Section `day`: A day in 
 - [opens] 04 Do I have to talk to a salesperson?
 - No. Pick a plan, fill the form and the build starts. If you want to ask something first, use the contact link.
 - [opens] 05 Can you guarantee bookings?
-- No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control: a tested system, live in 14 days or your first month is free, and every lead answered in your first 30 days or your next month is free.
-- [opens] 06 Can I cancel?
+- No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control: a tested system, live in 14 days or your first month is free.
+- [opens] 06 What is included each month?
+- Each month includes 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. That covers a typical single-location shop. If you are close to a limit we tell you before anything extra is charged.
+- [opens] 07 Can I cancel?
 - Yes. Monthly plans are month-to-month. Your domain, content and customer list stay yours and you can export them.
-- [opens] 07 Is the AI a real person?
+- [opens] 08 Is the AI a real person?
 - No. It answers from information you approve, never quotes prices, says it’s an AI if asked, and hands anything complex to you.
 
 ### Section `start`: Join in minutes. No sales call.
@@ -4910,7 +4381,7 @@ _Same wording as_ **Auto shops (industry main page) → Section `day`: A day in 
 - **[H2]** Join in minutes. No sales call.
 - Give the nightly typing to the system. Your front office can be live in 14 days. No demo, no sales call.
 - **Pick annual or monthly** Checkout takes a couple of minutes.
-- **Fill one short form** Your services, hours, prices and logo. That is your whole part.
+- **Fill one short form and the access checklist** Your services, hours, prices and logo. Then about 15 minutes of access: Google, Facebook, call forwarding and your texting registration details.
 - **Your front desk goes live** Booking page, number, app, follow-up and reminders, built and tested for you.
 - **[H3]** Reserve your build
 - No sales call
@@ -4970,13 +4441,69 @@ _Same wording as_ **Auto shops (industry main page) → Section `day`: A day in 
 - © 2026 CNVRT X LLC. All rights reserved.
 - [link] Back to top ↑  `→ #top`
 
-### Popup `exit`: The leak keeps running while you wait.
+### Popup `exit`: Take $200 off your Launch Kit.
 
-_Same wording as_ **Auto shops (industry main page) → Popup `exit`: The leak keeps running while you wait.**.
+_Same wording as_ **Home → Popup `exit`: Take $200 off your Launch Kit.**.
 
-### Popup `co`
 
-_Same wording as_ **Auto shops (industry main page) → Popup `co`**.
+---
+
+# 3. Checkout
+
+One checkout page per industry. Every Start Annual and Start Monthly button and the reserve form lead here. ?plan=monthly selects monthly; ?offer=kit applies the leaving offer.
+
+
+## Checkout: auto shops
+
+- **Address:** `/auto`
+- **Browser tab title:** Checkout | CNVRT X Front Office for Auto Shops
+- **Search description:** Start CNVRT X Front Office: pay annually or monthly. Secure checkout.
+
+### Section `skip-link`
+
+_Same wording as_ **Home → Section `skip-link`**.
+
+### Top menu `top`
+
+- [link] CNVRT ✕  `→ /`
+- Secure checkout
+- [link] Back to the site  `→ /#pricing`
+
+### Section `main`: Start your front office. Live in 14 days.
+
+- **[H1]** Start your front office. Live in 14 days.
+- Pick how you pay. Then one short form and a 15-minute access checklist, and we build.
+- [label] Annual Best value
+- [label] Monthly
+- $1,970 /yr
+- Launch Kit waived. You save $497.
+- Two months included: pay 10, get 12.
+- Full website included ($997 on monthly).
+- Due today $1,970
+- $197 /mo
+- Month-to-month. Cancel anytime.
+- One-time Launch Kit: $497.
+- One-time Launch Kit: $297, not $497. Leaving offer applied
+- Due today $694 $494 $694
+- First month plus the one-time Launch Kit. Then $197 a month.
+- In your plan
+- The Receptionist: missed calls caught, new leads answered
+- The Service Advisor: quotes followed up, bookings confirmed, reviews asked for
+- The Shop Manager: your daily brief, run sheet and ad results
+- What happens next
+- 1 Pay securely on this page
+- 2 Fill one short form and the access checklist
+- 3 Your front desk goes live within 14 days of both
+- **[H2]** Payment
+- Checkout is being connected.
+- Card payment opens on this page shortly. Nothing has been charged.
+- Live in 14 days, or your first month is free
+- No sales call
+- Your domain, content and customer list stay yours
+- Annual payments are not refundable. Texting carrier fees are passed on at cost and shown to you before activation.
+- [link] Terms of Service  `→ /legal/terms`
+- [link] Cancellation Policy  `→ /legal/cancellation`
+- [link] Privacy Policy  `→ /legal/privacy`
 
 
 ---
@@ -4987,7 +4514,7 @@ _Same wording as_ **Auto shops (industry main page) → Popup `co`**.
 ## Onboarding
 
 - **Address:** `/onboarding`
-- **Browser tab title:** Welcome to CNVRT X: one short form
+- **Browser tab title:** Welcome to CNVRT X: one form and one checklist
 - **Search description:** Tell us how your shop works and we start building.
 
 ### Section `skip-link`
@@ -4998,19 +4525,19 @@ _Same wording as_ **Home → Section `skip-link`**.
 
 - [link] CNVRT ✕  `→ /`
 - ✓ Payment received
+- Shop details
 
-### Section `main`: You are in. / One short form and we build.
+### Section `main`: You are in. / One form and one checklist.
 
-- ✓ Joined
+- 1 Joined
 - 2 Shop details
 - 3 We build
 - 4 Live
-- **[H1]** You are in. / One short form and we build.
-- Tell us how your shop works. It takes a few minutes and it is the only thing we need from you.
-- ⏱ Your 14-day launch clock starts the moment this form is in.
+- **[H1]** You are in. / One form and one checklist.
+- Tell us how your shop works, then tick off the access checklist. It takes about 15 minutes and it is all we need from you.
+- ⏱ Your 14-day launch clock starts when your form and access are in.
 - [link] I will do this later →  `→ /thank-you?later=1`
-- We email you this link. The 14 days start when the form is in.
-- Preview form. Connect your GHL form in automotiveCopyV9.ts (flow9.onboardingFormUrl).
+- We email you this link. The 14 days start when your form and access are in.
 - [label] Shop name
 - Services you offer
 - [label] Detailing
@@ -5027,6 +4554,14 @@ _Same wording as_ **Home → Section `skip-link`**.
 - _(field: text)_ Mon to Sat, 8 to 6
 - [label] Shop phone
 - [label] Prices, packages or anything we should know
+- Access checklist About 15 minutes
+- Tick what you can give us. We email the exact steps for each one.
+- [label] **Google Business Profile** Add us as a manager.
+- [label] **Facebook and Instagram** Add us as a partner in Meta Business.
+- [label] **Call forwarding** Forward missed calls from your shop line.
+- [label] **Your domain** A login or DNS access, for your booking page.
+- [label] **Google review link** The link customers use to leave a review.
+- [label] **Texting registration** Legal business name, EIN letter and the owner’s confirmation. The phone carrier requires these.
 - [button] Send my shop details
 
 
@@ -5049,10 +4584,10 @@ _Same wording as_ **Home → Section `skip-link`**.
 - ✓ All set
 - **[H1]** Thank you. / Your build has started.
 - **[H1]** Thank you. / One step left.
-- We have your shop details. Here is what happens next.
-- Your spot is saved. Send your shop details when you are ready and the 14-day clock starts.
+- We have your shop details. Here is what happens next. The 14-day clock starts when your access is in too.
+- Your spot is saved. The 14-day clock starts when your form and access are in.
 - [link] Finish my shop details  `→ /onboarding`
-- 1 **Today** You get a welcome email with your login and the mobile app link.
+- 1 **Within 1 business day** You get a welcome email with your login and the mobile app link.
 - 2 **This week** We build your booking page, number, inbox, follow-up and reminders.
 - 3 **Before launch** We test every flow end to end and send you a preview.
 - 4 **Within 14 days** Your front desk goes live. We tell you the moment it does.
@@ -5092,7 +4627,6 @@ _Same wording as_ **Home → Section `skip-link`**.
 - [link] Disclaimer  `→ /legal/disclaimer`
 - **[H1]** Privacy Policy
 - Effective November 16, 2026
-- This is a draft. It has not been reviewed by a lawyer yet.
 - This policy explains what information CNVRT X LLC ("CNVRT X", "we", "us") collects, how we use it, and the choices you have. It covers this website and the CNVRT X Front Office service.
 - **[H2]** 1 Information we collect
 - Information you give us:
@@ -5162,7 +4696,6 @@ _Same wording as_ **Privacy Policy → Top menu `top`**.
 - [link] Disclaimer  `→ /legal/disclaimer`
 - **[H1]** Terms of Service
 - Effective November 16, 2026
-- This is a draft. It has not been reviewed by a lawyer yet.
 - These terms are the agreement between you and CNVRT X LLC ("CNVRT X", "we", "us") for the CNVRT X Front Office service. By buying or using the service you agree to them.
 - **[H2]** 1 The service
 - We set up and run a front-office system for your shop: answering leads, following up, confirming bookings, asking for reviews and reporting, as described on our website at the time you buy. We build it, write the messages and test it for you.
@@ -5176,11 +4709,11 @@ _Same wording as_ **Privacy Policy → Top menu `top`**.
 - Monthly plan: $197 a month, plus a one-time Launch Kit fee of $497.
 - Annual plan: $1,970 a year, paid in advance. The Launch Kit fee is waived.
 - A full website is a one-time $997 add-on on the monthly plan and is included on the annual plan.
-- Calls, messages and AI use are covered on a fair-use basis for a single-location shop. Carrier fees for texting are passed on at cost and shown to you before activation.
+- Each month includes 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Carrier fees for texting are passed on at cost and shown to you before activation.
 - Prices are those shown at checkout. Plans renew automatically until cancelled. If a payment fails we may pause the service until it is resolved.
 - **[H2]** 4 Guarantees
-- Live in 14 days, or your first month is free. The clock starts when we have your shop details and access. Carrier (A2P), domain and third-party approvals are outside the 14 days.
-- Every-Lead-Answered Promise. Every missed call, web form and ad lead gets the response we set up. If the system misses one in your first 30 days, we fix it and your next month is free. Texts go only to people who agreed to them, after carrier approval. Phone-carrier and Meta outages are not included.
+- Live in 14 days, or your first month is free. The clock starts when your onboarding form and the access we ask for (Google, Facebook and call forwarding) are in. Carrier (A2P), domain and third-party approvals are outside the 14 days.
+- Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM).
 - On an annual plan a free month is given as one extra month added to your term.
 - **[H2]** 5 Cancellation
 - You can cancel as described in our Cancellation Policy, which is part of these terms.
@@ -5226,7 +4759,6 @@ _Same wording as_ **Privacy Policy → Top menu `top`**.
 - [link] Disclaimer  `→ /legal/disclaimer`
 - **[H1]** SMS Terms
 - Effective November 16, 2026
-- This is a draft. It has not been reviewed by a lawyer yet.
 - These terms cover text messages sent by CNVRT X LLC ("CNVRT X") to people who agreed to receive them.
 - **[H2]** 1 What you are signing up for
 - We offer two text programs. Each is optional and each needs its own consent:
@@ -5273,7 +4805,6 @@ _Same wording as_ **Privacy Policy → Top menu `top`**.
 - [link] Disclaimer  `→ /legal/disclaimer`
 - **[H1]** Cancellation Policy
 - Effective November 16, 2026
-- This is a draft. It has not been reviewed by a lawyer yet.
 - This policy explains how to cancel the CNVRT X Front Office service and what happens when you do.
 - **[H2]** 1 Monthly plan
 - Month-to-month. There is no long-term contract.
@@ -5284,9 +4815,8 @@ _Same wording as_ **Privacy Policy → Top menu `top`**.
 - Paid in advance for 12 months.
 - Annual payments are not refundable.
 - You can cancel at any time. The service runs until the end of the year you have paid for and does not renew.
-- **[H2]** 3 Our guarantees still apply
-- Live in 14 days, or your first month is free. The clock starts when we have your shop details and access. Carrier (A2P), domain and third-party approvals are outside the 14 days.
-- Every-Lead-Answered Promise. If the system misses a lead in your first 30 days, we fix it and your next month is free.
+- **[H2]** 3 Our guarantee still applies
+- Live in 14 days, or your first month is free. The clock starts when your onboarding form and the access we ask for (Google, Facebook and call forwarding) are in. Carrier (A2P), domain and third-party approvals are outside the 14 days.
 - On an annual plan a free month is given as one extra month added to your term.
 - **[H2]** 4 Your data when you leave
 - Your domain, content and customer list are yours. Ask us for an export before or within 30 days after your service ends. After that we may delete account data, except what we must keep by law.
@@ -5318,7 +4848,6 @@ _Same wording as_ **Privacy Policy → Top menu `top`**.
 - [link] Disclaimer  `→ /legal/disclaimer`
 - **[H1]** Disclaimer
 - Effective November 16, 2026
-- This is a draft. It has not been reviewed by a lawyer yet.
 - Please read this alongside our Terms of Service.
 - **[H2]** 1 Results
 - CNVRT X LLC does not guarantee bookings, revenue or any specific result. Results depend on your services, prices, market and how you run your shop.
@@ -5339,9 +4868,471 @@ _Same wording as_ **Privacy Policy → Top menu `top`**.
 
 ---
 
-# 6. Written but not shown on any page right now
+# 6. General page for any local business (not published)
 
-These lines exist in the content files, but no page displays them at present. They are listed so nothing is left out. They fall into four kinds: bonuses that are switched off, the states of the live voice demo (the demo is off until its embed code is set), example message threads that an animation replaced, and default lines that a page replaces with its own.
+Kept in the project at /local as the base for the next industry. It is not on the live site and nothing links to it.
+
+
+## General page
+
+- **Address:** `/local`
+- **Browser tab title:** CNVRT X Front Office: You Got the Inquiry. Did You Get the Booking?
+- **Search description:** A done-for-you front office for local businesses. Every call answered, every quote followed up, every booking confirmed. Built and tested for you.
+
+### Section `skip-link`
+
+_Same wording as_ **Home → Section `skip-link`**.
+
+### Top bar `bar`
+
+- Founding program
+- Launch Kit waived and your price locked for the first 10 businesses.
+- First 10 businesses: Launch Kit waived
+- [link] Claim a spot →  `→ #pricing`
+
+### Top menu `nav`
+
+- [link] CNVRT ✕  `→ #top`
+- [link] Leaks  `→ #leaks`
+- [link] The math  `→ #math`
+- [link] System  `→ #how-it-works`
+- [link] Price  `→ #pricing`
+- [opens] Your industry
+- **Pick your kind of business** Each one has its own page, in your words. The plan and the price are the same.
+- [link] **Auto shops** Detailing, coating, PPF, tint and aftermarket  `→ /`
+- [link] One plan for every business. See the price →  `→ #pricing`
+- [link] Get Started  `→ #pricing`
+
+### Section `top`: You Got the Inquiry. Did You Get the Booking?
+
+- _(read aloud as)_ Built for auto, roofing, HVAC, plumbing, landscaping, electrical and cleaning businesses
+- _(rotating words)_ auto, roofing, HVAC, plumbing, landscaping, electrical, cleaning
+- Built for **auto** businesses
+- **[H1]** You Got the Inquiry. Did You Get the Booking?
+- Your work is great. Your follow-up has gaps. We install the front office you never had to hire: every call answered, every quote chased, every booking confirmed. You stay with your customers.
+- [link] Get My System  `→ #pricing`
+- [link] See what it costs you ↓  `→ #math`
+- Done for you · No sales call · Month-to-month
+- Move your cursor to clear the page Clarity 0% ✓ Crystal clear
+
+### Section `ticker`
+
+_Same wording as_ **Home → Section `ticker`**.
+
+### Section `pipe`: Before you buy more leads, fix what happens to the ones you already have.
+
+- You already paid for these leads
+- **[H2]** Before you buy more leads, fix what happens to the ones you already have.
+- ✕ Not a website agency
+- ✕ Not another CRM
+- ✕ Not one more app to learn
+- ✓ The front office your business never had to hire.
+- Worth coming in $0
+- Leaking out $0
+- Reaching your calendar $0
+- Example: a customer is worth
+- and 1 in
+- inquiries books, so each one is worth about $117.
+- Missed call $0
+- Slow reply $0
+- Cold quote $0
+- No-show $0
+- No return $0
+- _(shown on interaction)_ Same pipe. Five holes. Money you already paid to attract drips out before it books.
+- _(shown on interaction)_ Leaks patched. Not every inquiry books, but most of that money now reaches your calendar.
+- Same pipe. Five holes. Money you already paid to attract drips out before it books.
+- [button] Buy more leads
+- [button] Fix the leaks
+- [button] Reset
+- Illustration with example numbers. Not real customer data and not a promise of results.
+
+### Section `leaks`: Five places your bookings disappear.
+
+- The leaks in your business
+- **[H2]** Five places your bookings disappear.
+- 00 / 05 fixed
+- Leak 01 ✓ Fixed
+- Problem: Missed calls
+- Fix: Caught every time.
+- You are with a customer. They call the next business. Now every missed call lands on your phone as a lead card, and callers who agreed to texts get a text back.
+- The lead stays yours
+- Leak 02 ✓ Fixed
+- Problem: Slow replies
+- Fix: Answered right away.
+- You reply tonight. They booked at noon. Now every new lead gets an instant email at any hour, and a text within a minute during texting hours.
+- You are first
+- Leak 03 ✓ Fixed
+- Problem: Cold quotes
+- Fix: Chased until they decide.
+- The quote goes out and nobody follows up. Now friendly check-ins run until it is a yes or a no.
+- No quote forgotten
+- Leak 04 ✓ Fixed
+- Problem: No-shows
+- Fix: Confirmed and reminded.
+- The slot is blocked and nobody comes. Now reminders go out, and the customer can reply MOVE to reschedule.
+- Your time protected
+- Leak 05 ✓ Fixed
+- Problem: One-time customers
+- Fix: Asked back, on time.
+- Great work, no review, no return. Now a review request goes out, then an invite when it is time to come back.
+- They come back
+- All five. / Fixed by one system. / Done for you.
+- [link] See what they cost you  `→ #math`
+- Keep scrolling →
+
+### Section `hook`
+
+- The best business in town still loses to the one that answers first.
+
+### Section `math`: What are missed inquiries costing you?
+
+- _(shown on interaction)_ That is about {n} new customers a month, by your own numbers.
+- _(shown on interaction)_ slipping away every month
+- _(shown on interaction)_ At these numbers it would not pay for itself on missed inquiries alone.
+- Do the math
+- **[H2]** What are missed inquiries costing you?
+- Add your numbers here
+- My business misses about
+- calls and messages a week. An average customer is worth
+- . If we answered fast, about
+- 1 in 3
+- would book.
+- slipping away every month
+- Slipping away each month
+- CNVRT X Front Office costs **$197/mo**
+- CNVRT X Front Office costs $197 /mo
+- Pays for itself at 2 saved inquiries a month
+- Save only half of them +$1,320 a month, after the cost
+- This is arithmetic on your own inputs. It is not a promise of results. Example numbers show until you change them.
+- [link] Show me how to stop it  `→ #pricing`
+
+### Section `how-it-works`: Four layers. One front office.
+
+- The system · 9 systems, 4 layers
+- **[H2]** Four layers. One front office.
+- Every leak above gets its own layer. Nine systems, built, written and tested for you. You do not learn software. You do not write messages.
+- Layer 01 The Receptionist
+- **[H3]** Catch
+- Systems 1 to 3 Never miss a lead.
+- The phone rings while your hands are full. Now every call, form and DM gets an answer, even after closing.
+- Missed-Call Rescue
+- 60-Second Lead Response
+- 24/7 AI Front Desk
+- Example
+- Call
+- Text
+- Web chat
+- Instagram
+- Facebook
+- One inbox
+- New inquiry New Replied
+- Also on your phone
+- Layer 02 The Booking Coordinator
+- **[H3]** Book
+- Systems 4 and 5 Turn it into a booking on the calendar.
+- The quote goes out, then goes quiet. Now it is followed up until it is a yes or a no, and every booking is confirmed.
+- Follow-Up Until They Book
+- No-Show Shield
+- **Messages** Your Business
+- You are booked for Sat 9:00 AM. See you then!
+- Reminder: your appointment is tomorrow at 9:00 AM. Reply YES to confirm or MOVE to change.
+- YES
+- Confirmed. Thanks!
+- Layer 03 The Booking Coordinator + The Office Manager
+- **[H3]** Keep
+- Systems 6 and 7 Make every customer count twice.
+- Great work, no review, no return. Now every customer is asked for a review and invited back.
+- 5-Star Review Machine
+- Repeat & Referral Engine
+- How did we do today? Tap to leave a review.
+- Review request sent after the visit
+- Gentle reminder sent 3 days later
+- Layer 04 The Office Manager
+- **[H3]** Run
+- Systems 8 and 9 Run the business from your phone.
+- You piece your day together from texts. Now it arrives at 7:30 AM, with tomorrow’s schedule at 6 PM.
+- Owner Command Center
+- Ad Results Tracker
+- Today’s brief 7:30 AM
+- A card for every booking All day
+- Tomorrow’s schedule 6 PM
+- Leads, booked, won, reviews Monday
+
+### Section `day`: A day in your business, before and after.
+
+- Your day
+- **[H2]** A day in your business, before and after.
+- The front office your business never had to hire. You just do the work.
+- 7:30 AM
+- Today: You scroll texts and DMs to work out your day.
+- With CNVRT X: One email with today’s bookings and who’s waiting.
+- 10:15 AM
+- Today: The phone rings while you’re with a customer.
+- With CNVRT X: The call is caught. A lead card lands on your phone.
+- 4:00 PM
+- Today: Yesterday’s quote went quiet, and you forgot.
+- With CNVRT X: Polite follow-ups go out until they book or say no.
+- 6:00 PM
+- Today: Tomorrow’s customer hasn’t confirmed.
+- With CNVRT X: They get “Reply YES or MOVE”. Tomorrow’s schedule is on your phone.
+- 11:00 PM
+- Today: An Instagram DM waits until morning.
+- With CNVRT X: Your AI front desk answers and books the appointment.
+- Same business. Same customers. A different evening.
+- An example day. Texts go only to people who agreed to them, after carrier approval.
+- Example schedule
+- **Tomorrow’s schedule** Sent 6:00 PM
+- 8 AM
+- Booked **Example Customer A**
+- New customer · Full service
+- (555) 010-xxxx
+- 9 AM
+- Return **Example Customer B**
+- Follow-up visit
+- 12 PM
+- Pickup **Example Customer C**
+- Order ready
+- 3 stops tomorrow
+
+### Section `work`: Who does the work?
+
+- Hire someone? Buy software?
+- **[H2]** Who does the work?
+- **A receptionist costs about $3,170 a month. Two offshore assistants cost $1,600 to $4,800.** They still sleep, and calls still get missed. Doing it yourself costs your evenings. Add it up.
+- Your front office today Every month
+- [button] I do it myself
+- [button] I have staff
+- Staff wages Untick what you don’t have
+- [button] A receptionist $3,170
+- [button] Two offshore assistants $1,600
+- Your hours a week on admin
+- Your hours a week chasing them
+- About 43 hours a month, priced at a receptionist’s wage ($18.27/hr)
+- Customers that slip away while your hands are full Customers that still slip away, even with a team From your calculator numbers above
+- Total, every month
+- $8,589 includes 43 hours of your time
+- Today: wages + your time + lost customers
+- CNVRT X **$197/mo**
+- 44× more than the system costs.
+- An estimate: published wage rates plus your own numbers, with example values until you change them. Two offshore assistants are counted at the low end ($1,600). Not a promise of results. A system closes most of the gap, never all of it.
+- What it takes Today With CNVRT X
+- Answer every call and message You ✓ Done for you
+- Follow up on every quote Your team ✓ Done for you
+- Confirm tomorrow’s bookings Your team ✓ Done for you
+- Type tomorrow’s schedule Your team ✓ Done for you
+- Ask every customer for a review You ✓ Done for you
+- Set it all up and keep it running You ✓ Done for you
+- Left on your plate **All of it** **The real work**
+- Your part
+- One form. One checklist.
+- A short form about your services, hours and prices, plus a 15-minute access checklist. Then go back to your customers.
+- Let your people do the work only people can do.
+- Receptionist: US median $18.27/hour (BLS, May 2025) × 2,080 hours, wages only. Offshore assistants: published full-time rates for Philippines-based virtual assistants, $5 to $15/hour. Your local costs may differ. The AI hands anything complex to you.
+
+### Section `front-desk`: Meet your new front desk. Talk to it right now.
+
+- Try it now
+- **[H2]** Meet your new front desk. Talk to it right now.
+- It’s 11 PM. A customer messages your business. This is who answers. Ask it what your customers ask. Demo for an example business. No real booking is made.
+- Try saying
+- [button] How much is your full service?
+- [button] Can I come in Saturday morning?
+- [button] It’s after hours, is anyone there?
+- [button] I want to talk to the owner.
+- The AI answers in English and Spanish.
+- Example conversation
+- How much is your full service?
+- I can’t quote prices, but I can get you an exact quote from the team. Can you come in for a free consultation this week?
+- Can I come in Saturday morning?
+- Yes. I can hold 9:00 or 10:30 on Saturday morning. Which works better?
+- It’s after hours, is anyone there?
+- I’m the AI assistant for this business, here day and night. I can answer questions, take your details and book a visit.
+- I want to talk to the owner.
+- Of course. I’ll pass your name and number to the owner so they can call you back. What’s the best number?
+- [link] See plans  `→ #pricing`
+- Example for an illustration business. Not a real conversation and no real booking.
+
+### Section `pricing`: One plan. Three roles you never hire.
+
+- The offer
+- **[H2]** One plan. Three roles you never hire.
+- A receptionist, a booking coordinator and an office manager for your front office. Built, written and tested for you.
+- N Neutral
+- **Three gears. One plan.** You get all three. Tap a gear to see what it does.
+- [button] 1 **First Gear** The Receptionist
+- [button] 2 **Overdrive** The Booking Coordinator
+- [button] 3 **Full Throttle** The Office Manager
+- Get moving: every call, form and DM answered.
+- **Missed-Call Rescue** Every missed call becomes a lead card. Callers who agreed to texts get a text back.
+- **60-Second Lead Response** An instant email at any hour. A text within a minute during texting hours.
+- **24/7 AI Front Desk** Answers calls, chat and DMs, day and night.
+- Pick up speed: leads followed up, booked and confirmed.
+- **Follow-Up Until They Book** Polite reminders on every quote. Stops when they reply.
+- **No-Show Shield** Confirmations, “Reply YES or MOVE” and reminders.
+- **5-Star Review Machine** Every customer asked, with two gentle reminders.
+- Flat out: the business runs from your phone.
+- **Repeat & Referral Engine** Check-ins, referral asks and win-back campaigns.
+- **Owner Command Center** 7:30 AM brief, lead cards and tomorrow’s schedule at 6 PM.
+- **Ad Results Tracker** Shows which ads turned into booked, paying customers.
+- Best value
+- **[H3]** Annual
+- $1,970 /yr
+- About $164 a month.
+- Your front office: 3 roles, 9 systems
+- [opens] **The Receptionist** Never miss a lead
+- [opens] **The Booking Coordinator** Turn leads into bookings
+- [opens] **The Office Manager** Run the business from your phone
+- **Launch Kit waived.** Save $497.
+- **Two months included.** Pay 10, get 12.
+- **Full website built to book calls.** Free
+- **Past-customer win-back at launch.** Free
+- **Old-lead reactivation at launch.** Free
+- [link] Start Annual  `→ /auto?plan=annual`
+- **[H3]** Monthly
+- $197 /mo
+- + $497 one-time Launch Kit.
+- **Love it or leave it.** Month-to-month. Cancel anytime.
+- **Full website:** $997 one-time add-on.
+- [link] Start Monthly  `→ /auto?plan=monthly`
+- Founding program **First 10 qualifying businesses:** Launch Kit waived · Price locked while you stay subscribed · Dead-Lead Revival on your last 90 days of quotes · 30 days of hands-on launch support
+- [opens] See every detail
+- Annual Monthly
+- Price $1,970 a year $197 a month
+- Launch Kit (one-time setup) Waived $497
+- Two months included Yes No
+- All three roles Yes Yes
+- Full website built to book calls Free $997 add-on
+- Past-customer win-back at launch Free Not included
+- Old-lead reactivation at launch Free Not included
+- Commitment Paid once a year Month-to-month. Cancel anytime.
+- The Receptionist
+- Every missed call becomes a lead card on your phone
+- Missed-call text back, only to callers who agreed to texts, after carrier approval
+- Callers who have not agreed to texts: you get a call-back task, and the AI phone backup can answer where it is set up
+- AI phone backup: answers when you can’t, day or night
+- Website, Facebook and Instagram leads get an instant email at any hour and a text within a minute during texting hours
+- “Call now” alert to you when a new lead hasn’t replied after 5 minutes
+- One inbox for calls, texts, chat and DMs, plus the mobile app
+- 24/7 AI front desk on your website chat, Facebook and Instagram, plus a website voice line
+- Your own local number (US) and a booking page
+- The Booking Coordinator
+- Follow-up until they book: polite text, email and call reminders that stop the moment they reply
+- Quote and estimate follow-up for every service you sell
+- No-Show Shield: confirmation, “Reply YES or MOVE” the day before, reminders and no-show rescue
+- 5-Star Review Machine: every customer asked, two gentle reminders, a video-testimonial link
+- The Office Manager
+- Owner Command Center: 7:30 AM brief, a card for every booking, tomorrow’s schedule at 6 PM, one-tap updates, Monday report
+- AI quote helper: drafts quotes from your own price list for you to approve and send
+- Repeat & Referral Engine: customer history, check-ins, referral ask, win-back campaigns
+- Ad Results Tracker: Facebook and Instagram leads followed to booked and paid work, sent back to Meta so it finds more customers like them
+- Win-back, reactivation and Dead-Lead Revival go by email, and by text only to customers who agreed to texts.
+- **Live in 14 days, or month one is free** The clock starts when your form and access are in.
+- **Love it or leave it** Month-to-month on monthly plans. Cancel anytime.
+- **Your business stays yours** Your domain, content and customer list, exportable.
+- **Keeps your current software** It sits alongside the tools that run your work.
+- Live in 14 days: the clock starts when your form and access are in (Google, Facebook and call forwarding). Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
+
+### Section `faq`: Before you ask.
+
+- Straight answers
+- **[H2]** Before you ask.
+- [opens] 01 Is this another CRM or website agency?
+- No. A CRM is a tool you have to build and run. An agency gives you a website and leaves. This is a working front desk: the booking page, the number, the inbox, the follow-up, the reminders and the review requests. All of it is built, written and tested for you.
+- [opens] 02 How much of my time does it take?
+- One short form about your services, hours and prices, plus a 15-minute access checklist: Google, Facebook, call forwarding, your domain and the business details the phone carrier asks for. We do the rest. After launch you reply to customers from the app when a human answer is needed.
+- [opens] 03 Do I have to talk to a salesperson?
+- No. Pick a plan, fill the form and the build starts. If you want to ask something first, use the contact link.
+- [opens] 04 Do I replace my current software?
+- Usually not. Keep the tools that run your work and invoices. This handles what happens before and after: the inquiry, the follow-up, the booking and the return visit.
+- [opens] 05 Does AI talk to every customer?
+- No. Routine steps like confirmations and reminders are fixed automation. AI answers the questions you approve and collects details. It never quotes prices and it says it is an AI if asked. Pricing talks, complaints and big requests go to you.
+- [opens] 06 Is the phone number really included?
+- Yes for US businesses. For other countries, ask us first so we can confirm availability. US texting also needs carrier registration (A2P). We prepare it with you and texting goes live once the carrier approves.
+- [opens] 07 Can you guarantee bookings?
+- No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control: a tested system, live in 14 days or your first month is free.
+- [opens] 08 What is included each month?
+- Each month includes 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. That covers a typical single-location business. If you are close to a limit we tell you before anything extra is charged.
+- [opens] 09 Can I cancel?
+- Yes. Monthly plans are month-to-month. Your domain, content and customer list stay yours and you can export them.
+- [opens] 10 Is the AI a real person?
+- No. It answers from information you approve, never quotes prices, says it’s an AI if asked, and hands anything complex to you.
+
+### Section `start`: Join in minutes. No sales call.
+
+- Start today
+- **[H2]** Join in minutes. No sales call.
+- Your front office can be live in 14 days. No demo, no sales call. Pick annual or monthly and the build starts.
+- **Pick annual or monthly** Checkout takes a couple of minutes.
+- **Fill one short form and the access checklist** Your services, hours, prices and logo. Then about 15 minutes of access: Google, Facebook, call forwarding and your texting registration details.
+- **Your front desk goes live** Booking page, number, app, follow-up and reminders, built and tested for you.
+- **[H3]** Reserve your build
+- No sales call
+- [label] Monthly
+- [label] Annual Pay 10, get 12
+- $1,970 a year. Launch Kit waived.
+- $197 a month + $497 one-time Launch Kit.
+- Founding (Launch Kit waived): first 10 qualifying businesses.
+- On the table in your first year
+- Leaks you can go after $36,400
+- From your calculator numbers. An estimate, not a promise.
+- Online checkout is being switched on. Leave your details and your join link arrives by email.
+- [label] First name
+- Please add your first name.
+- [label] Business name
+- Please add your business name.
+- [label] Email
+- Please enter a valid email address.
+- [label] Phone
+- Please add a phone number.
+- Text messages (optional)
+- [label] Text me about my account and setup. Msg & data rates may apply. Reply STOP to opt out.
+- [label] Send me tips and offers by text. Msg & data rates may apply. Reply STOP to opt out.
+- Checking a box is not required to reserve your build.
+- [link] Privacy Policy  `→ /legal/privacy`
+- [link] SMS Terms  `→ /legal/sms-terms`
+- [button] Reserve My Build
+- **[H3]** You are on the list.
+- Watch your inbox for your join link.
+
+### Footer `foot`
+
+- Stop losing customers you already earned.
+- [link] Get My System  `→ #pricing`
+- [link] CNVRT ✕  `→ /`
+- A done-for-you front desk for local service businesses.
+- Built, written and tested for you.
+- On this page
+- [link] Leaks  `→ #leaks`
+- [link] The math  `→ #math`
+- [link] System  `→ #how-it-works`
+- [link] Price  `→ #pricing`
+- [link] FAQ  `→ #faq`
+- [link] Get started  `→ #start`
+- Legal
+- [link] Privacy Policy  `→ /legal/privacy`
+- [link] Terms of Service  `→ /legal/terms`
+- [link] SMS Terms  `→ /legal/sms-terms`
+- [link] Cancellation Policy  `→ /legal/cancellation`
+- [link] Disclaimer  `→ /legal/disclaimer`
+- Contact
+- Contact us
+- CNVRT X LLC
+- Results disclaimer: CNVRT X does not guarantee bookings, revenue or any specific result. Figures in the calculator and the illustrations are examples based on the numbers you enter. Your results depend on your services, prices, market and how you run your business.
+- Texting: business texting in the US needs carrier registration (A2P 10DLC). Texting features go live after carrier approval. Message and data rates may apply. Reply STOP to opt out.
+- Google, Facebook and Instagram are trademarks of their owners. This site is not part of, or endorsed by, any of them.
+- © 2026 CNVRT X LLC. All rights reserved.
+- [link] Back to top ↑  `→ #top`
+
+### Popup `exit`: Take $200 off your Launch Kit.
+
+_Same wording as_ **Home → Popup `exit`: Take $200 off your Launch Kit.**.
+
+
+---
+
+# 7. Written but not shown on the live pages right now
+
+These lines exist in the content files, but no page displays them at present. They are listed so nothing is left out. They fall into five kinds: the Free Booking Leak Audit popup with its Email me my numbers link, the waitlist for other trades and the Who is behind CNVRT X section (all are built and stay off the live site until their form link or real details are added); the states of the live voice demo (off until its embed code is set); bonuses that are switched off; example message threads that an animation replaced; and default lines that a page replaces with its own.
 
 ### Auto pages: main copy file
 
@@ -5353,7 +5344,7 @@ These lines exist in the content files, but no page displays them at present. Th
 - Launch Kit waived. Pay 10, get 12.
 - What your year looks like
 - Week 2: your front desk is live and answering
-- Every week: missed calls texted back, quotes chased, bookings reminded
+- Every week: missed calls caught, quotes chased, bookings reminded
 - Every job: a review request and a maintenance reminder
 - All year: one price, nothing to manage
 - Price locked for 12 months
@@ -5361,7 +5352,6 @@ These lines exist in the content files, but no page displays them at present. Th
 - Free on annual. A one-time add-on on monthly.
 - We invite your existing customer list back in week one.
 - We message the leads that asked and never booked.
-- Spring detail, summer protection, fall prep and holiday gift cards.
 - Front of the build queue
 - Annual shops are built first.
 - Win-back and reactivation go by email, and by text only to customers who agreed to texts.
@@ -5370,6 +5360,8 @@ These lines exist in the content files, but no page displays them at present. Th
 - Your front desk is live and answering.
 - A review request, then a maintenance reminder.
 - One price. Nothing to manage.
+- The leak keeps running while you wait.
+- Founding program: Launch Kit waived and your price locked while you stay subscribed, for the first 10 qualifying shops.
 - Flawless work deserves
 - a flawless follow-up.
 - Ready when you are.
@@ -5382,20 +5374,54 @@ These lines exist in the content files, but no page displays them at present. Th
 - Customer, vehicle and job in one place.
 - Tomorrow’s schedule, sent on its own.
 - Who does it today?
+- Free. No sales call.
+- Free Booking Leak Audit
+- Find the 3 places your shop is most likely losing booked jobs.
+- Your Booking Leak Score
+- Where replies, quotes, bookings and reviews slip
+- Your top 3 fixes, in order
+- We look at what a customer can see from outside. No login needed. We send it to your email.
+- Website or Google profile link
+- About how many inquiries a month? (optional)
+- Also email me my calculator numbers
+- Send My Free Audit
+- By sending this you agree that CNVRT X may contact you about your audit by email or phone.
+- We will send your Booking Leak Audit to your email.
+- We could not send this right now. Please try again in a moment.
+- Not ready to buy? Get a free Booking Leak Audit
+- Preview: this form is not connected yet, so it is left off the live site.
+- Email me my numbers
+- Not ready yet? Get them with a free Booking Leak Audit.
+- Who you are buying from
+- See the real screens
+- A short walkthrough of the owner app, the inbox and the run sheet.
+- Preview: this section stays off the live site until real details are added in src/config/offerV9.ts (about and contact).
+- Founder name, role, photo and a few lines about them
+- 60 to 90 second walkthrough video of the real screens
+- The shop story, once its owner agrees
+- Email, phone and address
+- Join the waitlist for your trade.
+- CNVRT X Front Office is built for auto shops first. Tell us your trade and we will email you when your version is ready.
+- Business name (optional)
+- One email when your trade is ready. Nothing else.
+- We will email you when the version for your trade is ready.
+- Not an auto shop? Join the waitlist
+- Preview: no order form link is set yet. Add the GHL order form links in src/config/offerV9.ts (checkout, and exitOffer.checkout for the leaving offer).
 
 ### Home page: general copy file
 
+- Business on Autopilot
 - Week 2: your front desk is live and answering
-- Every week: missed calls texted back, quotes chased, bookings reminded
+- Every week: missed calls caught, quotes chased, bookings reminded
 - Every customer: a review request and an invite to come back
 - All year: one price, nothing to manage
-- Four campaigns a year, timed to your busy seasons.
 - Front of the build queue
 - Annual customers are built first.
 - First 10 qualifying businesses: Launch Kit waived and your price locked while you stay subscribed.
 - Your front desk is live and answering.
 - A review request, then an invite to come back.
 - One price. Nothing to manage.
+- Founding program: Launch Kit waived and your price locked while you stay subscribed, for the first 10 qualifying businesses.
 - The customer goes somewhere else
 - The customer stays with you
 - Three roles and nine systems. All of them are in one plan, for one price.
@@ -5405,6 +5431,9 @@ These lines exist in the content files, but no page displays them at present. Th
 - Want this answering for your business? It’s part of your front office.
 - Great work deserves
 - a great follow-up.
+- Find the 3 places your business is most likely losing booked customers.
+- A short walkthrough of the owner app, the inbox and the daily schedule.
+- A customer story, once that customer agrees
 
 ### Problem pages: top-of-page data
 

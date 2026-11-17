@@ -1,0 +1,375 @@
+---
+/**
+ * Free Booking Leak Audit: a popup with a short form, for a visitor who is not ready to buy.
+ *
+ * It opens from:
+ *   - closing the exit popup (Exit9 sends the `cx:audit-open` event),
+ *   - any element with data-audit-open (the link under the price cards, the footer link),
+ *   - the address ending in ?show=audit (for checking it).
+ *
+ * The form is POSTed to offerV9.forms.audit. While that is '' the popup is left off the
+ * live site, so no visitor fills in a form that goes nowhere; on localhost it still shows,
+ * marked as a preview.
+ */
+import { copyFor, type CopySet } from '../../content/copySets';
+import { offerV9 as cfg } from '../../config/offerV9';
+
+interface Props {
+  /** Which wording to use: the auto pages' (default) or the general one. See content/copySets.ts. */
+  copy?: CopySet;
+}
+const { audit9: a } = copyFor(Astro.props.copy);
+const url = cfg.forms.audit;
+const show = Boolean(url) || import.meta.env.DEV;
+---
+
+{
+  show && (
+    <dialog class="audit" data-audit9 aria-labelledby="audit-title">
+      <form method="dialog" class="x-form">
+        <button class="x-close" aria-label="Close" value="close">×</button>
+      </form>
+
+      <div class="a-body" data-audit-body>
+        <p class="x-eye">{a.eyebrow}</p>
+        <h2 id="audit-title">{a.title}</h2>
+        <p class="a-line">{a.line}</p>
+        <ul role="list" class="gets">
+          {a.gets.map((g) => <li>{g}</li>)}
+        </ul>
+
+        <form class="a-form" data-audit-form action={url || undefined} method="post" novalidate>
+          {!url && <p class="preview">{a.preview}</p>}
+          <div class="fld">
+            <label for="au-biz">{a.fields.business}</label>
+            <input id="au-biz" name="business_name" autocomplete="organization" required />
+          </div>
+          <div class="fld">
+            <label for="au-site">{a.fields.site}</label>
+            <input id="au-site" name="website" inputmode="url" autocomplete="url" required />
+          </div>
+          <div class="fld">
+            <label for="au-svc">{a.fields.service}</label>
+            <input id="au-svc" name="primary_service" required />
+          </div>
+          <div class="two">
+            <div class="fld">
+              <label for="au-email">{a.fields.email}</label>
+              <input id="au-email" name="email" type="email" autocomplete="email" required />
+            </div>
+            <div class="fld">
+              <label for="au-phone">{a.fields.phone}</label>
+              <input id="au-phone" name="phone" type="tel" autocomplete="tel" required />
+            </div>
+          </div>
+          <div class="fld">
+            <label for="au-inq">{a.fields.inquiries}</label>
+            <input id="au-inq" name="monthly_inquiries" inputmode="numeric" />
+          </div>
+          <label class="chk">
+            <input type="checkbox" name="send_calculator_numbers" value="yes" data-audit-numbers />
+            <span>{a.numbers}</span>
+          </label>
+          <input type="hidden" name="landing_page" value="" data-audit-landing />
+          <input type="hidden" name="opened_from" value="" data-audit-from />
+          <input type="hidden" name="calc_estimate" value="" data-audit-calc />
+          <button type="submit" class="go">{a.submit}</button>
+          <p class="a-status" role="status" data-audit-status data-error={a.error} />
+          <p class="a-fine">
+            {a.how} {a.consent}
+          </p>
+        </form>
+      </div>
+
+      <div class="a-ok" data-audit-ok hidden tabindex="-1">
+        <p class="tick" aria-hidden="true">✓</p>
+        <h2>{a.sent.title}</h2>
+        <p>{a.sent.body}</p>
+      </div>
+    </dialog>
+  )
+}
+
+<script>
+  import { track } from '../../scripts/analytics';
+
+  const dlg = document.querySelector<HTMLDialogElement>('[data-audit9]');
+  if (dlg && typeof dlg.showModal === 'function') {
+    const form = dlg.querySelector<HTMLFormElement>('[data-audit-form]')!;
+    const status = dlg.querySelector<HTMLElement>('[data-audit-status]')!;
+    const body = dlg.querySelector<HTMLElement>('[data-audit-body]')!;
+    const ok = dlg.querySelector<HTMLElement>('[data-audit-ok]')!;
+    const set = (sel: string, v: string) => {
+      const f = dlg.querySelector<HTMLInputElement>(sel);
+      if (f) f.value = v;
+    };
+
+    const open = (from: string) => {
+      if (dlg.open) return;
+      set('[data-audit-landing]', location.origin + location.pathname);
+      set('[data-audit-from]', from);
+      // came from "Email me my numbers": that box starts ticked
+      const box = dlg.querySelector<HTMLInputElement>('[data-audit-numbers]');
+      if (box) box.checked = from === 'numbers';
+      // the visitor's own calculator result, if there is a calculator on the page
+      set('[data-audit-calc]', document.querySelector('[data-math9] [data-odo-sr]')?.textContent || '');
+      dlg.showModal();
+      track('audit_shown', { from });
+    };
+
+    document.addEventListener('click', (e) => {
+      const el = (e.target as HTMLElement | null)?.closest<HTMLElement>('[data-audit-open]');
+      if (!el) return;
+      e.preventDefault();
+      open(el.dataset.auditOpen || 'link');
+    });
+    window.addEventListener('cx:audit-open', (e) => open((e as CustomEvent).detail?.from || 'event'));
+    if (new URLSearchParams(location.search).get('show') === 'audit') open('url');
+
+    dlg.addEventListener('click', (e) => {
+      if (e.target === dlg) dlg.close();
+    });
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const req = [...form.querySelectorAll<HTMLInputElement>('[required]')];
+      let first: HTMLInputElement | null = null;
+      req.forEach((f) => {
+        const bad = !f.value.trim() || (f.type === 'email' && !/^\S+@\S+\.\S+$/.test(f.value.trim()));
+        f.toggleAttribute('aria-invalid', bad);
+        if (bad && !first) first = f;
+      });
+      if (first) {
+        (first as HTMLInputElement).focus();
+        return;
+      }
+      track('audit_submit', { connected: Boolean(form.getAttribute('action')) });
+      const done = () => {
+        body.hidden = true;
+        ok.hidden = false;
+        ok.focus();
+      };
+      // preview on localhost: nothing is sent anywhere
+      if (!form.getAttribute('action')) return done();
+      const btn = form.querySelector<HTMLButtonElement>('button[type="submit"]')!;
+      btn.disabled = true;
+      try {
+        await fetch(form.action, { method: 'POST', body: new FormData(form), mode: 'no-cors' });
+        done();
+      } catch {
+        status.textContent = status.dataset.error || '';
+        btn.disabled = false;
+      }
+    });
+  }
+</script>
+
+<style>
+  .audit {
+    width: min(560px, calc(100vw - 32px));
+    max-height: calc(100dvh - 32px);
+    overflow-y: auto;
+    padding: clamp(1.5rem, 1rem + 2vw, 2.5rem);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 28px;
+    background:
+      radial-gradient(90% 60% at 100% 0%, rgba(216, 255, 62, 0.16), transparent 70%),
+      linear-gradient(180deg, #131c25, #070b10);
+    color: #eef3f7;
+    box-shadow: 0 60px 120px -40px rgba(0, 0, 0, 0.9);
+  }
+  .audit[open] {
+    animation: auIn 380ms cubic-bezier(0.2, 0.9, 0.2, 1);
+  }
+  .audit::backdrop {
+    background: rgba(5, 8, 11, 0.74);
+    backdrop-filter: blur(6px);
+  }
+  @keyframes auIn {
+    from {
+      opacity: 0;
+      transform: translateY(18px) scale(0.97);
+    }
+  }
+  .x-form {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+  .x-close {
+    width: 44px;
+    height: 44px;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+  }
+  .x-close:hover {
+    background: rgba(255, 255, 255, 0.18);
+  }
+  .a-body,
+  .a-form {
+    display: grid;
+    gap: 14px;
+  }
+  .a-body[hidden],
+  .a-ok[hidden] {
+    display: none;
+  }
+  .x-eye {
+    padding-right: 48px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #d8ff3e;
+  }
+  h2 {
+    font-family: var(--f-head);
+    font-weight: 800;
+    font-size: clamp(1.6rem, 1.3rem + 1.4vw, 2.2rem);
+    letter-spacing: -0.04em;
+    line-height: 1.1;
+  }
+  .a-line {
+    font-size: 1.05rem;
+    line-height: 1.45;
+    color: #dbe4ec;
+  }
+  .gets {
+    margin: 0;
+    display: grid;
+    gap: 8px;
+  }
+  .gets li {
+    position: relative;
+    padding-left: 28px;
+    font-weight: 600;
+    line-height: 1.35;
+  }
+  .gets li::before {
+    content: '';
+    position: absolute;
+    left: 3px;
+    top: 0.3em;
+    width: 12px;
+    height: 7px;
+    border-left: 2.5px solid #d8ff3e;
+    border-bottom: 2.5px solid #d8ff3e;
+    transform: rotate(-45deg);
+  }
+  .a-form {
+    margin-top: 4px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
+  }
+  .fld {
+    display: grid;
+    gap: 6px;
+  }
+  .two {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  label {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: #c5d0da;
+  }
+  input {
+    width: 100%;
+    min-height: 48px;
+    padding: 0 14px;
+    border-radius: 12px;
+    border: 1.5px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.06);
+    color: #fff;
+    font: inherit;
+  }
+  input:focus-visible {
+    outline: 3px solid #7cc4ff;
+    outline-offset: 1px;
+  }
+  input[aria-invalid] {
+    border-color: #ff8f7a;
+  }
+  .chk {
+    display: grid;
+    grid-template-columns: 22px minmax(0, 1fr);
+    gap: 10px;
+    align-items: center;
+    min-height: 44px;
+    cursor: pointer;
+  }
+  .chk input {
+    width: 22px;
+    min-height: 0;
+    height: 22px;
+    padding: 0;
+    accent-color: #d8ff3e;
+  }
+  .chk span {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #dbe4ec;
+  }
+  .go {
+    width: 100%;
+  }
+  .a-status {
+    min-height: 1.2em;
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #ffb4a6;
+  }
+  .a-status:empty {
+    display: none;
+  }
+  .a-fine {
+    font-size: 0.75rem;
+    line-height: 1.5;
+    color: var(--fog-2);
+  }
+  /* localhost only: says the form is not connected */
+  .preview {
+    padding: 8px 12px;
+    border-radius: 10px;
+    border: 1px dashed rgba(255, 196, 0, 0.6);
+    font-size: 0.75rem;
+    color: #ffd666;
+  }
+  .a-ok {
+    display: grid;
+    gap: 10px;
+    justify-items: start;
+    padding-block: 12px;
+  }
+  .tick {
+    display: grid;
+    place-items: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: #d8ff3e;
+    color: #0b1016;
+    font-size: 1.6rem;
+    font-weight: 800;
+  }
+  .a-ok p:last-child {
+    color: #dbe4ec;
+  }
+  @media (max-width: 480px) {
+    .two {
+      grid-template-columns: 1fr;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .audit[open] {
+      animation: none;
+    }
+  }
+</style>

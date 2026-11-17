@@ -88,9 +88,9 @@ export const doors: Door[] = [
     outcome: 'Every missed call rescued',
     system: 'Missed-Call Rescue',
     seoTitle: 'Missed-Call Text Back for Auto Shops',
-    description: 'You can’t pick up with a polisher in your hand. Missed-Call Rescue texts the caller back for you and puts a job card on your phone.',
+    description: 'You can’t pick up with a polisher in your hand. Missed-Call Rescue catches every missed call, puts a job card on your phone and texts back the callers who agreed to texts.',
     headline: ['Under a Car When It Rings?', 'That Job Is Still Yours.'],
-    sub: 'You can’t pick up with a polisher in your hand. The caller tries the next shop. Missed-Call Rescue texts them back for you and puts a job card on your phone.',
+    sub: 'You can’t pick up with a polisher in your hand. The caller tries the next shop. Missed-Call Rescue catches every missed call, puts a job card on your phone and texts back the callers who agreed to texts.',
     problem: {
       kicker: 'The missed call',
       title: ['The phone rings.', 'Your hands are full.'],
@@ -103,8 +103,8 @@ export const doors: Door[] = [
     fix: {
       title: 'How Missed-Call Rescue works',
       steps: [
-        { t: 'They get a text back', d: 'A friendly message goes out, so the lead stays with you.' },
-        { t: 'A job card lands on your phone', d: 'Who called, when, and what they asked for.' },
+        { t: 'The call is caught', d: 'A job card lands on your phone: who called, when, and what they asked for.' },
+        { t: 'Callers who agreed to texts get a text back', d: 'A friendly message goes out, so the lead stays with you.' },
         { t: 'You call back when your hands are free', d: 'Or your AI front desk picks up the conversation.' },
       ],
       exampleLabel: 'Example text back',
@@ -147,7 +147,7 @@ export const doors: Door[] = [
     fix: {
       title: 'How 60-Second Lead Response works',
       steps: [
-        { t: 'A reply goes out right away', d: 'Website, Facebook and Instagram leads get a first answer.' },
+        { t: 'A reply goes out right away', d: 'An instant email at any hour, and a text within a minute during texting hours.' },
         { t: 'You get a “call now” alert', d: 'If a new lead has not replied, your phone tells you.' },
         { t: 'It all lands in one inbox', d: 'Calls, texts, chat and DMs in one place, on your phone.' },
       ],

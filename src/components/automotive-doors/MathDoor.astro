@@ -14,6 +14,7 @@ interface Props {
 const { math9 } = copyFor(Astro.props.set);
 const m = { ...math9, ...(Astro.props.copy || {}) };
 import { featuredPlan } from '../../config/offerV9';
+import Numbers9 from '../automotive-v9/Numbers9.astro';
 // the calculator prices against the most popular plan
 const price = featuredPlan.monthly;
 const role = featuredPlan.role;
@@ -100,6 +101,7 @@ const d = m.defaults;
 
     <div class="foot">
       <p class="disc">{m.disclaimer}</p>
+      <Numbers9 copy={Astro.props.set} />
       <a href="#pricing" class="go" data-magnet data-track="cta_click" data-track-location="math">
         {m.cta}
         <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11M11 5.500 15.500 10 11 14.500" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>

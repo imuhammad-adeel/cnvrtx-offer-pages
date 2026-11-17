@@ -104,14 +104,14 @@ export const legalDocs: LegalDoc[] = [
       {
         h: '3. Fees and billing',
         body: [
-          ['Monthly plan: {monthly} a month, plus a one-time Launch Kit fee of {kit}.', 'Annual plan: {annual} a year, paid in advance. The Launch Kit fee is waived.', 'A full website is a one-time {website} add-on on the monthly plan and is included on the annual plan.', 'Calls, messages and AI use are covered on a fair-use basis for a single-location shop. Carrier fees for texting are passed on at cost and shown to you before activation.'],
+          ['Monthly plan: {monthly} a month, plus a one-time Launch Kit fee of {kit}.', 'Annual plan: {annual} a year, paid in advance. The Launch Kit fee is waived.', 'A full website is a one-time {website} add-on on the monthly plan and is included on the annual plan.', 'Each month includes {allowance}. Carrier fees for texting are passed on at cost and shown to you before activation.'],
           'Prices are those shown at checkout. Plans renew automatically until cancelled. If a payment fails we may pause the service until it is resolved.',
         ],
       },
       {
         h: '4. Guarantees',
         body: [
-          ['Live in 14 days, or your first month is free. The clock starts when we have your shop details and access. Carrier (A2P), domain and third-party approvals are outside the 14 days.', 'Every-Lead-Answered Promise. Every missed call, web form and ad lead gets the response we set up. If the system misses one in your first 30 days, we fix it and your next month is free. Texts go only to people who agreed to them, after carrier approval. Phone-carrier and Meta outages are not included.'],
+          ['Live in 14 days, or your first month is free. The clock starts when your onboarding form and the access we ask for (Google, Facebook and call forwarding) are in. Carrier (A2P), domain and third-party approvals are outside the 14 days.', 'Texts go only to people who agreed to them, after carrier approval, and during texting hours ({hours}).'],
           'On an annual plan a free month is given as one extra month added to your term.',
         ],
       },
@@ -188,8 +188,8 @@ export const legalDocs: LegalDoc[] = [
         body: [['Paid in advance for 12 months.', 'Annual payments are not refundable.', 'You can cancel at any time. The service runs until the end of the year you have paid for and does not renew.']],
       },
       {
-        h: '3. Our guarantees still apply',
-        body: [['Live in 14 days, or your first month is free. The clock starts when we have your shop details and access. Carrier (A2P), domain and third-party approvals are outside the 14 days.', 'Every-Lead-Answered Promise. If the system misses a lead in your first 30 days, we fix it and your next month is free.', 'On an annual plan a free month is given as one extra month added to your term.']],
+        h: '3. Our guarantee still applies',
+        body: [['Live in 14 days, or your first month is free. The clock starts when your onboarding form and the access we ask for (Google, Facebook and call forwarding) are in. Carrier (A2P), domain and third-party approvals are outside the 14 days.', 'On an annual plan a free month is given as one extra month added to your term.']],
       },
       {
         h: '4. Your data when you leave',

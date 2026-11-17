@@ -6,7 +6,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { legalDocs, type LegalDoc } from '../../content/legal';
 import { automotiveOffer as o } from '../../config/automotiveOffer';
-import { offerV9 as cfg, featuredPlan as plan } from '../../config/offerV9';
+import { offerV9 as cfg, featuredPlan as plan, fillOffer } from '../../config/offerV9';
 import '../../styles/v9.css';
 
 export function getStaticPaths() {
@@ -28,7 +28,7 @@ const governing = info.governingState
   ? `These terms are governed by the laws of the State of ${info.governingState}, without regard to its conflict of law rules. Disputes will be heard in the courts located there.`
   : 'These terms are governed by the laws of the state where our company is registered, without regard to its conflict of law rules.';
 const fill = (t: string) =>
-  t
+  fillOffer(t)
     .replaceAll('{company}', o.brand.legalName)
     .replaceAll('{brand}', 'CNVRT X')
     .replaceAll('{contact}', contact)
@@ -53,7 +53,6 @@ const fill = (t: string) =>
     <article>
       <h1>{doc.title}</h1>
       <p class="meta">Effective {date}</p>
-      {!info.reviewed && <p class="draft">This is a draft. It has not been reviewed by a lawyer yet.</p>}
       <p class="intro">{fill(doc.intro)}</p>
 
       {
@@ -179,14 +178,6 @@ const fill = (t: string) =>
     font-size: 0.875rem;
     font-weight: 700;
     color: var(--ink-2);
-  }
-  /* a plain sentence in the margin colour, not a badge */
-  .draft {
-    margin-top: var(--s-4);
-    padding-left: var(--s-4);
-    border-left: 4px solid #e0a100;
-    font-weight: 700;
-    color: #6b4a00;
   }
   .intro {
     margin-top: var(--s-5);

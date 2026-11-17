@@ -451,9 +451,14 @@ import { hero9 as h } from '../../content/automotiveCopyV9';
   }
 
   /* ---------- content ---------- */
+  /* the headline is fully in place in about 0.7s */
+  .hero :global(.rise > span) {
+    transition-duration: 600ms;
+  }
+  /* above the haze (z-index 2), so the headline is readable from the first moment, with or without a cursor */
   .body {
     position: relative;
-    z-index: 1;
+    z-index: 3;
     display: grid;
     justify-items: center;
     align-content: center;

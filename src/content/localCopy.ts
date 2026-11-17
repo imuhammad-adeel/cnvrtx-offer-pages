@@ -44,16 +44,17 @@ export const plans9 = {
     {
       ...a.plans9.roles[0],
       systems: [
-        { n: 'Missed-Call Rescue', d: 'A text back and a lead card for every missed call.' },
-        { n: '60-Second Lead Response', d: 'Web, Facebook and Instagram leads answered right away.' },
+        { n: 'Missed-Call Rescue', d: 'Every missed call becomes a lead card. Callers who agreed to texts get a text back.' },
+        { n: '60-Second Lead Response', d: 'An instant email at any hour. A text within a minute during texting hours.' },
         { n: '24/7 AI Front Desk', d: 'Answers calls, chat and DMs, day and night.' },
       ],
       detail: [
-        'Missed-call text back, only to callers who agreed to texts, after carrier approval',
         'Every missed call becomes a lead card on your phone',
+        'Missed-call text back, only to callers who agreed to texts, after carrier approval',
+        'Callers who have not agreed to texts: you get a call-back task, and the AI phone backup can answer where it is set up',
         'AI phone backup: answers when you can’t, day or night',
-        'Website, Facebook and Instagram lead forms answered right away',
-        '“Call now” alert when a new lead hasn’t replied',
+        'Website, Facebook and Instagram leads get an instant email at any hour and a text within a minute during texting hours',
+        '“Call now” alert to you when a new lead hasn’t replied after 5 minutes',
         'One inbox for calls, texts, chat and DMs, plus the mobile app',
         '24/7 AI front desk on your website chat, Facebook and Instagram, plus a website voice line',
         'Your own local number (US) and a booking page',
@@ -102,33 +103,28 @@ export const offer9 = {
     ...a.offer9.annual,
     year: [
       'Week 2: your front desk is live and answering',
-      'Every week: missed calls texted back, quotes chased, bookings reminded',
+      'Every week: missed calls caught, quotes chased, bookings reminded',
       'Every customer: a review request and an invite to come back',
       'All year: one price, nothing to manage',
     ],
-    bonuses: a.offer9.annual.bonuses.map((b) =>
-      b.t === 'Four seasonal campaigns' ? { ...b, d: 'Four campaigns a year, timed to your busy seasons.' } : b.t === 'Front of the build queue' ? { ...b, d: 'Annual customers are built first.' } : b,
-    ),
+    bonuses: a.offer9.annual.bonuses.map((b) => (b.t === 'Front of the build queue' ? { ...b, d: 'Annual customers are built first.' } : b)),
   },
   founding: {
     ...a.offer9.founding,
     line: 'First 10 qualifying businesses: Launch Kit waived and your price locked while you stay subscribed.',
   },
   promises: [
-    { t: 'Live in 14 days, or month one is free', d: 'From the day we have your business details and access.' },
-    { t: 'Every-Lead-Answered Promise', d: 'Miss one in your first 30 days and your next month is free.' },
+    { t: 'Live in 14 days, or month one is free', d: 'The clock starts when your form and access are in.' },
     { t: 'Love it or leave it', d: 'Month-to-month on monthly plans. Cancel anytime.' },
     { t: 'Your business stays yours', d: 'Your domain, content and customer list, exportable.' },
     { t: 'Keeps your current software', d: 'It sits alongside the tools that run your work.' },
   ],
-  finePrint: a.offer9.finePrint.replace('your shop details', 'your business details'),
   year: [
     { k: 'Week 2', v: 'Your front desk is live and answering.' },
-    { k: 'Every week', v: 'Missed calls texted back. Quotes chased. Bookings reminded.' },
+    { k: 'Every week', v: 'Missed calls caught. Quotes chased. Bookings reminded.' },
     { k: 'Every customer', v: 'A review request, then an invite to come back.' },
     { k: 'All year', v: 'One price. Nothing to manage.' },
   ],
-  usage: 'Fair-use calls, messages and AI for a single-location business. Texting carrier fees are passed on at cost and shown to you before activation.',
 };
 
 export const start9 = {
@@ -156,8 +152,12 @@ export const faq9 = {
       a: 'Yes for US businesses. For other countries, ask us first so we can confirm availability. US texting also needs carrier registration (A2P). We prepare it with you and texting goes live once the carrier approves.',
     },
     a.faq9.items[6],
-    a.faq9.items[7],
+    {
+      q: 'What is included each month?',
+      a: 'Each month includes {allowance}. That covers a typical single-location business. If you are close to a limit we tell you before anything extra is charged.',
+    },
     a.faq9.items[8],
+    a.faq9.items[9],
   ],
 };
 
@@ -199,8 +199,8 @@ export const leaks9 = {
   items: [
     {
       pain: 'Missed calls',
-      fix: 'Texted back fast',
-      line: 'You are with a customer. They call the next business. Now a missed call gets a text back, so the lead stays with you.',
+      fix: 'Caught every time',
+      line: 'You are with a customer. They call the next business. Now every missed call lands on your phone as a lead card, and callers who agreed to texts get a text back.',
       result: 'The lead stays yours',
     },
     a.leaks9.items[1],
@@ -208,7 +208,7 @@ export const leaks9 = {
     {
       pain: 'No-shows',
       fix: 'Confirmed and reminded',
-      line: 'The slot is blocked and nobody comes. Now reminders go out with a one-tap reschedule.',
+      line: 'The slot is blocked and nobody comes. Now reminders go out, and the customer can reply MOVE to reschedule.',
       result: 'Your time protected',
     },
     {
@@ -233,7 +233,7 @@ export const stack9 = {
       code: 'Layer 03',
       hl: 'Make every customer count twice.',
       solved: 'Great work, no review, no return. Now every customer is asked for a review and invited back.',
-      plan: 'The Booking Coordinator',
+      plan: 'The Booking Coordinator + The Office Manager',
     },
     {
       ...a.stack9.cards[3],
@@ -258,8 +258,8 @@ export const work9 = {
   totUs: 'The real work',
   yourPart: {
     label: 'Your part',
-    big: 'One short form.',
-    line: 'Tell us your services, hours and prices. Then go back to your customers.',
+    big: 'One form. One checklist.',
+    line: 'A short form about your services, hours and prices, plus a 15-minute access checklist. Then go back to your customers.',
   },
 };
 
@@ -276,7 +276,7 @@ export const day9 = {
   lead: 'The front office your business never had to hire. You just do the work.',
   rows: [
     { time: '7:30 AM', before: 'You scroll texts and DMs to work out your day.', after: 'One email with today\u2019s bookings and who\u2019s waiting.' },
-    { time: '10:15 AM', before: 'The phone rings while you\u2019re with a customer.', after: 'They get a text back. A lead card lands on your phone.' },
+    { time: '10:15 AM', before: 'The phone rings while you\u2019re with a customer.', after: 'The call is caught. A lead card lands on your phone.' },
     { time: '4:00 PM', before: 'Yesterday\u2019s quote went quiet, and you forgot.', after: 'Polite follow-ups go out until they book or say no.' },
     { time: '6:00 PM', before: 'Tomorrow\u2019s customer hasn\u2019t confirmed.', after: 'They get \u201cReply YES or MOVE\u201d. Tomorrow\u2019s schedule is on your phone.' },
     { time: '11:00 PM', before: 'An Instagram DM waits until morning.', after: 'Your AI front desk answers and books the appointment.' },
@@ -351,11 +351,25 @@ export const industries = {
   items: [
     {
       slug: 'auto',
-      href: '/auto',
+      href: '/',
       label: 'Auto shops',
       sub: 'Detailing, coating, PPF, tint and aftermarket',
       // steering wheel
       icon: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2.5"/><path d="M12 14.500V21M9.700 11 3.500 9M14.300 11l6.200-2"/>',
     },
   ],
+};
+
+/** The free audit, in general words. */
+export const audit9 = {
+  ...a.audit9,
+  line: 'Find the 3 places your business is most likely losing booked customers.',
+};
+
+export const numbers9 = { ...a.numbers9 };
+
+export const about9 = {
+  ...a.about9,
+  videoNote: 'A short walkthrough of the owner app, the inbox and the daily schedule.',
+  missing: { ...a.about9.missing, story: 'A customer story, once that customer agrees' },
 };

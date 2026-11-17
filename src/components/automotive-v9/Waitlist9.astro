@@ -1,0 +1,245 @@
+---
+/**
+ * Waitlist for other trades. The site is built for auto shops first; a visitor from another
+ * trade can leave their trade and email so they hear when their version is ready.
+ *
+ * Opens from any element with data-waitlist-open (the footer link) and from ?show=waitlist.
+ * POSTed to offerV9.forms.waitlist. While that is '' the popup and its link are left off
+ * the live site; on localhost they still show, marked as a preview.
+ */
+import { waitlist9 as w } from '../../content/automotiveCopyV9';
+import { offerV9 as cfg } from '../../config/offerV9';
+
+const url = cfg.forms.waitlist;
+const show = Boolean(url) || import.meta.env.DEV;
+---
+
+{
+  show && (
+    <dialog class="wl" data-waitlist9 aria-labelledby="wl-title">
+      <form method="dialog" class="x-form">
+        <button class="x-close" aria-label="Close" value="close">×</button>
+      </form>
+
+      <div class="w-body" data-wl-body>
+        <p class="x-eye">{w.eyebrow}</p>
+        <h2 id="wl-title">{w.title}</h2>
+        <p class="w-line">{w.line}</p>
+        <form class="w-form" data-wl-form action={url || undefined} method="post" novalidate>
+          {!url && <p class="preview">{w.preview}</p>}
+          <div class="fld">
+            <label for="wl-trade">{w.fields.trade}</label>
+            <input id="wl-trade" name="trade" list="wl-trades" required />
+            <datalist id="wl-trades">
+              {w.trades.map((t) => <option value={t} />)}
+            </datalist>
+          </div>
+          <div class="fld">
+            <label for="wl-biz">{w.fields.business}</label>
+            <input id="wl-biz" name="business_name" autocomplete="organization" />
+          </div>
+          <div class="fld">
+            <label for="wl-email">{w.fields.email}</label>
+            <input id="wl-email" name="email" type="email" autocomplete="email" required />
+          </div>
+          <input type="hidden" name="landing_page" value="" data-wl-landing />
+          <button type="submit" class="go">{w.submit}</button>
+          <p class="w-status" role="status" data-wl-status data-error={w.error} />
+          <p class="w-fine">{w.note}</p>
+        </form>
+      </div>
+
+      <div class="w-ok" data-wl-ok hidden tabindex="-1">
+        <p class="tick" aria-hidden="true">✓</p>
+        <h2>{w.sent.title}</h2>
+        <p>{w.sent.body}</p>
+      </div>
+    </dialog>
+  )
+}
+
+<script>
+  import { track } from '../../scripts/analytics';
+
+  const dlg = document.querySelector<HTMLDialogElement>('[data-waitlist9]');
+  if (dlg && typeof dlg.showModal === 'function') {
+    const form = dlg.querySelector<HTMLFormElement>('[data-wl-form]')!;
+    const status = dlg.querySelector<HTMLElement>('[data-wl-status]')!;
+    const open = (from: string) => {
+      if (dlg.open) return;
+      const l = dlg.querySelector<HTMLInputElement>('[data-wl-landing]');
+      if (l) l.value = location.origin + location.pathname;
+      dlg.showModal();
+      track('waitlist_shown', { from });
+    };
+    document.addEventListener('click', (e) => {
+      const el = (e.target as HTMLElement | null)?.closest<HTMLElement>('[data-waitlist-open]');
+      if (!el) return;
+      e.preventDefault();
+      open(el.dataset.waitlistOpen || 'link');
+    });
+    if (new URLSearchParams(location.search).get('show') === 'waitlist') open('url');
+    dlg.addEventListener('click', (e) => {
+      if (e.target === dlg) dlg.close();
+    });
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      let first: HTMLInputElement | null = null;
+      form.querySelectorAll<HTMLInputElement>('[required]').forEach((f) => {
+        const bad = !f.value.trim() || (f.type === 'email' && !/^\S+@\S+\.\S+$/.test(f.value.trim()));
+        f.toggleAttribute('aria-invalid', bad);
+        if (bad && !first) first = f;
+      });
+      if (first) {
+        (first as HTMLInputElement).focus();
+        return;
+      }
+      track('waitlist_submit', { trade: (form.elements.namedItem('trade') as HTMLInputElement).value, connected: Boolean(form.getAttribute('action')) });
+      const done = () => {
+        dlg.querySelector<HTMLElement>('[data-wl-body]')!.hidden = true;
+        const ok = dlg.querySelector<HTMLElement>('[data-wl-ok]')!;
+        ok.hidden = false;
+        ok.focus();
+      };
+      // preview on localhost: nothing is sent anywhere
+      if (!form.getAttribute('action')) return done();
+      const btn = form.querySelector<HTMLButtonElement>('button[type="submit"]')!;
+      btn.disabled = true;
+      try {
+        await fetch(form.action, { method: 'POST', body: new FormData(form), mode: 'no-cors' });
+        done();
+      } catch {
+        status.textContent = status.dataset.error || '';
+        btn.disabled = false;
+      }
+    });
+  }
+</script>
+
+<style>
+  .wl {
+    width: min(480px, calc(100vw - 32px));
+    max-height: calc(100dvh - 32px);
+    overflow-y: auto;
+    padding: clamp(1.5rem, 1rem + 2vw, 2.5rem);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 28px;
+    background: linear-gradient(180deg, #131c25, #070b10);
+    color: #eef3f7;
+    box-shadow: 0 60px 120px -40px rgba(0, 0, 0, 0.9);
+  }
+  .wl::backdrop {
+    background: rgba(5, 8, 11, 0.74);
+    backdrop-filter: blur(6px);
+  }
+  .x-form {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+  .x-close {
+    width: 44px;
+    height: 44px;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+  }
+  .w-body,
+  .w-form {
+    display: grid;
+    gap: 14px;
+  }
+  .w-body[hidden],
+  .w-ok[hidden] {
+    display: none;
+  }
+  .x-eye {
+    padding-right: 48px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #d8ff3e;
+  }
+  h2 {
+    font-family: var(--f-head);
+    font-weight: 800;
+    font-size: clamp(1.5rem, 1.25rem + 1.2vw, 2rem);
+    letter-spacing: -0.04em;
+    line-height: 1.1;
+  }
+  .w-line {
+    line-height: 1.5;
+    color: #dbe4ec;
+  }
+  .fld {
+    display: grid;
+    gap: 6px;
+  }
+  label {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: #c5d0da;
+  }
+  input {
+    width: 100%;
+    min-height: 48px;
+    padding: 0 14px;
+    border-radius: 12px;
+    border: 1.5px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.06);
+    color: #fff;
+    font: inherit;
+  }
+  input:focus-visible {
+    outline: 3px solid #7cc4ff;
+    outline-offset: 1px;
+  }
+  input[aria-invalid] {
+    border-color: #ff8f7a;
+  }
+  .go {
+    width: 100%;
+  }
+  .w-status {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #ffb4a6;
+  }
+  .w-status:empty {
+    display: none;
+  }
+  .w-fine {
+    font-size: 0.75rem;
+    line-height: 1.5;
+    color: var(--fog-2);
+  }
+  .preview {
+    padding: 8px 12px;
+    border-radius: 10px;
+    border: 1px dashed rgba(255, 196, 0, 0.6);
+    font-size: 0.75rem;
+    color: #ffd666;
+  }
+  .w-ok {
+    display: grid;
+    gap: 10px;
+    justify-items: start;
+  }
+  .tick {
+    display: grid;
+    place-items: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: #d8ff3e;
+    color: #0b1016;
+    font-size: 1.6rem;
+    font-weight: 800;
+  }
+</style>

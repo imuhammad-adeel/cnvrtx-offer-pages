@@ -17,7 +17,8 @@ import Offer9 from '../../components/automotive-v9/Offer9.astro';
 import End9 from '../../components/automotive-v9/End9.astro';
 import Car9 from '../../components/automotive-v9/Car9.astro';
 import Exit9 from '../../components/automotive-v9/Exit9.astro';
-import Checkout9 from '../../components/automotive-v9/Checkout9.astro';
+import Audit9 from '../../components/automotive-v9/Audit9.astro';
+import Waitlist9 from '../../components/automotive-v9/Waitlist9.astro';
 import HeroDoor from '../../components/automotive-doors/HeroDoor.astro';
 import MathDoor from '../../components/automotive-doors/MathDoor.astro';
 import DoorProblem from '../../components/automotive-doors/DoorProblem.astro';
@@ -67,7 +68,7 @@ const lay = door.layout;
     <link rel="preload" as="font" type="font/woff2" href={manropeFont} crossorigin />
   </Fragment>
   <Bar9 />
-  <Nav9 home="/auto" />
+  <Nav9 home="/" />
   <main id="main" data-door={door.slug}>
     {/* hook -> the one problem -> its cost -> everything else you get -> proof -> the one offer */}
     <HeroDoor headline={door.headline} sub={sub} />
@@ -90,7 +91,8 @@ const lay = door.layout;
   </main>
   <Car9 />
   <Exit9 />
-  <Checkout9 />
+  <Audit9 />
+  <Waitlist9 />
 </BaseLayout>
 
 <script>

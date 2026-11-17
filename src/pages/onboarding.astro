@@ -1,7 +1,10 @@
 ---
 /**
- * Step after checkout. GHL should redirect here once payment succeeds.
- * The customer can fill the shop form now, or skip and do it later.
+ * Step after checkout. GHL should redirect here once payment succeeds, with ?paid=1 added
+ * to the address. Only then does the page say "Payment received" and "You are in": anyone
+ * who opens /onboarding directly sees the plain form. This hides the wording from casual
+ * visitors; it is not proof of payment. The record of who paid is the order in GHL.
+ * The customer can fill the form now, or skip and do it later.
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { flow9 } from '../content/automotiveCopyV9';
@@ -11,21 +14,22 @@ const f = flow9.onboarding;
 const services = audit.services;
 ---
 
-<BaseLayout title="Welcome to CNVRT X: one short form" description="Tell us how your shop works and we start building." noindex={true} bodyClass="v9" themeColor="#070B10">
+<BaseLayout title="Welcome to CNVRT X: one form and one checklist" description="Tell us how your shop works and we start building." noindex={true} bodyClass="v9" themeColor="#070B10">
   <header class="top">
     <a href="/" class="logo" aria-label="CNVRT X home">CNVRT<span>✕</span></a>
-    <span class="paid">✓ {f.kicker}</span>
+    <span class="paid" data-paid hidden>✓ {f.kicker}</span>
+    <span class="open" data-unpaid>{f.openKicker}</span>
   </header>
 
   <main id="main" class="wrap">
     <ol role="list" class="steps" aria-label="Progress">
-      {f.steps.map((s, i) => <li class:list={[i === 0 && 'done', i === 1 && 'now']}><span>{i === 0 ? '✓' : i + 1}</span>{s}</li>)}
+      {f.steps.map((s, i) => <li class:list={[i === 1 && 'now']} data-step={i}><span>{i + 1}</span>{s}</li>)}
     </ol>
 
     <div class="grid">
       <div class="copy">
         <h1>
-          {f.title[0]}<br /><span class="hot">{f.title[1]}</span>
+          <span data-paid hidden>{f.paidTitle}<br /></span><span class="hot">{f.title[1]}</span>
         </h1>
         <p class="lede">{f.lead}</p>
         <p class="clock"><span aria-hidden="true">⏱</span>{f.clock}</p>
@@ -39,7 +43,6 @@ const services = audit.services;
             <iframe src={flow9.onboardingFormUrl} title="Shop details form" loading="lazy" />
           ) : (
             <form data-onb action={flow9.thanksPath} method="get" novalidate>
-              <p class="preview">Preview form. Connect your GHL form in <code>automotiveCopyV9.ts</code> (flow9.onboardingFormUrl).</p>
               <div class="fld">
                 <label for="o-biz">Shop name</label>
                 <input id="o-biz" name="shop" autocomplete="organization" required />
@@ -69,6 +72,25 @@ const services = audit.services;
                 <label for="o-notes">Prices, packages or anything we should know</label>
                 <textarea id="o-notes" name="notes" rows="3"></textarea>
               </div>
+              <fieldset class="fld access">
+                <legend>
+                  {f.access.title} <span>{f.access.time}</span>
+                </legend>
+                <p class="acc-l">{f.access.lead}</p>
+                <ul role="list">
+                  {f.access.items.map((it) => (
+                    <li>
+                      <label>
+                        <input type="checkbox" name="access" value={it.k} />
+                        <span>
+                          <b>{it.t}</b>
+                          <small>{it.d}</small>
+                        </span>
+                      </label>
+                    </li>
+                  ))}
+                </ul>
+              </fieldset>
               <button type="submit" class="go">{f.submit}</button>
             </form>
           )
@@ -80,6 +102,16 @@ const services = audit.services;
 
 <script>
   import { track } from '../scripts/analytics';
+  // "Payment received" and "You are in" show only when the checkout sent the visitor here
+  if (new URLSearchParams(location.search).has('paid')) {
+    document.querySelectorAll<HTMLElement>('[data-paid]').forEach((el) => (el.hidden = false));
+    document.querySelectorAll<HTMLElement>('[data-unpaid]').forEach((el) => (el.hidden = true));
+    const first = document.querySelector<HTMLElement>('[data-step="0"]');
+    if (first) {
+      first.classList.add('done');
+      first.querySelector('span')!.textContent = '✓';
+    }
+  }
   const form = document.querySelector<HTMLFormElement>('[data-onb]');
   form?.addEventListener('submit', (e) => {
     const shop = form.querySelector<HTMLInputElement>('#o-biz')!;
@@ -97,6 +129,86 @@ const services = audit.services;
 </script>
 
 <style>
+  /* shown instead of "Payment received" when the page is opened without a payment marker */
+  .open {
+    font-size: 0.8125rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--fog);
+  }
+  [data-paid][hidden],
+  [data-unpaid][hidden] {
+    display: none;
+  }
+  /* ---------- access checklist ---------- */
+  .access {
+    gap: 10px;
+    padding: 16px;
+    border: 1px solid rgba(216, 255, 62, 0.35);
+    border-radius: 16px;
+    background: rgba(216, 255, 62, 0.04);
+  }
+  .access legend {
+    float: left;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 4px 12px;
+    font-family: var(--f-head);
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: #fff;
+  }
+  .access legend span {
+    font-family: var(--f-text);
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #d8ff3e;
+  }
+  .acc-l {
+    clear: both;
+    font-size: 0.875rem;
+    color: var(--fog);
+  }
+  .access ul {
+    margin: 0;
+    display: grid;
+    gap: 6px;
+  }
+  .access li label {
+    display: grid;
+    grid-template-columns: 22px minmax(0, 1fr);
+    gap: 12px;
+    align-items: start;
+    min-height: 44px;
+    padding: 8px 0;
+    cursor: pointer;
+  }
+  .access input {
+    width: 22px;
+    height: 22px;
+    margin-top: 2px;
+    accent-color: #d8ff3e;
+  }
+  .access li span {
+    display: grid;
+    gap: 1px;
+  }
+  .access li b {
+    font-size: 0.9375rem;
+    color: #fff;
+  }
+  .access li small {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--fog);
+  }
   .top {
     display: flex;
     justify-content: space-between;

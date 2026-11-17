@@ -30,8 +30,20 @@ export const offerV9 = {
   checkout: {
     frontOffice: { monthly: '', annual: '' },
   } as Record<PlanId, Record<Interval, string>>,
-  /** false = plan buttons scroll to the reserve form with the plan preselected. */
+  /** true once the order form links above are set and tested. */
   checkoutLive: false,
+  /**
+   * The checkout page for this industry. Every "Start Annual" / "Start Monthly" button and the
+   * reserve form lead here. One per industry: /auto now, /roofing later.
+   */
+  checkoutPath: '/auto',
+  /**
+   * The offer shown when a visitor is about to leave: the monthly plan with a lower Launch Kit.
+   * `launchKit` is the reduced one-time fee; the regular one is plans[].launchKit.
+   * `checkout` is its own order form link ('' = not connected), because the amount charged differs.
+   * Set enabled: false to go back to the plain exit popup.
+   */
+  exitOffer: { enabled: true, launchKit: 297, checkout: '' },
 
   /** Founding program: first 10 qualifying shops. */
   foundingSpotsTotal: 10,
@@ -44,6 +56,51 @@ export const offerV9 = {
   /** Real, measured figures only. null = not measured yet, and the page then shows no specific number.
    *  leadReplySeconds: seconds from a new lead to the first reply, measured on a live system. */
   measured: { leadReplySeconds: null as number | null },
+
+  /**
+   * What one month includes. Shown in the FAQ, the fine print and the Terms.
+   * Change a number here and every place updates.
+   */
+  allowance: {
+    emails: 5000,
+    smsSegments: 1000,
+    voiceMinutes: 100,
+    aiReplies: 250,
+    numbers: 1,
+  },
+  /** Hours in which automated texts are sent. Outside them, a text waits for the morning; email goes at any hour. */
+  textingHours: '8 AM to 8 PM',
+
+  /**
+   * Lead forms for visitors who are not ready to buy. Each value is the URL the form is POSTed to
+   * (a GHL form endpoint or an inbound webhook). '' = not connected: the form is then left off the
+   * live site, and shown only on localhost so it can be reviewed.
+   *   audit   : the Free Booking Leak Audit popup. "Email me my numbers" under the calculator
+   *             opens the same popup, so there is one form for both.
+   *   waitlist: the waitlist for trades other than auto shops
+   */
+  forms: { audit: '', waitlist: '' },
+
+  /** Real contact details, shown in the footer and the "Who's behind CNVRT X" section. '' = left out. */
+  contact: { email: '', phone: '', address: '' },
+
+  /**
+   * "Who's behind CNVRT X". Real details only; '' = that part is left out, and with nothing
+   * filled in the whole section is left off the live site (localhost shows the empty layout).
+   *   founderPhoto : a path under /public, for example '/founder.jpg'
+   *   videoUrl     : an embeddable link to the 60 to 90 second walkthrough of the real screens
+   *   story        : shown only when `approved` is true, which means the shop's owner has agreed to it
+   */
+  about: {
+    /** false = the section is not shown anywhere, whatever is filled in below. */
+    enabled: false,
+    founderName: '',
+    founderRole: '',
+    founderPhoto: '',
+    bio: '',
+    videoUrl: '',
+    story: { approved: false, line: 'The same system runs at an auto shop in Rhode Island.', detail: '' },
+  },
 
   voiceDemo: { enabled: false, embed: '' },
   chatDemo: { enabled: false },
@@ -91,3 +148,13 @@ export function checkoutHref(id: PlanId, interval: Interval): string {
   if (!url) return '';
   return `${url}${url.includes('?') ? '&' : '?'}plan=${id}&interval=${interval}`;
 }
+
+const num = (x: number) => x.toLocaleString('en-US');
+/** The monthly allowance in words, from offerV9.allowance. */
+export function allowanceText(): string {
+  const a = offerV9.allowance;
+  const line = a.numbers === 1 ? 'one local phone number' : `${a.numbers} local phone numbers`;
+  return `${num(a.emails)} emails, ${num(a.smsSegments)} outbound US text message segments, ${num(a.voiceMinutes)} AI voice minutes, ${num(a.aiReplies)} AI chat replies and ${line}`;
+}
+/** Fills `{allowance}` and `{hours}` in a line of copy. */
+export const fillOffer = (t: string) => t.replaceAll('{allowance}', allowanceText()).replaceAll('{hours}', offerV9.textingHours);

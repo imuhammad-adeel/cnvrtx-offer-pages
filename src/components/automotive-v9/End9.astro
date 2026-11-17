@@ -2,7 +2,7 @@
 import { audit } from '../../content/automotiveCopy';
 import { copyFor, type CopySet } from '../../content/copySets';
 import { automotiveOffer as o, ATTRIBUTION_PARAMS } from '../../config/automotiveOffer';
-import { offerV9 as cfg, checkoutHref } from '../../config/offerV9';
+import { offerV9 as cfg, checkoutHref, fillOffer } from '../../config/offerV9';
 
 /** A door page puts its own questions first and uses its own start and closing lines. */
 interface Props {
@@ -12,11 +12,15 @@ interface Props {
   /** Which wording to use: the auto pages' (default) or the general one. See content/copySets.ts. */
   copy?: CopySet;
 }
-const { faq9: q, start9: e, nav9, offer9, math9, footer9: ft } = copyFor(Astro.props.copy);
+const { faq9: q, start9: e, nav9, offer9, math9, footer9: ft, audit9, waitlist9 } = copyFor(Astro.props.copy);
+const auditOn = Boolean(cfg.forms.audit) || import.meta.env.DEV;
+// the waitlist is for the auto pages only: the general page already speaks to every trade
+const waitOn = Astro.props.copy !== 'local' && (Boolean(cfg.forms.waitlist) || import.meta.env.DEV);
+const k = cfg.contact;
 const { faq = [], startLead = e.lead, footerLine = e.footer } = Astro.props;
 // page questions first, then the ones every buyer asks
-const keep = ['Do I have to talk to a salesperson?', 'Can you guarantee bookings?', 'Can I cancel?', 'Is the AI a real person?'];
-const faqItems = faq.length ? [...faq, ...q.items.filter((x) => keep.includes(x.q))] : q.items;
+const keep = ['Do I have to talk to a salesperson?', 'Can you guarantee bookings?', 'What is included each month?', 'Can I cancel?', 'Is the AI a real person?'];
+const faqItems = (faq.length ? [...faq, ...q.items.filter((x) => keep.includes(x.q))] : q.items).map((x) => ({ q: x.q, a: fillOffer(x.a) }));
 
 const mode = o.auditFormUrl ? o.auditFormMode : 'unconfigured';
 const legal = [
@@ -89,7 +93,7 @@ const smsLinks = [
     </div>
 
     <div class="shell">
-      <form class="form" data-start9 data-mode={mode} data-hrefs={JSON.stringify(hrefs)} action={o.auditFormUrl || undefined} method="post" novalidate>
+      <form class="form" data-start9 data-mode={mode} data-checkout-path={cfg.checkoutPath} data-hrefs={JSON.stringify(hrefs)} action={o.auditFormUrl || undefined} method="post" novalidate>
         <div class="fh">
           <h3>{live ? 'Start your build' : e.formTitle}</h3>
           <span>No sales call</span>
@@ -129,10 +133,10 @@ const smsLinks = [
         {
           live && startHref ? (
             <>
-              <a class="go" data-spot data-start-go href={startHref} data-checkout={plans.find((pl) => pl.popular)!.id} data-interval="annual" data-track="start_checkout_click">
+              <a class="go" data-spot data-start-go href={`${cfg.checkoutPath}?plan=annual`} data-interval="annual" data-track="start_checkout_click">
                 Continue to secure checkout
               </a>
-              <p class="f-note">Next: secure checkout, then one short form. That is all you do.</p>
+              <p class="f-note">Next: secure checkout, then one short form and a 15-minute access checklist.</p>
             </>
           ) : (
             <>
@@ -238,8 +242,21 @@ const smsLinks = [
       </nav>
       <div class="f-contact">
         <p class="f-h">{ft.cols.contact}</p>
-        {o.contactUrl ? <a href={o.contactUrl}>Contact us</a> : <span class="soon" title="Contact link not set yet">Contact us</span>}
+        {k.email && <a href={`mailto:${k.email}`}>{k.email}</a>}
+        {k.phone && <a href={`tel:${k.phone.replace(/[^+\d]/g, '')}`}>{k.phone}</a>}
+        {o.contactUrl ? <a href={o.contactUrl}>Contact us</a> : !k.email && !k.phone && <span class="soon" title="Contact details not set yet">Contact us</span>}
+        {auditOn && (
+          <a href="#start" data-audit-open="footer" data-track="audit_link_click" data-track-location="footer">
+            {audit9.footerLink}
+          </a>
+        )}
+        {waitOn && (
+          <a href="#start" data-waitlist-open="footer" data-track="waitlist_link_click">
+            {waitlist9.footerLink}
+          </a>
+        )}
         <p class="f-co">{o.brand.legalName}</p>
+        {k.address && <p class="f-co">{k.address}</p>}
       </div>
     </div>
 
@@ -312,19 +329,21 @@ const smsLinks = [
         interval: String(data.get('billing_interval') || ''),
         configured: mode !== 'unconfigured',
       });
+      // after the details are in, the next step is always this industry's checkout page
+      const toCheckout = () => {
+        location.href = `${form.dataset.checkoutPath}?plan=${data.get('billing_interval') === 'monthly' ? 'monthly' : 'annual'}`;
+      };
       if (mode === 'unconfigured') {
-        status.textContent = 'This form is not connected yet. Set auditFormUrl in src/config/automotiveOffer.ts, or the checkout links in src/config/offerV9.ts.';
-        status.dataset.tone = 'warn';
-        return;
+        // nowhere to send the details yet; say so in the console for whoever is building the site
+        console.warn('Reserve form is not connected: set auditFormUrl in src/config/automotiveOffer.ts.');
+        return toCheckout();
       }
       const btn = form.querySelector<HTMLButtonElement>('button[type="submit"]')!;
       btn.disabled = true;
       status.textContent = 'Sending…';
       try {
         await fetch(form.action, { method: 'POST', body: data, mode: 'no-cors' });
-        form.hidden = true;
-        ok.hidden = false;
-        ok.focus();
+        toCheckout();
       } catch {
         status.textContent = 'Something went wrong. Please try again.';
         status.dataset.tone = 'warn';

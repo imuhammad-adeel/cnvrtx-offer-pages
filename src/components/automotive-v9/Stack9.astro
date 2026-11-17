@@ -41,7 +41,7 @@ const cards = s.cards.slice(from, to).map((c, k) => ({ c, i: from + k, k }));
             <div class="shine" aria-hidden="true" />
             <div class="info">
               <div class="top">
-                <span class="code">{c.code} · {c.finish}</span>
+                <span class="code">{c.code}</span>
                 <span class="finish">{c.plan}</span>
               </div>
               <h3>{c.title}</h3>
@@ -134,8 +134,8 @@ const cards = s.cards.slice(from, to).map((c, k) => ({ c, i: from + k, k }));
                 <div class="v-sms">
                   <p class="sms-h"><b>Messages</b><span>{ex.from}</span></p>
                   <p class="bub out seq" style="--k:0">You are booked for Sat 9:00 AM. See you then!</p>
-                  <p class="bub out seq" style="--k:1.3">Reminder: your appointment is tomorrow at 9:00 AM. Reply C to confirm or R to reschedule.</p>
-                  <p class="bub in seq" style="--k:2.7">C</p>
+                  <p class="bub out seq" style="--k:1.3">Reminder: your appointment is tomorrow at 9:00 AM. Reply YES to confirm or MOVE to change.</p>
+                  <p class="bub in seq" style="--k:2.7">YES</p>
                   <p class="bub out ok seq" style="--k:3.7">Confirmed. Thanks!</p>
                 </div>
               )}

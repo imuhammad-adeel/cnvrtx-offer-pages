@@ -1,6 +1,7 @@
 ---
 /** Exit popup. No price anchor: it shows the visitor's own calculator loss and the founding program. */
 import { copyFor, type CopySet } from '../../content/copySets';
+import { offerV9 as cfg, featuredPlan } from '../../config/offerV9';
 
 interface Props {
   /** Which wording to use: the auto pages' (default) or the general one. See content/copySets.ts. */
@@ -12,6 +13,12 @@ const fmt = (n: number) => '$' + Math.round(n).toLocaleString('en-US');
 const d = math9.defaults;
 const lostDefault = (d.missed * (52 / 12) * d.value) / d.oneIn;
 const leakParts = x.leak.split('{lost}');
+// the leaving offer: monthly with a lower one-time Launch Kit (offerV9.exitOffer)
+const eo = cfg.exitOffer;
+const was = featuredPlan.launchKit;
+const money = (n: number) => '$' + n.toLocaleString('en-US');
+const fillO = (t: string) => t.replaceAll('{kit}', money(eo.launchKit)).replaceAll('{was}', money(was)).replaceAll('{save}', money(was - eo.launchKit)).replaceAll('{monthly}', money(featuredPlan.monthly));
+const offerOn = eo.enabled && eo.launchKit < was;
 ---
 
 {
@@ -20,20 +27,40 @@ const leakParts = x.leak.split('{lost}');
       <form method="dialog" class="x-form">
         <button class="x-close" aria-label="Close" value="close">×</button>
       </form>
-      <p class="x-eye">{x.eyebrow}</p>
-      <h2 id="exit-title">{x.title}</h2>
-
-      <ul role="list" class="loss">
-        <li>
-          {leakParts[0]}<b data-exit-lost>{fmt(lostDefault)}</b>{leakParts[1]}
-          <small>{x.leakNote}</small>
-        </li>
-        <li>{x.founding}</li>
-      </ul>
-
-      <a class="go" href="#pricing" data-track="exit_offer_click" data-exit-go>
-        {x.cta}
-      </a>
+      {offerOn ? (
+        <>
+          <p class="x-eye">{x.offer.eyebrow}</p>
+          <h2 id="exit-title">{fillO(x.offer.title)}</h2>
+          <p class="x-price">
+            <b>{money(eo.launchKit)}</b>
+            <span>
+              <s>{money(was)}</s> {fillO(x.offer.priceNote)}
+            </span>
+          </p>
+          <p class="x-line">{fillO(x.offer.line)}</p>
+          <p class="x-leak">
+            {leakParts[0]}<b data-exit-lost>{fmt(lostDefault)}</b>{leakParts[1]} <small>{x.leakNote}</small>
+          </p>
+          <a class="go" href={`${cfg.checkoutPath}?plan=monthly&offer=kit`} data-track="exit_offer_click" data-exit-go>
+            {fillO(x.offer.cta)}
+          </a>
+        </>
+      ) : (
+        <>
+          <p class="x-eye">{x.eyebrow}</p>
+          <h2 id="exit-title">{x.title}</h2>
+          <ul role="list" class="loss">
+            <li>
+              {leakParts[0]}<b data-exit-lost>{fmt(lostDefault)}</b>{leakParts[1]}
+              <small>{x.leakNote}</small>
+            </li>
+            <li>{x.founding}</li>
+          </ul>
+          <a class="go" href="#pricing" data-track="exit_offer_click" data-exit-go>
+            {x.cta}
+          </a>
+        </>
+      )}
       <form method="dialog">
         <button class="x-no" value="no">{x.no}</button>
       </form>
@@ -97,9 +124,37 @@ const leakParts = x.leak.split('{lost}');
       );
     }
 
-    dlg.querySelector('[data-exit-go]')?.addEventListener('click', () => dlg.close());
+    // Closing this popup without taking the offer is a "not now": the X, "No thanks", Escape
+    // or a click outside it. If the free audit is available it opens next, once, so the
+    // visitor has something to take with them. Each way of closing is handled here directly
+    // and does not wait for the dialog's own close event.
+    let took = false;
+    const declined = () => {
+      if (dlg.open) dlg.close();
+      if (took || !document.querySelector('[data-audit9]')) return;
+      took = true; // offer the audit once
+      window.dispatchEvent(new CustomEvent('cx:audit-open', { detail: { from: 'exit' } }));
+    };
+    dlg.querySelector('[data-exit-go]')?.addEventListener('click', () => {
+      took = true;
+      dlg.close();
+    });
+    dlg.querySelectorAll('form[method="dialog"]').forEach((f) =>
+      f.addEventListener('submit', (e) => {
+        e.preventDefault();
+        declined();
+      }),
+    );
+    dlg.addEventListener('cancel', (e) => {
+      e.preventDefault();
+      declined();
+    });
+    // for checking the popup: add ?show=exit to the address
+    if (new URLSearchParams(location.search).get('show') === 'exit') {
+      dlg.showModal();
+    }
     dlg.addEventListener('click', (e) => {
-      if (e.target === dlg) dlg.close();
+      if (e.target === dlg) declined();
     });
   }
 </script>
@@ -236,6 +291,46 @@ const leakParts = x.leak.split('{lost}');
   .go {
     width: 100%;
     margin-top: 4px;
+  }
+  /* the leaving offer: the new price is the biggest thing in the popup */
+  .x-price {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 6px 14px;
+  }
+  .x-price b {
+    font-family: var(--f-head);
+    font-weight: 800;
+    font-size: clamp(3.2rem, 2.4rem + 4vw, 5rem);
+    letter-spacing: -0.06em;
+    line-height: 0.95;
+    color: #d8ff3e;
+  }
+  .x-price span {
+    font-weight: 700;
+    color: #dbe4ec;
+  }
+  .x-price s {
+    color: var(--fog-2);
+  }
+  .x-line {
+    line-height: 1.5;
+    color: #dbe4ec;
+  }
+  .x-leak {
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
+    font-size: 0.9375rem;
+    color: var(--fog);
+  }
+  .x-leak b {
+    color: #ff8f7a;
+  }
+  .x-leak small {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--fog-2);
   }
   .x-no {
     width: 100%;

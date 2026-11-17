@@ -52,7 +52,7 @@ const live = 'Your front office can be live in 14 days. No demo, no sales call.'
 export const doorPages: Record<string, DoorPage> = {
   'missed-calls': {
     ticker: [
-      ['Phone rings', 'Text goes out'],
+      ['Phone rings', 'Call caught'],
       ['No voicemail', 'Job card on your phone'],
       ['Called the next shop', 'Stayed with you'],
       ['Seen at 6:30 PM', 'Caught at 10:15 AM'],
@@ -62,14 +62,14 @@ export const doorPages: Record<string, DoorPage> = {
       title: 'What are missed calls costing you?',
       s1: 'My shop misses about',
       s2: 'calls a week while hands are full. An average job is worth',
-      s3: 'If each one got a text back, about',
+      s3: 'If each one got a reply, about',
       s4: 'would book.',
       defaults: { missed: 6, value: 350, oneIn: 3 },
     },
     changes: {
       title: ['What changes', 'when no call is lost.'],
       items: [
-        { t: 'Every caller hears back', d: 'A text goes out for you, so the caller is still talking to your shop, not the next one.' },
+        { t: 'Every missed call is caught', d: 'It lands on your phone as a job card. Callers who agreed to texts get a text back, and you get a call-back task for the rest.' },
         { t: 'You know who called', d: 'A job card shows who it was, when, and what they asked for.' },
         { t: 'You finish the car first', d: 'Call back when your hands are free. The lead is already holding.' },
       ],
@@ -354,7 +354,7 @@ export const doorPages: Record<string, DoorPage> = {
     faq: [
       { q: 'I already have someone at the desk. Is this for me?', a: 'Yes. It takes the repetitive part off their plate and covers nights and weekends, so they can spend their time on customers in the shop.' },
       { q: 'Is it cheaper than hiring?', a: 'A US receptionist costs about $3,170 a month in wages, before payroll taxes. This is {price} a month. It does not replace a person for everything, and it does not need to.' },
-      { q: 'How much of my time does it take to run?', a: 'One short form to start. After that you reply to customers from the app when a human answer is needed.' },
+      { q: 'How much of my time does it take to run?', a: 'One short form and a 15-minute access checklist to start. After that you reply to customers from the app when a human answer is needed.' },
     ],
     startLead: `Fill the front desk without a hire. ${live}`,
     footer: 'You opened a shop to work on cars. Go back to the cars.',
@@ -528,7 +528,7 @@ export const doorPages: Record<string, DoorPage> = {
 /** Shared words for the new sections. */
 export const doorPageCommon = {
   changesKicker: 'What changes',
-  buildNote: 'Your part: one short form.',
+  buildNote: 'Your part: one form and a 15-minute checklist.',
   voiceNote: 'Demo for an example shop. No real booking is made.',
   faqKicker: 'Straight answers',
   faqTitle: 'Before you ask.',

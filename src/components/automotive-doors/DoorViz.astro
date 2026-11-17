@@ -71,6 +71,7 @@ const measured = cfg.measured.leadReplySeconds;
               <b>under 60 sec</b>
             )}
           </p>
+          <p class="r-n">An instant email at any hour. A text within a minute during texting hours ({cfg.textingHours}).</p>
           <div class="bar"><i class="fill lime keep" style="--w:0.200%" data-msg="1" /></div>
         </div>
         <p class="bub sys" data-msg="2">New Facebook lead · 12:05 PM</p>
@@ -363,6 +364,13 @@ const measured = cfg.measured.leadReplySeconds;
 </div>
 
 <style>
+  /* the small print under the reply-time comparison */
+  .r-n {
+    margin-top: 6px;
+    font-size: 0.8125rem;
+    line-height: 1.4;
+    color: var(--fog);
+  }
   .viz {
     display: grid;
     gap: 8px;

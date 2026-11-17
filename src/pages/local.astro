@@ -1,0 +1,113 @@
+---
+/**
+ * General page for any local business: /local. NOT the home page and NOT published.
+ * The site is auto-first: the home page (/) is the auto-shop page. This page is kept in the
+ * project, off the live site, as the base for the next industry page.
+ * The auto page (/auto), section for section, written for ANY local business.
+ * Same design, same offer, same prices. No trade is named here.
+ *
+ * Words: src/content/localCopy.ts. Prices and links: src/config/offerV9.ts.
+ * Every section is given copy="local" so it reads the general wording.
+ * Left out on purpose: the car that drives down the auto page (Car9).
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Bar9 from '../components/automotive-v9/Bar9.astro';
+import Nav9 from '../components/automotive-v9/Nav9.astro';
+import Pipe9 from '../components/automotive-v9/Pipe9.astro';
+import Leaks9 from '../components/automotive-v9/Leaks9.astro';
+import Hook9 from '../components/automotive-v9/Hook9.astro';
+import Stack9 from '../components/automotive-v9/Stack9.astro';
+import Day9 from '../components/automotive-v9/Day9.astro';
+import Work9 from '../components/automotive-v9/Work9.astro';
+import Voice9 from '../components/automotive-v9/Voice9.astro';
+import Offer9 from '../components/automotive-v9/Offer9.astro';
+import End9 from '../components/automotive-v9/End9.astro';
+import Exit9 from '../components/automotive-v9/Exit9.astro';
+import Audit9 from '../components/automotive-v9/Audit9.astro';
+import HeroDoor from '../components/automotive-doors/HeroDoor.astro';
+import MathDoor from '../components/automotive-doors/MathDoor.astro';
+import DoorTicker from '../components/automotive-doors/DoorTicker.astro';
+import { hero } from '../content/automotiveCopy';
+import { copyFor } from '../content/copySets';
+import { industries } from '../content/localCopy';
+import '../styles/v9.css';
+// the two text fonts are preloaded so the first layout already has them
+import soraFont from '@fontsource-variable/sora/files/sora-latin-wght-normal.woff2?url';
+import manropeFont from '@fontsource-variable/manrope/files/manrope-latin-wght-normal.woff2?url';
+
+const c = copyFor('local');
+// the "Your industry" menu in the top bar: one entry per industry page that exists
+const menuItems = industries.items.map((it) => ({ label: it.label, href: it.href, sub: it.sub, icon: it.icon, slug: it.slug }));
+const menu = { label: industries.menuLabel, title: industries.menuTitle, sub: industries.menuSub, all: industries.menuAll };
+---
+
+<BaseLayout
+  title="CNVRT X Front Office: You Got the Inquiry. Did You Get the Booking?"
+  description="A done-for-you front office for local businesses. Every call answered, every quote followed up, every booking confirmed. Built and tested for you."
+  canonical={new URL('/local', Astro.site).href}
+  noindex={true}
+  bodyClass="v9"
+  themeColor="#070B10"
+>
+  <Fragment slot="head">
+    <link rel="preload" as="font" type="font/woff2" href={soraFont} crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href={manropeFont} crossorigin />
+  </Fragment>
+  <Bar9 who="businesses" />
+  <Nav9 outcomes={menuItems} menu={menu} />
+  <main id="main" data-door="home">
+    <HeroDoor headline={hero.headlineLines as [string, string]} sub={c.hero9.sub} copy="local" />
+    <DoorTicker pairs={c.ticker9 as [string, string][]} />
+    <Pipe9 copy="local" />
+    <Leaks9 copy="local" />
+    {/* problem -> cost -> what you get -> your day -> why not hire -> try it -> plans */}
+    <Hook9 lines={c.hooks9.afterLeaks} />
+    <MathDoor set="local" />
+    <Stack9 copy="local" />
+    <Day9 copy="local" />
+    <Work9 copy="local" />
+    <Voice9 copy="local" />
+    <Offer9 gears copy="local" />
+    <End9 copy="local" />
+  </main>
+  <Exit9 copy="local" />
+  <Audit9 copy="local" />
+</BaseLayout>
+
+<script>
+  import { track } from '../scripts/analytics';
+
+  // which page brought this visitor: sent with the reserve form and checkout clicks
+  track('door_view', { door: 'home' });
+  const form = document.querySelector<HTMLFormElement>('[data-start9]');
+  if (form) {
+    const f = document.createElement('input');
+    f.type = 'hidden';
+    f.name = 'door';
+    f.value = 'home';
+    form.appendChild(f);
+  }
+
+  // Lower sections are rendered lazily, so their height is an estimate until they are seen.
+  // After an in-page jump settles, check the target really is at the top and nudge it if not.
+  document.addEventListener('click', (e) => {
+    const a = (e.target as HTMLElement | null)?.closest<HTMLAnchorElement>('a[href^="#"]');
+    const id = a?.getAttribute('href')?.slice(1);
+    const target = id ? document.getElementById(id) : null;
+    if (!target) return;
+    const t0 = performance.now();
+    let tries = 0;
+    const settle = () => {
+      if (e.defaultPrevented || performance.now() - t0 > 4000) return;
+      const pad = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0;
+      const margin = parseFloat(getComputedStyle(target).scrollMarginTop) || 0;
+      const off = target.getBoundingClientRect().top - pad - margin;
+      if (Math.abs(off) > 12 && tries++ < 3) {
+        window.scrollBy({ top: off, behavior: 'instant' });
+        window.setTimeout(settle, 140);
+      }
+    };
+    if ('onscrollend' in window) window.addEventListener('scrollend', settle, { once: true });
+    else window.setTimeout(settle, 900);
+  });
+</script>

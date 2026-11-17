@@ -1,0 +1,56 @@
+---
+/**
+ * "Email me my numbers": a quiet link under the calculator, for a visitor who wants to keep
+ * their result but is not ready to buy.
+ *
+ * It is a link, not a second form: it opens the Free Booking Leak Audit popup (Audit9) with
+ * "also email me my calculator numbers" ticked, so one form and one GHL workflow serve both.
+ * It shows only where the audit popup shows (see offerV9.forms.audit).
+ */
+import { copyFor, type CopySet } from '../../content/copySets';
+import { offerV9 as cfg } from '../../config/offerV9';
+
+interface Props {
+  /** Which wording to use: the auto pages' (default) or the general one. See content/copySets.ts. */
+  copy?: CopySet;
+}
+const { numbers9: n } = copyFor(Astro.props.copy);
+const show = Boolean(cfg.forms.audit) || import.meta.env.DEV;
+---
+
+{
+  show && (
+    <p class="nums">
+      <a href="#start" data-audit-open="numbers" data-track="numbers_link_click">
+        {n.label} <span aria-hidden="true">→</span>
+      </a>
+      <span>{n.note}</span>
+    </p>
+  )
+}
+
+<style>
+  /* kept small on purpose: the button beside it, to the price, is the main action */
+  .nums {
+    display: grid;
+    gap: 2px;
+    font-size: 0.875rem;
+  }
+  a {
+    justify-self: start;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 700;
+    color: #d8ff3e;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+  a:hover {
+    color: #fff;
+  }
+  .nums > span {
+    color: var(--fog);
+  }
+</style>

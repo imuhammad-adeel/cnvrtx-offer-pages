@@ -77,14 +77,14 @@ export const leaks9 = {
   items: [
     {
       pain: 'Missed calls',
-      fix: 'Texted back fast',
-      line: 'You are under a car. They call the next shop. Now a missed call gets a text back, so the lead stays with you.',
+      fix: 'Caught every time',
+      line: 'You are under a car. They call the next shop. Now every missed call lands on your phone as a job card, and callers who agreed to texts get a text back.',
       result: 'The lead stays yours',
     },
     {
       pain: 'Slow replies',
       fix: 'Answered right away',
-      line: 'You reply tonight. They booked at noon. Now forms, chat and DMs get a first reply right away.',
+      line: 'You reply tonight. They booked at noon. Now every new lead gets an instant email at any hour, and a text within a minute during texting hours.',
       result: 'You are first',
     },
     {
@@ -96,7 +96,7 @@ export const leaks9 = {
     {
       pain: 'No-shows',
       fix: 'Confirmed and reminded',
-      line: 'The bay is blocked and nobody comes. Now reminders go out with a one-tap reschedule.',
+      line: 'The bay is blocked and nobody comes. Now reminders go out, and the customer can reply MOVE to reschedule.',
       result: 'Bay time protected',
     },
     {
@@ -170,7 +170,7 @@ export const stack9 = {
       hlTag: 'Systems 6 and 7',
       solved: 'Great job, no review, no return. Now every customer is asked for a review and invited back.',
       parts: ['5-Star Review Machine', 'Repeat & Referral Engine'],
-      plan: 'The Service Advisor',
+      plan: 'The Service Advisor + The Shop Manager',
       viz: 'stars',
     },
     {
@@ -208,8 +208,8 @@ export const work9 = {
   totUs: 'The cars',
   yourPart: {
     label: 'Your part',
-    big: 'One short form.',
-    line: 'Tell us your services, hours and prices. Then go back to the cars.',
+    big: 'One form. One checklist.',
+    line: 'A short form about your services, hours and prices, plus a 15-minute access checklist. Then go back to the cars.',
   },
 };
 
@@ -238,7 +238,7 @@ export const offer9 = {
     yearTitle: 'What your year looks like',
     year: [
       'Week 2: your front desk is live and answering',
-      'Every week: missed calls texted back, quotes chased, bookings reminded',
+      'Every week: missed calls caught, quotes chased, bookings reminded',
       'Every job: a review request and a maintenance reminder',
       'All year: one price, nothing to manage',
     ],
@@ -248,7 +248,6 @@ export const offer9 = {
       { enabled: true, t: 'Full website built to book calls', d: 'Free on annual. A one-time add-on on monthly.' },
       { enabled: true, t: 'Past-customer win-back at launch', d: 'We invite your existing customer list back in week one.' },
       { enabled: true, t: 'Old-lead reactivation at launch', d: 'We message the leads that asked and never booked.' },
-      { enabled: true, t: 'Four seasonal campaigns', d: 'Spring detail, summer protection, fall prep and holiday gift cards.' },
       { enabled: false, t: 'Front of the build queue', d: 'Annual shops are built first.' },
     ],
     bonusLabel: 'Annual only',
@@ -266,14 +265,13 @@ export const offer9 = {
     cta: 'Claim founding pricing',
   },
   promises: [
-    { t: 'Live in 14 days, or month one is free', d: 'From the day we have your shop details and access.' },
-    { t: 'Every-Lead-Answered Promise', d: 'Miss one in your first 30 days and your next month is free.' },
+    { t: 'Live in 14 days, or month one is free', d: 'The clock starts when your form and access are in.' },
     { t: 'Love it or leave it', d: 'Month-to-month on monthly plans. Cancel anytime.' },
     { t: 'Your business stays yours', d: 'Your domain, content and customer list, exportable.' },
     { t: 'Keeps your shop software', d: 'It sits alongside the tools that run your jobs.' },
   ],
   finePrint:
-    'Live in 14 days: the clock starts when we have your shop details and access. Carrier (A2P), domain and third-party approvals are outside the 14 days. Every-Lead-Answered Promise: every missed call, web form and ad lead gets the response we set up; if the system misses one in your first 30 days, we fix it and your next month is free. Texts go only to people who agreed to them, after carrier approval. Phone-carrier and Meta outages are not included.',
+    'Live in 14 days: the clock starts when your form and access are in (Google, Facebook and call forwarding). Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours ({hours}).',
   /** PROPOSED. No refund involved: an unhappy annual customer can drop to monthly and use their payment as credit. Needs the owner's sign-off. */
   loveIt: {
     /** Annual: off (owner decision). The idea lives on Monthly as plain month-to-month. */
@@ -284,11 +282,12 @@ export const offer9 = {
   yearTitle: 'What your year looks like',
   year: [
     { k: 'Week 2', v: 'Your front desk is live and answering.' },
-    { k: 'Every week', v: 'Missed calls texted back. Quotes chased. Bookings reminded.' },
+    { k: 'Every week', v: 'Missed calls caught. Quotes chased. Bookings reminded.' },
     { k: 'Every job', v: 'A review request, then a maintenance reminder.' },
     { k: 'All year', v: 'One price. Nothing to manage.' },
   ],
-  usage: 'Fair-use calls, messages and AI for a single-location shop. Texting carrier fees are passed on at cost and shown to you before activation.',
+  /** `{allowance}` and `{hours}` are filled from config (offerV9.allowance, offerV9.textingHours). */
+  usage: 'Included every month: {allowance}. Texting carrier fees are passed on at cost and shown to you before activation.',
   honest: 'We do not guarantee bookings or revenue. We guarantee the work we control.',
 };
 
@@ -298,7 +297,7 @@ export const start9 = {
   lead: 'Your front office can be live in 14 days. No demo, no sales call. Pick annual or monthly and the build starts.',
   steps: [
     { t: 'Pick annual or monthly', d: 'Checkout takes a couple of minutes.' },
-    { t: 'Fill one short form', d: 'Your services, hours, prices and logo. That is your whole part.' },
+    { t: 'Fill one short form and the access checklist', d: 'Your services, hours, prices and logo. Then about 15 minutes of access: Google, Facebook, call forwarding and your texting registration details.' },
     { t: 'Your front desk goes live', d: 'Booking page, number, app, follow-up and reminders, built and tested for you.' },
   ],
   formTitle: 'Reserve your build',
@@ -327,7 +326,7 @@ export const faq9 = {
     },
     {
       q: 'How much of my time does it take?',
-      a: 'One short form about your services, hours and prices. We do the rest. After launch you reply to customers from the app when a human answer is needed.',
+      a: 'One short form about your services, hours and prices, plus a 15-minute access checklist: Google, Facebook, call forwarding, your domain and the business details the phone carrier asks for. We do the rest. After launch you reply to customers from the app when a human answer is needed.',
     },
     {
       q: 'Do I have to talk to a salesperson?',
@@ -347,7 +346,11 @@ export const faq9 = {
     },
     {
       q: 'Can you guarantee bookings?',
-      a: 'No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control: a tested system, live in 14 days or your first month is free, and every lead answered in your first 30 days or your next month is free.',
+      a: 'No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control: a tested system, live in 14 days or your first month is free.',
+    },
+    {
+      q: 'What is included each month?',
+      a: 'Each month includes {allowance}. That covers a typical single-location shop. If you are close to a limit we tell you before anything extra is charged.',
     },
     {
       q: 'Can I cancel?',
@@ -369,6 +372,18 @@ export const exit9 = {
   founding: 'Founding program: Launch Kit waived and your price locked while you stay subscribed, for the first 10 qualifying shops.',
   cta: 'See the plans',
   no: 'No thanks',
+  /**
+   * The leaving offer (offerV9.exitOffer). `{kit}` is the reduced Launch Kit, `{was}` the regular
+   * one and `{save}` the difference. The saving is stated in dollars, which is exact.
+   */
+  offer: {
+    eyebrow: 'Before you go',
+    title: 'Take {save} off your Launch Kit.',
+    priceNote: 'one-time Launch Kit, instead of {was}',
+    line: 'Start monthly today and your one-time Launch Kit is {kit}, not {was}. The plan itself stays {monthly} a month, cancel anytime.',
+    cta: 'Start Monthly with the {kit} Launch Kit',
+    no: 'No thanks',
+  },
 };
 
 /** Short hook lines shown as full-width statements between sections. */
@@ -385,22 +400,38 @@ export const flow9 = {
   thanksPath: '/thank-you',
   onboarding: {
     kicker: 'Payment received',
-    title: ['You are in.', 'One short form and we build.'],
-    lead: 'Tell us how your shop works. It takes a few minutes and it is the only thing we need from you.',
-    clock: 'Your 14-day launch clock starts the moment this form is in.',
+    title: ['You are in.', 'One form and one checklist.'],
+    lead: 'Tell us how your shop works, then tick off the access checklist. It takes about 15 minutes and it is all we need from you.',
+    clock: 'Your 14-day launch clock starts when your form and access are in.',
     steps: ['Joined', 'Shop details', 'We build', 'Live'],
     later: 'I will do this later',
-    laterNote: 'We email you this link. The 14 days start when the form is in.',
+    laterNote: 'We email you this link. The 14 days start when your form and access are in.',
     submit: 'Send my shop details',
+    /** Shown only when the address carries the marker the checkout adds after a real payment. */
+    paidTitle: 'You are in.',
+    openKicker: 'Shop details',
+    access: {
+      title: 'Access checklist',
+      time: 'About 15 minutes',
+      lead: 'Tick what you can give us. We email the exact steps for each one.',
+      items: [
+        { k: 'google', t: 'Google Business Profile', d: 'Add us as a manager.' },
+        { k: 'meta', t: 'Facebook and Instagram', d: 'Add us as a partner in Meta Business.' },
+        { k: 'forwarding', t: 'Call forwarding', d: 'Forward missed calls from your shop line.' },
+        { k: 'domain', t: 'Your domain', d: 'A login or DNS access, for your booking page.' },
+        { k: 'reviews', t: 'Google review link', d: 'The link customers use to leave a review.' },
+        { k: 'a2p', t: 'Texting registration', d: 'Legal business name, EIN letter and the owner\u2019s confirmation. The phone carrier requires these.' },
+      ],
+    },
   },
   thanks: {
     kicker: 'All set',
     titleDone: ['Thank you.', 'Your build has started.'],
     titleLater: ['Thank you.', 'One step left.'],
-    leadDone: 'We have your shop details. Here is what happens next.',
-    leadLater: 'Your spot is saved. Send your shop details when you are ready and the 14-day clock starts.',
+    leadDone: 'We have your shop details. Here is what happens next. The 14-day clock starts when your access is in too.',
+    leadLater: 'Your spot is saved. The 14-day clock starts when your form and access are in.',
     next: [
-      { t: 'Today', d: 'You get a welcome email with your login and the mobile app link.' },
+      { t: 'Within 1 business day', d: 'You get a welcome email with your login and the mobile app link.' },
       { t: 'This week', d: 'We build your booking page, number, inbox, follow-up and reminders.' },
       { t: 'Before launch', d: 'We test every flow end to end and send you a preview.' },
       { t: 'Within 14 days', d: 'Your front desk goes live. We tell you the moment it does.' },
@@ -453,16 +484,17 @@ export const plans9 = {
       name: 'Lead Lock',
       promise: 'Never miss a lead',
       systems: [
-        { n: 'Missed-Call Rescue', d: 'A text back and a job card for every missed call.' },
-        { n: '60-Second Lead Response', d: 'Web, Facebook and Instagram leads answered right away.' },
+        { n: 'Missed-Call Rescue', d: 'Every missed call becomes a job card. Callers who agreed to texts get a text back.' },
+        { n: '60-Second Lead Response', d: 'An instant email at any hour. A text within a minute during texting hours.' },
         { n: '24/7 AI Front Desk', d: 'Answers calls, chat and DMs, day and night.' },
       ],
       detail: [
-        'Missed-call text back, only to callers who agreed to texts, after carrier approval',
         'Every missed call becomes a job card on your phone',
+        'Missed-call text back, only to callers who agreed to texts, after carrier approval',
+        'Callers who have not agreed to texts: you get a call-back task, and the AI phone backup can answer where it is set up',
         'AI phone backup: answers when you can\u2019t, day or night',
-        'Website, Facebook and Instagram lead forms answered right away',
-        '\u201cCall now\u201d alert when a new lead hasn\u2019t replied',
+        'Website, Facebook and Instagram leads get an instant email at any hour and a text within a minute during texting hours',
+        '\u201cCall now\u201d alert to you when a new lead hasn\u2019t replied after 5 minutes',
         'One inbox for calls, texts, chat and DMs, plus the mobile app',
         '24/7 AI front desk on your website chat, Facebook and Instagram, plus a website voice line',
         'Your own local number (US) and a free-inspection booking page',
@@ -518,7 +550,6 @@ export const plans9 = {
       { k: 'Full website built to book calls', a: 'Free', m: '{site} add-on' },
       { k: 'Past-customer win-back at launch', a: 'Free', m: 'Not included' },
       { k: 'Old-lead reactivation at launch', a: 'Free', m: 'Not included' },
-      { k: 'Four seasonal campaigns', a: 'Free', m: 'Not included' },
       { k: 'Commitment', a: 'Paid once a year', m: 'Month-to-month. Cancel anytime.' },
     ],
     note: 'Win-back, reactivation and Dead-Lead Revival go by email, and by text only to customers who agreed to texts.',
@@ -636,11 +667,127 @@ export const day9 = {
   colAfter: 'With CNVRT X',
   rows: [
     { time: '7:30 AM', before: 'You scroll texts and DMs to work out your day.', after: 'One email with today\u2019s jobs and who\u2019s waiting.' },
-    { time: '10:15 AM', before: 'The phone rings while you\u2019re under a car.', after: 'They get a text back. A job card lands on your phone.' },
+    { time: '10:15 AM', before: 'The phone rings while you\u2019re under a car.', after: 'The call is caught. A job card lands on your phone.' },
     { time: '4:00 PM', before: 'Yesterday\u2019s quote went quiet, and you forgot.', after: 'Polite follow-ups go out until they book or say no.' },
     { time: '6:00 PM', before: 'Tomorrow\u2019s customer hasn\u2019t confirmed.', after: 'They get \u201cReply YES or MOVE\u201d. Tomorrow\u2019s run sheet is on your phone.' },
     { time: '11:00 PM', before: 'An Instagram DM waits until morning.', after: 'Your AI front desk answers and books the free inspection.' },
   ],
   close: 'Same shop. Same cars. A different evening.',
   note: 'An example day. Texts go only to people who agreed to them, after carrier approval.',
+};
+
+/**
+ * Free Booking Leak Audit: the offer for a visitor who is not ready to buy. It opens after
+ * the exit popup is closed, from the footer and from the link under the price cards.
+ * No timeframe is promised here on purpose. Add one only when it can be kept.
+ */
+export const audit9 = {
+  eyebrow: 'Free. No sales call.',
+  title: 'Free Booking Leak Audit',
+  line: 'Find the 3 places your shop is most likely losing booked jobs.',
+  gets: ['Your Booking Leak Score', 'Where replies, quotes, bookings and reviews slip', 'Your top 3 fixes, in order'],
+  how: 'We look at what a customer can see from outside. No login needed. We send it to your email.',
+  fields: {
+    business: 'Business name',
+    site: 'Website or Google profile link',
+    service: 'Primary service',
+    email: 'Email',
+    phone: 'Phone',
+    inquiries: 'About how many inquiries a month? (optional)',
+  },
+  /** Ticked for the visitor when they came from "Email me my numbers". */
+  numbers: 'Also email me my calculator numbers',
+  submit: 'Send My Free Audit',
+  consent: 'By sending this you agree that CNVRT X may contact you about your audit by email or phone.',
+  sent: { title: 'Request received.', body: 'We will send your Booking Leak Audit to your email.' },
+  error: 'We could not send this right now. Please try again in a moment.',
+  /** Shown where the audit is offered on the page. */
+  link: 'Not ready to buy? Get a free Booking Leak Audit',
+  footerLink: 'Free Booking Leak Audit',
+  preview: 'Preview: this form is not connected yet, so it is left off the live site.',
+};
+
+/** Under the calculator: a quiet link that opens the free audit form, so there is one form, not two. */
+export const numbers9 = {
+  label: 'Email me my numbers',
+  note: 'Not ready yet? Get them with a free Booking Leak Audit.',
+};
+
+/** "Who's behind CNVRT X". The details come from offerV9.about and offerV9.contact. */
+export const about9 = {
+  kicker: 'Who you are buying from',
+  title: ['Who\u2019s behind', 'CNVRT X.'],
+  videoLabel: 'See the real screens',
+  videoNote: 'A short walkthrough of the owner app, the inbox and the run sheet.',
+  storyLabel: 'Running today',
+  contactLabel: 'Reach us',
+  preview: 'Preview: this section stays off the live site until real details are added in src/config/offerV9.ts (about and contact).',
+  missing: {
+    founder: 'Founder name, role, photo and a few lines about them',
+    video: '60 to 90 second walkthrough video of the real screens',
+    story: 'The shop story, once its owner agrees',
+    contact: 'Email, phone and address',
+  },
+};
+
+/**
+ * Waitlist for other trades. The site is auto-first: one offer built for one industry.
+ * A visitor from another trade leaves their trade and email. No date is promised.
+ */
+export const waitlist9 = {
+  eyebrow: 'Not an auto shop?',
+  title: 'Join the waitlist for your trade.',
+  line: 'CNVRT X Front Office is built for auto shops first. Tell us your trade and we will email you when your version is ready.',
+  fields: { trade: 'Your trade', business: 'Business name (optional)', email: 'Email' },
+  trades: ['Roofing', 'HVAC', 'Plumbing', 'Landscaping', 'Electrical', 'Cleaning'],
+  submit: 'Join the Waitlist',
+  note: 'One email when your trade is ready. Nothing else.',
+  sent: { title: 'You are on the list.', body: 'We will email you when the version for your trade is ready.' },
+  error: 'We could not send this right now. Please try again in a moment.',
+  footerLink: 'Not an auto shop? Join the waitlist',
+  preview: 'Preview: this form is not connected yet, so it is left off the live site.',
+};
+
+/**
+ * The checkout page (offerV9.checkoutPath). One job: take the payment. No menu, no other offers.
+ * `{annual}`, `{monthly}`, `{kit}`, `{offerKit}`, `{site}` and `{hours}` are filled from config.
+ */
+export const checkout9 = {
+  secure: 'Secure checkout',
+  back: 'Back to the site',
+  title: ['Start your front office.', 'Live in 14 days.'],
+  sub: 'Pick how you pay. Then one short form and a 15-minute access checklist, and we build.',
+  switchLabel: 'Billing',
+  annual: {
+    name: 'Annual',
+    tag: 'Best value',
+    price: '{annual}',
+    per: '/yr',
+    lines: ['Launch Kit waived. You save {kit}.', 'Two months included: pay 10, get 12.', 'Full website included ({site} on monthly).'],
+    dueLabel: 'Due today',
+    due: '{annual}',
+  },
+  monthly: {
+    name: 'Monthly',
+    price: '{monthly}',
+    per: '/mo',
+    lines: ['Month-to-month. Cancel anytime.', 'One-time Launch Kit: {kit}.'],
+    offerLine: 'One-time Launch Kit: {offerKit}, not {kit}.',
+    offerTag: 'Leaving offer applied',
+    dueLabel: 'Due today',
+    dueNote: 'First month plus the one-time Launch Kit. Then {monthly} a month.',
+  },
+  includesTitle: 'In your plan',
+  includes: ['The Receptionist: missed calls caught, new leads answered', 'The Service Advisor: quotes followed up, bookings confirmed, reviews asked for', 'The Shop Manager: your daily brief, run sheet and ad results'],
+  nextTitle: 'What happens next',
+  next: ['Pay securely on this page', 'Fill one short form and the access checklist', 'Your front desk goes live within 14 days of both'],
+  promises: ['Live in 14 days, or your first month is free', 'No sales call', 'Your domain, content and customer list stay yours'],
+  payTitle: 'Payment',
+  /** Shown in the payment panel until the order form link is set in config. */
+  notOpen: {
+    title: 'Checkout is being connected.',
+    body: 'Card payment opens on this page shortly. Nothing has been charged.',
+  },
+  preview: 'Preview: no order form link is set yet. Add the GHL order form links in src/config/offerV9.ts (checkout, and exitOffer.checkout for the leaving offer).',
+  fine: 'Annual payments are not refundable. Texting carrier fees are passed on at cost and shown to you before activation.',
 };

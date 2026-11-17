@@ -20,7 +20,8 @@ const dist = path.join(root, 'dist');
 const run = (cmd, cwd = root) => execSync(cmd, { cwd, stdio: 'inherit' });
 const out = (cmd, cwd = root) => execSync(cmd, { cwd, encoding: 'utf8' }).trim();
 // pages that are for internal review only and should not be published
-const SKIP = [new RegExp('^automotive/v8(/|$)'), new RegExp('^automotive/for/index[.]html$')];
+// also not published: the general page kept for later
+const SKIP = [new RegExp('^automotive/v8(/|$)'), new RegExp('^automotive/for/index[.]html$'), new RegExp('^local(/|$)')];
 
 if (!process.argv.includes('--no-build')) run('npm run build');
 

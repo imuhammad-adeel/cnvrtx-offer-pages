@@ -1,47 +1,51 @@
 ---
 /**
- * Home page: get.cnvrtx.com/
- * The auto page (/auto), section for section, written for ANY local business.
- * Same design, same offer, same prices. No trade is named here.
- *
- * Words: src/content/localCopy.ts. Prices and links: src/config/offerV9.ts.
- * Every section is given copy="local" so it reads the general wording.
- * Left out on purpose: the car that drives down the auto page (Car9).
+ * Version 9. Same design system as v8 (v8 itself is untouched).
+ * New offer: three plans named after the role the owner no longer has to hire.
+ * New sections: live voice demo, run sheet, hire comparison, three-plan pricing.
+ * Prices and links: src/config/offerV9.ts. Words: src/content/automotiveCopyV9.ts.
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Bar9 from '../components/automotive-v9/Bar9.astro';
 import Nav9 from '../components/automotive-v9/Nav9.astro';
+import Hero9 from '../components/automotive-v9/Hero9.astro';
+import Ticker9 from '../components/automotive-v9/Ticker9.astro';
 import Pipe9 from '../components/automotive-v9/Pipe9.astro';
 import Leaks9 from '../components/automotive-v9/Leaks9.astro';
-import Hook9 from '../components/automotive-v9/Hook9.astro';
+import Math9 from '../components/automotive-v9/Math9.astro';
 import Stack9 from '../components/automotive-v9/Stack9.astro';
-import Day9 from '../components/automotive-v9/Day9.astro';
 import Work9 from '../components/automotive-v9/Work9.astro';
 import Voice9 from '../components/automotive-v9/Voice9.astro';
+import Day9 from '../components/automotive-v9/Day9.astro';
 import Offer9 from '../components/automotive-v9/Offer9.astro';
 import End9 from '../components/automotive-v9/End9.astro';
+import Hook9 from '../components/automotive-v9/Hook9.astro';
+import { hooks9 } from '../content/automotiveCopyV9';
+import Bar9 from '../components/automotive-v9/Bar9.astro';
+import Car9 from '../components/automotive-v9/Car9.astro';
 import Exit9 from '../components/automotive-v9/Exit9.astro';
-import Checkout9 from '../components/automotive-v9/Checkout9.astro';
-import HeroDoor from '../components/automotive-doors/HeroDoor.astro';
-import MathDoor from '../components/automotive-doors/MathDoor.astro';
-import DoorTicker from '../components/automotive-doors/DoorTicker.astro';
-import { hero } from '../content/automotiveCopy';
-import { copyFor } from '../content/copySets';
-import { industries } from '../content/localCopy';
+import Audit9 from '../components/automotive-v9/Audit9.astro';
+import Waitlist9 from '../components/automotive-v9/Waitlist9.astro';
+import { automotiveOffer } from '../config/automotiveOffer';
 import '../styles/v9.css';
+import { doors, doorIcons } from '../content/automotiveDoors';
+// the main page's menu also links to the problem-specific pages, named as outcomes
+import { offerV9 } from '../config/offerV9';
+// priority order from config: listed slugs first, in that order, then the rest as written
+const rank = (slug: string) => {
+  const i = offerV9.outcomes.order.indexOf(slug);
+  return i < 0 ? 999 : i;
+};
+const outcomes = [...doors]
+  .sort((a, b) => rank(a.slug) - rank(b.slug))
+  .map((d) => ({ label: d.outcome, href: `/auto/${d.slug}`, sub: d.system, icon: doorIcons[d.slug] || '', slug: d.slug }));
 // the two text fonts are preloaded so the first layout already has them
 import soraFont from '@fontsource-variable/sora/files/sora-latin-wght-normal.woff2?url';
 import manropeFont from '@fontsource-variable/manrope/files/manrope-latin-wght-normal.woff2?url';
-
-const c = copyFor('local');
-// the "Your industry" menu in the top bar: one entry per industry page that exists
-const menuItems = industries.items.map((it) => ({ label: it.label, href: it.href, sub: it.sub, icon: it.icon, slug: it.slug }));
-const menu = { label: industries.menuLabel, title: industries.menuTitle, sub: industries.menuSub, all: industries.menuAll };
 ---
 
 <BaseLayout
-  title="CNVRT X Front Office: You Got the Inquiry. Did You Get the Booking?"
-  description="A done-for-you front office for local businesses. Every call answered, every quote followed up, every booking confirmed. Built and tested for you."
+  title="CNVRT X Front Office for Auto Shops: You Got the Inquiry. Did You Get the Booking?"
+  description="A done-for-you front desk for detailing, coating, PPF, tint and aftermarket shops. Every call answered, every quote followed up, every booking confirmed. Built and tested for you."
   canonical={new URL('/', Astro.site).href}
   noindex={true}
   bodyClass="v9"
@@ -51,41 +55,30 @@ const menu = { label: industries.menuLabel, title: industries.menuTitle, sub: in
     <link rel="preload" as="font" type="font/woff2" href={soraFont} crossorigin />
     <link rel="preload" as="font" type="font/woff2" href={manropeFont} crossorigin />
   </Fragment>
-  <Bar9 who="businesses" />
-  <Nav9 outcomes={menuItems} menu={menu} />
-  <main id="main" data-door="home">
-    <HeroDoor headline={hero.headlineLines as [string, string]} sub={c.hero9.sub} copy="local" />
-    <DoorTicker pairs={c.ticker9 as [string, string][]} />
-    <Pipe9 copy="local" />
-    <Leaks9 copy="local" />
+  <Bar9 />
+  <Nav9 outcomes={outcomes} countsUrl={offerV9.outcomes.countsUrl} />
+  <main id="main">
+    <Hero9 />
+    <Ticker9 />
+    <Pipe9 />
+    <Leaks9 />
     {/* problem -> cost -> what you get -> your day -> why not hire -> try it -> plans */}
-    <Hook9 lines={c.hooks9.afterLeaks} />
-    <MathDoor set="local" />
-    <Stack9 copy="local" />
-    <Day9 copy="local" />
-    <Work9 copy="local" />
-    <Voice9 copy="local" />
-    <Offer9 gears copy="local" />
-    <End9 copy="local" />
+    <Hook9 lines={hooks9.afterLeaks} />
+    <Math9 />
+    <Stack9 />
+    <Day9 />
+    <Work9 />
+    <Voice9 />
+    <Offer9 gears />
+    <End9 />
   </main>
-  <Exit9 copy="local" />
-  <Checkout9 copy="local" />
+  <Car9 />
+  <Exit9 />
+  <Audit9 />
+  <Waitlist9 />
 </BaseLayout>
 
 <script>
-  import { track } from '../scripts/analytics';
-
-  // which page brought this visitor: sent with the reserve form and checkout clicks
-  track('door_view', { door: 'home' });
-  const form = document.querySelector<HTMLFormElement>('[data-start9]');
-  if (form) {
-    const f = document.createElement('input');
-    f.type = 'hidden';
-    f.name = 'door';
-    f.value = 'home';
-    form.appendChild(f);
-  }
-
   // Lower sections are rendered lazily, so their height is an estimate until they are seen.
   // After an in-page jump settles, check the target really is at the top and nudge it if not.
   document.addEventListener('click', (e) => {
@@ -96,7 +89,7 @@ const menu = { label: industries.menuLabel, title: industries.menuTitle, sub: in
     const t0 = performance.now();
     let tries = 0;
     const settle = () => {
-      if (e.defaultPrevented || performance.now() - t0 > 4000) return;
+      if (e.defaultPrevented || performance.now() - t0 > 4000) return; // a popup took the click, or the user moved on
       const pad = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0;
       const margin = parseFloat(getComputedStyle(target).scrollMarginTop) || 0;
       const off = target.getBoundingClientRect().top - pad - margin;

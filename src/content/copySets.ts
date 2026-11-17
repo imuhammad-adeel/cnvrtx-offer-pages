@@ -16,6 +16,9 @@ const auto = { ...v9, doorCommon, doorPageCommon, gears };
 const general: typeof auto = {
   ...auto,
   hero9: local.hero9,
+  audit9: local.audit9,
+  numbers9: local.numbers9,
+  about9: local.about9,
   pipe9: local.pipe9,
   leaks9: local.leaks9,
   stack9: local.stack9,

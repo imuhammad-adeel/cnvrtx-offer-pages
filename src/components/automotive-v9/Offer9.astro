@@ -6,7 +6,7 @@
  * Prices and checkout links: src/config/offerV9.ts. Words: plans9 / offer9.
  */
 import { copyFor, type CopySet } from '../../content/copySets';
-import { offerV9 as cfg, featuredPlan as plan, checkoutHref } from '../../config/offerV9';
+import { offerV9 as cfg, featuredPlan as plan, fillOffer } from '../../config/offerV9';
 import Gears from '../automotive-doors/Gears.astro';
 
 /** `gears` shows the three roles as three gears above the price cards (trial on one door page). */
@@ -18,12 +18,14 @@ interface Props {
   /** Which wording to use: the auto pages' (default) or the general one. See content/copySets.ts. */
   copy?: CopySet;
 }
-const { offer9: f, plans9: c } = copyFor(Astro.props.copy);
+const { offer9: f, plans9: c, audit9 } = copyFor(Astro.props.copy);
+// the free audit is offered only once its form is connected (always on localhost, for review)
+const auditOn = Boolean(cfg.forms.audit) || import.meta.env.DEV;
 const { gears = false, title = f.title as [string, string], sub = f.sub } = Astro.props;
 
 const fmt = (n: number) => '$' + n.toLocaleString('en-US');
-// '' when checkout is not live or the link is missing: the button then goes to the reserve form
-const href = { annual: checkoutHref(plan.id, 'annual'), monthly: checkoutHref(plan.id, 'monthly') };
+// both buttons open this industry's checkout page with the way of paying preselected
+const href = { annual: `${cfg.checkoutPath}?plan=annual`, monthly: `${cfg.checkoutPath}?plan=monthly` };
 const perMonth = Math.round(plan.annual / 12);
 const bonuses = f.annual.bonuses.filter((b) => b.enabled);
 const left = cfg.foundingSpotsLeft;
@@ -36,11 +38,9 @@ const fill = (t: string) =>
 const arrow =
   '<svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11M11 5.500 15.500 10 11 14.500" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>';
 const cta = (interval: 'annual' | 'monthly') => ({
-  href: href[interval] || '#start',
+  href: href[interval],
   'data-plan-cta': plan.id,
   'data-interval': interval,
-  // with a live checkout link the button opens the checkout popup
-  'data-checkout': href[interval] ? plan.id : undefined,
   'data-track': 'cta_click',
   'data-track-location': 'pricing',
   'data-track-plan': `${plan.id}_${interval}`,
@@ -180,7 +180,7 @@ const cta = (interval: 'annual' | 'monthly') => ({
             c.roles.map((r) => (
               <div>
                 <p class="d-h">
-                  {r.role} <span>{r.name}</span>
+                  {r.role}
                 </p>
                 <ul role="list" class="d-l">
                   {r.detail.map((x) => <li>{x}</li>)}
@@ -196,7 +196,14 @@ const cta = (interval: 'annual' | 'monthly') => ({
     <ul role="list" class="promises">
       {f.promises.map((p) => <li><b>{p.t}</b><span>{p.d}</span></li>)}
     </ul>
-    <p class="fine">{f.finePrint} {f.honest} {f.usage}</p>
+    <p class="fine">{fillOffer(f.finePrint)} {f.honest} {fillOffer(f.usage)}</p>
+    {auditOn && (
+      <p class="aud">
+        <a href="#start" data-audit-open="pricing" data-track="audit_link_click" data-track-location="pricing">
+          {audit9.link} <span aria-hidden="true">→</span>
+        </a>
+      </p>
+    )}
   </div>
   {/* scroll distance used while the gears shift; Gears.astro sets its height */}
   {gears && <div data-gear-space aria-hidden="true" />}
@@ -625,6 +632,25 @@ const cta = (interval: 'annual' | 'monthly') => ({
   }
 
   /* ---------- guarantees ---------- */
+  /* for a visitor who is not ready to buy */
+  .aud {
+    margin-top: var(--s-5);
+    text-align: center;
+  }
+  .aud a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 44px;
+    font-family: var(--f-head);
+    font-weight: 700;
+    color: #d8ff3e;
+    text-decoration: underline;
+    text-underline-offset: 5px;
+  }
+  .aud a:hover {
+    color: #fff;
+  }
   .promises {
     margin: clamp(2rem, 1.5rem + 2vw, 3.5rem) 0 0;
     display: grid;
