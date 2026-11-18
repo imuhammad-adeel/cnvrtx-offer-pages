@@ -1,5 +1,10 @@
 ---
-/** Last step of the flow. Shows "build started" or, with ?later=1, "one step left". */
+/**
+ * After checkout, and again after onboarding.
+ *   /thank-you?paid=1  : straight after payment. "One step left", with a button to the onboarding form.
+ *   /thank-you?later=1 : they chose to fill the form later. Same view.
+ *   /thank-you         : the onboarding form is in. "Your build has started."
+ */
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { flow9 } from '../content/automotiveCopyV9';
 import '../styles/v9.css';
@@ -49,7 +54,11 @@ const t = flow9.thanks;
 
 <script>
   import { track } from '../scripts/analytics';
-  const later = new URLSearchParams(location.search).get('later') === '1';
+  const q = new URLSearchParams(location.search);
+  const paid = q.has('paid');
+  const later = paid || q.get('later') === '1';
+  // the onboarding page shows "Payment received" only when it is told the buyer came from checkout
+  if (paid) document.querySelectorAll<HTMLAnchorElement>('a[data-track="thanks_finish_click"]').forEach((a) => (a.href = a.getAttribute('href') + '?paid=1'));
   document.querySelectorAll<HTMLElement>('[data-when]').forEach((el) => (el.hidden = (el.dataset.when === 'later') !== later));
   track('thank_you_view', { later });
 

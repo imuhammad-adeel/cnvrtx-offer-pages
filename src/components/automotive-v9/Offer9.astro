@@ -24,8 +24,9 @@ const auditOn = Boolean(cfg.forms.audit) || import.meta.env.DEV;
 const { gears = false, title = f.title as [string, string], sub = f.sub } = Astro.props;
 
 const fmt = (n: number) => '$' + n.toLocaleString('en-US');
-// both buttons open this industry's checkout page with the way of paying preselected
-const href = { annual: `${cfg.checkoutPath}?plan=annual`, monthly: `${cfg.checkoutPath}?plan=monthly` };
+// Both buttons go to the reserve form with the way of paying preselected. The form sends the
+// details to GHL first, then opens the matching checkout page.
+const href = { annual: '#start', monthly: '#start' };
 const perMonth = Math.round(plan.annual / 12);
 const bonuses = f.annual.bonuses.filter((b) => b.enabled);
 const left = cfg.foundingSpotsLeft;

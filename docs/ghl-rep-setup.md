@@ -18,7 +18,7 @@ The site then:
 
 | Where | How the code arrives in GoHighLevel |
 | --- | --- |
-| Checkout (order form in a frame) | Added to the order form's address: `...?rep=steve` |
+| Checkout (pages built in AI Studio, same site) | Read by the checkout page from the browser: `sessionStorage` key `cnvrtx_attribution`, or `localStorage` key `cnvrtx_rep` |
 | Reserve form | Field `rep` |
 | Free Booking Leak Audit form | Field `rep` |
 | Waitlist form | Field `rep` |
@@ -55,7 +55,7 @@ In GoHighLevel, make one contact custom field for each of these nine names, with
 ## What to set up in GoHighLevel
 
 1. **A contact custom field** named "Sales Rep", key `rep`, single line text. Every form and order form writes to it.
-2. **Order forms must read the code from their address.** On each of the three order forms (Monthly, Annual, Monthly with the $297 Launch Kit), add a hidden field mapped to the "Sales Rep" custom field with the query key `rep`. Without this the code is dropped at payment, which is the one place it matters most.
+2. **The checkout pages must save the code with the order.** The three checkout pages are built in AI Studio on the same site, so they read the code from the browser and save it to the "Sales Rep" field (see `ai-studio-checkout-prompt.md`). Without this the code is dropped at payment, which is the one place it matters most.
 3. **Webhook workflows must map the field.** In the Booking Leak Audit and Trade Waitlist workflows, map the incoming `rep` value to the "Sales Rep" custom field.
 4. **Tag by rep.** When "Sales Rep" is not empty, add the tag `rep-` followed by the code, for example `rep-steve`.
 5. **Assign the owner.** Keep a small lookup of code to GoHighLevel user (steve to Steve's user). On a new contact or opportunity with a known code, assign that user as the owner. With an unknown or empty code, leave it unassigned and notify the admin.

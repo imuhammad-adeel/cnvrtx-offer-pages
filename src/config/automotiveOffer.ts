@@ -29,9 +29,14 @@ export const automotiveOffer = {
    *   onboarding : the shop details form on /onboarding
    *   audit      : the Free Booking Leak Audit popup (also "Email me my numbers")
    *   waitlist   : the waitlist for other trades
-   * Every form also sends `source_form` with its name, the rep code and the traffic source.
+   * Each form sends exactly the fields its GHL workflow expects; the lists are in src/scripts/forms.ts.
    */
-  endpoints: { reserve: '', onboarding: '', audit: '', waitlist: '' },
+  endpoints: {
+    reserve: 'https://services.leadconnectorhq.com/hooks/CqMKqHlS4V373fJcEn5k/webhook-trigger/rqBlDvUt18TszDZ0L305',
+    onboarding: 'https://services.leadconnectorhq.com/hooks/CqMKqHlS4V373fJcEn5k/webhook-trigger/503xsigxrMtHa2JpBBdi',
+    audit: 'https://services.leadconnectorhq.com/hooks/CqMKqHlS4V373fJcEn5k/webhook-trigger/9f785e6d-02a6-46bc-9321-e89ca8a1c0ad',
+    waitlist: 'https://services.leadconnectorhq.com/hooks/CqMKqHlS4V373fJcEn5k/webhook-trigger/7Z3USbji7Tge72ilnMqG',
+  },
   /** Older settings, kept so earlier versions of the page still build. Not used by the current site. */
   auditFormUrl: '',
   auditFormMode: 'unconfigured' as AuditFormMode,

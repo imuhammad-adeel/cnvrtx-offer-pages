@@ -782,10 +782,10 @@ export const checkout9 = {
   nextTitle: 'What happens next',
   next: ['Pay securely on this page', 'Fill one short form and the access checklist', 'Your front desk goes live within 14 days of both'],
   promises: ['Live in 14 days, or your first month is free', 'No sales call', 'Your domain, content and customer list stay yours'],
-  payTitle: 'Payment',
+  payTitle: 'Next step',
   /** Shown when the order page opens on its own (offerV9.checkoutEmbed is false). */
-  payCta: 'Continue to secure payment',
-  payNote: 'You pay on our secure payment page. Then one short form and the access checklist.',
+  payCta: 'Continue',
+  payNote: 'Next: your name and email, then secure payment. After that, one short form and the access checklist.',
   /** Shown in the payment panel until the order form link is set in config. */
   notOpen: {
     title: 'Checkout is being connected.',

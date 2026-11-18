@@ -96,7 +96,7 @@ const smsLinks = [
     </div>
 
     <div class="shell">
-      <form class="form" data-start9 data-mode={mode} data-checkout-path={cfg.checkoutPath} data-hrefs={JSON.stringify(hrefs)} action={o.endpoints.reserve || undefined} method="post" novalidate>
+      <form class="form" data-start9 data-mode={mode} data-co-live={live ? '' : undefined} data-co-annual={cfg.checkout[plans[0].id].annual} data-co-monthly={cfg.checkout[plans[0].id].monthly} data-co-kit={cfg.exitOffer.enabled ? cfg.exitOffer.checkout : ''} data-hrefs={JSON.stringify(hrefs)} action={o.endpoints.reserve || undefined} method="post" novalidate>
         <div class="fh">
           <h3>{live ? 'Start your build' : e.formTitle}</h3>
           <span>No sales call</span>
@@ -119,7 +119,10 @@ const smsLinks = [
             <b>{money(plans[0].annual)}</b> a year. Launch Kit waived.
           </p>
           <p class="op" data-ivl-show="monthly" hidden>
-            <b>{money(plans[0].monthly)}</b> a month + {money(plans[0].launchKit)} one-time Launch Kit.
+            <b>{money(plans[0].monthly)}</b> a month + <span data-kit-regular>{money(plans[0].launchKit)}</span>
+            <span data-kit-offer hidden>
+              <b>{money(cfg.exitOffer.launchKit)}</b> <s>{money(plans[0].launchKit)}</s>
+            </span> one-time Launch Kit.
           </p>
         </div>
         <p class="found">
@@ -133,17 +136,7 @@ const smsLinks = [
           <p class="g-n">{e.gainNote}</p>
         </div>
 
-        {
-          live && startHref ? (
-            <>
-              <a class="go" data-spot data-start-go href={`${cfg.checkoutPath}?plan=annual`} data-interval="annual" data-track="start_checkout_click">
-                Continue to secure checkout
-              </a>
-              <p class="f-note">Next: secure checkout, then one short form and a 15-minute access checklist.</p>
-            </>
-          ) : (
-            <>
-              <p class="f-note">{e.formNote}</p>
+        <p class="f-note">{live ? 'Next: secure checkout, then one short form and a 15-minute access checklist.' : e.formNote}</p>
               <div class="two">
                 <div class="fld">
                   <label for="s8-first">First name</label>
@@ -169,13 +162,12 @@ const smsLinks = [
                 </div>
               </div>
 
-              <input type="hidden" name="source_form" value="reserve" />
               <input type="hidden" name="landing_page" value="" data-landing />
               {/* honeypot: people never see or fill this; a bot that does is dropped without sending */}
               <p class="hp" aria-hidden="true">
                 <label>
                   Leave this field empty
-                  <input type="text" name="hp_field" tabindex="-1" autocomplete="off" />
+                  <input type="text" name="company_website" tabindex="-1" autocomplete="off" />
                 </label>
               </p>
               <input type="hidden" name="calc_estimate" value="" data-calc-field />
@@ -203,13 +195,10 @@ const smsLinks = [
               </fieldset>
 
               <button type="submit" class="go send" data-spot>
-                {e.submit}
+                {live ? 'Continue to secure checkout' : e.submit}
                 <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11M11 5.500 15.500 10 11 14.500" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
               </button>
               <p class="status" role="status" aria-live="polite" data-status></p>
-            </>
-          )
-        }
       </form>
       <div class="ok" hidden data-ok8 tabindex="-1">
         <span aria-hidden="true">✓</span>
@@ -285,7 +274,17 @@ const smsLinks = [
 
 <script>
   import { track } from '../../scripts/analytics';
-  import { isBot } from '../../scripts/forms';
+  import { isBot, send, saveBuyer, FIELDS } from '../../scripts/forms';
+
+  // the leaving offer (Launch Kit at the lower price) was taken in the exit popup or came in the address
+  const OFFER = 'cx_offer';
+  const offerOn = () => {
+    try {
+      return sessionStorage.getItem(OFFER) === 'kit';
+    } catch {
+      return false;
+    }
+  };
 
   document.querySelectorAll<HTMLDetailsElement>('[data-faq9] details').forEach((d) =>
     d.addEventListener('toggle', () => {
@@ -337,31 +336,45 @@ const smsLinks = [
 
       const mode = form.dataset.mode;
       const data = new FormData(form);
-      if (!status) return; // checkout is live: there are no fields to send
+      const interval = data.get('billing_interval') === 'monthly' ? 'monthly' : 'annual';
       track('start_form_submit', {
         plan: form.querySelector<HTMLInputElement>('input[name="plan_interest"]')?.dataset.plan || '',
-        interval: String(data.get('billing_interval') || ''),
+        interval,
         configured: mode !== 'unconfigured',
       });
-      // after the details are in, the next step is always this industry's checkout page
-      const toCheckout = () => {
-        location.href = `${form.dataset.checkoutPath}?plan=${data.get('billing_interval') === 'monthly' ? 'monthly' : 'annual'}`;
+      // The next step: this buyer's checkout page, once those pages exist. Their email, first
+      // name and phone go along in this browser's storage, never in the address, so the
+      // checkout and the onboarding form can fill them in and GHL sees one contact.
+      const next = () => {
+        saveBuyer({ email: String(data.get('email') || ''), first_name: String(data.get('first_name') || ''), phone: String(data.get('phone') || '') });
+        const kit = interval === 'monthly' && offerOn() && form.dataset.coKit;
+        const page = kit || (interval === 'monthly' ? form.dataset.coMonthly : form.dataset.coAnnual);
+        if (form.hasAttribute('data-co-live') && page) {
+          location.href = page;
+          return;
+        }
+        // checkout pages not open yet: say the details arrived
+        form.hidden = true;
+        ok.hidden = false;
+        ok.focus();
       };
-      if (isBot(form)) return toCheckout();
+      if (isBot(form)) return next();
       if (mode === 'unconfigured') {
-        // nowhere to send the details yet; say so in the console for whoever is building the site
         console.warn('Reserve form is not connected: set endpoints.reserve in src/config/automotiveOffer.ts.');
-        return toCheckout();
+        return next();
       }
       const btn = form.querySelector<HTMLButtonElement>('button[type="submit"]')!;
       btn.disabled = true;
-      status.textContent = 'Sending…';
+      if (status) status.textContent = 'Sending…';
       try {
-        await fetch(form.action, { method: 'POST', body: data, mode: 'no-cors' });
-        toCheckout();
+        // GHL gets the details first: that is what starts abandoned-checkout recovery
+        await send(form.action, form, FIELDS.reserve);
+        next();
       } catch {
-        status.textContent = 'Something went wrong. Please try again.';
-        status.dataset.tone = 'warn';
+        if (status) {
+          status.textContent = 'Something went wrong. Please try again.';
+          status.dataset.tone = 'warn';
+        }
         btn.disabled = false;
       }
     });
@@ -376,6 +389,10 @@ const smsLinks = [
       const plan = one<HTMLInputElement>('input[name="plan_interest"]');
       const interval = one<HTMLInputElement>('input[name="billing_interval"]:checked')?.value || 'annual';
       start.querySelectorAll<HTMLElement>('[data-ivl-show]').forEach((el) => (el.hidden = el.dataset.ivlShow !== interval));
+      // the leaving offer shows its Launch Kit price on monthly
+      const kit = offerOn() && Boolean(one('[data-co-kit]')?.dataset.coKit);
+      start.querySelectorAll<HTMLElement>('[data-kit-offer]').forEach((el) => (el.hidden = !kit));
+      start.querySelectorAll<HTMLElement>('[data-kit-regular]').forEach((el) => (el.hidden = kit));
       const go = one<HTMLAnchorElement>('[data-start-go]');
       const href = plan ? hrefs[plan.dataset.plan || '']?.[interval] : '';
       if (go && href && plan) {
@@ -402,6 +419,21 @@ const smsLinks = [
       if (plan) pick(`input[name="plan_interest"][data-plan="${plan}"]`);
       sync(false);
     });
+    // a link can preselect the way of paying and the leaving offer: ?plan=monthly, ?offer=kit
+    const q = new URLSearchParams(location.search);
+    if (q.get('offer') === 'kit') {
+      try {
+        sessionStorage.setItem(OFFER, 'kit');
+      } catch {
+        /* no storage: the regular price applies */
+      }
+    }
+    const want = q.get('offer') === 'kit' ? 'monthly' : q.get('plan');
+    if (want === 'monthly' || want === 'annual') {
+      const r = one<HTMLInputElement>(`input[name="billing_interval"][value="${want}"]`);
+      if (r) r.checked = true;
+    }
+    window.addEventListener('cx:offer', () => sync(false));
     sync(false);
   }
 

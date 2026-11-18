@@ -52,7 +52,7 @@ export function captureAttribution(): Attr {
   // where this visit started: the first page opened and the site it came from. Set once per
   // visit by the site itself, never taken from the address.
   if (!stored.landing) {
-    stored.landing = location.pathname.slice(0, 200);
+    stored.landing = (location.origin + location.pathname).slice(0, 300);
     changed = true;
   }
   if (!stored.referrer && document.referrer) {

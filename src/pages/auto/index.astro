@@ -10,9 +10,9 @@
  *   ?plan=annual | monthly   which way of paying is selected (annual when left out)
  *   ?offer=kit               the leaving offer: monthly with the lower Launch Kit
  *
- * The payment itself is the GHL order form, shown in a frame. Its links are set in
- * src/config/offerV9.ts (checkout, and exitOffer.checkout). Until a link is set the panel
- * says checkout is being connected. After payment GHL sends the buyer to /onboarding?paid=1.
+ * This page is the order summary. Its button goes to the reserve form on the home page with
+ * the choice preselected; that form sends the details to GHL and then opens the checkout page
+ * built in AI Studio (/checkout/...). After payment the buyer lands on /thank-you?paid=1.
  */
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { checkout9 as c } from '../../content/automotiveCopyV9';
@@ -28,13 +28,6 @@ const fill = (t: string) =>
     .replaceAll('{kit}', money(plan.launchKit))
     .replaceAll('{offerKit}', money(offerKit))
     .replaceAll('{site}', money(cfg.website.addOn));
-// order form links; '' until they are set and checkout is switched on
-const live = cfg.checkoutLive;
-const links = {
-  annual: live ? cfg.checkout[plan.id].annual : '',
-  monthly: live ? cfg.checkout[plan.id].monthly : '',
-  offer: live && cfg.exitOffer.enabled ? cfg.exitOffer.checkout : '',
-};
 const dueMonthly = plan.monthly + plan.launchKit;
 const dueOffer = plan.monthly + offerKit;
 const dev = import.meta.env.DEV;
@@ -130,19 +123,13 @@ const dev = import.meta.env.DEV;
       <!-- right: the payment -->
       <section class="pay" aria-labelledby="pay-title">
         <h2 id="pay-title">{c.payTitle}</h2>
-        <div class="frame" data-frame data-embed={cfg.checkoutEmbed ? '' : undefined} data-annual={links.annual} data-monthly={links.monthly} data-offer={links.offer}>
-          <iframe title="Secure payment form" data-pay hidden></iframe>
-          <div class="open" data-open hidden>
-            <a class="go" data-pay-link href="#" data-track="checkout_continue_click">
+        <div class="frame">
+          <div class="open">
+            <a class="go" data-pay-link href="/?plan=annual#start" data-track="checkout_continue_click">
               {c.payCta}
               <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11M11 5.500 15.500 10 11 14.500" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
             </a>
             <p>{c.payNote}</p>
-          </div>
-          <div class="closed" data-closed>
-            <p class="c-t">{c.notOpen.title}</p>
-            <p>{c.notOpen.body}</p>
-            {dev && <p class="preview">{c.preview}</p>}
           </div>
         </div>
         <ul role="list" class="promises">
@@ -159,7 +146,7 @@ const dev = import.meta.env.DEV;
 
 <script>
   import { track } from '../../scripts/analytics';
-  import { captureAttribution, withAttribution } from '../../scripts/attribution';
+  import { captureAttribution } from '../../scripts/attribution';
 
   const root = document.querySelector<HTMLElement>('[data-co]');
   if (root) {
@@ -167,33 +154,17 @@ const dev = import.meta.env.DEV;
     const offer = q.get('offer') === 'kit' && root.hasAttribute('data-offer-on');
     // the leaving offer is a monthly offer, so it selects monthly
     let plan = offer || q.get('plan') === 'monthly' ? 'monthly' : 'annual';
-    const frame = root.querySelector<HTMLElement>('[data-frame]')!;
-    const pay = root.querySelector<HTMLIFrameElement>('[data-pay]')!;
-    const closed = root.querySelector<HTMLElement>('[data-closed]')!;
-    const open = root.querySelector<HTMLElement>('[data-open]')!;
     const payLink = root.querySelector<HTMLAnchorElement>('[data-pay-link]')!;
-    const embed = frame.hasAttribute('data-embed');
     const radios = [...root.querySelectorAll<HTMLInputElement>('input[name="plan"]')];
     const attr = captureAttribution();
-    if (attr.rep) root.dataset.rep = attr.rep;
 
     const show = () => {
       radios.forEach((r) => (r.checked = r.value === plan));
       root.querySelectorAll<HTMLElement>('[data-when]').forEach((el) => (el.hidden = el.dataset.when !== plan));
       const useOffer = offer && plan === 'monthly';
       root.querySelectorAll<HTMLElement>('[data-kit]').forEach((el) => (el.hidden = (el.dataset.kit === 'offer') !== useOffer));
-      // the order form for this choice; the leaving offer has its own, because the amount differs
-      // the rep code (?rep=) and ad details travel with it, so GHL can credit the sale
-      const raw = (useOffer ? frame.dataset.offer : '') || frame.dataset[plan] || '';
-      const url = raw ? withAttribution(raw, attr) : '';
-      closed.hidden = Boolean(url);
-      // shown in a frame, or opened with a button: one or the other
-      pay.hidden = !(url && embed);
-      open.hidden = !(url && !embed);
-      if (url && embed) {
-        if (pay.getAttribute('src') !== url) pay.src = url;
-      } else pay.removeAttribute('src');
-      if (url && !embed) payLink.href = url;
+      // on to the reserve form, with this choice already made
+      payLink.href = `/?plan=${plan}${useOffer ? '&offer=kit' : ''}#start`;
     };
     radios.forEach((r) =>
       r.addEventListener('change', () => {

@@ -9,7 +9,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { flow9 } from '../content/automotiveCopyV9';
 import { audit } from '../content/automotiveCopy';
-import { automotiveOffer as o, ATTRIBUTION_PARAMS } from '../config/automotiveOffer';
+import { automotiveOffer as o } from '../config/automotiveOffer';
 import '../styles/v9.css';
 const f = flow9.onboarding;
 const services = audit.services;
@@ -53,14 +53,11 @@ const services = audit.services;
                 <input id="o-email" name="email" type="email" autocomplete="email" required />
                 <p class="hint">So we can match this form to your order.</p>
               </div>
-              <input type="hidden" name="source_form" value="onboarding" />
-              <input type="hidden" name="paid_marker" value="" data-onb-paid />
-              {ATTRIBUTION_PARAMS.map((x) => <input type="hidden" name={x} value="" data-attr-field />)}
               {/* honeypot: people never see or fill this; a bot that does is dropped without sending */}
               <p class="hp" aria-hidden="true">
                 <label>
                   Leave this field empty
-                  <input type="text" name="hp_field" tabindex="-1" autocomplete="off" />
+                  <input type="text" name="company_website" tabindex="-1" autocomplete="off" />
                 </label>
               </p>
               <fieldset class="fld">
@@ -119,7 +116,7 @@ const services = audit.services;
 
 <script>
   import { track } from '../scripts/analytics';
-  import { isBot } from '../scripts/forms';
+  import { isBot, send, readBuyer, FIELDS } from '../scripts/forms';
   // "Payment received" and "You are in" show only when the checkout sent the visitor here
   if (new URLSearchParams(location.search).has('paid')) {
     document.querySelectorAll<HTMLElement>('[data-paid]').forEach((el) => (el.hidden = false));
@@ -131,6 +128,9 @@ const services = audit.services;
     }
   }
   const form = document.querySelector<HTMLFormElement>('[data-onb]');
+  // the email given at checkout, so this form lands on the same contact
+  const emailField = form?.querySelector<HTMLInputElement>('#o-email');
+  if (emailField && !emailField.value) emailField.value = readBuyer().email || '';
   form?.addEventListener('submit', async (e) => {
     e.preventDefault();
     let first: HTMLInputElement | null = null;
@@ -143,8 +143,6 @@ const services = audit.services;
       (first as HTMLInputElement).focus();
       return;
     }
-    const paidField = form.querySelector<HTMLInputElement>('[data-onb-paid]');
-    if (paidField) paidField.value = new URLSearchParams(location.search).has('paid') ? 'yes' : 'no';
     const next = () => {
       location.href = form.dataset.thanks || '/thank-you';
     };
@@ -156,7 +154,7 @@ const services = audit.services;
     const status = form.querySelector<HTMLElement>('[data-onb-status]')!;
     btn.disabled = true;
     try {
-      await fetch(url, { method: 'POST', body: new FormData(form), mode: 'no-cors' });
+      await send(url, form, FIELDS.onboarding);
       next();
     } catch {
       status.textContent = 'We could not send this right now. Please try again in a moment.';

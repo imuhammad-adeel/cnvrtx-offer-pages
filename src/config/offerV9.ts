@@ -26,19 +26,20 @@ export const offerV9 = {
   /** Annual is "pay 10, get 12" and the Launch Kit is waived. */
   annualMonthsPaid: 10,
 
-  /** Checkout links per plan and interval. '' = not connected. */
-  checkout: {
-    frontOffice: { monthly: '', annual: '' },
-  } as Record<PlanId, Record<Interval, string>>,
-  /** true once the order form links above are set and tested. */
-  checkoutLive: false,
   /**
-   * How the checkout page hands over to the GHL order page.
-   *   false : a "Continue to secure payment" button opens the order page (works with any order page)
-   *   true  : the order page is shown inside the checkout page, in a frame. Use only after
-   *           checking that the order page allows being framed on this domain.
+   * Checkout pages. They are built inside GHL AI Studio with AI Studio Payments and the
+   * existing HighLevel products, on this same site (get.cnvrtx.com), so the order is created
+   * in HighLevel. These are their addresses; the leaving-offer page is exitOffer.checkout.
    */
-  checkoutEmbed: false,
+  checkout: {
+    frontOffice: { monthly: '/checkout/monthly', annual: '/checkout/annual' },
+  } as Record<PlanId, Record<Interval, string>>,
+  /**
+   * true once the three checkout pages exist in AI Studio and a test-mode order has gone through.
+   * While false, the reserve form still sends the details to GHL and then says checkout opens
+   * shortly; it does not send anyone to a page that is not there.
+   */
+  checkoutLive: false,
   /**
    * The checkout page for this industry. Every "Start Annual" / "Start Monthly" button and the
    * reserve form lead here. One per industry: /auto now, /roofing later.
@@ -52,7 +53,7 @@ export const offerV9 = {
    * `checkout` is its own order form link ('' = not connected), because the amount charged differs.
    * Set enabled: false to go back to the plain exit popup.
    */
-  exitOffer: { enabled: true, launchKit: 297, checkout: '' },
+  exitOffer: { enabled: true, launchKit: 297, checkout: '/checkout/monthly-kit' },
 
   /** Founding program: first 10 qualifying shops. */
   foundingSpotsTotal: 10,

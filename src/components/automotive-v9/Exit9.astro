@@ -41,7 +41,7 @@ const offerOn = eo.enabled && eo.launchKit < was;
           <p class="x-leak">
             {leakParts[0]}<b data-exit-lost>{fmt(lostDefault)}</b>{leakParts[1]} <small>{x.leakNote}</small>
           </p>
-          <a class="go" href={`${cfg.checkoutPath}?plan=monthly&offer=kit`} data-track="exit_offer_click" data-exit-go>
+          <a class="go" href="#start" data-track="exit_offer_click" data-exit-go data-exit-kit>
             {fillO(x.offer.cta)}
           </a>
         </>
@@ -135,8 +135,18 @@ const offerOn = eo.enabled && eo.launchKit < was;
       took = true; // offer the audit once
       window.dispatchEvent(new CustomEvent('cx:audit-open', { detail: { from: 'exit' } }));
     };
-    dlg.querySelector('[data-exit-go]')?.addEventListener('click', () => {
+    dlg.querySelector('[data-exit-go]')?.addEventListener('click', (e) => {
       took = true;
+      // taking the leaving offer: remember it, select monthly, and go to the reserve form
+      if ((e.currentTarget as HTMLElement).hasAttribute('data-exit-kit')) {
+        try {
+          sessionStorage.setItem('cx_offer', 'kit');
+        } catch {
+          /* no storage: the regular price applies */
+        }
+        window.dispatchEvent(new CustomEvent('cx:plan', { detail: { interval: 'monthly' } }));
+        window.dispatchEvent(new CustomEvent('cx:offer'));
+      }
       dlg.close();
     });
     dlg.querySelectorAll('form[method="dialog"]').forEach((f) =>

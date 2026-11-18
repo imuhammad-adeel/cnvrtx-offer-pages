@@ -12,62 +12,9 @@ Not verified: whether AI Studio can create products, order forms and Voice AI ag
 
 ---
 
-## 1. Checkout (currently off)
+## 1. Checkout
 
-**Now:** every "Start Annual" and "Start Monthly" button, and the reserve form, open the checkout page at `get.cnvrtx.com/auto`. Its payment panel says "Checkout is being connected" until the order form links below exist. No one can pay yet.
-
-**Needed in GoHighLevel:** three order forms. The third is the leaving offer, which charges a lower Launch Kit, so it needs its own form.
-
-| Order form | Charges |
-| --- | --- |
-| Monthly | $197 every month, plus a one-time $497 Launch Kit on the first payment |
-| Monthly, leaving offer | $197 every month, plus a one-time $297 Launch Kit on the first payment |
-| Annual | $1,970 once a year. No Launch Kit. |
-
-After a successful payment each form must send the buyer to:
-
-- `https://get.cnvrtx.com/onboarding?paid=1`
-
-The `?paid=1` part matters. The onboarding page only says "Payment received" and "You are in" when the address carries it.
-
-### Prompt for AI Studio
-
-```text
-Do not change any page or file of this site. I only need things created in my GoHighLevel account and the links returned to me.
-
-Create the products and three order forms for "CNVRT X Front Office":
-
-1. Monthly plan
-   - Recurring price: $197 per month.
-   - One-time setup fee on the first payment: $497, named "Launch Kit".
-   - Order form name: "CNVRT X Front Office, Monthly".
-
-2. Annual plan
-   - Recurring price: $1,970 per year.
-   - No setup fee.
-   - Order form name: "CNVRT X Front Office, Annual".
-
-3. Monthly plan, leaving offer
-   - Recurring price: $197 per month.
-   - One-time setup fee on the first payment: $297, named "Launch Kit".
-   - Order form name: "CNVRT X Front Office, Monthly, $297 Launch Kit".
-
-For all three order forms:
-- Collect first name, business name, email and phone.
-- After a successful payment, redirect to https://get.cnvrtx.com/onboarding?paid=1
-- Tag the contact "front-office-customer" and, by plan, "plan-monthly" or "plan-annual".
-- The form must work inside an iframe on get.cnvrtx.com.
-
-When done, give me the three public order form links: Monthly, Annual, and Monthly with the $297 Launch Kit. If you cannot create any part of this, tell me exactly which part and stop.
-```
-
-### If AI Studio cannot do it
-
-In GoHighLevel: Payments → Products → create the two products with the prices above. Then Sites → Funnels → new funnel → add a step with a two-step order form for each product, and set the redirect after purchase to the address above.
-
-### Send back to Claude
-
-The three order form links. Claude puts them in `src/config/offerV9.ts` (`checkout.frontOffice.monthly`, `.annual` and `exitOffer.checkout`), sets `checkoutLive: true`, tests a card payment with you in test mode, and syncs both repos.
+The checkout is built inside AI Studio with AI Studio Payments and the existing HighLevel products. The flow, the three page addresses and the prompt are in [ai-studio-checkout-prompt.md](ai-studio-checkout-prompt.md).
 
 ---
 
@@ -121,49 +68,9 @@ The embed code. Claude puts it in `src/config/offerV9.ts` (`voiceDemo.embed`), s
 
 ---
 
-## 3. Lead forms for visitors who are not ready to buy (currently off)
+## 3. Lead forms
 
-Two forms are built and hidden on the live site until each has somewhere to send its data:
-
-| Form | Where it shows | Sends |
-| --- | --- | --- |
-| Free Booking Leak Audit | Popup after the leaving offer is declined, the link under the price cards, the footer, and "Email me my numbers" under the calculator (same form) | `business_name`, `website`, `primary_service`, `email`, `phone`, `monthly_inquiries`, `send_calculator_numbers`, `landing_page`, `opened_from`, `calc_estimate` |
-| Waitlist for other trades | Footer link "Not an auto shop? Join the waitlist" | `trade`, `business_name`, `email`, `landing_page` |
-
-**Needed in GoHighLevel:** one inbound webhook workflow for each.
-
-### Prompt for AI Studio
-
-```text
-Do not change any page or file of this site. I need two workflows created in my GoHighLevel account and their webhook links returned to me.
-
-Workflow 1: "Booking Leak Audit request"
-- Trigger: Inbound Webhook.
-- Fields received: business_name, website, primary_service, email, phone, monthly_inquiries, send_calculator_numbers, landing_page, opened_from, calc_estimate.
-- Create or update the contact from email and phone. Save the other fields on the contact.
-- Add the tag "audit-requested".
-- Create an opportunity in a pipeline named "Free Audit", stage "Requested".
-- Send me an internal notification with all the fields.
-- Send the contact one email: "We received your request for a Booking Leak Audit. We will send it to this address." Do not promise a delivery time.
-- If send_calculator_numbers is "yes", add calc_estimate to that same email, with a link back to landing_page.
-- Do not send any text message. This form does not collect consent for texts.
-
-Workflow 2: "Trade waitlist"
-- Trigger: Inbound Webhook.
-- Fields received: trade, business_name, email, landing_page.
-- Create or update the contact from email. Save trade on the contact.
-- Add the tag "waitlist" and a second tag "waitlist-" followed by the trade in lower case.
-- Send the contact one email: "You are on the waitlist. We will email you when the version for your trade is ready." Do not promise a date.
-- Do not send any text message.
-
-When done, give me the two webhook links. If you cannot create any part of this, tell me exactly which part and stop.
-```
-
-### Send back to Claude
-
-The two webhook links. Claude puts them in `src/config/offerV9.ts` (`forms.audit` and `forms.waitlist`). The forms then appear on the live site.
-
-The "Reserve your build" form and the onboarding form work the same way: `auditFormUrl` in `src/config/automotiveOffer.ts` and `flow9.onboardingFormUrl` in `src/content/automotiveCopyV9.ts`.
+Connected. The reserve, onboarding, audit and waitlist forms each POST to their own GHL inbound webhook. The addresses are in `endpoints` in `src/config/automotiveOffer.ts`, and the exact field names each one sends are in `src/scripts/forms.ts`. "Email me my numbers" opens the audit form, so there is no separate form for it.
 
 ---
 
