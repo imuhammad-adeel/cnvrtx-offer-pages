@@ -33,10 +33,19 @@ export const offerV9 = {
   /** true once the order form links above are set and tested. */
   checkoutLive: false,
   /**
+   * How the checkout page hands over to the GHL order page.
+   *   false : a "Continue to secure payment" button opens the order page (works with any order page)
+   *   true  : the order page is shown inside the checkout page, in a frame. Use only after
+   *           checking that the order page allows being framed on this domain.
+   */
+  checkoutEmbed: false,
+  /**
    * The checkout page for this industry. Every "Start Annual" / "Start Monthly" button and the
    * reserve form lead here. One per industry: /auto now, /roofing later.
    */
-  checkoutPath: '/auto',
+  // PUBLIC_CHECKOUT_ORIGIN is set only by the cnvrtx.com build (astro.site.config.mjs), so its
+  // buttons reach checkout on get.cnvrtx.com. Unset here: the path stays relative, as before.
+  checkoutPath: `${import.meta.env.PUBLIC_CHECKOUT_ORIGIN ?? ''}/auto`,
   /**
    * The offer shown when a visitor is about to leave: the monthly plan with a lower Launch Kit.
    * `launchKit` is the reduced one-time fee; the regular one is plans[].launchKit.
@@ -72,14 +81,14 @@ export const offerV9 = {
   textingHours: '8 AM to 8 PM',
 
   /**
-   * Lead forms for visitors who are not ready to buy. Each value is the URL the form is POSTed to
-   * (a GHL form endpoint or an inbound webhook). '' = not connected: the form is then left off the
+   * Lead forms for visitors who are not ready to buy. The URLs are set in one place,
+   * `endpoints` in src/config/automotiveOffer.ts, and read here. '' = not connected: the form is then left off the
    * live site, and shown only on localhost so it can be reviewed.
    *   audit   : the Free Booking Leak Audit popup. "Email me my numbers" under the calculator
    *             opens the same popup, so there is one form for both.
    *   waitlist: the waitlist for trades other than auto shops
    */
-  forms: { audit: '', waitlist: '' },
+  forms: { audit: base.endpoints.audit, waitlist: base.endpoints.waitlist },
 
   /** Real contact details, shown in the footer and the "Who's behind CNVRT X" section. '' = left out. */
   contact: { email: '', phone: '', address: '' },

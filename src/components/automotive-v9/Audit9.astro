@@ -71,7 +71,15 @@ const show = Boolean(url) || import.meta.env.DEV;
             <input type="checkbox" name="send_calculator_numbers" value="yes" data-audit-numbers />
             <span>{a.numbers}</span>
           </label>
+          <input type="hidden" name="source_form" value="audit" />
           <input type="hidden" name="landing_page" value="" data-audit-landing />
+          {/* honeypot: people never see or fill this; a bot that does is dropped without sending */}
+          <p class="hp" aria-hidden="true">
+            <label>
+              Leave this field empty
+              <input type="text" name="hp_field" tabindex="-1" autocomplete="off" />
+            </label>
+          </p>
           {/* the rep code and ad details, filled in by src/scripts/attribution.ts */}
           {ATTRIBUTION_PARAMS.map((x) => <input type="hidden" name={x} value="" data-attr-field />)}
           <input type="hidden" name="opened_from" value="" data-audit-from />
@@ -95,6 +103,7 @@ const show = Boolean(url) || import.meta.env.DEV;
 
 <script>
   import { track } from '../../scripts/analytics';
+  import { isBot } from '../../scripts/forms';
 
   const dlg = document.querySelector<HTMLDialogElement>('[data-audit9]');
   if (dlg && typeof dlg.showModal === 'function') {
@@ -152,8 +161,8 @@ const show = Boolean(url) || import.meta.env.DEV;
         ok.hidden = false;
         ok.focus();
       };
-      // preview on localhost: nothing is sent anywhere
-      if (!form.getAttribute('action')) return done();
+      // a bot, or the preview on localhost: nothing is sent anywhere
+      if (isBot(form) || !form.getAttribute('action')) return done();
       const btn = form.querySelector<HTMLButtonElement>('button[type="submit"]')!;
       btn.disabled = true;
       try {

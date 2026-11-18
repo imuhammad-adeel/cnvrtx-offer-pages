@@ -21,7 +21,18 @@ export const automotiveOffer = {
   // ---------------------------------------------------------------------------
   // Destinations — REQUIRED before launch
   // ---------------------------------------------------------------------------
-  /** Booking Gap Audit destination. Leave '' until the approved GHL form/webhook exists. */
+  /**
+   * Where each form on the site is sent: one GHL inbound-webhook URL per form.
+   * '' = not connected. A form with no URL is left off the live site (or, for the reserve
+   * and onboarding forms, sends nothing), so no visitor's details are lost silently.
+   *   reserve    : "Reserve your build" on the sales pages
+   *   onboarding : the shop details form on /onboarding
+   *   audit      : the Free Booking Leak Audit popup (also "Email me my numbers")
+   *   waitlist   : the waitlist for other trades
+   * Every form also sends `source_form` with its name, the rep code and the traffic source.
+   */
+  endpoints: { reserve: '', onboarding: '', audit: '', waitlist: '' },
+  /** Older settings, kept so earlier versions of the page still build. Not used by the current site. */
   auditFormUrl: '',
   auditFormMode: 'unconfigured' as AuditFormMode,
   /** Native GHL / AI Studio checkout URLs. '' => pricing buttons route to the audit form with plan intent. */

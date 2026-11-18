@@ -9,6 +9,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { flow9 } from '../content/automotiveCopyV9';
 import { audit } from '../content/automotiveCopy';
+import { automotiveOffer as o, ATTRIBUTION_PARAMS } from '../config/automotiveOffer';
 import '../styles/v9.css';
 const f = flow9.onboarding;
 const services = audit.services;
@@ -42,11 +43,26 @@ const services = audit.services;
           flow9.onboardingFormUrl ? (
             <iframe src={flow9.onboardingFormUrl} title="Shop details form" loading="lazy" />
           ) : (
-            <form data-onb action={flow9.thanksPath} method="get" novalidate>
+            <form data-onb action={o.endpoints.onboarding || undefined} data-thanks={flow9.thanksPath} method="post" novalidate>
               <div class="fld">
                 <label for="o-biz">Shop name</label>
                 <input id="o-biz" name="shop" autocomplete="organization" required />
               </div>
+              <div class="fld">
+                <label for="o-email">Email you paid with</label>
+                <input id="o-email" name="email" type="email" autocomplete="email" required />
+                <p class="hint">So we can match this form to your order.</p>
+              </div>
+              <input type="hidden" name="source_form" value="onboarding" />
+              <input type="hidden" name="paid_marker" value="" data-onb-paid />
+              {ATTRIBUTION_PARAMS.map((x) => <input type="hidden" name={x} value="" data-attr-field />)}
+              {/* honeypot: people never see or fill this; a bot that does is dropped without sending */}
+              <p class="hp" aria-hidden="true">
+                <label>
+                  Leave this field empty
+                  <input type="text" name="hp_field" tabindex="-1" autocomplete="off" />
+                </label>
+              </p>
               <fieldset class="fld">
                 <legend>Services you offer</legend>
                 <div class="chips">
@@ -92,6 +108,7 @@ const services = audit.services;
                 </ul>
               </fieldset>
               <button type="submit" class="go">{f.submit}</button>
+              <p class="o-status" role="status" data-onb-status />
             </form>
           )
         }
@@ -102,6 +119,7 @@ const services = audit.services;
 
 <script>
   import { track } from '../scripts/analytics';
+  import { isBot } from '../scripts/forms';
   // "Payment received" and "You are in" show only when the checkout sent the visitor here
   if (new URLSearchParams(location.search).has('paid')) {
     document.querySelectorAll<HTMLElement>('[data-paid]').forEach((el) => (el.hidden = false));
@@ -113,18 +131,37 @@ const services = audit.services;
     }
   }
   const form = document.querySelector<HTMLFormElement>('[data-onb]');
-  form?.addEventListener('submit', (e) => {
-    const shop = form.querySelector<HTMLInputElement>('#o-biz')!;
-    if (!shop.value.trim()) {
-      e.preventDefault();
-      shop.setAttribute('aria-invalid', 'true');
-      shop.focus();
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    let first: HTMLInputElement | null = null;
+    form.querySelectorAll<HTMLInputElement>('[required]').forEach((f) => {
+      const bad = !f.value.trim() || (f.type === 'email' && !/^\S+@\S+\.\S+$/.test(f.value.trim()));
+      f.toggleAttribute('aria-invalid', bad);
+      if (bad && !first) first = f;
+    });
+    if (first) {
+      (first as HTMLInputElement).focus();
       return;
     }
-    // preview only: nothing is sent anywhere, we just move to the thank-you page
-    e.preventDefault();
-    track('onboarding_submit', { preview: true });
-    location.href = form.action;
+    const paidField = form.querySelector<HTMLInputElement>('[data-onb-paid]');
+    if (paidField) paidField.value = new URLSearchParams(location.search).has('paid') ? 'yes' : 'no';
+    const next = () => {
+      location.href = form.dataset.thanks || '/thank-you';
+    };
+    const url = form.getAttribute('action');
+    track('onboarding_submit', { connected: Boolean(url) });
+    // a bot, or no endpoint set yet: nothing is sent
+    if (isBot(form) || !url) return next();
+    const btn = form.querySelector<HTMLButtonElement>('button[type="submit"]')!;
+    const status = form.querySelector<HTMLElement>('[data-onb-status]')!;
+    btn.disabled = true;
+    try {
+      await fetch(url, { method: 'POST', body: new FormData(form), mode: 'no-cors' });
+      next();
+    } catch {
+      status.textContent = 'We could not send this right now. Please try again in a moment.';
+      btn.disabled = false;
+    }
   });
 </script>
 
@@ -140,6 +177,21 @@ const services = audit.services;
   [data-paid][hidden],
   [data-unpaid][hidden] {
     display: none;
+  }
+  .hint {
+    font-size: 0.75rem;
+    color: var(--fog-2);
+  }
+  .o-status {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #ffb4a6;
+  }
+  .o-status:empty {
+    display: none;
+  }
+  input[aria-invalid] {
+    border-color: #ff8f7a !important;
   }
   /* ---------- access checklist ---------- */
   .access {

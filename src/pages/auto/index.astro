@@ -130,8 +130,15 @@ const dev = import.meta.env.DEV;
       <!-- right: the payment -->
       <section class="pay" aria-labelledby="pay-title">
         <h2 id="pay-title">{c.payTitle}</h2>
-        <div class="frame" data-frame data-annual={links.annual} data-monthly={links.monthly} data-offer={links.offer}>
+        <div class="frame" data-frame data-embed={cfg.checkoutEmbed ? '' : undefined} data-annual={links.annual} data-monthly={links.monthly} data-offer={links.offer}>
           <iframe title="Secure payment form" data-pay hidden></iframe>
+          <div class="open" data-open hidden>
+            <a class="go" data-pay-link href="#" data-track="checkout_continue_click">
+              {c.payCta}
+              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11M11 5.500 15.500 10 11 14.500" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            </a>
+            <p>{c.payNote}</p>
+          </div>
           <div class="closed" data-closed>
             <p class="c-t">{c.notOpen.title}</p>
             <p>{c.notOpen.body}</p>
@@ -163,6 +170,9 @@ const dev = import.meta.env.DEV;
     const frame = root.querySelector<HTMLElement>('[data-frame]')!;
     const pay = root.querySelector<HTMLIFrameElement>('[data-pay]')!;
     const closed = root.querySelector<HTMLElement>('[data-closed]')!;
+    const open = root.querySelector<HTMLElement>('[data-open]')!;
+    const payLink = root.querySelector<HTMLAnchorElement>('[data-pay-link]')!;
+    const embed = frame.hasAttribute('data-embed');
     const radios = [...root.querySelectorAll<HTMLInputElement>('input[name="plan"]')];
     const attr = captureAttribution();
     if (attr.rep) root.dataset.rep = attr.rep;
@@ -176,15 +186,14 @@ const dev = import.meta.env.DEV;
       // the rep code (?rep=) and ad details travel with it, so GHL can credit the sale
       const raw = (useOffer ? frame.dataset.offer : '') || frame.dataset[plan] || '';
       const url = raw ? withAttribution(raw, attr) : '';
-      if (url) {
+      closed.hidden = Boolean(url);
+      // shown in a frame, or opened with a button: one or the other
+      pay.hidden = !(url && embed);
+      open.hidden = !(url && !embed);
+      if (url && embed) {
         if (pay.getAttribute('src') !== url) pay.src = url;
-        pay.hidden = false;
-        closed.hidden = true;
-      } else {
-        pay.hidden = true;
-        pay.removeAttribute('src');
-        closed.hidden = false;
-      }
+      } else pay.removeAttribute('src');
+      if (url && !embed) payLink.href = url;
     };
     radios.forEach((r) =>
       r.addEventListener('change', () => {
@@ -490,8 +499,23 @@ const dev = import.meta.env.DEV;
     border: 0;
   }
   .frame iframe[hidden],
-  .closed[hidden] {
+  .closed[hidden],
+  .open[hidden] {
     display: none;
+  }
+  .open {
+    display: grid;
+    gap: 12px;
+    padding: clamp(1.25rem, 1rem + 1.5vw, 2.25rem);
+    background: #f4f2ec;
+    color: #0b1016;
+  }
+  .open .go {
+    width: 100%;
+  }
+  .open p {
+    font-size: 0.875rem;
+    line-height: 1.5;
   }
   .closed {
     display: grid;

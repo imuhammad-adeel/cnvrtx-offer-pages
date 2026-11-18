@@ -11,18 +11,21 @@ interface Props {
   footerLine?: string;
   /** Which wording to use: the auto pages' (default) or the general one. See content/copySets.ts. */
   copy?: CopySet;
+  /** false leaves this section's own footer out (the cnvrtx.com pages bring their own). */
+  footer?: boolean;
 }
 const { faq9: q, start9: e, nav9, offer9, math9, footer9: ft, audit9, waitlist9 } = copyFor(Astro.props.copy);
 const auditOn = Boolean(cfg.forms.audit) || import.meta.env.DEV;
 // the waitlist is for the auto pages only: the general page already speaks to every trade
 const waitOn = Astro.props.copy !== 'local' && (Boolean(cfg.forms.waitlist) || import.meta.env.DEV);
 const k = cfg.contact;
-const { faq = [], startLead = e.lead, footerLine = e.footer } = Astro.props;
+const { faq = [], startLead = e.lead, footerLine = e.footer, footer: showFooter = true } = Astro.props;
 // page questions first, then the ones every buyer asks
 const keep = ['Do I have to talk to a salesperson?', 'Can you guarantee bookings?', 'What is included each month?', 'Can I cancel?', 'Is the AI a real person?'];
 const faqItems = (faq.length ? [...faq, ...q.items.filter((x) => keep.includes(x.q))] : q.items).map((x) => ({ q: x.q, a: fillOffer(x.a) }));
 
-const mode = o.auditFormUrl ? o.auditFormMode : 'unconfigured';
+// 'live' once the reserve endpoint is set in src/config/automotiveOffer.ts
+const mode = o.endpoints.reserve ? 'live' : 'unconfigured';
 const legal = [
   o.privacyUrl && { label: 'Privacy Policy', href: o.privacyUrl },
   o.termsUrl && { label: 'Terms', href: o.termsUrl },
@@ -93,7 +96,7 @@ const smsLinks = [
     </div>
 
     <div class="shell">
-      <form class="form" data-start9 data-mode={mode} data-checkout-path={cfg.checkoutPath} data-hrefs={JSON.stringify(hrefs)} action={o.auditFormUrl || undefined} method="post" novalidate>
+      <form class="form" data-start9 data-mode={mode} data-checkout-path={cfg.checkoutPath} data-hrefs={JSON.stringify(hrefs)} action={o.endpoints.reserve || undefined} method="post" novalidate>
         <div class="fh">
           <h3>{live ? 'Start your build' : e.formTitle}</h3>
           <span>No sales call</span>
@@ -166,7 +169,15 @@ const smsLinks = [
                 </div>
               </div>
 
+              <input type="hidden" name="source_form" value="reserve" />
               <input type="hidden" name="landing_page" value="" data-landing />
+              {/* honeypot: people never see or fill this; a bot that does is dropped without sending */}
+              <p class="hp" aria-hidden="true">
+                <label>
+                  Leave this field empty
+                  <input type="text" name="hp_field" tabindex="-1" autocomplete="off" />
+                </label>
+              </p>
               <input type="hidden" name="calc_estimate" value="" data-calc-field />
               {ATTRIBUTION_PARAMS.map((p) => <input type="hidden" name={p} value="" data-attr-field />)}
 
@@ -209,6 +220,7 @@ const smsLinks = [
   </div>
 </section>
 
+{showFooter && (
 <footer class="foot">
   <div class="container">
     <div class="f-top">
@@ -269,9 +281,11 @@ const smsLinks = [
     </div>
   </div>
 </footer>
+)}
 
 <script>
   import { track } from '../../scripts/analytics';
+  import { isBot } from '../../scripts/forms';
 
   document.querySelectorAll<HTMLDetailsElement>('[data-faq9] details').forEach((d) =>
     d.addEventListener('toggle', () => {
@@ -333,9 +347,10 @@ const smsLinks = [
       const toCheckout = () => {
         location.href = `${form.dataset.checkoutPath}?plan=${data.get('billing_interval') === 'monthly' ? 'monthly' : 'annual'}`;
       };
+      if (isBot(form)) return toCheckout();
       if (mode === 'unconfigured') {
         // nowhere to send the details yet; say so in the console for whoever is building the site
-        console.warn('Reserve form is not connected: set auditFormUrl in src/config/automotiveOffer.ts.');
+        console.warn('Reserve form is not connected: set endpoints.reserve in src/config/automotiveOffer.ts.');
         return toCheckout();
       }
       const btn = form.querySelector<HTMLButtonElement>('button[type="submit"]')!;
