@@ -10,12 +10,15 @@
  *   ?plan=annual | monthly   which way of paying is selected (annual when left out)
  *   ?offer=kit               the leaving offer: monthly with the lower Launch Kit
  *
- * This page is the order summary. Its button goes to the reserve form on the home page with
- * the choice preselected; that form sends the details to GHL and then opens the checkout page
- * built in AI Studio (/checkout/...). After payment the buyer lands on /thank-you?paid=1.
+ * This page is the order summary AND the reserve form. It works on its own: the buyer picks
+ * annual or monthly, gives their details here, the form is sent to GHL first (that starts
+ * abandoned-checkout recovery), and then the matching checkout page opens (/checkout/...,
+ * built in AI Studio). After payment the buyer lands on /thank-you?paid=1.
+ * The sales pages have the same form at #start; both post the same fields to the same webhook.
  */
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { checkout9 as c } from '../../content/automotiveCopyV9';
+import { checkout9 as c, start9 } from '../../content/automotiveCopyV9';
+import { automotiveOffer as o, ATTRIBUTION_PARAMS } from '../../config/automotiveOffer';
 import { offerV9 as cfg, featuredPlan as plan, fillOffer } from '../../config/offerV9';
 import '../../styles/v9.css';
 
@@ -123,14 +126,76 @@ const dev = import.meta.env.DEV;
       <!-- right: the payment -->
       <section class="pay" aria-labelledby="pay-title">
         <h2 id="pay-title">{c.payTitle}</h2>
-        <div class="frame">
-          <div class="open">
-            <a class="go" data-pay-link href="/?plan=annual#start" data-track="checkout_continue_click">
-              {c.payCta}
-              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11M11 5.500 15.500 10 11 14.500" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-            </a>
-            <p>{c.payNote}</p>
+        <form
+          class="rf"
+          data-reserve
+          action={o.endpoints.reserve || undefined}
+          method="post"
+          novalidate
+          data-co-live={cfg.checkoutLive ? '' : undefined}
+          data-co-annual={cfg.checkout[plan.id].annual}
+          data-co-monthly={cfg.checkout[plan.id].monthly}
+          data-co-kit={cfg.exitOffer.enabled ? cfg.exitOffer.checkout : ''}
+          data-sending={c.form.sending}
+          data-error={c.form.error}
+        >
+          <p class="rf-note">{c.form.note}</p>
+          <div class="rf-two">
+            <div class="fld">
+              <label for="rf-first">{c.form.firstName}</label>
+              <input id="rf-first" name="first_name" autocomplete="given-name" required />
+            </div>
+            <div class="fld">
+              <label for="rf-biz">{c.form.business}</label>
+              <input id="rf-biz" name="business_name" autocomplete="organization" required />
+            </div>
           </div>
+          <div class="rf-two">
+            <div class="fld">
+              <label for="rf-email">{c.form.email}</label>
+              <input id="rf-email" name="email" type="email" autocomplete="email" required />
+            </div>
+            <div class="fld">
+              <label for="rf-phone">{c.form.phone}</label>
+              <input id="rf-phone" name="phone" type="tel" autocomplete="tel" required />
+            </div>
+          </div>
+
+          {/* same field names as the sales page's reserve form; see src/scripts/forms.ts */}
+          <input type="hidden" name="billing_interval" value="annual" data-rf-interval />
+          <input type="hidden" name="plan_interest" value={plan.role} />
+          <input type="hidden" name="landing_page" value="" data-rf-landing />
+          <input type="hidden" name="calc_estimate" value="" />
+          {ATTRIBUTION_PARAMS.map((x) => <input type="hidden" name={x} value="" data-attr-field />)}
+          {/* honeypot: people never see or fill this; a bot that does is dropped without sending */}
+          <p class="hp" aria-hidden="true">
+            <label>
+              Leave this field empty
+              <input type="text" name="company_website" tabindex="-1" autocomplete="off" />
+            </label>
+          </p>
+
+          <fieldset class="rf-sms">
+            <legend>{c.form.smsLegend}</legend>
+            <label>
+              <input type="checkbox" name="sms_account_consent" value="yes" />
+              <span>{start9.sms.account}</span>
+            </label>
+            <label>
+              <input type="checkbox" name="sms_marketing_consent" value="yes" />
+              <span>{start9.sms.marketing}</span>
+            </label>
+          </fieldset>
+
+          <button type="submit" class="go">
+            {cfg.checkoutLive ? c.form.submit : c.form.submitClosed}
+            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11M11 5.500 15.500 10 11 14.500" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          </button>
+          <p class="rf-status" role="status" aria-live="polite" data-rf-status></p>
+        </form>
+        <div class="rf-ok" data-rf-ok hidden tabindex="-1">
+          <p class="c-t">{c.form.closed.title}</p>
+          <p>{c.form.closed.body}</p>
         </div>
         <ul role="list" class="promises">
           {c.promises.map((x) => <li>{x}</li>)}
@@ -147,6 +212,7 @@ const dev = import.meta.env.DEV;
 <script>
   import { track } from '../../scripts/analytics';
   import { captureAttribution } from '../../scripts/attribution';
+  import { isBot, send, saveBuyer, FIELDS } from '../../scripts/forms';
 
   const root = document.querySelector<HTMLElement>('[data-co]');
   if (root) {
@@ -154,7 +220,8 @@ const dev = import.meta.env.DEV;
     const offer = q.get('offer') === 'kit' && root.hasAttribute('data-offer-on');
     // the leaving offer is a monthly offer, so it selects monthly
     let plan = offer || q.get('plan') === 'monthly' ? 'monthly' : 'annual';
-    const payLink = root.querySelector<HTMLAnchorElement>('[data-pay-link]')!;
+    const form = root.querySelector<HTMLFormElement>('[data-reserve]')!;
+    const intervalField = form.querySelector<HTMLInputElement>('[data-rf-interval]')!;
     const radios = [...root.querySelectorAll<HTMLInputElement>('input[name="plan"]')];
     const attr = captureAttribution();
 
@@ -163,8 +230,7 @@ const dev = import.meta.env.DEV;
       root.querySelectorAll<HTMLElement>('[data-when]').forEach((el) => (el.hidden = el.dataset.when !== plan));
       const useOffer = offer && plan === 'monthly';
       root.querySelectorAll<HTMLElement>('[data-kit]').forEach((el) => (el.hidden = (el.dataset.kit === 'offer') !== useOffer));
-      // on to the reserve form, with this choice already made
-      payLink.href = `/?plan=${plan}${useOffer ? '&offer=kit' : ''}#start`;
+      intervalField.value = plan;
     };
     radios.forEach((r) =>
       r.addEventListener('change', () => {
@@ -175,6 +241,56 @@ const dev = import.meta.env.DEV;
     );
     show();
     track('checkout_view', { plan, offer, rep: attr.rep || '' });
+
+    // ---- the reserve form: details to GHL first, then the matching checkout page ----
+    const landing = form.querySelector<HTMLInputElement>('[data-rf-landing]');
+    if (landing) landing.value = location.origin + location.pathname;
+    // attribution fields are filled by page.ts on load; fill again in case this ran first
+    form.querySelectorAll<HTMLInputElement>('input[data-attr-field]').forEach((f) => {
+      const v = (attr as Record<string, string | undefined>)[f.name];
+      if (v) f.value = v;
+    });
+    const status = form.querySelector<HTMLElement>('[data-rf-status]')!;
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      let first: HTMLInputElement | null = null;
+      form.querySelectorAll<HTMLInputElement>('[required]').forEach((f) => {
+        const bad = !f.value.trim() || (f.type === 'email' && !/^\S+@\S+\.\S+$/.test(f.value.trim()));
+        f.toggleAttribute('aria-invalid', bad);
+        if (bad && !first) first = f;
+      });
+      if (first) {
+        (first as HTMLInputElement).focus();
+        return;
+      }
+      const data = new FormData(form);
+      track('start_form_submit', { interval: plan, configured: Boolean(form.getAttribute('action')), page: 'auto' });
+      // the buyer's details go along in this browser's storage, never in the address
+      const next = () => {
+        saveBuyer({ email: String(data.get('email') || ''), first_name: String(data.get('first_name') || ''), phone: String(data.get('phone') || '') });
+        const useOffer = offer && plan === 'monthly';
+        const page = (useOffer && form.dataset.coKit) || (plan === 'monthly' ? form.dataset.coMonthly : form.dataset.coAnnual);
+        if (form.hasAttribute('data-co-live') && page) {
+          location.href = page;
+          return;
+        }
+        form.hidden = true;
+        const ok = root.querySelector<HTMLElement>('[data-rf-ok]')!;
+        ok.hidden = false;
+        ok.focus();
+      };
+      if (isBot(form) || !form.getAttribute('action')) return next();
+      const btn = form.querySelector<HTMLButtonElement>('button[type="submit"]')!;
+      btn.disabled = true;
+      status.textContent = form.dataset.sending || '';
+      try {
+        await send(form.action, form, FIELDS.reserve);
+        next();
+      } catch {
+        status.textContent = form.dataset.error || '';
+        btn.disabled = false;
+      }
+    });
   }
 </script>
 
@@ -458,42 +574,98 @@ const dev = import.meta.env.DEV;
     font-size: 1.4rem;
     letter-spacing: -0.03em;
   }
-  .frame {
-    border-radius: 18px;
-    overflow: hidden;
-    background: #fff;
+  /* ---------- the reserve form ---------- */
+  .rf {
+    display: grid;
+    gap: 14px;
   }
-  .frame iframe {
-    display: block;
-    width: 100%;
-    min-height: 720px;
-    border: 0;
-  }
-  .frame iframe[hidden],
-  .closed[hidden],
-  .open[hidden] {
+  .rf[hidden],
+  .rf-ok[hidden] {
     display: none;
   }
-  .open {
+  .rf-note {
+    font-size: 0.9375rem;
+    color: var(--fog);
+  }
+  .rf-two {
     display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 12px;
-    padding: clamp(1.25rem, 1rem + 1.5vw, 2.25rem);
-    background: #f4f2ec;
-    color: #0b1016;
   }
-  .open .go {
+  .fld {
+    display: grid;
+    gap: 6px;
+  }
+  .fld label {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: #c5d0da;
+  }
+  .fld input {
     width: 100%;
+    min-height: 50px;
+    padding: 0 14px;
+    border-radius: 12px;
+    border: 1.5px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.06);
+    color: #fff;
+    font: inherit;
   }
-  .open p {
-    font-size: 0.875rem;
-    line-height: 1.5;
+  .fld input:focus-visible {
+    outline: 3px solid #7cc4ff;
+    outline-offset: 1px;
   }
-  .closed {
+  .fld input[aria-invalid] {
+    border-color: #ff8f7a;
+  }
+  .rf-sms {
     display: grid;
     gap: 8px;
-    align-content: center;
-    min-height: 260px;
+    margin: 0;
+    padding: 12px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 14px;
+  }
+  .rf-sms legend {
+    padding: 0 6px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--fog);
+  }
+  .rf-sms label {
+    display: grid;
+    grid-template-columns: 20px minmax(0, 1fr);
+    gap: 10px;
+    align-items: start;
+    font-size: 0.8125rem;
+    line-height: 1.45;
+    color: #dbe4ec;
+    cursor: pointer;
+  }
+  .rf-sms input {
+    width: 20px;
+    height: 20px;
+    margin-top: 1px;
+    accent-color: #d8ff3e;
+  }
+  .rf .go {
+    width: 100%;
+  }
+  .rf-status {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #ffb4a6;
+  }
+  .rf-status:empty {
+    display: none;
+  }
+  .rf-ok {
+    display: grid;
+    gap: 8px;
     padding: clamp(1.25rem, 1rem + 1.5vw, 2.25rem);
+    border-radius: 18px;
     background: #f4f2ec;
     color: #0b1016;
   }
@@ -502,14 +674,6 @@ const dev = import.meta.env.DEV;
     font-weight: 800;
     font-size: 1.3rem;
     letter-spacing: -0.03em;
-  }
-  .preview {
-    margin-top: 6px;
-    padding: 8px 12px;
-    border-radius: 10px;
-    border: 1px dashed #b07a00;
-    font-size: 0.8125rem;
-    color: #6b4a00;
   }
   .fine {
     font-size: 0.75rem;
@@ -524,6 +688,10 @@ const dev = import.meta.env.DEV;
     .grid {
       grid-template-columns: 1fr;
     }
+    /* on a phone the form comes right after the price; the longer list is on the checkout page too */
+    .more {
+      display: none;
+    }
   }
   @media (max-width: 560px) {
     .top {
@@ -535,8 +703,8 @@ const dev = import.meta.env.DEV;
     .back {
       display: none;
     }
-    .frame iframe {
-      min-height: 820px;
+    .rf-two {
+      grid-template-columns: 1fr;
     }
   }
 </style>

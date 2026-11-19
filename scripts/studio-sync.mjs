@@ -57,7 +57,8 @@ const walk = (dir) => {
 walk(dist);
 console.log(`\nCopied ${pages} pages to the AI Studio project.`);
 
-run('git add -A', studio);
+// stage only what this sync owns; anything else in the AI Studio repository is left exactly as it is
+run('git add -A -- src/site public', studio);
 // This sync owns only the generated pages and their assets. Everything else in the AI Studio
 // repository belongs to AI Studio: its checkout pages (src/routes/checkout, src/components/checkout),
 // its payments setup and its own routes. If a run would change any of that, stop before committing.
@@ -73,7 +74,7 @@ if (foreign.length) {
   console.error(foreign.join(NL));
   process.exit(1);
 }
-if (!out('git status --porcelain', studio)) {
+if (!out('git diff --cached --name-only', studio)) {
   console.log('AI Studio already has this version. Nothing to send.');
 } else if (process.argv.includes('--no-push')) {
   console.log('Changes staged in .studio/ (not pushed).');

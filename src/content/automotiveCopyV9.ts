@@ -780,7 +780,22 @@ export const checkout9 = {
   /** What happens after you pay: the same three steps the thank-you page gives. */
   next: SETUP_STEPS,
   promises: ['Live in 14 days, or your first month is free', 'No sales call', 'Your domain, content and customer list stay yours'],
-  payTitle: 'Next step',
+  payTitle: 'Your details',
+  /** The reserve form on this page: the same fields and the same webhook as the one on the sales page. */
+  form: {
+    note: 'We save your details first, then open secure payment.',
+    firstName: 'First name',
+    business: 'Shop name',
+    email: 'Email',
+    phone: 'Phone',
+    smsLegend: 'Text messages (optional)',
+    submit: 'Continue to secure payment',
+    submitClosed: 'Reserve My Build',
+    sending: 'Sending\u2026',
+    error: 'Something went wrong. Please try again.',
+    closed: { title: 'Details received.', body: 'Online checkout is being switched on. Your join link arrives by email.' },
+    required: 'Please fill this in.',
+  },
   /** Shown when the order page opens on its own (offerV9.checkoutEmbed is false). */
   payCta: 'Continue',
   payNote: 'Next: your name and email, then secure payment. After that, setup takes about 10-15 minutes in your account.',
