@@ -1,73 +1,97 @@
 ---
 /**
- * After checkout, and again after onboarding.
- *   /thank-you?paid=1  : straight after payment. "One step left", with a button to the onboarding form.
- *   /thank-you?later=1 : they chose to fill the form later. Same view.
- *   /thank-you         : the onboarding form is in. "Your build has started."
+ * After checkout: get.cnvrtx.com/thank-you (the checkout pages send every plan here).
+ *
+ * The buyer's own account does not exist yet when this page loads, so nothing is embedded
+ * here: no form, no survey. The page says what to expect: a login email, then the Setup Center
+ * inside their account, where they answer the setup questions.
+ *
+ * All wording is in flow9.thanks (src/content/automotiveCopyV9.ts). The support email comes
+ * from src/config/offerV9.ts; with none set, the line only says to check spam.
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { flow9 } from '../content/automotiveCopyV9';
+import { offerV9 as cfg } from '../config/offerV9';
 import '../styles/v9.css';
 const t = flow9.thanks;
+const support = cfg.contact.email || cfg.legalInfo.supportEmail;
 ---
 
-<BaseLayout title="Thank you. Your CNVRT X build is booked in" description="What happens next with your CNVRT X system." noindex={true} bodyClass="v9" themeColor="#070B10">
+<BaseLayout title={t.pageTitle} description={t.pageDescription} noindex={true} bodyClass="v9" themeColor="#070B10">
   <header class="top">
     <a href="/" class="logo" aria-label="CNVRT X home">CNVRT<span>✕</span></a>
   </header>
 
-  <main id="main" class="wrap" data-ty>
+  <main id="main" class="wrap">
     <p class="badge"><span aria-hidden="true">✓</span>{t.kicker}</p>
-
-    <h1 data-when="done">
-      {t.titleDone[0]}<br /><span class="hot">{t.titleDone[1]}</span>
+    <h1>
+      {t.title[0]}<br /><span class="hot">{t.title[1]}</span>
     </h1>
-    <h1 data-when="later" hidden>
-      {t.titleLater[0]}<br /><span class="hot">{t.titleLater[1]}</span>
-    </h1>
-    <p class="lede" data-when="done">{t.leadDone}</p>
-    <p class="lede" data-when="later" hidden>{t.leadLater}</p>
+    <p class="lede">{t.lead}</p>
 
-    <a href={flow9.onboardingPath} class="go" data-when="later" hidden data-track="thanks_finish_click">{t.finish}</a>
+    {/* a div with a region role, not <section>: the site lazy-renders <section>s in <main>, which would shift this page as it loads */}
+    <div class="setup" role="region" aria-labelledby="setup-title">
+      <h2 id="setup-title">{t.stepsTitle}</h2>
+      <ol role="list" class="steps">
+        {
+          t.steps.map((s, i) => (
+            <li>
+              <span class="n" aria-hidden="true">{i + 1}</span>
+              <div>
+                <h3>{s.t}</h3>
+                <p>{s.d}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+      <p class="help">
+        {t.noEmail}
+        {
+          support && (
+            <>
+              {' '}
+              {t.noEmailContact} <a href={`mailto:${support}`}>{support}</a>.
+            </>
+          )
+        }
+      </p>
+    </div>
 
-    <ol role="list" class="next">
-      {
-        t.next.map((n, i) => (
-          <li>
-            <span class="n">{i + 1}</span>
-            <b>{n.t}</b>
-            <span>{n.d}</span>
-          </li>
-        ))
-      }
-    </ol>
+    <div class="after" role="region" aria-labelledby="next-title">
+      <h2 id="next-title">{t.timelineTitle}</h2>
+      <ol role="list" class="line">
+        {
+          t.timeline.map((x) => (
+            <li>
+              <b>{x.t}</b>
+              <span>{x.d}</span>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
 
     <aside class="refer">
       <div>
         <h2>{t.referTitle}</h2>
         <p>{t.referLine}</p>
       </div>
-      <button type="button" class="copy" data-copy data-url="/">{t.referCta}</button>
+      <button type="button" class="copy" data-copy data-url="/" data-done={t.referDone}>{t.referCta}</button>
     </aside>
   </main>
 </BaseLayout>
 
 <script>
   import { track } from '../scripts/analytics';
-  const q = new URLSearchParams(location.search);
-  const paid = q.has('paid');
-  const later = paid || q.get('later') === '1';
-  // the onboarding page shows "Payment received" only when it is told the buyer came from checkout
-  if (paid) document.querySelectorAll<HTMLAnchorElement>('a[data-track="thanks_finish_click"]').forEach((a) => (a.href = a.getAttribute('href') + '?paid=1'));
-  document.querySelectorAll<HTMLElement>('[data-when]').forEach((el) => (el.hidden = (el.dataset.when === 'later') !== later));
-  track('thank_you_view', { later });
+  track('thank_you_view', { paid: new URLSearchParams(location.search).has('paid') });
 
   const btn = document.querySelector<HTMLButtonElement>('[data-copy]');
   btn?.addEventListener('click', async () => {
     const url = location.origin + (btn.dataset.url || '/');
     try {
       await navigator.clipboard.writeText(url);
-      btn.textContent = 'Link copied';
+      btn.textContent = btn.dataset.done || '';
     } catch {
       btn.textContent = url;
     }
@@ -99,6 +123,7 @@ const t = flow9.thanks;
     display: grid;
     gap: var(--s-5);
     justify-items: start;
+    color: #eef3f7;
   }
   .badge {
     display: inline-flex;
@@ -116,48 +141,113 @@ const t = flow9.thanks;
     font-size: clamp(2.4rem, 1.2rem + 5vw, 5.6rem);
     letter-spacing: -0.055em;
   }
-  h1[hidden],
-  [hidden] {
-    display: none !important;
+  .lede {
+    max-width: 56ch;
   }
-  .next {
-    margin: var(--s-5) 0 0;
+
+  /* ---------- 3 steps to go live ---------- */
+  .setup,
+  .after {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    border-top: 2px solid rgba(255, 255, 255, 0.2);
+    gap: var(--s-4);
   }
-  .next li {
-    position: relative;
-    display: grid;
-    gap: 6px;
-    align-content: start;
-    padding: 26px 20px 0 0;
+  .setup {
+    margin-top: var(--s-4);
   }
-  .n {
-    position: absolute;
-    top: -15px;
-    left: 0;
-    display: grid;
-    place-items: center;
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    background: var(--hot);
-    color: #fff;
+  .setup h2,
+  .after h2 {
     font-family: var(--f-head);
     font-weight: 800;
-    font-size: 0.8125rem;
+    font-size: clamp(1.4rem, 1.1rem + 1.2vw, 2rem);
+    letter-spacing: -0.04em;
   }
-  .next b {
+  .steps {
+    margin: 0;
+    display: grid;
+    gap: 12px;
+  }
+  .steps li {
+    display: grid;
+    grid-template-columns: 48px minmax(0, 1fr);
+    gap: 16px;
+    align-items: start;
+    padding: clamp(1.1rem, 0.9rem + 1vw, 1.75rem);
+    border-radius: 22px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+  }
+  .n {
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #d8ff3e;
+    color: #0b1016;
     font-family: var(--f-head);
+    font-weight: 800;
     font-size: 1.3rem;
+  }
+  .steps h3 {
+    font-family: var(--f-head);
+    font-weight: 700;
+    font-size: clamp(1.15rem, 1rem + 0.6vw, 1.5rem);
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+  }
+  .steps p {
+    margin-top: 4px;
+    line-height: 1.5;
+    color: #dbe4ec;
+  }
+  .help {
+    font-size: 0.9375rem;
+    color: var(--fog);
+  }
+  .help a {
+    color: #fff;
+    text-underline-offset: 3px;
+    overflow-wrap: anywhere;
+  }
+
+  /* ---------- what happens next ---------- */
+  .after {
+    margin-top: var(--s-5);
+  }
+  .line {
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border-top: 2px solid rgba(255, 255, 255, 0.2);
+  }
+  .line li {
+    position: relative;
+    display: grid;
+    gap: 4px;
+    align-content: start;
+    padding: 22px 20px 0 0;
+  }
+  .line li::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 0;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--hot);
+  }
+  .line b {
+    font-family: var(--f-head);
+    font-size: 1.15rem;
     letter-spacing: -0.03em;
   }
-  .next li > span:last-child {
-    color: var(--fog);
+  .line span {
     line-height: 1.5;
+    color: var(--fog);
   }
+
   .refer {
     margin-top: var(--s-6);
     width: 100%;
@@ -191,21 +281,32 @@ const t = flow9.thanks;
     cursor: pointer;
   }
   @media (max-width: 800px) {
-    .next {
+    .line {
       grid-template-columns: 1fr;
       border-top: 0;
       border-left: 2px solid rgba(255, 255, 255, 0.2);
       row-gap: var(--s-5);
     }
-    .next li {
-      padding: 0 0 0 28px;
+    .line li {
+      padding: 0 0 0 24px;
     }
-    .n {
-      top: 0;
-      left: -15px;
+    .line li::before {
+      top: 6px;
+      left: -8px;
     }
     .copy {
       width: 100%;
+    }
+  }
+  @media (max-width: 480px) {
+    .steps li {
+      grid-template-columns: 40px minmax(0, 1fr);
+      gap: 12px;
+    }
+    .n {
+      width: 40px;
+      height: 40px;
+      font-size: 1.1rem;
     }
   }
 </style>

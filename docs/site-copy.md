@@ -30,7 +30,6 @@ How to read it:
 3. Checkout
   /auto                         Checkout: auto shops
 4. After purchase
-  /onboarding                   Onboarding
   /thank-you                    Thank you
 5. Legal pages
   /legal/privacy                Privacy Policy
@@ -194,6 +193,8 @@ The site is auto-first: the home page is the auto-shop page. /auto on its own re
 - Pays for itself at 2 saved inquiries a month
 - Save only half of them +$1,320 a month, after the cost
 - This is arithmetic on your own inputs. It is not a promise of results. Example numbers show until you change them.
+- [link] Email me my numbers →  `→ #start`
+- Not ready yet? Get them with a free Booking Leak Audit.
 - [link] Show me how to stop it  `→ #pricing`
 
 ### Section `how-it-works`: Four coats. One finish.
@@ -377,13 +378,13 @@ The site is auto-first: the home page is the auto-shop page. /auto on its own re
 - **Full website built to book calls.** Free
 - **Past-customer win-back at launch.** Free
 - **Old-lead reactivation at launch.** Free
-- [link] Start Annual  `→ /auto?plan=annual`
+- [link] Start Annual  `→ #start`
 - **[H3]** Monthly
 - $197 /mo
 - + $497 one-time Launch Kit.
 - **Love it or leave it.** Month-to-month. Cancel anytime.
 - **Full website:** $997 one-time add-on.
-- [link] Start Monthly  `→ /auto?plan=monthly`
+- [link] Start Monthly  `→ #start`
 - Founding program **First 10 qualifying shops:** Launch Kit waived · Price locked while you stay subscribed · Dead-Lead Revival on your last 90 days of quotes · 30 days of hands-on launch support
 - [opens] See every detail
 - Annual Monthly
@@ -421,6 +422,7 @@ The site is auto-first: the home page is the auto-shop page. /auto on its own re
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
 - Live in 14 days: the clock starts when your form and access are in (Google, Facebook and call forwarding). Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
+- [link] Not ready to buy? Get a free Booking Leak Audit →  `→ #start`
 
 ### Section `faq`: Before you ask.
 
@@ -460,7 +462,7 @@ The site is auto-first: the home page is the auto-shop page. /auto on its own re
 - [label] Monthly
 - [label] Annual Pay 10, get 12
 - $1,970 a year. Launch Kit waived.
-- $197 a month + $497 one-time Launch Kit.
+- $197 a month + $497 $297 $497 one-time Launch Kit.
 - Founding (Launch Kit waived): first 10 qualifying shops.
 - On the table in your first year
 - Leaks you can go after $36,400
@@ -474,6 +476,7 @@ The site is auto-first: the home page is the auto-shop page. /auto on its own re
 - Please enter a valid email address.
 - [label] Phone
 - Please add a phone number.
+- [label] Leave this field empty
 - Text messages (optional)
 - [label] Text me about my account and setup. Msg & data rates may apply. Reply STOP to opt out.
 - [label] Send me tips and offers by text. Msg & data rates may apply. Reply STOP to opt out.
@@ -506,6 +509,8 @@ The site is auto-first: the home page is the auto-shop page. /auto on its own re
 - [link] Disclaimer  `→ /legal/disclaimer`
 - Contact
 - Contact us
+- [link] Free Booking Leak Audit  `→ #start`
+- [link] Not an auto shop? Join the waitlist  `→ #start`
 - CNVRT X LLC
 - Results disclaimer: CNVRT X does not guarantee bookings, revenue or any specific result. Figures in the calculator and the illustrations are examples based on the numbers you enter. Your results depend on your services, prices, market and how you run your shop.
 - Texting: business texting in the US needs carrier registration (A2P 10DLC). Texting features go live after carrier approval. Message and data rates may apply. Reply STOP to opt out.
@@ -520,8 +525,45 @@ The site is auto-first: the home page is the auto-shop page. /auto on its own re
 - $297 $497 one-time Launch Kit, instead of $497
 - Start monthly today and your one-time Launch Kit is $297, not $497. The plan itself stays $197 a month, cancel anytime.
 - About $3,033 a month keeps slipping away. From your calculator numbers. An estimate, not a promise.
-- [link] Start Monthly with the $297 Launch Kit  `→ /auto?plan=monthly&offer=kit`
+- [link] Start Monthly with the $297 Launch Kit  `→ #start`
 - [button] No thanks
+
+### Popup `audit`: Free Booking Leak Audit
+
+- Free. No sales call.
+- **[H2]** Free Booking Leak Audit
+- Find the 3 places your shop is most likely losing booked jobs.
+- Your Booking Leak Score
+- Where replies, quotes, bookings and reviews slip
+- Your top 3 fixes, in order
+- [label] Business name
+- [label] Website or Google profile link
+- [label] Primary service
+- [label] Email
+- [label] Phone
+- [label] About how many inquiries a month? (optional)
+- [label] Also email me my calculator numbers
+- [label] Leave this field empty
+- [button] Send My Free Audit
+- _(shown on interaction)_ We could not send this right now. Please try again in a moment.
+- We look at what a customer can see from outside. No login needed. We send it to your email. By sending this you agree that CNVRT X may contact you about your audit by email or phone.
+- **[H2]** Request received.
+- We will send your Booking Leak Audit to your email.
+
+### Popup `wl`: Join the waitlist for your trade.
+
+- Not an auto shop?
+- **[H2]** Join the waitlist for your trade.
+- CNVRT X Front Office is built for auto shops first. Tell us your trade and we will email you when your version is ready.
+- [label] Your trade
+- [label] Business name (optional)
+- [label] Email
+- [label] Leave this field empty
+- [button] Join the Waitlist
+- _(shown on interaction)_ We could not send this right now. Please try again in a moment.
+- One email when your trade is ready. Nothing else.
+- **[H2]** You are on the list.
+- We will email you when the version for your trade is ready.
 
 
 ---
@@ -625,6 +667,8 @@ _Same wording as_ **Home → Top bar `bar`**.
 - Pays for itself at 2 saved inquiries a month
 - Save only half of them +$1,320 a month, after the cost
 - This is arithmetic on your own inputs. It is not a promise of results. Example numbers show until you change them.
+- [link] Email me my numbers →  `→ #start`
+- Not ready yet? Get them with a free Booking Leak Audit.
 - [link] Show me how to stop it  `→ #pricing`
 
 ### Section `chg`: What changes when no call is lost.
@@ -722,13 +766,13 @@ _Same wording as_ **Home → Top bar `bar`**.
 - **Full website built to book calls.** Free
 - **Past-customer win-back at launch.** Free
 - **Old-lead reactivation at launch.** Free
-- [link] Start Annual  `→ /auto?plan=annual`
+- [link] Start Annual  `→ #start`
 - **[H3]** Monthly
 - $197 /mo
 - + $497 one-time Launch Kit.
 - **Love it or leave it.** Month-to-month. Cancel anytime.
 - **Full website:** $997 one-time add-on.
-- [link] Start Monthly  `→ /auto?plan=monthly`
+- [link] Start Monthly  `→ #start`
 - Founding program **First 10 qualifying shops:** Launch Kit waived · Price locked while you stay subscribed · Dead-Lead Revival on your last 90 days of quotes · 30 days of hands-on launch support
 - [opens] See every detail
 - Annual Monthly
@@ -766,6 +810,7 @@ _Same wording as_ **Home → Top bar `bar`**.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
 - Live in 14 days: the clock starts when your form and access are in (Google, Facebook and call forwarding). Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
+- [link] Not ready to buy? Get a free Booking Leak Audit →  `→ #start`
 
 ### Section `faq`: Before you ask.
 
@@ -801,7 +846,7 @@ _Same wording as_ **Home → Top bar `bar`**.
 - [label] Monthly
 - [label] Annual Pay 10, get 12
 - $1,970 a year. Launch Kit waived.
-- $197 a month + $497 one-time Launch Kit.
+- $197 a month + $497 $297 $497 one-time Launch Kit.
 - Founding (Launch Kit waived): first 10 qualifying shops.
 - On the table in your first year
 - Leaks you can go after $36,400
@@ -815,6 +860,7 @@ _Same wording as_ **Home → Top bar `bar`**.
 - Please enter a valid email address.
 - [label] Phone
 - Please add a phone number.
+- [label] Leave this field empty
 - Text messages (optional)
 - [label] Text me about my account and setup. Msg & data rates may apply. Reply STOP to opt out.
 - [label] Send me tips and offers by text. Msg & data rates may apply. Reply STOP to opt out.
@@ -847,6 +893,8 @@ _Same wording as_ **Home → Top bar `bar`**.
 - [link] Disclaimer  `→ /legal/disclaimer`
 - Contact
 - Contact us
+- [link] Free Booking Leak Audit  `→ #start`
+- [link] Not an auto shop? Join the waitlist  `→ #start`
 - CNVRT X LLC
 - Results disclaimer: CNVRT X does not guarantee bookings, revenue or any specific result. Figures in the calculator and the illustrations are examples based on the numbers you enter. Your results depend on your services, prices, market and how you run your shop.
 - Texting: business texting in the US needs carrier registration (A2P 10DLC). Texting features go live after carrier approval. Message and data rates may apply. Reply STOP to opt out.
@@ -857,6 +905,14 @@ _Same wording as_ **Home → Top bar `bar`**.
 ### Popup `exit`: Take $200 off your Launch Kit.
 
 _Same wording as_ **Home → Popup `exit`: Take $200 off your Launch Kit.**.
+
+### Popup `audit`: Free Booking Leak Audit
+
+_Same wording as_ **Home → Popup `audit`: Free Booking Leak Audit**.
+
+### Popup `wl`: Join the waitlist for your trade.
+
+_Same wording as_ **Home → Popup `wl`: Join the waitlist for your trade.**.
 
 
 ## Problem page: Quote follow-up
@@ -948,6 +1004,8 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - Pays for itself at 2 saved inquiries a month
 - Save only half of them +$1,320 a month, after the cost
 - This is arithmetic on your own inputs. It is not a promise of results. Example numbers show until you change them.
+- [link] Email me my numbers →  `→ #start`
+- Not ready yet? Get them with a free Booking Leak Audit.
 - [link] Show me how to stop it  `→ #pricing`
 
 ### Section `how-it-works`: Follow-Up Until They Book is one of nine. You get all nine.
@@ -1045,13 +1103,13 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - **Full website built to book calls.** Free
 - **Past-customer win-back at launch.** Free
 - **Old-lead reactivation at launch.** Free
-- [link] Start Annual  `→ /auto?plan=annual`
+- [link] Start Annual  `→ #start`
 - **[H3]** Monthly
 - $197 /mo
 - + $497 one-time Launch Kit.
 - **Love it or leave it.** Month-to-month. Cancel anytime.
 - **Full website:** $997 one-time add-on.
-- [link] Start Monthly  `→ /auto?plan=monthly`
+- [link] Start Monthly  `→ #start`
 - Founding program **First 10 qualifying shops:** Launch Kit waived · Price locked while you stay subscribed · Dead-Lead Revival on your last 90 days of quotes · 30 days of hands-on launch support
 - [opens] See every detail
 - Annual Monthly
@@ -1089,6 +1147,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
 - Live in 14 days: the clock starts when your form and access are in (Google, Facebook and call forwarding). Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
+- [link] Not ready to buy? Get a free Booking Leak Audit →  `→ #start`
 
 ### Section `faq`: Before you ask.
 
@@ -1124,7 +1183,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - [label] Monthly
 - [label] Annual Pay 10, get 12
 - $1,970 a year. Launch Kit waived.
-- $197 a month + $497 one-time Launch Kit.
+- $197 a month + $497 $297 $497 one-time Launch Kit.
 - Founding (Launch Kit waived): first 10 qualifying shops.
 - On the table in your first year
 - Leaks you can go after $36,400
@@ -1138,6 +1197,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - Please enter a valid email address.
 - [label] Phone
 - Please add a phone number.
+- [label] Leave this field empty
 - Text messages (optional)
 - [label] Text me about my account and setup. Msg & data rates may apply. Reply STOP to opt out.
 - [label] Send me tips and offers by text. Msg & data rates may apply. Reply STOP to opt out.
@@ -1170,6 +1230,8 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - [link] Disclaimer  `→ /legal/disclaimer`
 - Contact
 - Contact us
+- [link] Free Booking Leak Audit  `→ #start`
+- [link] Not an auto shop? Join the waitlist  `→ #start`
 - CNVRT X LLC
 - Results disclaimer: CNVRT X does not guarantee bookings, revenue or any specific result. Figures in the calculator and the illustrations are examples based on the numbers you enter. Your results depend on your services, prices, market and how you run your shop.
 - Texting: business texting in the US needs carrier registration (A2P 10DLC). Texting features go live after carrier approval. Message and data rates may apply. Reply STOP to opt out.
@@ -1180,6 +1242,14 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 ### Popup `exit`: Take $200 off your Launch Kit.
 
 _Same wording as_ **Home → Popup `exit`: Take $200 off your Launch Kit.**.
+
+### Popup `audit`: Free Booking Leak Audit
+
+_Same wording as_ **Home → Popup `audit`: Free Booking Leak Audit**.
+
+### Popup `wl`: Join the waitlist for your trade.
+
+_Same wording as_ **Home → Popup `wl`: Join the waitlist for your trade.**.
 
 
 ## Problem page: No-shows
@@ -1289,6 +1359,8 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - Pays for itself at 2 saved inquiries a month
 - Save only half of them +$1,320 a month, after the cost
 - This is arithmetic on your own inputs. It is not a promise of results. Example numbers show until you change them.
+- [link] Email me my numbers →  `→ #start`
+- Not ready yet? Get them with a free Booking Leak Audit.
 - [link] Show me how to stop it  `→ #pricing`
 
 ### Section `how-it-works`: No-Show Shield is one of nine. You get all nine.
@@ -1371,13 +1443,13 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - **Full website built to book calls.** Free
 - **Past-customer win-back at launch.** Free
 - **Old-lead reactivation at launch.** Free
-- [link] Start Annual  `→ /auto?plan=annual`
+- [link] Start Annual  `→ #start`
 - **[H3]** Monthly
 - $197 /mo
 - + $497 one-time Launch Kit.
 - **Love it or leave it.** Month-to-month. Cancel anytime.
 - **Full website:** $997 one-time add-on.
-- [link] Start Monthly  `→ /auto?plan=monthly`
+- [link] Start Monthly  `→ #start`
 - Founding program **First 10 qualifying shops:** Launch Kit waived · Price locked while you stay subscribed · Dead-Lead Revival on your last 90 days of quotes · 30 days of hands-on launch support
 - [opens] See every detail
 - Annual Monthly
@@ -1415,6 +1487,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
 - Live in 14 days: the clock starts when your form and access are in (Google, Facebook and call forwarding). Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
+- [link] Not ready to buy? Get a free Booking Leak Audit →  `→ #start`
 
 ### Section `faq`: Before you ask.
 
@@ -1450,7 +1523,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - [label] Monthly
 - [label] Annual Pay 10, get 12
 - $1,970 a year. Launch Kit waived.
-- $197 a month + $497 one-time Launch Kit.
+- $197 a month + $497 $297 $497 one-time Launch Kit.
 - Founding (Launch Kit waived): first 10 qualifying shops.
 - On the table in your first year
 - Leaks you can go after $36,400
@@ -1464,6 +1537,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - Please enter a valid email address.
 - [label] Phone
 - Please add a phone number.
+- [label] Leave this field empty
 - Text messages (optional)
 - [label] Text me about my account and setup. Msg & data rates may apply. Reply STOP to opt out.
 - [label] Send me tips and offers by text. Msg & data rates may apply. Reply STOP to opt out.
@@ -1496,6 +1570,8 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - [link] Disclaimer  `→ /legal/disclaimer`
 - Contact
 - Contact us
+- [link] Free Booking Leak Audit  `→ #start`
+- [link] Not an auto shop? Join the waitlist  `→ #start`
 - CNVRT X LLC
 - Results disclaimer: CNVRT X does not guarantee bookings, revenue or any specific result. Figures in the calculator and the illustrations are examples based on the numbers you enter. Your results depend on your services, prices, market and how you run your shop.
 - Texting: business texting in the US needs carrier registration (A2P 10DLC). Texting features go live after carrier approval. Message and data rates may apply. Reply STOP to opt out.
@@ -1506,6 +1582,14 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 ### Popup `exit`: Take $200 off your Launch Kit.
 
 _Same wording as_ **Home → Popup `exit`: Take $200 off your Launch Kit.**.
+
+### Popup `audit`: Free Booking Leak Audit
+
+_Same wording as_ **Home → Popup `audit`: Free Booking Leak Audit**.
+
+### Popup `wl`: Join the waitlist for your trade.
+
+_Same wording as_ **Home → Popup `wl`: Join the waitlist for your trade.**.
 
 
 ## Problem page: AI receptionist
@@ -1620,6 +1704,8 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - Pays for itself at 2 saved inquiries a month
 - Save only half of them +$1,320 a month, after the cost
 - This is arithmetic on your own inputs. It is not a promise of results. Example numbers show until you change them.
+- [link] Email me my numbers →  `→ #start`
+- Not ready yet? Get them with a free Booking Leak Audit.
 - [link] Show me how to stop it  `→ #pricing`
 
 ### Section `chg`: What changes when the front desk never closes.
@@ -1697,13 +1783,13 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - **Full website built to book calls.** Free
 - **Past-customer win-back at launch.** Free
 - **Old-lead reactivation at launch.** Free
-- [link] Start Annual  `→ /auto?plan=annual`
+- [link] Start Annual  `→ #start`
 - **[H3]** Monthly
 - $197 /mo
 - + $497 one-time Launch Kit.
 - **Love it or leave it.** Month-to-month. Cancel anytime.
 - **Full website:** $997 one-time add-on.
-- [link] Start Monthly  `→ /auto?plan=monthly`
+- [link] Start Monthly  `→ #start`
 - Founding program **First 10 qualifying shops:** Launch Kit waived · Price locked while you stay subscribed · Dead-Lead Revival on your last 90 days of quotes · 30 days of hands-on launch support
 - [opens] See every detail
 - Annual Monthly
@@ -1741,6 +1827,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
 - Live in 14 days: the clock starts when your form and access are in (Google, Facebook and call forwarding). Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
+- [link] Not ready to buy? Get a free Booking Leak Audit →  `→ #start`
 
 ### Section `faq`: Before you ask.
 
@@ -1776,7 +1863,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - [label] Monthly
 - [label] Annual Pay 10, get 12
 - $1,970 a year. Launch Kit waived.
-- $197 a month + $497 one-time Launch Kit.
+- $197 a month + $497 $297 $497 one-time Launch Kit.
 - Founding (Launch Kit waived): first 10 qualifying shops.
 - On the table in your first year
 - Leaks you can go after $36,400
@@ -1790,6 +1877,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - Please enter a valid email address.
 - [label] Phone
 - Please add a phone number.
+- [label] Leave this field empty
 - Text messages (optional)
 - [label] Text me about my account and setup. Msg & data rates may apply. Reply STOP to opt out.
 - [label] Send me tips and offers by text. Msg & data rates may apply. Reply STOP to opt out.
@@ -1822,6 +1910,8 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - [link] Disclaimer  `→ /legal/disclaimer`
 - Contact
 - Contact us
+- [link] Free Booking Leak Audit  `→ #start`
+- [link] Not an auto shop? Join the waitlist  `→ #start`
 - CNVRT X LLC
 - Results disclaimer: CNVRT X does not guarantee bookings, revenue or any specific result. Figures in the calculator and the illustrations are examples based on the numbers you enter. Your results depend on your services, prices, market and how you run your shop.
 - Texting: business texting in the US needs carrier registration (A2P 10DLC). Texting features go live after carrier approval. Message and data rates may apply. Reply STOP to opt out.
@@ -1832,6 +1922,14 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 ### Popup `exit`: Take $200 off your Launch Kit.
 
 _Same wording as_ **Home → Popup `exit`: Take $200 off your Launch Kit.**.
+
+### Popup `audit`: Free Booking Leak Audit
+
+_Same wording as_ **Home → Popup `audit`: Free Booking Leak Audit**.
+
+### Popup `wl`: Join the waitlist for your trade.
+
+_Same wording as_ **Home → Popup `wl`: Join the waitlist for your trade.**.
 
 
 ## Problem page: Zero-hire front office
@@ -1943,6 +2041,8 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - Pays for itself at 2 saved inquiries a month
 - Save only half of them +$1,320 a month, after the cost
 - This is arithmetic on your own inputs. It is not a promise of results. Example numbers show until you change them.
+- [link] Email me my numbers →  `→ #start`
+- Not ready yet? Get them with a free Booking Leak Audit.
 - [link] Show me how to stop it  `→ #pricing`
 
 ### Section `how-it-works`: One front office. Three roles. Nine systems.
@@ -2027,13 +2127,13 @@ _Same wording as_ **Home → Section `work`: Who does the work?**.
 - **Full website built to book calls.** Free
 - **Past-customer win-back at launch.** Free
 - **Old-lead reactivation at launch.** Free
-- [link] Start Annual  `→ /auto?plan=annual`
+- [link] Start Annual  `→ #start`
 - **[H3]** Monthly
 - $197 /mo
 - + $497 one-time Launch Kit.
 - **Love it or leave it.** Month-to-month. Cancel anytime.
 - **Full website:** $997 one-time add-on.
-- [link] Start Monthly  `→ /auto?plan=monthly`
+- [link] Start Monthly  `→ #start`
 - Founding program **First 10 qualifying shops:** Launch Kit waived · Price locked while you stay subscribed · Dead-Lead Revival on your last 90 days of quotes · 30 days of hands-on launch support
 - [opens] See every detail
 - Annual Monthly
@@ -2071,6 +2171,7 @@ _Same wording as_ **Home → Section `work`: Who does the work?**.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
 - Live in 14 days: the clock starts when your form and access are in (Google, Facebook and call forwarding). Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
+- [link] Not ready to buy? Get a free Booking Leak Audit →  `→ #start`
 
 ### Section `faq`: Before you ask.
 
@@ -2106,7 +2207,7 @@ _Same wording as_ **Home → Section `work`: Who does the work?**.
 - [label] Monthly
 - [label] Annual Pay 10, get 12
 - $1,970 a year. Launch Kit waived.
-- $197 a month + $497 one-time Launch Kit.
+- $197 a month + $497 $297 $497 one-time Launch Kit.
 - Founding (Launch Kit waived): first 10 qualifying shops.
 - On the table in your first year
 - Leaks you can go after $36,400
@@ -2120,6 +2221,7 @@ _Same wording as_ **Home → Section `work`: Who does the work?**.
 - Please enter a valid email address.
 - [label] Phone
 - Please add a phone number.
+- [label] Leave this field empty
 - Text messages (optional)
 - [label] Text me about my account and setup. Msg & data rates may apply. Reply STOP to opt out.
 - [label] Send me tips and offers by text. Msg & data rates may apply. Reply STOP to opt out.
@@ -2152,6 +2254,8 @@ _Same wording as_ **Home → Section `work`: Who does the work?**.
 - [link] Disclaimer  `→ /legal/disclaimer`
 - Contact
 - Contact us
+- [link] Free Booking Leak Audit  `→ #start`
+- [link] Not an auto shop? Join the waitlist  `→ #start`
 - CNVRT X LLC
 - Results disclaimer: CNVRT X does not guarantee bookings, revenue or any specific result. Figures in the calculator and the illustrations are examples based on the numbers you enter. Your results depend on your services, prices, market and how you run your shop.
 - Texting: business texting in the US needs carrier registration (A2P 10DLC). Texting features go live after carrier approval. Message and data rates may apply. Reply STOP to opt out.
@@ -2162,6 +2266,14 @@ _Same wording as_ **Home → Section `work`: Who does the work?**.
 ### Popup `exit`: Take $200 off your Launch Kit.
 
 _Same wording as_ **Home → Popup `exit`: Take $200 off your Launch Kit.**.
+
+### Popup `audit`: Free Booking Leak Audit
+
+_Same wording as_ **Home → Popup `audit`: Free Booking Leak Audit**.
+
+### Popup `wl`: Join the waitlist for your trade.
+
+_Same wording as_ **Home → Popup `wl`: Join the waitlist for your trade.**.
 
 
 ## Problem page: Talking website
@@ -2277,6 +2389,8 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - Pays for itself at 2 saved inquiries a month
 - Save only half of them +$1,320 a month, after the cost
 - This is arithmetic on your own inputs. It is not a promise of results. Example numbers show until you change them.
+- [link] Email me my numbers →  `→ #start`
+- Not ready yet? Get them with a free Booking Leak Audit.
 - [link] Show me how to stop it  `→ #pricing`
 
 ### Section `chg`: What changes when your website answers back.
@@ -2394,13 +2508,13 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - **Full website built to book calls.** Free
 - **Past-customer win-back at launch.** Free
 - **Old-lead reactivation at launch.** Free
-- [link] Start Annual  `→ /auto?plan=annual`
+- [link] Start Annual  `→ #start`
 - **[H3]** Monthly
 - $197 /mo
 - + $497 one-time Launch Kit.
 - **Love it or leave it.** Month-to-month. Cancel anytime.
 - **Full website:** $997 one-time add-on.
-- [link] Start Monthly  `→ /auto?plan=monthly`
+- [link] Start Monthly  `→ #start`
 - Founding program **First 10 qualifying shops:** Launch Kit waived · Price locked while you stay subscribed · Dead-Lead Revival on your last 90 days of quotes · 30 days of hands-on launch support
 - [opens] See every detail
 - Annual Monthly
@@ -2438,6 +2552,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
 - Live in 14 days: the clock starts when your form and access are in (Google, Facebook and call forwarding). Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
+- [link] Not ready to buy? Get a free Booking Leak Audit →  `→ #start`
 
 ### Section `faq`: Before you ask.
 
@@ -2473,7 +2588,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - [label] Monthly
 - [label] Annual Pay 10, get 12
 - $1,970 a year. Launch Kit waived.
-- $197 a month + $497 one-time Launch Kit.
+- $197 a month + $497 $297 $497 one-time Launch Kit.
 - Founding (Launch Kit waived): first 10 qualifying shops.
 - On the table in your first year
 - Leaks you can go after $36,400
@@ -2487,6 +2602,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - Please enter a valid email address.
 - [label] Phone
 - Please add a phone number.
+- [label] Leave this field empty
 - Text messages (optional)
 - [label] Text me about my account and setup. Msg & data rates may apply. Reply STOP to opt out.
 - [label] Send me tips and offers by text. Msg & data rates may apply. Reply STOP to opt out.
@@ -2519,6 +2635,8 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - [link] Disclaimer  `→ /legal/disclaimer`
 - Contact
 - Contact us
+- [link] Free Booking Leak Audit  `→ #start`
+- [link] Not an auto shop? Join the waitlist  `→ #start`
 - CNVRT X LLC
 - Results disclaimer: CNVRT X does not guarantee bookings, revenue or any specific result. Figures in the calculator and the illustrations are examples based on the numbers you enter. Your results depend on your services, prices, market and how you run your shop.
 - Texting: business texting in the US needs carrier registration (A2P 10DLC). Texting features go live after carrier approval. Message and data rates may apply. Reply STOP to opt out.
@@ -2529,6 +2647,14 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 ### Popup `exit`: Take $200 off your Launch Kit.
 
 _Same wording as_ **Home → Popup `exit`: Take $200 off your Launch Kit.**.
+
+### Popup `audit`: Free Booking Leak Audit
+
+_Same wording as_ **Home → Popup `audit`: Free Booking Leak Audit**.
+
+### Popup `wl`: Join the waitlist for your trade.
+
+_Same wording as_ **Home → Popup `wl`: Join the waitlist for your trade.**.
 
 
 ## Problem page: Slow lead reply
@@ -2639,6 +2765,8 @@ _Same wording as_ **Home → Section `hook`**.
 - Pays for itself at 2 saved inquiries a month
 - Save only half of them +$1,320 a month, after the cost
 - This is arithmetic on your own inputs. It is not a promise of results. Example numbers show until you change them.
+- [link] Email me my numbers →  `→ #start`
+- Not ready yet? Get them with a free Booking Leak Audit.
 - [link] Show me how to stop it  `→ #pricing`
 
 ### Section `how-it-works`: 60-Second Lead Response is one of nine. You get all nine.
@@ -2715,13 +2843,13 @@ _Same wording as_ **Home → Section `hook`**.
 - **Full website built to book calls.** Free
 - **Past-customer win-back at launch.** Free
 - **Old-lead reactivation at launch.** Free
-- [link] Start Annual  `→ /auto?plan=annual`
+- [link] Start Annual  `→ #start`
 - **[H3]** Monthly
 - $197 /mo
 - + $497 one-time Launch Kit.
 - **Love it or leave it.** Month-to-month. Cancel anytime.
 - **Full website:** $997 one-time add-on.
-- [link] Start Monthly  `→ /auto?plan=monthly`
+- [link] Start Monthly  `→ #start`
 - Founding program **First 10 qualifying shops:** Launch Kit waived · Price locked while you stay subscribed · Dead-Lead Revival on your last 90 days of quotes · 30 days of hands-on launch support
 - [opens] See every detail
 - Annual Monthly
@@ -2759,6 +2887,7 @@ _Same wording as_ **Home → Section `hook`**.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
 - Live in 14 days: the clock starts when your form and access are in (Google, Facebook and call forwarding). Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
+- [link] Not ready to buy? Get a free Booking Leak Audit →  `→ #start`
 
 ### Section `faq`: Before you ask.
 
@@ -2794,7 +2923,7 @@ _Same wording as_ **Home → Section `hook`**.
 - [label] Monthly
 - [label] Annual Pay 10, get 12
 - $1,970 a year. Launch Kit waived.
-- $197 a month + $497 one-time Launch Kit.
+- $197 a month + $497 $297 $497 one-time Launch Kit.
 - Founding (Launch Kit waived): first 10 qualifying shops.
 - On the table in your first year
 - Leaks you can go after $36,400
@@ -2808,6 +2937,7 @@ _Same wording as_ **Home → Section `hook`**.
 - Please enter a valid email address.
 - [label] Phone
 - Please add a phone number.
+- [label] Leave this field empty
 - Text messages (optional)
 - [label] Text me about my account and setup. Msg & data rates may apply. Reply STOP to opt out.
 - [label] Send me tips and offers by text. Msg & data rates may apply. Reply STOP to opt out.
@@ -2840,6 +2970,8 @@ _Same wording as_ **Home → Section `hook`**.
 - [link] Disclaimer  `→ /legal/disclaimer`
 - Contact
 - Contact us
+- [link] Free Booking Leak Audit  `→ #start`
+- [link] Not an auto shop? Join the waitlist  `→ #start`
 - CNVRT X LLC
 - Results disclaimer: CNVRT X does not guarantee bookings, revenue or any specific result. Figures in the calculator and the illustrations are examples based on the numbers you enter. Your results depend on your services, prices, market and how you run your shop.
 - Texting: business texting in the US needs carrier registration (A2P 10DLC). Texting features go live after carrier approval. Message and data rates may apply. Reply STOP to opt out.
@@ -2850,6 +2982,14 @@ _Same wording as_ **Home → Section `hook`**.
 ### Popup `exit`: Take $200 off your Launch Kit.
 
 _Same wording as_ **Home → Popup `exit`: Take $200 off your Launch Kit.**.
+
+### Popup `audit`: Free Booking Leak Audit
+
+_Same wording as_ **Home → Popup `audit`: Free Booking Leak Audit**.
+
+### Popup `wl`: Join the waitlist for your trade.
+
+_Same wording as_ **Home → Popup `wl`: Join the waitlist for your trade.**.
 
 
 ## Problem page: AI employee
@@ -2964,6 +3104,8 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - Pays for itself at 2 saved inquiries a month
 - Save only half of them +$1,320 a month, after the cost
 - This is arithmetic on your own inputs. It is not a promise of results. Example numbers show until you change them.
+- [link] Email me my numbers →  `→ #start`
+- Not ready yet? Get them with a free Booking Leak Audit.
 - [link] Show me how to stop it  `→ #pricing`
 
 ### Section `how-it-works`: One AI employee. Three roles. Nine systems.
@@ -3039,13 +3181,13 @@ _Same wording as_ **Home → Section `work`: Who does the work?**.
 - **Full website built to book calls.** Free
 - **Past-customer win-back at launch.** Free
 - **Old-lead reactivation at launch.** Free
-- [link] Start Annual  `→ /auto?plan=annual`
+- [link] Start Annual  `→ #start`
 - **[H3]** Monthly
 - $197 /mo
 - + $497 one-time Launch Kit.
 - **Love it or leave it.** Month-to-month. Cancel anytime.
 - **Full website:** $997 one-time add-on.
-- [link] Start Monthly  `→ /auto?plan=monthly`
+- [link] Start Monthly  `→ #start`
 - Founding program **First 10 qualifying shops:** Launch Kit waived · Price locked while you stay subscribed · Dead-Lead Revival on your last 90 days of quotes · 30 days of hands-on launch support
 - [opens] See every detail
 - Annual Monthly
@@ -3083,6 +3225,7 @@ _Same wording as_ **Home → Section `work`: Who does the work?**.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
 - Live in 14 days: the clock starts when your form and access are in (Google, Facebook and call forwarding). Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
+- [link] Not ready to buy? Get a free Booking Leak Audit →  `→ #start`
 
 ### Section `faq`: Before you ask.
 
@@ -3118,7 +3261,7 @@ _Same wording as_ **Home → Section `work`: Who does the work?**.
 - [label] Monthly
 - [label] Annual Pay 10, get 12
 - $1,970 a year. Launch Kit waived.
-- $197 a month + $497 one-time Launch Kit.
+- $197 a month + $497 $297 $497 one-time Launch Kit.
 - Founding (Launch Kit waived): first 10 qualifying shops.
 - On the table in your first year
 - Leaks you can go after $36,400
@@ -3132,6 +3275,7 @@ _Same wording as_ **Home → Section `work`: Who does the work?**.
 - Please enter a valid email address.
 - [label] Phone
 - Please add a phone number.
+- [label] Leave this field empty
 - Text messages (optional)
 - [label] Text me about my account and setup. Msg & data rates may apply. Reply STOP to opt out.
 - [label] Send me tips and offers by text. Msg & data rates may apply. Reply STOP to opt out.
@@ -3164,6 +3308,8 @@ _Same wording as_ **Home → Section `work`: Who does the work?**.
 - [link] Disclaimer  `→ /legal/disclaimer`
 - Contact
 - Contact us
+- [link] Free Booking Leak Audit  `→ #start`
+- [link] Not an auto shop? Join the waitlist  `→ #start`
 - CNVRT X LLC
 - Results disclaimer: CNVRT X does not guarantee bookings, revenue or any specific result. Figures in the calculator and the illustrations are examples based on the numbers you enter. Your results depend on your services, prices, market and how you run your shop.
 - Texting: business texting in the US needs carrier registration (A2P 10DLC). Texting features go live after carrier approval. Message and data rates may apply. Reply STOP to opt out.
@@ -3174,6 +3320,14 @@ _Same wording as_ **Home → Section `work`: Who does the work?**.
 ### Popup `exit`: Take $200 off your Launch Kit.
 
 _Same wording as_ **Home → Popup `exit`: Take $200 off your Launch Kit.**.
+
+### Popup `audit`: Free Booking Leak Audit
+
+_Same wording as_ **Home → Popup `audit`: Free Booking Leak Audit**.
+
+### Popup `wl`: Join the waitlist for your trade.
+
+_Same wording as_ **Home → Popup `wl`: Join the waitlist for your trade.**.
 
 
 ## Problem page: Reviews
@@ -3351,13 +3505,13 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - **Full website built to book calls.** Free
 - **Past-customer win-back at launch.** Free
 - **Old-lead reactivation at launch.** Free
-- [link] Start Annual  `→ /auto?plan=annual`
+- [link] Start Annual  `→ #start`
 - **[H3]** Monthly
 - $197 /mo
 - + $497 one-time Launch Kit.
 - **Love it or leave it.** Month-to-month. Cancel anytime.
 - **Full website:** $997 one-time add-on.
-- [link] Start Monthly  `→ /auto?plan=monthly`
+- [link] Start Monthly  `→ #start`
 - Founding program **First 10 qualifying shops:** Launch Kit waived · Price locked while you stay subscribed · Dead-Lead Revival on your last 90 days of quotes · 30 days of hands-on launch support
 - [opens] See every detail
 - Annual Monthly
@@ -3395,6 +3549,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
 - Live in 14 days: the clock starts when your form and access are in (Google, Facebook and call forwarding). Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
+- [link] Not ready to buy? Get a free Booking Leak Audit →  `→ #start`
 
 ### Section `faq`: Before you ask.
 
@@ -3430,7 +3585,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - [label] Monthly
 - [label] Annual Pay 10, get 12
 - $1,970 a year. Launch Kit waived.
-- $197 a month + $497 one-time Launch Kit.
+- $197 a month + $497 $297 $497 one-time Launch Kit.
 - Founding (Launch Kit waived): first 10 qualifying shops.
 - On the table in your first year
 - Leaks you can go after $36,400
@@ -3444,6 +3599,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - Please enter a valid email address.
 - [label] Phone
 - Please add a phone number.
+- [label] Leave this field empty
 - Text messages (optional)
 - [label] Text me about my account and setup. Msg & data rates may apply. Reply STOP to opt out.
 - [label] Send me tips and offers by text. Msg & data rates may apply. Reply STOP to opt out.
@@ -3476,6 +3632,8 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - [link] Disclaimer  `→ /legal/disclaimer`
 - Contact
 - Contact us
+- [link] Free Booking Leak Audit  `→ #start`
+- [link] Not an auto shop? Join the waitlist  `→ #start`
 - CNVRT X LLC
 - Results disclaimer: CNVRT X does not guarantee bookings, revenue or any specific result. Figures in the calculator and the illustrations are examples based on the numbers you enter. Your results depend on your services, prices, market and how you run your shop.
 - Texting: business texting in the US needs carrier registration (A2P 10DLC). Texting features go live after carrier approval. Message and data rates may apply. Reply STOP to opt out.
@@ -3486,6 +3644,14 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 ### Popup `exit`: Take $200 off your Launch Kit.
 
 _Same wording as_ **Home → Popup `exit`: Take $200 off your Launch Kit.**.
+
+### Popup `audit`: Free Booking Leak Audit
+
+_Same wording as_ **Home → Popup `audit`: Free Booking Leak Audit**.
+
+### Popup `wl`: Join the waitlist for your trade.
+
+_Same wording as_ **Home → Popup `wl`: Join the waitlist for your trade.**.
 
 
 ## Problem page: Ad results
@@ -3667,13 +3833,13 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - **Full website built to book calls.** Free
 - **Past-customer win-back at launch.** Free
 - **Old-lead reactivation at launch.** Free
-- [link] Start Annual  `→ /auto?plan=annual`
+- [link] Start Annual  `→ #start`
 - **[H3]** Monthly
 - $197 /mo
 - + $497 one-time Launch Kit.
 - **Love it or leave it.** Month-to-month. Cancel anytime.
 - **Full website:** $997 one-time add-on.
-- [link] Start Monthly  `→ /auto?plan=monthly`
+- [link] Start Monthly  `→ #start`
 - Founding program **First 10 qualifying shops:** Launch Kit waived · Price locked while you stay subscribed · Dead-Lead Revival on your last 90 days of quotes · 30 days of hands-on launch support
 - [opens] See every detail
 - Annual Monthly
@@ -3711,6 +3877,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
 - Live in 14 days: the clock starts when your form and access are in (Google, Facebook and call forwarding). Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
+- [link] Not ready to buy? Get a free Booking Leak Audit →  `→ #start`
 
 ### Section `faq`: Before you ask.
 
@@ -3746,7 +3913,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - [label] Monthly
 - [label] Annual Pay 10, get 12
 - $1,970 a year. Launch Kit waived.
-- $197 a month + $497 one-time Launch Kit.
+- $197 a month + $497 $297 $497 one-time Launch Kit.
 - Founding (Launch Kit waived): first 10 qualifying shops.
 - On the table in your first year
 - Leaks you can go after $36,400
@@ -3760,6 +3927,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - Please enter a valid email address.
 - [label] Phone
 - Please add a phone number.
+- [label] Leave this field empty
 - Text messages (optional)
 - [label] Text me about my account and setup. Msg & data rates may apply. Reply STOP to opt out.
 - [label] Send me tips and offers by text. Msg & data rates may apply. Reply STOP to opt out.
@@ -3792,6 +3960,8 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - [link] Disclaimer  `→ /legal/disclaimer`
 - Contact
 - Contact us
+- [link] Free Booking Leak Audit  `→ #start`
+- [link] Not an auto shop? Join the waitlist  `→ #start`
 - CNVRT X LLC
 - Results disclaimer: CNVRT X does not guarantee bookings, revenue or any specific result. Figures in the calculator and the illustrations are examples based on the numbers you enter. Your results depend on your services, prices, market and how you run your shop.
 - Texting: business texting in the US needs carrier registration (A2P 10DLC). Texting features go live after carrier approval. Message and data rates may apply. Reply STOP to opt out.
@@ -3802,6 +3972,14 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 ### Popup `exit`: Take $200 off your Launch Kit.
 
 _Same wording as_ **Home → Popup `exit`: Take $200 off your Launch Kit.**.
+
+### Popup `audit`: Free Booking Leak Audit
+
+_Same wording as_ **Home → Popup `audit`: Free Booking Leak Audit**.
+
+### Popup `wl`: Join the waitlist for your trade.
+
+_Same wording as_ **Home → Popup `wl`: Join the waitlist for your trade.**.
 
 
 ## Problem page: Repeat customers
@@ -3892,6 +4070,8 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - Pays for itself at 2 saved inquiries a month
 - Save only half of them +$1,320 a month, after the cost
 - This is arithmetic on your own inputs. It is not a promise of results. Example numbers show until you change them.
+- [link] Email me my numbers →  `→ #start`
+- Not ready yet? Get them with a free Booking Leak Audit.
 - [link] Show me how to stop it  `→ #pricing`
 
 ### Section `chg`: What changes when past customers hear from you.
@@ -3992,13 +4172,13 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - **Full website built to book calls.** Free
 - **Past-customer win-back at launch.** Free
 - **Old-lead reactivation at launch.** Free
-- [link] Start Annual  `→ /auto?plan=annual`
+- [link] Start Annual  `→ #start`
 - **[H3]** Monthly
 - $197 /mo
 - + $497 one-time Launch Kit.
 - **Love it or leave it.** Month-to-month. Cancel anytime.
 - **Full website:** $997 one-time add-on.
-- [link] Start Monthly  `→ /auto?plan=monthly`
+- [link] Start Monthly  `→ #start`
 - Founding program **First 10 qualifying shops:** Launch Kit waived · Price locked while you stay subscribed · Dead-Lead Revival on your last 90 days of quotes · 30 days of hands-on launch support
 - [opens] See every detail
 - Annual Monthly
@@ -4036,6 +4216,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
 - Live in 14 days: the clock starts when your form and access are in (Google, Facebook and call forwarding). Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
+- [link] Not ready to buy? Get a free Booking Leak Audit →  `→ #start`
 
 ### Section `faq`: Before you ask.
 
@@ -4071,7 +4252,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - [label] Monthly
 - [label] Annual Pay 10, get 12
 - $1,970 a year. Launch Kit waived.
-- $197 a month + $497 one-time Launch Kit.
+- $197 a month + $497 $297 $497 one-time Launch Kit.
 - Founding (Launch Kit waived): first 10 qualifying shops.
 - On the table in your first year
 - Leaks you can go after $36,400
@@ -4085,6 +4266,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - Please enter a valid email address.
 - [label] Phone
 - Please add a phone number.
+- [label] Leave this field empty
 - Text messages (optional)
 - [label] Text me about my account and setup. Msg & data rates may apply. Reply STOP to opt out.
 - [label] Send me tips and offers by text. Msg & data rates may apply. Reply STOP to opt out.
@@ -4117,6 +4299,8 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - [link] Disclaimer  `→ /legal/disclaimer`
 - Contact
 - Contact us
+- [link] Free Booking Leak Audit  `→ #start`
+- [link] Not an auto shop? Join the waitlist  `→ #start`
 - CNVRT X LLC
 - Results disclaimer: CNVRT X does not guarantee bookings, revenue or any specific result. Figures in the calculator and the illustrations are examples based on the numbers you enter. Your results depend on your services, prices, market and how you run your shop.
 - Texting: business texting in the US needs carrier registration (A2P 10DLC). Texting features go live after carrier approval. Message and data rates may apply. Reply STOP to opt out.
@@ -4127,6 +4311,14 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 ### Popup `exit`: Take $200 off your Launch Kit.
 
 _Same wording as_ **Home → Popup `exit`: Take $200 off your Launch Kit.**.
+
+### Popup `audit`: Free Booking Leak Audit
+
+_Same wording as_ **Home → Popup `audit`: Free Booking Leak Audit**.
+
+### Popup `wl`: Join the waitlist for your trade.
+
+_Same wording as_ **Home → Popup `wl`: Join the waitlist for your trade.**.
 
 
 ## Problem page: Run sheet
@@ -4309,13 +4501,13 @@ _Same wording as_ **Home → Section `day`: A day in your shop, before and after
 - **Full website built to book calls.** Free
 - **Past-customer win-back at launch.** Free
 - **Old-lead reactivation at launch.** Free
-- [link] Start Annual  `→ /auto?plan=annual`
+- [link] Start Annual  `→ #start`
 - **[H3]** Monthly
 - $197 /mo
 - + $497 one-time Launch Kit.
 - **Love it or leave it.** Month-to-month. Cancel anytime.
 - **Full website:** $997 one-time add-on.
-- [link] Start Monthly  `→ /auto?plan=monthly`
+- [link] Start Monthly  `→ #start`
 - Founding program **First 10 qualifying shops:** Launch Kit waived · Price locked while you stay subscribed · Dead-Lead Revival on your last 90 days of quotes · 30 days of hands-on launch support
 - [opens] See every detail
 - Annual Monthly
@@ -4353,6 +4545,7 @@ _Same wording as_ **Home → Section `day`: A day in your shop, before and after
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
 - Live in 14 days: the clock starts when your form and access are in (Google, Facebook and call forwarding). Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
+- [link] Not ready to buy? Get a free Booking Leak Audit →  `→ #start`
 
 ### Section `faq`: Before you ask.
 
@@ -4388,7 +4581,7 @@ _Same wording as_ **Home → Section `day`: A day in your shop, before and after
 - [label] Monthly
 - [label] Annual Pay 10, get 12
 - $1,970 a year. Launch Kit waived.
-- $197 a month + $497 one-time Launch Kit.
+- $197 a month + $497 $297 $497 one-time Launch Kit.
 - Founding (Launch Kit waived): first 10 qualifying shops.
 - On the table in your first year
 - Leaks you can go after $36,400
@@ -4402,6 +4595,7 @@ _Same wording as_ **Home → Section `day`: A day in your shop, before and after
 - Please enter a valid email address.
 - [label] Phone
 - Please add a phone number.
+- [label] Leave this field empty
 - Text messages (optional)
 - [label] Text me about my account and setup. Msg & data rates may apply. Reply STOP to opt out.
 - [label] Send me tips and offers by text. Msg & data rates may apply. Reply STOP to opt out.
@@ -4434,6 +4628,8 @@ _Same wording as_ **Home → Section `day`: A day in your shop, before and after
 - [link] Disclaimer  `→ /legal/disclaimer`
 - Contact
 - Contact us
+- [link] Free Booking Leak Audit  `→ #start`
+- [link] Not an auto shop? Join the waitlist  `→ #start`
 - CNVRT X LLC
 - Results disclaimer: CNVRT X does not guarantee bookings, revenue or any specific result. Figures in the calculator and the illustrations are examples based on the numbers you enter. Your results depend on your services, prices, market and how you run your shop.
 - Texting: business texting in the US needs carrier registration (A2P 10DLC). Texting features go live after carrier approval. Message and data rates may apply. Reply STOP to opt out.
@@ -4444,6 +4640,14 @@ _Same wording as_ **Home → Section `day`: A day in your shop, before and after
 ### Popup `exit`: Take $200 off your Launch Kit.
 
 _Same wording as_ **Home → Popup `exit`: Take $200 off your Launch Kit.**.
+
+### Popup `audit`: Free Booking Leak Audit
+
+_Same wording as_ **Home → Popup `audit`: Free Booking Leak Audit**.
+
+### Popup `wl`: Join the waitlist for your trade.
+
+_Same wording as_ **Home → Popup `wl`: Join the waitlist for your trade.**.
 
 
 ---
@@ -4472,7 +4676,7 @@ _Same wording as_ **Home → Section `skip-link`**.
 ### Section `main`: Start your front office. Live in 14 days.
 
 - **[H1]** Start your front office. Live in 14 days.
-- Pick how you pay. Then one short form and a 15-minute access checklist, and we build.
+- Pick how you pay. Then 10 to 15 minutes of setup questions in your account, and we build.
 - [label] Annual Best value
 - [label] Monthly
 - $1,970 /yr
@@ -4491,12 +4695,12 @@ _Same wording as_ **Home → Section `skip-link`**.
 - The Service Advisor: quotes followed up, bookings confirmed, reviews asked for
 - The Shop Manager: your daily brief, run sheet and ad results
 - What happens next
-- 1 Pay securely on this page
-- 2 Fill one short form and the access checklist
-- 3 Your front desk goes live within 14 days of both
-- **[H2]** Payment
-- Checkout is being connected.
-- Card payment opens on this page shortly. Nothing has been charged.
+- 1 Check your inbox: your login email arrives within a few minutes
+- 2 Log in and open Setup Center in the left menu
+- 3 Answer the setup questions (10 to 15 minutes), then we take you live
+- **[H2]** Next step
+- [link] Continue  `→ /?plan=annual#start`
+- Next: your name and email, then secure payment. After that, setup takes 10 to 15 minutes in your account.
 - Live in 14 days, or your first month is free
 - No sales call
 - Your domain, content and customer list stay yours
@@ -4511,65 +4715,11 @@ _Same wording as_ **Home → Section `skip-link`**.
 # 4. After purchase
 
 
-## Onboarding
-
-- **Address:** `/onboarding`
-- **Browser tab title:** Welcome to CNVRT X: one form and one checklist
-- **Search description:** Tell us how your shop works and we start building.
-
-### Section `skip-link`
-
-_Same wording as_ **Home → Section `skip-link`**.
-
-### Top menu `top`
-
-- [link] CNVRT ✕  `→ /`
-- ✓ Payment received
-- Shop details
-
-### Section `main`: You are in. / One form and one checklist.
-
-- 1 Joined
-- 2 Shop details
-- 3 We build
-- 4 Live
-- **[H1]** You are in. / One form and one checklist.
-- Tell us how your shop works, then tick off the access checklist. It takes about 15 minutes and it is all we need from you.
-- ⏱ Your 14-day launch clock starts when your form and access are in.
-- [link] I will do this later →  `→ /thank-you?later=1`
-- We email you this link. The 14 days start when your form and access are in.
-- [label] Shop name
-- Services you offer
-- [label] Detailing
-- [label] Mobile Detailing
-- [label] Ceramic Coating
-- [label] PPF
-- [label] Window Tint
-- [label] Wraps
-- [label] Wheels & Fitment
-- [label] Suspension
-- [label] Aftermarket
-- [label] Custom Work
-- [label] Opening hours
-- _(field: text)_ Mon to Sat, 8 to 6
-- [label] Shop phone
-- [label] Prices, packages or anything we should know
-- Access checklist About 15 minutes
-- Tick what you can give us. We email the exact steps for each one.
-- [label] **Google Business Profile** Add us as a manager.
-- [label] **Facebook and Instagram** Add us as a partner in Meta Business.
-- [label] **Call forwarding** Forward missed calls from your shop line.
-- [label] **Your domain** A login or DNS access, for your booking page.
-- [label] **Google review link** The link customers use to leave a review.
-- [label] **Texting registration** Legal business name, EIN letter and the owner’s confirmation. The phone carrier requires these.
-- [button] Send my shop details
-
-
 ## Thank you
 
 - **Address:** `/thank-you`
-- **Browser tab title:** Thank you. Your CNVRT X build is booked in
-- **Search description:** What happens next with your CNVRT X system.
+- **Browser tab title:** Thank you. 3 steps to go live | CNVRT X Front Office
+- **Search description:** Your CNVRT X Front Office is paid for. Three short steps and we take it live.
 
 ### Section `skip-link`
 
@@ -4579,18 +4729,23 @@ _Same wording as_ **Home → Section `skip-link`**.
 
 - [link] CNVRT ✕  `→ /`
 
-### Section `main`: Thank you. / Your build has started.
+### Section `main`: Thank you. / 3 steps to go live.
 
-- ✓ All set
-- **[H1]** Thank you. / Your build has started.
-- **[H1]** Thank you. / One step left.
-- We have your shop details. Here is what happens next. The 14-day clock starts when your access is in too.
-- Your spot is saved. The 14-day clock starts when your form and access are in.
-- [link] Finish my shop details  `→ /onboarding`
-- 1 **Within 1 business day** You get a welcome email with your login and the mobile app link.
-- 2 **This week** We build your booking page, number, inbox, follow-up and reminders.
-- 3 **Before launch** We test every flow end to end and send you a preview.
-- 4 **Within 14 days** Your front desk goes live. We tell you the moment it does.
+- ✓ Payment received
+- **[H1]** Thank you. / 3 steps to go live.
+- Your front office is booked in. Setup takes 10 to 15 minutes and happens inside your new account.
+- **[H2]** 3 steps to go live
+- **[H3]** Check your inbox
+- Your login email arrives within a few minutes, from the CNVRT X app.
+- **[H3]** Log in and open Setup Center
+- It is in the left menu of your account.
+- **[H3]** Answer the setup questions
+- About 10 to 15 minutes. Your emails, texts, booking pages and AI assistant fill in automatically. You can change any answer later in the same place.
+- No email after 15 minutes? Check your spam folder.
+- **[H2]** What happens next
+- **Today** You finish setup in the Setup Center.
+- **Then** We connect your phone, Google and Meta, and check everything.
+- **Within 14 days** Your front office goes live.
 - **[H2]** Know another shop owner?
 - Send them this page.
 - [button] Copy the link
@@ -5004,6 +5159,8 @@ _Same wording as_ **Home → Section `ticker`**.
 - Pays for itself at 2 saved inquiries a month
 - Save only half of them +$1,320 a month, after the cost
 - This is arithmetic on your own inputs. It is not a promise of results. Example numbers show until you change them.
+- [link] Email me my numbers →  `→ #start`
+- Not ready yet? Get them with a free Booking Leak Audit.
 - [link] Show me how to stop it  `→ #pricing`
 
 ### Section `how-it-works`: Four layers. One front office.
@@ -5187,13 +5344,13 @@ _Same wording as_ **Home → Section `ticker`**.
 - **Full website built to book calls.** Free
 - **Past-customer win-back at launch.** Free
 - **Old-lead reactivation at launch.** Free
-- [link] Start Annual  `→ /auto?plan=annual`
+- [link] Start Annual  `→ #start`
 - **[H3]** Monthly
 - $197 /mo
 - + $497 one-time Launch Kit.
 - **Love it or leave it.** Month-to-month. Cancel anytime.
 - **Full website:** $997 one-time add-on.
-- [link] Start Monthly  `→ /auto?plan=monthly`
+- [link] Start Monthly  `→ #start`
 - Founding program **First 10 qualifying businesses:** Launch Kit waived · Price locked while you stay subscribed · Dead-Lead Revival on your last 90 days of quotes · 30 days of hands-on launch support
 - [opens] See every detail
 - Annual Monthly
@@ -5231,6 +5388,7 @@ _Same wording as_ **Home → Section `ticker`**.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your current software** It sits alongside the tools that run your work.
 - Live in 14 days: the clock starts when your form and access are in (Google, Facebook and call forwarding). Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
+- [link] Not ready to buy? Get a free Booking Leak Audit →  `→ #start`
 
 ### Section `faq`: Before you ask.
 
@@ -5270,7 +5428,7 @@ _Same wording as_ **Home → Section `ticker`**.
 - [label] Monthly
 - [label] Annual Pay 10, get 12
 - $1,970 a year. Launch Kit waived.
-- $197 a month + $497 one-time Launch Kit.
+- $197 a month + $497 $297 $497 one-time Launch Kit.
 - Founding (Launch Kit waived): first 10 qualifying businesses.
 - On the table in your first year
 - Leaks you can go after $36,400
@@ -5284,6 +5442,7 @@ _Same wording as_ **Home → Section `ticker`**.
 - Please enter a valid email address.
 - [label] Phone
 - Please add a phone number.
+- [label] Leave this field empty
 - Text messages (optional)
 - [label] Text me about my account and setup. Msg & data rates may apply. Reply STOP to opt out.
 - [label] Send me tips and offers by text. Msg & data rates may apply. Reply STOP to opt out.
@@ -5316,6 +5475,7 @@ _Same wording as_ **Home → Section `ticker`**.
 - [link] Disclaimer  `→ /legal/disclaimer`
 - Contact
 - Contact us
+- [link] Free Booking Leak Audit  `→ #start`
 - CNVRT X LLC
 - Results disclaimer: CNVRT X does not guarantee bookings, revenue or any specific result. Figures in the calculator and the illustrations are examples based on the numbers you enter. Your results depend on your services, prices, market and how you run your business.
 - Texting: business texting in the US needs carrier registration (A2P 10DLC). Texting features go live after carrier approval. Message and data rates may apply. Reply STOP to opt out.
@@ -5326,6 +5486,28 @@ _Same wording as_ **Home → Section `ticker`**.
 ### Popup `exit`: Take $200 off your Launch Kit.
 
 _Same wording as_ **Home → Popup `exit`: Take $200 off your Launch Kit.**.
+
+### Popup `audit`: Free Booking Leak Audit
+
+- Free. No sales call.
+- **[H2]** Free Booking Leak Audit
+- Find the 3 places your business is most likely losing booked customers.
+- Your Booking Leak Score
+- Where replies, quotes, bookings and reviews slip
+- Your top 3 fixes, in order
+- [label] Business name
+- [label] Website or Google profile link
+- [label] Primary service
+- [label] Email
+- [label] Phone
+- [label] About how many inquiries a month? (optional)
+- [label] Also email me my calculator numbers
+- [label] Leave this field empty
+- [button] Send My Free Audit
+- _(shown on interaction)_ We could not send this right now. Please try again in a moment.
+- We look at what a customer can see from outside. No login needed. We send it to your email. By sending this you agree that CNVRT X may contact you about your audit by email or phone.
+- **[H2]** Request received.
+- We will send your Booking Leak Audit to your email.
 
 
 ---
@@ -5360,10 +5542,13 @@ These lines exist in the content files, but no page displays them at present. Th
 - Your front desk is live and answering.
 - A review request, then a maintenance reminder.
 - One price. Nothing to manage.
+- Next: secure checkout. Then your login arrives by email and setup takes 10 to 15 minutes in your account.
+- Continue to secure checkout
 - The leak keeps running while you wait.
 - Founding program: Launch Kit waived and your price locked while you stay subscribed, for the first 10 qualifying shops.
 - Flawless work deserves
 - a flawless follow-up.
+- Still nothing? Email
 - Ready when you are.
 - Listening. Go ahead and ask.
 - Want this answering for your shop? It’s part of your front office.
@@ -5374,24 +5559,7 @@ These lines exist in the content files, but no page displays them at present. Th
 - Customer, vehicle and job in one place.
 - Tomorrow’s schedule, sent on its own.
 - Who does it today?
-- Free. No sales call.
-- Free Booking Leak Audit
-- Find the 3 places your shop is most likely losing booked jobs.
-- Your Booking Leak Score
-- Where replies, quotes, bookings and reviews slip
-- Your top 3 fixes, in order
-- We look at what a customer can see from outside. No login needed. We send it to your email.
-- Website or Google profile link
-- About how many inquiries a month? (optional)
-- Also email me my calculator numbers
-- Send My Free Audit
-- By sending this you agree that CNVRT X may contact you about your audit by email or phone.
-- We will send your Booking Leak Audit to your email.
-- We could not send this right now. Please try again in a moment.
-- Not ready to buy? Get a free Booking Leak Audit
 - Preview: this form is not connected yet, so it is left off the live site.
-- Email me my numbers
-- Not ready yet? Get them with a free Booking Leak Audit.
 - Who you are buying from
 - See the real screens
 - A short walkthrough of the owner app, the inbox and the run sheet.
@@ -5400,12 +5568,8 @@ These lines exist in the content files, but no page displays them at present. Th
 - 60 to 90 second walkthrough video of the real screens
 - The shop story, once its owner agrees
 - Email, phone and address
-- Join the waitlist for your trade.
-- CNVRT X Front Office is built for auto shops first. Tell us your trade and we will email you when your version is ready.
-- Business name (optional)
-- One email when your trade is ready. Nothing else.
-- We will email you when the version for your trade is ready.
-- Not an auto shop? Join the waitlist
+- Checkout is being connected.
+- Card payment opens on this page shortly. Nothing has been charged.
 - Preview: no order form link is set yet. Add the GHL order form links in src/config/offerV9.ts (checkout, and exitOffer.checkout for the leaving offer).
 
 ### Home page: general copy file
@@ -5431,7 +5595,6 @@ These lines exist in the content files, but no page displays them at present. Th
 - Want this answering for your business? It’s part of your front office.
 - Great work deserves
 - a great follow-up.
-- Find the 3 places your business is most likely losing booked customers.
 - A short walkthrough of the owner app, the inbox and the daily schedule.
 - A customer story, once that customer agrees
 

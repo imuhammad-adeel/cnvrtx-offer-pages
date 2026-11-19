@@ -98,7 +98,7 @@ const smsLinks = [
     <div class="shell">
       <form class="form" data-start9 data-mode={mode} data-co-live={live ? '' : undefined} data-co-annual={cfg.checkout[plans[0].id].annual} data-co-monthly={cfg.checkout[plans[0].id].monthly} data-co-kit={cfg.exitOffer.enabled ? cfg.exitOffer.checkout : ''} data-hrefs={JSON.stringify(hrefs)} action={o.endpoints.reserve || undefined} method="post" novalidate>
         <div class="fh">
-          <h3>{live ? 'Start your build' : e.formTitle}</h3>
+          <h3>{live ? e.liveTitle : e.formTitle}</h3>
           <span>No sales call</span>
         </div>
 
@@ -136,7 +136,7 @@ const smsLinks = [
           <p class="g-n">{e.gainNote}</p>
         </div>
 
-        <p class="f-note">{live ? 'Next: secure checkout, then one short form and a 15-minute access checklist.' : e.formNote}</p>
+        <p class="f-note">{live ? e.liveNote : e.formNote}</p>
               <div class="two">
                 <div class="fld">
                   <label for="s8-first">First name</label>
@@ -195,7 +195,7 @@ const smsLinks = [
               </fieldset>
 
               <button type="submit" class="go send" data-spot>
-                {live ? 'Continue to secure checkout' : e.submit}
+                {live ? e.liveSubmit : e.submit}
                 <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11M11 5.500 15.500 10 11 14.500" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
               </button>
               <p class="status" role="status" aria-live="polite" data-status></p>
@@ -344,7 +344,7 @@ const smsLinks = [
       });
       // The next step: this buyer's checkout page, once those pages exist. Their email, first
       // name and phone go along in this browser's storage, never in the address, so the
-      // checkout and the onboarding form can fill them in and GHL sees one contact.
+      // checkout page can fill them in and GHL sees one contact.
       const next = () => {
         saveBuyer({ email: String(data.get('email') || ''), first_name: String(data.get('first_name') || ''), phone: String(data.get('phone') || '') });
         const kit = interval === 'monthly' && offerOn() && form.dataset.coKit;
