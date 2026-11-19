@@ -58,6 +58,21 @@ walk(dist);
 console.log(`\nCopied ${pages} pages to the AI Studio project.`);
 
 run('git add -A', studio);
+// This sync owns only the generated pages and their assets. Everything else in the AI Studio
+// repository belongs to AI Studio: its checkout pages (src/routes/checkout, src/components/checkout),
+// its payments setup and its own routes. If a run would change any of that, stop before committing.
+const OWNED = [new RegExp('^src/site/'), new RegExp('^public/_astro/'), new RegExp('^public/[^/]+$')];
+const NL = String.fromCharCode(10);
+const foreign = out('git diff --cached --name-only', studio)
+  .split(NL)
+  .map((f) => f.trim())
+  .filter((f) => f && !OWNED.some((r) => r.test(f)));
+if (foreign.length) {
+  run('git reset -q', studio);
+  console.error('Stopped: this run would change files the sync does not own in the AI Studio repository:');
+  console.error(foreign.join(NL));
+  process.exit(1);
+}
 if (!out('git status --porcelain', studio)) {
   console.log('AI Studio already has this version. Nothing to send.');
 } else if (process.argv.includes('--no-push')) {

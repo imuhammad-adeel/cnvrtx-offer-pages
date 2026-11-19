@@ -39,7 +39,7 @@ export const offerV9 = {
    * While false, the reserve form still sends the details to GHL and then says checkout opens
    * shortly; it does not send anyone to a page that is not there.
    */
-  checkoutLive: false,
+  checkoutLive: true,
   /**
    * The checkout page for this industry. Every "Start Annual" / "Start Monthly" button and the
    * reserve form lead here. One per industry: /auto now, /roofing later.
