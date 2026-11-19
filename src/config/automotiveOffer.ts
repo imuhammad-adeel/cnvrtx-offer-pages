@@ -26,9 +26,9 @@ export const automotiveOffer = {
    * '' = not connected. A form with no URL is left off the live site (or, for the reserve
    * form, sends nothing), so no visitor's details are lost silently.
    *   reserve    : "Reserve your build" on the sales pages
-   *   onboarding : LEGACY, UNUSED. The site no longer has an onboarding form: after checkout the
-   *                buyer sets up inside their own account, in the Setup Center. The address is
-   *                kept only so the GHL workflow it belonged to can still be identified.
+   *   onboarding : LEGACY, UNUSED. Nothing on the site posts to it: after checkout the buyer sets
+   *                up inside their own account, in the Setup Center. The address is kept only
+   *                so the GHL workflow it belonged to can still be identified.
    *   audit      : the Free Booking Leak Audit popup (also "Email me my numbers")
    *   waitlist   : the waitlist for other trades
    * Each form sends exactly the fields its GHL workflow expects; the lists are in src/scripts/forms.ts.

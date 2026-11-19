@@ -315,8 +315,8 @@ The site is auto-first: the home page is the auto-shop page. /auto on its own re
 - Set it all up and keep it running You ✓ Done for you
 - Left on your plate **All of it** **The cars**
 - Your part
-- One form. One checklist.
-- A short form about your services, hours and prices, plus a 15-minute access checklist. Then go back to the cars.
+- About 15 minutes.
+- Log in, open Setup Center and answer the setup questions. Then go back to the cars.
 - Let your people do the work only people can do.
 - Receptionist: US median $18.27/hour (BLS, May 2025) × 2,080 hours, wages only. Offshore assistants: published full-time rates for Philippines-based virtual assistants, $5 to $15/hour. Your local costs may differ. The AI hands anything complex to you.
 
@@ -417,11 +417,11 @@ The site is auto-first: the home page is the auto-shop page. /auto on its own re
 - Repeat & Referral Engine: service history, check-ins, referral ask, win-back campaigns
 - Ad Results Tracker: Facebook and Instagram leads followed to booked and paid jobs, sent back to Meta so it finds more customers like them
 - Win-back, reactivation and Dead-Lead Revival go by email, and by text only to customers who agreed to texts.
-- **Live in 14 days, or month one is free** The clock starts when your form and access are in.
+- **Live in 14 days, or month one is free** The clock starts as soon as you finish Setup Center.
 - **Love it or leave it** Month-to-month on monthly plans. Cancel anytime.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
-- Live in 14 days: the clock starts when your form and access are in (Google, Facebook and call forwarding). Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
+- Live in 14 days: the clock starts as soon as you finish Setup Center in your account. Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
 - [link] Not ready to buy? Get a free Booking Leak Audit →  `→ #start`
 
 ### Section `faq`: Before you ask.
@@ -431,7 +431,7 @@ The site is auto-first: the home page is the auto-shop page. /auto on its own re
 - [opens] 01 Is this another CRM or website agency?
 - No. A CRM is a tool you have to build and run. An agency gives you a website and leaves. This is a working front desk: the booking page, the number, the inbox, the follow-up, the reminders and the review requests. All of it is built, written and tested for you.
 - [opens] 02 How much of my time does it take?
-- One short form about your services, hours and prices, plus a 15-minute access checklist: Google, Facebook, call forwarding, your domain and the business details the phone carrier asks for. We do the rest. After launch you reply to customers from the app when a human answer is needed.
+- About 10-15 minutes to start: you log in, open Setup Center and answer the setup questions. We do the rest. After launch you reply to customers from the app when a human answer is needed.
 - [opens] 03 Do I have to talk to a salesperson?
 - No. Pick a plan, fill the form and the build starts. If you want to ask something first, use the contact link.
 - [opens] 04 Do I replace my current shop software?
@@ -455,7 +455,7 @@ The site is auto-first: the home page is the auto-shop page. /auto on its own re
 - **[H2]** Join in minutes. No sales call.
 - Your front office can be live in 14 days. No demo, no sales call. Pick annual or monthly and the build starts.
 - **Pick annual or monthly** Checkout takes a couple of minutes.
-- **Fill one short form and the access checklist** Your services, hours, prices and logo. Then about 15 minutes of access: Google, Facebook, call forwarding and your texting registration details.
+- **Answer the setup questions** Log in, open Setup Center and answer the setup questions. About 10-15 minutes.
 - **Your front desk goes live** Booking page, number, app, follow-up and reminders, built and tested for you.
 - **[H3]** Reserve your build
 - No sales call
@@ -686,7 +686,7 @@ _Same wording as_ **Home → Top bar `bar`**.
 - A job card for every missed call, on your phone
 - Your local number (US) and the inbox it lands in
 - The AI front desk as backup when you can’t answer
-- Your part: one form and a 15-minute checklist.
+- Your part: about 15 minutes in Setup Center.
 - [link] See the plan  `→ #pricing`
 
 ### Section `how-it-works`: Missed-Call Rescue is one of nine. You get all nine.
@@ -805,11 +805,11 @@ _Same wording as_ **Home → Top bar `bar`**.
 - Repeat & Referral Engine: service history, check-ins, referral ask, win-back campaigns
 - Ad Results Tracker: Facebook and Instagram leads followed to booked and paid jobs, sent back to Meta so it finds more customers like them
 - Win-back, reactivation and Dead-Lead Revival go by email, and by text only to customers who agreed to texts.
-- **Live in 14 days, or month one is free** The clock starts when your form and access are in.
+- **Live in 14 days, or month one is free** The clock starts as soon as you finish Setup Center.
 - **Love it or leave it** Month-to-month on monthly plans. Cancel anytime.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
-- Live in 14 days: the clock starts when your form and access are in (Google, Facebook and call forwarding). Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
+- Live in 14 days: the clock starts as soon as you finish Setup Center in your account. Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
 - [link] Not ready to buy? Get a free Booking Leak Audit →  `→ #start`
 
 ### Section `faq`: Before you ask.
@@ -839,7 +839,7 @@ _Same wording as_ **Home → Top bar `bar`**.
 - **[H2]** Join in minutes. No sales call.
 - Stop losing the calls you can’t pick up. Your front office can be live in 14 days. No demo, no sales call.
 - **Pick annual or monthly** Checkout takes a couple of minutes.
-- **Fill one short form and the access checklist** Your services, hours, prices and logo. Then about 15 minutes of access: Google, Facebook, call forwarding and your texting registration details.
+- **Answer the setup questions** Log in, open Setup Center and answer the setup questions. About 10-15 minutes.
 - **Your front desk goes live** Booking page, number, app, follow-up and reminders, built and tested for you.
 - **[H3]** Reserve your build
 - No sales call
@@ -1042,7 +1042,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - Text, email and call reminders, written for you
 - The rule that stops everything when they reply
 - One-tap updates: Quote sent, Accepted, Done
-- Your part: one form and a 15-minute checklist.
+- Your part: about 15 minutes in Setup Center.
 - [link] See the plan  `→ #pricing`
 
 ### Section `front-desk`: It can take the quote request, too.
@@ -1142,11 +1142,11 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - Repeat & Referral Engine: service history, check-ins, referral ask, win-back campaigns
 - Ad Results Tracker: Facebook and Instagram leads followed to booked and paid jobs, sent back to Meta so it finds more customers like them
 - Win-back, reactivation and Dead-Lead Revival go by email, and by text only to customers who agreed to texts.
-- **Live in 14 days, or month one is free** The clock starts when your form and access are in.
+- **Live in 14 days, or month one is free** The clock starts as soon as you finish Setup Center.
 - **Love it or leave it** Month-to-month on monthly plans. Cancel anytime.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
-- Live in 14 days: the clock starts when your form and access are in (Google, Facebook and call forwarding). Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
+- Live in 14 days: the clock starts as soon as you finish Setup Center in your account. Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
 - [link] Not ready to buy? Get a free Booking Leak Audit →  `→ #start`
 
 ### Section `faq`: Before you ask.
@@ -1176,7 +1176,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - **[H2]** Join in minutes. No sales call.
 - Stop letting quotes go quiet. Your front office can be live in 14 days. No demo, no sales call.
 - **Pick annual or monthly** Checkout takes a couple of minutes.
-- **Fill one short form and the access checklist** Your services, hours, prices and logo. Then about 15 minutes of access: Google, Facebook, call forwarding and your texting registration details.
+- **Answer the setup questions** Log in, open Setup Center and answer the setup questions. About 10-15 minutes.
 - **Your front desk goes live** Booking page, number, app, follow-up and reminders, built and tested for you.
 - **[H3]** Reserve your build
 - No sales call
@@ -1332,7 +1332,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - “Reply YES or MOVE” the day before
 - Reminders, and no-show rescue
 - Drop-off and pickup texts
-- Your part: one form and a 15-minute checklist.
+- Your part: about 15 minutes in Setup Center.
 - [link] See the plan  `→ #pricing`
 
 ### Section `hook`
@@ -1482,11 +1482,11 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - Repeat & Referral Engine: service history, check-ins, referral ask, win-back campaigns
 - Ad Results Tracker: Facebook and Instagram leads followed to booked and paid jobs, sent back to Meta so it finds more customers like them
 - Win-back, reactivation and Dead-Lead Revival go by email, and by text only to customers who agreed to texts.
-- **Live in 14 days, or month one is free** The clock starts when your form and access are in.
+- **Live in 14 days, or month one is free** The clock starts as soon as you finish Setup Center.
 - **Love it or leave it** Month-to-month on monthly plans. Cancel anytime.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
-- Live in 14 days: the clock starts when your form and access are in (Google, Facebook and call forwarding). Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
+- Live in 14 days: the clock starts as soon as you finish Setup Center in your account. Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
 - [link] Not ready to buy? Get a free Booking Leak Audit →  `→ #start`
 
 ### Section `faq`: Before you ask.
@@ -1516,7 +1516,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - **[H2]** Join in minutes. No sales call.
 - Stop preparing the bay for nobody. Your front office can be live in 14 days. No demo, no sales call.
 - **Pick annual or monthly** Checkout takes a couple of minutes.
-- **Fill one short form and the access checklist** Your services, hours, prices and logo. Then about 15 minutes of access: Google, Facebook, call forwarding and your texting registration details.
+- **Answer the setup questions** Log in, open Setup Center and answer the setup questions. About 10-15 minutes.
 - **Your front desk goes live** Booking page, number, app, follow-up and reminders, built and tested for you.
 - **[H3]** Reserve your build
 - No sales call
@@ -1723,7 +1723,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - Website chat and a website voice line
 - Facebook and Instagram messages connected
 - Hand-off rules: what it answers and what comes to you
-- Your part: one form and a 15-minute checklist.
+- Your part: about 15 minutes in Setup Center.
 - [link] See the plan  `→ #pricing`
 
 ### Section `how-it-works`: The AI front desk is one of nine. You get all nine.
@@ -1822,11 +1822,11 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - Repeat & Referral Engine: service history, check-ins, referral ask, win-back campaigns
 - Ad Results Tracker: Facebook and Instagram leads followed to booked and paid jobs, sent back to Meta so it finds more customers like them
 - Win-back, reactivation and Dead-Lead Revival go by email, and by text only to customers who agreed to texts.
-- **Live in 14 days, or month one is free** The clock starts when your form and access are in.
+- **Live in 14 days, or month one is free** The clock starts as soon as you finish Setup Center.
 - **Love it or leave it** Month-to-month on monthly plans. Cancel anytime.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
-- Live in 14 days: the clock starts when your form and access are in (Google, Facebook and call forwarding). Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
+- Live in 14 days: the clock starts as soon as you finish Setup Center in your account. Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
 - [link] Not ready to buy? Get a free Booking Leak Audit →  `→ #start`
 
 ### Section `faq`: Before you ask.
@@ -1856,7 +1856,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - **[H2]** Join in minutes. No sales call.
 - Put someone on the front desk tonight. Your front office can be live in 14 days. No demo, no sales call.
 - **Pick annual or monthly** Checkout takes a couple of minutes.
-- **Fill one short form and the access checklist** Your services, hours, prices and logo. Then about 15 minutes of access: Google, Facebook, call forwarding and your texting registration details.
+- **Answer the setup questions** Log in, open Setup Center and answer the setup questions. About 10-15 minutes.
 - **Your front desk goes live** Booking page, number, app, follow-up and reminders, built and tested for you.
 - **[H3]** Reserve your build
 - No sales call
@@ -2014,7 +2014,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - Follow-up, confirmations and review requests
 - Your daily brief and tomorrow’s run sheet
 - Everything written in your shop’s voice
-- Your part: one form and a 15-minute checklist.
+- Your part: about 15 minutes in Setup Center.
 - [link] See the plan  `→ #pricing`
 
 ### Section `hook`
@@ -2166,11 +2166,11 @@ _Same wording as_ **Home → Section `work`: Who does the work?**.
 - Repeat & Referral Engine: service history, check-ins, referral ask, win-back campaigns
 - Ad Results Tracker: Facebook and Instagram leads followed to booked and paid jobs, sent back to Meta so it finds more customers like them
 - Win-back, reactivation and Dead-Lead Revival go by email, and by text only to customers who agreed to texts.
-- **Live in 14 days, or month one is free** The clock starts when your form and access are in.
+- **Live in 14 days, or month one is free** The clock starts as soon as you finish Setup Center.
 - **Love it or leave it** Month-to-month on monthly plans. Cancel anytime.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
-- Live in 14 days: the clock starts when your form and access are in (Google, Facebook and call forwarding). Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
+- Live in 14 days: the clock starts as soon as you finish Setup Center in your account. Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
 - [link] Not ready to buy? Get a free Booking Leak Audit →  `→ #start`
 
 ### Section `faq`: Before you ask.
@@ -2182,7 +2182,7 @@ _Same wording as_ **Home → Section `work`: Who does the work?**.
 - [opens] 02 Is it cheaper than hiring?
 - A US receptionist costs about $3,170 a month in wages, before payroll taxes. This is $197 a month. It does not replace a person for everything, and it does not need to.
 - [opens] 03 How much of my time does it take to run?
-- One short form and a 15-minute access checklist to start. After that you reply to customers from the app when a human answer is needed.
+- About 10-15 minutes of setup questions to start. After that you reply to customers from the app when a human answer is needed.
 - [opens] 04 Do I have to talk to a salesperson?
 - No. Pick a plan, fill the form and the build starts. If you want to ask something first, use the contact link.
 - [opens] 05 Can you guarantee bookings?
@@ -2200,7 +2200,7 @@ _Same wording as_ **Home → Section `work`: Who does the work?**.
 - **[H2]** Join in minutes. No sales call.
 - Fill the front desk without a hire. Your front office can be live in 14 days. No demo, no sales call.
 - **Pick annual or monthly** Checkout takes a couple of minutes.
-- **Fill one short form and the access checklist** Your services, hours, prices and logo. Then about 15 minutes of access: Google, Facebook, call forwarding and your texting registration details.
+- **Answer the setup questions** Log in, open Setup Center and answer the setup questions. About 10-15 minutes.
 - **Your front desk goes live** Booking page, number, app, follow-up and reminders, built and tested for you.
 - **[H3]** Reserve your build
 - No sales call
@@ -2408,7 +2408,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - The voice line and chat that talk to visitors
 - A free-inspection booking page
 - Hosting, included in your monthly plan
-- Your part: one form and a 15-minute checklist.
+- Your part: about 15 minutes in Setup Center.
 - [link] See the plan  `→ #pricing`
 
 ### Section `port`: Built to book. Not to sit there.
@@ -2547,11 +2547,11 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - Repeat & Referral Engine: service history, check-ins, referral ask, win-back campaigns
 - Ad Results Tracker: Facebook and Instagram leads followed to booked and paid jobs, sent back to Meta so it finds more customers like them
 - Win-back, reactivation and Dead-Lead Revival go by email, and by text only to customers who agreed to texts.
-- **Live in 14 days, or month one is free** The clock starts when your form and access are in.
+- **Live in 14 days, or month one is free** The clock starts as soon as you finish Setup Center.
 - **Love it or leave it** Month-to-month on monthly plans. Cancel anytime.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
-- Live in 14 days: the clock starts when your form and access are in (Google, Facebook and call forwarding). Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
+- Live in 14 days: the clock starts as soon as you finish Setup Center in your account. Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
 - [link] Not ready to buy? Get a free Booking Leak Audit →  `→ #start`
 
 ### Section `faq`: Before you ask.
@@ -2581,7 +2581,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - **[H2]** Join in minutes. No sales call.
 - Give your visitors someone to talk to. Your front office can be live in 14 days. No demo, no sales call.
 - **Pick annual or monthly** Checkout takes a couple of minutes.
-- **Fill one short form and the access checklist** Your services, hours, prices and logo. Then about 15 minutes of access: Google, Facebook, call forwarding and your texting registration details.
+- **Answer the setup questions** Log in, open Setup Center and answer the setup questions. About 10-15 minutes.
 - **Your front desk goes live** Booking page, number, app, follow-up and reminders, built and tested for you.
 - **[H3]** Reserve your build
 - No sales call
@@ -2738,7 +2738,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - Your website, Facebook and Instagram forms connected
 - “Call now” alerts on your phone
 - One inbox and the mobile app
-- Your part: one form and a 15-minute checklist.
+- Your part: about 15 minutes in Setup Center.
 - [link] See the plan  `→ #pricing`
 
 ### Section `hook`
@@ -2882,11 +2882,11 @@ _Same wording as_ **Home → Section `hook`**.
 - Repeat & Referral Engine: service history, check-ins, referral ask, win-back campaigns
 - Ad Results Tracker: Facebook and Instagram leads followed to booked and paid jobs, sent back to Meta so it finds more customers like them
 - Win-back, reactivation and Dead-Lead Revival go by email, and by text only to customers who agreed to texts.
-- **Live in 14 days, or month one is free** The clock starts when your form and access are in.
+- **Live in 14 days, or month one is free** The clock starts as soon as you finish Setup Center.
 - **Love it or leave it** Month-to-month on monthly plans. Cancel anytime.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
-- Live in 14 days: the clock starts when your form and access are in (Google, Facebook and call forwarding). Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
+- Live in 14 days: the clock starts as soon as you finish Setup Center in your account. Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
 - [link] Not ready to buy? Get a free Booking Leak Audit →  `→ #start`
 
 ### Section `faq`: Before you ask.
@@ -2916,7 +2916,7 @@ _Same wording as_ **Home → Section `hook`**.
 - **[H2]** Join in minutes. No sales call.
 - Be the shop that answers first. Your front office can be live in 14 days. No demo, no sales call.
 - **Pick annual or monthly** Checkout takes a couple of minutes.
-- **Fill one short form and the access checklist** Your services, hours, prices and logo. Then about 15 minutes of access: Google, Facebook, call forwarding and your texting registration details.
+- **Answer the setup questions** Log in, open Setup Center and answer the setup questions. About 10-15 minutes.
 - **Your front desk goes live** Booking page, number, app, follow-up and reminders, built and tested for you.
 - **[H3]** Reserve your build
 - No sales call
@@ -3139,7 +3139,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - The Service Advisor: follow-up, confirmations and review requests
 - The Shop Manager: daily brief, run sheet and reports
 - Every message written in your shop’s voice
-- Your part: one form and a 15-minute checklist.
+- Your part: about 15 minutes in Setup Center.
 - [link] See the plan  `→ #pricing`
 
 ### Section `work`: Who does the work?
@@ -3220,11 +3220,11 @@ _Same wording as_ **Home → Section `work`: Who does the work?**.
 - Repeat & Referral Engine: service history, check-ins, referral ask, win-back campaigns
 - Ad Results Tracker: Facebook and Instagram leads followed to booked and paid jobs, sent back to Meta so it finds more customers like them
 - Win-back, reactivation and Dead-Lead Revival go by email, and by text only to customers who agreed to texts.
-- **Live in 14 days, or month one is free** The clock starts when your form and access are in.
+- **Live in 14 days, or month one is free** The clock starts as soon as you finish Setup Center.
 - **Love it or leave it** Month-to-month on monthly plans. Cancel anytime.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
-- Live in 14 days: the clock starts when your form and access are in (Google, Facebook and call forwarding). Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
+- Live in 14 days: the clock starts as soon as you finish Setup Center in your account. Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
 - [link] Not ready to buy? Get a free Booking Leak Audit →  `→ #start`
 
 ### Section `faq`: Before you ask.
@@ -3234,7 +3234,7 @@ _Same wording as_ **Home → Section `work`: Who does the work?**.
 - [opens] 01 Does it replace my staff?
 - It takes the repetitive part: answering, following up, confirming and reporting. Your people keep the work only people can do.
 - [opens] 02 How is it trained on my shop?
-- From one short form: your services, hours, prices and policies. We write everything from that and you approve it.
+- From your answers in Setup Center: your services, hours, prices and policies. We write everything from that and you approve it.
 - [opens] 03 What if it gets something wrong?
 - It only answers from information you approved, and it hands anything unusual to you. If something needs changing, we adjust it.
 - [opens] 04 Do I have to talk to a salesperson?
@@ -3254,7 +3254,7 @@ _Same wording as_ **Home → Section `work`: Who does the work?**.
 - **[H2]** Join in minutes. No sales call.
 - Put it to work this month. Your front office can be live in 14 days. No demo, no sales call.
 - **Pick annual or monthly** Checkout takes a couple of minutes.
-- **Fill one short form and the access checklist** Your services, hours, prices and logo. Then about 15 minutes of access: Google, Facebook, call forwarding and your texting registration details.
+- **Answer the setup questions** Log in, open Setup Center and answer the setup questions. About 10-15 minutes.
 - **Your front desk goes live** Booking page, number, app, follow-up and reminders, built and tested for you.
 - **[H3]** Reserve your build
 - No sales call
@@ -3425,7 +3425,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - Two reminders, written to be polite
 - A video-testimonial link
 - A Monday count of requests sent
-- Your part: one form and a 15-minute checklist.
+- Your part: about 15 minutes in Setup Center.
 - [link] See the plan  `→ #pricing`
 
 ### Section `how-it-works`: The 5-Star Review Machine is one of nine. You get all nine.
@@ -3544,11 +3544,11 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - Repeat & Referral Engine: service history, check-ins, referral ask, win-back campaigns
 - Ad Results Tracker: Facebook and Instagram leads followed to booked and paid jobs, sent back to Meta so it finds more customers like them
 - Win-back, reactivation and Dead-Lead Revival go by email, and by text only to customers who agreed to texts.
-- **Live in 14 days, or month one is free** The clock starts when your form and access are in.
+- **Live in 14 days, or month one is free** The clock starts as soon as you finish Setup Center.
 - **Love it or leave it** Month-to-month on monthly plans. Cancel anytime.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
-- Live in 14 days: the clock starts when your form and access are in (Google, Facebook and call forwarding). Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
+- Live in 14 days: the clock starts as soon as you finish Setup Center in your account. Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
 - [link] Not ready to buy? Get a free Booking Leak Audit →  `→ #start`
 
 ### Section `faq`: Before you ask.
@@ -3578,7 +3578,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - **[H2]** Join in minutes. No sales call.
 - Stop losing reviews you already earned. Your front office can be live in 14 days. No demo, no sales call.
 - **Pick annual or monthly** Checkout takes a couple of minutes.
-- **Fill one short form and the access checklist** Your services, hours, prices and logo. Then about 15 minutes of access: Google, Facebook, call forwarding and your texting registration details.
+- **Answer the setup questions** Log in, open Setup Center and answer the setup questions. About 10-15 minutes.
 - **Your front desk goes live** Booking page, number, app, follow-up and reminders, built and tested for you.
 - **[H3]** Reserve your build
 - No sales call
@@ -3772,7 +3772,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - Each lead followed to booked and paid
 - Results sent back to Meta
 - A Monday report: leads, booked, won
-- Your part: one form and a 15-minute checklist.
+- Your part: about 15 minutes in Setup Center.
 - [link] See the plan  `→ #pricing`
 
 ### Section `front-desk`: Ad leads still need an answer. This gives one.
@@ -3872,11 +3872,11 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - Repeat & Referral Engine: service history, check-ins, referral ask, win-back campaigns
 - Ad Results Tracker: Facebook and Instagram leads followed to booked and paid jobs, sent back to Meta so it finds more customers like them
 - Win-back, reactivation and Dead-Lead Revival go by email, and by text only to customers who agreed to texts.
-- **Live in 14 days, or month one is free** The clock starts when your form and access are in.
+- **Live in 14 days, or month one is free** The clock starts as soon as you finish Setup Center.
 - **Love it or leave it** Month-to-month on monthly plans. Cancel anytime.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
-- Live in 14 days: the clock starts when your form and access are in (Google, Facebook and call forwarding). Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
+- Live in 14 days: the clock starts as soon as you finish Setup Center in your account. Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
 - [link] Not ready to buy? Get a free Booking Leak Audit →  `→ #start`
 
 ### Section `faq`: Before you ask.
@@ -3906,7 +3906,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - **[H2]** Join in minutes. No sales call.
 - Stop guessing which ads pay. Your front office can be live in 14 days. No demo, no sales call.
 - **Pick annual or monthly** Checkout takes a couple of minutes.
-- **Fill one short form and the access checklist** Your services, hours, prices and logo. Then about 15 minutes of access: Google, Facebook, call forwarding and your texting registration details.
+- **Answer the setup questions** Log in, open Setup Center and answer the setup questions. About 10-15 minutes.
 - **Your front desk goes live** Booking page, number, app, follow-up and reminders, built and tested for you.
 - **[H3]** Reserve your build
 - No sales call
@@ -4089,7 +4089,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - Check-ins after the job
 - A referral ask, written for you
 - Win-back campaigns by email, and by text where customers agreed
-- Your part: one form and a 15-minute checklist.
+- Your part: about 15 minutes in Setup Center.
 - [link] See the plan  `→ #pricing`
 
 ### Section `how-it-works`: The Repeat & Referral Engine is one of nine. You get all nine.
@@ -4211,11 +4211,11 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - Repeat & Referral Engine: service history, check-ins, referral ask, win-back campaigns
 - Ad Results Tracker: Facebook and Instagram leads followed to booked and paid jobs, sent back to Meta so it finds more customers like them
 - Win-back, reactivation and Dead-Lead Revival go by email, and by text only to customers who agreed to texts.
-- **Live in 14 days, or month one is free** The clock starts when your form and access are in.
+- **Live in 14 days, or month one is free** The clock starts as soon as you finish Setup Center.
 - **Love it or leave it** Month-to-month on monthly plans. Cancel anytime.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
-- Live in 14 days: the clock starts when your form and access are in (Google, Facebook and call forwarding). Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
+- Live in 14 days: the clock starts as soon as you finish Setup Center in your account. Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
 - [link] Not ready to buy? Get a free Booking Leak Audit →  `→ #start`
 
 ### Section `faq`: Before you ask.
@@ -4245,7 +4245,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - **[H2]** Join in minutes. No sales call.
 - Stop paying to win the same customer twice. Your front office can be live in 14 days. No demo, no sales call.
 - **Pick annual or monthly** Checkout takes a couple of minutes.
-- **Fill one short form and the access checklist** Your services, hours, prices and logo. Then about 15 minutes of access: Google, Facebook, call forwarding and your texting registration details.
+- **Answer the setup questions** Log in, open Setup Center and answer the setup questions. About 10-15 minutes.
 - **Your front desk goes live** Booking page, number, app, follow-up and reminders, built and tested for you.
 - **[H3]** Reserve your build
 - No sales call
@@ -4436,7 +4436,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - The 6 PM run sheet for tomorrow
 - The 7:30 AM brief for today
 - One-tap job updates and a Monday report
-- Your part: one form and a 15-minute checklist.
+- Your part: about 15 minutes in Setup Center.
 - [link] See the plan  `→ #pricing`
 
 ### Section `day`: A day in your shop, before and after.
@@ -4540,11 +4540,11 @@ _Same wording as_ **Home → Section `day`: A day in your shop, before and after
 - Repeat & Referral Engine: service history, check-ins, referral ask, win-back campaigns
 - Ad Results Tracker: Facebook and Instagram leads followed to booked and paid jobs, sent back to Meta so it finds more customers like them
 - Win-back, reactivation and Dead-Lead Revival go by email, and by text only to customers who agreed to texts.
-- **Live in 14 days, or month one is free** The clock starts when your form and access are in.
+- **Live in 14 days, or month one is free** The clock starts as soon as you finish Setup Center.
 - **Love it or leave it** Month-to-month on monthly plans. Cancel anytime.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
-- Live in 14 days: the clock starts when your form and access are in (Google, Facebook and call forwarding). Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
+- Live in 14 days: the clock starts as soon as you finish Setup Center in your account. Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
 - [link] Not ready to buy? Get a free Booking Leak Audit →  `→ #start`
 
 ### Section `faq`: Before you ask.
@@ -4574,7 +4574,7 @@ _Same wording as_ **Home → Section `day`: A day in your shop, before and after
 - **[H2]** Join in minutes. No sales call.
 - Give the nightly typing to the system. Your front office can be live in 14 days. No demo, no sales call.
 - **Pick annual or monthly** Checkout takes a couple of minutes.
-- **Fill one short form and the access checklist** Your services, hours, prices and logo. Then about 15 minutes of access: Google, Facebook, call forwarding and your texting registration details.
+- **Answer the setup questions** Log in, open Setup Center and answer the setup questions. About 10-15 minutes.
 - **Your front desk goes live** Booking page, number, app, follow-up and reminders, built and tested for you.
 - **[H3]** Reserve your build
 - No sales call
@@ -4676,7 +4676,7 @@ _Same wording as_ **Home → Section `skip-link`**.
 ### Section `main`: Start your front office. Live in 14 days.
 
 - **[H1]** Start your front office. Live in 14 days.
-- Pick how you pay. Then 10 to 15 minutes of setup questions in your account, and we build.
+- Pick how you pay. Then about 10-15 minutes of setup questions in your account, and we build.
 - [label] Annual Best value
 - [label] Monthly
 - $1,970 /yr
@@ -4695,12 +4695,12 @@ _Same wording as_ **Home → Section `skip-link`**.
 - The Service Advisor: quotes followed up, bookings confirmed, reviews asked for
 - The Shop Manager: your daily brief, run sheet and ad results
 - What happens next
-- 1 Check your inbox: your login email arrives within a few minutes
-- 2 Log in and open Setup Center in the left menu
-- 3 Answer the setup questions (10 to 15 minutes), then we take you live
+- 1 Check your inbox for your login email (arrives within a few minutes; check spam/promotions).
+- 2 Log in.
+- 3 Click "Setup Center" in the left menu and answer the setup questions (about 10-15 minutes).
 - **[H2]** Next step
 - [link] Continue  `→ /?plan=annual#start`
-- Next: your name and email, then secure payment. After that, setup takes 10 to 15 minutes in your account.
+- Next: your name and email, then secure payment. After that, setup takes about 10-15 minutes in your account.
 - Live in 14 days, or your first month is free
 - No sales call
 - Your domain, content and customer list stay yours
@@ -4733,17 +4733,16 @@ _Same wording as_ **Home → Section `skip-link`**.
 
 - ✓ Payment received
 - **[H1]** Thank you. / 3 steps to go live.
-- Your front office is booked in. Setup takes 10 to 15 minutes and happens inside your new account.
+- Your front office is booked in. Setup takes about 10-15 minutes and happens inside your new account.
 - **[H2]** 3 steps to go live
-- **[H3]** Check your inbox
-- Your login email arrives within a few minutes, from the CNVRT X app.
-- **[H3]** Log in and open Setup Center
-- It is in the left menu of your account.
-- **[H3]** Answer the setup questions
-- About 10 to 15 minutes. Your emails, texts, booking pages and AI assistant fill in automatically. You can change any answer later in the same place.
+- Check your inbox for your login email (arrives within a few minutes; check spam/promotions).
+- Log in.
+- Click "Setup Center" in the left menu and answer the setup questions (about 10-15 minutes).
+- As soon as you finish Setup Center, your 14-day launch clock starts.
+- Your emails, texts, booking pages and AI assistant fill in automatically from your answers. You can change any answer later in the same place.
 - No email after 15 minutes? Check your spam folder.
 - **[H2]** What happens next
-- **Today** You finish setup in the Setup Center.
+- **Today** You finish Setup Center. Your 14-day launch clock starts.
 - **Then** We connect your phone, Google and Meta, and check everything.
 - **Within 14 days** Your front office goes live.
 - **[H2]** Know another shop owner?
@@ -4867,7 +4866,7 @@ _Same wording as_ **Privacy Policy → Top menu `top`**.
 - Each month includes 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Carrier fees for texting are passed on at cost and shown to you before activation.
 - Prices are those shown at checkout. Plans renew automatically until cancelled. If a payment fails we may pause the service until it is resolved.
 - **[H2]** 4 Guarantees
-- Live in 14 days, or your first month is free. The clock starts when your onboarding form and the access we ask for (Google, Facebook and call forwarding) are in. Carrier (A2P), domain and third-party approvals are outside the 14 days.
+- Live in 14 days, or your first month is free. The clock starts as soon as you finish Setup Center in your account. Carrier (A2P), domain and third-party approvals are outside the 14 days.
 - Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM).
 - On an annual plan a free month is given as one extra month added to your term.
 - **[H2]** 5 Cancellation
@@ -4971,7 +4970,7 @@ _Same wording as_ **Privacy Policy → Top menu `top`**.
 - Annual payments are not refundable.
 - You can cancel at any time. The service runs until the end of the year you have paid for and does not renew.
 - **[H2]** 3 Our guarantee still applies
-- Live in 14 days, or your first month is free. The clock starts when your onboarding form and the access we ask for (Google, Facebook and call forwarding) are in. Carrier (A2P), domain and third-party approvals are outside the 14 days.
+- Live in 14 days, or your first month is free. The clock starts as soon as you finish Setup Center in your account. Carrier (A2P), domain and third-party approvals are outside the 14 days.
 - On an annual plan a free month is given as one extra month added to your term.
 - **[H2]** 4 Your data when you leave
 - Your domain, content and customer list are yours. Ask us for an export before or within 30 days after your service ends. After that we may delete account data, except what we must keep by law.
@@ -5281,8 +5280,8 @@ _Same wording as_ **Home → Section `ticker`**.
 - Set it all up and keep it running You ✓ Done for you
 - Left on your plate **All of it** **The real work**
 - Your part
-- One form. One checklist.
-- A short form about your services, hours and prices, plus a 15-minute access checklist. Then go back to your customers.
+- About 15 minutes.
+- Log in, open Setup Center and answer the setup questions. Then go back to your customers.
 - Let your people do the work only people can do.
 - Receptionist: US median $18.27/hour (BLS, May 2025) × 2,080 hours, wages only. Offshore assistants: published full-time rates for Philippines-based virtual assistants, $5 to $15/hour. Your local costs may differ. The AI hands anything complex to you.
 
@@ -5383,11 +5382,11 @@ _Same wording as_ **Home → Section `ticker`**.
 - Repeat & Referral Engine: customer history, check-ins, referral ask, win-back campaigns
 - Ad Results Tracker: Facebook and Instagram leads followed to booked and paid work, sent back to Meta so it finds more customers like them
 - Win-back, reactivation and Dead-Lead Revival go by email, and by text only to customers who agreed to texts.
-- **Live in 14 days, or month one is free** The clock starts when your form and access are in.
+- **Live in 14 days, or month one is free** The clock starts as soon as you finish Setup Center.
 - **Love it or leave it** Month-to-month on monthly plans. Cancel anytime.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your current software** It sits alongside the tools that run your work.
-- Live in 14 days: the clock starts when your form and access are in (Google, Facebook and call forwarding). Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
+- Live in 14 days: the clock starts as soon as you finish Setup Center in your account. Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
 - [link] Not ready to buy? Get a free Booking Leak Audit →  `→ #start`
 
 ### Section `faq`: Before you ask.
@@ -5397,7 +5396,7 @@ _Same wording as_ **Home → Section `ticker`**.
 - [opens] 01 Is this another CRM or website agency?
 - No. A CRM is a tool you have to build and run. An agency gives you a website and leaves. This is a working front desk: the booking page, the number, the inbox, the follow-up, the reminders and the review requests. All of it is built, written and tested for you.
 - [opens] 02 How much of my time does it take?
-- One short form about your services, hours and prices, plus a 15-minute access checklist: Google, Facebook, call forwarding, your domain and the business details the phone carrier asks for. We do the rest. After launch you reply to customers from the app when a human answer is needed.
+- About 10-15 minutes to start: you log in, open Setup Center and answer the setup questions. We do the rest. After launch you reply to customers from the app when a human answer is needed.
 - [opens] 03 Do I have to talk to a salesperson?
 - No. Pick a plan, fill the form and the build starts. If you want to ask something first, use the contact link.
 - [opens] 04 Do I replace my current software?
@@ -5421,7 +5420,7 @@ _Same wording as_ **Home → Section `ticker`**.
 - **[H2]** Join in minutes. No sales call.
 - Your front office can be live in 14 days. No demo, no sales call. Pick annual or monthly and the build starts.
 - **Pick annual or monthly** Checkout takes a couple of minutes.
-- **Fill one short form and the access checklist** Your services, hours, prices and logo. Then about 15 minutes of access: Google, Facebook, call forwarding and your texting registration details.
+- **Answer the setup questions** Log in, open Setup Center and answer the setup questions. About 10-15 minutes.
 - **Your front desk goes live** Booking page, number, app, follow-up and reminders, built and tested for you.
 - **[H3]** Reserve your build
 - No sales call
@@ -5542,7 +5541,7 @@ These lines exist in the content files, but no page displays them at present. Th
 - Your front desk is live and answering.
 - A review request, then a maintenance reminder.
 - One price. Nothing to manage.
-- Next: secure checkout. Then your login arrives by email and setup takes 10 to 15 minutes in your account.
+- Next: secure checkout. Then your login arrives by email and setup takes about 10-15 minutes in your account.
 - Continue to secure checkout
 - The leak keeps running while you wait.
 - Founding program: Launch Kit waived and your price locked while you stay subscribed, for the first 10 qualifying shops.
