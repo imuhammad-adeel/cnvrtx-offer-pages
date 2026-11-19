@@ -114,7 +114,7 @@ export const offer9 = {
     line: 'First 10 qualifying businesses: Launch Kit waived and your price locked while you stay subscribed.',
   },
   promises: [
-    { t: 'Live in 14 days, or month one is free', d: 'The clock starts when your form and access are in.' },
+    { t: 'Live in 14 days, or month one is free', d: 'The clock starts as soon as you finish Setup Center.' },
     { t: 'Love it or leave it', d: 'Month-to-month on monthly plans. Cancel anytime.' },
     { t: 'Your business stays yours', d: 'Your domain, content and customer list, exportable.' },
     { t: 'Keeps your current software', d: 'It sits alongside the tools that run your work.' },
@@ -258,8 +258,8 @@ export const work9 = {
   totUs: 'The real work',
   yourPart: {
     label: 'Your part',
-    big: 'One form. One checklist.',
-    line: 'A short form about your services, hours and prices, plus a 15-minute access checklist. Then go back to your customers.',
+    big: 'About 15 minutes.',
+    line: 'Log in, open Setup Center and answer the setup questions. Then go back to your customers.',
   },
 };
 

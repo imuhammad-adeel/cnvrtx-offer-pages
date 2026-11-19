@@ -111,7 +111,7 @@ export const legalDocs: LegalDoc[] = [
       {
         h: '4. Guarantees',
         body: [
-          ['Live in 14 days, or your first month is free. The clock starts when your onboarding form and the access we ask for (Google, Facebook and call forwarding) are in. Carrier (A2P), domain and third-party approvals are outside the 14 days.', 'Texts go only to people who agreed to them, after carrier approval, and during texting hours ({hours}).'],
+          ['Live in 14 days, or your first month is free. The clock starts as soon as you finish Setup Center in your account. Carrier (A2P), domain and third-party approvals are outside the 14 days.', 'Texts go only to people who agreed to them, after carrier approval, and during texting hours ({hours}).'],
           'On an annual plan a free month is given as one extra month added to your term.',
         ],
       },
@@ -189,7 +189,7 @@ export const legalDocs: LegalDoc[] = [
       },
       {
         h: '3. Our guarantee still applies',
-        body: [['Live in 14 days, or your first month is free. The clock starts when your onboarding form and the access we ask for (Google, Facebook and call forwarding) are in. Carrier (A2P), domain and third-party approvals are outside the 14 days.', 'On an annual plan a free month is given as one extra month added to your term.']],
+        body: [['Live in 14 days, or your first month is free. The clock starts as soon as you finish Setup Center in your account. Carrier (A2P), domain and third-party approvals are outside the 14 days.', 'On an annual plan a free month is given as one extra month added to your term.']],
       },
       {
         h: '4. Your data when you leave',

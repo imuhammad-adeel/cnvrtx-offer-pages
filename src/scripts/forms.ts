@@ -11,7 +11,6 @@ export const FIELDS = {
   audit: ['business_name', 'website', 'primary_service', 'email', 'phone', 'monthly_inquiries', 'send_calculator_numbers', 'landing_page', 'opened_from', 'calc_estimate', ...SOURCE],
   reserve: ['billing_interval', 'plan_interest', 'first_name', 'business_name', 'email', 'phone', 'landing_page', 'calc_estimate', ...SOURCE, 'sms_account_consent', 'sms_marketing_consent'],
   waitlist: ['trade', 'business_name', 'email', 'landing_page', 'rep'],
-  onboarding: ['email', 'shop', 'svc', 'hours', 'phone', 'notes', 'access'],
 } as const;
 
 /** The honeypot: off screen, never filled by a person. */
@@ -42,7 +41,7 @@ export const send = (url: string, form: HTMLFormElement, fields: readonly string
 
 /**
  * The buyer's own email, first name and phone, kept in this browser only so the next step
- * (checkout, then onboarding) can fill them in. Never put in an address.
+ * (the checkout page) can fill them in. Never put in an address.
  */
 const BUYER = 'cx_buyer';
 export type Buyer = { email?: string; first_name?: string; phone?: string };

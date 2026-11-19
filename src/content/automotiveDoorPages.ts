@@ -195,7 +195,7 @@ export const doorPages: Record<string, DoorPage> = {
     offer: { title: ['Hire it for {price} a month.', 'No salary. No sick days.'], sub: 'One plan covers all three roles. Built, written and tested for your shop.' },
     faq: [
       { q: 'Does it replace my staff?', a: 'It takes the repetitive part: answering, following up, confirming and reporting. Your people keep the work only people can do.' },
-      { q: 'How is it trained on my shop?', a: 'From one short form: your services, hours, prices and policies. We write everything from that and you approve it.' },
+      { q: 'How is it trained on my shop?', a: 'From your answers in Setup Center: your services, hours, prices and policies. We write everything from that and you approve it.' },
       { q: 'What if it gets something wrong?', a: 'It only answers from information you approved, and it hands anything unusual to you. If something needs changing, we adjust it.' },
     ],
     startLead: `Put it to work this month. ${live}`,
@@ -354,7 +354,7 @@ export const doorPages: Record<string, DoorPage> = {
     faq: [
       { q: 'I already have someone at the desk. Is this for me?', a: 'Yes. It takes the repetitive part off their plate and covers nights and weekends, so they can spend their time on customers in the shop.' },
       { q: 'Is it cheaper than hiring?', a: 'A US receptionist costs about $3,170 a month in wages, before payroll taxes. This is {price} a month. It does not replace a person for everything, and it does not need to.' },
-      { q: 'How much of my time does it take to run?', a: 'One short form and a 15-minute access checklist to start. After that you reply to customers from the app when a human answer is needed.' },
+      { q: 'How much of my time does it take to run?', a: 'About 10-15 minutes of setup questions to start. After that you reply to customers from the app when a human answer is needed.' },
     ],
     startLead: `Fill the front desk without a hire. ${live}`,
     footer: 'You opened a shop to work on cars. Go back to the cars.',
@@ -528,7 +528,7 @@ export const doorPages: Record<string, DoorPage> = {
 /** Shared words for the new sections. */
 export const doorPageCommon = {
   changesKicker: 'What changes',
-  buildNote: 'Your part: one form and a 15-minute checklist.',
+  buildNote: 'Your part: about 15 minutes in Setup Center.',
   voiceNote: 'Demo for an example shop. No real booking is made.',
   faqKicker: 'Straight answers',
   faqTitle: 'Before you ask.',

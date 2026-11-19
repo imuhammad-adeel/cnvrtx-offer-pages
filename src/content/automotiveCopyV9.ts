@@ -208,8 +208,8 @@ export const work9 = {
   totUs: 'The cars',
   yourPart: {
     label: 'Your part',
-    big: 'One form. One checklist.',
-    line: 'A short form about your services, hours and prices, plus a 15-minute access checklist. Then go back to the cars.',
+    big: 'About 15 minutes.',
+    line: 'Log in, open Setup Center and answer the setup questions. Then go back to the cars.',
   },
 };
 
@@ -265,13 +265,13 @@ export const offer9 = {
     cta: 'Claim founding pricing',
   },
   promises: [
-    { t: 'Live in 14 days, or month one is free', d: 'The clock starts when your form and access are in.' },
+    { t: 'Live in 14 days, or month one is free', d: 'The clock starts as soon as you finish Setup Center.' },
     { t: 'Love it or leave it', d: 'Month-to-month on monthly plans. Cancel anytime.' },
     { t: 'Your business stays yours', d: 'Your domain, content and customer list, exportable.' },
     { t: 'Keeps your shop software', d: 'It sits alongside the tools that run your jobs.' },
   ],
   finePrint:
-    'Live in 14 days: the clock starts when your form and access are in (Google, Facebook and call forwarding). Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours ({hours}).',
+    'Live in 14 days: the clock starts as soon as you finish Setup Center in your account. Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours ({hours}).',
   /** PROPOSED. No refund involved: an unhappy annual customer can drop to monthly and use their payment as credit. Needs the owner's sign-off. */
   loveIt: {
     /** Annual: off (owner decision). The idea lives on Monthly as plain month-to-month. */
@@ -297,12 +297,16 @@ export const start9 = {
   lead: 'Your front office can be live in 14 days. No demo, no sales call. Pick annual or monthly and the build starts.',
   steps: [
     { t: 'Pick annual or monthly', d: 'Checkout takes a couple of minutes.' },
-    { t: 'Fill one short form and the access checklist', d: 'Your services, hours, prices and logo. Then about 15 minutes of access: Google, Facebook, call forwarding and your texting registration details.' },
+    { t: 'Answer the setup questions', d: 'Log in, open Setup Center and answer the setup questions. About 10-15 minutes.' },
     { t: 'Your front desk goes live', d: 'Booking page, number, app, follow-up and reminders, built and tested for you.' },
   ],
   formTitle: 'Reserve your build',
   formNote: 'Online checkout is being switched on. Leave your details and your join link arrives by email.',
   submit: 'Reserve My Build',
+  /** Shown in the reserve form once the checkout pages are open (offerV9.checkoutLive). */
+  liveTitle: 'Start your build',
+  liveNote: 'Next: secure checkout. Then your login arrives by email and setup takes about 10-15 minutes in your account.',
+  liveSubmit: 'Continue to secure checkout',
   planLabel: 'Plan',
   foundingNote: 'Founding (Launch Kit waived): first 10 qualifying shops.',
   gainTitle: 'On the table in your first year',
@@ -326,7 +330,7 @@ export const faq9 = {
     },
     {
       q: 'How much of my time does it take?',
-      a: 'One short form about your services, hours and prices, plus a 15-minute access checklist: Google, Facebook, call forwarding, your domain and the business details the phone carrier asks for. We do the rest. After launch you reply to customers from the app when a human answer is needed.',
+      a: 'About 10-15 minutes to start: you log in, open Setup Center and answer the setup questions. We do the rest. After launch you reply to customers from the app when a human answer is needed.',
     },
     {
       q: 'Do I have to talk to a salesperson?',
@@ -392,54 +396,47 @@ export const hooks9 = {
   beforeOffer: ['Flawless work deserves', 'a flawless follow-up.'],
 };
 
-/** After checkout: onboarding (can be skipped for later), then thank you. */
+/**
+ * The three steps after payment. The same words are used in the post-purchase welcome email,
+ * on the thank-you page and on the checkout summary, so a buyer reads one set of instructions.
+ */
+const SETUP_STEPS = [
+  'Check your inbox for your login email (arrives within a few minutes; check spam/promotions).',
+  'Log in.',
+  'Click "Setup Center" in the left menu and answer the setup questions (about 10-15 minutes).',
+];
+
+/**
+ * After checkout: the thank-you page. The buyer's own account does not exist yet when it
+ * loads, so it embeds nothing; it says what to expect. Setup happens inside their account,
+ * in the Setup Center. `noEmailContact` is followed by the support email from config, and is
+ * left out when no support email is set.
+ */
 export const flow9 = {
-  /** GHL onboarding form URL. '' shows the built-in preview form. */
-  onboardingFormUrl: '',
-  onboardingPath: '/onboarding',
   thanksPath: '/thank-you',
-  onboarding: {
-    kicker: 'Payment received',
-    title: ['You are in.', 'One form and one checklist.'],
-    lead: 'Tell us how your shop works, then tick off the access checklist. It takes about 15 minutes and it is all we need from you.',
-    clock: 'Your 14-day launch clock starts when your form and access are in.',
-    steps: ['Joined', 'Shop details', 'We build', 'Live'],
-    later: 'I will do this later',
-    laterNote: 'We email you this link. The 14 days start when your form and access are in.',
-    submit: 'Send my shop details',
-    /** Shown only when the address carries the marker the checkout adds after a real payment. */
-    paidTitle: 'You are in.',
-    openKicker: 'Shop details',
-    access: {
-      title: 'Access checklist',
-      time: 'About 15 minutes',
-      lead: 'Tick what you can give us. We email the exact steps for each one.',
-      items: [
-        { k: 'google', t: 'Google Business Profile', d: 'Add us as a manager.' },
-        { k: 'meta', t: 'Facebook and Instagram', d: 'Add us as a partner in Meta Business.' },
-        { k: 'forwarding', t: 'Call forwarding', d: 'Forward missed calls from your shop line.' },
-        { k: 'domain', t: 'Your domain', d: 'A login or DNS access, for your booking page.' },
-        { k: 'reviews', t: 'Google review link', d: 'The link customers use to leave a review.' },
-        { k: 'a2p', t: 'Texting registration', d: 'Legal business name, EIN letter and the owner\u2019s confirmation. The phone carrier requires these.' },
-      ],
-    },
-  },
   thanks: {
-    kicker: 'All set',
-    titleDone: ['Thank you.', 'Your build has started.'],
-    titleLater: ['Thank you.', 'One step left.'],
-    leadDone: 'We have your shop details. Here is what happens next. The 14-day clock starts when your access is in too.',
-    leadLater: 'Your spot is saved. The 14-day clock starts when your form and access are in.',
-    next: [
-      { t: 'Within 1 business day', d: 'You get a welcome email with your login and the mobile app link.' },
-      { t: 'This week', d: 'We build your booking page, number, inbox, follow-up and reminders.' },
-      { t: 'Before launch', d: 'We test every flow end to end and send you a preview.' },
-      { t: 'Within 14 days', d: 'Your front desk goes live. We tell you the moment it does.' },
+    pageTitle: 'Thank you. 3 steps to go live | CNVRT X Front Office',
+    pageDescription: 'Your CNVRT X Front Office is paid for. Three short steps and we take it live.',
+    kicker: 'Payment received',
+    title: ['Thank you.', '3 steps to go live.'],
+    lead: 'Your front office is booked in. Setup takes about 10-15 minutes and happens inside your new account.',
+    stepsTitle: '3 steps to go live',
+    /** Word for word the three steps in the post-purchase welcome email. Change both together. */
+    steps: SETUP_STEPS,
+    clock: 'As soon as you finish Setup Center, your 14-day launch clock starts.',
+    note: 'Your emails, texts, booking pages and AI assistant fill in automatically from your answers. You can change any answer later in the same place.',
+    noEmail: 'No email after 15 minutes? Check your spam folder.',
+    noEmailContact: 'Still nothing? Email',
+    timelineTitle: 'What happens next',
+    timeline: [
+      { t: 'Today', d: 'You finish Setup Center. Your 14-day launch clock starts.' },
+      { t: 'Then', d: 'We connect your phone, Google and Meta, and check everything.' },
+      { t: 'Within 14 days', d: 'Your front office goes live.' },
     ],
-    finish: 'Finish my shop details',
     referTitle: 'Know another shop owner?',
     referLine: 'Send them this page.',
     referCta: 'Copy the link',
+    referDone: 'Link copied',
   },
 };
 
@@ -756,7 +753,7 @@ export const checkout9 = {
   secure: 'Secure checkout',
   back: 'Back to the site',
   title: ['Start your front office.', 'Live in 14 days.'],
-  sub: 'Pick how you pay. Then one short form and a 15-minute access checklist, and we build.',
+  sub: 'Pick how you pay. Then about 10-15 minutes of setup questions in your account, and we build.',
   switchLabel: 'Billing',
   annual: {
     name: 'Annual',
@@ -780,12 +777,13 @@ export const checkout9 = {
   includesTitle: 'In your plan',
   includes: ['The Receptionist: missed calls caught, new leads answered', 'The Service Advisor: quotes followed up, bookings confirmed, reviews asked for', 'The Shop Manager: your daily brief, run sheet and ad results'],
   nextTitle: 'What happens next',
-  next: ['Pay securely on this page', 'Fill one short form and the access checklist', 'Your front desk goes live within 14 days of both'],
+  /** What happens after you pay: the same three steps the thank-you page gives. */
+  next: SETUP_STEPS,
   promises: ['Live in 14 days, or your first month is free', 'No sales call', 'Your domain, content and customer list stay yours'],
   payTitle: 'Next step',
   /** Shown when the order page opens on its own (offerV9.checkoutEmbed is false). */
   payCta: 'Continue',
-  payNote: 'Next: your name and email, then secure payment. After that, one short form and the access checklist.',
+  payNote: 'Next: your name and email, then secure payment. After that, setup takes about 10-15 minutes in your account.',
   /** Shown in the payment panel until the order form link is set in config. */
   notOpen: {
     title: 'Checkout is being connected.',

@@ -16,8 +16,7 @@ Everything around those pages is already built in this project. This file is wha
 | Monthly, after taking the leaving offer | `https://get.cnvrtx.com/checkout/monthly-kit` | Same product: $197/mo + Launch Kit $297 |
 | Annual | `https://get.cnvrtx.com/checkout/annual` | "CNVRT X Front Office \| Annual": $1,970/yr, Launch Kit included |
 
-4. After payment: `https://get.cnvrtx.com/thank-you?paid=1` ("One step left", with a button to the form).
-5. Then: `https://get.cnvrtx.com/onboarding?paid=1`, which POSTs to the ONBOARDING webhook with the email filled in.
+4. After payment: `https://get.cnvrtx.com/thank-you?paid=1`. It shows the 3 steps to go live: check your inbox for the login email, log in and open Setup Center, answer the setup questions. There is no onboarding form on the site any more; setup happens inside the buyer's own account.
 
 ## How the buyer's details reach the checkout page
 
@@ -68,7 +67,7 @@ Tell Claude in the offer-pages chat. It then:
 
 1. Opens each of the three addresses and checks it loads.
 2. Sets `checkoutLive: true` in `src/config/offerV9.ts`. From then on the reserve form opens the checkout page after sending the details. Until then it says checkout opens shortly, so nobody is sent to a page that is not there.
-3. Runs one full pass in test mode with a tagged test contact: reserve, pay with a test card, thank-you, onboarding.
+3. Runs one full pass in test mode with a tagged test contact: reserve, pay with a test card, thank-you.
 4. Publishes both repositories.
 
 If AI Studio builds the pages at different addresses, give Claude the three addresses; they are set in one place (`checkout` and `exitOffer.checkout` in `src/config/offerV9.ts`).
