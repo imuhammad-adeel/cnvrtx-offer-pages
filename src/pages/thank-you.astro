@@ -20,79 +20,132 @@ const support = cfg.contact.email || cfg.legalInfo.supportEmail;
 <BaseLayout title={t.pageTitle} description={t.pageDescription} noindex={true} bodyClass="v9" themeColor="#070B10">
   <header class="top">
     <a href="/" class="logo" aria-label="CNVRT X home">CNVRT<span>✕</span></a>
+    <p class="paid"><span aria-hidden="true">✓</span>{t.kicker}</p>
   </header>
 
   <main id="main" class="wrap">
-    <p class="badge"><span aria-hidden="true">✓</span>{t.kicker}</p>
-    <h1>
-      {t.title[0]}<br /><span class="hot">{t.title[1]}</span>
-    </h1>
-    <p class="lede">{t.lead}</p>
+    <div class="hero">
+      <span class="seal" aria-hidden="true">
+        <svg viewBox="0 0 48 48" fill="none"><path d="M13 25l8 8 15-17" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+      </span>
+      <h1>
+        <span data-hello data-named={t.titleNamed}>{t.title[0]}</span><br /><span class="hot">{t.title[1]}</span>
+      </h1>
+      <p class="lede">{t.lead}</p>
+      <ul role="list" class="facts">
+        {t.facts.map((x) => <li>{x}</li>)}
+      </ul>
+    </div>
 
-    {/* a div with a region role, not <section>: the site lazy-renders <section>s in <main>, which would shift this page as it loads */}
-    <div class="setup" role="region" aria-labelledby="setup-title">
-      <h2 id="setup-title">{t.stepsTitle}</h2>
-      <ol role="list" class="steps">
-        {
-          t.steps.map((step, i) => (
-            <li>
-              <span class="n" aria-hidden="true">{i + 1}</span>
-              <p>{step}</p>
-            </li>
-          ))
-        }
-      </ol>
-      <p class="clock">{t.clock}</p>
-      <p class="note">{t.note}</p>
-      <p class="help">
-        {t.noEmail}
-        {
-          support && (
-            <>
-              {' '}
-              {t.noEmailContact} <a href={`mailto:${support}`}>{support}</a>.
-            </>
-          )
-        }
-      </p>
+    {/* divs with a region role, not <section>: the site lazy-renders <section>s in <main>, which would shift this page as it loads */}
+    <div class="now" role="region" aria-labelledby="setup-title">
+      <div class="card">
+        <p class="kick">{t.stepsKicker}</p>
+        <h2 id="setup-title">{t.stepsTitle}</h2>
+        <ol role="list" class="steps">
+          {
+            t.steps.map((step, i) => (
+              <li>
+                <span class="n" aria-hidden="true">{i + 1}</span>
+                <div>
+                  {i === 0 && <em class="here">{t.startHere}</em>}
+                  <p>{step}</p>
+                </div>
+              </li>
+            ))
+          }
+        </ol>
+        <p class="help">
+          <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="2.500" y="4.500" width="15" height="11" rx="2" stroke="currentColor" stroke-width="1.800"></rect><path d="M3.500 6l6.500 5 6.500-5" stroke="currentColor" stroke-width="1.800" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          <span>
+            {t.noEmail}
+            {
+              support && (
+                <>
+                  {' '}
+                  {t.noEmailContact} <a href={`mailto:${support}`}>{support}</a>.
+                </>
+              )
+            }
+          </span>
+        </p>
+      </div>
+
+      <div class="side">
+        <div class="clock">
+          <p class="c-tag">{t.clockTag}</p>
+          <p class="c-n chrome" aria-hidden="true">14</p>
+          <p class="c-u">{t.clockUnit}</p>
+          <p class="c-t">{t.clock}</p>
+          <p class="c-note">{t.clockNote}</p>
+        </div>
+        <div class="fill">
+          <p class="f-h">{t.fillTitle}</p>
+          <p>{t.note}</p>
+        </div>
+      </div>
     </div>
 
     <div class="after" role="region" aria-labelledby="next-title">
+      <p class="kick">{t.timelineKicker}</p>
       <h2 id="next-title">{t.timelineTitle}</h2>
       <ol role="list" class="line">
         {
-          t.timeline.map((x) => (
-            <li>
+          t.timeline.map((x, i) => (
+            <li class={i === t.timeline.length - 1 ? 'is-last' : undefined}>
+              <span class="dot" aria-hidden="true" />
               <b>{x.t}</b>
-              <span>{x.d}</span>
+              <span class="d">{x.d}</span>
             </li>
           ))
         }
       </ol>
+      <p class="nokit">
+        <b>{t.noKitTitle}</b>
+        {t.noKit}
+      </p>
     </div>
 
     <aside class="refer">
-      <div>
+      <div class="r-text">
+        <p class="r-k">{t.referKicker}</p>
         <h2>{t.referTitle}</h2>
         <p>{t.referLine}</p>
       </div>
-      <button type="button" class="copy" data-copy data-url="/" data-done={t.referDone}>{t.referCta}</button>
+      <div class="r-act">
+        <p class="r-url" data-url-text aria-hidden="true">get.cnvrtx.com</p>
+        <button type="button" class="copy" data-copy data-url="/" data-done={t.referDone}>
+          <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="7" y="7" width="10" height="10" rx="2" stroke="currentColor" stroke-width="1.800"></rect><path d="M13 7V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2" stroke="currentColor" stroke-width="1.800"></path></svg>
+          <span data-copy-label>{t.referCta}</span>
+        </button>
+      </div>
     </aside>
   </main>
 </BaseLayout>
 
 <script>
   import { track } from '../scripts/analytics';
+  import { readBuyer } from '../scripts/forms';
   track('thank_you_view', { paid: new URLSearchParams(location.search).has('paid') });
 
+  // the buyer's first name, when this browser has it from the reserve form
+  const hello = document.querySelector<HTMLElement>('[data-hello]');
+  const name = (readBuyer().first_name || '').trim().split(/\s+/)[0] || '';
+  if (hello && name && name.length <= 24) hello.textContent = (hello.dataset.named || '').replace('{name}', name);
+
+  const urlText = document.querySelector<HTMLElement>('[data-url-text]');
+  if (urlText) urlText.textContent = location.host;
+
   const btn = document.querySelector<HTMLButtonElement>('[data-copy]');
+  const label = btn?.querySelector<HTMLElement>('[data-copy-label]');
   btn?.addEventListener('click', async () => {
     const url = location.origin + (btn.dataset.url || '/');
     try {
       await navigator.clipboard.writeText(url);
-      btn.textContent = btn.dataset.done || '';
+      if (label) label.textContent = btn.dataset.done || '';
+      btn.classList.add('is-done');
     } catch {
-      btn.textContent = url;
+      if (label) label.textContent = url;
     }
     track('referral_copy');
   });
@@ -100,11 +153,18 @@ const support = cfg.contact.email || cfg.legalInfo.supportEmail;
 
 <style>
   .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
     padding: 20px var(--gutter);
-    max-width: calc(980px + var(--gutter) * 2);
+    max-width: calc(1080px + var(--gutter) * 2);
     margin-inline: auto;
   }
   .logo {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
     font-family: var(--f-head);
     font-weight: 800;
     font-size: 1.25rem;
@@ -115,16 +175,7 @@ const support = cfg.contact.email || cfg.legalInfo.supportEmail;
     color: var(--hot);
     margin-left: 3px;
   }
-  .wrap {
-    max-width: calc(980px + var(--gutter) * 2);
-    margin-inline: auto;
-    padding: clamp(1.5rem, 1rem + 3vw, 4rem) var(--gutter) clamp(4rem, 3rem + 4vw, 7rem);
-    display: grid;
-    gap: var(--s-5);
-    justify-items: start;
-    color: #eef3f7;
-  }
-  .badge {
+  .paid {
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -136,154 +187,384 @@ const support = cfg.contact.email || cfg.legalInfo.supportEmail;
     font-size: 0.8125rem;
     font-weight: 800;
   }
+  .wrap {
+    max-width: calc(1080px + var(--gutter) * 2);
+    margin-inline: auto;
+    padding: clamp(1rem, 0.6rem + 2vw, 2.5rem) var(--gutter) clamp(4rem, 3rem + 4vw, 7rem);
+    display: grid;
+    gap: clamp(2rem, 1.6rem + 2.4vw, 3.75rem);
+    color: #eef3f7;
+  }
+
+  /* ---------- hero ---------- */
+  .hero {
+    display: grid;
+    gap: 18px;
+    justify-items: start;
+  }
+  .seal {
+    display: grid;
+    place-items: center;
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: #d8ff3e;
+    color: #0b1016;
+    box-shadow:
+      0 0 0 10px rgba(216, 255, 62, 0.12),
+      0 0 0 22px rgba(216, 255, 62, 0.05);
+    margin: 14px 0 4px 14px;
+  }
+  .seal svg {
+    width: 40px;
+    height: 40px;
+  }
   h1 {
-    font-size: clamp(2.4rem, 1.2rem + 5vw, 5.6rem);
+    font-size: clamp(2.3rem, 1.3rem + 4vw, 4.4rem);
     letter-spacing: -0.055em;
+    line-height: 1;
+    overflow-wrap: anywhere;
   }
   .lede {
     max-width: 56ch;
+    font-size: clamp(1.05rem, 1rem + 0.4vw, 1.25rem);
+    line-height: 1.5;
+    color: #dbe4ec;
+  }
+  .facts {
+    margin: 4px 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .facts li {
+    padding: 8px 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(255, 255, 255, 0.05);
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #eef3f7;
   }
 
-  /* ---------- 3 steps to go live ---------- */
-  .setup,
-  .after {
-    width: 100%;
-    display: grid;
-    gap: var(--s-4);
+  .kick {
+    font-size: 0.6875rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #d8ff3e;
   }
-  .setup {
-    margin-top: var(--s-4);
-  }
-  .setup h2,
-  .after h2 {
+  h2 {
     font-family: var(--f-head);
     font-weight: 800;
-    font-size: clamp(1.4rem, 1.1rem + 1.2vw, 2rem);
-    letter-spacing: -0.04em;
+    font-size: clamp(1.5rem, 1.15rem + 1.5vw, 2.25rem);
+    letter-spacing: -0.045em;
+    line-height: 1.1;
+  }
+
+  /* ---------- do this now: the steps, and the clock beside them ---------- */
+  .now {
+    display: grid;
+    grid-template-columns: minmax(0, 1.45fr) minmax(280px, 1fr);
+    gap: clamp(16px, 2vw, 24px);
+    align-items: stretch;
+  }
+  .card {
+    display: grid;
+    gap: 8px;
+    align-content: start;
+    padding: clamp(1.25rem, 1rem + 1.8vw, 2.5rem);
+    border-radius: 28px;
+    background: #fff;
+    color: #0b1016;
+    border-top: 5px solid var(--hot);
+    box-shadow: 0 50px 90px -50px rgba(0, 0, 0, 0.9);
+  }
+  .card .kick {
+    color: #c2410c;
   }
   .steps {
-    margin: 0;
+    margin: 18px 0 0;
     display: grid;
-    gap: 12px;
   }
   .steps li {
+    position: relative;
     display: grid;
     grid-template-columns: 48px minmax(0, 1fr);
-    gap: 16px;
+    gap: 18px;
     align-items: start;
-    padding: clamp(1.1rem, 0.9rem + 1vw, 1.75rem);
-    border-radius: 22px;
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+    padding-bottom: 26px;
+  }
+  .steps li:last-child {
+    padding-bottom: 0;
+  }
+  /* the line that joins the steps */
+  .steps li:not(:last-child)::before {
+    content: '';
+    position: absolute;
+    left: 23px;
+    top: 48px;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, #0b1016, rgba(11, 16, 22, 0.12));
   }
   .n {
+    position: relative;
     display: grid;
     place-items: center;
     width: 48px;
     height: 48px;
     border-radius: 50%;
-    background: #d8ff3e;
-    color: #0b1016;
+    background: #0b1016;
+    color: #d8ff3e;
     font-family: var(--f-head);
     font-weight: 800;
-    font-size: 1.3rem;
+    font-size: 1.25rem;
   }
-  .steps li {
-    align-items: center;
+  .steps div {
+    display: grid;
+    gap: 6px;
+    justify-items: start;
+    padding-top: 9px;
+  }
+  .here {
+    padding: 2px 10px;
+    border-radius: 999px;
+    background: var(--hot);
+    color: #fff;
+    font-style: normal;
+    font-size: 0.6875rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .steps li:first-child div {
+    padding-top: 0;
   }
   .steps p {
     font-family: var(--f-head);
     font-weight: 700;
-    font-size: clamp(1.05rem, 0.95rem + 0.5vw, 1.35rem);
+    font-size: clamp(1.05rem, 0.95rem + 0.5vw, 1.3rem);
     letter-spacing: -0.02em;
     line-height: 1.3;
     text-wrap: balance; /* keeps "10-15 minutes" from splitting across lines where it can */
   }
-  /* the one promise on the page: when the 14 days begin */
-  .clock {
-    padding: 14px 18px;
-    border-radius: 16px;
-    border: 1px solid rgba(216, 255, 62, 0.45);
-    background: rgba(216, 255, 62, 0.07);
-    font-family: var(--f-head);
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    color: #e6ff8a;
-  }
-  .note {
-    max-width: 62ch;
-    line-height: 1.5;
-    color: #dbe4ec;
-  }
   .help {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 22px;
+    padding: 12px 14px;
+    border-radius: 14px;
+    background: #f4f2ec;
     font-size: 0.9375rem;
-    color: var(--fog);
+    line-height: 1.45;
+    color: #3a4551;
+  }
+  .help svg {
+    flex: none;
+    width: 18px;
+    height: 18px;
+    margin-top: 2px;
   }
   .help a {
-    color: #fff;
+    color: #0b1016;
+    font-weight: 700;
     text-underline-offset: 3px;
     overflow-wrap: anywhere;
   }
 
+  .side {
+    display: grid;
+    grid-template-rows: 1fr auto;
+    gap: clamp(16px, 2vw, 24px);
+  }
+  /* the one promise on the page: when the 14 days begin */
+  .clock {
+    display: grid;
+    align-content: center;
+    gap: 2px;
+    padding: clamp(1.25rem, 1rem + 1.8vw, 2.25rem);
+    border-radius: 28px;
+    /* the same lime edge and glow as the "Your order" card on the checkout pages */
+    border: 1.5px solid rgba(216, 255, 62, 0.5);
+    background:
+      radial-gradient(90% 80% at 100% 0%, rgba(216, 255, 62, 0.14), transparent 70%),
+      #111a23;
+    color: #eef3f7;
+    box-shadow: 0 50px 90px -55px rgba(216, 255, 62, 0.45);
+  }
+  .c-tag {
+    justify-self: start;
+    margin-bottom: 14px;
+    padding: 4px 12px;
+    border-radius: 999px;
+    background: var(--hot);
+    color: #fff;
+    font-size: 0.6875rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .c-note {
+    margin-top: 8px;
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+  .nokit {
+    margin-top: 6px;
+    padding: 14px 18px;
+    border-radius: 16px;
+    border: 1px dashed rgba(255, 255, 255, 0.25);
+    line-height: 1.5;
+    color: #c5d0da;
+  }
+  .nokit b {
+    display: block;
+    font-family: var(--f-head);
+    letter-spacing: -0.02em;
+    color: #fff;
+  }
+  .c-n {
+    font-family: var(--f-head);
+    font-weight: 800;
+    font-size: clamp(5rem, 3.5rem + 6vw, 8rem);
+    line-height: 0.82;
+    letter-spacing: -0.07em;
+  }
+  .c-u {
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+  .c-t {
+    margin-top: 14px;
+    font-family: var(--f-head);
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+  }
+  .fill {
+    display: grid;
+    gap: 8px;
+    padding: clamp(1.1rem, 0.9rem + 1.2vw, 1.75rem);
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+    line-height: 1.5;
+    color: #c5d0da;
+    font-size: 0.9375rem;
+  }
+  .f-h {
+    font-family: var(--f-head);
+    font-weight: 700;
+    font-size: 1.05rem;
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+    color: #fff;
+  }
+
   /* ---------- what happens next ---------- */
   .after {
-    margin-top: var(--s-5);
+    display: grid;
+    gap: 10px;
   }
   .line {
-    margin: 0;
+    margin: 18px 0 0;
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    border-top: 2px solid rgba(255, 255, 255, 0.2);
+    gap: clamp(12px, 1.5vw, 20px);
   }
   .line li {
     position: relative;
     display: grid;
-    gap: 4px;
+    gap: 6px;
     align-content: start;
-    padding: 22px 20px 0 0;
+    padding: 38px clamp(1rem, 0.8rem + 1vw, 1.5rem) clamp(1rem, 0.8rem + 1vw, 1.5rem);
+    border-radius: 22px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.04);
   }
-  .line li::before {
-    content: '';
+  .dot {
     position: absolute;
-    top: -8px;
-    left: 0;
-    width: 14px;
-    height: 14px;
+    top: 16px;
+    left: clamp(1rem, 0.8rem + 1vw, 1.5rem);
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
     background: var(--hot);
   }
+  /* the rail between the cards */
+  .line li:not(.is-last)::after {
+    content: '';
+    position: absolute;
+    top: 21px;
+    left: calc(clamp(1rem, 0.8rem + 1vw, 1.5rem) + 20px);
+    right: calc(-1 * clamp(12px, 1.5vw, 20px) - clamp(1rem, 0.8rem + 1vw, 1.5rem) + 8px);
+    height: 2px;
+    background: rgba(255, 255, 255, 0.22);
+  }
+  .line .is-last {
+    border-color: rgba(216, 255, 62, 0.55);
+    background: rgba(216, 255, 62, 0.08);
+  }
+  .line .is-last .dot {
+    background: #d8ff3e;
+  }
   .line b {
     font-family: var(--f-head);
-    font-size: 1.15rem;
+    font-size: 1.2rem;
     letter-spacing: -0.03em;
   }
-  .line span {
+  .line .d {
     line-height: 1.5;
-    color: var(--fog);
+    color: #c5d0da;
   }
 
+  /* ---------- know another shop owner ---------- */
   .refer {
-    margin-top: var(--s-6);
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
     align-items: center;
-    gap: var(--s-5);
-    flex-wrap: wrap;
-    padding: clamp(1.25rem, 1rem + 1.5vw, 2rem);
-    border-radius: 24px;
+    gap: clamp(16px, 3vw, 40px);
+    padding: clamp(1.5rem, 1.1rem + 2.4vw, 3rem);
+    border-radius: 28px;
     background: #d8ff3e;
     color: #0b1016;
   }
-  .refer h2 {
-    font-size: clamp(1.4rem, 1.1rem + 1.2vw, 2rem);
-    letter-spacing: -0.04em;
+  .r-k {
+    font-size: 0.6875rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
   }
-  .refer p {
-    margin-top: 4px;
+  .refer h2 {
+    margin-top: 6px;
+    font-size: clamp(1.6rem, 1.2rem + 2vw, 2.75rem);
+  }
+  .r-text p:last-child {
+    margin-top: 8px;
     font-weight: 600;
   }
+  .r-act {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 6px 6px 20px;
+    border-radius: 999px;
+    background: rgba(11, 16, 22, 0.1);
+  }
+  .r-url {
+    font-weight: 700;
+    overflow-wrap: anywhere;
+  }
   .copy {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
     min-height: 52px;
     padding: 0 24px;
     border: 0;
@@ -292,35 +573,105 @@ const support = cfg.contact.email || cfg.legalInfo.supportEmail;
     color: #fff;
     font-family: var(--f-head);
     font-weight: 700;
+    white-space: nowrap;
     cursor: pointer;
+    transition: transform 0.2s ease;
   }
-  @media (max-width: 800px) {
+  .copy:hover {
+    transform: translateY(-2px);
+  }
+  .copy:focus-visible {
+    outline: 3px solid #0b1016;
+    outline-offset: 3px;
+  }
+  .copy.is-done {
+    background: #14532d;
+  }
+  .copy svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  @media (max-width: 900px) {
+    .now {
+      grid-template-columns: 1fr;
+    }
+    .side {
+      grid-template-rows: auto;
+    }
+    .clock {
+      grid-template-columns: auto minmax(0, 1fr);
+      column-gap: 18px;
+      align-items: center;
+    }
+    .c-tag,
+    .c-note {
+      grid-column: 1 / -1;
+    }
+    .c-n {
+      grid-row: 2 / 4;
+      font-size: 4.5rem;
+    }
+    .c-u {
+      align-self: end;
+    }
+    .c-t {
+      margin-top: 0;
+      align-self: start;
+    }
     .line {
       grid-template-columns: 1fr;
-      border-top: 0;
-      border-left: 2px solid rgba(255, 255, 255, 0.2);
-      row-gap: var(--s-5);
     }
-    .line li {
-      padding: 0 0 0 24px;
+    .line li:not(.is-last)::after {
+      display: none;
     }
-    .line li::before {
-      top: 6px;
-      left: -8px;
+    .refer {
+      grid-template-columns: 1fr;
     }
-    .copy {
-      width: 100%;
+    .r-act {
+      justify-content: space-between;
     }
   }
   @media (max-width: 480px) {
+    .paid {
+      font-size: 0.75rem;
+      padding: 5px 10px;
+    }
+    .seal {
+      width: 60px;
+      height: 60px;
+    }
+    .seal svg {
+      width: 32px;
+      height: 32px;
+    }
     .steps li {
       grid-template-columns: 40px minmax(0, 1fr);
       gap: 12px;
+    }
+    .steps li:not(:last-child)::before {
+      left: 19px;
+      top: 40px;
     }
     .n {
       width: 40px;
       height: 40px;
       font-size: 1.1rem;
+    }
+    .steps div {
+      padding-top: 6px;
+    }
+    .r-act {
+      flex-direction: column;
+      align-items: stretch;
+      padding: 12px;
+      border-radius: 20px;
+      text-align: center;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .copy {
+      transition: none;
     }
   }
 </style>
