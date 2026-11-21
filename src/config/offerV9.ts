@@ -55,11 +55,6 @@ export const offerV9 = {
    */
   exitOffer: { enabled: true, launchKit: 297, checkout: '/checkout/monthly-kit' },
 
-  /** Founding program: first 10 qualifying shops. */
-  foundingSpotsTotal: 10,
-  /** Real number only. null hides the counter. */
-  foundingSpotsLeft: null as number | null,
-
   /** Full website: a one-time add-on, free on one plan + interval only. Every plan still gets the booking page. */
   website: { addOn: 997, freeOn: { plan: 'frontOffice' as PlanId, interval: 'annual' as Interval } },
 

@@ -29,7 +29,6 @@ const fmt = (n: number) => '$' + n.toLocaleString('en-US');
 const href = { annual: '#start', monthly: '#start' };
 const perMonth = Math.round(plan.annual / 12);
 const bonuses = f.annual.bonuses.filter((b) => b.enabled);
-const left = cfg.foundingSpotsLeft;
 const fill = (t: string) =>
   t
     .replace('{annual}', fmt(plan.annual))
@@ -142,16 +141,6 @@ const cta = (interval: 'annual' | 'monthly') => ({
         </a>
       </article>
     </div>
-
-    <!-- founding program -->
-    <p class="found">
-      <span class="tag">{c.founding.title}</span>
-      <span>
-        <b>{c.founding.who.replace('{n}', String(cfg.foundingSpotsTotal))}:</b>{' '}
-        {c.founding.items.join(' · ')}
-      </span>
-      {left !== null && <b class="left">{left} left</b>}
-    </p>
 
     <!-- every point, one by one: opens on click -->
     <details class="more">
@@ -509,32 +498,6 @@ const cta = (interval: 'annual' | 'monthly') => ({
     font-size: 0.875rem;
     line-height: 1.4;
     color: var(--fog);
-  }
-
-  /* ---------- founding ---------- */
-  .found {
-    margin-top: var(--s-4);
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 8px 14px;
-    padding: 14px 18px;
-    border-radius: 18px;
-    border: 1px solid rgba(216, 255, 62, 0.4);
-    background: rgba(216, 255, 62, 0.06);
-    font-size: 0.9375rem;
-    line-height: 1.45;
-    color: #dbe4ec;
-  }
-  .found b {
-    color: #fff;
-  }
-  .left {
-    padding: 2px 10px;
-    border-radius: 999px;
-    border: 1px solid rgba(216, 255, 62, 0.6);
-    color: #d8ff3e !important;
-    font-size: 0.75rem;
   }
 
   /* ---------- every detail (closed until asked for) ---------- */

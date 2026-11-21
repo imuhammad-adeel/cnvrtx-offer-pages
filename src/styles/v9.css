@@ -32,8 +32,8 @@ body.v9 {
   --f-text: 'Manrope Variable', 'Manrope', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
 
   --ease: cubic-bezier(0.2, 0.8, 0.1, 1);
-  --bar-h: 40px;
-  --nav-h: 116px;
+  --bar-h: 0px;
+  --nav-h: 76px;
 
   /* keep shared primitives (global.css) in step */
   --c-bg-0: var(--night);

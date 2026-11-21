@@ -47,7 +47,7 @@ export type DoorPage = {
   footer: string;
 };
 
-const live = 'Your front office can be live in 14 days. No demo, no sales call.';
+const live = 'Live in 14 days with the Launch Kit. No demo, no sales call.';
 
 export const doorPages: Record<string, DoorPage> = {
   'missed-calls': {

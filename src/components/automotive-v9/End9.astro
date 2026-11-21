@@ -125,10 +125,6 @@ const smsLinks = [
             </span> one-time Launch Kit.
           </p>
         </div>
-        <p class="found">
-          {e.foundingNote}
-          {cfg.foundingSpotsLeft !== null && <b> {cfg.foundingSpotsLeft} left.</b>}
-        </p>
 
         <div class="gain" data-gain data-leak={leakYear}>
           <p class="g-h">{e.gainTitle}</p>
@@ -1107,7 +1103,7 @@ const smsLinks = [
     border-color: #fff;
   }
 
-  /* ---------- v9: billing interval, founding note, text consent ---------- */
+  /* ---------- v9: billing interval, text consent ---------- */
   .ivl {
     justify-self: start;
     display: inline-flex;
@@ -1157,14 +1153,6 @@ const smsLinks = [
   }
   .pl-m small[hidden] {
     display: none;
-  }
-  .found {
-    font-size: 0.8125rem;
-    line-height: 1.45;
-    color: #cfd9e2;
-  }
-  .found b {
-    color: #d8ff3e;
   }
   .sms {
     border: 0;

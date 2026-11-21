@@ -89,10 +89,6 @@ export const plans9 = {
       ],
     },
   ],
-  founding: {
-    ...a.plans9.founding,
-    who: 'First {n} qualifying businesses',
-  },
 };
 
 export const offer9 = {
@@ -109,12 +105,8 @@ export const offer9 = {
     ],
     bonuses: a.offer9.annual.bonuses.map((b) => (b.t === 'Front of the build queue' ? { ...b, d: 'Annual customers are built first.' } : b)),
   },
-  founding: {
-    ...a.offer9.founding,
-    line: 'First 10 qualifying businesses: Launch Kit waived and your price locked while you stay subscribed.',
-  },
   promises: [
-    { t: 'Live in 14 days, or month one is free', d: 'The clock starts as soon as you finish Setup Center.' },
+    a.offer9.promises[0],
     { t: 'Love it or leave it', d: 'Month-to-month on monthly plans. Cancel anytime.' },
     { t: 'Your business stays yours', d: 'Your domain, content and customer list, exportable.' },
     { t: 'Keeps your current software', d: 'It sits alongside the tools that run your work.' },
@@ -129,7 +121,6 @@ export const offer9 = {
 
 export const start9 = {
   ...a.start9,
-  foundingNote: 'Founding (Launch Kit waived): first 10 qualifying businesses.',
   footer: 'Stop losing customers you already earned.',
 };
 
@@ -161,10 +152,7 @@ export const faq9 = {
   ],
 };
 
-export const exit9 = {
-  ...a.exit9,
-  founding: 'Founding program: Launch Kit waived and your price locked while you stay subscribed, for the first 10 qualifying businesses.',
-};
+export const exit9 = { ...a.exit9 };
 
 export const footer9 = {
   ...a.footer9,

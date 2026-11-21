@@ -1,5 +1,5 @@
 ---
-/** Exit popup. No price anchor: it shows the visitor's own calculator loss and the founding program. */
+/** Exit popup. No price anchor: it shows the visitor's own calculator loss. */
 import { copyFor, type CopySet } from '../../content/copySets';
 import { offerV9 as cfg, featuredPlan } from '../../config/offerV9';
 
@@ -54,7 +54,6 @@ const offerOn = eo.enabled && eo.launchKit < was;
               {leakParts[0]}<b data-exit-lost>{fmt(lostDefault)}</b>{leakParts[1]}
               <small>{x.leakNote}</small>
             </li>
-            <li>{x.founding}</li>
           </ul>
           <a class="go" href="#pricing" data-track="exit_offer_click" data-exit-go>
             {x.cta}

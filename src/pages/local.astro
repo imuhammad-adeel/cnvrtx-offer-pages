@@ -11,7 +11,6 @@
  * Left out on purpose: the car that drives down the auto page (Car9).
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Bar9 from '../components/automotive-v9/Bar9.astro';
 import Nav9 from '../components/automotive-v9/Nav9.astro';
 import Pipe9 from '../components/automotive-v9/Pipe9.astro';
 import Leaks9 from '../components/automotive-v9/Leaks9.astro';
@@ -53,7 +52,6 @@ const menu = { label: industries.menuLabel, title: industries.menuTitle, sub: in
     <link rel="preload" as="font" type="font/woff2" href={soraFont} crossorigin />
     <link rel="preload" as="font" type="font/woff2" href={manropeFont} crossorigin />
   </Fragment>
-  <Bar9 who="businesses" />
   <Nav9 outcomes={menuItems} menu={menu} />
   <main id="main" data-door="home">
     <HeroDoor headline={hero.headlineLines as [string, string]} sub={c.hero9.sub} copy="local" />

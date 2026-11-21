@@ -7,7 +7,6 @@
  * section, the calculator wording and the "one of nine" section are specific to a door.
  */
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import Bar9 from '../../components/automotive-v9/Bar9.astro';
 import Nav9 from '../../components/automotive-v9/Nav9.astro';
 import Hook9 from '../../components/automotive-v9/Hook9.astro';
 import Day9 from '../../components/automotive-v9/Day9.astro';
@@ -67,7 +66,6 @@ const lay = door.layout;
     <link rel="preload" as="font" type="font/woff2" href={soraFont} crossorigin />
     <link rel="preload" as="font" type="font/woff2" href={manropeFont} crossorigin />
   </Fragment>
-  <Bar9 />
   <Nav9 home="/" />
   <main id="main" data-door={door.slug}>
     {/* hook -> the one problem -> its cost -> everything else you get -> proof -> the one offer */}

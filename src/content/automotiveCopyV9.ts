@@ -213,6 +213,14 @@ export const work9 = {
   },
 };
 
+/** The one guarantee wording. Use these three strings everywhere; do not write a variant. */
+export const guarantee9 = {
+  headline: 'Live in 14 days with the Launch Kit, or your first month is free.',
+  condition:
+    'Applies to plans that include the Launch Kit (Monthly with Launch Kit, and Annual). The 14 days start when you finish Setup Center. Carrier (A2P), domain and other third-party approvals are outside the 14 days. On an annual plan the free month is added to your term.',
+  short: 'Live in 14 days with the Launch Kit',
+};
+
 export const offer9 = {
   kicker: 'The offer',
   title: ['One plan.', 'Three roles you never hire.'],
@@ -225,7 +233,7 @@ export const offer9 = {
     { t: 'The mobile app', ic: 2 },
     { t: 'One inbox for calls, texts, chat and DMs', ic: 4 },
     { t: 'Booking page built for you', ic: 0 },
-    { t: 'Live in 14 days or month one free', ic: 11 },
+    { t: guarantee9.short, ic: 11 },
   ],
   stackTotal: 'All of it included.',
   cardLabel: 'CNVRT X Front Office',
@@ -259,19 +267,14 @@ export const offer9 = {
     sub: 'Month-to-month. Cancel anytime.',
     cta: 'Start Monthly',
   },
-  founding: {
-    tag: 'Founding offer',
-    line: 'First 10 qualifying shops: Launch Kit waived and your price locked while you stay subscribed.',
-    cta: 'Claim founding pricing',
-  },
   promises: [
-    { t: 'Live in 14 days, or month one is free', d: 'The clock starts as soon as you finish Setup Center.' },
+    { t: guarantee9.headline, d: guarantee9.condition },
     { t: 'Love it or leave it', d: 'Month-to-month on monthly plans. Cancel anytime.' },
     { t: 'Your business stays yours', d: 'Your domain, content and customer list, exportable.' },
     { t: 'Keeps your shop software', d: 'It sits alongside the tools that run your jobs.' },
   ],
   finePrint:
-    'Live in 14 days: the clock starts as soon as you finish Setup Center in your account. Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours ({hours}).',
+    'Texts go only to people who agreed to them, after carrier approval, and during texting hours ({hours}).',
   /** PROPOSED. No refund involved: an unhappy annual customer can drop to monthly and use their payment as credit. Needs the owner's sign-off. */
   loveIt: {
     /** Annual: off (owner decision). The idea lives on Monthly as plain month-to-month. */
@@ -294,7 +297,7 @@ export const offer9 = {
 export const start9 = {
   kicker: 'Start today',
   title: ['Join in minutes.', 'No sales call.'],
-  lead: 'Your front office can be live in 14 days. No demo, no sales call. Pick annual or monthly and the build starts.',
+  lead: `${guarantee9.short}. No demo, no sales call. Pick annual or monthly and the build starts.`,
   steps: [
     { t: 'Pick annual or monthly', d: 'Checkout takes a couple of minutes.' },
     { t: 'Answer the setup questions', d: 'Log in, open Setup Center and answer the setup questions. About 10-15 minutes.' },
@@ -308,7 +311,6 @@ export const start9 = {
   liveNote: 'Next: secure checkout. Then your login arrives by email and setup takes about 10-15 minutes in your account.',
   liveSubmit: 'Continue to secure checkout',
   planLabel: 'Plan',
-  foundingNote: 'Founding (Launch Kit waived): first 10 qualifying shops.',
   gainTitle: 'On the table in your first year',
   gainRow: 'Leaks you can go after',
   gainNote: 'From your calculator numbers. An estimate, not a promise.',
@@ -350,7 +352,7 @@ export const faq9 = {
     },
     {
       q: 'Can you guarantee bookings?',
-      a: 'No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control: a tested system, live in 14 days or your first month is free.',
+      a: `No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control. ${guarantee9.headline} ${guarantee9.condition}`,
     },
     {
       q: 'What is included each month?',
@@ -373,7 +375,6 @@ export const exit9 = {
   title: 'The leak keeps running while you wait.',
   leak: 'About {lost} a month keeps slipping away.',
   leakNote: 'From your calculator numbers. An estimate, not a promise.',
-  founding: 'Founding program: Launch Kit waived and your price locked while you stay subscribed, for the first 10 qualifying shops.',
   cta: 'See the plans',
   no: 'No thanks',
   /**
@@ -442,7 +443,7 @@ export const flow9 = {
     timeline: [
       { t: 'Today', d: 'You finish Setup Center. Your 14-day launch clock starts.' },
       { t: 'Then', d: 'We connect your phone, Google and Meta, and check everything.' },
-      { t: 'Within 14 days', d: 'Your front office goes live.' },
+      { t: 'Within 14 days of Setup Center (with the Launch Kit)', d: 'Your front office goes live.' },
     ],
     noKitTitle: 'Monthly plan without the Launch Kit?',
     noKit: 'There is no launch clock. The system is ready in your account and you set it up yourself, starting in Setup Center.',
@@ -546,11 +547,6 @@ export const plans9 = {
       ],
     },
   ],
-  founding: {
-    title: 'Founding program',
-    who: 'First {n} qualifying shops',
-    items: ['Launch Kit waived', 'Price locked while you stay subscribed', 'Dead-Lead Revival on your last 90 days of quotes', '30 days of hands-on launch support'],
-  },
   detail: {
     open: 'See every detail',
     compare: [
@@ -563,7 +559,7 @@ export const plans9 = {
       { k: 'Old-lead reactivation at launch', a: 'Free', m: 'Not included' },
       { k: 'Commitment', a: 'Paid once a year', m: 'Month-to-month. Cancel anytime.' },
     ],
-    note: 'Win-back, reactivation and Dead-Lead Revival go by email, and by text only to customers who agreed to texts.',
+    note: 'Win-back and reactivation go by email, and by text only to customers who agreed to texts.',
   },
 };
 
@@ -766,7 +762,7 @@ export const waitlist9 = {
 export const checkout9 = {
   secure: 'Secure checkout',
   back: 'Back to the site',
-  title: ['Start your front office.', 'Live in 14 days.'],
+  title: ['Start your front office.', `${guarantee9.short}.`],
   sub: 'Pick how you pay. Then about 10-15 minutes of setup questions in your account, and we build.',
   switchLabel: 'Billing',
   annual: {
@@ -793,7 +789,7 @@ export const checkout9 = {
   nextTitle: 'What happens next',
   /** What happens after you pay: the same three steps the thank-you page gives. */
   next: SETUP_STEPS,
-  promises: ['Live in 14 days, or your first month is free', 'No sales call', 'Your domain, content and customer list stay yours'],
+  promises: [guarantee9.short, 'No sales call', 'Your domain, content and customer list stay yours'],
   payTitle: 'Your details',
   /** The reserve form on this page: the same fields and the same webhook as the one on the sales page. */
   form: {
