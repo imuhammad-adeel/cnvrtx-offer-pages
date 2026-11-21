@@ -46,7 +46,7 @@ How to read it:
 
 # 1. Home page (auto shops)
 
-The site is auto-first: the home page is the auto-shop page. /auto on its own redirects here.
+The site is auto-first: the home page is the auto-shop page.
 
 
 ## Home
@@ -58,13 +58,6 @@ The site is auto-first: the home page is the auto-shop page. /auto on its own re
 ### Section `skip-link`
 
 - [link] Skip to content  `→ #main`
-
-### Top bar `bar`
-
-- Founding program
-- Launch Kit waived and your price locked for the first 10 shops.
-- First 10 shops: Launch Kit waived
-- [link] Claim a spot →  `→ #pricing`
 
 ### Top menu `nav`
 
@@ -385,7 +378,6 @@ The site is auto-first: the home page is the auto-shop page. /auto on its own re
 - **Love it or leave it.** Month-to-month. Cancel anytime.
 - **Full website:** $997 one-time add-on.
 - [link] Start Monthly  `→ #start`
-- Founding program **First 10 qualifying shops:** Launch Kit waived · Price locked while you stay subscribed · Dead-Lead Revival on your last 90 days of quotes · 30 days of hands-on launch support
 - [opens] See every detail
 - Annual Monthly
 - Price $1,970 a year $197 a month
@@ -416,12 +408,12 @@ The site is auto-first: the home page is the auto-shop page. /auto on its own re
 - AI quote helper: drafts quotes from your own price list for you to approve and send
 - Repeat & Referral Engine: service history, check-ins, referral ask, win-back campaigns
 - Ad Results Tracker: Facebook and Instagram leads followed to booked and paid jobs, sent back to Meta so it finds more customers like them
-- Win-back, reactivation and Dead-Lead Revival go by email, and by text only to customers who agreed to texts.
-- **Live in 14 days, or month one is free** The clock starts as soon as you finish Setup Center.
+- Win-back and reactivation go by email, and by text only to customers who agreed to texts.
+- **Live in 14 days with the Launch Kit, or your first month is free.** Applies to plans that include the Launch Kit (Monthly with Launch Kit, and Annual). The 14 days start when you finish Setup Center. Carrier (A2P), domain and other third-party approvals are outside the 14 days. On an annual plan the free month is added to your term.
 - **Love it or leave it** Month-to-month on monthly plans. Cancel anytime.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
-- Live in 14 days: the clock starts as soon as you finish Setup Center in your account. Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
+- Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
 - [link] Not ready to buy? Get a free Booking Leak Audit →  `→ #start`
 
 ### Section `faq`: Before you ask.
@@ -441,7 +433,7 @@ The site is auto-first: the home page is the auto-shop page. /auto on its own re
 - [opens] 06 Is the phone number really included?
 - Yes for US shops. For other countries, ask us first so we can confirm availability. US texting also needs carrier registration (A2P). We prepare it with you and texting goes live once the carrier approves.
 - [opens] 07 Can you guarantee bookings?
-- No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control: a tested system, live in 14 days or your first month is free.
+- No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control. Live in 14 days with the Launch Kit, or your first month is free. Applies to plans that include the Launch Kit (Monthly with Launch Kit, and Annual). The 14 days start when you finish Setup Center. Carrier (A2P), domain and other third-party approvals are outside the 14 days. On an annual plan the free month is added to your term.
 - [opens] 08 What is included each month?
 - Each month includes 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. That covers a typical single-location shop. If you are close to a limit we tell you before anything extra is charged.
 - [opens] 09 Can I cancel?
@@ -453,21 +445,20 @@ The site is auto-first: the home page is the auto-shop page. /auto on its own re
 
 - Start today
 - **[H2]** Join in minutes. No sales call.
-- Your front office can be live in 14 days. No demo, no sales call. Pick annual or monthly and the build starts.
+- Live in 14 days with the Launch Kit. No demo, no sales call. Pick annual or monthly and the build starts.
 - **Pick annual or monthly** Checkout takes a couple of minutes.
 - **Answer the setup questions** Log in, open Setup Center and answer the setup questions. About 10-15 minutes.
 - **Your front desk goes live** Booking page, number, app, follow-up and reminders, built and tested for you.
-- **[H3]** Reserve your build
+- **[H3]** Start your build
 - No sales call
 - [label] Monthly
 - [label] Annual Pay 10, get 12
 - $1,970 a year. Launch Kit waived.
 - $197 a month + $497 $297 $497 one-time Launch Kit.
-- Founding (Launch Kit waived): first 10 qualifying shops.
 - On the table in your first year
 - Leaks you can go after $36,400
 - From your calculator numbers. An estimate, not a promise.
-- Online checkout is being switched on. Leave your details and your join link arrives by email.
+- Next: secure checkout. Then your login arrives by email and setup takes about 10-15 minutes in your account.
 - [label] First name
 - Please add your first name.
 - [label] Business name
@@ -483,7 +474,7 @@ The site is auto-first: the home page is the auto-shop page. /auto on its own re
 - Checking a box is not required to reserve your build.
 - [link] Privacy Policy  `→ /legal/privacy`
 - [link] SMS Terms  `→ /legal/sms-terms`
-- [button] Reserve My Build
+- [button] Continue to secure checkout
 - **[H3]** You are on the list.
 - Watch your inbox for your join link.
 
@@ -582,10 +573,6 @@ One page per problem. Each leads to the same plan. Listed in the order of the "W
 ### Section `skip-link`
 
 _Same wording as_ **Home → Section `skip-link`**.
-
-### Top bar `bar`
-
-_Same wording as_ **Home → Top bar `bar`**.
 
 ### Top menu `nav`
 
@@ -773,7 +760,6 @@ _Same wording as_ **Home → Top bar `bar`**.
 - **Love it or leave it.** Month-to-month. Cancel anytime.
 - **Full website:** $997 one-time add-on.
 - [link] Start Monthly  `→ #start`
-- Founding program **First 10 qualifying shops:** Launch Kit waived · Price locked while you stay subscribed · Dead-Lead Revival on your last 90 days of quotes · 30 days of hands-on launch support
 - [opens] See every detail
 - Annual Monthly
 - Price $1,970 a year $197 a month
@@ -804,12 +790,12 @@ _Same wording as_ **Home → Top bar `bar`**.
 - AI quote helper: drafts quotes from your own price list for you to approve and send
 - Repeat & Referral Engine: service history, check-ins, referral ask, win-back campaigns
 - Ad Results Tracker: Facebook and Instagram leads followed to booked and paid jobs, sent back to Meta so it finds more customers like them
-- Win-back, reactivation and Dead-Lead Revival go by email, and by text only to customers who agreed to texts.
-- **Live in 14 days, or month one is free** The clock starts as soon as you finish Setup Center.
+- Win-back and reactivation go by email, and by text only to customers who agreed to texts.
+- **Live in 14 days with the Launch Kit, or your first month is free.** Applies to plans that include the Launch Kit (Monthly with Launch Kit, and Annual). The 14 days start when you finish Setup Center. Carrier (A2P), domain and other third-party approvals are outside the 14 days. On an annual plan the free month is added to your term.
 - **Love it or leave it** Month-to-month on monthly plans. Cancel anytime.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
-- Live in 14 days: the clock starts as soon as you finish Setup Center in your account. Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
+- Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
 - [link] Not ready to buy? Get a free Booking Leak Audit →  `→ #start`
 
 ### Section `faq`: Before you ask.
@@ -825,7 +811,7 @@ _Same wording as_ **Home → Top bar `bar`**.
 - [opens] 04 Do I have to talk to a salesperson?
 - No. Pick a plan, fill the form and the build starts. If you want to ask something first, use the contact link.
 - [opens] 05 Can you guarantee bookings?
-- No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control: a tested system, live in 14 days or your first month is free.
+- No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control. Live in 14 days with the Launch Kit, or your first month is free. Applies to plans that include the Launch Kit (Monthly with Launch Kit, and Annual). The 14 days start when you finish Setup Center. Carrier (A2P), domain and other third-party approvals are outside the 14 days. On an annual plan the free month is added to your term.
 - [opens] 06 What is included each month?
 - Each month includes 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. That covers a typical single-location shop. If you are close to a limit we tell you before anything extra is charged.
 - [opens] 07 Can I cancel?
@@ -837,21 +823,20 @@ _Same wording as_ **Home → Top bar `bar`**.
 
 - Start today
 - **[H2]** Join in minutes. No sales call.
-- Stop losing the calls you can’t pick up. Your front office can be live in 14 days. No demo, no sales call.
+- Stop losing the calls you can’t pick up. Live in 14 days with the Launch Kit. No demo, no sales call.
 - **Pick annual or monthly** Checkout takes a couple of minutes.
 - **Answer the setup questions** Log in, open Setup Center and answer the setup questions. About 10-15 minutes.
 - **Your front desk goes live** Booking page, number, app, follow-up and reminders, built and tested for you.
-- **[H3]** Reserve your build
+- **[H3]** Start your build
 - No sales call
 - [label] Monthly
 - [label] Annual Pay 10, get 12
 - $1,970 a year. Launch Kit waived.
 - $197 a month + $497 $297 $497 one-time Launch Kit.
-- Founding (Launch Kit waived): first 10 qualifying shops.
 - On the table in your first year
 - Leaks you can go after $36,400
 - From your calculator numbers. An estimate, not a promise.
-- Online checkout is being switched on. Leave your details and your join link arrives by email.
+- Next: secure checkout. Then your login arrives by email and setup takes about 10-15 minutes in your account.
 - [label] First name
 - Please add your first name.
 - [label] Business name
@@ -867,7 +852,7 @@ _Same wording as_ **Home → Top bar `bar`**.
 - Checking a box is not required to reserve your build.
 - [link] Privacy Policy  `→ /legal/privacy`
 - [link] SMS Terms  `→ /legal/sms-terms`
-- [button] Reserve My Build
+- [button] Continue to secure checkout
 - **[H3]** You are on the list.
 - Watch your inbox for your join link.
 
@@ -924,10 +909,6 @@ _Same wording as_ **Home → Popup `wl`: Join the waitlist for your trade.**.
 ### Section `skip-link`
 
 _Same wording as_ **Home → Section `skip-link`**.
-
-### Top bar `bar`
-
-_Same wording as_ **Home → Top bar `bar`**.
 
 ### Top menu `nav`
 
@@ -1110,7 +1091,6 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - **Love it or leave it.** Month-to-month. Cancel anytime.
 - **Full website:** $997 one-time add-on.
 - [link] Start Monthly  `→ #start`
-- Founding program **First 10 qualifying shops:** Launch Kit waived · Price locked while you stay subscribed · Dead-Lead Revival on your last 90 days of quotes · 30 days of hands-on launch support
 - [opens] See every detail
 - Annual Monthly
 - Price $1,970 a year $197 a month
@@ -1141,12 +1121,12 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - AI quote helper: drafts quotes from your own price list for you to approve and send
 - Repeat & Referral Engine: service history, check-ins, referral ask, win-back campaigns
 - Ad Results Tracker: Facebook and Instagram leads followed to booked and paid jobs, sent back to Meta so it finds more customers like them
-- Win-back, reactivation and Dead-Lead Revival go by email, and by text only to customers who agreed to texts.
-- **Live in 14 days, or month one is free** The clock starts as soon as you finish Setup Center.
+- Win-back and reactivation go by email, and by text only to customers who agreed to texts.
+- **Live in 14 days with the Launch Kit, or your first month is free.** Applies to plans that include the Launch Kit (Monthly with Launch Kit, and Annual). The 14 days start when you finish Setup Center. Carrier (A2P), domain and other third-party approvals are outside the 14 days. On an annual plan the free month is added to your term.
 - **Love it or leave it** Month-to-month on monthly plans. Cancel anytime.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
-- Live in 14 days: the clock starts as soon as you finish Setup Center in your account. Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
+- Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
 - [link] Not ready to buy? Get a free Booking Leak Audit →  `→ #start`
 
 ### Section `faq`: Before you ask.
@@ -1162,7 +1142,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - [opens] 04 Do I have to talk to a salesperson?
 - No. Pick a plan, fill the form and the build starts. If you want to ask something first, use the contact link.
 - [opens] 05 Can you guarantee bookings?
-- No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control: a tested system, live in 14 days or your first month is free.
+- No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control. Live in 14 days with the Launch Kit, or your first month is free. Applies to plans that include the Launch Kit (Monthly with Launch Kit, and Annual). The 14 days start when you finish Setup Center. Carrier (A2P), domain and other third-party approvals are outside the 14 days. On an annual plan the free month is added to your term.
 - [opens] 06 What is included each month?
 - Each month includes 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. That covers a typical single-location shop. If you are close to a limit we tell you before anything extra is charged.
 - [opens] 07 Can I cancel?
@@ -1174,21 +1154,20 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 
 - Start today
 - **[H2]** Join in minutes. No sales call.
-- Stop letting quotes go quiet. Your front office can be live in 14 days. No demo, no sales call.
+- Stop letting quotes go quiet. Live in 14 days with the Launch Kit. No demo, no sales call.
 - **Pick annual or monthly** Checkout takes a couple of minutes.
 - **Answer the setup questions** Log in, open Setup Center and answer the setup questions. About 10-15 minutes.
 - **Your front desk goes live** Booking page, number, app, follow-up and reminders, built and tested for you.
-- **[H3]** Reserve your build
+- **[H3]** Start your build
 - No sales call
 - [label] Monthly
 - [label] Annual Pay 10, get 12
 - $1,970 a year. Launch Kit waived.
 - $197 a month + $497 $297 $497 one-time Launch Kit.
-- Founding (Launch Kit waived): first 10 qualifying shops.
 - On the table in your first year
 - Leaks you can go after $36,400
 - From your calculator numbers. An estimate, not a promise.
-- Online checkout is being switched on. Leave your details and your join link arrives by email.
+- Next: secure checkout. Then your login arrives by email and setup takes about 10-15 minutes in your account.
 - [label] First name
 - Please add your first name.
 - [label] Business name
@@ -1204,7 +1183,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - Checking a box is not required to reserve your build.
 - [link] Privacy Policy  `→ /legal/privacy`
 - [link] SMS Terms  `→ /legal/sms-terms`
-- [button] Reserve My Build
+- [button] Continue to secure checkout
 - **[H3]** You are on the list.
 - Watch your inbox for your join link.
 
@@ -1261,10 +1240,6 @@ _Same wording as_ **Home → Popup `wl`: Join the waitlist for your trade.**.
 ### Section `skip-link`
 
 _Same wording as_ **Home → Section `skip-link`**.
-
-### Top bar `bar`
-
-_Same wording as_ **Home → Top bar `bar`**.
 
 ### Top menu `nav`
 
@@ -1450,7 +1425,6 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - **Love it or leave it.** Month-to-month. Cancel anytime.
 - **Full website:** $997 one-time add-on.
 - [link] Start Monthly  `→ #start`
-- Founding program **First 10 qualifying shops:** Launch Kit waived · Price locked while you stay subscribed · Dead-Lead Revival on your last 90 days of quotes · 30 days of hands-on launch support
 - [opens] See every detail
 - Annual Monthly
 - Price $1,970 a year $197 a month
@@ -1481,12 +1455,12 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - AI quote helper: drafts quotes from your own price list for you to approve and send
 - Repeat & Referral Engine: service history, check-ins, referral ask, win-back campaigns
 - Ad Results Tracker: Facebook and Instagram leads followed to booked and paid jobs, sent back to Meta so it finds more customers like them
-- Win-back, reactivation and Dead-Lead Revival go by email, and by text only to customers who agreed to texts.
-- **Live in 14 days, or month one is free** The clock starts as soon as you finish Setup Center.
+- Win-back and reactivation go by email, and by text only to customers who agreed to texts.
+- **Live in 14 days with the Launch Kit, or your first month is free.** Applies to plans that include the Launch Kit (Monthly with Launch Kit, and Annual). The 14 days start when you finish Setup Center. Carrier (A2P), domain and other third-party approvals are outside the 14 days. On an annual plan the free month is added to your term.
 - **Love it or leave it** Month-to-month on monthly plans. Cancel anytime.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
-- Live in 14 days: the clock starts as soon as you finish Setup Center in your account. Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
+- Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
 - [link] Not ready to buy? Get a free Booking Leak Audit →  `→ #start`
 
 ### Section `faq`: Before you ask.
@@ -1502,7 +1476,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - [opens] 04 Do I have to talk to a salesperson?
 - No. Pick a plan, fill the form and the build starts. If you want to ask something first, use the contact link.
 - [opens] 05 Can you guarantee bookings?
-- No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control: a tested system, live in 14 days or your first month is free.
+- No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control. Live in 14 days with the Launch Kit, or your first month is free. Applies to plans that include the Launch Kit (Monthly with Launch Kit, and Annual). The 14 days start when you finish Setup Center. Carrier (A2P), domain and other third-party approvals are outside the 14 days. On an annual plan the free month is added to your term.
 - [opens] 06 What is included each month?
 - Each month includes 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. That covers a typical single-location shop. If you are close to a limit we tell you before anything extra is charged.
 - [opens] 07 Can I cancel?
@@ -1514,21 +1488,20 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 
 - Start today
 - **[H2]** Join in minutes. No sales call.
-- Stop preparing the bay for nobody. Your front office can be live in 14 days. No demo, no sales call.
+- Stop preparing the bay for nobody. Live in 14 days with the Launch Kit. No demo, no sales call.
 - **Pick annual or monthly** Checkout takes a couple of minutes.
 - **Answer the setup questions** Log in, open Setup Center and answer the setup questions. About 10-15 minutes.
 - **Your front desk goes live** Booking page, number, app, follow-up and reminders, built and tested for you.
-- **[H3]** Reserve your build
+- **[H3]** Start your build
 - No sales call
 - [label] Monthly
 - [label] Annual Pay 10, get 12
 - $1,970 a year. Launch Kit waived.
 - $197 a month + $497 $297 $497 one-time Launch Kit.
-- Founding (Launch Kit waived): first 10 qualifying shops.
 - On the table in your first year
 - Leaks you can go after $36,400
 - From your calculator numbers. An estimate, not a promise.
-- Online checkout is being switched on. Leave your details and your join link arrives by email.
+- Next: secure checkout. Then your login arrives by email and setup takes about 10-15 minutes in your account.
 - [label] First name
 - Please add your first name.
 - [label] Business name
@@ -1544,7 +1517,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - Checking a box is not required to reserve your build.
 - [link] Privacy Policy  `→ /legal/privacy`
 - [link] SMS Terms  `→ /legal/sms-terms`
-- [button] Reserve My Build
+- [button] Continue to secure checkout
 - **[H3]** You are on the list.
 - Watch your inbox for your join link.
 
@@ -1601,10 +1574,6 @@ _Same wording as_ **Home → Popup `wl`: Join the waitlist for your trade.**.
 ### Section `skip-link`
 
 _Same wording as_ **Home → Section `skip-link`**.
-
-### Top bar `bar`
-
-_Same wording as_ **Home → Top bar `bar`**.
 
 ### Top menu `nav`
 
@@ -1790,7 +1759,6 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - **Love it or leave it.** Month-to-month. Cancel anytime.
 - **Full website:** $997 one-time add-on.
 - [link] Start Monthly  `→ #start`
-- Founding program **First 10 qualifying shops:** Launch Kit waived · Price locked while you stay subscribed · Dead-Lead Revival on your last 90 days of quotes · 30 days of hands-on launch support
 - [opens] See every detail
 - Annual Monthly
 - Price $1,970 a year $197 a month
@@ -1821,12 +1789,12 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - AI quote helper: drafts quotes from your own price list for you to approve and send
 - Repeat & Referral Engine: service history, check-ins, referral ask, win-back campaigns
 - Ad Results Tracker: Facebook and Instagram leads followed to booked and paid jobs, sent back to Meta so it finds more customers like them
-- Win-back, reactivation and Dead-Lead Revival go by email, and by text only to customers who agreed to texts.
-- **Live in 14 days, or month one is free** The clock starts as soon as you finish Setup Center.
+- Win-back and reactivation go by email, and by text only to customers who agreed to texts.
+- **Live in 14 days with the Launch Kit, or your first month is free.** Applies to plans that include the Launch Kit (Monthly with Launch Kit, and Annual). The 14 days start when you finish Setup Center. Carrier (A2P), domain and other third-party approvals are outside the 14 days. On an annual plan the free month is added to your term.
 - **Love it or leave it** Month-to-month on monthly plans. Cancel anytime.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
-- Live in 14 days: the clock starts as soon as you finish Setup Center in your account. Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
+- Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
 - [link] Not ready to buy? Get a free Booking Leak Audit →  `→ #start`
 
 ### Section `faq`: Before you ask.
@@ -1842,7 +1810,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - [opens] 04 Do I have to talk to a salesperson?
 - No. Pick a plan, fill the form and the build starts. If you want to ask something first, use the contact link.
 - [opens] 05 Can you guarantee bookings?
-- No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control: a tested system, live in 14 days or your first month is free.
+- No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control. Live in 14 days with the Launch Kit, or your first month is free. Applies to plans that include the Launch Kit (Monthly with Launch Kit, and Annual). The 14 days start when you finish Setup Center. Carrier (A2P), domain and other third-party approvals are outside the 14 days. On an annual plan the free month is added to your term.
 - [opens] 06 What is included each month?
 - Each month includes 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. That covers a typical single-location shop. If you are close to a limit we tell you before anything extra is charged.
 - [opens] 07 Can I cancel?
@@ -1854,21 +1822,20 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 
 - Start today
 - **[H2]** Join in minutes. No sales call.
-- Put someone on the front desk tonight. Your front office can be live in 14 days. No demo, no sales call.
+- Put someone on the front desk tonight. Live in 14 days with the Launch Kit. No demo, no sales call.
 - **Pick annual or monthly** Checkout takes a couple of minutes.
 - **Answer the setup questions** Log in, open Setup Center and answer the setup questions. About 10-15 minutes.
 - **Your front desk goes live** Booking page, number, app, follow-up and reminders, built and tested for you.
-- **[H3]** Reserve your build
+- **[H3]** Start your build
 - No sales call
 - [label] Monthly
 - [label] Annual Pay 10, get 12
 - $1,970 a year. Launch Kit waived.
 - $197 a month + $497 $297 $497 one-time Launch Kit.
-- Founding (Launch Kit waived): first 10 qualifying shops.
 - On the table in your first year
 - Leaks you can go after $36,400
 - From your calculator numbers. An estimate, not a promise.
-- Online checkout is being switched on. Leave your details and your join link arrives by email.
+- Next: secure checkout. Then your login arrives by email and setup takes about 10-15 minutes in your account.
 - [label] First name
 - Please add your first name.
 - [label] Business name
@@ -1884,7 +1851,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - Checking a box is not required to reserve your build.
 - [link] Privacy Policy  `→ /legal/privacy`
 - [link] SMS Terms  `→ /legal/sms-terms`
-- [button] Reserve My Build
+- [button] Continue to secure checkout
 - **[H3]** You are on the list.
 - Watch your inbox for your join link.
 
@@ -1941,10 +1908,6 @@ _Same wording as_ **Home → Popup `wl`: Join the waitlist for your trade.**.
 ### Section `skip-link`
 
 _Same wording as_ **Home → Section `skip-link`**.
-
-### Top bar `bar`
-
-_Same wording as_ **Home → Top bar `bar`**.
 
 ### Top menu `nav`
 
@@ -2134,7 +2097,6 @@ _Same wording as_ **Home → Section `work`: Who does the work?**.
 - **Love it or leave it.** Month-to-month. Cancel anytime.
 - **Full website:** $997 one-time add-on.
 - [link] Start Monthly  `→ #start`
-- Founding program **First 10 qualifying shops:** Launch Kit waived · Price locked while you stay subscribed · Dead-Lead Revival on your last 90 days of quotes · 30 days of hands-on launch support
 - [opens] See every detail
 - Annual Monthly
 - Price $1,970 a year $197 a month
@@ -2165,12 +2127,12 @@ _Same wording as_ **Home → Section `work`: Who does the work?**.
 - AI quote helper: drafts quotes from your own price list for you to approve and send
 - Repeat & Referral Engine: service history, check-ins, referral ask, win-back campaigns
 - Ad Results Tracker: Facebook and Instagram leads followed to booked and paid jobs, sent back to Meta so it finds more customers like them
-- Win-back, reactivation and Dead-Lead Revival go by email, and by text only to customers who agreed to texts.
-- **Live in 14 days, or month one is free** The clock starts as soon as you finish Setup Center.
+- Win-back and reactivation go by email, and by text only to customers who agreed to texts.
+- **Live in 14 days with the Launch Kit, or your first month is free.** Applies to plans that include the Launch Kit (Monthly with Launch Kit, and Annual). The 14 days start when you finish Setup Center. Carrier (A2P), domain and other third-party approvals are outside the 14 days. On an annual plan the free month is added to your term.
 - **Love it or leave it** Month-to-month on monthly plans. Cancel anytime.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
-- Live in 14 days: the clock starts as soon as you finish Setup Center in your account. Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
+- Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
 - [link] Not ready to buy? Get a free Booking Leak Audit →  `→ #start`
 
 ### Section `faq`: Before you ask.
@@ -2186,7 +2148,7 @@ _Same wording as_ **Home → Section `work`: Who does the work?**.
 - [opens] 04 Do I have to talk to a salesperson?
 - No. Pick a plan, fill the form and the build starts. If you want to ask something first, use the contact link.
 - [opens] 05 Can you guarantee bookings?
-- No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control: a tested system, live in 14 days or your first month is free.
+- No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control. Live in 14 days with the Launch Kit, or your first month is free. Applies to plans that include the Launch Kit (Monthly with Launch Kit, and Annual). The 14 days start when you finish Setup Center. Carrier (A2P), domain and other third-party approvals are outside the 14 days. On an annual plan the free month is added to your term.
 - [opens] 06 What is included each month?
 - Each month includes 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. That covers a typical single-location shop. If you are close to a limit we tell you before anything extra is charged.
 - [opens] 07 Can I cancel?
@@ -2198,21 +2160,20 @@ _Same wording as_ **Home → Section `work`: Who does the work?**.
 
 - Start today
 - **[H2]** Join in minutes. No sales call.
-- Fill the front desk without a hire. Your front office can be live in 14 days. No demo, no sales call.
+- Fill the front desk without a hire. Live in 14 days with the Launch Kit. No demo, no sales call.
 - **Pick annual or monthly** Checkout takes a couple of minutes.
 - **Answer the setup questions** Log in, open Setup Center and answer the setup questions. About 10-15 minutes.
 - **Your front desk goes live** Booking page, number, app, follow-up and reminders, built and tested for you.
-- **[H3]** Reserve your build
+- **[H3]** Start your build
 - No sales call
 - [label] Monthly
 - [label] Annual Pay 10, get 12
 - $1,970 a year. Launch Kit waived.
 - $197 a month + $497 $297 $497 one-time Launch Kit.
-- Founding (Launch Kit waived): first 10 qualifying shops.
 - On the table in your first year
 - Leaks you can go after $36,400
 - From your calculator numbers. An estimate, not a promise.
-- Online checkout is being switched on. Leave your details and your join link arrives by email.
+- Next: secure checkout. Then your login arrives by email and setup takes about 10-15 minutes in your account.
 - [label] First name
 - Please add your first name.
 - [label] Business name
@@ -2228,7 +2189,7 @@ _Same wording as_ **Home → Section `work`: Who does the work?**.
 - Checking a box is not required to reserve your build.
 - [link] Privacy Policy  `→ /legal/privacy`
 - [link] SMS Terms  `→ /legal/sms-terms`
-- [button] Reserve My Build
+- [button] Continue to secure checkout
 - **[H3]** You are on the list.
 - Watch your inbox for your join link.
 
@@ -2285,10 +2246,6 @@ _Same wording as_ **Home → Popup `wl`: Join the waitlist for your trade.**.
 ### Section `skip-link`
 
 _Same wording as_ **Home → Section `skip-link`**.
-
-### Top bar `bar`
-
-_Same wording as_ **Home → Top bar `bar`**.
 
 ### Top menu `nav`
 
@@ -2515,7 +2472,6 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - **Love it or leave it.** Month-to-month. Cancel anytime.
 - **Full website:** $997 one-time add-on.
 - [link] Start Monthly  `→ #start`
-- Founding program **First 10 qualifying shops:** Launch Kit waived · Price locked while you stay subscribed · Dead-Lead Revival on your last 90 days of quotes · 30 days of hands-on launch support
 - [opens] See every detail
 - Annual Monthly
 - Price $1,970 a year $197 a month
@@ -2546,12 +2502,12 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - AI quote helper: drafts quotes from your own price list for you to approve and send
 - Repeat & Referral Engine: service history, check-ins, referral ask, win-back campaigns
 - Ad Results Tracker: Facebook and Instagram leads followed to booked and paid jobs, sent back to Meta so it finds more customers like them
-- Win-back, reactivation and Dead-Lead Revival go by email, and by text only to customers who agreed to texts.
-- **Live in 14 days, or month one is free** The clock starts as soon as you finish Setup Center.
+- Win-back and reactivation go by email, and by text only to customers who agreed to texts.
+- **Live in 14 days with the Launch Kit, or your first month is free.** Applies to plans that include the Launch Kit (Monthly with Launch Kit, and Annual). The 14 days start when you finish Setup Center. Carrier (A2P), domain and other third-party approvals are outside the 14 days. On an annual plan the free month is added to your term.
 - **Love it or leave it** Month-to-month on monthly plans. Cancel anytime.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
-- Live in 14 days: the clock starts as soon as you finish Setup Center in your account. Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
+- Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
 - [link] Not ready to buy? Get a free Booking Leak Audit →  `→ #start`
 
 ### Section `faq`: Before you ask.
@@ -2567,7 +2523,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - [opens] 04 Do I have to talk to a salesperson?
 - No. Pick a plan, fill the form and the build starts. If you want to ask something first, use the contact link.
 - [opens] 05 Can you guarantee bookings?
-- No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control: a tested system, live in 14 days or your first month is free.
+- No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control. Live in 14 days with the Launch Kit, or your first month is free. Applies to plans that include the Launch Kit (Monthly with Launch Kit, and Annual). The 14 days start when you finish Setup Center. Carrier (A2P), domain and other third-party approvals are outside the 14 days. On an annual plan the free month is added to your term.
 - [opens] 06 What is included each month?
 - Each month includes 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. That covers a typical single-location shop. If you are close to a limit we tell you before anything extra is charged.
 - [opens] 07 Can I cancel?
@@ -2579,21 +2535,20 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 
 - Start today
 - **[H2]** Join in minutes. No sales call.
-- Give your visitors someone to talk to. Your front office can be live in 14 days. No demo, no sales call.
+- Give your visitors someone to talk to. Live in 14 days with the Launch Kit. No demo, no sales call.
 - **Pick annual or monthly** Checkout takes a couple of minutes.
 - **Answer the setup questions** Log in, open Setup Center and answer the setup questions. About 10-15 minutes.
 - **Your front desk goes live** Booking page, number, app, follow-up and reminders, built and tested for you.
-- **[H3]** Reserve your build
+- **[H3]** Start your build
 - No sales call
 - [label] Monthly
 - [label] Annual Pay 10, get 12
 - $1,970 a year. Launch Kit waived.
 - $197 a month + $497 $297 $497 one-time Launch Kit.
-- Founding (Launch Kit waived): first 10 qualifying shops.
 - On the table in your first year
 - Leaks you can go after $36,400
 - From your calculator numbers. An estimate, not a promise.
-- Online checkout is being switched on. Leave your details and your join link arrives by email.
+- Next: secure checkout. Then your login arrives by email and setup takes about 10-15 minutes in your account.
 - [label] First name
 - Please add your first name.
 - [label] Business name
@@ -2609,7 +2564,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - Checking a box is not required to reserve your build.
 - [link] Privacy Policy  `→ /legal/privacy`
 - [link] SMS Terms  `→ /legal/sms-terms`
-- [button] Reserve My Build
+- [button] Continue to secure checkout
 - **[H3]** You are on the list.
 - Watch your inbox for your join link.
 
@@ -2666,10 +2621,6 @@ _Same wording as_ **Home → Popup `wl`: Join the waitlist for your trade.**.
 ### Section `skip-link`
 
 _Same wording as_ **Home → Section `skip-link`**.
-
-### Top bar `bar`
-
-_Same wording as_ **Home → Top bar `bar`**.
 
 ### Top menu `nav`
 
@@ -2850,7 +2801,6 @@ _Same wording as_ **Home → Section `hook`**.
 - **Love it or leave it.** Month-to-month. Cancel anytime.
 - **Full website:** $997 one-time add-on.
 - [link] Start Monthly  `→ #start`
-- Founding program **First 10 qualifying shops:** Launch Kit waived · Price locked while you stay subscribed · Dead-Lead Revival on your last 90 days of quotes · 30 days of hands-on launch support
 - [opens] See every detail
 - Annual Monthly
 - Price $1,970 a year $197 a month
@@ -2881,12 +2831,12 @@ _Same wording as_ **Home → Section `hook`**.
 - AI quote helper: drafts quotes from your own price list for you to approve and send
 - Repeat & Referral Engine: service history, check-ins, referral ask, win-back campaigns
 - Ad Results Tracker: Facebook and Instagram leads followed to booked and paid jobs, sent back to Meta so it finds more customers like them
-- Win-back, reactivation and Dead-Lead Revival go by email, and by text only to customers who agreed to texts.
-- **Live in 14 days, or month one is free** The clock starts as soon as you finish Setup Center.
+- Win-back and reactivation go by email, and by text only to customers who agreed to texts.
+- **Live in 14 days with the Launch Kit, or your first month is free.** Applies to plans that include the Launch Kit (Monthly with Launch Kit, and Annual). The 14 days start when you finish Setup Center. Carrier (A2P), domain and other third-party approvals are outside the 14 days. On an annual plan the free month is added to your term.
 - **Love it or leave it** Month-to-month on monthly plans. Cancel anytime.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
-- Live in 14 days: the clock starts as soon as you finish Setup Center in your account. Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
+- Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
 - [link] Not ready to buy? Get a free Booking Leak Audit →  `→ #start`
 
 ### Section `faq`: Before you ask.
@@ -2902,7 +2852,7 @@ _Same wording as_ **Home → Section `hook`**.
 - [opens] 04 Do I have to talk to a salesperson?
 - No. Pick a plan, fill the form and the build starts. If you want to ask something first, use the contact link.
 - [opens] 05 Can you guarantee bookings?
-- No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control: a tested system, live in 14 days or your first month is free.
+- No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control. Live in 14 days with the Launch Kit, or your first month is free. Applies to plans that include the Launch Kit (Monthly with Launch Kit, and Annual). The 14 days start when you finish Setup Center. Carrier (A2P), domain and other third-party approvals are outside the 14 days. On an annual plan the free month is added to your term.
 - [opens] 06 What is included each month?
 - Each month includes 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. That covers a typical single-location shop. If you are close to a limit we tell you before anything extra is charged.
 - [opens] 07 Can I cancel?
@@ -2914,21 +2864,20 @@ _Same wording as_ **Home → Section `hook`**.
 
 - Start today
 - **[H2]** Join in minutes. No sales call.
-- Be the shop that answers first. Your front office can be live in 14 days. No demo, no sales call.
+- Be the shop that answers first. Live in 14 days with the Launch Kit. No demo, no sales call.
 - **Pick annual or monthly** Checkout takes a couple of minutes.
 - **Answer the setup questions** Log in, open Setup Center and answer the setup questions. About 10-15 minutes.
 - **Your front desk goes live** Booking page, number, app, follow-up and reminders, built and tested for you.
-- **[H3]** Reserve your build
+- **[H3]** Start your build
 - No sales call
 - [label] Monthly
 - [label] Annual Pay 10, get 12
 - $1,970 a year. Launch Kit waived.
 - $197 a month + $497 $297 $497 one-time Launch Kit.
-- Founding (Launch Kit waived): first 10 qualifying shops.
 - On the table in your first year
 - Leaks you can go after $36,400
 - From your calculator numbers. An estimate, not a promise.
-- Online checkout is being switched on. Leave your details and your join link arrives by email.
+- Next: secure checkout. Then your login arrives by email and setup takes about 10-15 minutes in your account.
 - [label] First name
 - Please add your first name.
 - [label] Business name
@@ -2944,7 +2893,7 @@ _Same wording as_ **Home → Section `hook`**.
 - Checking a box is not required to reserve your build.
 - [link] Privacy Policy  `→ /legal/privacy`
 - [link] SMS Terms  `→ /legal/sms-terms`
-- [button] Reserve My Build
+- [button] Continue to secure checkout
 - **[H3]** You are on the list.
 - Watch your inbox for your join link.
 
@@ -3001,10 +2950,6 @@ _Same wording as_ **Home → Popup `wl`: Join the waitlist for your trade.**.
 ### Section `skip-link`
 
 _Same wording as_ **Home → Section `skip-link`**.
-
-### Top bar `bar`
-
-_Same wording as_ **Home → Top bar `bar`**.
 
 ### Top menu `nav`
 
@@ -3188,7 +3133,6 @@ _Same wording as_ **Home → Section `work`: Who does the work?**.
 - **Love it or leave it.** Month-to-month. Cancel anytime.
 - **Full website:** $997 one-time add-on.
 - [link] Start Monthly  `→ #start`
-- Founding program **First 10 qualifying shops:** Launch Kit waived · Price locked while you stay subscribed · Dead-Lead Revival on your last 90 days of quotes · 30 days of hands-on launch support
 - [opens] See every detail
 - Annual Monthly
 - Price $1,970 a year $197 a month
@@ -3219,12 +3163,12 @@ _Same wording as_ **Home → Section `work`: Who does the work?**.
 - AI quote helper: drafts quotes from your own price list for you to approve and send
 - Repeat & Referral Engine: service history, check-ins, referral ask, win-back campaigns
 - Ad Results Tracker: Facebook and Instagram leads followed to booked and paid jobs, sent back to Meta so it finds more customers like them
-- Win-back, reactivation and Dead-Lead Revival go by email, and by text only to customers who agreed to texts.
-- **Live in 14 days, or month one is free** The clock starts as soon as you finish Setup Center.
+- Win-back and reactivation go by email, and by text only to customers who agreed to texts.
+- **Live in 14 days with the Launch Kit, or your first month is free.** Applies to plans that include the Launch Kit (Monthly with Launch Kit, and Annual). The 14 days start when you finish Setup Center. Carrier (A2P), domain and other third-party approvals are outside the 14 days. On an annual plan the free month is added to your term.
 - **Love it or leave it** Month-to-month on monthly plans. Cancel anytime.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
-- Live in 14 days: the clock starts as soon as you finish Setup Center in your account. Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
+- Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
 - [link] Not ready to buy? Get a free Booking Leak Audit →  `→ #start`
 
 ### Section `faq`: Before you ask.
@@ -3240,7 +3184,7 @@ _Same wording as_ **Home → Section `work`: Who does the work?**.
 - [opens] 04 Do I have to talk to a salesperson?
 - No. Pick a plan, fill the form and the build starts. If you want to ask something first, use the contact link.
 - [opens] 05 Can you guarantee bookings?
-- No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control: a tested system, live in 14 days or your first month is free.
+- No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control. Live in 14 days with the Launch Kit, or your first month is free. Applies to plans that include the Launch Kit (Monthly with Launch Kit, and Annual). The 14 days start when you finish Setup Center. Carrier (A2P), domain and other third-party approvals are outside the 14 days. On an annual plan the free month is added to your term.
 - [opens] 06 What is included each month?
 - Each month includes 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. That covers a typical single-location shop. If you are close to a limit we tell you before anything extra is charged.
 - [opens] 07 Can I cancel?
@@ -3252,21 +3196,20 @@ _Same wording as_ **Home → Section `work`: Who does the work?**.
 
 - Start today
 - **[H2]** Join in minutes. No sales call.
-- Put it to work this month. Your front office can be live in 14 days. No demo, no sales call.
+- Put it to work this month. Live in 14 days with the Launch Kit. No demo, no sales call.
 - **Pick annual or monthly** Checkout takes a couple of minutes.
 - **Answer the setup questions** Log in, open Setup Center and answer the setup questions. About 10-15 minutes.
 - **Your front desk goes live** Booking page, number, app, follow-up and reminders, built and tested for you.
-- **[H3]** Reserve your build
+- **[H3]** Start your build
 - No sales call
 - [label] Monthly
 - [label] Annual Pay 10, get 12
 - $1,970 a year. Launch Kit waived.
 - $197 a month + $497 $297 $497 one-time Launch Kit.
-- Founding (Launch Kit waived): first 10 qualifying shops.
 - On the table in your first year
 - Leaks you can go after $36,400
 - From your calculator numbers. An estimate, not a promise.
-- Online checkout is being switched on. Leave your details and your join link arrives by email.
+- Next: secure checkout. Then your login arrives by email and setup takes about 10-15 minutes in your account.
 - [label] First name
 - Please add your first name.
 - [label] Business name
@@ -3282,7 +3225,7 @@ _Same wording as_ **Home → Section `work`: Who does the work?**.
 - Checking a box is not required to reserve your build.
 - [link] Privacy Policy  `→ /legal/privacy`
 - [link] SMS Terms  `→ /legal/sms-terms`
-- [button] Reserve My Build
+- [button] Continue to secure checkout
 - **[H3]** You are on the list.
 - Watch your inbox for your join link.
 
@@ -3339,10 +3282,6 @@ _Same wording as_ **Home → Popup `wl`: Join the waitlist for your trade.**.
 ### Section `skip-link`
 
 _Same wording as_ **Home → Section `skip-link`**.
-
-### Top bar `bar`
-
-_Same wording as_ **Home → Top bar `bar`**.
 
 ### Top menu `nav`
 
@@ -3512,7 +3451,6 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - **Love it or leave it.** Month-to-month. Cancel anytime.
 - **Full website:** $997 one-time add-on.
 - [link] Start Monthly  `→ #start`
-- Founding program **First 10 qualifying shops:** Launch Kit waived · Price locked while you stay subscribed · Dead-Lead Revival on your last 90 days of quotes · 30 days of hands-on launch support
 - [opens] See every detail
 - Annual Monthly
 - Price $1,970 a year $197 a month
@@ -3543,12 +3481,12 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - AI quote helper: drafts quotes from your own price list for you to approve and send
 - Repeat & Referral Engine: service history, check-ins, referral ask, win-back campaigns
 - Ad Results Tracker: Facebook and Instagram leads followed to booked and paid jobs, sent back to Meta so it finds more customers like them
-- Win-back, reactivation and Dead-Lead Revival go by email, and by text only to customers who agreed to texts.
-- **Live in 14 days, or month one is free** The clock starts as soon as you finish Setup Center.
+- Win-back and reactivation go by email, and by text only to customers who agreed to texts.
+- **Live in 14 days with the Launch Kit, or your first month is free.** Applies to plans that include the Launch Kit (Monthly with Launch Kit, and Annual). The 14 days start when you finish Setup Center. Carrier (A2P), domain and other third-party approvals are outside the 14 days. On an annual plan the free month is added to your term.
 - **Love it or leave it** Month-to-month on monthly plans. Cancel anytime.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
-- Live in 14 days: the clock starts as soon as you finish Setup Center in your account. Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
+- Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
 - [link] Not ready to buy? Get a free Booking Leak Audit →  `→ #start`
 
 ### Section `faq`: Before you ask.
@@ -3564,7 +3502,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - [opens] 04 Do I have to talk to a salesperson?
 - No. Pick a plan, fill the form and the build starts. If you want to ask something first, use the contact link.
 - [opens] 05 Can you guarantee bookings?
-- No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control: a tested system, live in 14 days or your first month is free.
+- No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control. Live in 14 days with the Launch Kit, or your first month is free. Applies to plans that include the Launch Kit (Monthly with Launch Kit, and Annual). The 14 days start when you finish Setup Center. Carrier (A2P), domain and other third-party approvals are outside the 14 days. On an annual plan the free month is added to your term.
 - [opens] 06 What is included each month?
 - Each month includes 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. That covers a typical single-location shop. If you are close to a limit we tell you before anything extra is charged.
 - [opens] 07 Can I cancel?
@@ -3576,21 +3514,20 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 
 - Start today
 - **[H2]** Join in minutes. No sales call.
-- Stop losing reviews you already earned. Your front office can be live in 14 days. No demo, no sales call.
+- Stop losing reviews you already earned. Live in 14 days with the Launch Kit. No demo, no sales call.
 - **Pick annual or monthly** Checkout takes a couple of minutes.
 - **Answer the setup questions** Log in, open Setup Center and answer the setup questions. About 10-15 minutes.
 - **Your front desk goes live** Booking page, number, app, follow-up and reminders, built and tested for you.
-- **[H3]** Reserve your build
+- **[H3]** Start your build
 - No sales call
 - [label] Monthly
 - [label] Annual Pay 10, get 12
 - $1,970 a year. Launch Kit waived.
 - $197 a month + $497 $297 $497 one-time Launch Kit.
-- Founding (Launch Kit waived): first 10 qualifying shops.
 - On the table in your first year
 - Leaks you can go after $36,400
 - From your calculator numbers. An estimate, not a promise.
-- Online checkout is being switched on. Leave your details and your join link arrives by email.
+- Next: secure checkout. Then your login arrives by email and setup takes about 10-15 minutes in your account.
 - [label] First name
 - Please add your first name.
 - [label] Business name
@@ -3606,7 +3543,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - Checking a box is not required to reserve your build.
 - [link] Privacy Policy  `→ /legal/privacy`
 - [link] SMS Terms  `→ /legal/sms-terms`
-- [button] Reserve My Build
+- [button] Continue to secure checkout
 - **[H3]** You are on the list.
 - Watch your inbox for your join link.
 
@@ -3663,10 +3600,6 @@ _Same wording as_ **Home → Popup `wl`: Join the waitlist for your trade.**.
 ### Section `skip-link`
 
 _Same wording as_ **Home → Section `skip-link`**.
-
-### Top bar `bar`
-
-_Same wording as_ **Home → Top bar `bar`**.
 
 ### Top menu `nav`
 
@@ -3840,7 +3773,6 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - **Love it or leave it.** Month-to-month. Cancel anytime.
 - **Full website:** $997 one-time add-on.
 - [link] Start Monthly  `→ #start`
-- Founding program **First 10 qualifying shops:** Launch Kit waived · Price locked while you stay subscribed · Dead-Lead Revival on your last 90 days of quotes · 30 days of hands-on launch support
 - [opens] See every detail
 - Annual Monthly
 - Price $1,970 a year $197 a month
@@ -3871,12 +3803,12 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - AI quote helper: drafts quotes from your own price list for you to approve and send
 - Repeat & Referral Engine: service history, check-ins, referral ask, win-back campaigns
 - Ad Results Tracker: Facebook and Instagram leads followed to booked and paid jobs, sent back to Meta so it finds more customers like them
-- Win-back, reactivation and Dead-Lead Revival go by email, and by text only to customers who agreed to texts.
-- **Live in 14 days, or month one is free** The clock starts as soon as you finish Setup Center.
+- Win-back and reactivation go by email, and by text only to customers who agreed to texts.
+- **Live in 14 days with the Launch Kit, or your first month is free.** Applies to plans that include the Launch Kit (Monthly with Launch Kit, and Annual). The 14 days start when you finish Setup Center. Carrier (A2P), domain and other third-party approvals are outside the 14 days. On an annual plan the free month is added to your term.
 - **Love it or leave it** Month-to-month on monthly plans. Cancel anytime.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
-- Live in 14 days: the clock starts as soon as you finish Setup Center in your account. Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
+- Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
 - [link] Not ready to buy? Get a free Booking Leak Audit →  `→ #start`
 
 ### Section `faq`: Before you ask.
@@ -3892,7 +3824,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - [opens] 04 Do I have to talk to a salesperson?
 - No. Pick a plan, fill the form and the build starts. If you want to ask something first, use the contact link.
 - [opens] 05 Can you guarantee bookings?
-- No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control: a tested system, live in 14 days or your first month is free.
+- No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control. Live in 14 days with the Launch Kit, or your first month is free. Applies to plans that include the Launch Kit (Monthly with Launch Kit, and Annual). The 14 days start when you finish Setup Center. Carrier (A2P), domain and other third-party approvals are outside the 14 days. On an annual plan the free month is added to your term.
 - [opens] 06 What is included each month?
 - Each month includes 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. That covers a typical single-location shop. If you are close to a limit we tell you before anything extra is charged.
 - [opens] 07 Can I cancel?
@@ -3904,21 +3836,20 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 
 - Start today
 - **[H2]** Join in minutes. No sales call.
-- Stop guessing which ads pay. Your front office can be live in 14 days. No demo, no sales call.
+- Stop guessing which ads pay. Live in 14 days with the Launch Kit. No demo, no sales call.
 - **Pick annual or monthly** Checkout takes a couple of minutes.
 - **Answer the setup questions** Log in, open Setup Center and answer the setup questions. About 10-15 minutes.
 - **Your front desk goes live** Booking page, number, app, follow-up and reminders, built and tested for you.
-- **[H3]** Reserve your build
+- **[H3]** Start your build
 - No sales call
 - [label] Monthly
 - [label] Annual Pay 10, get 12
 - $1,970 a year. Launch Kit waived.
 - $197 a month + $497 $297 $497 one-time Launch Kit.
-- Founding (Launch Kit waived): first 10 qualifying shops.
 - On the table in your first year
 - Leaks you can go after $36,400
 - From your calculator numbers. An estimate, not a promise.
-- Online checkout is being switched on. Leave your details and your join link arrives by email.
+- Next: secure checkout. Then your login arrives by email and setup takes about 10-15 minutes in your account.
 - [label] First name
 - Please add your first name.
 - [label] Business name
@@ -3934,7 +3865,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - Checking a box is not required to reserve your build.
 - [link] Privacy Policy  `→ /legal/privacy`
 - [link] SMS Terms  `→ /legal/sms-terms`
-- [button] Reserve My Build
+- [button] Continue to secure checkout
 - **[H3]** You are on the list.
 - Watch your inbox for your join link.
 
@@ -3991,10 +3922,6 @@ _Same wording as_ **Home → Popup `wl`: Join the waitlist for your trade.**.
 ### Section `skip-link`
 
 _Same wording as_ **Home → Section `skip-link`**.
-
-### Top bar `bar`
-
-_Same wording as_ **Home → Top bar `bar`**.
 
 ### Top menu `nav`
 
@@ -4179,7 +4106,6 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - **Love it or leave it.** Month-to-month. Cancel anytime.
 - **Full website:** $997 one-time add-on.
 - [link] Start Monthly  `→ #start`
-- Founding program **First 10 qualifying shops:** Launch Kit waived · Price locked while you stay subscribed · Dead-Lead Revival on your last 90 days of quotes · 30 days of hands-on launch support
 - [opens] See every detail
 - Annual Monthly
 - Price $1,970 a year $197 a month
@@ -4210,12 +4136,12 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - AI quote helper: drafts quotes from your own price list for you to approve and send
 - Repeat & Referral Engine: service history, check-ins, referral ask, win-back campaigns
 - Ad Results Tracker: Facebook and Instagram leads followed to booked and paid jobs, sent back to Meta so it finds more customers like them
-- Win-back, reactivation and Dead-Lead Revival go by email, and by text only to customers who agreed to texts.
-- **Live in 14 days, or month one is free** The clock starts as soon as you finish Setup Center.
+- Win-back and reactivation go by email, and by text only to customers who agreed to texts.
+- **Live in 14 days with the Launch Kit, or your first month is free.** Applies to plans that include the Launch Kit (Monthly with Launch Kit, and Annual). The 14 days start when you finish Setup Center. Carrier (A2P), domain and other third-party approvals are outside the 14 days. On an annual plan the free month is added to your term.
 - **Love it or leave it** Month-to-month on monthly plans. Cancel anytime.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
-- Live in 14 days: the clock starts as soon as you finish Setup Center in your account. Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
+- Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
 - [link] Not ready to buy? Get a free Booking Leak Audit →  `→ #start`
 
 ### Section `faq`: Before you ask.
@@ -4231,7 +4157,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - [opens] 04 Do I have to talk to a salesperson?
 - No. Pick a plan, fill the form and the build starts. If you want to ask something first, use the contact link.
 - [opens] 05 Can you guarantee bookings?
-- No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control: a tested system, live in 14 days or your first month is free.
+- No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control. Live in 14 days with the Launch Kit, or your first month is free. Applies to plans that include the Launch Kit (Monthly with Launch Kit, and Annual). The 14 days start when you finish Setup Center. Carrier (A2P), domain and other third-party approvals are outside the 14 days. On an annual plan the free month is added to your term.
 - [opens] 06 What is included each month?
 - Each month includes 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. That covers a typical single-location shop. If you are close to a limit we tell you before anything extra is charged.
 - [opens] 07 Can I cancel?
@@ -4243,21 +4169,20 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 
 - Start today
 - **[H2]** Join in minutes. No sales call.
-- Stop paying to win the same customer twice. Your front office can be live in 14 days. No demo, no sales call.
+- Stop paying to win the same customer twice. Live in 14 days with the Launch Kit. No demo, no sales call.
 - **Pick annual or monthly** Checkout takes a couple of minutes.
 - **Answer the setup questions** Log in, open Setup Center and answer the setup questions. About 10-15 minutes.
 - **Your front desk goes live** Booking page, number, app, follow-up and reminders, built and tested for you.
-- **[H3]** Reserve your build
+- **[H3]** Start your build
 - No sales call
 - [label] Monthly
 - [label] Annual Pay 10, get 12
 - $1,970 a year. Launch Kit waived.
 - $197 a month + $497 $297 $497 one-time Launch Kit.
-- Founding (Launch Kit waived): first 10 qualifying shops.
 - On the table in your first year
 - Leaks you can go after $36,400
 - From your calculator numbers. An estimate, not a promise.
-- Online checkout is being switched on. Leave your details and your join link arrives by email.
+- Next: secure checkout. Then your login arrives by email and setup takes about 10-15 minutes in your account.
 - [label] First name
 - Please add your first name.
 - [label] Business name
@@ -4273,7 +4198,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - Checking a box is not required to reserve your build.
 - [link] Privacy Policy  `→ /legal/privacy`
 - [link] SMS Terms  `→ /legal/sms-terms`
-- [button] Reserve My Build
+- [button] Continue to secure checkout
 - **[H3]** You are on the list.
 - Watch your inbox for your join link.
 
@@ -4330,10 +4255,6 @@ _Same wording as_ **Home → Popup `wl`: Join the waitlist for your trade.**.
 ### Section `skip-link`
 
 _Same wording as_ **Home → Section `skip-link`**.
-
-### Top bar `bar`
-
-_Same wording as_ **Home → Top bar `bar`**.
 
 ### Top menu `nav`
 
@@ -4508,7 +4429,6 @@ _Same wording as_ **Home → Section `day`: A day in your shop, before and after
 - **Love it or leave it.** Month-to-month. Cancel anytime.
 - **Full website:** $997 one-time add-on.
 - [link] Start Monthly  `→ #start`
-- Founding program **First 10 qualifying shops:** Launch Kit waived · Price locked while you stay subscribed · Dead-Lead Revival on your last 90 days of quotes · 30 days of hands-on launch support
 - [opens] See every detail
 - Annual Monthly
 - Price $1,970 a year $197 a month
@@ -4539,12 +4459,12 @@ _Same wording as_ **Home → Section `day`: A day in your shop, before and after
 - AI quote helper: drafts quotes from your own price list for you to approve and send
 - Repeat & Referral Engine: service history, check-ins, referral ask, win-back campaigns
 - Ad Results Tracker: Facebook and Instagram leads followed to booked and paid jobs, sent back to Meta so it finds more customers like them
-- Win-back, reactivation and Dead-Lead Revival go by email, and by text only to customers who agreed to texts.
-- **Live in 14 days, or month one is free** The clock starts as soon as you finish Setup Center.
+- Win-back and reactivation go by email, and by text only to customers who agreed to texts.
+- **Live in 14 days with the Launch Kit, or your first month is free.** Applies to plans that include the Launch Kit (Monthly with Launch Kit, and Annual). The 14 days start when you finish Setup Center. Carrier (A2P), domain and other third-party approvals are outside the 14 days. On an annual plan the free month is added to your term.
 - **Love it or leave it** Month-to-month on monthly plans. Cancel anytime.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
-- Live in 14 days: the clock starts as soon as you finish Setup Center in your account. Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
+- Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
 - [link] Not ready to buy? Get a free Booking Leak Audit →  `→ #start`
 
 ### Section `faq`: Before you ask.
@@ -4560,7 +4480,7 @@ _Same wording as_ **Home → Section `day`: A day in your shop, before and after
 - [opens] 04 Do I have to talk to a salesperson?
 - No. Pick a plan, fill the form and the build starts. If you want to ask something first, use the contact link.
 - [opens] 05 Can you guarantee bookings?
-- No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control: a tested system, live in 14 days or your first month is free.
+- No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control. Live in 14 days with the Launch Kit, or your first month is free. Applies to plans that include the Launch Kit (Monthly with Launch Kit, and Annual). The 14 days start when you finish Setup Center. Carrier (A2P), domain and other third-party approvals are outside the 14 days. On an annual plan the free month is added to your term.
 - [opens] 06 What is included each month?
 - Each month includes 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. That covers a typical single-location shop. If you are close to a limit we tell you before anything extra is charged.
 - [opens] 07 Can I cancel?
@@ -4572,21 +4492,20 @@ _Same wording as_ **Home → Section `day`: A day in your shop, before and after
 
 - Start today
 - **[H2]** Join in minutes. No sales call.
-- Give the nightly typing to the system. Your front office can be live in 14 days. No demo, no sales call.
+- Give the nightly typing to the system. Live in 14 days with the Launch Kit. No demo, no sales call.
 - **Pick annual or monthly** Checkout takes a couple of minutes.
 - **Answer the setup questions** Log in, open Setup Center and answer the setup questions. About 10-15 minutes.
 - **Your front desk goes live** Booking page, number, app, follow-up and reminders, built and tested for you.
-- **[H3]** Reserve your build
+- **[H3]** Start your build
 - No sales call
 - [label] Monthly
 - [label] Annual Pay 10, get 12
 - $1,970 a year. Launch Kit waived.
 - $197 a month + $497 $297 $497 one-time Launch Kit.
-- Founding (Launch Kit waived): first 10 qualifying shops.
 - On the table in your first year
 - Leaks you can go after $36,400
 - From your calculator numbers. An estimate, not a promise.
-- Online checkout is being switched on. Leave your details and your join link arrives by email.
+- Next: secure checkout. Then your login arrives by email and setup takes about 10-15 minutes in your account.
 - [label] First name
 - Please add your first name.
 - [label] Business name
@@ -4602,7 +4521,7 @@ _Same wording as_ **Home → Section `day`: A day in your shop, before and after
 - Checking a box is not required to reserve your build.
 - [link] Privacy Policy  `→ /legal/privacy`
 - [link] SMS Terms  `→ /legal/sms-terms`
-- [button] Reserve My Build
+- [button] Continue to secure checkout
 - **[H3]** You are on the list.
 - Watch your inbox for your join link.
 
@@ -4654,7 +4573,7 @@ _Same wording as_ **Home → Popup `wl`: Join the waitlist for your trade.**.
 
 # 3. Checkout
 
-One checkout page per industry. Every Start Annual and Start Monthly button and the reserve form lead here. ?plan=monthly selects monthly; ?offer=kit applies the leaving offer.
+The reserve page at /auto. Visitors from cnvrtx.com land here; the home page and problem pages have the same form in their own Start section. The form saves the details, then opens one of the three payment pages: /checkout/annual, /checkout/monthly or /checkout/monthly-kit. Those three pages are built in AI Studio, not in this project, so their words are not listed in this file. ?plan=monthly selects monthly; ?offer=kit applies the leaving offer.
 
 
 ## Checkout: auto shops
@@ -4673,9 +4592,9 @@ _Same wording as_ **Home → Section `skip-link`**.
 - Secure checkout
 - [link] Back to the site  `→ /#pricing`
 
-### Section `main`: Start your front office. Live in 14 days.
+### Section `main`: Start your front office. Live in 14 days with the Launch Kit.
 
-- **[H1]** Start your front office. Live in 14 days.
+- **[H1]** Start your front office. Live in 14 days with the Launch Kit.
 - Pick how you pay. Then about 10-15 minutes of setup questions in your account, and we build.
 - [label] Annual Best value
 - [label] Monthly
@@ -4698,10 +4617,21 @@ _Same wording as_ **Home → Section `skip-link`**.
 - 1 Check your inbox for your login email (arrives within a few minutes; check spam/promotions).
 - 2 Log in.
 - 3 Click "Setup Center" in the left menu and answer the setup questions (about 10-15 minutes).
-- **[H2]** Next step
-- [link] Continue  `→ /?plan=annual#start`
-- Next: your name and email, then secure payment. After that, setup takes about 10-15 minutes in your account.
-- Live in 14 days, or your first month is free
+- **[H2]** Your details
+- _(shown on interaction)_ Something went wrong. Please try again.
+- We save your details first, then open secure payment.
+- [label] First name
+- [label] Shop name
+- [label] Email
+- [label] Phone
+- [label] Leave this field empty
+- Text messages (optional)
+- [label] Text me about my account and setup. Msg & data rates may apply. Reply STOP to opt out.
+- [label] Send me tips and offers by text. Msg & data rates may apply. Reply STOP to opt out.
+- [button] Continue to secure payment
+- Details received.
+- Online checkout is being switched on. Your join link arrives by email.
+- Live in 14 days with the Launch Kit
 - No sales call
 - Your domain, content and customer list stay yours
 - Annual payments are not refundable. Texting carrier fees are passed on at cost and shown to you before activation.
@@ -4728,25 +4658,39 @@ _Same wording as_ **Home → Section `skip-link`**.
 ### Top menu `top`
 
 - [link] CNVRT ✕  `→ /`
+- ✓ Payment received
 
 ### Section `main`: Thank you. / 3 steps to go live.
 
-- ✓ Payment received
+- _(shown on interaction)_ Thank you, {name}.
 - **[H1]** Thank you. / 3 steps to go live.
 - Your front office is booked in. Setup takes about 10-15 minutes and happens inside your new account.
+- About 10-15 minutes
+- Inside your new account
+- Change any answer later
+- Do this now
 - **[H2]** 3 steps to go live
+- Start here
 - Check your inbox for your login email (arrives within a few minutes; check spam/promotions).
 - Log in.
 - Click "Setup Center" in the left menu and answer the setup questions (about 10-15 minutes).
-- As soon as you finish Setup Center, your 14-day launch clock starts.
-- Your emails, texts, booking pages and AI assistant fill in automatically from your answers. You can change any answer later in the same place.
 - No email after 15 minutes? Check your spam folder.
+- With the Launch Kit
+- day launch clock
+- If your plan includes the Launch Kit, your 14-day launch clock starts as soon as you finish Setup Center.
+- The Launch Kit is included on the annual plan.
+- You answer once. The system fills itself in.
+- Your emails, texts, booking pages and AI assistant fill in automatically from your answers. You can change any answer later in the same place.
+- If your plan includes the Launch Kit
 - **[H2]** What happens next
 - **Today** You finish Setup Center. Your 14-day launch clock starts.
 - **Then** We connect your phone, Google and Meta, and check everything.
-- **Within 14 days** Your front office goes live.
+- **Within 14 days of Setup Center (with the Launch Kit)** Your front office goes live.
+- **Monthly plan without the Launch Kit?** There is no launch clock. The system is ready in your account and you set it up yourself, starting in Setup Center.
+- One more thing
 - **[H2]** Know another shop owner?
-- Send them this page.
+- Send them the link. It takes one tap.
+- get.cnvrtx.com
 - [button] Copy the link
 
 
@@ -4866,7 +4810,7 @@ _Same wording as_ **Privacy Policy → Top menu `top`**.
 - Each month includes 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Carrier fees for texting are passed on at cost and shown to you before activation.
 - Prices are those shown at checkout. Plans renew automatically until cancelled. If a payment fails we may pause the service until it is resolved.
 - **[H2]** 4 Guarantees
-- Live in 14 days, or your first month is free. The clock starts as soon as you finish Setup Center in your account. Carrier (A2P), domain and third-party approvals are outside the 14 days.
+- Live in 14 days with the Launch Kit, or your first month is free. Applies to plans that include the Launch Kit (Monthly with Launch Kit, and Annual). A monthly plan without the Launch Kit does not include this guarantee. The 14 days start when you finish Setup Center in your account. Carrier (A2P), domain and other third-party approvals are outside the 14 days.
 - Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM).
 - On an annual plan a free month is given as one extra month added to your term.
 - **[H2]** 5 Cancellation
@@ -4970,7 +4914,7 @@ _Same wording as_ **Privacy Policy → Top menu `top`**.
 - Annual payments are not refundable.
 - You can cancel at any time. The service runs until the end of the year you have paid for and does not renew.
 - **[H2]** 3 Our guarantee still applies
-- Live in 14 days, or your first month is free. The clock starts as soon as you finish Setup Center in your account. Carrier (A2P), domain and third-party approvals are outside the 14 days.
+- Live in 14 days with the Launch Kit, or your first month is free. Applies to plans that include the Launch Kit (Monthly with Launch Kit, and Annual). A monthly plan without the Launch Kit does not include this guarantee. The 14 days start when you finish Setup Center in your account. Carrier (A2P), domain and other third-party approvals are outside the 14 days.
 - On an annual plan a free month is given as one extra month added to your term.
 - **[H2]** 4 Your data when you leave
 - Your domain, content and customer list are yours. Ask us for an export before or within 30 days after your service ends. After that we may delete account data, except what we must keep by law.
@@ -5036,13 +4980,6 @@ Kept in the project at /local as the base for the next industry. It is not on th
 ### Section `skip-link`
 
 _Same wording as_ **Home → Section `skip-link`**.
-
-### Top bar `bar`
-
-- Founding program
-- Launch Kit waived and your price locked for the first 10 businesses.
-- First 10 businesses: Launch Kit waived
-- [link] Claim a spot →  `→ #pricing`
 
 ### Top menu `nav`
 
@@ -5350,7 +5287,6 @@ _Same wording as_ **Home → Section `ticker`**.
 - **Love it or leave it.** Month-to-month. Cancel anytime.
 - **Full website:** $997 one-time add-on.
 - [link] Start Monthly  `→ #start`
-- Founding program **First 10 qualifying businesses:** Launch Kit waived · Price locked while you stay subscribed · Dead-Lead Revival on your last 90 days of quotes · 30 days of hands-on launch support
 - [opens] See every detail
 - Annual Monthly
 - Price $1,970 a year $197 a month
@@ -5381,12 +5317,12 @@ _Same wording as_ **Home → Section `ticker`**.
 - AI quote helper: drafts quotes from your own price list for you to approve and send
 - Repeat & Referral Engine: customer history, check-ins, referral ask, win-back campaigns
 - Ad Results Tracker: Facebook and Instagram leads followed to booked and paid work, sent back to Meta so it finds more customers like them
-- Win-back, reactivation and Dead-Lead Revival go by email, and by text only to customers who agreed to texts.
-- **Live in 14 days, or month one is free** The clock starts as soon as you finish Setup Center.
+- Win-back and reactivation go by email, and by text only to customers who agreed to texts.
+- **Live in 14 days with the Launch Kit, or your first month is free.** Applies to plans that include the Launch Kit (Monthly with Launch Kit, and Annual). The 14 days start when you finish Setup Center. Carrier (A2P), domain and other third-party approvals are outside the 14 days. On an annual plan the free month is added to your term.
 - **Love it or leave it** Month-to-month on monthly plans. Cancel anytime.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your current software** It sits alongside the tools that run your work.
-- Live in 14 days: the clock starts as soon as you finish Setup Center in your account. Carrier (A2P), domain and third-party approvals are outside the 14 days. Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
+- Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
 - [link] Not ready to buy? Get a free Booking Leak Audit →  `→ #start`
 
 ### Section `faq`: Before you ask.
@@ -5406,7 +5342,7 @@ _Same wording as_ **Home → Section `ticker`**.
 - [opens] 06 Is the phone number really included?
 - Yes for US businesses. For other countries, ask us first so we can confirm availability. US texting also needs carrier registration (A2P). We prepare it with you and texting goes live once the carrier approves.
 - [opens] 07 Can you guarantee bookings?
-- No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control: a tested system, live in 14 days or your first month is free.
+- No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control. Live in 14 days with the Launch Kit, or your first month is free. Applies to plans that include the Launch Kit (Monthly with Launch Kit, and Annual). The 14 days start when you finish Setup Center. Carrier (A2P), domain and other third-party approvals are outside the 14 days. On an annual plan the free month is added to your term.
 - [opens] 08 What is included each month?
 - Each month includes 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. That covers a typical single-location business. If you are close to a limit we tell you before anything extra is charged.
 - [opens] 09 Can I cancel?
@@ -5416,41 +5352,7 @@ _Same wording as_ **Home → Section `ticker`**.
 
 ### Section `start`: Join in minutes. No sales call.
 
-- Start today
-- **[H2]** Join in minutes. No sales call.
-- Your front office can be live in 14 days. No demo, no sales call. Pick annual or monthly and the build starts.
-- **Pick annual or monthly** Checkout takes a couple of minutes.
-- **Answer the setup questions** Log in, open Setup Center and answer the setup questions. About 10-15 minutes.
-- **Your front desk goes live** Booking page, number, app, follow-up and reminders, built and tested for you.
-- **[H3]** Reserve your build
-- No sales call
-- [label] Monthly
-- [label] Annual Pay 10, get 12
-- $1,970 a year. Launch Kit waived.
-- $197 a month + $497 $297 $497 one-time Launch Kit.
-- Founding (Launch Kit waived): first 10 qualifying businesses.
-- On the table in your first year
-- Leaks you can go after $36,400
-- From your calculator numbers. An estimate, not a promise.
-- Online checkout is being switched on. Leave your details and your join link arrives by email.
-- [label] First name
-- Please add your first name.
-- [label] Business name
-- Please add your business name.
-- [label] Email
-- Please enter a valid email address.
-- [label] Phone
-- Please add a phone number.
-- [label] Leave this field empty
-- Text messages (optional)
-- [label] Text me about my account and setup. Msg & data rates may apply. Reply STOP to opt out.
-- [label] Send me tips and offers by text. Msg & data rates may apply. Reply STOP to opt out.
-- Checking a box is not required to reserve your build.
-- [link] Privacy Policy  `→ /legal/privacy`
-- [link] SMS Terms  `→ /legal/sms-terms`
-- [button] Reserve My Build
-- **[H3]** You are on the list.
-- Watch your inbox for your join link.
+_Same wording as_ **Home → Section `start`: Join in minutes. No sales call.**.
 
 ### Footer `foot`
 
@@ -5520,7 +5422,6 @@ These lines exist in the content files, but no page displays them at present. Th
 - Every plan includes
 - Setup and writing done for you
 - Booking page built for you
-- Live in 14 days or month one free
 - All of it included.
 - Launch Kit waived. Pay 10, get 12.
 - What your year looks like
@@ -5535,16 +5436,11 @@ These lines exist in the content files, but no page displays them at present. Th
 - We message the leads that asked and never booked.
 - Front of the build queue
 - Annual shops are built first.
-- Win-back and reactivation go by email, and by text only to customers who agreed to texts.
-- First 10 qualifying shops: Launch Kit waived and your price locked while you stay subscribed.
-- Claim founding pricing
 - Your front desk is live and answering.
 - A review request, then a maintenance reminder.
 - One price. Nothing to manage.
-- Next: secure checkout. Then your login arrives by email and setup takes about 10-15 minutes in your account.
-- Continue to secure checkout
+- Online checkout is being switched on. Leave your details and your join link arrives by email.
 - The leak keeps running while you wait.
-- Founding program: Launch Kit waived and your price locked while you stay subscribed, for the first 10 qualifying shops.
 - Flawless work deserves
 - a flawless follow-up.
 - Still nothing? Email
@@ -5567,6 +5463,8 @@ These lines exist in the content files, but no page displays them at present. Th
 - 60 to 90 second walkthrough video of the real screens
 - The shop story, once its owner agrees
 - Email, phone and address
+- Please fill this in.
+- Next: your name and email, then secure payment. After that, setup takes about 10-15 minutes in your account.
 - Checkout is being connected.
 - Card payment opens on this page shortly. Nothing has been charged.
 - Preview: no order form link is set yet. Add the GHL order form links in src/config/offerV9.ts (checkout, and exitOffer.checkout for the leaving offer).
@@ -5580,11 +5478,9 @@ These lines exist in the content files, but no page displays them at present. Th
 - All year: one price, nothing to manage
 - Front of the build queue
 - Annual customers are built first.
-- First 10 qualifying businesses: Launch Kit waived and your price locked while you stay subscribed.
 - Your front desk is live and answering.
 - A review request, then an invite to come back.
 - One price. Nothing to manage.
-- Founding program: Launch Kit waived and your price locked while you stay subscribed, for the first 10 qualifying businesses.
 - The customer goes somewhere else
 - The customer stays with you
 - Three roles and nine systems. All of them are in one plan, for one price.
