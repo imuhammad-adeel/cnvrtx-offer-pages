@@ -1,0 +1,236 @@
+---
+/**
+ * Shop-type pages: cnvrtx.com/auto/<slug>. "Is this system designed for a business like mine?"
+ * Words: site/content/shopPages.ts. The offer itself is only summarised here; it lives on /auto.
+ */
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import OfferSummary from '../../components/OfferSummary.astro';
+import { abs, textingHours } from '../../config/site';
+import { shopTypes, problemBySlug, guides, type ShopType } from '../../content/directory';
+import { shopPages } from '../../content/shopPages';
+
+export function getStaticPaths() {
+  return shopTypes.map((s) => ({ params: { shop: s.slug }, props: { s } }));
+}
+interface Props {
+  s: ShopType;
+}
+const { s } = Astro.props;
+const c = shopPages[s.slug];
+const fill = (t: string) => t.replaceAll('{hours}', textingHours);
+const who = ({ 'mobile-detailing': 'mobile detailers', 'ppf-shops': 'PPF shops' } as Record<string, string>)[s.slug] || s.label.toLowerCase();
+const path = `/auto/${s.slug}`;
+const crumbs = [
+  { label: 'Automotive', href: '/auto' },
+  { label: s.label, href: path },
+];
+const leaks = c.leaks.map((l) => ({ ...l, p: problemBySlug(l.slug) }));
+const myGuides = c.guides.map((g) => guides.find((x) => x.slug === g)).filter((g) => g !== undefined);
+const others = shopTypes.filter((x) => x.slug !== s.slug);
+
+const schema = [
+  {
+    '@type': 'WebPage',
+    '@id': abs(path) + '#webpage',
+    url: abs(path),
+    name: c.title,
+    description: c.description,
+    isPartOf: { '@id': abs('/') + '#website' },
+    about: { '@id': abs('/auto') + '#service' },
+  },
+];
+---
+
+<SiteLayout title={c.title} description={c.description} path={path} crumbs={crumbs} schema={schema}>
+  <main id="main">
+    <PageHero
+      crumbs={crumbs}
+      kicker="CNVRT X Front Office"
+      title={c.h1}
+      lede={c.lede}
+      primary={{ label: 'See the complete system', href: '/auto' }}
+      secondary={{ label: 'Where your bookings leak ↓', href: '#leaks' }}
+      trust="Done for you · No sales call · Month-to-month"
+    />
+
+    <section class="s-sec pearl tight" aria-labelledby="fit-title">
+      <div class="container">
+        <div class="s-answer" style="margin-top:0">
+          <span class="tag">Is it built for a shop like yours?</span>
+          <h2 id="fit-title" class="sr-only">Is this built for {who}?</h2>
+          <p>{c.answer[0]}</p>
+          <p>{c.answer[1]}</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="s-sec" aria-labelledby="work-title">
+      <div class="container">
+        <header class="s-head">
+          <p class="kicker">Your work</p>
+          <h2 id="work-title">{c.work.title}.</h2>
+        </header>
+        <ul class="s-grid" role="list">
+          {
+            c.work.items.map((w) => (
+              <li class="s-card">
+                <h3>{w.t}</h3>
+                <p>{w.d}</p>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+
+    <section class="s-sec pearl" aria-labelledby="inq-title">
+      <div class="container">
+        <header class="s-head">
+          <p class="kicker">Your inquiries</p>
+          <h2 id="inq-title">{c.inquiry.title}.</h2>
+        </header>
+        <ul class="s-grid" role="list">
+          {
+            c.inquiry.items.map((w) => (
+              <li class="s-card">
+                <h3>{w.t}</h3>
+                <p>{w.d}</p>
+              </li>
+            ))
+          }
+        </ul>
+        <h3 style="margin:36px 0 14px;color:var(--ink);font-size:clamp(1.35rem,1.1rem + 1vw,1.9rem)">{c.quoting.title}</h3>
+        <div class="s-prose">
+          {c.quoting.body.map((b) => <p>{b}</p>)}
+        </div>
+      </div>
+    </section>
+
+    <section class="s-sec alt" aria-labelledby="obj-title">
+      <div class="container">
+        <header class="s-head">
+          <p class="kicker">Before they book</p>
+          <h2 id="obj-title">What your customers say, and who answers it.</h2>
+        </header>
+        <ol class="s-steps" role="list">
+          {
+            c.objections.map((o) => (
+              <li>
+                <h3>{o.q}</h3>
+                <p>{o.a}</p>
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+    </section>
+
+    <section class="s-sec" id="leaks" aria-labelledby="leaks-title">
+      <div class="container">
+        <header class="s-head">
+          <p class="kicker">Where bookings leak</p>
+          <h2 id="leaks-title">The problems that cost {who} the most.</h2>
+          <p class="lede">In order, for this kind of shop. Each one opens the page that explains the fix step by step.</p>
+        </header>
+        <ul class="s-grid" role="list">
+          {
+            leaks.map((l, i) => (
+              <li>
+                <a class="s-card" href={`/auto/${l.slug}`}>
+                  <span class="k">
+                    {String(i + 1).padStart(2, '0')} · {l.p.system}
+                  </span>
+                  <b class="t">{l.p.label}</b>
+                  <p>{l.why}</p>
+                  <span class="more">How the fix works →</span>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+
+    <section class="s-sec pearl" aria-labelledby="keep-title">
+      <div class="container">
+        <header class="s-head">
+          <p class="kicker">After the job</p>
+          <h2 id="keep-title">{c.keep.title}.</h2>
+        </header>
+        <div class="s-cols">
+          <div class="s-list">
+            <h3>What the system sends for you</h3>
+            <ul>
+              {c.keep.items.map((x) => <li>{x}</li>)}
+            </ul>
+          </div>
+          <div class="s-list no">
+            <h3>What it does not do</h3>
+            <ul>
+              {c.honest.map((x) => <li>{fill(x)}</li>)}
+            </ul>
+          </div>
+        </div>
+        <p class="s-note">
+          Texts go only to people who agreed to them, after carrier approval. See <a class="s-link" href="/auto/how-it-works">how setup and launch work</a>.
+        </p>
+      </div>
+    </section>
+
+    {
+      myGuides.length > 0 && (
+        <section class="s-sec" aria-labelledby="g-title">
+          <div class="container">
+            <header class="s-head">
+              <p class="kicker">Guides</p>
+              <h2 id="g-title">Working guides for {who}.</h2>
+            </header>
+            <ul class="s-grid two" role="list">
+              {myGuides.map((g) => (
+                <li>
+                  <a class="s-card" href={`/auto/guides/${g!.slug}`}>
+                    <span class="k">Guide · {g!.read} min read</span>
+                    <b class="t">{g!.title}</b>
+                    <p>{g!.description}</p>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )
+    }
+
+    <section class="s-sec pearl" id="faq" aria-labelledby="faq-title">
+      <div class="container">
+        <header class="s-head">
+          <p class="kicker">Straight answers</p>
+          <h2 id="faq-title">Questions from {who}.</h2>
+        </header>
+        <div class="s-faq">
+          {
+            c.faq.map((f) => (
+              <details>
+                <summary>{f.q}</summary>
+                <p>{fill(f.a)}</p>
+              </details>
+            ))
+          }
+        </div>
+        <h3 style="margin:36px 0 14px;color:var(--ink)">Run a different kind of shop?</h3>
+        <ul class="s-chips" role="list">
+          {
+            others.map((o) => (
+              <li>
+                <a href={`/auto/${o.slug}`}>{o.label}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+
+    <OfferSummary title={`One front office, set up for ${who}.`} />
+  </main>
+</SiteLayout>

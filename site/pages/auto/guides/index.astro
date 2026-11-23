@@ -1,0 +1,131 @@
+---
+/**
+ * cnvrtx.com/auto/guides : the guide library, grouped by stage of the customer journey.
+ * A guide appears here only when it is finished (site/content/guides).
+ */
+import SiteLayout from '../../../layouts/SiteLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+import OfferSummary from '../../../components/OfferSummary.astro';
+import { abs } from '../../../config/site';
+import { guides, problems, problemBySlug } from '../../../content/directory';
+
+const title = 'Guides for Auto Shops: Quotes, Leads, Bookings and Reviews | CNVRT X';
+const description = 'Working guides for detailing, ceramic coating, PPF and window tint shops: follow-up schedules, message templates, decision trees and checklists you can use today.';
+const path = '/auto/guides';
+const crumbs = [
+  { label: 'Automotive', href: '/auto' },
+  { label: 'Guides', href: path },
+];
+const stages = [
+  { name: 'Lead response', blurb: 'The first minutes after a customer reaches out.', problem: 'lead-response' },
+  { name: 'Quote follow-up', blurb: 'What to do after the price is sent, service by service.', problem: 'quote-follow-up' },
+  { name: 'Bookings and no-shows', blurb: 'Keeping a booked bay booked.', problem: 'no-shows' },
+  { name: 'Reviews and repeat work', blurb: 'After the job is done.', problem: 'reviews' },
+] as const;
+const groups = stages.map((s) => ({ ...s, items: guides.filter((g) => g.stage === s.name), p: problemBySlug(s.problem) })).filter((g) => g.items.length > 0);
+const fmt = (d: string) => new Date(d + 'T12:00:00').toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+const schema = [
+  {
+    '@type': 'CollectionPage',
+    '@id': abs(path) + '#webpage',
+    url: abs(path),
+    name: title,
+    description,
+    isPartOf: { '@id': abs('/') + '#website' },
+    mainEntity: { '@id': abs(path) + '#list' },
+  },
+  {
+    '@type': 'ItemList',
+    '@id': abs(path) + '#list',
+    numberOfItems: guides.length,
+    itemListElement: guides.map((g, i) => ({ '@type': 'ListItem', position: i + 1, name: g.title, url: abs(`/auto/guides/${g.slug}`) })),
+  },
+];
+---
+
+<SiteLayout title={title} description={description} path={path} crumbs={crumbs} schema={schema}>
+  <main id="main">
+    <PageHero
+      crumbs={crumbs}
+      kicker="Guide library"
+      title={['Working Guides', 'for Auto Shops.']}
+      lede="Each guide answers one question for one kind of job, and gives you something to use: a follow-up schedule, message templates, a decision tree, a checklist. You can run every one of them by hand."
+    >
+      <ul class="s-chips" role="list" style="margin-top:28px" aria-label="Jump to a stage">
+        {
+          groups.map((g) => (
+            <li>
+              <a href={`#${g.problem}`}>{g.name}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </PageHero>
+
+    <section class="s-sec pearl tight" aria-labelledby="std-title">
+      <div class="container">
+        <div class="s-answer" style="margin-top:0">
+          <span class="tag">How these guides are written</span>
+          <h2 id="std-title" class="sr-only">How these guides are written</h2>
+          <p>A ceramic coating quote and a window tint quote are not followed up the same way. So the guides are written per service, not as one general article.</p>
+          <p>
+            Example schedules and messages are labelled as examples for you to adjust. Facts that need support are linked to their source. Nothing here is a promise of
+            results. Read more about <a class="s-link" href="/about">how we write</a>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    {
+      groups.map((g, i) => (
+        <section class:list={['s-sec', i % 2 === 0 ? '' : 'alt']} id={g.problem} aria-labelledby={`st-${g.problem}`}>
+          <div class="container">
+            <header class="s-head">
+              <p class="kicker">Stage · {g.name}</p>
+              <h2 id={`st-${g.problem}`}>{g.blurb}</h2>
+            </header>
+            <ul class="s-grid two" role="list">
+              {g.items.map((x) => (
+                <li>
+                  <a class="s-card" href={`/auto/guides/${x.slug}`}>
+                    <span class="k">
+                      {x.read} min read · Updated {fmt(x.updated)}
+                    </span>
+                    <b class="t">{x.title}</b>
+                    <p>{x.description}</p>
+                    <span class="more">Read the guide →</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <p class="s-note">
+              The system behind this stage: <a class="s-link" href={`/auto/${g.p.slug}`}>{g.p.label.toLowerCase()} for auto shops</a> ({g.p.system}).
+            </p>
+          </div>
+        </section>
+      ))
+    }
+
+    <section class="s-sec pearl" aria-labelledby="all-title">
+      <div class="container">
+        <header class="s-head">
+          <p class="kicker">By problem</p>
+          <h2 id="all-title">Looking for the fix, not the guide?</h2>
+          <p class="lede">Each problem has its own page that explains how the system handles it, step by step.</p>
+        </header>
+        <ul class="s-chips" role="list">
+          {
+            problems.map((p) => (
+              <li>
+                <a href={`/auto/${p.slug}`}>{p.label}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+
+    <OfferSummary title="Want these running on their own in your shop?" lede="Everything in these guides can be done by hand. CNVRT X Front Office runs the same sequences for you, stops them when the customer replies or books, and hands the conversation back when it needs you." />
+  </main>
+</SiteLayout>

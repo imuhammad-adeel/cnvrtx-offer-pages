@@ -1,0 +1,49 @@
+---
+/** The plain hero used by every page except the auto hub and the problem pages. */
+import Crumbs from './Crumbs.astro';
+import Arrow from './Arrow.astro';
+import type { Crumb } from '../layouts/SiteLayout.astro';
+interface Props {
+  crumbs?: Crumb[];
+  kicker?: string;
+  /** Second line is shown in chrome. */
+  title: [string, string] | [string];
+  lede: string;
+  primary?: { label: string; href: string };
+  secondary?: { label: string; href: string };
+  trust?: string;
+  wide?: boolean;
+}
+const { crumbs, kicker, title, lede, primary, secondary, trust, wide } = Astro.props;
+---
+
+<section class:list={['s-hero', wide && 'wide']} aria-labelledby="page-title">
+  <div class="container">
+    {crumbs && <Crumbs crumbs={crumbs} />}
+    {kicker && <p class="kicker" style="margin-top:18px">{kicker}</p>}
+    <h1 id="page-title">
+      {title[0]}
+      {title[1] && <span class="chrome"> {title[1]}</span>}
+    </h1>
+    <p class="lede">{lede}</p>
+    {
+      (primary || secondary) && (
+        <div class="act">
+          {primary && (
+            <a href={primary.href} class="go" data-track="cta_click" data-track-location="hero">
+              {primary.label}
+              <Arrow />
+            </a>
+          )}
+          {secondary && (
+            <a href={secondary.href} class="ghost">
+              {secondary.label}
+            </a>
+          )}
+        </div>
+      )
+    }
+    {trust && <p class="trust">{trust}</p>}
+    <slot />
+  </div>
+</section>

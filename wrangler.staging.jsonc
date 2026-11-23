@@ -1,0 +1,16 @@
+// STAGING copy of the main site: https://staging.cnvrtx.com
+// For the owner's review only. Every page says noindex, and every response also carries an
+// "X-Robots-Tag: noindex, nofollow" header (added by site/tools/stage.mjs), so Google keeps
+// nothing from it. Deploy with:   npm run site:stage
+// The real site, cnvrtx.com, is deployed from wrangler.jsonc, on launch day only.
+{
+  "name": "cnvrtx-site-staging",
+  "compatibility_date": "2026-11-01",
+  "workers_dev": false,
+  "routes": [{ "pattern": "staging.cnvrtx.com", "custom_domain": true }],
+  "assets": {
+    "directory": "./dist-site",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  }
+}

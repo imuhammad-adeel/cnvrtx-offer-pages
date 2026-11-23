@@ -1,0 +1,182 @@
+---
+/**
+ * cnvrtx.com/about : the company, the method, and what is and is not promised.
+ * No founder name, photo or customer story appears unless it is filled in and switched on in
+ * src/config/offerV9.ts (about.enabled, about.story.approved). Nothing here is invented.
+ */
+import SiteLayout from '../layouts/SiteLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import Arrow from '../components/Arrow.astro';
+import { offerV9 } from '../../src/config/offerV9';
+import { guarantee9 } from '../../src/content/automotiveCopyV9';
+import { automotiveOffer } from '../../src/config/automotiveOffer';
+import { site, abs, hasContact } from '../config/site';
+
+const days = automotiveOffer.launchPromiseDays;
+const title = 'About CNVRT X: How We Build Front Office Systems';
+const description = 'Who CNVRT X is, how we build done-for-you front office systems for service businesses, what we promise and what we do not.';
+const path = '/about';
+const crumbs = [{ label: 'About', href: path }];
+const a = offerV9.about;
+const founder = a.enabled && a.founderName;
+
+const method = [
+  { t: 'One trade at a time', d: 'A front office has to speak the trade. We build an edition for one industry, in its own words, before starting the next. Automotive is the first.' },
+  { t: 'Fix the leaks before buying more leads', d: 'We start with the inquiries a business already gets: the missed call, the quiet quote, the unconfirmed booking.' },
+  { t: 'Done for you', d: 'We build it, write every message and test it. The owner answers the setup questions in Setup Center, about 10-15 minutes.' },
+  { t: 'The price is on the page', d: 'No demo and no sales call. Everything included is written down, so you can decide without talking to anyone.' },
+  { t: 'Automation for routine, people for judgment', d: 'Confirmations and reminders run on their own. Prices, complaints and big jobs go to the owner.' },
+  { t: 'Plain claims', d: 'We describe what the system does. We do not publish results we cannot show or numbers we did not measure.' },
+];
+const promise = [guarantee9.headline, 'Month-to-month on the monthly plan, cancel anytime', 'Your domain, content and customer list stay yours and can be exported', 'Texts go only to people who agreed to them', 'The AI says it is an AI when asked, and never quotes prices'];
+const noPromise = ['Bookings, revenue or any specific result', 'How fast a phone carrier approves business texting', 'Five-star reviews. The stars depend on the work', 'That software replaces the people in your shop'];
+const editorial = ['Guides are written to be used: a schedule, a template or a checklist, not an opinion.', 'A fact that needs support is linked to its source.', 'Example numbers and example messages are labelled as examples.', 'No customer, review or result is invented.', 'Each guide shows when it was last updated.'];
+
+const schema = [
+  { '@type': 'AboutPage', '@id': abs(path) + '#webpage', url: abs(path), name: title, description, isPartOf: { '@id': abs('/') + '#website' }, about: { '@id': abs('/') + '#organization' } },
+  { '@type': 'Organization', '@id': abs('/') + '#organization', name: site.name, legalName: site.legalName, url: abs('/') },
+];
+---
+
+<SiteLayout title={title} description={description} path={path} crumbs={crumbs} schema={schema}>
+  <main id="main">
+    <PageHero
+      crumbs={crumbs}
+      kicker="About CNVRT X"
+      title={['We Build the Front Desk', 'a Shop Never Had Time to Hire.']}
+      lede="CNVRT X builds done-for-you front office systems for service businesses. The owner keeps doing the work they are good at. The system answers, follows up, confirms and reports."
+      wide
+    />
+
+    <section class="s-sec pearl" aria-labelledby="who-title">
+      <div class="container">
+        <header class="s-head">
+          <p class="kicker">What we do</p>
+          <h2 id="who-title">A system, not software and not an agency.</h2>
+        </header>
+        <div class="s-prose">
+          <p>
+            Most small service businesses lose work in the same places: a call nobody could pick up, a quote nobody followed up, a booking nobody confirmed. None of these
+            are skill problems. They are front desk problems, and most small businesses do not have a front desk.
+          </p>
+          <p>
+            Software alone does not fix that, because software is a tool somebody still has to set up, write and run. An agency usually hands over a website and leaves. We
+            do the part in between: we build the working system, write every message it sends, test it, and hand it over running.
+          </p>
+          <p>
+            Our first edition is <a href="/auto">{site.product} for auto shops</a>: detailing, ceramic coating, paint protection film, window tint, wraps, wheels and
+            performance work.
+          </p>
+        </div>
+        {
+          founder && (
+            <div class="s-card" style="margin-top:28px;max-width:720px">
+              <span class="k">Who is behind it</span>
+              <h3>
+                {a.founderName}
+                {a.founderRole && `, ${a.founderRole}`}
+              </h3>
+              {a.bio && <p>{a.bio}</p>}
+              {a.story.approved && a.story.line && <p>{a.story.line}</p>}
+            </div>
+          )
+        }
+      </div>
+    </section>
+
+    <section class="s-sec" aria-labelledby="method-title">
+      <div class="container">
+        <header class="s-head">
+          <p class="kicker">Our method</p>
+          <h2 id="method-title">How we work.</h2>
+        </header>
+        <ul class="s-grid" role="list">
+          {
+            method.map((m) => (
+              <li class="s-card">
+                <h3>{m.t}</h3>
+                <p>{m.d}</p>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+
+    <section class="s-sec pearl" aria-labelledby="promise-title">
+      <div class="container">
+        <header class="s-head">
+          <p class="kicker">In writing</p>
+          <h2 id="promise-title">What we promise. What we do not.</h2>
+        </header>
+        <div class="s-cols">
+          <div class="s-list">
+            <h3>We promise</h3>
+            <ul>
+              {promise.map((x) => <li>{x}</li>)}
+            </ul>
+          </div>
+          <div class="s-list no">
+            <h3>We do not promise</h3>
+            <ul>
+              {noPromise.map((x) => <li>{x}</li>)}
+            </ul>
+          </div>
+        </div>
+        <p class="s-note">
+          The full terms are in the <a class="s-link" href="/legal/terms">Terms of Service</a>, the <a class="s-link" href="/legal/cancellation">Cancellation Policy</a> and the
+          <a class="s-link" href="/legal/disclaimer">Disclaimer</a>.
+        </p>
+      </div>
+    </section>
+
+    <section class="s-sec alt" aria-labelledby="ed-title">
+      <div class="container">
+        <header class="s-head">
+          <p class="kicker">Our guides</p>
+          <h2 id="ed-title">How we write what you read here.</h2>
+        </header>
+        <div class="s-list" style="max-width:820px">
+          <ul>
+            {editorial.map((x) => <li>{x}</li>)}
+          </ul>
+        </div>
+        <p class="s-prose" style="margin-top:22px">
+          <span>
+            Browse the <a href="/auto/guides">guides for auto shops</a>, or see <a href="/auto/how-it-works">how the build and launch work</a>.
+            {hasContact && (
+              <Fragment>
+                {' '}
+                Questions? <a href="/contact">Contact us</a>.
+              </Fragment>
+            )}
+          </span>
+        </p>
+        <p class="s-note">{site.legalName}</p>
+      </div>
+    </section>
+
+    <section class="s-sec s-offer" aria-labelledby="go-title">
+      <div class="container">
+        <div class="box">
+          <div>
+            <p class="kicker">Run an auto shop?</p>
+            <h2 id="go-title">See the automotive edition.</h2>
+            <p class="lede">The system, the three roles inside it, the price and how to start, all on one page.</p>
+            <div class="act">
+              <a href="/auto" class="go">
+                Open CNVRT X Front Office
+                <Arrow />
+              </a>
+            </div>
+          </div>
+          <ul class="facts" role="list">
+            <li><b>Built</b><span>Set up for your shop</span></li>
+            <li><b>Written</b><span>Every message, in your voice</span></li>
+            <li><b>Tested</b><span>Before a real customer touches it</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+</SiteLayout>

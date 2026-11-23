@@ -1,0 +1,274 @@
+---
+/**
+ * Guide pages: cnvrtx.com/auto/guides/<slug>. One template renders every guide from its
+ * block list (site/content/guides). The reader gets the answer first; the offer comes last.
+ */
+import SiteLayout from '../../../layouts/SiteLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+import Arrow from '../../../components/Arrow.astro';
+import { site, abs } from '../../../config/site';
+import { allGuides } from '../../../content/guides';
+import type { Guide, Block } from '../../../content/guides/types';
+import { problemBySlug, shopBySlug } from '../../../content/directory';
+
+export function getStaticPaths() {
+  return allGuides.map((g) => ({ params: { guide: g.slug }, props: { g } }));
+}
+interface Props {
+  g: Guide;
+}
+const { g } = Astro.props;
+const path = `/auto/guides/${g.slug}`;
+const crumbs = [
+  { label: 'Automotive', href: '/auto' },
+  { label: 'Guides', href: '/auto/guides' },
+  { label: g.label, href: path },
+];
+const problem = problemBySlug(g.problem);
+const shop = g.shop ? shopBySlug(g.shop) : null;
+const related = g.related.map((s) => allGuides.find((x) => x.slug === s)).filter((x): x is Guide => Boolean(x));
+const toc = g.blocks.filter((b): b is { h2: string; id: string } => 'h2' in b);
+const fmt = (d: string) => new Date(d + 'T12:00:00').toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+const a = site.author;
+const is = <K extends string>(b: Block, k: K): b is Extract<Block, Record<K, unknown>> => k in b;
+
+const schema = [
+  {
+    '@type': 'Article',
+    '@id': abs(path) + '#article',
+    headline: g.title,
+    description: g.description,
+    datePublished: g.published,
+    dateModified: g.updated,
+    inLanguage: 'en-US',
+    mainEntityOfPage: abs(path),
+    author: { '@type': 'Organization', '@id': abs('/') + '#organization', name: a.name, url: abs(a.url) },
+    publisher: { '@type': 'Organization', '@id': abs('/') + '#organization', name: site.name, url: abs('/') },
+    isPartOf: { '@id': abs('/') + '#website' },
+  },
+];
+---
+
+<SiteLayout title={g.title.length > 56 ? g.title : `${g.title} | CNVRT X`} description={g.description} path={path} crumbs={crumbs} schema={schema} ogType="article">
+  <main id="main">
+    <PageHero crumbs={crumbs} kicker={`Guide · ${g.stage}`} title={[g.h1 || g.title]} lede={g.intro} wide>
+      <p class="g-meta">
+        <span>By <a href={a.url}>{a.name}</a></span>
+        {a.reviewer && <span>Reviewed by {a.reviewer}{a.reviewerRole && `, ${a.reviewerRole}`}</span>}
+        <span>Updated <time datetime={g.updated}>{fmt(g.updated)}</time></span>
+        <span>{g.read} min read</span>
+      </p>
+    </PageHero>
+
+    <section class="s-sec pearl">
+      <div class="container g-body">
+        <nav class="g-toc" aria-label="In this guide">
+          <p>In this guide</p>
+          <ol>
+            {
+              toc.map((t) => (
+                <li>
+                  <a href={`#${t.id}`}>{t.h2}</a>
+                </li>
+              ))
+            }
+          </ol>
+        </nav>
+
+        <article class="g-art">
+          {
+            g.blocks.map((b) => {
+              if (is(b, 'answer'))
+                return (
+                  <p class="g-answer">
+                    <b>The short answer</b>
+                    {b.answer}
+                  </p>
+                );
+              if (is(b, 'h2')) return <h2 id={b.id}>{b.h2}</h2>;
+              if (is(b, 'h3')) return <h3>{b.h3}</h3>;
+              if (is(b, 'p')) return <p set:html={b.p} />;
+              if (is(b, 'ul')) return <ul>{b.ul.map((x) => <li set:html={x} />)}</ul>;
+              if (is(b, 'ol')) return <ol>{b.ol.map((x) => <li set:html={x} />)}</ol>;
+              if (is(b, 'call')) return <p class:list={['g-call', b.kind]} set:html={(b.kind === 'sys' ? '<b>Running it automatically. </b>' : '') + b.call} />;
+              if (is(b, 'timeline'))
+                return (
+                  <ol class="g-time">
+                    {b.timeline.map((t) => (
+                      <li>
+                        <span class="d">{t.d}</span>
+                        <span class="x">
+                          <b>{t.t}</b>
+                          <span>{t.x}</span>
+                          {t.ch && <small>{t.ch}</small>}
+                        </span>
+                      </li>
+                    ))}
+                  </ol>
+                );
+              if (is(b, 'flow'))
+                return (
+                  <ul class="g-flow">
+                    {b.flow.map((f) => (
+                      <li>
+                        <span class="if">{f.if}</span>
+                        <span class="ar" aria-hidden="true">→</span>
+                        <span class="then">{f.then}</span>
+                      </li>
+                    ))}
+                  </ul>
+                );
+              if (is(b, 'tpl'))
+                return (
+                  <figure class="g-tpl" data-tpl>
+                    <header>
+                      <span>
+                        <strong>{b.tpl.label}</strong> · {b.tpl.ch}
+                      </span>
+                      <button type="button" data-copy>Copy</button>
+                    </header>
+                    <blockquote data-text>{b.tpl.text}</blockquote>
+                    {b.tpl.note && <footer>{b.tpl.note}</footer>}
+                  </figure>
+                );
+              if (is(b, 'check'))
+                return (
+                  <ul class="g-check">
+                    {b.check.map((x) => (
+                      <li>
+                        <label>
+                          <input type="checkbox" />
+                          <span>{x}</span>
+                        </label>
+                      </li>
+                    ))}
+                  </ul>
+                );
+              if (is(b, 'table'))
+                return (
+                  <div class="s-tablewrap" tabindex="0" role="region" aria-label="Table">
+                    <table class="s-table">
+                      <thead>
+                        <tr>{b.table.head.map((h) => <th scope="col">{h}</th>)}</tr>
+                      </thead>
+                      <tbody>
+                        {b.table.rows.map((r) => (
+                          <tr>{r.map((c, i) => (i === 0 ? <th scope="row">{c}</th> : <td>{c}</td>))}</tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                );
+              if (is(b, 'sources'))
+                return (
+                  <div class="g-src">
+                    <h2 id="sources">Sources</h2>
+                    <ol>
+                      {b.sources.map((s) => (
+                        <li>
+                          <a href={s.url} rel="noopener">
+                            {s.t}
+                          </a>
+                        </li>
+                      ))}
+                    </ol>
+                  </div>
+                );
+              return null;
+            })
+          }
+
+          <p class="g-src">
+            Example schedules, prices in brackets and message templates in this guide are illustrations for you to adapt. They are not a promise of results. Texting
+            customers in the United States requires their consent and carrier registration.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="s-sec" aria-labelledby="rel-title">
+      <div class="container">
+        <header class="s-head">
+          <p class="kicker">Keep reading</p>
+          <h2 id="rel-title">Related guides and the system behind them.</h2>
+        </header>
+        <ul class="s-grid two" role="list">
+          <li>
+            <a class="s-card" href={`/auto/${problem.slug}`}>
+              <span class="k">The solution · {problem.system}</span>
+              <b class="t">{problem.label} for auto shops</b>
+              <p>{problem.line}</p>
+              <span class="more">How the system handles it →</span>
+            </a>
+          </li>
+          {
+            shop && (
+              <li>
+                <a class="s-card" href={`/auto/${shop.slug}`}>
+                  <span class="k">Shop type</span>
+                  <b class="t">{shop.label}</b>
+                  <p>{shop.line}</p>
+                </a>
+              </li>
+            )
+          }
+          {
+            related.slice(0, 2).map((r) => (
+              <li>
+                <a class="s-card" href={`/auto/guides/${r.slug}`}>
+                  <span class="k">Guide · {r.read} min read</span>
+                  <b class="t">{r.title}</b>
+                  <p>{r.description}</p>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+
+    <section class="s-sec s-offer" aria-labelledby="go-title">
+      <div class="container">
+        <div class="box">
+          <div>
+            <p class="kicker">{site.product}</p>
+            <h2 id="go-title">Want this running automatically in your shop?</h2>
+            <p class="lede">
+              Everything in this guide can be done by hand. The Front Office runs it for you, stops when the customer replies or books, and hands the conversation back when it
+              needs you.
+            </p>
+            <div class="act">
+              <a href={`/auto/${problem.slug}`} class="go" data-track="cta_click" data-track-location="guide_bottom">
+                See how {problem.system} works
+                <Arrow />
+              </a>
+              <a href="/auto" class="ghost">The complete Front Office</a>
+            </div>
+          </div>
+          <ul class="facts" role="list">
+            <li><b>Built</b><span>Set up for your shop and your services</span></li>
+            <li><b>Written</b><span>Every message in your voice, approved by you</span></li>
+            <li><b>Tested</b><span>Before a real customer touches it</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+</SiteLayout>
+
+<script>
+  // "Copy" on each message template
+  document.querySelectorAll<HTMLElement>('[data-tpl]').forEach((box) => {
+    const btn = box.querySelector<HTMLButtonElement>('[data-copy]');
+    const text = box.querySelector<HTMLElement>('[data-text]')?.innerText || '';
+    btn?.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(text);
+        btn.textContent = 'Copied';
+      } catch {
+        btn.textContent = 'Select the text to copy';
+      }
+      window.setTimeout(() => (btn.textContent = 'Copy'), 1800);
+    });
+  });
+</script>

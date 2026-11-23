@@ -1,259 +1,323 @@
-# cnvrtx.com: site structure proposal
+# cnvrtx.com: final site plan
 
-Status: waiting for approval. Nothing is built, moved or published.
-Written 2026-11-17, from the brief in `docs/cnvrtx-site-brief.md` and the page copy in `docs/site-copy.md`.
+Status: **approved by the owner on 2026-11-17** (version 2). Build complete on 2026-11-17, not deployed. Indexing is off until the owner approves the launch. Current status: `docs/cnvrtx-launch-report.md`.
 
-Assumptions I made (say if any is wrong):
+Sources: `docs/cnvrtx-site-brief.md`, the owner's final instruction set of 2026-11-17, and the current copy in `docs/site-copy.md` and `src/config/offerV9.ts`.
 
-- Target market is the United States, in English. The phone number, texting rules and prices on the pages are all US.
-- No keyword data exists yet. Every "search intent" below is the plain question a shop owner types, not a measured number. Once Google Search Console has data, we tune titles and add guides. Addresses do not change.
+The goal is not "an SEO website". It is a site where a shop owner finds an answer, understands the workflow behind it, sees the mechanism, reviews the full offer and buys without a sales call.
 
 ---
 
-## 1. The short version
+## 1. Previous proposal (version 1), in short
 
-- `cnvrtx.com/` is a short brand home. It says who CNVRT X is and sends auto shops to `/auto`.
-- `cnvrtx.com/auto` is the full auto-shop page (today's sales page). It is the top of the auto section.
-- Under `/auto` there are three kinds of pages, each with one job:
-  1. **Problem pages** (12, already written): one problem, one fix.
-  2. **Shop-type pages** (7, new): one page per kind of shop.
-  3. **Guides** (new, grows over time): helpful how-to articles that answer one question each and point up to a problem page.
-- Every buy button goes to checkout on `get.cnvrtx.com`. No sales content stays on `get.cnvrtx.com`, so nothing is duplicated.
+- Brand home at `/`, full auto sales page at `/auto`.
+- The 12 problem pages kept their old addresses (`slow-lead-reply`, `ad-results`, `talking-website`).
+- 7 shop-type pages. Mobile detailing sat inside detailing shops.
+- 18 general guides (for example one "quote follow-up templates" guide for every trade).
+- A full link list in the footer of every page.
+- FAQ schema on every commercial page.
+- Launch after all planned content was written.
+
+## 2. What changed, and why
+
+| # | Change | Why |
+| --- | --- | --- |
+| 1 | `/auto/slow-lead-reply` becomes `/auto/lead-response` | Clearer, broader and more professional. Names the topic, not the symptom. |
+| 2 | `/auto/ad-results` becomes `/auto/ad-tracking` | The page is about tracking ads to paid jobs, not vague "results". |
+| 3 | `/auto/talking-website` becomes `/auto/website-chatbot` | People search the category. "Talking website" stays as a phrase in the copy. |
+| 4 | Mobile detailing gets its own page (8 shop types, not 7) | The work happens at the customer's location: travel, routes, no front desk. A different workflow. |
+| 5 | Guides are service-specific, not general | A ceramic coating quote, a PPF quote and a tint quote have different prices, decision times and objections. One general guide cannot be the best answer for any of them. |
+| 6 | First batch is 6 deep guides, not 18 general ones | Quality over volume. More guides follow real Search Console data. |
+| 7 | No page matrix | A page is only written if it passes the five tests in section 7. |
+| 8 | Problem pages no longer repeat the pricing table, nine systems, demo, full FAQ or sign-up steps | That repeated block made most of every page a copy of the others. Each problem page now carries a compact offer summary and links to `/auto`. |
+| 9 | Clean grouped footer instead of 30 to 40 links | The hubs (`/auto`, `/auto/guides`) hold the full directory. |
+| 10 | Simpler schema. No FAQ schema as a tactic | Only labels that describe what is visibly on the page. |
+| 11 | Guides follow a "help first" funnel | The guide solves the question, then shows the workflow, then the mechanism, then the offer. |
+| 12 | Launch does not wait for the whole guide library | Commercial pages plus the first guides go live once the launch gate passes. |
+| 13 | Launch gate, launch report and a migration checklist for get.cnvrtx.com added | So nothing goes live half-checked and no content exists twice. |
+| 14 | Trust rules for guides | Real author or reviewer, updated date, sources for facts, no invented experts. |
+
+Improvements added on top of the instruction set:
+
+- **A separate source folder for the main site** (`site/`), built with its own config. The sales and transaction pages in `src/` are not touched, so `npm run studio` and get.cnvrtx.com cannot be affected by main-site work.
+- **One indexing switch.** Every main-site page is `noindex` until one setting is flipped at launch. No page can be indexed by accident.
+- **Legal pages are published on both hosts for now**, and neither copy is indexable while the lawyer review is open. This keeps any A2P-registered address alive without guessing (section 12).
+- **Contact page is only generated when a real contact detail exists** in config, so no empty page is ever published.
+- **Each problem page keeps its own calculator and its own animated example**, because those are already unique per page. Only the truly repeated blocks were removed.
 
 ---
 
-## 2. Address rules (chosen once, never changed)
+## 3. Domain roles
 
-1. Lowercase words, hyphens between words, no dates, no numbers, no file endings.
-2. No slash at the end: `cnvrtx.com/auto/missed-calls`.
-3. `https://cnvrtx.com` only. No `www` version as a second copy.
-4. Every page carries a canonical tag that names its own one true address.
-5. Addresses describe the topic, not the product name. "Missed-Call Rescue" could be renamed one day. `missed-calls` never needs to change.
-6. Guides sit in one flat folder (`/auto/guides/...`), not inside a problem folder. That way a guide can be linked from a different parent later and its address stays the same.
-7. A page that is not ready is simply not published. No placeholder pages, no "coming soon" addresses.
+| Host | Job | In Google |
+| --- | --- | --- |
+| `https://cnvrtx.com` | All brand, commercial, educational and SEO pages | Indexable after launch |
+| `https://get.cnvrtx.com` | Checkout, onboarding, thank-you, plan and campaign transaction steps | Never indexed |
+
+Buy buttons on cnvrtx.com go to `https://get.cnvrtx.com/auto?plan=annual` and `https://get.cnvrtx.com/auto?plan=monthly`.
 
 ---
 
-## 3. The full address map
+## 4. Final address map
+
+Rules: lowercase, hyphens, no dates, no IDs, no trailing slash, one host (`https://cnvrtx.com`), a self-referencing canonical on every page. `http` and `www` versions redirect to the one host. That is normal host hygiene and does not change any page address.
 
 ### Brand level
 
-| Address | Page | What it is for |
-| --- | --- | --- |
-| `/` | Brand home | People searching "CNVRT X". Short: what we do, who it is for, link into `/auto`. |
-| `/about` | About | Who is behind CNVRT X, how we work, what we promise and what we do not. |
-| `/contact` | Contact | One way to reach us. |
-| `/legal/privacy`, `/legal/terms`, `/legal/sms-terms`, `/legal/cancellation`, `/legal/disclaimer` | Legal | One copy only. See open question 3. |
-
-### Auto section
-
-| Address | Page | Search intent it owns |
-| --- | --- | --- |
-| `/auto` | Auto hub (full sales page) | "front office / lead follow-up system for auto shops", "done-for-you CRM setup for detailing shop" |
-| `/auto/how-it-works` | How it is built and delivered | "what do I get, how long, what do I have to do": the 14-day build, the form, the access checklist, texting approval |
-| `/auto/guides` | Guide index | A list page. Lets visitors and Google reach every guide. |
-
-### Problem pages (already written, addresses kept as they are)
-
-| Address | Owns this intent | System it explains |
-| --- | --- | --- |
-| `/auto/missed-calls` | missed-call text back for auto shops; what to do about calls you cannot pick up | Missed-Call Rescue |
-| `/auto/slow-lead-reply` | replying fast to website, Facebook and Instagram leads | 60-Second Lead Response |
-| `/auto/ai-receptionist` | AI receptionist that answers calls, chat and DMs after hours | 24/7 AI Front Desk |
-| `/auto/quote-follow-up` | following up on quotes and estimates that went quiet | Follow-Up Until They Book |
-| `/auto/no-shows` | appointment confirmations and reminders, fewer empty bays | No-Show Shield |
-| `/auto/reviews` | getting more Google reviews from finished jobs | 5-Star Review Machine |
-| `/auto/repeat-customers` | bringing past customers back, maintenance reminders, referrals | Repeat & Referral Engine |
-| `/auto/run-sheet` | daily schedule, job cards and owner brief without typing | Owner Command Center |
-| `/auto/ad-results` | seeing which Facebook and Instagram ads became paid jobs | Ad Results Tracker |
-| `/auto/front-office` | hiring a receptionist vs a virtual assistant vs a system: the cost comparison | The whole plan, as a cost decision |
-| `/auto/ai-employee` | what an "AI employee" can and cannot do in a shop | The whole plan, as a list of tasks |
-| `/auto/talking-website` | a shop website with chat and voice that books visits | Website add-on |
-
-All nine systems already have a home in the first nine rows. That is why I am **not** proposing separate "system" pages: a page for "Missed-Call Rescue" and a page for "missed calls" would fight each other. The problem page is the system page.
-
-### Shop-type pages (new)
-
-Each one answers "is this built for my kind of shop?" with that trade's real jobs, quote sizes, booking habits and customer questions.
-
-| Address | Owns this intent |
+| Address | Page |
 | --- | --- |
-| `/auto/detailing-shops` | lead and booking system for detailing shops, fixed or mobile |
-| `/auto/ceramic-coating-shops` | follow-up for high-ticket coating quotes, maintenance reminders |
-| `/auto/ppf-shops` | long quote cycles, deposits and multi-day bookings for paint protection film |
-| `/auto/window-tint-shops` | fast, price-led inquiries and same-week booking |
-| `/auto/vinyl-wrap-shops` | design-led quotes that need several touches |
-| `/auto/wheel-and-tire-shops` | fitment questions, parts-on-order follow-up |
-| `/auto/performance-shops` | suspension, tuning and aftermarket installs |
+| `/` | Brand home: Done-for-you front office systems for service businesses, starting with automotive |
+| `/about` | Company, method, what we promise and what we do not |
+| `/contact` | Contact (generated only when real contact details are set) |
+| `/legal/privacy`, `/legal/terms`, `/legal/sms-terms`, `/legal/cancellation`, `/legal/disclaimer` | Legal |
 
-The ending `-shops` is on purpose. It tells Google the page is for shop owners, so we do not compete with car owners searching "ceramic coating".
+### Automotive
 
-### Guides (new, added in batches)
-
-Address pattern: `/auto/guides/<topic>`. Each guide answers one question properly, gives something usable (a template, a checklist, a schedule), and links up to its problem page. First batch I would write, two per problem:
-
-| Guide address | Points up to |
-| --- | --- |
-| `/auto/guides/missed-call-text-back-templates` | missed-calls |
-| `/auto/guides/voicemail-vs-text-back` | missed-calls |
-| `/auto/guides/how-fast-to-reply-to-a-new-lead` | slow-lead-reply |
-| `/auto/guides/instagram-and-facebook-lead-reply-templates` | slow-lead-reply |
-| `/auto/guides/quote-follow-up-templates` | quote-follow-up |
-| `/auto/guides/when-a-customer-says-the-quote-is-too-high` | quote-follow-up |
-| `/auto/guides/appointment-reminder-text-templates` | no-shows |
-| `/auto/guides/deposit-policy-for-auto-shops` | no-shows |
-| `/auto/guides/how-to-ask-for-google-reviews` | reviews |
-| `/auto/guides/replying-to-a-bad-review` | reviews |
-| `/auto/guides/maintenance-reminder-schedule` | repeat-customers |
-| `/auto/guides/win-back-message-templates` | repeat-customers |
-| `/auto/guides/daily-run-sheet-template` | run-sheet |
-| `/auto/guides/job-card-template` | run-sheet |
-| `/auto/guides/tracking-ad-leads-to-paid-jobs` | ad-results |
-| `/auto/guides/ai-receptionist-vs-answering-service` | ai-receptionist |
-| `/auto/guides/receptionist-vs-virtual-assistant-vs-automation` | front-office |
-| `/auto/guides/business-texting-rules-for-auto-shops` | missed-calls, no-shows (texting consent and carrier registration, in plain words) |
-
-### Future industries
-
-Same shape, new folder: `/roofing`, `/roofing/missed-calls`, `/roofing/guides/...`. Problem pages are rewritten for that trade, not copied, so `/auto/missed-calls` and `/roofing/missed-calls` are different pages.
-
----
-
-## 4. What sits at the root
-
-I agree with the offer-pages chat: a short brand home, auto-first.
-
-- Headline about the company, not the auto offer: a done-for-you front office for local service businesses, starting with auto shops.
-- Three short blocks: what we install, who it is for (auto shops now), how to start. One big button into `/auto`.
-- It does **not** repeat the leaks, the calculator, the nine systems, the pricing table or the FAQ. Those live only on `/auto`.
-- Its search job is the brand name. `/auto` keeps every auto search. So the two never compete.
-
----
-
-## 5. How no two pages compete
-
-One rule per page type:
-
-- **Hub (`/auto`)**: the whole offer. Mentions each problem in two lines and links out. Never goes deep on one.
-- **Problem page**: one problem, why it happens, how the fix runs step by step. Does not teach templates.
-- **Shop-type page**: one trade. Shows how all the problems look in that trade, in short, and links to the problem pages. Does not explain how a fix works.
-- **Guide**: one question, a usable answer. Does not sell. One link up to the problem page, one line about the plan at the end.
-
-The three closest pages need a firm line between them:
-
-| Page | Stays on | Stays off |
+| Address | Page | Owns |
 | --- | --- | --- |
-| `/auto/ai-receptionist` | answering calls, chat and DMs, after hours | cost comparison, the other eight systems |
-| `/auto/ai-employee` | the list of tasks an AI can take, and the ones it must hand to you | phone answering detail |
-| `/auto/front-office` | the money decision: hire, outsource or install a system | AI detail |
+| `/auto` | Automotive Front Office hub and main sales page | The whole offer: calculator, three roles, nine systems, pricing, main FAQ, path to checkout |
+| `/auto/how-it-works` | How it is built and delivered | What you provide, what we build, access, A2P approval, testing, launch, automation vs AI vs human |
+| `/auto/guides` | Guide library | Guides grouped by stage of the customer journey |
 
-Also: `/auto/missed-calls` is about the text back and job card when nobody answers. `/auto/ai-receptionist` is about something answering. Each links to the other and says so.
+### Problem pages (12)
+
+| Address | One problem, one mechanism | System |
+| --- | --- | --- |
+| `/auto/missed-calls` | Calls nobody can pick up | Missed-Call Rescue |
+| `/auto/lead-response` | New web and ad leads that wait hours | 60-Second Lead Response |
+| `/auto/ai-receptionist` | After-hours and hands-full inquiries | 24/7 AI Front Desk |
+| `/auto/quote-follow-up` | Quotes that go quiet | Follow-Up Until They Book |
+| `/auto/no-shows` | Booked bays that stay empty | No-Show Shield |
+| `/auto/reviews` | Happy customers never asked | 5-Star Review Machine |
+| `/auto/repeat-customers` | One-time customers | Repeat & Referral Engine |
+| `/auto/run-sheet` | The schedule typed by hand every night | Owner Command Center |
+| `/auto/ad-tracking` | Ad spend with no link to paid jobs | Ad Results Tracker |
+| `/auto/front-office` | Hire, outsource or install: the cost decision | Whole plan, as a cost decision |
+| `/auto/ai-employee` | What AI can take off your plate and what it cannot | Whole plan, as a task list |
+| `/auto/website-chatbot` | A website that cannot answer a question | Talking website add-on |
+
+### Old to new address mapping
+
+| Old (get.cnvrtx.com, never indexed) | New (cnvrtx.com) |
+| --- | --- |
+| `/` | `/auto` |
+| `/auto/missed-calls` | `/auto/missed-calls` |
+| `/auto/slow-lead-reply` | `/auto/lead-response` |
+| `/auto/ai-receptionist` | `/auto/ai-receptionist` |
+| `/auto/quote-follow-up` | `/auto/quote-follow-up` |
+| `/auto/no-shows` | `/auto/no-shows` |
+| `/auto/reviews` | `/auto/reviews` |
+| `/auto/repeat-customers` | `/auto/repeat-customers` |
+| `/auto/run-sheet` | `/auto/run-sheet` |
+| `/auto/ad-results` | `/auto/ad-tracking` |
+| `/auto/front-office` | `/auto/front-office` |
+| `/auto/ai-employee` | `/auto/ai-employee` |
+| `/auto/talking-website` | `/auto/website-chatbot` |
+
+The three old slugs were never public on cnvrtx.com, so no redirect is needed there. If any old address ever becomes public, it gets a permanent redirect to the new one. Two live copies are never allowed.
+
+### Shop-type pages (8)
+
+`/auto/detailing-shops`, `/auto/mobile-detailing`, `/auto/ceramic-coating-shops`, `/auto/ppf-shops`, `/auto/window-tint-shops`, `/auto/vinyl-wrap-shops`, `/auto/wheel-and-tire-shops`, `/auto/performance-shops`
+
+Performance shops covers performance work, suspension, tuning, aftermarket parts and custom installs. No separate aftermarket page until research shows a separate search intent.
+
+### Guides
+
+Pattern: `/auto/guides/<service>-<problem>`. Flat folder, so a guide never has to move. First batch in section 8.
 
 ---
 
-## 6. Internal linking plan
+## 5. Page taxonomy: what each page type is for
 
-1. **Breadcrumb on every page**: Home > Auto > Missed calls. Guides: Home > Auto > Guides > Title.
-2. **Hub links down** to all 12 problem pages and all 7 shop-type pages, in the page body and the menu.
-3. **Every problem page links**: up to `/auto`, to its 2 or 3 guides, to the 2 problems that come just before and after it in a customer's journey (missed call > slow reply > quote follow-up > no-show > review > repeat), and to the shop types where it matters most.
-4. **Every shop-type page links**: up to `/auto`, to the 4 or 5 problems that hurt that trade most, and to matching guides.
-5. **Every guide links**: up to its one parent problem page (near the top, in a sentence), to 1 or 2 related guides, and to `/auto` once at the end.
-6. **Link words are descriptive and varied**: "missed-call text back for shops", not "click here" and not the same phrase every time.
-7. **No orphan pages**: every page is linked from at least two other pages and is in the sitemap.
-8. **Footer**: hub, the 12 problems, the shop types, guides index, about, contact, legal. The same on every page.
-9. **Buy buttons** go to `get.cnvrtx.com` checkout. Those pages stay hidden from Google, which is correct for checkout pages.
+| Type | Answers | Contains | Never contains |
+| --- | --- | --- | --- |
+| Brand home | "Who is CNVRT X?" | What a front office system is, the mission, automotive as first edition, trust, route into `/auto` | Calculator, pricing table, nine-system breakdown, auto FAQ |
+| Auto hub | "What is the whole offer and what does it cost?" | Everything commercial, links to every problem and shop type, flagship guides | Deep detail on one problem |
+| Problem page | "How do I fix this one problem?" | Plain answer, the problem, why it happens, the cost, customer and owner view, step-by-step mechanism with verified timing, where automation stops, human handoff, compliance limits, what it does not do, examples, own FAQs, related guides, related shop types, previous and next stage, compact offer | Full pricing table, full nine systems, full demo, full FAQ, sign-up steps |
+| Shop-type page | "Is this built for a business like mine?" | That trade's services, job types, inquiry sources, quoting style, booking habits, deposits, objections, after-hours behavior, follow-up and retention needs | How a mechanism works in detail |
+| Guide | One practical question | A working document: decision tree, timeline, templates, checklist, mistakes, stop conditions, consent notes | A sales pitch near the top |
+| How it works | "What happens after I buy?" | Deployment sequence and responsibilities | Pricing detail |
+
+Compact offer summary used on problem and shop-type pages: CNVRT X Front Office, $197/mo, three roles, nine connected systems, "See the complete system" to `/auto`. The price comes from config, never typed by hand.
 
 ---
 
-## 7. Schema (the labels Google reads) per page type
+## 6. Content-cluster strategy
 
-| Page type | Schema |
+Content is organised three ways at once: by industry, by service and by problem. The guide sits where the three meet.
+
+- Industry: automotive (`/auto`)
+- Service: detailing, mobile detailing, ceramic coating, PPF, window tint, vinyl wrap, wheels and tires, performance
+- Problem: the customer journey, inquiry > response > quote > follow-up > booking > confirmation > completed job > review > repeat
+
+A guide is service-specific by default (`ceramic-coating-quote-follow-up`, not `quote-follow-up-templates`), because each job differs in price range, buying cycle, objections, vehicle information needed, inspection needs, deposits, decision time, urgency, follow-up cadence and appointment length.
+
+Facts are never invented. Where a number or workflow is not verified it is either researched and sourced, or labelled as an example the shop should set for itself.
+
+## 7. Tests a new guide must pass
+
+1. A distinct search or user intent.
+2. Enough unique information to beat a general article.
+3. A workflow, example, checklist, template, comparison or decision framework that is actually usable.
+4. A logical place in the linking structure.
+5. A real connection to something CNVRT X does.
+
+If a page would mostly repeat another with the nouns swapped, it is not published. We never multiply industries by services by problems to generate pages.
+
+### Guide quality standard
+
+A guide reads like a working operating document. For a quote follow-up guide that means: the direct answer, a decision tree, an example timeline (Day 0, Day 2 and onward), the point where a phone call beats a message, replies to "too expensive", "I need to think about it" and "I am comparing shops", what to ask before quoting, when to stop, reply and booking stop conditions, opt-out handling, consent, what not to automate, message templates, a checklist, a workflow visual, mistakes to avoid, related guides and the related solution.
+
+### The self-closing funnel inside each guide
+
+| Place | What the reader gets |
+| --- | --- |
+| Top | The answer. No hard sell. |
+| After the first useful section | One contextual link to the matching problem page |
+| Deeper | "You can run this by hand. CNVRT X Front Office automates the same sequence, stops when the customer replies or books, and hands the conversation back to you when judgment is needed." |
+| Bottom | "Want this running automatically in your shop?" to the problem page or `/auto` |
+
+Problem page leads to `/auto`. `/auto` leads to checkout on get.cnvrtx.com. No sales call anywhere.
+
+A free automated Booking Leak Audit can be added later as a second path for visitors not ready to buy. It is not a launch dependency.
+
+### Trust rules
+
+Guides show an accurate author or reviewer, a last-updated date, sources where a fact needs support, and first-hand examples. No invented experts. Every guide is reviewed by a person for accuracy before indexing is switched on.
+
+### Research workflow per cluster
+
+Real question > how operators phrase it > review current search results > decide if it deserves a page > find what current results fail to explain > write the page that adds it > connect to the right solution > publish > watch Search Console > expand from real data. No keyword is called "low competition" without research that shows it.
+
+---
+
+## 8. Exact first content batch
+
+Quote recovery cluster:
+
+1. `/auto/guides/ceramic-coating-quote-follow-up`
+2. `/auto/guides/ppf-quote-follow-up`
+3. `/auto/guides/window-tint-quote-follow-up`
+4. `/auto/guides/detailing-estimate-follow-up`
+
+Lead response and booking cluster:
+
+5. `/auto/guides/auto-detailing-lead-response-time`
+6. `/auto/guides/detailing-no-show-policy-and-reminders`
+
+Next, in this order unless Search Console says otherwise: vinyl wrap quote follow-up, auto detailing lead reply templates, appointment reminder strategy for detail shops, ceramic coating maintenance reminders, Google review requests for detailers.
+
+---
+
+## 9. Future-vertical strategy
+
+The address shape repeats: `/roofing`, `/roofing/quote-follow-up`, `/roofing/guides/storm-damage-estimate-follow-up`. The content does not repeat. Each vertical is written in that trade's own words (roofers say "estimate") and around its own buying workflow. A word-replacement copy of the auto pages is never published.
+
+The brand home is written to serve every vertical, with automotive shown as the first edition.
+
+---
+
+## 10. Internal-linking rules
+
+All links are plain crawlable `<a href>` links with natural, varied wording.
+
+| From | Links to |
+| --- | --- |
+| Guide | One primary problem page, a shop-type page where useful, 1 or 2 close guides, `/auto` where commercial context fits |
+| Problem page | `/auto`, its 2 or 3 best guides, the shop types most affected, the previous and next stage of the journey |
+| Shop-type page | `/auto`, the 4 to 6 most relevant problems, service-specific guides, how-it-works where useful |
+| Auto hub | Every problem page, every shop-type page, flagship guides, how-it-works |
+| Brand home | `/auto`, about, guides |
+
+Journey order used for previous and next: missed calls > lead response > AI receptionist > quote follow-up > no-shows > reviews > repeat customers.
+
+Footer: one clean block with grouped links (Automotive, Solutions, Shop Types, Guides, How It Works, About, Contact, Legal). The full directory lives on the hubs.
+
+Breadcrumbs on every page below the home.
+
+---
+
+## 11. Schema rules
+
+| Page | Schema |
 | --- | --- |
 | Brand home | Organization, WebSite |
-| About / Contact | AboutPage / ContactPage, Organization |
-| Auto hub | Service (with the real monthly and yearly price), FAQPage, BreadcrumbList |
-| Problem page | Service, FAQPage (that page's own questions only), BreadcrumbList |
-| Shop-type page | Service with the audience named, FAQPage, BreadcrumbList |
-| How it works | WebPage, BreadcrumbList |
-| Guide | Article (author, published and updated dates), BreadcrumbList |
+| About | AboutPage, same Organization entity |
+| Contact | ContactPage |
+| Auto hub | WebPage, BreadcrumbList, Service (the visible service and its real prices) |
+| Problem pages | WebPage, BreadcrumbList |
+| Shop-type pages | WebPage, BreadcrumbList |
+| Guides | Article with author, datePublished, dateModified, plus BreadcrumbList |
 | Guide index | CollectionPage, ItemList, BreadcrumbList |
-| Legal | WebPage only |
+| Legal | none beyond the page itself |
 
-Two honest notes:
-
-- No review or star-rating schema. There are no real customer reviews yet, and inventing them breaks Google's rules and yours.
-- Google now shows FAQ dropdowns in results for very few sites. The FAQ label still helps Google understand the page, so it stays, but do not expect the dropdowns.
+No reviews, ratings, results, awards or organisation facts that are not real. FAQs are shown for readers, not marked up as a ranking tactic. There is no special schema for AI answers.
 
 ---
 
-## 8. What each existing page needs added
+## 12. Dependencies
 
-The pages were written for ads: short, punchy, same blocks on every page. For search they need more that is unique to each page.
+### get.cnvrtx.com migration (owner: the offer-pages chat)
 
-### All 12 problem pages
+On launch day of cnvrtx.com:
 
-- **A plain two-sentence answer near the top**: what the problem is and what fixes it, in the words people search. The punchy headline stays.
-- **"Why this happens" section**: the real reasons in a shop (hands full, one person, after hours). Short.
-- **"How it runs, step by step"**: the actual sequence with timings, what the customer sees, what lands on the owner's phone.
-- **"What it does not do"**: limits stated plainly (texts only to people who agreed, AI never quotes prices, no guaranteed bookings). This builds trust and is unique text.
-- **Its own 4 to 6 questions**: specific to that problem. The general questions stay only on `/auto`.
-- **Links** as in section 6.
-- **A search-shaped page title**, for example "Missed-Call Text Back for Auto Shops". Some pages already have this.
+1. Remove the old sales page and the 12 problem pages from get.cnvrtx.com, or permanently redirect each to its new address from the mapping in section 4.
+2. Keep checkout (`/auto`), onboarding and thank-you.
+3. Keep those transaction pages `noindex`.
+4. Point the root of get.cnvrtx.com at `https://cnvrtx.com/`.
+5. Update every live ad link to the new cnvrtx.com address.
+6. Confirm no sales or problem page is reachable on both hosts.
 
-### The repeated blocks problem
+### Legal and A2P
 
-Today the pricing table, the nine-systems list, the demo chat, the sign-up steps and the footer text are word-for-word the same on all 13 pages. On an ad page that is fine. On a search site it means most of each page is a copy of the others.
+Not yet known: whether the texting (A2P) registration names `get.cnvrtx.com/legal/...` addresses. Until the owner confirms:
 
-Fix: on problem pages, shrink those blocks to a short summary (price, three roles, one button) that links to the full version on `/auto`. The full pricing table, full FAQ and full demo live on `/auto` only.
-
-### `/auto` (the hub)
-
-- A short plain intro saying what CNVRT X Front Office is and who it is for.
-- A visible "pick your shop type" row linking to the 7 shop-type pages.
-- The "what it fixes" menu also shown in the page body, not only in the dropdown.
-- Otherwise it is already strong. It keeps the calculator, the systems, pricing and FAQ.
-
-### Per page, the main gap
-
-| Page | Main thing to add |
-| --- | --- |
-| missed-calls | What happens for callers who did not agree to texts; call-forwarding setup in plain words |
-| slow-lead-reply | Each lead source (website form, Facebook, Instagram) and what the first reply says |
-| ai-receptionist | What it answers, what it hands over, what it says when asked if it is a person |
-| quote-follow-up | The follow-up schedule: how many touches, over how long, when it stops |
-| no-shows | The reminder timeline, the YES / MOVE replies, what happens after a no-show |
-| reviews | When the request goes out, the two reminders, Google's rules on asking |
-| repeat-customers | Maintenance timing by service (coating, tint, detail), referral ask wording |
-| run-sheet | A full example of the morning brief, a job card and the evening run sheet |
-| ad-results | What is tracked from click to paid job, and what it cannot see |
-| front-office | The cost table with sources, already partly there; add what a human still does better |
-| ai-employee | A clear task list: does, does not, hands to you |
-| talking-website | What pages the website includes, who owns it, the one-time price |
+- The legal pages stay reachable on get.cnvrtx.com exactly as they are.
+- cnvrtx.com also serves them at `/legal/...`, so main-site links work.
+- Both copies stay `noindex` while the lawyer review flag (`legalInfo.reviewed`) is off, so there is no duplicate in Google.
+- When the owner confirms nothing external depends on the get addresses, cnvrtx.com becomes the one canonical legal set and checkout links to it.
 
 ---
 
-## 9. One codebase or two
+## 13. Launch order and launch gate
 
-I agree with one codebase. The design, the sections and the prices are shared, and two copies would drift. One switch in the build decides which pages go to `cnvrtx.com` (Cloudflare) and which go to `get.cnvrtx.com` (AI Studio). I own the first set, the offer-pages chat owns the second.
+Build order: 1 technical foundation, layouts and metadata; 2 brand home and auto hub; 3 problem pages; 4 shop-type pages; 5 how-it-works, about, contact, guides index; 6 first guides; 7 SEO and phone/desktop checks; 8 deployment prep and launch report.
 
-One thing must happen on the other side at launch: the sales page and the 12 problem pages come **off** `get.cnvrtx.com` the same day they go live on `cnvrtx.com`. Until then they stay hidden from Google as they are now. Ads then point at the `cnvrtx.com/auto/...` addresses.
+Day-1 set: brand home, `/auto`, 12 problem pages, 8 shop-type pages, how-it-works, guides index, about, contact, legal, first guides.
+
+Indexing is switched on only when all of these pass:
+
+- cnvrtx.com serves from Cloudflare over HTTPS on the one host; `http` and `www` handled
+- canonical tags correct; no accidental noindex on public pages
+- sitemap and robots.txt valid; sitemap holds only canonical indexable pages
+- no sales or problem copies left on get.cnvrtx.com; transaction pages excluded from search
+- all navigation, contextual links and buttons work; no orphan commercial pages
+- checkout links and forms work
+- phone and desktop tested
+- schema validates
+- legal links work; A2P dependency resolved
+- no invented proof, placeholder copy or private client information
+- Search Console and analytics ready
+
+The launch report lists: READY, BLOCKED, NEEDS OWNER ACTION, GET.CNVRTX.COM MIGRATION ACTIONS, A2P/LEGAL STATUS, INDEXING STATUS, SEARCH CONSOLE STATUS, FINAL URL COUNT.
 
 ---
 
-## 10. Order of work, once approved
+## 14. Plan checked against the current copy
 
-1. **Launch set (about 22 pages)**: brand home, `/auto`, the 12 problem pages with the added content, how-it-works, about, contact, legal.
-2. **Shop-type pages (7)**.
-3. **Guides**, in batches of 4 to 6, starting with the first batch above.
-4. After launch: Google Search Console, sitemap submitted, and guides chosen from real search data.
+Checked against `src/config/offerV9.ts` and `docs/site-copy.md`. Nothing in the plan changes a price, an inclusion, a claim or compliance wording. Points to note:
 
-Every page is checked on phone and desktop before it is called done. Indexing is switched on only when you say so.
-
----
-
-## 11. What I need from you
-
-1. **Is the address map approved?** These addresses will be permanent.
-2. **Is the shop-type list right?** Seven now. Should mobile detailing get its own page, or stay inside detailing shops?
-3. **Legal pages**: I recommend one copy on `cnvrtx.com/legal/...`, with checkout on `get.cnvrtx.com` linking to it. One check first: if your texting (A2P) registration already lists the `get.cnvrtx.com` legal addresses, those must stay where they are and the main site links to them instead.
-4. **United States, English only**: correct?
+| Point | Current approved value | How the plan treats it |
+| --- | --- | --- |
+| Price | $197 a month, or $1,970 a year | Read from config on every page |
+| Launch Kit | $497 one-time on monthly, waived on annual. Leaving offer: $200 off | Read from config. Version 1 notes that said $297 were out of date |
+| Guarantee | Live in 14 days or the first month is free. Bookings and revenue are not guaranteed | Used as is. The removed Every-Lead-Answered guarantee and seasonal campaigns bonus are not used anywhere |
+| Missed calls | "Caught every time"; text back only to callers who agreed to texts, after carrier approval | Same wording in all new content |
+| AI limits | Never quotes prices, says it is an AI if asked, hands complex matters to the owner | Same wording in all new content |
+| Texting hours | 8 AM to 8 PM; email at any hour | Read from config |
+| Lead reply time | No measured figure yet (`measured.leadReplySeconds` is empty) | New content says "within a minute during texting hours", as the approved copy does, and gives no measured number |
+| Redirects | Earlier owner rule: "no redirects". New instruction: redirect `http` and `www`, and redirect a moved page | Not a conflict: no page address changes after launch. Only the host variants redirect |
+| Proof | No approved case study, no founder details, voice demo not connected | No proof is invented. About page describes method and promises only. Demo shows the labelled example conversation |
+| Contact | No contact email, phone or address set | Contact page is not generated until one is set. Listed under owner actions |
+| Legal | Drafts, not lawyer reviewed | Kept `noindex` with the draft notice |

@@ -1,0 +1,98 @@
+---
+/**
+ * The one layout for every cnvrtx.com page. It owns everything Google reads in the <head>:
+ * title, description, canonical, robots, Open Graph and structured data.
+ * A page passes its own path; the canonical is always that path on https://cnvrtx.com.
+ */
+import '../../src/styles/global.css';
+import '../../src/styles/v9.css';
+import '../styles/site.css';
+import SiteNav from '../components/SiteNav.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import { site, abs } from '../config/site';
+import soraFont from '@fontsource-variable/sora/files/sora-latin-wght-normal.woff2?url';
+import manropeFont from '@fontsource-variable/manrope/files/manrope-latin-wght-normal.woff2?url';
+
+export type Crumb = { label: string; href: string };
+
+interface Props {
+  title: string;
+  description: string;
+  /** This page's address, for example '/auto/missed-calls'. */
+  path: string;
+  /** Breadcrumb trail after "Home". The last item is this page. */
+  crumbs?: Crumb[];
+  /** Extra structured data objects (without @context). */
+  schema?: Record<string, unknown>[];
+  /** 'article' for guides. */
+  ogType?: 'website' | 'article';
+  /** Keeps this page out of Google even after launch (legal drafts, the 404 page). */
+  noindex?: boolean;
+  /** True when a page puts a bar above the menu (none does today). */
+  bar?: boolean;
+  /** The auto hub keeps "Get started" pointing at its own pricing section. */
+  cta?: { label: string; href: string };
+}
+
+const { title, description, path, crumbs = [], schema = [], ogType = 'website', noindex = false, bar = false, cta } = Astro.props;
+const canonical = abs(path);
+const index = site.indexing && !noindex;
+const trail = crumbs.length ? [{ label: 'Home', href: '/' }, ...crumbs] : [];
+const graph: Record<string, unknown>[] = [...schema];
+if (trail.length) {
+  graph.push({
+    '@type': 'BreadcrumbList',
+    itemListElement: trail.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.label, item: abs(c.href) })),
+  });
+}
+const jsonLd = graph.length ? JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }) : '';
+const gtm = site.gtmContainerId;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content={index ? 'index, follow' : 'noindex, follow'} />
+    <link rel="canonical" href={canonical} />
+    <meta name="theme-color" content="#070B10" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="sitemap" href="/sitemap.xml" />
+    {site.searchConsoleVerification && <meta name="google-site-verification" content={site.searchConsoleVerification} />}
+
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content="en_US" />
+    <meta name="twitter:card" content="summary" />
+
+    <link rel="preload" as="font" type="font/woff2" href={soraFont} crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href={manropeFont} crossorigin />
+
+    <script is:inline>document.documentElement.classList.add('js');</script>
+    {jsonLd && <script type="application/ld+json" is:inline set:html={jsonLd} />}
+    {
+      gtm && (
+        <script is:inline define:vars={{ gtm }}>
+          (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer',gtm);
+        </script>
+      )
+    }
+    <slot name="head" />
+  </head>
+  <body class:list={['v9', 'site', !bar && 'nobar']}>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <slot name="bar" />
+    <SiteNav cta={cta} />
+    <slot />
+    <SiteFooter />
+    <script>
+      import '../../src/scripts/page';
+    </script>
+  </body>
+</html>

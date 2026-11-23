@@ -1,0 +1,302 @@
+---
+/**
+ * cnvrtx.com/auto : the Automotive Front Office hub and the main auto sales page.
+ * The sales sections are the approved v9 sections, unchanged (src/components/automotive-v9).
+ * Added for the main site: a plain introduction, and the directory of every problem page,
+ * every shop-type page and the flagship guides, as normal crawlable links.
+ * Words of the sales sections: src/content/automotiveCopyV9.ts. Prices: src/config/offerV9.ts.
+ */
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import Hero9 from '../../../src/components/automotive-v9/Hero9.astro';
+import Ticker9 from '../../../src/components/automotive-v9/Ticker9.astro';
+import Pipe9 from '../../../src/components/automotive-v9/Pipe9.astro';
+import Leaks9 from '../../../src/components/automotive-v9/Leaks9.astro';
+import Hook9 from '../../../src/components/automotive-v9/Hook9.astro';
+import Math9 from '../../../src/components/automotive-v9/Math9.astro';
+import Stack9 from '../../../src/components/automotive-v9/Stack9.astro';
+import Day9 from '../../../src/components/automotive-v9/Day9.astro';
+import Work9 from '../../../src/components/automotive-v9/Work9.astro';
+import Voice9 from '../../../src/components/automotive-v9/Voice9.astro';
+import Offer9 from '../../../src/components/automotive-v9/Offer9.astro';
+import Car9 from '../../../src/components/automotive-v9/Car9.astro';
+import Audit9 from '../../../src/components/automotive-v9/Audit9.astro';
+import Arrow from '../../components/Arrow.astro';
+import { hooks9, faq9, start9, plans9 } from '../../../src/content/automotiveCopyV9';
+import { doorIcons } from '../../../src/content/automotiveDoors';
+import { featuredPlan, fillOffer } from '../../../src/config/offerV9';
+import { site, abs, price } from '../../config/site';
+import { problems, shopTypes, guides } from '../../content/directory';
+
+const title = 'Front Office System for Auto Shops: Calls, Quotes, Bookings | CNVRT X';
+const description =
+  'A done-for-you front desk for detailing, coating, PPF, tint and aftermarket shops. Every call answered, every quote followed up, every booking confirmed. Built and tested for you.';
+const crumbs = [{ label: 'Automotive', href: '/auto' }];
+const flagship = guides.slice(0, 6);
+const faq = faq9.items.map((x) => ({ q: x.q, a: fillOffer(x.a) }));
+
+const schema = [
+  {
+    '@type': 'WebPage',
+    '@id': abs('/auto') + '#webpage',
+    url: abs('/auto'),
+    name: title,
+    description,
+    isPartOf: { '@id': abs('/') + '#website' },
+  },
+  {
+    '@type': 'Service',
+    '@id': abs('/auto') + '#service',
+    name: `${site.product} for Auto Shops`,
+    serviceType: 'Done-for-you front office system for automotive shops',
+    description,
+    provider: { '@type': 'Organization', '@id': abs('/') + '#organization', name: site.name, url: abs('/') },
+    areaServed: { '@type': 'Country', name: 'United States' },
+    audience: { '@type': 'BusinessAudience', name: 'Auto detailing, ceramic coating, PPF, window tint and aftermarket shops' },
+    offers: [
+      { '@type': 'Offer', name: 'Monthly', price: String(featuredPlan.monthly), priceCurrency: 'USD', url: abs('/auto') + '#pricing' },
+      { '@type': 'Offer', name: 'Annual', price: String(featuredPlan.annual), priceCurrency: 'USD', url: abs('/auto') + '#pricing' },
+    ],
+  },
+];
+---
+
+<SiteLayout title={title} description={description} path="/auto" crumbs={crumbs} schema={schema} cta={{ label: 'Get Started', href: '#pricing' }}>
+  <main id="main">
+    <Hero9 />
+    <Ticker9 />
+    <Pipe9 />
+
+    <section class="s-sec pearl tight" aria-labelledby="intro-title">
+      <div class="container">
+        <Crumbs crumbs={crumbs} />
+        <div class="s-answer">
+          <span class="tag">In plain words</span>
+          <h2 id="intro-title" class="sr-only">What CNVRT X Front Office is</h2>
+          <p>
+            {site.product} is a done-for-you front desk for automotive shops. It answers every call, form and message, follows up on every quote, confirms every booking,
+            asks every customer for a review and sends you tomorrow’s run sheet.
+          </p>
+          <p>
+            We build it, write it and test it for your shop. It is one plan with three roles inside it: a receptionist, a service advisor and a shop manager. There is no sales
+            call. This page shows the problem, the system and the price.
+          </p>
+        </div>
+        <ul class="s-chips" role="list" style="margin-top:22px" aria-label="Shop types">
+          {
+            shopTypes.map((s) => (
+              <li>
+                <a href={`/auto/${s.slug}`}>{s.label}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+
+    <Leaks9 />
+    <Hook9 lines={hooks9.afterLeaks} />
+    <Math9 />
+    <Stack9 />
+
+    <section class="s-sec" id="solutions" aria-labelledby="sol-title">
+      <div class="container">
+        <header class="s-head">
+          <p class="kicker">What do you want fixed first?</p>
+          <h2 id="sol-title">One plan. <span class="hot">Twelve problems it takes off you.</span></h2>
+          <p class="lede">Each one has its own page that explains the problem, how the fix runs step by step, and where a person still steps in.</p>
+        </header>
+        <ul class="s-grid" role="list">
+          {
+            problems.map((p) => (
+              <li>
+                <a class="s-card" href={`/auto/${p.slug}`}>
+                  <span class="ic" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" set:html={doorIcons[p.door] || ''} />
+                  </span>
+                  <span class="k">{p.system}</span>
+                  <b class="t">{p.label}</b>
+                  <p>{p.line}</p>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+
+    <Day9 />
+    <Work9 />
+    <Voice9 />
+
+    <section class="s-sec pearl" id="shop-types" aria-labelledby="shops-title">
+      <div class="container">
+        <header class="s-head">
+          <p class="kicker">Built for your kind of shop</p>
+          <h2 id="shops-title">The same front office, set up for how your shop sells.</h2>
+          <p class="lede">A tint inquiry and a PPF inquiry do not behave the same way. Pick your shop to see how the system fits it.</p>
+        </header>
+        <ul class="s-grid" role="list">
+          {
+            shopTypes.map((s) => (
+              <li>
+                <a class="s-card" href={`/auto/${s.slug}`}>
+                  <b class="t">{s.label}</b>
+                  <p>{s.line}</p>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+        <p class="s-prose" style="margin-top:28px">
+          <span>
+            Want the practical detail first? See <a href="/auto/how-it-works">how the build and launch work</a>{
+              flagship.length > 0 && (
+                <Fragment>
+                  , or start with a guide:
+                </Fragment>
+              )
+            }{flagship.length === 0 && '.'}
+          </span>
+        </p>
+        {
+          flagship.length > 0 && (
+            <ul class="s-grid two" role="list" style="margin-top:14px">
+              {flagship.map((g) => (
+                <li>
+                  <a class="s-card" href={`/auto/guides/${g.slug}`}>
+                    <span class="k">Guide · {g.stage}</span>
+                    <b class="t">{g.title}</b>
+                    <p>{g.description}</p>
+                  </a>
+                </li>
+              ))}
+              <li>
+                <a class="s-card" href="/auto/guides">
+                  <span class="k">Guide library</span>
+                  <b class="t">All guides for auto shops</b>
+                  <p>Working documents for each stage, from the first inquiry to the repeat visit.</p>
+                </a>
+              </li>
+            </ul>
+          )
+        }
+      </div>
+    </section>
+
+    <Offer9 gears />
+
+    <section class="s-sec pearl" id="faq" aria-labelledby="faq-title">
+      <div class="container">
+        <header class="s-head">
+          <p class="kicker">{faq9.kicker}</p>
+          <h2 id="faq-title">{faq9.title}</h2>
+        </header>
+        <div class="s-faq">
+          {
+            faq.map((f) => (
+              <details>
+                <summary>{f.q}</summary>
+                <p>{f.a}</p>
+              </details>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    {/* The purchase itself happens on get.cnvrtx.com: order summary, reserve form, then checkout.
+        Nothing here links straight to a checkout page. */}
+    <section class="s-sec s-offer" id="start" aria-labelledby="start-title">
+      <div class="container">
+        <div class="box">
+          <div>
+            <p class="kicker">{start9.kicker}</p>
+            <h2 id="start-title">
+              {start9.title[0]} <span class="hot">{start9.title[1]}</span>
+            </h2>
+            <p class="lede">{start9.lead}</p>
+            <div class="act">
+              <a href={site.checkout.annual} class="go" data-spot data-attr-link data-track="start_checkout_click" data-track-plan="frontOffice_annual">
+                {plans9.annual.cta}: {price.annual} a year
+                <Arrow />
+              </a>
+              <a href={site.checkout.monthly} class="ghost" data-attr-link data-track="start_checkout_click" data-track-plan="frontOffice_monthly">
+                {plans9.monthly.cta}: {price.monthly} a month
+              </a>
+            </div>
+            <p class="s-note">Annual: Launch Kit waived. Monthly: plus a {price.kit} one-time Launch Kit.</p>
+          </div>
+          <ol class="facts" role="list">
+            {
+              start9.steps.map((s, i) => (
+                <li>
+                  <b>{i + 1}</b>
+                  <span>
+                    <strong style="color:#fff">{s.t}.</strong> {s.d}
+                  </span>
+                </li>
+              ))
+            }
+          </ol>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Car9 />
+  <Audit9 />
+</SiteLayout>
+
+<script>
+  // The plan buttons in the pricing section go straight to the order summary on get.cnvrtx.com,
+  // with the plan already chosen. Without scripts they lead to the Start section just below.
+  const go = document.querySelector<HTMLElement>('#start');
+  const links = { annual: go?.querySelector<HTMLAnchorElement>('a[data-track-plan$="annual"]'), monthly: go?.querySelector<HTMLAnchorElement>('a[data-track-plan$="monthly"]') };
+  document.addEventListener('click', (e) => {
+    const a = (e.target as HTMLElement | null)?.closest<HTMLAnchorElement>('a[data-plan-cta]');
+    const to = a && links[a.dataset.interval === 'monthly' ? 'monthly' : 'annual'];
+    if (!to) return;
+    e.preventDefault();
+    location.href = to.href;
+  });
+
+  // Lower sections are rendered lazily, so their height is an estimate until they are seen.
+  // After an in-page jump settles, check the target really is at the top and nudge it if not.
+  document.addEventListener('click', (e) => {
+    const a = (e.target as HTMLElement | null)?.closest<HTMLAnchorElement>('a[href^="#"]');
+    const id = a?.getAttribute('href')?.slice(1);
+    const target = id ? document.getElementById(id) : null;
+    if (!target) return;
+    const t0 = performance.now();
+    let tries = 0;
+    const settle = () => {
+      if (e.defaultPrevented || performance.now() - t0 > 4000) return;
+      const pad = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0;
+      const margin = parseFloat(getComputedStyle(target).scrollMarginTop) || 0;
+      const off = target.getBoundingClientRect().top - pad - margin;
+      if (Math.abs(off) > 12 && tries++ < 3) {
+        window.scrollBy({ top: off, behavior: 'instant' });
+        window.setTimeout(settle, 140);
+      }
+    };
+    if ('onscrollend' in window) window.addEventListener('scrollend', settle, { once: true });
+    else window.setTimeout(settle, 900);
+  });
+</script>
+
+<style>
+  .ic {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    margin-bottom: 4px;
+    border-radius: 13px;
+    border: 1.5px solid rgba(255, 255, 255, 0.2);
+    color: #d8ff3e;
+  }
+  .ic svg {
+    width: 22px;
+    height: 22px;
+  }
+</style>

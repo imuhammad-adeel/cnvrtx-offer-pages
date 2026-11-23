@@ -1,0 +1,79 @@
+---
+/**
+ * cnvrtx.com/contact. It is generated ONLY when a real contact detail is set in
+ * src/config/offerV9.ts (contact.email or contact.phone) or automotiveOffer.contactUrl.
+ * With none set, this file produces no page at all, so an empty contact page is never published.
+ */
+import SiteLayout from '../layouts/SiteLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import { site, abs, hasContact, contactUrl } from '../config/site';
+
+export function getStaticPaths() {
+  return hasContact ? [{ params: { page: 'contact' } }] : [];
+}
+const k = site.contact;
+const title = 'Contact CNVRT X';
+const description = 'How to reach CNVRT X about the Front Office system for auto shops.';
+const path = '/contact';
+const crumbs = [{ label: 'Contact', href: path }];
+const schema = [{ '@type': 'ContactPage', '@id': abs(path) + '#webpage', url: abs(path), name: title, description, isPartOf: { '@id': abs('/') + '#website' }, about: { '@id': abs('/') + '#organization' } }];
+---
+
+<SiteLayout title={title} description={description} path={path} crumbs={crumbs} schema={schema}>
+  <main id="main">
+    <PageHero
+      crumbs={crumbs}
+      kicker="Contact"
+      title={['Ask Us Anything', 'Before You Join.']}
+      lede="There is no sales call and you do not need one to start. If you have a question first, this is how to reach us."
+    />
+    <section class="s-sec pearl">
+      <div class="container">
+        <ul class="s-grid" role="list" style="max-width:920px">
+          {
+            k.email && (
+              <li>
+                <a class="s-card" href={`mailto:${k.email}`}>
+                  <span class="k">Email</span>
+                  <b class="t">{k.email}</b>
+                  <p>The best way to reach us. We reply by email.</p>
+                </a>
+              </li>
+            )
+          }
+          {
+            k.phone && (
+              <li>
+                <a class="s-card" href={`tel:${k.phone.replace(/[^+\d]/g, '')}`}>
+                  <span class="k">Phone</span>
+                  <b class="t">{k.phone}</b>
+                  <p>Call or leave a message.</p>
+                </a>
+              </li>
+            )
+          }
+          {
+            contactUrl && (
+              <li>
+                <a class="s-card" href={contactUrl}>
+                  <span class="k">Contact form</span>
+                  <b class="t">Send us a message</b>
+                  <p>Tell us about your shop and what you want to know.</p>
+                </a>
+              </li>
+            )
+          }
+        </ul>
+        <div class="s-prose" style="margin-top:28px">
+          <p>
+            {site.legalName}
+            {k.address && `, ${k.address}`}
+          </p>
+          <p>
+            Many questions are already answered on the <a href="/auto#faq">automotive page</a> and in <a href="/auto/how-it-works">how it works</a>.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+</SiteLayout>

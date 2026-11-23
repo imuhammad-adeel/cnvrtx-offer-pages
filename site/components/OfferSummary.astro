@@ -1,0 +1,47 @@
+---
+/**
+ * The compact offer shown on problem and shop-type pages. The full pricing table, the nine
+ * systems, the demo and the sign-up steps live on /auto only. Every figure is read from config.
+ */
+import Arrow from './Arrow.astro';
+import { price, site } from '../config/site';
+import { offerV9 } from '../../src/config/offerV9';
+import { automotiveOffer } from '../../src/config/automotiveOffer';
+import { plans9, guarantee9 } from '../../src/content/automotiveCopyV9';
+interface Props {
+  /** Headline, written for the page it sits on. */
+  title?: string;
+  lede?: string;
+}
+const days = automotiveOffer.launchPromiseDays;
+const roles = plans9.roles.map((r) => r.role.replace(/^The /, ''));
+const systems = plans9.roles.reduce((n, r) => n + r.systems.length, 0);
+const { title = 'One plan fixes this. And the rest of the front desk.', lede = `${site.product} is built, written and tested for your shop. No sales call. Month-to-month on the monthly plan.` } = Astro.props;
+---
+
+<section class="s-sec s-offer" id="pricing" aria-labelledby="offer-title">
+  {/* landing spot for shared links that point at #start when scripts are off */}
+  <span id="start"></span>
+  <div class="container">
+    <div class="box">
+      <div>
+        <p class="kicker">{site.product}</p>
+        <h2 id="offer-title">{title}</h2>
+        <p class="lede">{lede}</p>
+        <div class="act">
+          <a href="/auto" class="go" data-track="cta_click" data-track-location="offer_summary">
+            See the complete system
+            <Arrow />
+          </a>
+          <a href="/auto#pricing" class="ghost">Full pricing and what is included</a>
+        </div>
+      </div>
+      <ul class="facts" role="list">
+        <li><b>{price.monthly}/mo</b><span>or {price.annual} a year, which is {offerV9.annualMonthsPaid} months paid for 12</span></li>
+        <li><b>{roles.length} roles</b><span>{roles.join(', ')}</span></li>
+        <li><b>{systems} systems</b><span>Connected, so a lead moves from first call to repeat visit</span></li>
+        <li><b>{days} days</b><span>{guarantee9.headline}</span></li>
+      </ul>
+    </div>
+  </div>
+</section>

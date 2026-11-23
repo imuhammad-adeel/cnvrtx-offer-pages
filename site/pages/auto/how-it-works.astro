@@ -1,0 +1,211 @@
+---
+/**
+ * cnvrtx.com/auto/how-it-works : what happens after a shop joins.
+ * Every fact here is taken from the approved offer copy and src/config/offerV9.ts:
+ * Setup Center, the 14-day clock, carrier approval, the monthly allowance.
+ */
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import OfferSummary from '../../components/OfferSummary.astro';
+import { automotiveOffer } from '../../../src/config/automotiveOffer';
+import { offerV9, allowanceText } from '../../../src/config/offerV9';
+import { guarantee9 } from '../../../src/content/automotiveCopyV9';
+import { abs, textingHours } from '../../config/site';
+
+const days = automotiveOffer.launchPromiseDays;
+const title = 'How CNVRT X Front Office Works: Setup, Texting Approval and Launch';
+const description = `What you provide, what we build, how carrier approval for texting works, and what happens after launch. ${guarantee9.short}.`;
+const path = '/auto/how-it-works';
+const crumbs = [
+  { label: 'Automotive', href: '/auto' },
+  { label: 'How it works', href: path },
+];
+
+const steps = [
+  { when: 'Minute one', t: 'Pick annual or monthly', d: 'Checkout takes a couple of minutes. There is no demo and no sales call. The price and everything included are on the automotive page.' },
+  { when: 'Within a few minutes', t: 'Check your inbox and log in', d: 'Your login email arrives within a few minutes of payment. If you do not see it, check spam and promotions.' },
+  { when: 'Your part, about 10-15 minutes', t: 'Answer the setup questions', d: 'Click Setup Center in the left menu and answer the questions about your shop: services, hours, prices and policies. You can change any answer later in the same place.' },
+  { when: `The ${days}-day clock starts`, t: 'Your answers fill the system in', d: 'Your emails, texts, booking pages and AI assistant fill in automatically from your answers, written in your shop’s voice. The AI front desk is set up to answer only from information you approved.' },
+  { when: 'During the build', t: 'We connect and check everything', d: 'We connect your phone, Google and Meta, and check everything: the booking page, your local US number, one inbox for calls, texts, chat and DMs, the mobile app, job cards, the daily brief and the run sheet.' },
+  { when: 'Before launch', t: 'We test it', d: 'The system is run end to end before a real customer touches it, so your first customer is not the test.' },
+  { when: `Within ${days} days`, t: 'Your front desk goes live', d: guarantee9.headline },
+  { when: 'After launch', t: 'You work on cars', d: 'Routine steps run on their own. When a conversation needs a person, you reply from the app. Each Monday you get a report of leads, booked jobs, won jobs and reviews.' },
+];
+
+const you = ['About 10-15 minutes answering the setup questions in Setup Center', 'A yes or a change on what we write for your shop', 'Replies from the app when a customer needs a person'];
+const we = ['The booking page, local number, inbox and mobile app', 'All nine systems, connected to each other', 'Every message, written in your shop’s voice from your answers', 'The AI front desk, limited to information you approve', 'Connecting your phone, Google and Meta', 'Carrier registration for texting, prepared with you', 'Testing before launch'];
+
+const auto = ['Missed-call text backs and first replies to new leads', 'Quote follow-ups that stop when the customer replies', 'Booking confirmations, “Reply YES or MOVE” and reminders', 'Review requests and two gentle reminders', 'Check-ins, referral asks and win-back messages', 'Job cards, the 7:30 AM brief, the 6 PM run sheet and the Monday report'];
+const ai = ['Answers questions from information you approve', 'Collects the customer’s name, number, vehicle and service', 'Books the free inspection', `Answers in ${offerV9.aiLanguages}`, 'Drafts a quote from your price list for you to approve'];
+const human = ['Every price that reaches a customer', 'Complaints, warranty questions and unhappy customers', 'Large, custom or unusual jobs', 'Anyone who asks to speak to the owner', 'The work on the car'];
+
+const faq = [
+  { q: 'What is A2P 10DLC, in plain words?', a: 'It is the registration US phone carriers require before a business can send text messages from a local number. The carrier checks who the business is and what kind of messages it sends. Without it, business texts are blocked or filtered.' },
+  { q: 'How long does carrier approval take?', a: `It is decided by the carriers, not by us, so we do not promise a date. It is outside the ${days}-day launch. We prepare the registration with you early so it runs alongside the build.` },
+  { q: 'What works before texting is approved?', a: 'Email, job cards, the AI front desk on chat and social messages, the booking page, the daily brief and the run sheet. Texting switches on when the carrier approves.' },
+  { q: 'Do I have to replace my shop software?', a: 'Usually not. Keep the tools that run your jobs and invoices. This handles what happens before and after the job: the inquiry, the follow-up, the booking and the return visit.' },
+  { q: 'What if I use more than the monthly allowance?', a: 'The allowance covers a typical single-location shop. If you are close to a limit we tell you before anything extra is charged.' },
+  { q: 'What if I cancel?', a: 'Monthly plans are month-to-month. Your domain, content and customer list stay yours and you can export them.' },
+];
+
+const schema = [{ '@type': 'WebPage', '@id': abs(path) + '#webpage', url: abs(path), name: title, description, isPartOf: { '@id': abs('/') + '#website' }, about: { '@id': abs('/auto') + '#service' } }];
+---
+
+<SiteLayout title={title} description={description} path={path} crumbs={crumbs} schema={schema}>
+  <main id="main">
+    <PageHero
+      crumbs={crumbs}
+      kicker="How it works"
+      title={['From Sign-Up to', 'a Working Front Desk.']}
+      lede={`You log in, open Setup Center and answer the setup questions. That takes about 10-15 minutes. We build, write and test everything else. ${guarantee9.headline}`}
+      primary={{ label: 'See the plan and price', href: '/auto#pricing' }}
+      secondary={{ label: 'The steps ↓', href: '#steps' }}
+    />
+
+    <section class="s-sec pearl" id="steps" aria-labelledby="steps-title">
+      <div class="container">
+        <header class="s-head">
+          <p class="kicker">The sequence</p>
+          <h2 id="steps-title">Eight steps. Three of them are yours.</h2>
+        </header>
+        <ol class="s-steps" role="list">
+          {
+            steps.map((s) => (
+              <li>
+                <span class="when">{s.when}</span>
+                <h3>{s.t}</h3>
+                <p>{s.d}</p>
+              </li>
+            ))
+          }
+        </ol>
+        <p class="s-note">
+          {guarantee9.condition}
+        </p>
+      </div>
+    </section>
+
+    <section class="s-sec" aria-labelledby="split-title">
+      <div class="container">
+        <header class="s-head">
+          <p class="kicker">Who does what in the build</p>
+          <h2 id="split-title">What you provide. <span class="hot">What we build.</span></h2>
+        </header>
+        <div class="s-cols">
+          <div class="s-list you">
+            <h3>You provide</h3>
+            <ul>
+              {you.map((x) => <li>{x}</li>)}
+            </ul>
+          </div>
+          <div class="s-list">
+            <h3>We build, write and test</h3>
+            <ul>
+              {we.map((x) => <li>{x}</li>)}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="s-sec pearl" id="texting" aria-labelledby="a2p-title">
+      <div class="container">
+        <header class="s-head">
+          <p class="kicker">Texting approval</p>
+          <h2 id="a2p-title">Why texting starts after carrier approval.</h2>
+        </header>
+        <div class="s-prose">
+          <p>
+            In the United States, a business has to register with the phone carriers before it can text customers from a local number. The registration is called
+            <strong>A2P 10DLC</strong>. It exists to stop spam, and it applies to every business, including yours.
+          </p>
+          <p>
+            We prepare the registration with you. The carriers decide when it is approved, which is why it sits outside the {days}-day launch. Until approval arrives,
+            everything that does not depend on texting already works: email, job cards, the AI front desk, the booking page and your daily reports.
+          </p>
+          <p>Once texting is live, three rules always apply:</p>
+          <ul>
+            <li>Texts go only to people who agreed to receive them.</li>
+            <li>Automated texts are sent between {textingHours}. Outside those hours a text waits for the morning. Email goes at any hour.</li>
+            <li>Anyone can reply STOP to opt out, and they are not texted again.</li>
+          </ul>
+          <p>
+            Carrier fees for texting are passed on at cost and shown to you before activation. The full wording is in the <a href="/legal/sms-terms">SMS Terms</a>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="s-sec alt" aria-labelledby="three-title">
+      <div class="container">
+        <header class="s-head">
+          <p class="kicker">After launch</p>
+          <h2 id="three-title">What is automation, what is AI, and what stays with you.</h2>
+          <p class="lede">Most of the system is not AI. It is fixed automation: the same approved message, sent at the right moment, every time.</p>
+        </header>
+        <div class="s-cols">
+          <div class="s-list">
+            <h3>Fixed automation</h3>
+            <ul>
+              {auto.map((x) => <li>{x}</li>)}
+            </ul>
+          </div>
+          <div class="s-list">
+            <h3>The AI front desk</h3>
+            <ul>
+              {ai.map((x) => <li>{x}</li>)}
+            </ul>
+          </div>
+          <div class="s-list you">
+            <h3>Always a person</h3>
+            <ul>
+              {human.map((x) => <li>{x}</li>)}
+            </ul>
+          </div>
+        </div>
+        <p class="s-note">The AI never quotes prices, never claims to be a person, and says it is an AI when asked.</p>
+      </div>
+    </section>
+
+    <section class="s-sec pearl" aria-labelledby="inc-title">
+      <div class="container">
+        <header class="s-head">
+          <p class="kicker">Every month</p>
+          <h2 id="inc-title">What is included, and what stays yours.</h2>
+        </header>
+        <div class="s-prose">
+          <p>Each month includes {allowanceText()}. That covers a typical single-location shop.</p>
+          <p>
+            The system sits alongside the software that runs your jobs and invoices. Your domain, your content and your customer list belong to you and can be exported.
+          </p>
+          <p>
+            We guarantee the work we control: a tested system, live on time. We do not guarantee bookings or revenue, because those depend on your services, prices and
+            market. To see each system in detail, start with <a href="/auto/missed-calls">missed calls</a>, <a href="/auto/quote-follow-up">quote follow-up</a> or
+            <a href="/auto/no-shows">no-shows</a>, or read the <a href="/auto/guides">guides</a>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="s-sec pearl tight" id="faq" aria-labelledby="faq-title" style="padding-top:0">
+      <div class="container">
+        <header class="s-head">
+          <p class="kicker">Straight answers</p>
+          <h2 id="faq-title">Questions about setup and launch.</h2>
+        </header>
+        <div class="s-faq">
+          {
+            faq.map((f) => (
+              <details>
+                <summary>{f.q}</summary>
+                <p>{f.a}</p>
+              </details>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <OfferSummary title="Answer the setup questions. Then go back to the cars." />
+  </main>
+</SiteLayout>

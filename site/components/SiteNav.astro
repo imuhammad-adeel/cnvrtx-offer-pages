@@ -1,0 +1,357 @@
+---
+/** The site menu. Same floating pill as the sales page, with real links to real pages. */
+import { problems, shopTypes } from '../content/directory';
+
+interface Props {
+  cta?: { label: string; href: string };
+}
+const { cta = { label: 'See the plan', href: '/auto#pricing' } } = Astro.props;
+const here = Astro.url.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+const cur = (href: string) => (here === href ? 'page' : undefined);
+---
+
+<header class="snav" data-snav>
+  <a href="/" class="logo" aria-label="CNVRT X home page">CNVRT<span>✕</span></a>
+
+  <nav class="links" aria-label="Primary">
+    <a href="/auto" aria-current={cur('/auto')}>Front Office</a>
+    <details class="dd" data-dd>
+      <summary>Solutions<i aria-hidden="true"></i></summary>
+      <div class="panel">
+        <ul role="list" class="cols3">
+          {
+            problems.map((p) => (
+              <li>
+                <a href={`/auto/${p.slug}`} aria-current={cur(`/auto/${p.slug}`)}>
+                  <b>{p.label}</b>
+                  <small>{p.system}</small>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </details>
+    <details class="dd" data-dd>
+      <summary>Shop types<i aria-hidden="true"></i></summary>
+      <div class="panel narrow">
+        <ul role="list" class="cols2">
+          {
+            shopTypes.map((s) => (
+              <li>
+                <a href={`/auto/${s.slug}`} aria-current={cur(`/auto/${s.slug}`)}>
+                  <b>{s.label}</b>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </details>
+    <a href="/auto/guides" aria-current={cur('/auto/guides')}>Guides</a>
+    <a href="/auto/how-it-works" aria-current={cur('/auto/how-it-works')}>How it works</a>
+  </nav>
+
+  <a href={cta.href} class="go go-sm" data-track="cta_click" data-track-location="nav">{cta.label}</a>
+
+  <details class="mob" data-dd>
+    <summary aria-label="Menu"><i aria-hidden="true"></i></summary>
+    <div class="sheet">
+      <a href="/auto" class="top">Front Office for auto shops</a>
+      <a href="/auto/how-it-works" class="top">How it works</a>
+      <a href="/auto/guides" class="top">Guides</a>
+      <p>Solutions</p>
+      <ul role="list">
+        {
+          problems.map((p) => (
+            <li>
+              <a href={`/auto/${p.slug}`}>{p.label}</a>
+            </li>
+          ))
+        }
+      </ul>
+      <p>Shop types</p>
+      <ul role="list">
+        {
+          shopTypes.map((s) => (
+            <li>
+              <a href={`/auto/${s.slug}`}>{s.label}</a>
+            </li>
+          ))
+        }
+      </ul>
+      <a href="/about" class="top">About</a>
+    </div>
+  </details>
+</header>
+
+<script>
+  // one menu open at a time; close on Escape, on a click outside and after a link is chosen
+  const dds = [...document.querySelectorAll<HTMLDetailsElement>('[data-snav] [data-dd]')];
+  dds.forEach((d) =>
+    d.addEventListener('toggle', () => {
+      if (d.open) dds.forEach((o) => o !== d && (o.open = false));
+    }),
+  );
+  document.addEventListener('click', (e) => {
+    const t = e.target as HTMLElement;
+    dds.forEach((d) => {
+      if (d.open && (!d.contains(t) || t.closest('a'))) d.open = false;
+    });
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') return;
+    dds.forEach((d) => {
+      if (d.open) {
+        d.open = false;
+        d.querySelector('summary')?.focus();
+      }
+    });
+  });
+</script>
+
+<style>
+  .snav {
+    position: fixed;
+    top: calc(var(--bar-h, 0px) + 12px);
+    left: 50%;
+    z-index: 60;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: clamp(14px, 2vw, 28px);
+    padding: 8px 8px 8px 22px;
+    border-radius: 999px;
+    background: rgba(12, 18, 25, 0.78);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    backdrop-filter: blur(16px) saturate(160%);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+    box-shadow: 0 18px 40px -18px rgba(0, 0, 0, 0.7);
+    color: #fff;
+    max-width: calc(100vw - 24px);
+  }
+  .logo {
+    font-family: var(--f-head);
+    font-weight: 800;
+    font-size: 1.05rem;
+    letter-spacing: 0.02em;
+    color: #fff;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .logo span {
+    color: var(--hot);
+    margin-left: 3px;
+  }
+  .links {
+    display: flex;
+    align-items: center;
+    gap: clamp(12px, 1.6vw, 24px);
+  }
+  .links > a,
+  .dd summary {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 44px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #c5d0da;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    list-style: none;
+  }
+  .dd summary::-webkit-details-marker,
+  .mob summary::-webkit-details-marker {
+    display: none;
+  }
+  .links > a:hover,
+  .dd summary:hover,
+  .links > a[aria-current],
+  .dd[open] summary {
+    color: #fff;
+  }
+  .dd summary i {
+    width: 6px;
+    height: 6px;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: translateY(-2px) rotate(45deg);
+    transition: transform 200ms;
+  }
+  .dd[open] summary i {
+    transform: translateY(1px) rotate(-135deg);
+  }
+  .panel {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 50%;
+    width: min(860px, calc(100vw - 24px));
+    transform: translateX(-50%);
+    padding: 14px;
+    border-radius: 24px;
+    background:
+      radial-gradient(60% 50% at 100% 0%, rgba(255, 90, 31, 0.16), transparent 70%),
+      rgba(10, 15, 21, 0.98);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    box-shadow: 0 40px 80px -24px rgba(0, 0, 0, 0.85);
+    max-height: calc(100dvh - var(--bar-h, 0px) - 110px);
+    overflow: auto;
+  }
+  .panel.narrow {
+    width: min(520px, calc(100vw - 24px));
+  }
+  .panel ul {
+    margin: 0;
+    display: grid;
+    gap: 4px;
+  }
+  .cols3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .cols2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .panel a {
+    display: grid;
+    gap: 1px;
+    min-height: 52px;
+    align-content: center;
+    padding: 8px 12px;
+    border-radius: 14px;
+    border: 1px solid transparent;
+    color: #fff;
+    text-decoration: none;
+  }
+  .panel a:hover,
+  .panel a:focus-visible,
+  .panel a[aria-current] {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(216, 255, 62, 0.45);
+    outline: none;
+  }
+  .panel b {
+    font-family: var(--f-head);
+    font-weight: 700;
+    font-size: 0.9375rem;
+    letter-spacing: -0.02em;
+  }
+  .panel small {
+    font-size: 0.75rem;
+    color: var(--fog);
+  }
+
+  /* phone menu */
+  .mob {
+    display: none;
+  }
+  .mob summary {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    list-style: none;
+  }
+  .mob summary i,
+  .mob summary i::before,
+  .mob summary i::after {
+    display: block;
+    width: 18px;
+    height: 2px;
+    border-radius: 2px;
+    background: #fff;
+    transition: transform 200ms;
+  }
+  .mob summary i {
+    position: relative;
+  }
+  .mob summary i::before,
+  .mob summary i::after {
+    content: '';
+    position: absolute;
+    left: 0;
+  }
+  .mob summary i::before {
+    top: -6px;
+  }
+  .mob summary i::after {
+    top: 6px;
+  }
+  .mob[open] summary i {
+    background: transparent;
+  }
+  .mob[open] summary i::before {
+    transform: translateY(6px) rotate(45deg);
+  }
+  .mob[open] summary i::after {
+    transform: translateY(-6px) rotate(-45deg);
+  }
+  .sheet {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    right: 0;
+    padding: 16px;
+    border-radius: 24px;
+    background: rgba(10, 15, 21, 0.99);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    box-shadow: 0 40px 80px -24px rgba(0, 0, 0, 0.85);
+    max-height: calc(100dvh - var(--bar-h, 0px) - 96px);
+    overflow: auto;
+    display: grid;
+    gap: 2px;
+  }
+  .sheet a {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 4px 10px;
+    border-radius: 12px;
+    color: #dbe4ec;
+    text-decoration: none;
+    font-size: 0.9375rem;
+  }
+  .sheet a.top {
+    font-family: var(--f-head);
+    font-weight: 700;
+    color: #fff;
+  }
+  .sheet p {
+    margin: 12px 10px 4px;
+    font-size: 0.6875rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #d8ff3e;
+  }
+  .sheet ul {
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  @media (max-width: 1040px) {
+    .links {
+      display: none;
+    }
+    .mob {
+      display: block;
+    }
+    .snav {
+      width: calc(100vw - 24px);
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .snav .go {
+      margin-left: auto;
+    }
+  }
+  @media (max-width: 380px) {
+    .sheet ul {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

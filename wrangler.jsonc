@@ -1,0 +1,19 @@
+// Cloudflare deployment for the main site, https://cnvrtx.com (static files only).
+// Used ONLY for cnvrtx.com. get.cnvrtx.com is published through `npm run studio`.
+//
+//   npm run site:build      builds dist-site/
+//   npm run site:check      must say "All checks passed."
+//   npx wrangler deploy     uploads dist-site/ (needs the owner's Cloudflare login)
+//
+// html_handling: /auto/missed-calls is served from missed-calls.html, and the same address
+// with a slash at the end is sent to the one without it. not_found_handling: unknown
+// addresses get 404.html with a real 404 status.
+{
+  "name": "cnvrtx-site",
+  "compatibility_date": "2026-11-01",
+  "assets": {
+    "directory": "./dist-site",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  }
+}

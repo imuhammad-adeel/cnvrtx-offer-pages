@@ -42,6 +42,37 @@ Recommendation from the offer-pages chat: one codebase (shared design, component
 - Mobile first. Check every page on phone and desktop before calling it done.
 - Texts are promised only to people who agreed to them. The AI never quotes prices and never claims to be a person.
 
+## Updates from the offer-pages chat (2026-11-17, after its review round was published)
+
+1. `get.cnvrtx.com/auto` is now the auto checkout page (`src/pages/auto/index.astro`, path set by `checkoutPath` in `src/config/offerV9.ts`). Next industry gets its own, for example `/roofing`. `/auto` on get.cnvrtx.com is never used for marketing.
+2. The root of get.cnvrtx.com will send visitors to the brand home at `cnvrtx.com/`, not to `/auto`. So `cnvrtx.com/` must be a real brand page that works for every industry and leads into `/auto`.
+3. Buy buttons on cnvrtx.com point to `https://get.cnvrtx.com/auto?plan=annual` and `https://get.cnvrtx.com/auto?plan=monthly`.
+4. Launch Kit is $497. A leaving offer brings it to $297 on monthly; say "$200 off", never a percentage.
+5. Removed for good: the Every-Lead-Answered guarantee and the seasonal campaigns bonus. Missed calls are "caught every time", with a text back only to callers who agreed to texts. Do not bring the old claims back.
+6. No redirects on get.cnvrtx.com test addresses any more, and none on cnvrtx.com.
+7. `docs/site-copy.md` is regenerated and current.
+8. The folder is clean. Files for cnvrtx.com may be edited once the user approves the proposal. Still off limits: `.studio/`, `scripts/studio-sync.mjs`, `src/pages/auto/index.astro`, `src/pages/onboarding.astro`, `src/pages/thank-you.astro`. Changes to shared components or copy also change get.cnvrtx.com, so tell the user first.
+
+## Final decisions from the owner (2026-11-17, approved)
+
+These replace anything above that disagrees. Full detail is in `docs/cnvrtx-site-proposal.md`.
+
+1. Problem page addresses on cnvrtx.com: `missed-calls`, `lead-response` (was `slow-lead-reply`), `ai-receptionist`, `quote-follow-up`, `no-shows`, `reviews`, `repeat-customers`, `run-sheet`, `ad-tracking` (was `ad-results`), `front-office`, `ai-employee`, `website-chatbot` (was `talking-website`).
+2. Eight shop-type pages, with mobile detailing as its own page.
+3. Guides are service-specific and problem-specific, not general. No page matrix. First batch is six deep guides.
+4. Problem pages do not repeat the pricing table, nine systems, demo, full FAQ or sign-up steps. They carry a compact offer summary and link to `/auto`.
+5. Clean grouped footer. Simple, accurate schema. No FAQ schema as a tactic.
+6. Host variants (`http`, `www`) redirect to `https://cnvrtx.com`. Page addresses never change after launch.
+7. Launch the commercial site plus the first guides once the launch gate passes. Indexing stays off until then.
+8. The main site lives in its own source folder, `site/`, and builds with `astro.site.config.mjs`. `src/` stays the offer-pages chat's area.
+
+## Final architecture (from the offer-pages chat, 2026-11-18)
+
+1. cnvrtx.com is the main site (this repo, `site/`, Cloudflare). get.cnvrtx.com holds the transaction pages and the checkout, built in GHL AI Studio. The domain go.cnvrtx.com is not used. Never reference it.
+2. Buy buttons on cnvrtx.com point to `https://get.cnvrtx.com/auto?plan=annual` and `?plan=monthly`, through `checkoutPath`. That page is an order summary; its button leads to the reserve form, which sends the details to GHL and then opens checkout. Never link straight to `/checkout/...` from cnvrtx.com: every purchase must pass the reserve form, because that starts abandoned-checkout recovery.
+3. The four forms (reserve, onboarding, audit, waitlist) POST to GHL inbound webhooks. Addresses: `endpoints` in `src/config/automotiveOffer.ts`. Field names: `src/scripts/forms.ts`. Where cnvrtx.com shows one of these forms, use the shared component unchanged. The honeypot field is `company_website`.
+4. Rules for both chats: test mode only, no live charges, no change to any GHL workflow, product, price or custom value, and no test data POSTed to the live webhooks without asking the owner.
+
 ## Status
 
-Structure proposal is in `docs/cnvrtx-site-proposal.md`. Nothing is built, moved or deployed until the user approves the structure.
+Plan approved and built (2026-11-17). Not deployed. Indexing is off. See `docs/cnvrtx-launch-report.md` for what is ready, what is blocked and what the owner must do.

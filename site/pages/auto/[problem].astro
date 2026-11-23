@@ -1,0 +1,316 @@
+---
+/**
+ * Problem pages: cnvrtx.com/auto/<slug>. One business problem, one mechanism.
+ * Top of the page (hero, animated example, calculator, "what changes") is the approved door
+ * copy, reused as it is. The reading sections come from site/content/problemPages.ts.
+ * Deliberately NOT here: the pricing table, the nine systems, the sign-up steps and the
+ * general FAQ. Those live on /auto. This page ends on a compact offer summary.
+ */
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import OfferSummary from '../../components/OfferSummary.astro';
+import HeroDoor from '../../../src/components/automotive-doors/HeroDoor.astro';
+import DoorTicker from '../../../src/components/automotive-doors/DoorTicker.astro';
+import DoorProblem from '../../../src/components/automotive-doors/DoorProblem.astro';
+import MathDoor from '../../../src/components/automotive-doors/MathDoor.astro';
+import DoorCount from '../../../src/components/automotive-doors/DoorCount.astro';
+import DoorChanges from '../../../src/components/automotive-doors/DoorChanges.astro';
+import DoorPortfolio from '../../../src/components/automotive-doors/DoorPortfolio.astro';
+import DoorSiteOffer from '../../../src/components/automotive-doors/DoorSiteOffer.astro';
+import Hook9 from '../../../src/components/automotive-v9/Hook9.astro';
+import Work9 from '../../../src/components/automotive-v9/Work9.astro';
+import Day9 from '../../../src/components/automotive-v9/Day9.astro';
+import Voice9 from '../../../src/components/automotive-v9/Voice9.astro';
+import Audit9 from '../../../src/components/automotive-v9/Audit9.astro';
+import { doors } from '../../../src/content/automotiveDoors';
+import { doorPages, doorPageCommon } from '../../../src/content/automotiveDoorPages';
+import { guarantee9 } from '../../../src/content/automotiveCopyV9';
+import { offerV9 } from '../../../src/config/offerV9';
+import { abs, price, textingHours } from '../../config/site';
+import { problems, journey, problemBySlug, shopBySlug, guidesFor, type Problem } from '../../content/directory';
+import { problemPages } from '../../content/problemPages';
+
+export function getStaticPaths() {
+  return problems.map((p) => ({ params: { problem: p.slug }, props: { p } }));
+}
+interface Props {
+  p: Problem;
+}
+const { p } = Astro.props;
+const door = doors.find((d) => d.slug === p.door)!;
+const top = doorPages[p.door];
+const c = problemPages[p.slug];
+
+const fill = (t: string) =>
+  t
+    .replaceAll('{price}', price.monthly)
+    .replaceAll('{hours}', textingHours)
+    .replaceAll('{site}', price.website)
+    .replaceAll('{voice}', String(offerV9.allowance.voiceMinutes))
+    .replaceAll('{chat}', String(offerV9.allowance.aiReplies))
+    // the one approved guarantee wording, never a variant
+    .replaceAll('{guarantee}', `${guarantee9.headline} ${guarantee9.condition}`);
+
+const path = `/auto/${p.slug}`;
+const crumbs = [
+  { label: 'Automotive', href: '/auto' },
+  { label: p.label, href: path },
+];
+const faq = [...top.faq, ...c.faq].map((x) => ({ q: x.q, a: fill(x.a) }));
+const myGuides = guidesFor(p.slug);
+const shops = c.shops.map(shopBySlug);
+const ji = journey.indexOf(p.slug);
+const prev = ji > 0 ? problemBySlug(journey[ji - 1]) : null;
+const next = ji >= 0 && ji < journey.length - 1 ? problemBySlug(journey[ji + 1]) : null;
+// pages outside the journey point back into it
+const related = ji < 0 ? ['missed-calls', 'quote-follow-up', 'no-shows'].map(problemBySlug) : [];
+// each of these three sections is the heart of exactly one problem page
+const showWork = p.slug === 'front-office';
+const showDay = p.slug === 'run-sheet';
+const showVoice = p.slug === 'ai-receptionist';
+
+const schema = [
+  {
+    '@type': 'WebPage',
+    '@id': abs(path) + '#webpage',
+    url: abs(path),
+    name: c.title,
+    description: c.description,
+    isPartOf: { '@id': abs('/') + '#website' },
+    about: { '@id': abs('/auto') + '#service' },
+  },
+];
+---
+
+<SiteLayout title={c.title} description={c.description} path={path} crumbs={crumbs} schema={schema}>
+  <main id="main" data-door={p.slug}>
+    <HeroDoor headline={door.headline} sub={door.sub.replace('{price}', price.monthly)} />
+    <DoorTicker pairs={top.ticker} />
+
+    <section class="s-sec pearl tight" aria-labelledby="answer-title">
+      <div class="container">
+        <Crumbs crumbs={crumbs} />
+        <div class="s-answer">
+          <span class="tag">The short answer</span>
+          <h2 id="answer-title" class="sr-only">{p.label}: the short answer</h2>
+          <p>{c.answer[0]}</p>
+          <p>{c.answer[1]}</p>
+        </div>
+      </div>
+    </section>
+
+    <DoorProblem door={door} />
+
+    <section class="s-sec" aria-labelledby="why-title">
+      <div class="container">
+        <header class="s-head">
+          <p class="kicker">Why it happens</p>
+          <h2 id="why-title">{c.why.title}</h2>
+        </header>
+        <ul class="s-grid" role="list">
+          {
+            c.why.items.map((w) => (
+              <li class="s-card">
+                <h3>{w.t}</h3>
+                <p>{w.d}</p>
+              </li>
+            ))
+          }
+        </ul>
+        <div class="s-cols" style="margin-top:14px">
+          <div class="s-list you">
+            <h3>What the customer experiences</h3>
+            <ul>
+              {c.customer.map((x) => <li>{x}</li>)}
+            </ul>
+          </div>
+          <div class="s-list you">
+            <h3>What you experience</h3>
+            <ul>
+              {c.owner.map((x) => <li>{x}</li>)}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <Hook9 lines={door.hook} />
+    <section class="s-sec tight" aria-label="What it costs">
+      <div class="container">
+        <p class="s-prose"><span>{c.cost}</span></p>
+      </div>
+    </section>
+    {top.count ? <DoorCount count={top.count} /> : <MathDoor copy={top.math} />}
+    {showWork && <Work9 />}
+
+    <section class="s-sec pearl" id="how" aria-labelledby="how-title">
+      <div class="container">
+        <header class="s-head">
+          <p class="kicker">{p.system}</p>
+          <h2 id="how-title">{c.steps.title}</h2>
+          {c.steps.lead && <p class="lede">{fill(c.steps.lead)}</p>}
+        </header>
+        <ol class="s-steps" role="list">
+          {
+            c.steps.items.map((s) => (
+              <li>
+                {s.when && <span class="when">{s.when}</span>}
+                <h3>{s.t}</h3>
+                <p>{fill(s.d)}</p>
+              </li>
+            ))
+          }
+        </ol>
+        <p class="s-note">
+          Want the whole build explained? See <a class="s-link" href="/auto/how-it-works">how setup, testing and launch work</a>.
+        </p>
+      </div>
+    </section>
+
+    {showVoice && <Voice9 title={top.voice.title} body={`${top.voice.body} ${doorPageCommon.voiceNote}`} />}
+    {showDay && <Day9 />}
+
+    <section class="s-sec alt" aria-labelledby="who-title">
+      <div class="container">
+        <header class="s-head">
+          <p class="kicker">Where automation stops</p>
+          <h2 id="who-title">Who does what.</h2>
+          <p class="lede">Routine steps run the same way every time. Anything that needs judgment comes to you.</p>
+        </header>
+        <div class="s-cols">
+          <div class="s-list">
+            <h3>Runs on its own</h3>
+            <ul>
+              {c.auto.map((x) => <li>{x}</li>)}
+            </ul>
+          </div>
+          {
+            c.ai && (
+              <div class="s-list">
+                <h3>The AI handles</h3>
+                <ul>
+                  {c.ai.map((x) => <li>{x}</li>)}
+                </ul>
+              </div>
+            )
+          }
+          <div class="s-list you">
+            <h3>Stays with you</h3>
+            <ul>
+              {c.human.map((x) => <li>{x}</li>)}
+            </ul>
+          </div>
+        </div>
+        <div class="s-list no" style="margin-top:14px">
+          <h3>What it does not do</h3>
+          <ul>
+            {c.limits.map((x) => <li>{fill(x)}</li>)}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <DoorChanges page={top} variant={door.layout.changes} />
+    {door.website && <DoorPortfolio />}
+    {door.website && <DoorSiteOffer />}
+
+    <section class="s-sec pearl" id="faq" aria-labelledby="faq-title">
+      <div class="container">
+        <header class="s-head">
+          <p class="kicker">{doorPageCommon.faqKicker}</p>
+          <h2 id="faq-title">Questions about {p.label.toLowerCase().replace('ai ', 'AI ')}.</h2>
+        </header>
+        <div class="s-faq">
+          {
+            faq.map((f) => (
+              <details>
+                <summary>{f.q}</summary>
+                <p>{f.a}</p>
+              </details>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="s-sec" aria-labelledby="rel-title">
+      <div class="container">
+        <header class="s-head">
+          <p class="kicker">Keep reading</p>
+          <h2 id="rel-title">{myGuides.length ? 'Guides and shop types for this problem.' : 'Where this problem bites hardest.'}</h2>
+        </header>
+        {
+          myGuides.length > 0 && (
+            <ul class="s-grid two" role="list" style="margin-bottom:14px">
+              {myGuides.slice(0, 4).map((g) => (
+                <li>
+                  <a class="s-card" href={`/auto/guides/${g.slug}`}>
+                    <span class="k">Guide · {g.read} min read</span>
+                    <b class="t">{g.title}</b>
+                    <p>{g.description}</p>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )
+        }
+        <ul class="s-grid" role="list">
+          {
+            shops.map((s) => (
+              <li>
+                <a class="s-card" href={`/auto/${s.slug}`}>
+                  <span class="k">Shop type</span>
+                  <b class="t">{s.label}</b>
+                  <p>{s.line}</p>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+
+        {
+          (prev || next) && (
+            <nav class="s-pn" aria-label="Customer journey" style="margin-top:28px">
+              {prev ? (
+                <a href={`/auto/${prev.slug}`}>
+                  <small>← The stage before</small>
+                  <b>{prev.label}</b>
+                </a>
+              ) : (
+                <span />
+              )}
+              {next && (
+                <a class="nx" href={`/auto/${next.slug}`}>
+                  <small>The stage after →</small>
+                  <b>{next.label}</b>
+                </a>
+              )}
+            </nav>
+          )
+        }
+        {
+          related.length > 0 && (
+            <nav class="s-pn" aria-label="Related problems" style="margin-top:28px">
+              {related.map((r) => (
+                <a href={`/auto/${r.slug}`}>
+                  <small>Part of the same plan</small>
+                  <b>{r.label}</b>
+                </a>
+              ))}
+            </nav>
+          )
+        }
+      </div>
+    </section>
+
+    <OfferSummary title={fill(c.offerTitle)} />
+  </main>
+  {/* the calculator's "Email me my numbers" link opens this popup */}
+  <Audit9 />
+</SiteLayout>
+
+<script>
+  import { track } from '../../../src/scripts/analytics';
+  const slug = document.querySelector<HTMLElement>('[data-door]')?.dataset.door || '';
+  if (slug) track('problem_view', { problem: slug });
+</script>

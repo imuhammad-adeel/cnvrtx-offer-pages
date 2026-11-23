@@ -1,0 +1,151 @@
+---
+/** One clean footer for every page. The full page directory lives on /auto and /auto/guides. */
+import { footer9 } from '../../src/content/automotiveCopyV9';
+import { legalDocs } from '../../src/content/legal';
+import { site, hasContact } from '../config/site';
+const year = new Date().getFullYear();
+---
+
+<footer class="sfoot">
+  <div class="container">
+    <div class="f-card">
+      <div class="f-brand">
+        <a href="/" class="logo" aria-label="CNVRT X home page">CNVRT<b>✕</b></a>
+        <p>Done-for-you front office systems for service businesses. Starting with automotive.</p>
+        <p class="f-made">{footer9.made}</p>
+      </div>
+      <nav aria-label="Automotive">
+        <p class="f-h">Automotive</p>
+        <a href="/auto">Front Office for auto shops</a>
+        <a href="/auto#solutions">Solutions</a>
+        <a href="/auto#shop-types">Shop types</a>
+        <a href="/auto/guides">Guides</a>
+        <a href="/auto/how-it-works">How it works</a>
+      </nav>
+      <nav aria-label="Company">
+        <p class="f-h">Company</p>
+        <a href="/about">About</a>
+        {hasContact && <a href="/contact">Contact</a>}
+        <a href="/auto#pricing">Pricing</a>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="f-h">Legal</p>
+        {legalDocs.map((d) => <a href={`/legal/${d.slug}`}>{d.nav}</a>)}
+      </nav>
+    </div>
+
+    <div class="f-disc">
+      {footer9.disclaimers.map((d) => <p>{d}</p>)}
+    </div>
+    <div class="f-bot">
+      <p>© {year} {site.legalName}. All rights reserved.</p>
+      <a href="#main">Back to top ↑</a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .sfoot {
+    background: #05080c;
+    color: #dbe4ec;
+    padding-block: clamp(3rem, 2rem + 4vw, 5rem) 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .f-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1.6fr) repeat(3, minmax(0, 1fr));
+    gap: clamp(24px, 3vw, 48px);
+  }
+  .logo {
+    font-family: var(--f-head);
+    font-weight: 800;
+    font-size: 1.4rem;
+    letter-spacing: 0.02em;
+    color: #fff;
+    text-decoration: none;
+  }
+  .logo b {
+    color: var(--hot);
+    margin-left: 3px;
+  }
+  .f-brand p {
+    margin-top: 12px;
+    max-width: 34ch;
+    color: var(--fog);
+    font-size: 0.9375rem;
+    line-height: 1.5;
+  }
+  .f-brand .f-made {
+    color: #fff;
+    font-weight: 700;
+  }
+  nav {
+    display: grid;
+    align-content: start;
+    gap: 2px;
+  }
+  .f-h {
+    margin-bottom: 8px;
+    font-size: 0.6875rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #d8ff3e;
+  }
+  nav a {
+    display: flex;
+    align-items: center;
+    min-height: 36px;
+    color: #dbe4ec;
+    text-decoration: none;
+    font-size: 0.9375rem;
+  }
+  nav a:hover {
+    color: #fff;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+  .f-disc {
+    margin-top: clamp(2rem, 1.5rem + 2vw, 3.5rem);
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    display: grid;
+    gap: 8px;
+  }
+  .f-disc p {
+    font-size: 0.75rem;
+    line-height: 1.55;
+    color: var(--fog-2);
+    max-width: 110ch;
+  }
+  .f-bot {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 8px 24px;
+    font-size: 0.8125rem;
+    color: var(--fog-2);
+  }
+  .f-bot a {
+    color: #dbe4ec;
+    text-decoration: none;
+    padding: 10px 0;
+  }
+  @media (max-width: 860px) {
+    .f-card {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .f-brand {
+      grid-column: 1 / -1;
+    }
+  }
+  @media (max-width: 460px) {
+    .f-card {
+      grid-template-columns: 1fr;
+    }
+    nav a {
+      min-height: 44px;
+    }
+  }
+</style>

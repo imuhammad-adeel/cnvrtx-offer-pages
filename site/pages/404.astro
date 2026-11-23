@@ -1,0 +1,30 @@
+---
+/** The "page not found" page. Cloudflare serves it with a 404 status for any unknown address. */
+import SiteLayout from '../layouts/SiteLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import { problems } from '../content/directory';
+---
+
+<SiteLayout title="Page not found | CNVRT X" description="This page does not exist. Here is where to go next." path="/404" noindex>
+  <main id="main">
+    <PageHero kicker="404" title={['That page', 'is not here.']} lede="The address may be mistyped, or the page may have moved. These will get you back on track." primary={{ label: 'Front Office for auto shops', href: '/auto' }} secondary={{ label: 'Home', href: '/' }} />
+    <section class="s-sec pearl">
+      <div class="container">
+        <header class="s-head">
+          <h2>Looking for one of these?</h2>
+        </header>
+        <ul class="s-chips" role="list">
+          {
+            problems.map((p) => (
+              <li>
+                <a href={`/auto/${p.slug}`}>{p.label}</a>
+              </li>
+            ))
+          }
+          <li><a href="/auto/guides">Guides</a></li>
+          <li><a href="/auto/how-it-works">How it works</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+</SiteLayout>

@@ -7,7 +7,12 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "studio": "node scripts/studio-sync.mjs"
+    "studio": "node scripts/studio-sync.mjs",
+    "site:dev": "astro dev --config astro.site.config.mjs",
+    "site:build": "astro build --config astro.site.config.mjs",
+    "site:preview": "astro preview --config astro.site.config.mjs",
+    "site:check": "node site/tools/check.mjs",
+    "site:stage": "node site/tools/stage.mjs"
   },
   "dependencies": {
     "@fontsource-variable/archivo": "^5.3.0",

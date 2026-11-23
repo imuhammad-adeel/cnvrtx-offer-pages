@@ -1,0 +1,277 @@
+---
+/**
+ * cnvrtx.com/ : the brand home. It says who CNVRT X is and what a front office system is,
+ * and routes auto shops into /auto. It works for every future industry.
+ * It never carries the auto calculator, pricing table, nine systems or auto FAQ: those are /auto's.
+ */
+import SiteLayout from '../layouts/SiteLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import Arrow from '../components/Arrow.astro';
+import { site, abs } from '../config/site';
+import { shopTypes } from '../content/directory';
+
+const title = 'CNVRT X: Done-for-You Front Office Systems for Service Businesses';
+const description =
+  'CNVRT X builds the front office a service business never had time to hire: every inquiry answered, every quote followed up, every booking confirmed. Starting with automotive shops.';
+
+const journey = ['Inquiry', 'Response', 'Quote', 'Follow-up', 'Booking', 'Confirmation', 'Completed job', 'Review', 'Repeat visit'];
+
+const roles = [
+  { k: 'Role one', t: 'Someone who answers', d: 'Every call, form and message gets a reply, including the ones that arrive while your hands are full or the lights are off.' },
+  { k: 'Role two', t: 'Someone who follows up', d: 'Quotes are followed up until the customer says yes or no. Bookings are confirmed and reminded. Finished jobs are asked for a review.' },
+  { k: 'Role three', t: 'Someone who runs the day', d: 'You start the morning knowing today’s jobs, and end it with tomorrow’s schedule already written.' },
+];
+
+const principles = [
+  { t: 'Built for you, not by you', d: 'We set it up, write every message in your voice and test it before it goes live. You do not learn software.' },
+  { t: 'No sales call', d: 'The price and everything included are on the page. You read it, decide, and the build starts.' },
+  { t: 'Your business stays yours', d: 'Your domain, your content and your customer list belong to you, and you can export them.' },
+  { t: 'We promise the work we control', d: 'A tested system, live on time. Nobody can honestly promise bookings or revenue, so we do not.' },
+  { t: 'Texts only with consent', d: 'Text messages go only to people who agreed to receive them, after the phone carrier approves the business.' },
+  { t: 'The AI says it is an AI', d: 'It answers from information you approve, never quotes prices, and hands anything that needs judgment to you.' },
+];
+
+const schema = [
+  {
+    '@type': 'Organization',
+    '@id': abs('/') + '#organization',
+    name: site.name,
+    legalName: site.legalName,
+    url: abs('/'),
+    description: 'Done-for-you front office systems for service businesses, starting with automotive shops.',
+  },
+  {
+    '@type': 'WebSite',
+    '@id': abs('/') + '#website',
+    url: abs('/'),
+    name: site.name,
+    publisher: { '@id': abs('/') + '#organization' },
+    inLanguage: 'en-US',
+  },
+];
+---
+
+<SiteLayout title={title} description={description} path="/" schema={schema}>
+  <main id="main">
+    <PageHero
+      wide
+      kicker="CNVRT X"
+      title={['Done-for-You Front Office Systems', 'for Service Businesses.']}
+      lede="Most service businesses do not have a lead problem. They have a front desk problem: calls nobody could pick up, quotes nobody followed up, bookings nobody confirmed. We build the front office that handles all of it and hand it to you working. Starting with automotive."
+      primary={{ label: 'See the automotive edition', href: '/auto' }}
+      secondary={{ label: 'How it works', href: '/auto/how-it-works' }}
+      trust="Done for you · No sales call · Month-to-month"
+    />
+
+    <section class="s-sec pearl" aria-labelledby="what-title">
+      <div class="container">
+        <header class="s-head">
+          <p class="kicker">The idea</p>
+          <h2 id="what-title">What a front office system is.</h2>
+        </header>
+        <div class="s-prose">
+          <p>
+            A front office is everything that happens between a customer reaching out and that customer coming back a second time. In a big company it is a team: a
+            receptionist, an advisor, a manager. In a small service business it is usually the owner, in between jobs.
+          </p>
+          <p>
+            A <strong>front office system</strong> does that work without the team. It answers the inquiry, follows up on the quote, confirms the booking, asks for the
+            review and invites the customer back. Routine steps run on their own. Anything that needs judgment comes to you.
+          </p>
+        </div>
+        <ol class="chain" role="list" aria-label="The customer journey a front office handles">
+          {
+            journey.map((j, i) => (
+              <li>
+                <span>{String(i + 1).padStart(2, '0')}</span>
+                {j}
+              </li>
+            ))
+          }
+        </ol>
+        <p class="s-note">Most businesses are good at the job itself. The money is lost in the steps around it.</p>
+      </div>
+    </section>
+
+    <section class="s-sec" aria-labelledby="mission-title">
+      <div class="container">
+        <header class="s-head">
+          <p class="kicker">Why we exist</p>
+          <h2 id="mission-title">Before you buy more leads, <span class="hot">fix what happens to the ones you already have.</span></h2>
+          <p class="lede">
+            More advertising pours more inquiries into the same leaky front desk. We start at the other end: make sure every inquiry you already paid for gets an answer, a
+            follow-up and a confirmed booking.
+          </p>
+        </header>
+        <ul class="s-grid" role="list">
+          {
+            roles.map((r) => (
+              <li class="s-card">
+                <span class="k">{r.k}</span>
+                <h3>{r.t}</h3>
+                <p>{r.d}</p>
+              </li>
+            ))
+          }
+        </ul>
+        <p class="s-note">Three roles, one system. Each edition names them in the words of its own trade.</p>
+      </div>
+    </section>
+
+    <section class="s-sec pearl" aria-labelledby="auto-title">
+      <div class="container">
+        <header class="s-head">
+          <p class="kicker">The first edition</p>
+          <h2 id="auto-title">Automotive comes first.</h2>
+          <p class="lede">
+            A front office only works when it speaks the trade. So we did not build one general system for everybody. We built one for automotive shops, in their words:
+            ceramic quotes, PPF deposits, tint appointments, run sheets.
+          </p>
+        </header>
+        <a class="edition" href="/auto">
+          <span class="k">Live now</span>
+          <b>CNVRT X Front Office for Auto Shops</b>
+          <span>A receptionist, a service advisor and a shop manager for detailing, coating, PPF, tint and aftermarket shops. See the system, the price and how to start.</span>
+          <span class="more">Open the automotive edition <Arrow /></span>
+        </a>
+        <h3 class="sub">Built for these shops</h3>
+        <ul class="s-chips" role="list">
+          {
+            shopTypes.map((s) => (
+              <li>
+                <a href={`/auto/${s.slug}`}>{s.label}</a>
+              </li>
+            ))
+          }
+        </ul>
+        <p class="s-note">Other service trades will follow, one at a time, each written for that trade rather than copied from this one.</p>
+      </div>
+    </section>
+
+    <section class="s-sec alt" aria-labelledby="trust-title">
+      <div class="container">
+        <header class="s-head">
+          <p class="kicker">How we work</p>
+          <h2 id="trust-title">What you can hold us to.</h2>
+        </header>
+        <ul class="s-grid" role="list">
+          {
+            principles.map((p) => (
+              <li class="s-card">
+                <h3>{p.t}</h3>
+                <p>{p.d}</p>
+              </li>
+            ))
+          }
+        </ul>
+        <p class="s-prose" style="margin-top:24px">
+          <span>
+            Read more about <a href="/about">who we are and how we work</a>, or see <a href="/auto/how-it-works">what happens after you join</a>.
+          </span>
+        </p>
+      </div>
+    </section>
+
+    <section class="s-sec s-offer" aria-labelledby="go-title">
+      <div class="container">
+        <div class="box">
+          <div>
+            <p class="kicker">Run an auto shop?</p>
+            <h2 id="go-title">See what your front desk is missing.</h2>
+            <p class="lede">The automotive page shows the five places bookings disappear, lets you put your own numbers in, and lays out the whole plan and its price.</p>
+            <div class="act">
+              <a href="/auto" class="go" data-track="cta_click" data-track-location="home_bottom">
+                Go to the automotive edition
+                <Arrow />
+              </a>
+              <a href="/auto/guides" class="ghost">Read the guides</a>
+            </div>
+          </div>
+          <ul class="facts" role="list">
+            <li><b>Answer</b><span>Every call, form and message</span></li>
+            <li><b>Book</b><span>Every quote followed up, every booking confirmed</span></li>
+            <li><b>Keep</b><span>Every customer asked for a review and invited back</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+</SiteLayout>
+
+<style>
+  .chain {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 8px;
+    margin: clamp(1.5rem, 1rem + 2vw, 2.75rem) 0 0;
+    padding: 0;
+  }
+  .chain li {
+    display: grid;
+    gap: 2px;
+    padding: 14px 16px;
+    border-radius: 16px;
+    background: var(--white);
+    border: 1px solid rgba(11, 16, 22, 0.1);
+    font-family: var(--f-head);
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .chain span {
+    font-family: var(--f-text);
+    font-size: 0.6875rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    color: #c8400d;
+  }
+  .edition {
+    display: grid;
+    gap: 8px;
+    max-width: 880px;
+    padding: clamp(22px, 1rem + 2vw, 38px);
+    border-radius: 28px;
+    background: var(--ink);
+    color: #dbe4ec;
+    text-decoration: none;
+    transition: transform 220ms var(--ease);
+  }
+  .edition:hover {
+    transform: translateY(-3px);
+  }
+  .edition .k {
+    justify-self: start;
+    padding: 3px 10px;
+    border-radius: 999px;
+    background: #d8ff3e;
+    color: var(--ink);
+    font-size: 0.6875rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .edition b {
+    font-family: var(--f-head);
+    font-size: clamp(1.5rem, 1.2rem + 1.6vw, 2.4rem);
+    letter-spacing: -0.04em;
+    line-height: 1.05;
+    color: #fff;
+  }
+  .edition .more {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+    font-weight: 800;
+    color: var(--hot-2);
+  }
+  .edition .more :global(svg) {
+    width: 18px;
+    height: 18px;
+  }
+  .sub {
+    margin: 32px 0 14px;
+    color: var(--ink);
+  }
+</style>
