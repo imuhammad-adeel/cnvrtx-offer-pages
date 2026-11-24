@@ -17,6 +17,7 @@
  * The sales pages have the same form at #start; both post the same fields to the same webhook.
  */
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import Included9 from '../../components/automotive-v9/Included9.astro';
 import { checkout9 as c, start9 } from '../../content/automotiveCopyV9';
 import { automotiveOffer as o, ATTRIBUTION_PARAMS } from '../../config/automotiveOffer';
 import { offerV9 as cfg, featuredPlan as plan, fillOffer } from '../../config/offerV9';
@@ -82,6 +83,7 @@ const dev = import.meta.env.DEV;
             <span>{c.annual.dueLabel}</span>
             <b>{fill(c.annual.due)}</b>
           </p>
+          <Included9 />
         </div>
 
         <div class="card" data-when="monthly" hidden>
@@ -104,6 +106,7 @@ const dev = import.meta.env.DEV;
             </b>
           </p>
           <p class="due-n">{fill(c.monthly.dueNote)}</p>
+          <Included9 />
         </div>
 
         <div class="more">

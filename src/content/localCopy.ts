@@ -143,10 +143,7 @@ export const faq9 = {
       a: 'Yes for US businesses. For other countries, ask us first so we can confirm availability. US texting also needs carrier registration (A2P). We prepare it with you and texting goes live once the carrier approves.',
     },
     a.faq9.items[6],
-    {
-      q: 'What is included each month?',
-      a: 'Each month includes {allowance}. That covers a typical single-location business. If you are close to a limit we tell you before anything extra is charged.',
-    },
+    a.faq9.items[7],
     a.faq9.items[8],
     a.faq9.items[9],
   ],

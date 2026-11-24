@@ -8,6 +8,7 @@
 import { copyFor, type CopySet } from '../../content/copySets';
 import { offerV9 as cfg, featuredPlan as plan, fillOffer } from '../../config/offerV9';
 import Gears from '../automotive-doors/Gears.astro';
+import Included9 from './Included9.astro';
 
 /** `gears` shows the three roles as three gears above the price cards (trial on one door page). */
 interface Props {
@@ -67,6 +68,7 @@ const cta = (interval: 'annual' | 'monthly') => ({
         <h3 id="pl-a">{c.annual.name}</h3>
         <p class="amt"><b>{fmt(plan.annual)}</b><span>/yr</span></p>
         <p class="eq">About {fmt(perMonth)} a month.</p>
+        <Included9 />
         <div class="in">
           <p class="in-h">{c.rolesTitle}</p>
           {
@@ -109,6 +111,7 @@ const cta = (interval: 'annual' | 'monthly') => ({
         <h3 id="pl-m">{c.monthly.name}</h3>
         <p class="amt"><b>{fmt(plan.monthly)}</b><span>/mo</span></p>
         <p class="eq">+ {fmt(plan.launchKit)} one-time Launch Kit.</p>
+        <Included9 />
         <div class="in">
           <p class="in-h">{c.rolesTitle}</p>
           {

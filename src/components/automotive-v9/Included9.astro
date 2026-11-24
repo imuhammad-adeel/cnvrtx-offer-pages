@@ -1,0 +1,67 @@
+---
+/**
+ * "Included every month": the same block on every plan card (home pricing and /auto).
+ * Words: included9 in the copy file. Numbers: offerV9.allowance, through includedMonthly().
+ * Usage is shown as numbers only: never a dollar amount for usage or credits.
+ */
+import { included9 as c } from '../../content/automotiveCopyV9';
+import { includedMonthly } from '../../config/offerV9';
+
+const items = includedMonthly();
+---
+
+<div class="inc">
+  <p class="inc-h">{c.title}</p>
+  <ul role="list">
+    {items.map((x) => <li>{x}</li>)}
+  </ul>
+  <p class="inc-n">{c.note}</p>
+</div>
+
+<style>
+  .inc {
+    display: grid;
+    gap: 10px;
+    margin-top: var(--s-4, 16px);
+    padding: 16px 18px;
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .inc-h {
+    font-size: 0.6875rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #d8ff3e;
+  }
+  ul {
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 8px;
+  }
+  li {
+    position: relative;
+    padding-left: 26px;
+    font-size: 0.9375rem;
+    line-height: 1.4;
+    color: #eef3f7;
+  }
+  li::before {
+    content: '';
+    position: absolute;
+    left: 3px;
+    top: 0.32em;
+    width: 11px;
+    height: 6px;
+    border-left: 2.5px solid #d8ff3e;
+    border-bottom: 2.5px solid #d8ff3e;
+    transform: rotate(-45deg);
+  }
+  .inc-n {
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    color: var(--fog, #a9b6c2);
+  }
+</style>

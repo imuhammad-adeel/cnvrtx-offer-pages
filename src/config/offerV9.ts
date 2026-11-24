@@ -68,9 +68,9 @@ export const offerV9 = {
    */
   allowance: {
     emails: 5000,
-    smsSegments: 1000,
+    texts: 400,
     voiceMinutes: 100,
-    aiReplies: 250,
+    aiReplies: 500,
     numbers: 1,
   },
   /** Hours in which automated texts are sent. Outside them, a text waits for the morning; email goes at any hour. */
@@ -159,7 +159,28 @@ const num = (x: number) => x.toLocaleString('en-US');
 export function allowanceText(): string {
   const a = offerV9.allowance;
   const line = a.numbers === 1 ? 'one local phone number' : `${a.numbers} local phone numbers`;
-  return `${num(a.emails)} emails, ${num(a.smsSegments)} outbound US text message segments, ${num(a.voiceMinutes)} AI voice minutes, ${num(a.aiReplies)} AI chat replies and ${line}`;
+  return `${num(a.emails)} emails, ${num(a.texts)} text messages, ${num(a.voiceMinutes)} AI voice minutes, ${num(a.aiReplies)} AI chat replies and ${line}`;
 }
-/** Fills `{allowance}` and `{hours}` in a line of copy. */
-export const fillOffer = (t: string) => t.replaceAll('{allowance}', allowanceText()).replaceAll('{hours}', offerV9.textingHours);
+/**
+ * The "Included every month" list, the same on every plan. Owner-approved wording (2026-11-24).
+ * Usage is shown as numbers only: never a dollar amount for usage or credits.
+ */
+export function includedMonthly(): string[] {
+  const a = offerV9.allowance;
+  return [
+    'Your own local business phone number',
+    `${num(a.voiceMinutes)} minutes of AI voice answering`,
+    `${num(a.aiReplies)} AI chat replies on your website and messages`,
+    `${num(a.texts)} text messages`,
+    `${num(a.emails)} emails for follow-ups, reminders and review requests`,
+  ];
+}
+/** The same list as one sentence part: "your own ..., 100 minutes ... and 5,000 emails ...". */
+function includedText(): string {
+  const l = includedMonthly();
+  const first = l[0].charAt(0).toLowerCase() + l[0].slice(1);
+  return `${[first, ...l.slice(1, -1)].join(', ')} and ${l[l.length - 1]}`;
+}
+/** Fills `{allowance}`, `{included}` and `{hours}` in a line of copy. */
+export const fillOffer = (t: string) =>
+  t.replaceAll('{allowance}', allowanceText()).replaceAll('{included}', includedText()).replaceAll('{hours}', offerV9.textingHours);

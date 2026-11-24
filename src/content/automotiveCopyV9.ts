@@ -221,6 +221,17 @@ export const guarantee9 = {
   short: 'Live in 14 days with the Launch Kit',
 };
 
+/**
+ * "Included every month": the same on every plan. Owner-approved wording, word for word.
+ * The list itself comes from config (includedMonthly in src/config/offerV9.ts).
+ * Never show a dollar amount for usage or credits.
+ */
+export const included9 = {
+  title: 'Included every month',
+  note: 'No usage bills in a normal month. If you ever go over, extra usage is billed at standard rates. Most shops never do.',
+  a2p: 'Texting starts once your business texting registration (A2P) is approved; our team handles it with you.',
+};
+
 export const offer9 = {
   kicker: 'The offer',
   title: ['One plan.', 'Three roles you never hire.'],
@@ -290,7 +301,7 @@ export const offer9 = {
     { k: 'All year', v: 'One price. Nothing to manage.' },
   ],
   /** `{allowance}` and `{hours}` are filled from config (offerV9.allowance, offerV9.textingHours). */
-  usage: 'Included every month: {allowance}. Texting carrier fees are passed on at cost and shown to you before activation.',
+  usage: 'Texting carrier fees are passed on at cost and shown to you before activation.',
   honest: 'We do not guarantee bookings or revenue. We guarantee the work we control.',
 };
 
@@ -355,8 +366,10 @@ export const faq9 = {
       a: `No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control. ${guarantee9.headline} ${guarantee9.condition}`,
     },
     {
-      q: 'What is included each month?',
-      a: 'Each month includes {allowance}. That covers a typical single-location shop. If you are close to a limit we tell you before anything extra is charged.',
+      q: 'Are calls, texts and AI replies included?',
+      /** `included: true` makes the FAQ show the list as a list; `a` is the same answer as one paragraph. */
+      included: true,
+      a: `Yes. Every month includes {included}. ${included9.note} ${included9.a2p}`,
     },
     {
       q: 'Can I cancel?',

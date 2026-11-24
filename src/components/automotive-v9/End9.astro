@@ -2,7 +2,8 @@
 import { audit } from '../../content/automotiveCopy';
 import { copyFor, type CopySet } from '../../content/copySets';
 import { automotiveOffer as o, ATTRIBUTION_PARAMS } from '../../config/automotiveOffer';
-import { offerV9 as cfg, checkoutHref, fillOffer } from '../../config/offerV9';
+import { offerV9 as cfg, checkoutHref, fillOffer, includedMonthly } from '../../config/offerV9';
+import { included9 } from '../../content/automotiveCopyV9';
 
 /** A door page puts its own questions first and uses its own start and closing lines. */
 interface Props {
@@ -21,8 +22,9 @@ const waitOn = Astro.props.copy !== 'local' && (Boolean(cfg.forms.waitlist) || i
 const k = cfg.contact;
 const { faq = [], startLead = e.lead, footerLine = e.footer, footer: showFooter = true } = Astro.props;
 // page questions first, then the ones every buyer asks
-const keep = ['Do I have to talk to a salesperson?', 'Can you guarantee bookings?', 'What is included each month?', 'Can I cancel?', 'Is the AI a real person?'];
-const faqItems = (faq.length ? [...faq, ...q.items.filter((x) => keep.includes(x.q))] : q.items).map((x) => ({ q: x.q, a: fillOffer(x.a) }));
+const keep = ['Do I have to talk to a salesperson?', 'Can you guarantee bookings?', 'Are calls, texts and AI replies included?', 'Can I cancel?', 'Is the AI a real person?'];
+const faqItems = (faq.length ? [...faq, ...q.items.filter((x) => keep.includes(x.q))] : q.items).map((x) => ({ q: x.q, a: fillOffer(x.a), included: 'included' in x && x.included === true }));
+const incl = includedMonthly();
 
 // 'live' once the reserve endpoint is set in src/config/automotiveOffer.ts
 const mode = o.endpoints.reserve ? 'live' : 'unconfigured';
@@ -63,7 +65,19 @@ const smsLinks = [
               <span class="qt">{f.q}</span>
               <i aria-hidden="true" />
             </summary>
-            <p>{f.a}</p>
+            {f.included ? (
+              <div class="a-inc">
+                <ul role="list">
+                  {incl.map((x) => (
+                    <li>{x}</li>
+                  ))}
+                </ul>
+                <p>{included9.note}</p>
+                <p>{included9.a2p}</p>
+              </div>
+            ) : (
+              <p>{f.a}</p>
+            )}
           </details>
         ))
       }
@@ -533,6 +547,36 @@ const smsLinks = [
     line-height: 1.65;
     max-width: 70ch;
   }
+  /* the "included every month" answer: a list, then two short lines */
+  .a-inc ul {
+    margin: 0;
+    padding: 0 48px 14px 60px;
+    display: grid;
+    gap: 6px;
+    max-width: 70ch;
+    color: var(--ink-2);
+    line-height: 1.5;
+  }
+  .a-inc li {
+    position: relative;
+    padding-left: 18px;
+  }
+  .a-inc li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.6em;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--hot);
+  }
+  .a-inc p {
+    padding-bottom: 10px;
+  }
+  .a-inc p:last-child {
+    padding-bottom: 26px;
+  }
 
   /* ---------- audit ---------- */
   .agrid {
@@ -894,6 +938,15 @@ const smsLinks = [
     }
     details p {
       padding: 0 0 22px 0;
+    }
+    .a-inc ul {
+      padding: 0 0 12px 0;
+    }
+    .a-inc p {
+      padding-bottom: 8px;
+    }
+    .a-inc p:last-child {
+      padding-bottom: 22px;
     }
     summary {
       grid-template-columns: 34px 1fr 36px;

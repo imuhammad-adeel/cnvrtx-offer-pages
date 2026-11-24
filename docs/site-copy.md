@@ -362,6 +362,13 @@ The site is auto-first: the home page is the auto-shop page.
 - **[H3]** Annual
 - $1,970 /yr
 - About $164 a month.
+- Included every month
+- Your own local business phone number
+- 100 minutes of AI voice answering
+- 500 AI chat replies on your website and messages
+- 400 text messages
+- 5,000 emails for follow-ups, reminders and review requests
+- No usage bills in a normal month. If you ever go over, extra usage is billed at standard rates. Most shops never do.
 - Your front office: 3 roles, 9 systems
 - [opens] **The Receptionist** Never miss a lead
 - [opens] **The Service Advisor** Turn leads into booked jobs
@@ -413,7 +420,7 @@ The site is auto-first: the home page is the auto-shop page.
 - **Love it or leave it** Month-to-month on monthly plans. Cancel anytime.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
-- Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
+- Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Texting carrier fees are passed on at cost and shown to you before activation.
 - [link] Not ready to buy? Get a free Booking Leak Audit →  `→ #start`
 
 ### Section `faq`: Before you ask.
@@ -434,8 +441,14 @@ The site is auto-first: the home page is the auto-shop page.
 - Yes for US shops. For other countries, ask us first so we can confirm availability. US texting also needs carrier registration (A2P). We prepare it with you and texting goes live once the carrier approves.
 - [opens] 07 Can you guarantee bookings?
 - No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control. Live in 14 days with the Launch Kit, or your first month is free. Applies to plans that include the Launch Kit (Monthly with Launch Kit, and Annual). The 14 days start when you finish Setup Center. Carrier (A2P), domain and other third-party approvals are outside the 14 days. On an annual plan the free month is added to your term.
-- [opens] 08 What is included each month?
-- Each month includes 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. That covers a typical single-location shop. If you are close to a limit we tell you before anything extra is charged.
+- [opens] 08 Are calls, texts and AI replies included?
+- Your own local business phone number
+- 100 minutes of AI voice answering
+- 500 AI chat replies on your website and messages
+- 400 text messages
+- 5,000 emails for follow-ups, reminders and review requests
+- No usage bills in a normal month. If you ever go over, extra usage is billed at standard rates. Most shops never do.
+- Texting starts once your business texting registration (A2P) is approved; our team handles it with you.
 - [opens] 09 Can I cancel?
 - Yes. Monthly plans are month-to-month. Your domain, content and customer list stay yours and you can export them.
 - [opens] 10 Is the AI a real person?
@@ -744,6 +757,13 @@ _Same wording as_ **Home → Section `skip-link`**.
 - **[H3]** Annual
 - $1,970 /yr
 - About $164 a month.
+- Included every month
+- Your own local business phone number
+- 100 minutes of AI voice answering
+- 500 AI chat replies on your website and messages
+- 400 text messages
+- 5,000 emails for follow-ups, reminders and review requests
+- No usage bills in a normal month. If you ever go over, extra usage is billed at standard rates. Most shops never do.
 - Your front office: 3 roles, 9 systems
 - [opens] **The Receptionist** Never miss a lead
 - [opens] **The Service Advisor** Turn leads into booked jobs
@@ -795,7 +815,7 @@ _Same wording as_ **Home → Section `skip-link`**.
 - **Love it or leave it** Month-to-month on monthly plans. Cancel anytime.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
-- Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
+- Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Texting carrier fees are passed on at cost and shown to you before activation.
 - [link] Not ready to buy? Get a free Booking Leak Audit →  `→ #start`
 
 ### Section `faq`: Before you ask.
@@ -812,8 +832,14 @@ _Same wording as_ **Home → Section `skip-link`**.
 - No. Pick a plan, fill the form and the build starts. If you want to ask something first, use the contact link.
 - [opens] 05 Can you guarantee bookings?
 - No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control. Live in 14 days with the Launch Kit, or your first month is free. Applies to plans that include the Launch Kit (Monthly with Launch Kit, and Annual). The 14 days start when you finish Setup Center. Carrier (A2P), domain and other third-party approvals are outside the 14 days. On an annual plan the free month is added to your term.
-- [opens] 06 What is included each month?
-- Each month includes 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. That covers a typical single-location shop. If you are close to a limit we tell you before anything extra is charged.
+- [opens] 06 Are calls, texts and AI replies included?
+- Your own local business phone number
+- 100 minutes of AI voice answering
+- 500 AI chat replies on your website and messages
+- 400 text messages
+- 5,000 emails for follow-ups, reminders and review requests
+- No usage bills in a normal month. If you ever go over, extra usage is billed at standard rates. Most shops never do.
+- Texting starts once your business texting registration (A2P) is approved; our team handles it with you.
 - [opens] 07 Can I cancel?
 - Yes. Monthly plans are month-to-month. Your domain, content and customer list stay yours and you can export them.
 - [opens] 08 Is the AI a real person?
@@ -1075,6 +1101,13 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - **[H3]** Annual
 - $1,970 /yr
 - About $164 a month.
+- Included every month
+- Your own local business phone number
+- 100 minutes of AI voice answering
+- 500 AI chat replies on your website and messages
+- 400 text messages
+- 5,000 emails for follow-ups, reminders and review requests
+- No usage bills in a normal month. If you ever go over, extra usage is billed at standard rates. Most shops never do.
 - Your front office: 3 roles, 9 systems
 - [opens] **The Receptionist** Never miss a lead
 - [opens] **The Service Advisor** Turn leads into booked jobs
@@ -1126,7 +1159,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - **Love it or leave it** Month-to-month on monthly plans. Cancel anytime.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
-- Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
+- Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Texting carrier fees are passed on at cost and shown to you before activation.
 - [link] Not ready to buy? Get a free Booking Leak Audit →  `→ #start`
 
 ### Section `faq`: Before you ask.
@@ -1143,8 +1176,14 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - No. Pick a plan, fill the form and the build starts. If you want to ask something first, use the contact link.
 - [opens] 05 Can you guarantee bookings?
 - No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control. Live in 14 days with the Launch Kit, or your first month is free. Applies to plans that include the Launch Kit (Monthly with Launch Kit, and Annual). The 14 days start when you finish Setup Center. Carrier (A2P), domain and other third-party approvals are outside the 14 days. On an annual plan the free month is added to your term.
-- [opens] 06 What is included each month?
-- Each month includes 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. That covers a typical single-location shop. If you are close to a limit we tell you before anything extra is charged.
+- [opens] 06 Are calls, texts and AI replies included?
+- Your own local business phone number
+- 100 minutes of AI voice answering
+- 500 AI chat replies on your website and messages
+- 400 text messages
+- 5,000 emails for follow-ups, reminders and review requests
+- No usage bills in a normal month. If you ever go over, extra usage is billed at standard rates. Most shops never do.
+- Texting starts once your business texting registration (A2P) is approved; our team handles it with you.
 - [opens] 07 Can I cancel?
 - Yes. Monthly plans are month-to-month. Your domain, content and customer list stay yours and you can export them.
 - [opens] 08 Is the AI a real person?
@@ -1409,6 +1448,13 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - **[H3]** Annual
 - $1,970 /yr
 - About $164 a month.
+- Included every month
+- Your own local business phone number
+- 100 minutes of AI voice answering
+- 500 AI chat replies on your website and messages
+- 400 text messages
+- 5,000 emails for follow-ups, reminders and review requests
+- No usage bills in a normal month. If you ever go over, extra usage is billed at standard rates. Most shops never do.
 - Your front office: 3 roles, 9 systems
 - [opens] **The Receptionist** Never miss a lead
 - [opens] **The Service Advisor** Turn leads into booked jobs
@@ -1460,7 +1506,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - **Love it or leave it** Month-to-month on monthly plans. Cancel anytime.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
-- Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
+- Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Texting carrier fees are passed on at cost and shown to you before activation.
 - [link] Not ready to buy? Get a free Booking Leak Audit →  `→ #start`
 
 ### Section `faq`: Before you ask.
@@ -1477,8 +1523,14 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - No. Pick a plan, fill the form and the build starts. If you want to ask something first, use the contact link.
 - [opens] 05 Can you guarantee bookings?
 - No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control. Live in 14 days with the Launch Kit, or your first month is free. Applies to plans that include the Launch Kit (Monthly with Launch Kit, and Annual). The 14 days start when you finish Setup Center. Carrier (A2P), domain and other third-party approvals are outside the 14 days. On an annual plan the free month is added to your term.
-- [opens] 06 What is included each month?
-- Each month includes 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. That covers a typical single-location shop. If you are close to a limit we tell you before anything extra is charged.
+- [opens] 06 Are calls, texts and AI replies included?
+- Your own local business phone number
+- 100 minutes of AI voice answering
+- 500 AI chat replies on your website and messages
+- 400 text messages
+- 5,000 emails for follow-ups, reminders and review requests
+- No usage bills in a normal month. If you ever go over, extra usage is billed at standard rates. Most shops never do.
+- Texting starts once your business texting registration (A2P) is approved; our team handles it with you.
 - [opens] 07 Can I cancel?
 - Yes. Monthly plans are month-to-month. Your domain, content and customer list stay yours and you can export them.
 - [opens] 08 Is the AI a real person?
@@ -1743,6 +1795,13 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - **[H3]** Annual
 - $1,970 /yr
 - About $164 a month.
+- Included every month
+- Your own local business phone number
+- 100 minutes of AI voice answering
+- 500 AI chat replies on your website and messages
+- 400 text messages
+- 5,000 emails for follow-ups, reminders and review requests
+- No usage bills in a normal month. If you ever go over, extra usage is billed at standard rates. Most shops never do.
 - Your front office: 3 roles, 9 systems
 - [opens] **The Receptionist** Never miss a lead
 - [opens] **The Service Advisor** Turn leads into booked jobs
@@ -1794,7 +1853,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - **Love it or leave it** Month-to-month on monthly plans. Cancel anytime.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
-- Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
+- Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Texting carrier fees are passed on at cost and shown to you before activation.
 - [link] Not ready to buy? Get a free Booking Leak Audit →  `→ #start`
 
 ### Section `faq`: Before you ask.
@@ -1811,8 +1870,14 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - No. Pick a plan, fill the form and the build starts. If you want to ask something first, use the contact link.
 - [opens] 05 Can you guarantee bookings?
 - No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control. Live in 14 days with the Launch Kit, or your first month is free. Applies to plans that include the Launch Kit (Monthly with Launch Kit, and Annual). The 14 days start when you finish Setup Center. Carrier (A2P), domain and other third-party approvals are outside the 14 days. On an annual plan the free month is added to your term.
-- [opens] 06 What is included each month?
-- Each month includes 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. That covers a typical single-location shop. If you are close to a limit we tell you before anything extra is charged.
+- [opens] 06 Are calls, texts and AI replies included?
+- Your own local business phone number
+- 100 minutes of AI voice answering
+- 500 AI chat replies on your website and messages
+- 400 text messages
+- 5,000 emails for follow-ups, reminders and review requests
+- No usage bills in a normal month. If you ever go over, extra usage is billed at standard rates. Most shops never do.
+- Texting starts once your business texting registration (A2P) is approved; our team handles it with you.
 - [opens] 07 Can I cancel?
 - Yes. Monthly plans are month-to-month. Your domain, content and customer list stay yours and you can export them.
 - [opens] 08 Is the AI a real person?
@@ -2081,6 +2146,13 @@ _Same wording as_ **Home → Section `work`: Who does the work?**.
 - **[H3]** Annual
 - $1,970 /yr
 - About $164 a month.
+- Included every month
+- Your own local business phone number
+- 100 minutes of AI voice answering
+- 500 AI chat replies on your website and messages
+- 400 text messages
+- 5,000 emails for follow-ups, reminders and review requests
+- No usage bills in a normal month. If you ever go over, extra usage is billed at standard rates. Most shops never do.
 - Your front office: 3 roles, 9 systems
 - [opens] **The Receptionist** Never miss a lead
 - [opens] **The Service Advisor** Turn leads into booked jobs
@@ -2132,7 +2204,7 @@ _Same wording as_ **Home → Section `work`: Who does the work?**.
 - **Love it or leave it** Month-to-month on monthly plans. Cancel anytime.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
-- Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
+- Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Texting carrier fees are passed on at cost and shown to you before activation.
 - [link] Not ready to buy? Get a free Booking Leak Audit →  `→ #start`
 
 ### Section `faq`: Before you ask.
@@ -2149,8 +2221,14 @@ _Same wording as_ **Home → Section `work`: Who does the work?**.
 - No. Pick a plan, fill the form and the build starts. If you want to ask something first, use the contact link.
 - [opens] 05 Can you guarantee bookings?
 - No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control. Live in 14 days with the Launch Kit, or your first month is free. Applies to plans that include the Launch Kit (Monthly with Launch Kit, and Annual). The 14 days start when you finish Setup Center. Carrier (A2P), domain and other third-party approvals are outside the 14 days. On an annual plan the free month is added to your term.
-- [opens] 06 What is included each month?
-- Each month includes 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. That covers a typical single-location shop. If you are close to a limit we tell you before anything extra is charged.
+- [opens] 06 Are calls, texts and AI replies included?
+- Your own local business phone number
+- 100 minutes of AI voice answering
+- 500 AI chat replies on your website and messages
+- 400 text messages
+- 5,000 emails for follow-ups, reminders and review requests
+- No usage bills in a normal month. If you ever go over, extra usage is billed at standard rates. Most shops never do.
+- Texting starts once your business texting registration (A2P) is approved; our team handles it with you.
 - [opens] 07 Can I cancel?
 - Yes. Monthly plans are month-to-month. Your domain, content and customer list stay yours and you can export them.
 - [opens] 08 Is the AI a real person?
@@ -2456,6 +2534,13 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - **[H3]** Annual
 - $1,970 /yr
 - About $164 a month.
+- Included every month
+- Your own local business phone number
+- 100 minutes of AI voice answering
+- 500 AI chat replies on your website and messages
+- 400 text messages
+- 5,000 emails for follow-ups, reminders and review requests
+- No usage bills in a normal month. If you ever go over, extra usage is billed at standard rates. Most shops never do.
 - Your front office: 3 roles, 9 systems
 - [opens] **The Receptionist** Never miss a lead
 - [opens] **The Service Advisor** Turn leads into booked jobs
@@ -2507,7 +2592,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - **Love it or leave it** Month-to-month on monthly plans. Cancel anytime.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
-- Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
+- Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Texting carrier fees are passed on at cost and shown to you before activation.
 - [link] Not ready to buy? Get a free Booking Leak Audit →  `→ #start`
 
 ### Section `faq`: Before you ask.
@@ -2524,8 +2609,14 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - No. Pick a plan, fill the form and the build starts. If you want to ask something first, use the contact link.
 - [opens] 05 Can you guarantee bookings?
 - No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control. Live in 14 days with the Launch Kit, or your first month is free. Applies to plans that include the Launch Kit (Monthly with Launch Kit, and Annual). The 14 days start when you finish Setup Center. Carrier (A2P), domain and other third-party approvals are outside the 14 days. On an annual plan the free month is added to your term.
-- [opens] 06 What is included each month?
-- Each month includes 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. That covers a typical single-location shop. If you are close to a limit we tell you before anything extra is charged.
+- [opens] 06 Are calls, texts and AI replies included?
+- Your own local business phone number
+- 100 minutes of AI voice answering
+- 500 AI chat replies on your website and messages
+- 400 text messages
+- 5,000 emails for follow-ups, reminders and review requests
+- No usage bills in a normal month. If you ever go over, extra usage is billed at standard rates. Most shops never do.
+- Texting starts once your business texting registration (A2P) is approved; our team handles it with you.
 - [opens] 07 Can I cancel?
 - Yes. Monthly plans are month-to-month. Your domain, content and customer list stay yours and you can export them.
 - [opens] 08 Is the AI a real person?
@@ -2785,6 +2876,13 @@ _Same wording as_ **Home → Section `hook`**.
 - **[H3]** Annual
 - $1,970 /yr
 - About $164 a month.
+- Included every month
+- Your own local business phone number
+- 100 minutes of AI voice answering
+- 500 AI chat replies on your website and messages
+- 400 text messages
+- 5,000 emails for follow-ups, reminders and review requests
+- No usage bills in a normal month. If you ever go over, extra usage is billed at standard rates. Most shops never do.
 - Your front office: 3 roles, 9 systems
 - [opens] **The Receptionist** Never miss a lead
 - [opens] **The Service Advisor** Turn leads into booked jobs
@@ -2836,7 +2934,7 @@ _Same wording as_ **Home → Section `hook`**.
 - **Love it or leave it** Month-to-month on monthly plans. Cancel anytime.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
-- Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
+- Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Texting carrier fees are passed on at cost and shown to you before activation.
 - [link] Not ready to buy? Get a free Booking Leak Audit →  `→ #start`
 
 ### Section `faq`: Before you ask.
@@ -2853,8 +2951,14 @@ _Same wording as_ **Home → Section `hook`**.
 - No. Pick a plan, fill the form and the build starts. If you want to ask something first, use the contact link.
 - [opens] 05 Can you guarantee bookings?
 - No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control. Live in 14 days with the Launch Kit, or your first month is free. Applies to plans that include the Launch Kit (Monthly with Launch Kit, and Annual). The 14 days start when you finish Setup Center. Carrier (A2P), domain and other third-party approvals are outside the 14 days. On an annual plan the free month is added to your term.
-- [opens] 06 What is included each month?
-- Each month includes 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. That covers a typical single-location shop. If you are close to a limit we tell you before anything extra is charged.
+- [opens] 06 Are calls, texts and AI replies included?
+- Your own local business phone number
+- 100 minutes of AI voice answering
+- 500 AI chat replies on your website and messages
+- 400 text messages
+- 5,000 emails for follow-ups, reminders and review requests
+- No usage bills in a normal month. If you ever go over, extra usage is billed at standard rates. Most shops never do.
+- Texting starts once your business texting registration (A2P) is approved; our team handles it with you.
 - [opens] 07 Can I cancel?
 - Yes. Monthly plans are month-to-month. Your domain, content and customer list stay yours and you can export them.
 - [opens] 08 Is the AI a real person?
@@ -3117,6 +3221,13 @@ _Same wording as_ **Home → Section `work`: Who does the work?**.
 - **[H3]** Annual
 - $1,970 /yr
 - About $164 a month.
+- Included every month
+- Your own local business phone number
+- 100 minutes of AI voice answering
+- 500 AI chat replies on your website and messages
+- 400 text messages
+- 5,000 emails for follow-ups, reminders and review requests
+- No usage bills in a normal month. If you ever go over, extra usage is billed at standard rates. Most shops never do.
 - Your front office: 3 roles, 9 systems
 - [opens] **The Receptionist** Never miss a lead
 - [opens] **The Service Advisor** Turn leads into booked jobs
@@ -3168,7 +3279,7 @@ _Same wording as_ **Home → Section `work`: Who does the work?**.
 - **Love it or leave it** Month-to-month on monthly plans. Cancel anytime.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
-- Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
+- Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Texting carrier fees are passed on at cost and shown to you before activation.
 - [link] Not ready to buy? Get a free Booking Leak Audit →  `→ #start`
 
 ### Section `faq`: Before you ask.
@@ -3185,8 +3296,14 @@ _Same wording as_ **Home → Section `work`: Who does the work?**.
 - No. Pick a plan, fill the form and the build starts. If you want to ask something first, use the contact link.
 - [opens] 05 Can you guarantee bookings?
 - No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control. Live in 14 days with the Launch Kit, or your first month is free. Applies to plans that include the Launch Kit (Monthly with Launch Kit, and Annual). The 14 days start when you finish Setup Center. Carrier (A2P), domain and other third-party approvals are outside the 14 days. On an annual plan the free month is added to your term.
-- [opens] 06 What is included each month?
-- Each month includes 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. That covers a typical single-location shop. If you are close to a limit we tell you before anything extra is charged.
+- [opens] 06 Are calls, texts and AI replies included?
+- Your own local business phone number
+- 100 minutes of AI voice answering
+- 500 AI chat replies on your website and messages
+- 400 text messages
+- 5,000 emails for follow-ups, reminders and review requests
+- No usage bills in a normal month. If you ever go over, extra usage is billed at standard rates. Most shops never do.
+- Texting starts once your business texting registration (A2P) is approved; our team handles it with you.
 - [opens] 07 Can I cancel?
 - Yes. Monthly plans are month-to-month. Your domain, content and customer list stay yours and you can export them.
 - [opens] 08 Is the AI a real person?
@@ -3435,6 +3552,13 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - **[H3]** Annual
 - $1,970 /yr
 - About $164 a month.
+- Included every month
+- Your own local business phone number
+- 100 minutes of AI voice answering
+- 500 AI chat replies on your website and messages
+- 400 text messages
+- 5,000 emails for follow-ups, reminders and review requests
+- No usage bills in a normal month. If you ever go over, extra usage is billed at standard rates. Most shops never do.
 - Your front office: 3 roles, 9 systems
 - [opens] **The Receptionist** Never miss a lead
 - [opens] **The Service Advisor** Turn leads into booked jobs
@@ -3486,7 +3610,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - **Love it or leave it** Month-to-month on monthly plans. Cancel anytime.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
-- Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
+- Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Texting carrier fees are passed on at cost and shown to you before activation.
 - [link] Not ready to buy? Get a free Booking Leak Audit →  `→ #start`
 
 ### Section `faq`: Before you ask.
@@ -3503,8 +3627,14 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - No. Pick a plan, fill the form and the build starts. If you want to ask something first, use the contact link.
 - [opens] 05 Can you guarantee bookings?
 - No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control. Live in 14 days with the Launch Kit, or your first month is free. Applies to plans that include the Launch Kit (Monthly with Launch Kit, and Annual). The 14 days start when you finish Setup Center. Carrier (A2P), domain and other third-party approvals are outside the 14 days. On an annual plan the free month is added to your term.
-- [opens] 06 What is included each month?
-- Each month includes 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. That covers a typical single-location shop. If you are close to a limit we tell you before anything extra is charged.
+- [opens] 06 Are calls, texts and AI replies included?
+- Your own local business phone number
+- 100 minutes of AI voice answering
+- 500 AI chat replies on your website and messages
+- 400 text messages
+- 5,000 emails for follow-ups, reminders and review requests
+- No usage bills in a normal month. If you ever go over, extra usage is billed at standard rates. Most shops never do.
+- Texting starts once your business texting registration (A2P) is approved; our team handles it with you.
 - [opens] 07 Can I cancel?
 - Yes. Monthly plans are month-to-month. Your domain, content and customer list stay yours and you can export them.
 - [opens] 08 Is the AI a real person?
@@ -3757,6 +3887,13 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - **[H3]** Annual
 - $1,970 /yr
 - About $164 a month.
+- Included every month
+- Your own local business phone number
+- 100 minutes of AI voice answering
+- 500 AI chat replies on your website and messages
+- 400 text messages
+- 5,000 emails for follow-ups, reminders and review requests
+- No usage bills in a normal month. If you ever go over, extra usage is billed at standard rates. Most shops never do.
 - Your front office: 3 roles, 9 systems
 - [opens] **The Receptionist** Never miss a lead
 - [opens] **The Service Advisor** Turn leads into booked jobs
@@ -3808,7 +3945,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - **Love it or leave it** Month-to-month on monthly plans. Cancel anytime.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
-- Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
+- Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Texting carrier fees are passed on at cost and shown to you before activation.
 - [link] Not ready to buy? Get a free Booking Leak Audit →  `→ #start`
 
 ### Section `faq`: Before you ask.
@@ -3825,8 +3962,14 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - No. Pick a plan, fill the form and the build starts. If you want to ask something first, use the contact link.
 - [opens] 05 Can you guarantee bookings?
 - No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control. Live in 14 days with the Launch Kit, or your first month is free. Applies to plans that include the Launch Kit (Monthly with Launch Kit, and Annual). The 14 days start when you finish Setup Center. Carrier (A2P), domain and other third-party approvals are outside the 14 days. On an annual plan the free month is added to your term.
-- [opens] 06 What is included each month?
-- Each month includes 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. That covers a typical single-location shop. If you are close to a limit we tell you before anything extra is charged.
+- [opens] 06 Are calls, texts and AI replies included?
+- Your own local business phone number
+- 100 minutes of AI voice answering
+- 500 AI chat replies on your website and messages
+- 400 text messages
+- 5,000 emails for follow-ups, reminders and review requests
+- No usage bills in a normal month. If you ever go over, extra usage is billed at standard rates. Most shops never do.
+- Texting starts once your business texting registration (A2P) is approved; our team handles it with you.
 - [opens] 07 Can I cancel?
 - Yes. Monthly plans are month-to-month. Your domain, content and customer list stay yours and you can export them.
 - [opens] 08 Is the AI a real person?
@@ -4090,6 +4233,13 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - **[H3]** Annual
 - $1,970 /yr
 - About $164 a month.
+- Included every month
+- Your own local business phone number
+- 100 minutes of AI voice answering
+- 500 AI chat replies on your website and messages
+- 400 text messages
+- 5,000 emails for follow-ups, reminders and review requests
+- No usage bills in a normal month. If you ever go over, extra usage is billed at standard rates. Most shops never do.
 - Your front office: 3 roles, 9 systems
 - [opens] **The Receptionist** Never miss a lead
 - [opens] **The Service Advisor** Turn leads into booked jobs
@@ -4141,7 +4291,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - **Love it or leave it** Month-to-month on monthly plans. Cancel anytime.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
-- Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
+- Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Texting carrier fees are passed on at cost and shown to you before activation.
 - [link] Not ready to buy? Get a free Booking Leak Audit →  `→ #start`
 
 ### Section `faq`: Before you ask.
@@ -4158,8 +4308,14 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - No. Pick a plan, fill the form and the build starts. If you want to ask something first, use the contact link.
 - [opens] 05 Can you guarantee bookings?
 - No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control. Live in 14 days with the Launch Kit, or your first month is free. Applies to plans that include the Launch Kit (Monthly with Launch Kit, and Annual). The 14 days start when you finish Setup Center. Carrier (A2P), domain and other third-party approvals are outside the 14 days. On an annual plan the free month is added to your term.
-- [opens] 06 What is included each month?
-- Each month includes 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. That covers a typical single-location shop. If you are close to a limit we tell you before anything extra is charged.
+- [opens] 06 Are calls, texts and AI replies included?
+- Your own local business phone number
+- 100 minutes of AI voice answering
+- 500 AI chat replies on your website and messages
+- 400 text messages
+- 5,000 emails for follow-ups, reminders and review requests
+- No usage bills in a normal month. If you ever go over, extra usage is billed at standard rates. Most shops never do.
+- Texting starts once your business texting registration (A2P) is approved; our team handles it with you.
 - [opens] 07 Can I cancel?
 - Yes. Monthly plans are month-to-month. Your domain, content and customer list stay yours and you can export them.
 - [opens] 08 Is the AI a real person?
@@ -4413,6 +4569,13 @@ _Same wording as_ **Home → Section `day`: A day in your shop, before and after
 - **[H3]** Annual
 - $1,970 /yr
 - About $164 a month.
+- Included every month
+- Your own local business phone number
+- 100 minutes of AI voice answering
+- 500 AI chat replies on your website and messages
+- 400 text messages
+- 5,000 emails for follow-ups, reminders and review requests
+- No usage bills in a normal month. If you ever go over, extra usage is billed at standard rates. Most shops never do.
 - Your front office: 3 roles, 9 systems
 - [opens] **The Receptionist** Never miss a lead
 - [opens] **The Service Advisor** Turn leads into booked jobs
@@ -4464,7 +4627,7 @@ _Same wording as_ **Home → Section `day`: A day in your shop, before and after
 - **Love it or leave it** Month-to-month on monthly plans. Cancel anytime.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
-- Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
+- Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Texting carrier fees are passed on at cost and shown to you before activation.
 - [link] Not ready to buy? Get a free Booking Leak Audit →  `→ #start`
 
 ### Section `faq`: Before you ask.
@@ -4481,8 +4644,14 @@ _Same wording as_ **Home → Section `day`: A day in your shop, before and after
 - No. Pick a plan, fill the form and the build starts. If you want to ask something first, use the contact link.
 - [opens] 05 Can you guarantee bookings?
 - No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control. Live in 14 days with the Launch Kit, or your first month is free. Applies to plans that include the Launch Kit (Monthly with Launch Kit, and Annual). The 14 days start when you finish Setup Center. Carrier (A2P), domain and other third-party approvals are outside the 14 days. On an annual plan the free month is added to your term.
-- [opens] 06 What is included each month?
-- Each month includes 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. That covers a typical single-location shop. If you are close to a limit we tell you before anything extra is charged.
+- [opens] 06 Are calls, texts and AI replies included?
+- Your own local business phone number
+- 100 minutes of AI voice answering
+- 500 AI chat replies on your website and messages
+- 400 text messages
+- 5,000 emails for follow-ups, reminders and review requests
+- No usage bills in a normal month. If you ever go over, extra usage is billed at standard rates. Most shops never do.
+- Texting starts once your business texting registration (A2P) is approved; our team handles it with you.
 - [opens] 07 Can I cancel?
 - Yes. Monthly plans are month-to-month. Your domain, content and customer list stay yours and you can export them.
 - [opens] 08 Is the AI a real person?
@@ -4603,6 +4772,13 @@ _Same wording as_ **Home → Section `skip-link`**.
 - Two months included: pay 10, get 12.
 - Full website included ($997 on monthly).
 - Due today $1,970
+- Included every month
+- Your own local business phone number
+- 100 minutes of AI voice answering
+- 500 AI chat replies on your website and messages
+- 400 text messages
+- 5,000 emails for follow-ups, reminders and review requests
+- No usage bills in a normal month. If you ever go over, extra usage is billed at standard rates. Most shops never do.
 - $197 /mo
 - Month-to-month. Cancel anytime.
 - One-time Launch Kit: $497.
@@ -4807,7 +4983,8 @@ _Same wording as_ **Privacy Policy → Top menu `top`**.
 - Monthly plan: $197 a month, plus a one-time Launch Kit fee of $497.
 - Annual plan: $1,970 a year, paid in advance. The Launch Kit fee is waived.
 - A full website is a one-time $997 add-on on the monthly plan and is included on the annual plan.
-- Each month includes 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Carrier fees for texting are passed on at cost and shown to you before activation.
+- Each plan includes the monthly usage listed on our pricing page. Usage above that is billed at standard rates. Unused usage does not roll over.
+- Carrier fees for texting are passed on at cost and shown to you before activation.
 - Prices are those shown at checkout. Plans renew automatically until cancelled. If a payment fails we may pause the service until it is resolved.
 - **[H2]** 4 Guarantees
 - Live in 14 days with the Launch Kit, or your first month is free. Applies to plans that include the Launch Kit (Monthly with Launch Kit, and Annual). A monthly plan without the Launch Kit does not include this guarantee. The 14 days start when you finish Setup Center in your account. Carrier (A2P), domain and other third-party approvals are outside the 14 days.
@@ -5271,6 +5448,13 @@ _Same wording as_ **Home → Section `ticker`**.
 - **[H3]** Annual
 - $1,970 /yr
 - About $164 a month.
+- Included every month
+- Your own local business phone number
+- 100 minutes of AI voice answering
+- 500 AI chat replies on your website and messages
+- 400 text messages
+- 5,000 emails for follow-ups, reminders and review requests
+- No usage bills in a normal month. If you ever go over, extra usage is billed at standard rates. Most shops never do.
 - Your front office: 3 roles, 9 systems
 - [opens] **The Receptionist** Never miss a lead
 - [opens] **The Booking Coordinator** Turn leads into bookings
@@ -5322,7 +5506,7 @@ _Same wording as_ **Home → Section `ticker`**.
 - **Love it or leave it** Month-to-month on monthly plans. Cancel anytime.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your current software** It sits alongside the tools that run your work.
-- Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Included every month: 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. Texting carrier fees are passed on at cost and shown to you before activation.
+- Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Texting carrier fees are passed on at cost and shown to you before activation.
 - [link] Not ready to buy? Get a free Booking Leak Audit →  `→ #start`
 
 ### Section `faq`: Before you ask.
@@ -5343,8 +5527,14 @@ _Same wording as_ **Home → Section `ticker`**.
 - Yes for US businesses. For other countries, ask us first so we can confirm availability. US texting also needs carrier registration (A2P). We prepare it with you and texting goes live once the carrier approves.
 - [opens] 07 Can you guarantee bookings?
 - No, and be careful with anyone who does. Bookings depend on your services, prices and market. We guarantee the work we control. Live in 14 days with the Launch Kit, or your first month is free. Applies to plans that include the Launch Kit (Monthly with Launch Kit, and Annual). The 14 days start when you finish Setup Center. Carrier (A2P), domain and other third-party approvals are outside the 14 days. On an annual plan the free month is added to your term.
-- [opens] 08 What is included each month?
-- Each month includes 5,000 emails, 1,000 outbound US text message segments, 100 AI voice minutes, 250 AI chat replies and one local phone number. That covers a typical single-location business. If you are close to a limit we tell you before anything extra is charged.
+- [opens] 08 Are calls, texts and AI replies included?
+- Your own local business phone number
+- 100 minutes of AI voice answering
+- 500 AI chat replies on your website and messages
+- 400 text messages
+- 5,000 emails for follow-ups, reminders and review requests
+- No usage bills in a normal month. If you ever go over, extra usage is billed at standard rates. Most shops never do.
+- Texting starts once your business texting registration (A2P) is approved; our team handles it with you.
 - [opens] 09 Can I cancel?
 - Yes. Monthly plans are month-to-month. Your domain, content and customer list stay yours and you can export them.
 - [opens] 10 Is the AI a real person?
@@ -5440,6 +5630,7 @@ These lines exist in the content files, but no page displays them at present. Th
 - A review request, then a maintenance reminder.
 - One price. Nothing to manage.
 - Online checkout is being switched on. Leave your details and your join link arrives by email.
+- Yes. Every month includes {included}. ${included9.note} ${included9.a2p}
 - The leak keeps running while you wait.
 - Flawless work deserves
 - a flawless follow-up.
