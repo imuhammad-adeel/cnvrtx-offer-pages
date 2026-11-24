@@ -230,6 +230,8 @@ export const included9 = {
   title: 'Included every month',
   note: 'No usage bills in a normal month. If you ever go over, extra usage is billed at standard rates. Most shops never do.',
   a2p: 'Texting starts once your business texting registration (A2P) is approved; our team handles it with you.',
+  /** Owner-approved wording (2026-11-24). The only line about texting fees; do not write a variant. */
+  a2pFee: 'The one-time business texting registration (A2P) fee is passed on at cost.',
 };
 
 export const offer9 = {
@@ -301,7 +303,7 @@ export const offer9 = {
     { k: 'All year', v: 'One price. Nothing to manage.' },
   ],
   /** `{allowance}` and `{hours}` are filled from config (offerV9.allowance, offerV9.textingHours). */
-  usage: 'Texting carrier fees are passed on at cost and shown to you before activation.',
+  usage: '',
   honest: 'We do not guarantee bookings or revenue. We guarantee the work we control.',
 };
 
@@ -369,7 +371,7 @@ export const faq9 = {
       q: 'Are calls, texts and AI replies included?',
       /** `included: true` makes the FAQ show the list as a list; `a` is the same answer as one paragraph. */
       included: true,
-      a: `Yes. Every month includes {included}. ${included9.note} ${included9.a2p}`,
+      a: `Yes. Every month includes {included}. ${included9.note} ${included9.a2p} ${included9.a2pFee}`,
     },
     {
       q: 'Can I cancel?',
@@ -828,5 +830,5 @@ export const checkout9 = {
     body: 'Card payment opens on this page shortly. Nothing has been charged.',
   },
   preview: 'Preview: no order form link is set yet. Add the GHL order form links in src/config/offerV9.ts (checkout, and exitOffer.checkout for the leaving offer).',
-  fine: 'Annual payments are not refundable. Texting carrier fees are passed on at cost and shown to you before activation.',
+  fine: 'Annual payments are not refundable.',
 };

@@ -420,7 +420,7 @@ The site is auto-first: the home page is the auto-shop page.
 - **Love it or leave it** Month-to-month on monthly plans. Cancel anytime.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
-- Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Texting carrier fees are passed on at cost and shown to you before activation.
+- Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control.
 - [link] Not ready to buy? Get a free Booking Leak Audit →  `→ #start`
 
 ### Section `faq`: Before you ask.
@@ -448,7 +448,7 @@ The site is auto-first: the home page is the auto-shop page.
 - 400 text messages
 - 5,000 emails for follow-ups, reminders and review requests
 - No usage bills in a normal month. If you ever go over, extra usage is billed at standard rates. Most shops never do.
-- Texting starts once your business texting registration (A2P) is approved; our team handles it with you.
+- Texting starts once your business texting registration (A2P) is approved; our team handles it with you. The one-time business texting registration (A2P) fee is passed on at cost.
 - [opens] 09 Can I cancel?
 - Yes. Monthly plans are month-to-month. Your domain, content and customer list stay yours and you can export them.
 - [opens] 10 Is the AI a real person?
@@ -815,7 +815,7 @@ _Same wording as_ **Home → Section `skip-link`**.
 - **Love it or leave it** Month-to-month on monthly plans. Cancel anytime.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
-- Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Texting carrier fees are passed on at cost and shown to you before activation.
+- Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control.
 - [link] Not ready to buy? Get a free Booking Leak Audit →  `→ #start`
 
 ### Section `faq`: Before you ask.
@@ -839,7 +839,7 @@ _Same wording as_ **Home → Section `skip-link`**.
 - 400 text messages
 - 5,000 emails for follow-ups, reminders and review requests
 - No usage bills in a normal month. If you ever go over, extra usage is billed at standard rates. Most shops never do.
-- Texting starts once your business texting registration (A2P) is approved; our team handles it with you.
+- Texting starts once your business texting registration (A2P) is approved; our team handles it with you. The one-time business texting registration (A2P) fee is passed on at cost.
 - [opens] 07 Can I cancel?
 - Yes. Monthly plans are month-to-month. Your domain, content and customer list stay yours and you can export them.
 - [opens] 08 Is the AI a real person?
@@ -1159,7 +1159,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - **Love it or leave it** Month-to-month on monthly plans. Cancel anytime.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
-- Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Texting carrier fees are passed on at cost and shown to you before activation.
+- Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control.
 - [link] Not ready to buy? Get a free Booking Leak Audit →  `→ #start`
 
 ### Section `faq`: Before you ask.
@@ -1183,7 +1183,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - 400 text messages
 - 5,000 emails for follow-ups, reminders and review requests
 - No usage bills in a normal month. If you ever go over, extra usage is billed at standard rates. Most shops never do.
-- Texting starts once your business texting registration (A2P) is approved; our team handles it with you.
+- Texting starts once your business texting registration (A2P) is approved; our team handles it with you. The one-time business texting registration (A2P) fee is passed on at cost.
 - [opens] 07 Can I cancel?
 - Yes. Monthly plans are month-to-month. Your domain, content and customer list stay yours and you can export them.
 - [opens] 08 Is the AI a real person?
@@ -1506,7 +1506,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - **Love it or leave it** Month-to-month on monthly plans. Cancel anytime.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
-- Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Texting carrier fees are passed on at cost and shown to you before activation.
+- Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control.
 - [link] Not ready to buy? Get a free Booking Leak Audit →  `→ #start`
 
 ### Section `faq`: Before you ask.
@@ -1530,7 +1530,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - 400 text messages
 - 5,000 emails for follow-ups, reminders and review requests
 - No usage bills in a normal month. If you ever go over, extra usage is billed at standard rates. Most shops never do.
-- Texting starts once your business texting registration (A2P) is approved; our team handles it with you.
+- Texting starts once your business texting registration (A2P) is approved; our team handles it with you. The one-time business texting registration (A2P) fee is passed on at cost.
 - [opens] 07 Can I cancel?
 - Yes. Monthly plans are month-to-month. Your domain, content and customer list stay yours and you can export them.
 - [opens] 08 Is the AI a real person?
@@ -1853,7 +1853,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - **Love it or leave it** Month-to-month on monthly plans. Cancel anytime.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
-- Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Texting carrier fees are passed on at cost and shown to you before activation.
+- Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control.
 - [link] Not ready to buy? Get a free Booking Leak Audit →  `→ #start`
 
 ### Section `faq`: Before you ask.
@@ -1877,7 +1877,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - 400 text messages
 - 5,000 emails for follow-ups, reminders and review requests
 - No usage bills in a normal month. If you ever go over, extra usage is billed at standard rates. Most shops never do.
-- Texting starts once your business texting registration (A2P) is approved; our team handles it with you.
+- Texting starts once your business texting registration (A2P) is approved; our team handles it with you. The one-time business texting registration (A2P) fee is passed on at cost.
 - [opens] 07 Can I cancel?
 - Yes. Monthly plans are month-to-month. Your domain, content and customer list stay yours and you can export them.
 - [opens] 08 Is the AI a real person?
@@ -2204,7 +2204,7 @@ _Same wording as_ **Home → Section `work`: Who does the work?**.
 - **Love it or leave it** Month-to-month on monthly plans. Cancel anytime.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
-- Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Texting carrier fees are passed on at cost and shown to you before activation.
+- Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control.
 - [link] Not ready to buy? Get a free Booking Leak Audit →  `→ #start`
 
 ### Section `faq`: Before you ask.
@@ -2228,7 +2228,7 @@ _Same wording as_ **Home → Section `work`: Who does the work?**.
 - 400 text messages
 - 5,000 emails for follow-ups, reminders and review requests
 - No usage bills in a normal month. If you ever go over, extra usage is billed at standard rates. Most shops never do.
-- Texting starts once your business texting registration (A2P) is approved; our team handles it with you.
+- Texting starts once your business texting registration (A2P) is approved; our team handles it with you. The one-time business texting registration (A2P) fee is passed on at cost.
 - [opens] 07 Can I cancel?
 - Yes. Monthly plans are month-to-month. Your domain, content and customer list stay yours and you can export them.
 - [opens] 08 Is the AI a real person?
@@ -2592,7 +2592,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - **Love it or leave it** Month-to-month on monthly plans. Cancel anytime.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
-- Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Texting carrier fees are passed on at cost and shown to you before activation.
+- Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control.
 - [link] Not ready to buy? Get a free Booking Leak Audit →  `→ #start`
 
 ### Section `faq`: Before you ask.
@@ -2616,7 +2616,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - 400 text messages
 - 5,000 emails for follow-ups, reminders and review requests
 - No usage bills in a normal month. If you ever go over, extra usage is billed at standard rates. Most shops never do.
-- Texting starts once your business texting registration (A2P) is approved; our team handles it with you.
+- Texting starts once your business texting registration (A2P) is approved; our team handles it with you. The one-time business texting registration (A2P) fee is passed on at cost.
 - [opens] 07 Can I cancel?
 - Yes. Monthly plans are month-to-month. Your domain, content and customer list stay yours and you can export them.
 - [opens] 08 Is the AI a real person?
@@ -2934,7 +2934,7 @@ _Same wording as_ **Home → Section `hook`**.
 - **Love it or leave it** Month-to-month on monthly plans. Cancel anytime.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
-- Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Texting carrier fees are passed on at cost and shown to you before activation.
+- Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control.
 - [link] Not ready to buy? Get a free Booking Leak Audit →  `→ #start`
 
 ### Section `faq`: Before you ask.
@@ -2958,7 +2958,7 @@ _Same wording as_ **Home → Section `hook`**.
 - 400 text messages
 - 5,000 emails for follow-ups, reminders and review requests
 - No usage bills in a normal month. If you ever go over, extra usage is billed at standard rates. Most shops never do.
-- Texting starts once your business texting registration (A2P) is approved; our team handles it with you.
+- Texting starts once your business texting registration (A2P) is approved; our team handles it with you. The one-time business texting registration (A2P) fee is passed on at cost.
 - [opens] 07 Can I cancel?
 - Yes. Monthly plans are month-to-month. Your domain, content and customer list stay yours and you can export them.
 - [opens] 08 Is the AI a real person?
@@ -3279,7 +3279,7 @@ _Same wording as_ **Home → Section `work`: Who does the work?**.
 - **Love it or leave it** Month-to-month on monthly plans. Cancel anytime.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
-- Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Texting carrier fees are passed on at cost and shown to you before activation.
+- Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control.
 - [link] Not ready to buy? Get a free Booking Leak Audit →  `→ #start`
 
 ### Section `faq`: Before you ask.
@@ -3303,7 +3303,7 @@ _Same wording as_ **Home → Section `work`: Who does the work?**.
 - 400 text messages
 - 5,000 emails for follow-ups, reminders and review requests
 - No usage bills in a normal month. If you ever go over, extra usage is billed at standard rates. Most shops never do.
-- Texting starts once your business texting registration (A2P) is approved; our team handles it with you.
+- Texting starts once your business texting registration (A2P) is approved; our team handles it with you. The one-time business texting registration (A2P) fee is passed on at cost.
 - [opens] 07 Can I cancel?
 - Yes. Monthly plans are month-to-month. Your domain, content and customer list stay yours and you can export them.
 - [opens] 08 Is the AI a real person?
@@ -3610,7 +3610,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - **Love it or leave it** Month-to-month on monthly plans. Cancel anytime.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
-- Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Texting carrier fees are passed on at cost and shown to you before activation.
+- Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control.
 - [link] Not ready to buy? Get a free Booking Leak Audit →  `→ #start`
 
 ### Section `faq`: Before you ask.
@@ -3634,7 +3634,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - 400 text messages
 - 5,000 emails for follow-ups, reminders and review requests
 - No usage bills in a normal month. If you ever go over, extra usage is billed at standard rates. Most shops never do.
-- Texting starts once your business texting registration (A2P) is approved; our team handles it with you.
+- Texting starts once your business texting registration (A2P) is approved; our team handles it with you. The one-time business texting registration (A2P) fee is passed on at cost.
 - [opens] 07 Can I cancel?
 - Yes. Monthly plans are month-to-month. Your domain, content and customer list stay yours and you can export them.
 - [opens] 08 Is the AI a real person?
@@ -3945,7 +3945,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - **Love it or leave it** Month-to-month on monthly plans. Cancel anytime.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
-- Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Texting carrier fees are passed on at cost and shown to you before activation.
+- Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control.
 - [link] Not ready to buy? Get a free Booking Leak Audit →  `→ #start`
 
 ### Section `faq`: Before you ask.
@@ -3969,7 +3969,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - 400 text messages
 - 5,000 emails for follow-ups, reminders and review requests
 - No usage bills in a normal month. If you ever go over, extra usage is billed at standard rates. Most shops never do.
-- Texting starts once your business texting registration (A2P) is approved; our team handles it with you.
+- Texting starts once your business texting registration (A2P) is approved; our team handles it with you. The one-time business texting registration (A2P) fee is passed on at cost.
 - [opens] 07 Can I cancel?
 - Yes. Monthly plans are month-to-month. Your domain, content and customer list stay yours and you can export them.
 - [opens] 08 Is the AI a real person?
@@ -4291,7 +4291,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - **Love it or leave it** Month-to-month on monthly plans. Cancel anytime.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
-- Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Texting carrier fees are passed on at cost and shown to you before activation.
+- Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control.
 - [link] Not ready to buy? Get a free Booking Leak Audit →  `→ #start`
 
 ### Section `faq`: Before you ask.
@@ -4315,7 +4315,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - 400 text messages
 - 5,000 emails for follow-ups, reminders and review requests
 - No usage bills in a normal month. If you ever go over, extra usage is billed at standard rates. Most shops never do.
-- Texting starts once your business texting registration (A2P) is approved; our team handles it with you.
+- Texting starts once your business texting registration (A2P) is approved; our team handles it with you. The one-time business texting registration (A2P) fee is passed on at cost.
 - [opens] 07 Can I cancel?
 - Yes. Monthly plans are month-to-month. Your domain, content and customer list stay yours and you can export them.
 - [opens] 08 Is the AI a real person?
@@ -4627,7 +4627,7 @@ _Same wording as_ **Home → Section `day`: A day in your shop, before and after
 - **Love it or leave it** Month-to-month on monthly plans. Cancel anytime.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your shop software** It sits alongside the tools that run your jobs.
-- Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Texting carrier fees are passed on at cost and shown to you before activation.
+- Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control.
 - [link] Not ready to buy? Get a free Booking Leak Audit →  `→ #start`
 
 ### Section `faq`: Before you ask.
@@ -4651,7 +4651,7 @@ _Same wording as_ **Home → Section `day`: A day in your shop, before and after
 - 400 text messages
 - 5,000 emails for follow-ups, reminders and review requests
 - No usage bills in a normal month. If you ever go over, extra usage is billed at standard rates. Most shops never do.
-- Texting starts once your business texting registration (A2P) is approved; our team handles it with you.
+- Texting starts once your business texting registration (A2P) is approved; our team handles it with you. The one-time business texting registration (A2P) fee is passed on at cost.
 - [opens] 07 Can I cancel?
 - Yes. Monthly plans are month-to-month. Your domain, content and customer list stay yours and you can export them.
 - [opens] 08 Is the AI a real person?
@@ -4810,7 +4810,7 @@ _Same wording as_ **Home → Section `skip-link`**.
 - Live in 14 days with the Launch Kit
 - No sales call
 - Your domain, content and customer list stay yours
-- Annual payments are not refundable. Texting carrier fees are passed on at cost and shown to you before activation.
+- Annual payments are not refundable.
 - [link] Terms of Service  `→ /legal/terms`
 - [link] Cancellation Policy  `→ /legal/cancellation`
 - [link] Privacy Policy  `→ /legal/privacy`
@@ -4984,7 +4984,7 @@ _Same wording as_ **Privacy Policy → Top menu `top`**.
 - Annual plan: $1,970 a year, paid in advance. The Launch Kit fee is waived.
 - A full website is a one-time $997 add-on on the monthly plan and is included on the annual plan.
 - Each plan includes the monthly usage listed on our pricing page. Usage above that is billed at standard rates. Unused usage does not roll over.
-- Carrier fees for texting are passed on at cost and shown to you before activation.
+- The one-time business texting registration (A2P) fee is passed on at cost.
 - Prices are those shown at checkout. Plans renew automatically until cancelled. If a payment fails we may pause the service until it is resolved.
 - **[H2]** 4 Guarantees
 - Live in 14 days with the Launch Kit, or your first month is free. Applies to plans that include the Launch Kit (Monthly with Launch Kit, and Annual). A monthly plan without the Launch Kit does not include this guarantee. The 14 days start when you finish Setup Center in your account. Carrier (A2P), domain and other third-party approvals are outside the 14 days.
@@ -5506,7 +5506,7 @@ _Same wording as_ **Home → Section `ticker`**.
 - **Love it or leave it** Month-to-month on monthly plans. Cancel anytime.
 - **Your business stays yours** Your domain, content and customer list, exportable.
 - **Keeps your current software** It sits alongside the tools that run your work.
-- Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control. Texting carrier fees are passed on at cost and shown to you before activation.
+- Texts go only to people who agreed to them, after carrier approval, and during texting hours (8 AM to 8 PM). We do not guarantee bookings or revenue. We guarantee the work we control.
 - [link] Not ready to buy? Get a free Booking Leak Audit →  `→ #start`
 
 ### Section `faq`: Before you ask.
@@ -5534,7 +5534,7 @@ _Same wording as_ **Home → Section `ticker`**.
 - 400 text messages
 - 5,000 emails for follow-ups, reminders and review requests
 - No usage bills in a normal month. If you ever go over, extra usage is billed at standard rates. Most shops never do.
-- Texting starts once your business texting registration (A2P) is approved; our team handles it with you.
+- Texting starts once your business texting registration (A2P) is approved; our team handles it with you. The one-time business texting registration (A2P) fee is passed on at cost.
 - [opens] 09 Can I cancel?
 - Yes. Monthly plans are month-to-month. Your domain, content and customer list stay yours and you can export them.
 - [opens] 10 Is the AI a real person?
@@ -5630,7 +5630,7 @@ These lines exist in the content files, but no page displays them at present. Th
 - A review request, then a maintenance reminder.
 - One price. Nothing to manage.
 - Online checkout is being switched on. Leave your details and your join link arrives by email.
-- Yes. Every month includes {included}. ${included9.note} ${included9.a2p}
+- Yes. Every month includes {included}. ${included9.note} ${included9.a2p} ${included9.a2pFee}
 - The leak keeps running while you wait.
 - Flawless work deserves
 - a flawless follow-up.

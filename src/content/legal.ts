@@ -104,7 +104,7 @@ export const legalDocs: LegalDoc[] = [
       {
         h: '3. Fees and billing',
         body: [
-          ['Monthly plan: {monthly} a month, plus a one-time Launch Kit fee of {kit}.', 'Annual plan: {annual} a year, paid in advance. The Launch Kit fee is waived.', 'A full website is a one-time {website} add-on on the monthly plan and is included on the annual plan.', 'Each plan includes the monthly usage listed on our pricing page. Usage above that is billed at standard rates. Unused usage does not roll over.', 'Carrier fees for texting are passed on at cost and shown to you before activation.'],
+          ['Monthly plan: {monthly} a month, plus a one-time Launch Kit fee of {kit}.', 'Annual plan: {annual} a year, paid in advance. The Launch Kit fee is waived.', 'A full website is a one-time {website} add-on on the monthly plan and is included on the annual plan.', 'Each plan includes the monthly usage listed on our pricing page. Usage above that is billed at standard rates. Unused usage does not roll over.', 'The one-time business texting registration (A2P) fee is passed on at cost.'],
           'Prices are those shown at checkout. Plans renew automatically until cancelled. If a payment fails we may pause the service until it is resolved.',
         ],
       },
