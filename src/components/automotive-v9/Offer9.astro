@@ -110,7 +110,7 @@ const cta = (interval: 'annual' | 'monthly') => ({
       <article class="plan" aria-labelledby="pl-m">
         <h3 id="pl-m">{c.monthly.name}</h3>
         <p class="amt"><b>{fmt(plan.monthly)}</b><span>/mo</span></p>
-        <p class="eq">+ {fmt(plan.launchKit)} one-time Launch Kit.</p>
+        <p class="eq">{fill(f.monthly.kit)} {f.monthly.kitLine}</p>
         <Included9 />
         <div class="in">
           <p class="in-h">{c.rolesTitle}</p>

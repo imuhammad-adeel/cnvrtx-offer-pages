@@ -93,7 +93,7 @@ export const legalDocs: LegalDoc[] = [
       {
         h: '1. The service',
         body: [
-          'We set up and run a front-office system for your shop: answering leads, following up, confirming bookings, asking for reviews and reporting, as described on our website at the time you buy. We build it, write the messages and test it for you.',
+          'We set up and run a front-office system for your shop: answering leads, following up, confirming bookings, asking for reviews and reporting, as described on our website at the time you buy. We build it, write the messages and test it for you. On a monthly plan without the Launch Kit, the system is ready in your account and you set it up yourself.',
           'Some features depend on third parties. For example, business texting in the US needs carrier registration and approval, and those features go live only after approval.',
         ],
       },
@@ -104,7 +104,7 @@ export const legalDocs: LegalDoc[] = [
       {
         h: '3. Fees and billing',
         body: [
-          ['Monthly plan: {monthly} a month, plus a one-time Launch Kit fee of {kit}.', 'Annual plan: {annual} a year, paid in advance. The Launch Kit fee is waived.', 'A full website is a one-time {website} add-on on the monthly plan and is included on the annual plan.', 'Each plan includes the monthly usage listed on our pricing page. Usage above that is billed at standard rates. Unused usage does not roll over.', 'The one-time business texting registration (A2P) fee is passed on at cost.'],
+          ['Monthly plan: {monthly} a month. The Launch Kit is optional on the monthly plan, for a one-time fee of {kit}.', 'Annual plan: {annual} a year, paid in advance. The Launch Kit fee is waived.', 'A full website is a one-time {website} add-on on the monthly plan and is included on the annual plan.', 'Each plan includes the monthly usage listed on our pricing page. Usage above that is billed at standard rates. Unused usage does not roll over.', 'The one-time business texting registration (A2P) fee is passed on at cost.'],
           'Prices are those shown at checkout. Plans renew automatically until cancelled. If a payment fails we may pause the service until it is resolved.',
         ],
       },

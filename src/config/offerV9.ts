@@ -181,6 +181,10 @@ function includedText(): string {
   const first = l[0].charAt(0).toLowerCase() + l[0].slice(1);
   return `${[first, ...l.slice(1, -1)].join(', ')} and ${l[l.length - 1]}`;
 }
-/** Fills `{allowance}`, `{included}` and `{hours}` in a line of copy. */
+/** Fills `{allowance}`, `{included}`, `{hours}` and `{kit}` (the regular Launch Kit price) in a line of copy. */
 export const fillOffer = (t: string) =>
-  t.replaceAll('{allowance}', allowanceText()).replaceAll('{included}', includedText()).replaceAll('{hours}', offerV9.textingHours);
+  t
+    .replaceAll('{allowance}', allowanceText())
+    .replaceAll('{included}', includedText())
+    .replaceAll('{hours}', offerV9.textingHours)
+    .replaceAll('{kit}', '$' + featuredPlan.launchKit.toLocaleString('en-US'));

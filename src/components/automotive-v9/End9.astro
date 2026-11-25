@@ -22,7 +22,7 @@ const waitOn = Astro.props.copy !== 'local' && (Boolean(cfg.forms.waitlist) || i
 const k = cfg.contact;
 const { faq = [], startLead = e.lead, footerLine = e.footer, footer: showFooter = true } = Astro.props;
 // page questions first, then the ones every buyer asks
-const keep = ['Do I have to talk to a salesperson?', 'Can you guarantee bookings?', 'Are calls, texts and AI replies included?', 'Can I cancel?', 'Is the AI a real person?'];
+const keep = ['Do I have to talk to a salesperson?', 'Can you guarantee bookings?', 'Are calls, texts and AI replies included?', 'Do I need the Launch Kit?', 'Can I cancel?', 'Is the AI a real person?'];
 const faqItems = (faq.length ? [...faq, ...q.items.filter((x) => keep.includes(x.q))] : q.items).map((x) => ({ q: x.q, a: fillOffer(x.a), included: 'included' in x && x.included === true }));
 const incl = includedMonthly();
 
@@ -135,10 +135,11 @@ const smsLinks = [
             <b>{money(plans[0].annual)}</b> a year. Launch Kit waived.
           </p>
           <p class="op" data-ivl-show="monthly" hidden>
-            <b>{money(plans[0].monthly)}</b> a month + <span data-kit-regular>{money(plans[0].launchKit)}</span>
+            <b>{money(plans[0].monthly)}</b> a month.{' '}
+            <span data-kit-regular>{fillOffer(offer9.monthly.kit)} {offer9.monthly.kitLine}</span>
             <span data-kit-offer hidden>
-              <b>{money(cfg.exitOffer.launchKit)}</b> <s>{money(plans[0].launchKit)}</s>
-            </span> one-time Launch Kit.
+              + <b>{money(cfg.exitOffer.launchKit)}</b> <s>{money(plans[0].launchKit)}</s> one-time Launch Kit.
+            </span>
           </p>
         </div>
 

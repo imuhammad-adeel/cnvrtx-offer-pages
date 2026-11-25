@@ -241,7 +241,7 @@ export const offer9 = {
   /** True for all three plans. `ic` is the icon index in Offer9. */
   includesTitle: 'Every plan includes',
   includes: [
-    { t: 'Setup and writing done for you', ic: 10 },
+    { t: 'Setup done for you with the Launch Kit', ic: 10 },
     { t: 'Your own local number (US)', ic: 1 },
     { t: 'The mobile app', ic: 2 },
     { t: 'One inbox for calls, texts, chat and DMs', ic: 4 },
@@ -278,6 +278,9 @@ export const offer9 = {
     name: 'Monthly',
     per: '/mo',
     sub: 'Month-to-month. Cancel anytime.',
+    /** The Launch Kit is optional on Monthly (owner decision 2026-11-25). `{kit}` is filled from config. */
+    kit: 'Launch Kit optional: {kit} one-time.',
+    kitLine: 'Want it live in 14 days? Add the Launch Kit at checkout.',
     cta: 'Start Monthly',
   },
   promises: [
@@ -345,7 +348,7 @@ export const faq9 = {
     },
     {
       q: 'How much of my time does it take?',
-      a: 'About 10-15 minutes to start: you log in, open Setup Center and answer the setup questions. We do the rest. After launch you reply to customers from the app when a human answer is needed.',
+      a: 'About 10-15 minutes to start: you log in, open Setup Center and answer the setup questions. With the Launch Kit we do the rest. After launch you reply to customers from the app when a human answer is needed.',
     },
     {
       q: 'Do I have to talk to a salesperson?',
@@ -380,6 +383,10 @@ export const faq9 = {
     {
       q: 'Is the AI a real person?',
       a: 'No. It answers from information you approve, never quotes prices, says it’s an AI if asked, and hands anything complex to you.',
+    },
+    {
+      q: 'Do I need the Launch Kit?',
+      a: `It is included on the annual plan and optional on monthly ({kit} one-time). With it, we build, write and test your system for you. ${guarantee9.headline} Without it, you get the same system in your account and you set it up yourself, starting in Setup Center.`,
     },
   ],
 };
@@ -495,13 +502,13 @@ export const footer9 = {
  */
 export const plans9 = {
   toggle: { monthly: 'Monthly', annual: 'Annual', annualTag: 'Pay 10, get 12' },
-  kitMonthly: '+ {kit} one-time Launch Kit',
+  kitMonthly: 'Launch Kit optional: {kit} one-time',
   annual: { name: 'Annual', tag: 'Best value', cta: 'Start Annual' },
   monthly: {
     name: 'Monthly',
     cta: 'Start Monthly',
     /** Plain HTML is allowed here (bold only). */
-    points: ['<b>Love it or leave it.</b> Month-to-month. Cancel anytime.', '<b>Full website:</b> {site} one-time add-on.'],
+    points: ['<b>Love it or leave it.</b> Month-to-month. Cancel anytime.', '<b>Launch Kit optional:</b> add it at checkout ({kit} one-time) and you are live in 14 days. Without it, you set the system up yourself.', '<b>Full website:</b> {site} one-time add-on.'],
   },
   rolesTitle: 'Your front office: 3 roles, 9 systems',
   roles: [
@@ -566,7 +573,7 @@ export const plans9 = {
     open: 'See every detail',
     compare: [
       { k: 'Price', a: '{annual} a year', m: '{monthly} a month' },
-      { k: 'Launch Kit (one-time setup)', a: 'Waived', m: '{kit}' },
+      { k: 'Launch Kit (one-time setup)', a: 'Waived', m: 'Optional, {kit}' },
       { k: 'Two months included', a: 'Yes', m: 'No' },
       { k: 'All three roles', a: 'Yes', m: 'Yes' },
       { k: 'Full website built to book calls', a: 'Free', m: '{site} add-on' },
@@ -778,7 +785,7 @@ export const checkout9 = {
   secure: 'Secure checkout',
   back: 'Back to the site',
   title: ['Start your front office.', `${guarantee9.short}.`],
-  sub: 'Pick how you pay. Then about 10-15 minutes of setup questions in your account, and we build.',
+  sub: 'Pick how you pay. Then about 10-15 minutes of setup questions in your account. With the Launch Kit, we build the rest.',
   switchLabel: 'Billing',
   annual: {
     name: 'Annual',
@@ -793,11 +800,16 @@ export const checkout9 = {
     name: 'Monthly',
     price: '{monthly}',
     per: '/mo',
-    lines: ['Month-to-month. Cancel anytime.', 'One-time Launch Kit: {kit}.'],
+    /** The Launch Kit is optional on Monthly (owner decision 2026-11-25): due today is the first month only. */
+    lines: ['Month-to-month. Cancel anytime.', 'Launch Kit optional: {kit} one-time.'],
     offerLine: 'One-time Launch Kit: {offerKit}, not {kit}.',
     offerTag: 'Leaving offer applied',
     dueLabel: 'Due today',
-    dueNote: 'First month plus the one-time Launch Kit. Then {monthly} a month.',
+    dueNote: 'First month only. Then {monthly} a month.',
+    /** Under "Due today". The guarantee itself is guarantee9, unchanged. */
+    kitLine: 'Want it live in 14 days? Add the Launch Kit at checkout.',
+    /** The leaving offer still includes the Launch Kit at the lower price. */
+    offerDueNote: 'First month plus the one-time Launch Kit. Then {monthly} a month.',
   },
   includesTitle: 'In your plan',
   includes: ['The Receptionist: missed calls caught, new leads answered', 'The Service Advisor: quotes followed up, bookings confirmed, reviews asked for', 'The Shop Manager: your daily brief, run sheet and ad results'],

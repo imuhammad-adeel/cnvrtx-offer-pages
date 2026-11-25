@@ -381,14 +381,15 @@ The site is auto-first: the home page is the auto-shop page.
 - [link] Start Annual  `→ #start`
 - **[H3]** Monthly
 - $197 /mo
-- + $497 one-time Launch Kit.
+- Launch Kit optional: $497 one-time. Want it live in 14 days? Add the Launch Kit at checkout.
 - **Love it or leave it.** Month-to-month. Cancel anytime.
+- **Launch Kit optional:** add it at checkout ($497 one-time) and you are live in 14 days. Without it, you set the system up yourself.
 - **Full website:** $997 one-time add-on.
 - [link] Start Monthly  `→ #start`
 - [opens] See every detail
 - Annual Monthly
 - Price $1,970 a year $197 a month
-- Launch Kit (one-time setup) Waived $497
+- Launch Kit (one-time setup) Waived Optional, $497
 - Two months included Yes No
 - All three roles Yes Yes
 - Full website built to book calls Free $997 add-on
@@ -430,7 +431,7 @@ The site is auto-first: the home page is the auto-shop page.
 - [opens] 01 Is this another CRM or website agency?
 - No. A CRM is a tool you have to build and run. An agency gives you a website and leaves. This is a working front desk: the booking page, the number, the inbox, the follow-up, the reminders and the review requests. All of it is built, written and tested for you.
 - [opens] 02 How much of my time does it take?
-- About 10-15 minutes to start: you log in, open Setup Center and answer the setup questions. We do the rest. After launch you reply to customers from the app when a human answer is needed.
+- About 10-15 minutes to start: you log in, open Setup Center and answer the setup questions. With the Launch Kit we do the rest. After launch you reply to customers from the app when a human answer is needed.
 - [opens] 03 Do I have to talk to a salesperson?
 - No. Pick a plan, fill the form and the build starts. If you want to ask something first, use the contact link.
 - [opens] 04 Do I replace my current shop software?
@@ -453,6 +454,8 @@ The site is auto-first: the home page is the auto-shop page.
 - Yes. Monthly plans are month-to-month. Your domain, content and customer list stay yours and you can export them.
 - [opens] 10 Is the AI a real person?
 - No. It answers from information you approve, never quotes prices, says it’s an AI if asked, and hands anything complex to you.
+- [opens] 11 Do I need the Launch Kit?
+- It is included on the annual plan and optional on monthly ($497 one-time). With it, we build, write and test your system for you. Live in 14 days with the Launch Kit, or your first month is free. Without it, you get the same system in your account and you set it up yourself, starting in Setup Center.
 
 ### Section `start`: Join in minutes. No sales call.
 
@@ -467,7 +470,7 @@ The site is auto-first: the home page is the auto-shop page.
 - [label] Monthly
 - [label] Annual Pay 10, get 12
 - $1,970 a year. Launch Kit waived.
-- $197 a month + $497 $297 $497 one-time Launch Kit.
+- $197 a month. Launch Kit optional: $497 one-time. Want it live in 14 days? Add the Launch Kit at checkout. + $297 $497 one-time Launch Kit.
 - On the table in your first year
 - Leaks you can go after $36,400
 - From your calculator numbers. An estimate, not a promise.
@@ -776,14 +779,15 @@ _Same wording as_ **Home → Section `skip-link`**.
 - [link] Start Annual  `→ #start`
 - **[H3]** Monthly
 - $197 /mo
-- + $497 one-time Launch Kit.
+- Launch Kit optional: $497 one-time. Want it live in 14 days? Add the Launch Kit at checkout.
 - **Love it or leave it.** Month-to-month. Cancel anytime.
+- **Launch Kit optional:** add it at checkout ($497 one-time) and you are live in 14 days. Without it, you set the system up yourself.
 - **Full website:** $997 one-time add-on.
 - [link] Start Monthly  `→ #start`
 - [opens] See every detail
 - Annual Monthly
 - Price $1,970 a year $197 a month
-- Launch Kit (one-time setup) Waived $497
+- Launch Kit (one-time setup) Waived Optional, $497
 - Two months included Yes No
 - All three roles Yes Yes
 - Full website built to book calls Free $997 add-on
@@ -844,6 +848,8 @@ _Same wording as_ **Home → Section `skip-link`**.
 - Yes. Monthly plans are month-to-month. Your domain, content and customer list stay yours and you can export them.
 - [opens] 08 Is the AI a real person?
 - No. It answers from information you approve, never quotes prices, says it’s an AI if asked, and hands anything complex to you.
+- [opens] 09 Do I need the Launch Kit?
+- It is included on the annual plan and optional on monthly ($497 one-time). With it, we build, write and test your system for you. Live in 14 days with the Launch Kit, or your first month is free. Without it, you get the same system in your account and you set it up yourself, starting in Setup Center.
 
 ### Section `start`: Join in minutes. No sales call.
 
@@ -858,7 +864,7 @@ _Same wording as_ **Home → Section `skip-link`**.
 - [label] Monthly
 - [label] Annual Pay 10, get 12
 - $1,970 a year. Launch Kit waived.
-- $197 a month + $497 $297 $497 one-time Launch Kit.
+- $197 a month. Launch Kit optional: $497 one-time. Want it live in 14 days? Add the Launch Kit at checkout. + $297 $497 one-time Launch Kit.
 - On the table in your first year
 - Leaks you can go after $36,400
 - From your calculator numbers. An estimate, not a promise.
@@ -1120,14 +1126,15 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - [link] Start Annual  `→ #start`
 - **[H3]** Monthly
 - $197 /mo
-- + $497 one-time Launch Kit.
+- Launch Kit optional: $497 one-time. Want it live in 14 days? Add the Launch Kit at checkout.
 - **Love it or leave it.** Month-to-month. Cancel anytime.
+- **Launch Kit optional:** add it at checkout ($497 one-time) and you are live in 14 days. Without it, you set the system up yourself.
 - **Full website:** $997 one-time add-on.
 - [link] Start Monthly  `→ #start`
 - [opens] See every detail
 - Annual Monthly
 - Price $1,970 a year $197 a month
-- Launch Kit (one-time setup) Waived $497
+- Launch Kit (one-time setup) Waived Optional, $497
 - Two months included Yes No
 - All three roles Yes Yes
 - Full website built to book calls Free $997 add-on
@@ -1188,6 +1195,8 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - Yes. Monthly plans are month-to-month. Your domain, content and customer list stay yours and you can export them.
 - [opens] 08 Is the AI a real person?
 - No. It answers from information you approve, never quotes prices, says it’s an AI if asked, and hands anything complex to you.
+- [opens] 09 Do I need the Launch Kit?
+- It is included on the annual plan and optional on monthly ($497 one-time). With it, we build, write and test your system for you. Live in 14 days with the Launch Kit, or your first month is free. Without it, you get the same system in your account and you set it up yourself, starting in Setup Center.
 
 ### Section `start`: Join in minutes. No sales call.
 
@@ -1202,7 +1211,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - [label] Monthly
 - [label] Annual Pay 10, get 12
 - $1,970 a year. Launch Kit waived.
-- $197 a month + $497 $297 $497 one-time Launch Kit.
+- $197 a month. Launch Kit optional: $497 one-time. Want it live in 14 days? Add the Launch Kit at checkout. + $297 $497 one-time Launch Kit.
 - On the table in your first year
 - Leaks you can go after $36,400
 - From your calculator numbers. An estimate, not a promise.
@@ -1467,14 +1476,15 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - [link] Start Annual  `→ #start`
 - **[H3]** Monthly
 - $197 /mo
-- + $497 one-time Launch Kit.
+- Launch Kit optional: $497 one-time. Want it live in 14 days? Add the Launch Kit at checkout.
 - **Love it or leave it.** Month-to-month. Cancel anytime.
+- **Launch Kit optional:** add it at checkout ($497 one-time) and you are live in 14 days. Without it, you set the system up yourself.
 - **Full website:** $997 one-time add-on.
 - [link] Start Monthly  `→ #start`
 - [opens] See every detail
 - Annual Monthly
 - Price $1,970 a year $197 a month
-- Launch Kit (one-time setup) Waived $497
+- Launch Kit (one-time setup) Waived Optional, $497
 - Two months included Yes No
 - All three roles Yes Yes
 - Full website built to book calls Free $997 add-on
@@ -1535,6 +1545,8 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - Yes. Monthly plans are month-to-month. Your domain, content and customer list stay yours and you can export them.
 - [opens] 08 Is the AI a real person?
 - No. It answers from information you approve, never quotes prices, says it’s an AI if asked, and hands anything complex to you.
+- [opens] 09 Do I need the Launch Kit?
+- It is included on the annual plan and optional on monthly ($497 one-time). With it, we build, write and test your system for you. Live in 14 days with the Launch Kit, or your first month is free. Without it, you get the same system in your account and you set it up yourself, starting in Setup Center.
 
 ### Section `start`: Join in minutes. No sales call.
 
@@ -1549,7 +1561,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - [label] Monthly
 - [label] Annual Pay 10, get 12
 - $1,970 a year. Launch Kit waived.
-- $197 a month + $497 $297 $497 one-time Launch Kit.
+- $197 a month. Launch Kit optional: $497 one-time. Want it live in 14 days? Add the Launch Kit at checkout. + $297 $497 one-time Launch Kit.
 - On the table in your first year
 - Leaks you can go after $36,400
 - From your calculator numbers. An estimate, not a promise.
@@ -1814,14 +1826,15 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - [link] Start Annual  `→ #start`
 - **[H3]** Monthly
 - $197 /mo
-- + $497 one-time Launch Kit.
+- Launch Kit optional: $497 one-time. Want it live in 14 days? Add the Launch Kit at checkout.
 - **Love it or leave it.** Month-to-month. Cancel anytime.
+- **Launch Kit optional:** add it at checkout ($497 one-time) and you are live in 14 days. Without it, you set the system up yourself.
 - **Full website:** $997 one-time add-on.
 - [link] Start Monthly  `→ #start`
 - [opens] See every detail
 - Annual Monthly
 - Price $1,970 a year $197 a month
-- Launch Kit (one-time setup) Waived $497
+- Launch Kit (one-time setup) Waived Optional, $497
 - Two months included Yes No
 - All three roles Yes Yes
 - Full website built to book calls Free $997 add-on
@@ -1882,6 +1895,8 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - Yes. Monthly plans are month-to-month. Your domain, content and customer list stay yours and you can export them.
 - [opens] 08 Is the AI a real person?
 - No. It answers from information you approve, never quotes prices, says it’s an AI if asked, and hands anything complex to you.
+- [opens] 09 Do I need the Launch Kit?
+- It is included on the annual plan and optional on monthly ($497 one-time). With it, we build, write and test your system for you. Live in 14 days with the Launch Kit, or your first month is free. Without it, you get the same system in your account and you set it up yourself, starting in Setup Center.
 
 ### Section `start`: Join in minutes. No sales call.
 
@@ -1896,7 +1911,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - [label] Monthly
 - [label] Annual Pay 10, get 12
 - $1,970 a year. Launch Kit waived.
-- $197 a month + $497 $297 $497 one-time Launch Kit.
+- $197 a month. Launch Kit optional: $497 one-time. Want it live in 14 days? Add the Launch Kit at checkout. + $297 $497 one-time Launch Kit.
 - On the table in your first year
 - Leaks you can go after $36,400
 - From your calculator numbers. An estimate, not a promise.
@@ -2165,14 +2180,15 @@ _Same wording as_ **Home → Section `work`: Who does the work?**.
 - [link] Start Annual  `→ #start`
 - **[H3]** Monthly
 - $197 /mo
-- + $497 one-time Launch Kit.
+- Launch Kit optional: $497 one-time. Want it live in 14 days? Add the Launch Kit at checkout.
 - **Love it or leave it.** Month-to-month. Cancel anytime.
+- **Launch Kit optional:** add it at checkout ($497 one-time) and you are live in 14 days. Without it, you set the system up yourself.
 - **Full website:** $997 one-time add-on.
 - [link] Start Monthly  `→ #start`
 - [opens] See every detail
 - Annual Monthly
 - Price $1,970 a year $197 a month
-- Launch Kit (one-time setup) Waived $497
+- Launch Kit (one-time setup) Waived Optional, $497
 - Two months included Yes No
 - All three roles Yes Yes
 - Full website built to book calls Free $997 add-on
@@ -2233,6 +2249,8 @@ _Same wording as_ **Home → Section `work`: Who does the work?**.
 - Yes. Monthly plans are month-to-month. Your domain, content and customer list stay yours and you can export them.
 - [opens] 08 Is the AI a real person?
 - No. It answers from information you approve, never quotes prices, says it’s an AI if asked, and hands anything complex to you.
+- [opens] 09 Do I need the Launch Kit?
+- It is included on the annual plan and optional on monthly ($497 one-time). With it, we build, write and test your system for you. Live in 14 days with the Launch Kit, or your first month is free. Without it, you get the same system in your account and you set it up yourself, starting in Setup Center.
 
 ### Section `start`: Join in minutes. No sales call.
 
@@ -2247,7 +2265,7 @@ _Same wording as_ **Home → Section `work`: Who does the work?**.
 - [label] Monthly
 - [label] Annual Pay 10, get 12
 - $1,970 a year. Launch Kit waived.
-- $197 a month + $497 $297 $497 one-time Launch Kit.
+- $197 a month. Launch Kit optional: $497 one-time. Want it live in 14 days? Add the Launch Kit at checkout. + $297 $497 one-time Launch Kit.
 - On the table in your first year
 - Leaks you can go after $36,400
 - From your calculator numbers. An estimate, not a promise.
@@ -2553,14 +2571,15 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - [link] Start Annual  `→ #start`
 - **[H3]** Monthly
 - $197 /mo
-- + $497 one-time Launch Kit.
+- Launch Kit optional: $497 one-time. Want it live in 14 days? Add the Launch Kit at checkout.
 - **Love it or leave it.** Month-to-month. Cancel anytime.
+- **Launch Kit optional:** add it at checkout ($497 one-time) and you are live in 14 days. Without it, you set the system up yourself.
 - **Full website:** $997 one-time add-on.
 - [link] Start Monthly  `→ #start`
 - [opens] See every detail
 - Annual Monthly
 - Price $1,970 a year $197 a month
-- Launch Kit (one-time setup) Waived $497
+- Launch Kit (one-time setup) Waived Optional, $497
 - Two months included Yes No
 - All three roles Yes Yes
 - Full website built to book calls Free $997 add-on
@@ -2621,6 +2640,8 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - Yes. Monthly plans are month-to-month. Your domain, content and customer list stay yours and you can export them.
 - [opens] 08 Is the AI a real person?
 - No. It answers from information you approve, never quotes prices, says it’s an AI if asked, and hands anything complex to you.
+- [opens] 09 Do I need the Launch Kit?
+- It is included on the annual plan and optional on monthly ($497 one-time). With it, we build, write and test your system for you. Live in 14 days with the Launch Kit, or your first month is free. Without it, you get the same system in your account and you set it up yourself, starting in Setup Center.
 
 ### Section `start`: Join in minutes. No sales call.
 
@@ -2635,7 +2656,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - [label] Monthly
 - [label] Annual Pay 10, get 12
 - $1,970 a year. Launch Kit waived.
-- $197 a month + $497 $297 $497 one-time Launch Kit.
+- $197 a month. Launch Kit optional: $497 one-time. Want it live in 14 days? Add the Launch Kit at checkout. + $297 $497 one-time Launch Kit.
 - On the table in your first year
 - Leaks you can go after $36,400
 - From your calculator numbers. An estimate, not a promise.
@@ -2895,14 +2916,15 @@ _Same wording as_ **Home → Section `hook`**.
 - [link] Start Annual  `→ #start`
 - **[H3]** Monthly
 - $197 /mo
-- + $497 one-time Launch Kit.
+- Launch Kit optional: $497 one-time. Want it live in 14 days? Add the Launch Kit at checkout.
 - **Love it or leave it.** Month-to-month. Cancel anytime.
+- **Launch Kit optional:** add it at checkout ($497 one-time) and you are live in 14 days. Without it, you set the system up yourself.
 - **Full website:** $997 one-time add-on.
 - [link] Start Monthly  `→ #start`
 - [opens] See every detail
 - Annual Monthly
 - Price $1,970 a year $197 a month
-- Launch Kit (one-time setup) Waived $497
+- Launch Kit (one-time setup) Waived Optional, $497
 - Two months included Yes No
 - All three roles Yes Yes
 - Full website built to book calls Free $997 add-on
@@ -2963,6 +2985,8 @@ _Same wording as_ **Home → Section `hook`**.
 - Yes. Monthly plans are month-to-month. Your domain, content and customer list stay yours and you can export them.
 - [opens] 08 Is the AI a real person?
 - No. It answers from information you approve, never quotes prices, says it’s an AI if asked, and hands anything complex to you.
+- [opens] 09 Do I need the Launch Kit?
+- It is included on the annual plan and optional on monthly ($497 one-time). With it, we build, write and test your system for you. Live in 14 days with the Launch Kit, or your first month is free. Without it, you get the same system in your account and you set it up yourself, starting in Setup Center.
 
 ### Section `start`: Join in minutes. No sales call.
 
@@ -2977,7 +3001,7 @@ _Same wording as_ **Home → Section `hook`**.
 - [label] Monthly
 - [label] Annual Pay 10, get 12
 - $1,970 a year. Launch Kit waived.
-- $197 a month + $497 $297 $497 one-time Launch Kit.
+- $197 a month. Launch Kit optional: $497 one-time. Want it live in 14 days? Add the Launch Kit at checkout. + $297 $497 one-time Launch Kit.
 - On the table in your first year
 - Leaks you can go after $36,400
 - From your calculator numbers. An estimate, not a promise.
@@ -3240,14 +3264,15 @@ _Same wording as_ **Home → Section `work`: Who does the work?**.
 - [link] Start Annual  `→ #start`
 - **[H3]** Monthly
 - $197 /mo
-- + $497 one-time Launch Kit.
+- Launch Kit optional: $497 one-time. Want it live in 14 days? Add the Launch Kit at checkout.
 - **Love it or leave it.** Month-to-month. Cancel anytime.
+- **Launch Kit optional:** add it at checkout ($497 one-time) and you are live in 14 days. Without it, you set the system up yourself.
 - **Full website:** $997 one-time add-on.
 - [link] Start Monthly  `→ #start`
 - [opens] See every detail
 - Annual Monthly
 - Price $1,970 a year $197 a month
-- Launch Kit (one-time setup) Waived $497
+- Launch Kit (one-time setup) Waived Optional, $497
 - Two months included Yes No
 - All three roles Yes Yes
 - Full website built to book calls Free $997 add-on
@@ -3308,6 +3333,8 @@ _Same wording as_ **Home → Section `work`: Who does the work?**.
 - Yes. Monthly plans are month-to-month. Your domain, content and customer list stay yours and you can export them.
 - [opens] 08 Is the AI a real person?
 - No. It answers from information you approve, never quotes prices, says it’s an AI if asked, and hands anything complex to you.
+- [opens] 09 Do I need the Launch Kit?
+- It is included on the annual plan and optional on monthly ($497 one-time). With it, we build, write and test your system for you. Live in 14 days with the Launch Kit, or your first month is free. Without it, you get the same system in your account and you set it up yourself, starting in Setup Center.
 
 ### Section `start`: Join in minutes. No sales call.
 
@@ -3322,7 +3349,7 @@ _Same wording as_ **Home → Section `work`: Who does the work?**.
 - [label] Monthly
 - [label] Annual Pay 10, get 12
 - $1,970 a year. Launch Kit waived.
-- $197 a month + $497 $297 $497 one-time Launch Kit.
+- $197 a month. Launch Kit optional: $497 one-time. Want it live in 14 days? Add the Launch Kit at checkout. + $297 $497 one-time Launch Kit.
 - On the table in your first year
 - Leaks you can go after $36,400
 - From your calculator numbers. An estimate, not a promise.
@@ -3571,14 +3598,15 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - [link] Start Annual  `→ #start`
 - **[H3]** Monthly
 - $197 /mo
-- + $497 one-time Launch Kit.
+- Launch Kit optional: $497 one-time. Want it live in 14 days? Add the Launch Kit at checkout.
 - **Love it or leave it.** Month-to-month. Cancel anytime.
+- **Launch Kit optional:** add it at checkout ($497 one-time) and you are live in 14 days. Without it, you set the system up yourself.
 - **Full website:** $997 one-time add-on.
 - [link] Start Monthly  `→ #start`
 - [opens] See every detail
 - Annual Monthly
 - Price $1,970 a year $197 a month
-- Launch Kit (one-time setup) Waived $497
+- Launch Kit (one-time setup) Waived Optional, $497
 - Two months included Yes No
 - All three roles Yes Yes
 - Full website built to book calls Free $997 add-on
@@ -3639,6 +3667,8 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - Yes. Monthly plans are month-to-month. Your domain, content and customer list stay yours and you can export them.
 - [opens] 08 Is the AI a real person?
 - No. It answers from information you approve, never quotes prices, says it’s an AI if asked, and hands anything complex to you.
+- [opens] 09 Do I need the Launch Kit?
+- It is included on the annual plan and optional on monthly ($497 one-time). With it, we build, write and test your system for you. Live in 14 days with the Launch Kit, or your first month is free. Without it, you get the same system in your account and you set it up yourself, starting in Setup Center.
 
 ### Section `start`: Join in minutes. No sales call.
 
@@ -3653,7 +3683,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - [label] Monthly
 - [label] Annual Pay 10, get 12
 - $1,970 a year. Launch Kit waived.
-- $197 a month + $497 $297 $497 one-time Launch Kit.
+- $197 a month. Launch Kit optional: $497 one-time. Want it live in 14 days? Add the Launch Kit at checkout. + $297 $497 one-time Launch Kit.
 - On the table in your first year
 - Leaks you can go after $36,400
 - From your calculator numbers. An estimate, not a promise.
@@ -3906,14 +3936,15 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - [link] Start Annual  `→ #start`
 - **[H3]** Monthly
 - $197 /mo
-- + $497 one-time Launch Kit.
+- Launch Kit optional: $497 one-time. Want it live in 14 days? Add the Launch Kit at checkout.
 - **Love it or leave it.** Month-to-month. Cancel anytime.
+- **Launch Kit optional:** add it at checkout ($497 one-time) and you are live in 14 days. Without it, you set the system up yourself.
 - **Full website:** $997 one-time add-on.
 - [link] Start Monthly  `→ #start`
 - [opens] See every detail
 - Annual Monthly
 - Price $1,970 a year $197 a month
-- Launch Kit (one-time setup) Waived $497
+- Launch Kit (one-time setup) Waived Optional, $497
 - Two months included Yes No
 - All three roles Yes Yes
 - Full website built to book calls Free $997 add-on
@@ -3974,6 +4005,8 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - Yes. Monthly plans are month-to-month. Your domain, content and customer list stay yours and you can export them.
 - [opens] 08 Is the AI a real person?
 - No. It answers from information you approve, never quotes prices, says it’s an AI if asked, and hands anything complex to you.
+- [opens] 09 Do I need the Launch Kit?
+- It is included on the annual plan and optional on monthly ($497 one-time). With it, we build, write and test your system for you. Live in 14 days with the Launch Kit, or your first month is free. Without it, you get the same system in your account and you set it up yourself, starting in Setup Center.
 
 ### Section `start`: Join in minutes. No sales call.
 
@@ -3988,7 +4021,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - [label] Monthly
 - [label] Annual Pay 10, get 12
 - $1,970 a year. Launch Kit waived.
-- $197 a month + $497 $297 $497 one-time Launch Kit.
+- $197 a month. Launch Kit optional: $497 one-time. Want it live in 14 days? Add the Launch Kit at checkout. + $297 $497 one-time Launch Kit.
 - On the table in your first year
 - Leaks you can go after $36,400
 - From your calculator numbers. An estimate, not a promise.
@@ -4252,14 +4285,15 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - [link] Start Annual  `→ #start`
 - **[H3]** Monthly
 - $197 /mo
-- + $497 one-time Launch Kit.
+- Launch Kit optional: $497 one-time. Want it live in 14 days? Add the Launch Kit at checkout.
 - **Love it or leave it.** Month-to-month. Cancel anytime.
+- **Launch Kit optional:** add it at checkout ($497 one-time) and you are live in 14 days. Without it, you set the system up yourself.
 - **Full website:** $997 one-time add-on.
 - [link] Start Monthly  `→ #start`
 - [opens] See every detail
 - Annual Monthly
 - Price $1,970 a year $197 a month
-- Launch Kit (one-time setup) Waived $497
+- Launch Kit (one-time setup) Waived Optional, $497
 - Two months included Yes No
 - All three roles Yes Yes
 - Full website built to book calls Free $997 add-on
@@ -4320,6 +4354,8 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - Yes. Monthly plans are month-to-month. Your domain, content and customer list stay yours and you can export them.
 - [opens] 08 Is the AI a real person?
 - No. It answers from information you approve, never quotes prices, says it’s an AI if asked, and hands anything complex to you.
+- [opens] 09 Do I need the Launch Kit?
+- It is included on the annual plan and optional on monthly ($497 one-time). With it, we build, write and test your system for you. Live in 14 days with the Launch Kit, or your first month is free. Without it, you get the same system in your account and you set it up yourself, starting in Setup Center.
 
 ### Section `start`: Join in minutes. No sales call.
 
@@ -4334,7 +4370,7 @@ _Same wording as_ **Problem page: Missed calls → Top menu `nav`**.
 - [label] Monthly
 - [label] Annual Pay 10, get 12
 - $1,970 a year. Launch Kit waived.
-- $197 a month + $497 $297 $497 one-time Launch Kit.
+- $197 a month. Launch Kit optional: $497 one-time. Want it live in 14 days? Add the Launch Kit at checkout. + $297 $497 one-time Launch Kit.
 - On the table in your first year
 - Leaks you can go after $36,400
 - From your calculator numbers. An estimate, not a promise.
@@ -4588,14 +4624,15 @@ _Same wording as_ **Home → Section `day`: A day in your shop, before and after
 - [link] Start Annual  `→ #start`
 - **[H3]** Monthly
 - $197 /mo
-- + $497 one-time Launch Kit.
+- Launch Kit optional: $497 one-time. Want it live in 14 days? Add the Launch Kit at checkout.
 - **Love it or leave it.** Month-to-month. Cancel anytime.
+- **Launch Kit optional:** add it at checkout ($497 one-time) and you are live in 14 days. Without it, you set the system up yourself.
 - **Full website:** $997 one-time add-on.
 - [link] Start Monthly  `→ #start`
 - [opens] See every detail
 - Annual Monthly
 - Price $1,970 a year $197 a month
-- Launch Kit (one-time setup) Waived $497
+- Launch Kit (one-time setup) Waived Optional, $497
 - Two months included Yes No
 - All three roles Yes Yes
 - Full website built to book calls Free $997 add-on
@@ -4656,6 +4693,8 @@ _Same wording as_ **Home → Section `day`: A day in your shop, before and after
 - Yes. Monthly plans are month-to-month. Your domain, content and customer list stay yours and you can export them.
 - [opens] 08 Is the AI a real person?
 - No. It answers from information you approve, never quotes prices, says it’s an AI if asked, and hands anything complex to you.
+- [opens] 09 Do I need the Launch Kit?
+- It is included on the annual plan and optional on monthly ($497 one-time). With it, we build, write and test your system for you. Live in 14 days with the Launch Kit, or your first month is free. Without it, you get the same system in your account and you set it up yourself, starting in Setup Center.
 
 ### Section `start`: Join in minutes. No sales call.
 
@@ -4670,7 +4709,7 @@ _Same wording as_ **Home → Section `day`: A day in your shop, before and after
 - [label] Monthly
 - [label] Annual Pay 10, get 12
 - $1,970 a year. Launch Kit waived.
-- $197 a month + $497 $297 $497 one-time Launch Kit.
+- $197 a month. Launch Kit optional: $497 one-time. Want it live in 14 days? Add the Launch Kit at checkout. + $297 $497 one-time Launch Kit.
 - On the table in your first year
 - Leaks you can go after $36,400
 - From your calculator numbers. An estimate, not a promise.
@@ -4764,7 +4803,7 @@ _Same wording as_ **Home → Section `skip-link`**.
 ### Section `main`: Start your front office. Live in 14 days with the Launch Kit.
 
 - **[H1]** Start your front office. Live in 14 days with the Launch Kit.
-- Pick how you pay. Then about 10-15 minutes of setup questions in your account, and we build.
+- Pick how you pay. Then about 10-15 minutes of setup questions in your account. With the Launch Kit, we build the rest.
 - [label] Annual Best value
 - [label] Monthly
 - $1,970 /yr
@@ -4781,10 +4820,12 @@ _Same wording as_ **Home → Section `skip-link`**.
 - No usage bills in a normal month. If you ever go over, extra usage is billed at standard rates. Most shops never do.
 - $197 /mo
 - Month-to-month. Cancel anytime.
-- One-time Launch Kit: $497.
+- Launch Kit optional: $497 one-time.
 - One-time Launch Kit: $297, not $497. Leaving offer applied
-- Due today $694 $494 $694
+- Due today $197 $494 $694
+- First month only. Then $197 a month.
 - First month plus the one-time Launch Kit. Then $197 a month.
+- Want it live in 14 days? Add the Launch Kit at checkout.
 - In your plan
 - The Receptionist: missed calls caught, new leads answered
 - The Service Advisor: quotes followed up, bookings confirmed, reviews asked for
@@ -4972,7 +5013,7 @@ _Same wording as_ **Privacy Policy → Top menu `top`**.
 - Effective November 16, 2026
 - These terms are the agreement between you and CNVRT X LLC ("CNVRT X", "we", "us") for the CNVRT X Front Office service. By buying or using the service you agree to them.
 - **[H2]** 1 The service
-- We set up and run a front-office system for your shop: answering leads, following up, confirming bookings, asking for reviews and reporting, as described on our website at the time you buy. We build it, write the messages and test it for you.
+- We set up and run a front-office system for your shop: answering leads, following up, confirming bookings, asking for reviews and reporting, as described on our website at the time you buy. We build it, write the messages and test it for you. On a monthly plan without the Launch Kit, the system is ready in your account and you set it up yourself.
 - Some features depend on third parties. For example, business texting in the US needs carrier registration and approval, and those features go live only after approval.
 - **[H2]** 2 Your part
 - Give us accurate information about your shop and the access we need to set things up.
@@ -4980,7 +5021,7 @@ _Same wording as_ **Privacy Policy → Top menu `top`**.
 - Only have the system contact people who have agreed to be contacted in that way. You are responsible for having the permission the law requires to call, text or email your customers.
 - Review the content we write for you and tell us if anything is wrong.
 - **[H2]** 3 Fees and billing
-- Monthly plan: $197 a month, plus a one-time Launch Kit fee of $497.
+- Monthly plan: $197 a month. The Launch Kit is optional on the monthly plan, for a one-time fee of $497.
 - Annual plan: $1,970 a year, paid in advance. The Launch Kit fee is waived.
 - A full website is a one-time $997 add-on on the monthly plan and is included on the annual plan.
 - Each plan includes the monthly usage listed on our pricing page. Usage above that is billed at standard rates. Unused usage does not roll over.
@@ -5467,14 +5508,15 @@ _Same wording as_ **Home → Section `ticker`**.
 - [link] Start Annual  `→ #start`
 - **[H3]** Monthly
 - $197 /mo
-- + $497 one-time Launch Kit.
+- Launch Kit optional: $497 one-time. Want it live in 14 days? Add the Launch Kit at checkout.
 - **Love it or leave it.** Month-to-month. Cancel anytime.
+- **Launch Kit optional:** add it at checkout ($497 one-time) and you are live in 14 days. Without it, you set the system up yourself.
 - **Full website:** $997 one-time add-on.
 - [link] Start Monthly  `→ #start`
 - [opens] See every detail
 - Annual Monthly
 - Price $1,970 a year $197 a month
-- Launch Kit (one-time setup) Waived $497
+- Launch Kit (one-time setup) Waived Optional, $497
 - Two months included Yes No
 - All three roles Yes Yes
 - Full website built to book calls Free $997 add-on
@@ -5516,7 +5558,7 @@ _Same wording as_ **Home → Section `ticker`**.
 - [opens] 01 Is this another CRM or website agency?
 - No. A CRM is a tool you have to build and run. An agency gives you a website and leaves. This is a working front desk: the booking page, the number, the inbox, the follow-up, the reminders and the review requests. All of it is built, written and tested for you.
 - [opens] 02 How much of my time does it take?
-- About 10-15 minutes to start: you log in, open Setup Center and answer the setup questions. We do the rest. After launch you reply to customers from the app when a human answer is needed.
+- About 10-15 minutes to start: you log in, open Setup Center and answer the setup questions. With the Launch Kit we do the rest. After launch you reply to customers from the app when a human answer is needed.
 - [opens] 03 Do I have to talk to a salesperson?
 - No. Pick a plan, fill the form and the build starts. If you want to ask something first, use the contact link.
 - [opens] 04 Do I replace my current software?
@@ -5610,7 +5652,7 @@ These lines exist in the content files, but no page displays them at present. Th
 ### Auto pages: main copy file
 
 - Every plan includes
-- Setup and writing done for you
+- Setup done for you with the Launch Kit
 - Booking page built for you
 - All of it included.
 - Launch Kit waived. Pay 10, get 12.

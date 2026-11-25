@@ -32,8 +32,10 @@ const fill = (t: string) =>
     .replaceAll('{kit}', money(plan.launchKit))
     .replaceAll('{offerKit}', money(offerKit))
     .replaceAll('{site}', money(cfg.website.addOn));
-const dueMonthly = plan.monthly + plan.launchKit;
+// the Launch Kit is optional on Monthly (owner decision 2026-11-25): due today is the first month only
+const dueMonthly = plan.monthly;
 const dueOffer = plan.monthly + offerKit;
+const dueWas = plan.monthly + plan.launchKit;
 const dev = import.meta.env.DEV;
 ---
 
@@ -102,10 +104,12 @@ const dev = import.meta.env.DEV;
             <span>{c.monthly.dueLabel}</span>
             <b data-kit="regular">{money(dueMonthly)}</b>
             <b data-kit="offer" hidden>
-              {money(dueOffer)} <s>{money(dueMonthly)}</s>
+              {money(dueOffer)} <s>{money(dueWas)}</s>
             </b>
           </p>
-          <p class="due-n">{fill(c.monthly.dueNote)}</p>
+          <p class="due-n" data-kit="regular">{fill(c.monthly.dueNote)}</p>
+          <p class="due-n" data-kit="offer" hidden>{fill(c.monthly.offerDueNote)}</p>
+          <p class="kit-l" data-kit="regular">{c.monthly.kitLine}</p>
           <Included9 />
         </div>
 
@@ -511,6 +515,12 @@ const dev = import.meta.env.DEV;
   .due-n {
     font-size: 0.8125rem;
     color: var(--fog);
+  }
+  .kit-l {
+    font-size: 0.9375rem;
+    font-weight: 700;
+    line-height: 1.4;
+    color: #d8ff3e;
   }
   .more {
     display: grid;
